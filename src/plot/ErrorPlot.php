@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Plot;
+
 /*=======================================================================
 // File:        JPGRAPH_ERROR.PHP
 // Description: Error plot extension for JpGraph
