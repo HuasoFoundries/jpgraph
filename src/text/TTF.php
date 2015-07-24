@@ -48,8 +48,12 @@ class TTF
                 FS_BOLD => 'comicbd.ttf',
                 FS_ITALIC => '',
                 FS_BOLDITALIC => ''),
+            /*FF_ARIAL => array(FS_NORMAL => 'arial.ttf',
+            FS_BOLD => 'arialbd.ttf',
+            FS_ITALIC => 'ariali.ttf',
+            FS_BOLDITALIC => 'arialbi.ttf'),*/
             FF_ARIAL => array(FS_NORMAL => 'arial.ttf',
-                FS_BOLD => 'arialbd.ttf',
+                FS_BOLD => 'msttcorefonts/Arial_Black.ttf',
                 FS_ITALIC => 'ariali.ttf',
                 FS_BOLDITALIC => 'arialbi.ttf'),
             FF_VERA => array(FS_NORMAL => 'Vera.ttf',

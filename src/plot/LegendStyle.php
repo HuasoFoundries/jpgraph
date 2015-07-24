@@ -1,5 +1,5 @@
 <?php
-namespace Amenadiel\JpGraph\Text;
+namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
 // File:        JPGRAPH_WINDROSE.PHP
@@ -10,8 +10,6 @@ namespace Amenadiel\JpGraph\Text;
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
  */
-
-require_once 'jpgraph_glayout_vh.inc.php';
 
 //------------------------------------------------------------------------
 // Determine how many compass directions to show

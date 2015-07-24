@@ -6,7 +6,6 @@ use \Amenadiel\JpGraph\Image\Footer;
 use \Amenadiel\JpGraph\Image\ImgStreamCache;
 use \Amenadiel\JpGraph\Image\RotImage;
 use \Amenadiel\JpGraph\Text\GraphTabTitle;
-use \Amenadiel\JpGraph\Text\Legend;
 use \Amenadiel\JpGraph\Text\Text;
 
 // Styles for gradient color fill

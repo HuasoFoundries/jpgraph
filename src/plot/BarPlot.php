@@ -1,7 +1,7 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
-use \Amenadiel\JpGraph\Image\RGB;
+use \Amenadiel\JpGraph\Image;
 
 /*=======================================================================
 // File:        JPGRAPH_BAR.PHP
@@ -239,7 +239,7 @@ class BarPlot extends Plot
         // In that case convert it to a hex string since it will otherwise be
         // interpretated as an array of colors for each individual bar.
 
-        $aColor = RGB::tryHexConversion($aColor);
+        $aColor = Image\RGB::tryHexConversion($aColor);
         $this->fill = true;
         $this->fill_color = $aColor;
 

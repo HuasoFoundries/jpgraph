@@ -1,5 +1,5 @@
 <?php
-namespace Amenadiel\JpGraph\Text;
+namespace Amenadiel\JpGraph\Graph;
 
 //=============================================================================
 // CLASS SymChar

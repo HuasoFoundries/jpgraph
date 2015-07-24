@@ -1,7 +1,7 @@
 <?php
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Util;
+use Amenadiel\JpGraph\Image;
 
 /*=======================================================================
 // File:        JPGRAPH_CONTOUR.PHP
@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Util;
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
  */
-require_once 'jpgraph_meshinterpolate.inc.php';
+
 define('HORIZ_EDGE', 0);
 define('VERT_EDGE', 1);
 
@@ -313,7 +313,7 @@ class Contour
             $v = 0;
             $step = 1 / ($this->nbrIsobars - 1);
             for ($ib = 0; $ib < $this->nbrIsobars; $ib++) {
-                $this->isobarColors[$ib] = RGB::GetSpectrum($v);
+                $this->isobarColors[$ib] = Image\RGB::GetSpectrum($v);
                 $v += $step;
             }
         }

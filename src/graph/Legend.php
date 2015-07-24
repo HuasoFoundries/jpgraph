@@ -1,5 +1,7 @@
 <?php
-namespace Amenadiel\JpGraph\Text;
+namespace Amenadiel\JpGraph\Graph;
+
+use Amenadiel\JpGraph\Plot;
 
 //=======================================================================
 // File:        JPGRAPH_LEGEND.INC.PHP
@@ -317,7 +319,7 @@ class Legend
         }
 
         if ($this->bkg_gradtype >= 0) {
-            $grad = new Gradient($aImg);
+            $grad = new Plot\Gradient($aImg);
             $grad->FilledRectangle($xp + 1, $yp + 1,
                 $xp + $abs_width - 3, $yp + $abs_height - 3,
                 $this->bkg_gradfrom, $this->bkg_gradto,
@@ -336,7 +338,7 @@ class Legend
         // Now, y1 is the bottom vertical position of the first legend, i.e if
         // the legend has multiple lines it is the bottom line.
 
-        $grad = new Gradient($aImg);
+        $grad = new Plot\Gradient($aImg);
         $patternFactory = null;
 
         // Now stroke each legend in turn

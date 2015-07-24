@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+
 define('WINDROSE_TYPE4', 1);
 define('WINDROSE_TYPE8', 2);
 define('WINDROSE_TYPE16', 3);
@@ -68,10 +70,10 @@ class WindrosePlot
         $this->legend = new LegendStyle();
 
         // Setup the scale
-        $this->scale = new WindrosePlotScale($this->iData);
+        $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f' . SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {

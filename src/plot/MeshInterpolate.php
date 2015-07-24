@@ -1,5 +1,5 @@
 <?php
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
 // File:        JPGRAPH_MESHINTERPOLATE.INC.PHP
