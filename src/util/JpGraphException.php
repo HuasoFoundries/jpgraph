@@ -1,7 +1,7 @@
 <?php
 namespace Amenadiel\JpGraph\Util;
 
-class JpGraphException extends Exception
+class JpGraphException extends \Exception
 {
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0)
@@ -30,7 +30,7 @@ class JpGraphException extends Exception
         $errobj->Raise($this->getMessage());
     }
 
-    public static function defaultHandler(Exception $exception)
+    public static function defaultHandler(\Exception $exception)
     {
         global $__jpg_OldHandler;
         if ($exception instanceof JpGraphException) {

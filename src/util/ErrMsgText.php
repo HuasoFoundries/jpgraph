@@ -29,15 +29,15 @@ class ErrMsgText
     public function __construct()
     {
         global $__jpg_err_locale;
-        $file = 'lang/' . $__jpg_err_locale . '.inc.php';
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
 
         // If the chosen locale doesn't exist try english
-        if (!file_exists(dirname(__FILE__) . '/' . $file)) {
+        if (!file_exists($file)) {
             $__jpg_err_locale = 'en';
         }
 
-        $file = 'lang/' . $__jpg_err_locale . '.inc.php';
-        if (!file_exists(dirname(__FILE__) . '/' . $file)) {
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
+        if (!file_exists($file)) {
             die('Chosen locale file ("' . $file . '") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
         }
         require $file;
@@ -100,7 +100,7 @@ class ErrMsgText
 
 // Setup the default handler
 global $__jpg_OldHandler;
-$__jpg_OldHandler = set_exception_handler(array('JpGraphException', 'defaultHandler'));
+$__jpg_OldHandler = set_exception_handler(array('Amenadiel\JpGraph\Util\JpGraphException', 'defaultHandler'));
 
 if (!USE_IMAGE_ERROR_HANDLER) {
     JpGraphError::SetImageFlag(false);

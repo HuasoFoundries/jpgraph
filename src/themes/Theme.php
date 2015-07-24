@@ -10,6 +10,9 @@
 
 namespace Amenadiel\JpGraph\Themes;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS
 // Description:
@@ -56,16 +59,16 @@ abstract class Theme
         $this->graph = $graph;
         $method_name = '';
 
-        if (get_class($graph) == 'Graph') {
+        if ($graph instanceof Graph\Graph) {
             $method_name = 'SetupGraph';
         } else {
-            $method_name = 'Setup' . get_class($graph);
+            $method_name = 'Setup' . end(explode('\\', get_class($graph)));
         }
 
         if (method_exists($this, $method_name)) {
             $this->$method_name($graph);
         } else {
-            JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not defined. \nPlease make %s(\$graph) function in your theme classs.
+            Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not defined. \nPlease make %s(\$graph) function in your theme classs.
         }
     }
 

@@ -1,6 +1,9 @@
 <?php
 namespace Amenadiel\JpGraph\Util;
 
+use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Text;
+
 //==============================================================
 // An image based error handler
 //==============================================================
@@ -53,7 +56,7 @@ class JpGraphErrObjectImg extends JpGraphErrObject
         $lines = substr_count($aMsg, "\n");
 
         // Create the error icon GD
-        $erricon = Image::CreateFromString(base64_decode($img_iconerror));
+        $erricon = Image\Image::CreateFromString(base64_decode($img_iconerror));
 
         // Create an image that contains the error text.
         $w = 400;
@@ -109,7 +112,7 @@ class JpGraphErrObjectImg extends JpGraphErrObject
         $img->StrokeText($m - 90, 15, $this->iTitle);
         $img->SetColor("black");
         $img->SetFont(FF_FONT1, FS_NORMAL);
-        $txt = new Text($aMsg, 52, 25);
+        $txt = new Text\Text($aMsg, 52, 25);
         $txt->SetFont(FF_FONT1);
         $txt->Align("left", "top");
         $txt->Stroke($img);

@@ -1,14 +1,27 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
 use \Amenadiel\JpGraph\Image\Footer;
 use \Amenadiel\JpGraph\Image\ImgStreamCache;
 use \Amenadiel\JpGraph\Image\RotImage;
-use \Amenadiel\JpGraph\Scale\LinearScale;
 use \Amenadiel\JpGraph\Text\GraphTabTitle;
 use \Amenadiel\JpGraph\Text\Legend;
 use \Amenadiel\JpGraph\Text\Text;
 
+// Styles for gradient color fill
+define("GRAD_VER", 1);
+define("GRAD_VERT", 1);
+define("GRAD_HOR", 2);
+define("GRAD_MIDHOR", 3);
+define("GRAD_MIDVER", 4);
+define("GRAD_CENTER", 5);
+define("GRAD_WIDE_MIDVER", 6);
+define("GRAD_WIDE_MIDHOR", 7);
+define("GRAD_LEFT_REFLECTION", 8);
+define("GRAD_RIGHT_REFLECTION", 9);
+define("GRAD_RAISED_PANEL", 10);
+define("GRAD_DIAGONAL", 11);
 //===================================================
 // CLASS Graph
 // Description: Main class to handle graphs
@@ -103,7 +116,7 @@ class Graph
     {
 
         if (!is_numeric($aWidth) || !is_numeric($aHeight)) {
-            JpGraphError::RaiseL(25008); //('Image width/height argument in Graph::Graph() must be numeric');
+            Util\JpGraphError::RaiseL(25008); //('Image width/height argument in Graph::Graph() must be numeric');
         }
 
         // Initialize frame and margin
@@ -287,7 +300,7 @@ class Graph
         $this->img->SetCenter(floor($this->img->width / 2), floor($this->img->height / 2));
         $this->SetAngle(90);
         if (empty($this->yaxis) || empty($this->xaxis)) {
-            JpgraphError::RaiseL(25009); //('You must specify what scale to use with a call to Graph::SetScale()');
+            Util\JpGraphError::RaiseL(25009); //('You must specify what scale to use with a call to Graph::SetScale()');
         }
         $this->xaxis->SetLabelAlign('right', 'center');
         $this->yaxis->SetLabelAlign('center', 'bottom');
@@ -302,7 +315,7 @@ class Graph
     public function Add($aPlot)
     {
         if ($aPlot == null) {
-            JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
+            Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
         if (is_array($aPlot) && count($aPlot) > 0) {
             $cl = $aPlot[0];
@@ -359,7 +372,7 @@ class Graph
     public function AddY2($aPlot)
     {
         if ($aPlot == null) {
-            JpGraphError::RaiseL(25011); //("Graph::AddY2() You tried to add a null plot to the graph.");
+            Util\JpGraphError::RaiseL(25011); //("Graph::AddY2() You tried to add a null plot to the graph.");
         }
 
         if (is_array($aPlot) && count($aPlot) > 0) {
@@ -388,7 +401,7 @@ class Graph
     {
 
         if ($aPlot == null) {
-            JpGraphError::RaiseL(25012); //("Graph::AddYN() You tried to add a null plot to the graph.");
+            Util\JpGraphError::RaiseL(25012); //("Graph::AddYN() You tried to add a null plot to the graph.");
         }
 
         if (is_array($aPlot) && count($aPlot) > 0) {
@@ -414,7 +427,7 @@ class Graph
     public function AddText($aTxt, $aToY2 = false)
     {
         if ($aTxt == null) {
-            JpGraphError::RaiseL(25014); //("Graph::AddText() You tried to add a null text to the graph.");
+            Util\JpGraphError::RaiseL(25014); //("Graph::AddText() You tried to add a null text to the graph.");
         }
         if ($aToY2) {
             if (is_array($aTxt)) {
@@ -439,7 +452,7 @@ class Graph
     public function AddLine($aLine, $aToY2 = false)
     {
         if ($aLine == null) {
-            JpGraphError::RaiseL(25015); //("Graph::AddLine() You tried to add a null line to the graph.");
+            Util\JpGraphError::RaiseL(25015); //("Graph::AddLine() You tried to add a null line to the graph.");
         }
 
         if ($aToY2) {
@@ -469,7 +482,7 @@ class Graph
     public function AddBand($aBand, $aToY2 = false)
     {
         if ($aBand == null) {
-            JpGraphError::RaiseL(25016); //(" Graph::AddBand() You tried to add a null band to the graph.");
+            Util\JpGraphError::RaiseL(25016); //(" Graph::AddBand() You tried to add a null band to the graph.");
         }
 
         if ($aToY2) {
@@ -530,7 +543,7 @@ class Graph
         if ($aImgFormat == 'auto') {
             $e = explode('.', $aFileName);
             if (!$e) {
-                JpGraphError::RaiseL(25018, $aFileName); //('Incorrect file name for Graph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
+                Util\JpGraphError::RaiseL(25018, $aFileName); //('Incorrect file name for Graph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
             }
 
             $valid_formats = array('png', 'jpg', 'gif');
@@ -538,7 +551,7 @@ class Graph
             if ($aImgFormat == 'jpeg') {
                 $aImgFormat = 'jpg';
             } elseif (!in_array($aImgFormat, $valid_formats)) {
-                JpGraphError::RaiseL(25019, $aImgFormat); //('Unknown file extension ($aImgFormat) in Graph::SetBackgroundImage() for filename: '.$aFileName);
+                Util\JpGraphError::RaiseL(25019, $aImgFormat); //('Unknown file extension ($aImgFormat) in Graph::SetBackgroundImage() for filename: '.$aFileName);
             }
         }
 
@@ -622,7 +635,7 @@ class Graph
         $this->axtype = $aAxisType;
 
         if ($aYMax < $aYMin || $aXMax < $aXMin) {
-            JpGraphError::RaiseL(25020); //('Graph::SetScale(): Specified Max value must be larger than the specified Min value.');
+            Util\JpGraphError::RaiseL(25020); //('Graph::SetScale(): Specified Max value must be larger than the specified Min value.');
         }
 
         $yt = substr($aAxisType, -3, 3);
@@ -634,7 +647,7 @@ class Graph
         } elseif ($yt == 'log') {
             $this->yscale = new LogScale($aYMin, $aYMax);
         } else {
-            JpGraphError::RaiseL(25021, $aAxisType); //("Unknown scale specification for Y-scale. ($aAxisType)");
+            Util\JpGraphError::RaiseL(25021, $aAxisType); //("Unknown scale specification for Y-scale. ($aAxisType)");
         }
 
         $xt = substr($aAxisType, 0, 3);
@@ -649,7 +662,7 @@ class Graph
         } elseif ($xt == 'log') {
             $this->xscale = new LogScale($aXMin, $aXMax, 'x');
         } else {
-            JpGraphError::RaiseL(25022, $aAxisType); //(" Unknown scale specification for X-scale. ($aAxisType)");
+            Util\JpGraphError::RaiseL(25022, $aAxisType); //(" Unknown scale specification for X-scale. ($aAxisType)");
         }
 
         $this->xaxis = new Axis($this->img, $this->xscale);
@@ -684,7 +697,7 @@ class Graph
         } elseif ($aAxisType == 'log') {
             $this->y2scale = new LogScale($aY2Min, $aY2Max);
         } else {
-            JpGraphError::RaiseL(25023, $aAxisType); //("JpGraph: Unsupported Y2 axis type: $aAxisType\nMust be one of (lin,log,int)");
+            Util\JpGraphError::RaiseL(25023, $aAxisType); //("JpGraph: Unsupported Y2 axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
         $this->y2axis = new Axis($this->img, $this->y2scale);
@@ -719,7 +732,7 @@ class Graph
         } elseif ($aAxisType == 'log') {
             $this->ynscale[$aN] = new LogScale($aYMin, $aYMax);
         } else {
-            JpGraphError::RaiseL(25024, $aAxisType); //("JpGraph: Unsupported Y axis type: $aAxisType\nMust be one of (lin,log,int)");
+            Util\JpGraphError::RaiseL(25024, $aAxisType); //("JpGraph: Unsupported Y axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
         $this->ynaxis[$aN] = new Axis($this->img, $this->ynscale[$aN]);
@@ -752,7 +765,7 @@ class Graph
                 $this->ytick_factor = 100;
                 break;
             default:
-                JpGraphError::RaiseL(25025, $densy); //("JpGraph: Unsupported Tick density: $densy");
+                Util\JpGraphError::RaiseL(25025, $densy); //("JpGraph: Unsupported Tick density: $densy");
         }
         switch ($aXDensity) {
             case TICKD_DENSE:
@@ -768,7 +781,7 @@ class Graph
                 $this->xtick_factor = 60;
                 break;
             default:
-                JpGraphError::RaiseL(25025, $densx); //("JpGraph: Unsupported Tick density: $densx");
+                Util\JpGraphError::RaiseL(25025, $densx); //("JpGraph: Unsupported Tick density: $densx");
         }
     }
 
@@ -883,7 +896,7 @@ class Graph
                         fpassthru($fh);
                         return true;
                     } else {
-                        JpGraphError::RaiseL(25027, $basecsim); //(" Can't open cached CSIM \"$basecsim\" for reading.");
+                        Util\JpGraphError::RaiseL(25027, $basecsim); //(" Can't open cached CSIM \"$basecsim\" for reading.");
                     }
                 }
             }
@@ -968,7 +981,7 @@ class Graph
                 // Check that apache can write to directory specified
 
                 if (file_exists($dir) && !is_writeable($dir)) {
-                    JpgraphError::RaiseL(25028, $dir); //('Apache/PHP does not have permission to write to the CSIM cache directory ('.$dir.'). Check permissions.');
+                    Util\JpGraphError::RaiseL(25028, $dir); //('Apache/PHP does not have permission to write to the CSIM cache directory ('.$dir.'). Check permissions.');
                 }
 
                 // Make sure directory exists
@@ -990,12 +1003,12 @@ class Graph
                     fclose($fh);
                     echo $htmlwrap;
                 } else {
-                    JpGraphError::RaiseL(25029, $basecsim); //(" Can't write CSIM \"$basecsim\" for writing. Check free space and permissions.");
+                    Util\JpGraphError::RaiseL(25029, $basecsim); //(" Can't write CSIM \"$basecsim\" for writing. Check free space and permissions.");
                 }
             } else {
 
                 if ($aScriptName == '') {
-                    JpGraphError::RaiseL(25030); //('Missing script name in call to StrokeCSIM(). You must specify the name of the actual image script as the first parameter to StrokeCSIM().');
+                    Util\JpGraphError::RaiseL(25030); //('Missing script name in call to StrokeCSIM(). You must specify the name of the actual image script as the first parameter to StrokeCSIM().');
                 }
                 echo $this->GetHTMLImageMap($aCSIMName) . $this->GetCSIMImgHTML($aCSIMName, $aScriptName, $aBorder);
             }
@@ -1506,7 +1519,7 @@ class Graph
         $n = count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynplots == null || $this->ynplots[$i] == null) {
-                JpGraphError::RaiseL(25032, $i); //("No plots for Y-axis nbr:$i");
+                Util\JpGraphError::RaiseL(25032, $i); //("No plots for Y-axis nbr:$i");
             }
             $m = count($this->ynplots[$i]);
             for ($j = 0; $j < $m; ++$j) {
@@ -1545,7 +1558,7 @@ class Graph
     {
         // Fist make a sanity check that user has specified a scale
         if (empty($this->yscale)) {
-            JpGraphError::RaiseL(25031); //('You must specify what scale to use with a call to Graph::SetScale().');
+            Util\JpGraphError::RaiseL(25031); //('You must specify what scale to use with a call to Graph::SetScale().');
         }
 
         // Start by adjusting the margin so that potential titles will fit.
@@ -1600,12 +1613,12 @@ class Graph
             // $e = "Can't draw unspecified Y-scale.<br>\nYou have either:<br>\n";
             // $e .= "1. Specified an Y axis for autoscaling but have not supplied any plots<br>\n";
             // $e .= "2. Specified a scale manually but have forgot to specify the tick steps";
-            JpGraphError::RaiseL(25026);
+            Util\JpGraphError::RaiseL(25026);
         }
 
         // Bail out if no plots and no specified X-scale
         if ((!$this->xscale->IsSpecified() && count($this->plots) == 0 && count($this->y2plots) == 0)) {
-            JpGraphError::RaiseL(25034); //("<strong>JpGraph: Can't draw unspecified X-scale.</strong><br>No plots.<br>");
+            Util\JpGraphError::RaiseL(25034); //("<strong>JpGraph: Can't draw unspecified X-scale.</strong><br>No plots.<br>");
         }
 
         // Autoscale the normal Y-axis
@@ -1735,7 +1748,7 @@ class Graph
                     $this->img->bottom_margin - $adj, $this->img->left_margin + $adj,
                     $this->img->plotheight + 1, $this->img->plotwidth);
             } else {
-                JpGraphError::RaiseL(25035, $this->img->a); //('You have enabled clipping. Cliping is only supported for graphs at 0 or 90 degrees rotation. Please adjust you current angle (='.$this->img->a.' degrees) or disable clipping.');
+                Util\JpGraphError::RaiseL(25035, $this->img->a); //('You have enabled clipping. Cliping is only supported for graphs at 0 or 90 degrees rotation. Please adjust you current angle (='.$this->img->a.' degrees) or disable clipping.');
             }
             $this->img->Destroy();
             $this->img->SetCanvasH($oldimage);
@@ -1788,7 +1801,7 @@ class Graph
             if ($this->iImgTrans) {
                 if (!class_exists('ImgTrans', false)) {
                     require_once 'jpgraph_imgtrans.php';
-                    //JpGraphError::Raise('In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.');
+                    //Util\JpGraphError::Raise('In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.');
                 }
 
                 $tform = new ImgTrans($this->img->img);
@@ -1937,7 +1950,7 @@ class Graph
                     $rightpos = SIDE_RIGHT;
                     break;
                 default:
-                    JpGRaphError::RaiseL(25036, $this->iAxisStyle); //('Unknown AxisStyle() : '.$this->iAxisStyle);
+                    Util\JpGraphError::RaiseL(25036, $this->iAxisStyle); //('Unknown AxisStyle() : '.$this->iAxisStyle);
                     break;
             }
 
@@ -2019,7 +2032,7 @@ class Graph
             ($ext == 'bmp' && !($supported & IMG_WBMP)) ||
             ($ext == 'xpm' && !($supported & IMG_XPM))) {
 
-            JpGraphError::RaiseL(25037, $aFile); //('The image format of your background image ('.$aFile.') is not supported in your system configuration. ');
+            Util\JpGraphError::RaiseL(25037, $aFile); //('The image format of your background image ('.$aFile.') is not supported in your system configuration. ');
         }
 
         if ($imgtag == "jpg" || $imgtag == "jpeg") {
@@ -2032,12 +2045,12 @@ class Graph
         // Compare specified image type and file extension
         if ($imgtag != $ext) {
             //$t = "Background image seems to be of different type (has different file extension) than specified imagetype. Specified: '".$aImgFormat."'File: '".$aFile."'";
-            JpGraphError::RaiseL(25038, $aImgFormat, $aFile);
+            Util\JpGraphError::RaiseL(25038, $aImgFormat, $aFile);
         }
 
         $img = @$f($aFile);
         if (!$img) {
-            JpGraphError::RaiseL(25039, $aFile); //(" Can't read background image: '".$aFile."'");
+            Util\JpGraphError::RaiseL(25039, $aFile); //(" Can't read background image: '".$aFile."'");
         }
         return $img;
     }
@@ -2094,13 +2107,13 @@ class Graph
     public function StrokeFrameBackground()
     {
         if ($this->background_image != '' && $this->background_cflag != '') {
-            JpGraphError::RaiseL(25040); //('It is not possible to specify both a background image and a background country flag.');
+            Util\JpGraphError::RaiseL(25040); //('It is not possible to specify both a background image and a background country flag.');
         }
         if ($this->background_image != '') {
             $bkgimg = $this->LoadBkgImage($this->background_image_format, $this->background_image);
         } elseif ($this->background_cflag != '') {
             if (!class_exists('FlagImages', false)) {
-                JpGraphError::RaiseL(25041); //('In order to use Country flags as backgrounds you must include the "jpgraph_flags.php" file.');
+                Util\JpGraphError::RaiseL(25041); //('In order to use Country flags as backgrounds you must include the "jpgraph_flags.php" file.');
             }
             $fobj = new FlagImages(FLAGSIZE4);
             $dummy = '';
@@ -2177,7 +2190,7 @@ class Graph
                 $this->StrokeFrame(); // New
                 break;
             default:
-                JpGraphError::RaiseL(25042); //(" Unknown background image layout");
+                Util\JpGraphError::RaiseL(25042); //(" Unknown background image layout");
         }
         $this->img->SetAngle($aa);
     }
@@ -2370,7 +2383,7 @@ class Graph
                 $h += $this->framebeveldepth;
                 $this->title->margin += $this->framebeveldepth;
             } else {
-                JpGraphError::RaiseL(25043); //('Unknown title background style.');
+                Util\JpGraphError::RaiseL(25043); //('Unknown title background style.');
             }
 
             if ($this->titlebackground_framestyle === 3) {
@@ -2621,7 +2634,7 @@ class Graph
         } while (++$i < $n && !is_numeric($min));
 
         if (!is_numeric($min) || !is_numeric($max)) {
-            JpGraphError::RaiseL(25044); //('Cannot use autoscaling since it is impossible to determine a valid min/max value  of the Y-axis (only null values).');
+            Util\JpGraphError::RaiseL(25044); //('Cannot use autoscaling since it is impossible to determine a valid min/max value  of the Y-axis (only null values).');
         }
 
         for ($i = 0; $i < $n; ++$i) {
@@ -2678,7 +2691,7 @@ class Graph
 
         if (!($this instanceof PieGraph)) {
             if (!$this->isAfterSetScale) {
-                JpGraphError::RaiseL(25133); //('Use Graph::SetTheme() after Graph::SetScale().');
+                Util\JpGraphError::RaiseL(25133); //('Use Graph::SetTheme() after Graph::SetScale().');
             }
         }
 

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS GanttGraph
 // Description: Main class to handle gantt graphs
@@ -34,7 +36,7 @@ class GanttGraph extends Graph
         }
 
         if ($aWidth < 0 || $aHeight < 0) {
-            JpgraphError::RaiseL(6002);
+            Util\JpGraphError::RaiseL(6002);
             //("You can't specify negative sizes for Gantt graph dimensions. Use 0 to indicate that you want the library to automatically determine a dimension.");
         }
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
@@ -103,7 +105,7 @@ class GanttGraph extends Graph
                     $n = count($constrains);
                     for ($j = 0; $j < $n; ++$j) {
                         if (empty($constrains[$j]) || (count($constrains[$j]) != 3)) {
-                            JpGraphError::RaiseL(6003, $j);
+                            Util\JpGraphError::RaiseL(6003, $j);
                             //("Invalid format for Constrain parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)");
                         }
                         if ($constrains[$j][0] == $data[$i][0]) {
@@ -116,7 +118,7 @@ class GanttGraph extends Graph
                     for ($j = 0; $j < $n; ++$j) {
 
                         if (empty($progress[$j]) || (count($progress[$j]) != 2)) {
-                            JpGraphError::RaiseL(6004, $j);
+                            Util\JpGraphError::RaiseL(6004, $j);
                             //("Invalid format for Progress parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Progress)");
                         }
                         if ($progress[$j][0] == $data[$i][0]) {
@@ -232,7 +234,7 @@ class GanttGraph extends Graph
     // Override inherit method from Graph and give a warning message
     public function SetScale($aAxisType, $aYMin = 1, $aYMax = 1, $aXMin = 1, $aXMax = 1)
     {
-        JpGraphError::RaiseL(6005);
+        Util\JpGraphError::RaiseL(6005);
         //("SetScale() is not meaningfull with Gantt charts.");
     }
 
@@ -332,7 +334,7 @@ class GanttGraph extends Graph
         }
 
         if ($start >= $n) {
-            JpgraphError::RaiseL(6006);
+            Util\JpGraphError::RaiseL(6006);
             //('Cannot autoscale Gantt chart. No dated activities exist. [GetBarMinMax() start >= n]');
         }
 
@@ -617,7 +619,7 @@ class GanttGraph extends Graph
             $height = round($height);
             // Make a sanity check on image size
             if ($width > MAX_GANTTIMG_SIZE_W || $height > MAX_GANTTIMG_SIZE_H) {
-                JpgraphError::RaiseL(6007, $width, $height);
+                Util\JpGraphError::RaiseL(6007, $width, $height);
                 //("Sanity check for automatic Gantt chart size failed. Either the width (=$width) or height (=$height) is larger than MAX_GANTTIMG_SIZE. This could potentially be caused by a wrong date in one of the activities.");
             }
             $this->img->CreateImgCanvas($width, $height);
@@ -789,7 +791,7 @@ class GanttGraph extends Graph
                         }
                     }
                     if ($targetobj == -1) {
-                        JpGraphError::RaiseL(6008, $this->iObj[$i]->iVPos, $vpos);
+                        Util\JpGraphError::RaiseL(6008, $this->iObj[$i]->iVPos, $vpos);
                         //('You have specifed a constrain from row='.$this->iObj[$i]->iVPos.' to row='.$vpos.' which does not have any activity.');
                     }
                     $c2 = $this->iObj[$targetobj]->iConstrainPos;
@@ -828,7 +830,7 @@ class GanttGraph extends Graph
                                 $link->SetPath(3);
                                 break;
                             default:
-                                JpGraphError::RaiseL(6009, $this->iObj[$i]->iVPos, $vpos);
+                                Util\JpGraphError::RaiseL(6009, $this->iObj[$i]->iVPos, $vpos);
                                 //('Unknown constrain type specified from row='.$this->iObj[$i]->iVPos.' to row='.$vpos);
                                 break;
                         }

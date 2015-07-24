@@ -32,7 +32,7 @@ class IconPlot
         $this->iY = $aY;
         $this->iScale = $aScale;
         if ($aMix < 0 || $aMix > 100) {
-            JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
+            Util\JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
         }
         $this->iMix = $aMix;
     }
@@ -44,7 +44,7 @@ class IconPlot
         $this->iY = $aY;
         $this->iScale = $aScale;
         if ($aMix < 0 || $aMix > 100) {
-            JpGraphError::RaiseL(8001); //'Mix value for icon must be between 0 and 100.');
+            Util\JpGraphError::RaiseL(8001); //'Mix value for icon must be between 0 and 100.');
         }
         $this->iMix = $aMix;
         $this->iCountryStdSize = $aStdSize;
@@ -75,7 +75,7 @@ class IconPlot
     public function SetMix($aMix)
     {
         if ($aMix < 0 || $aMix > 100) {
-            JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
+            Util\JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
         }
         $this->iMix = $aMix;
     }
@@ -84,7 +84,7 @@ class IconPlot
     {
         if (!in_array($aXAnchor, $this->iAnchors) ||
             !in_array($aYAnchor, $this->iAnchors)) {
-            JpGraphError::RaiseL(8002); //("Anchor position for icons must be one of 'top', 'bottom', 'left', 'right' or 'center'");
+            Util\JpGraphError::RaiseL(8002); //("Anchor position for icons must be one of 'top', 'bottom', 'left', 'right' or 'center'");
         }
         $this->iHorAnchor = $aXAnchor;
         $this->iVertAnchor = $aYAnchor;
@@ -156,7 +156,7 @@ class IconPlot
     public function _Stroke($aImg, $x = null, $y = null, $aReturnWidthHeight = false)
     {
         if ($this->iFile != '' && $this->iCountryFlag != '') {
-            JpGraphError::RaiseL(8003); //('It is not possible to specify both an image file and a country flag for the same icon.');
+            Util\JpGraphError::RaiseL(8003); //('It is not possible to specify both an image file and a country flag for the same icon.');
         }
         if ($this->iFile != '') {
             $gdimg = Graph::LoadBkgImage('', $this->iFile);
@@ -164,7 +164,7 @@ class IconPlot
             $gdimg = Image::CreateFromString($this->iImgString);
         } else {
             if (!class_exists('FlagImages', false)) {
-                JpGraphError::RaiseL(8004); //('In order to use Country flags as icons you must include the "jpgraph_flags.php" file.');
+                Util\JpGraphError::RaiseL(8004); //('In order to use Country flags as icons you must include the "jpgraph_flags.php" file.');
             }
             $fobj = new FlagImages($this->iCountryStdSize);
             $dummy = '';

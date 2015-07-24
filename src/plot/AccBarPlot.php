@@ -16,18 +16,18 @@ class AccBarPlot extends BarPlot
         $this->plots = $plots;
         $this->nbrplots = count($plots);
         if ($this->nbrplots < 1) {
-            JpGraphError::RaiseL(2010); //('Cannot create AccBarPlot from empty plot array.');
+            Util\JpGraphError::RaiseL(2010); //('Cannot create AccBarPlot from empty plot array.');
         }
         for ($i = 0; $i < $this->nbrplots; ++$i) {
             if (empty($this->plots[$i]) || !isset($this->plots[$i])) {
-                JpGraphError::RaiseL(2011, $i); //("Acc bar plot element nbr $i is undefined or empty.");
+                Util\JpGraphError::RaiseL(2011, $i); //("Acc bar plot element nbr $i is undefined or empty.");
             }
         }
 
         // We can only allow individual plost which do not have specified X-positions
         for ($i = 0; $i < $this->nbrplots; ++$i) {
             if (!empty($this->plots[$i]->coords[1])) {
-                JpGraphError::RaiseL(2015);
+                Util\JpGraphError::RaiseL(2015);
                 //'Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-positions.');
             }
         }
@@ -48,7 +48,7 @@ class AccBarPlot extends BarPlot
         for ($i = $n - 1; $i >= 0; --$i) {
             $c = get_class($this->plots[$i]);
             if (!($this->plots[$i] instanceof BarPlot)) {
-                JpGraphError::RaiseL(2012, $c);
+                Util\JpGraphError::RaiseL(2012, $c);
                 //('One of the objects submitted to AccBar is not a BarPlot. Make sure that you create the AccBar plot from an array of BarPlot objects.(Class='.$c.')');
             }
             $this->plots[$i]->DoLegend($graph);
@@ -73,7 +73,7 @@ class AccBarPlot extends BarPlot
             // would in most cases give to large y-value.
             $y = 0;
             if (!isset($this->plots[0]->coords[0][$i])) {
-                JpGraphError::RaiseL(2014);
+                Util\JpGraphError::RaiseL(2014);
             }
             if ($this->plots[0]->coords[0][$i] > 0) {
                 $y = $this->plots[0]->coords[0][$i];
@@ -81,7 +81,7 @@ class AccBarPlot extends BarPlot
 
             for ($j = 1; $j < $this->nbrplots; $j++) {
                 if (!isset($this->plots[$j]->coords[0][$i])) {
-                    JpGraphError::RaiseL(2014);
+                    Util\JpGraphError::RaiseL(2014);
                 }
                 if ($this->plots[$j]->coords[0][$i] > 0) {
                     $y += $this->plots[$j]->coords[0][$i];
@@ -208,7 +208,7 @@ class AccBarPlot extends BarPlot
                         if (is_array($this->bar_shadow_color)) {
                             $numcolors = count($this->bar_shadow_color);
                             if ($numcolors == 0) {
-                                JpGraphError::RaiseL(2013); //('You have specified an empty array for shadow colors in the bar plot.');
+                                Util\JpGraphError::RaiseL(2013); //('You have specified an empty array for shadow colors in the bar plot.');
                             }
                             $img->PushColor($this->bar_shadow_color[$i % $numcolors]);
                         } else {

@@ -17,11 +17,11 @@ class GroupBarPlot extends BarPlot
         $this->plots = $plots;
         $this->nbrplots = count($plots);
         if ($this->nbrplots < 1) {
-            JpGraphError::RaiseL(2007); //('Cannot create GroupBarPlot from empty plot array.');
+            Util\JpGraphError::RaiseL(2007); //('Cannot create GroupBarPlot from empty plot array.');
         }
         for ($i = 0; $i < $this->nbrplots; ++$i) {
             if (empty($this->plots[$i]) || !isset($this->plots[$i])) {
-                JpGraphError::RaiseL(2008, $i); //("Group bar plot element nbr $i is undefined or empty.");
+                Util\JpGraphError::RaiseL(2008, $i); //("Group bar plot element nbr $i is undefined or empty.");
             }
         }
         $this->numpoints = $plots[0]->numpoints;
@@ -36,7 +36,7 @@ class GroupBarPlot extends BarPlot
         for ($i = 0; $i < $n; ++$i) {
             $c = get_class($this->plots[$i]);
             if (!($this->plots[$i] instanceof BarPlot)) {
-                JpGraphError::RaiseL(2009, $c);
+                Util\JpGraphError::RaiseL(2009, $c);
                 //('One of the objects submitted to GroupBar is not a BarPlot. Make sure that you create the Group Bar plot from an array of BarPlot or AccBarPlot objects. (Class = '.$c.')');
             }
             $this->plots[$i]->DoLegend($graph);

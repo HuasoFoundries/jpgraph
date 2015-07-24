@@ -48,7 +48,7 @@ class PlotMark
     {
         $this->type = $aType;
         if ($aType == MARK_IMG && $aFileName == '') {
-            JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to MARK_IMG.');
+            Util\JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to MARK_IMG.');
         }
         $this->iFileName = $aFileName;
         $this->iScale = $aScale;

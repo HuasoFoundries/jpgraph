@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS RadarGraph
 // Description: Main container for a radar graph
@@ -37,7 +39,7 @@ class RadarGraph extends Graph
     public function SetScale($axtype, $ymin = 1, $ymax = 1, $dummy1 = null, $dumy2 = null)
     {
         if ($axtype != 'lin' && $axtype != 'log') {
-            JpGraphError::RaiseL(18003, $axtype);
+            Util\JpGraphError::RaiseL(18003, $axtype);
             //("Illegal scale for radarplot ($axtype). Must be \"lin\" or \"log\"");
         }
         if ($axtype == 'lin') {
@@ -56,7 +58,7 @@ class RadarGraph extends Graph
     public function SetSize($aSize)
     {
         if ($aSize < 0.1 || $aSize > 1) {
-            JpGraphError::RaiseL(18004, $aSize);
+            Util\JpGraphError::RaiseL(18004, $aSize);
             //("Radar Plot size must be between 0.1 and 1. (Your value=$s)");
         }
         $this->len = min($this->img->width, $this->img->height) * $aSize / 2;
@@ -84,7 +86,7 @@ class RadarGraph extends Graph
                 $this->ytick_factor = 70;
                 break;
             default:
-                JpGraphError::RaiseL(18005, $densy);
+                Util\JpGraphError::RaiseL(18005, $densy);
                 //("RadarPlot Unsupported Tick density: $densy");
         }
     }
@@ -121,7 +123,7 @@ class RadarGraph extends Graph
     public function Add($aPlot)
     {
         if ($aPlot == null) {
-            JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
+            Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
         if (is_array($aPlot) && count($aPlot) > 0) {
             $cl = $aPlot[0];
@@ -147,7 +149,7 @@ class RadarGraph extends Graph
             $min = min($min, $p->Min());
         }
         if ($min < 0) {
-            JpGraphError::RaiseL(18006, $min);
+            Util\JpGraphError::RaiseL(18006, $min);
             //("Minimum data $min (Radar plots should only be used when all data points > 0)");
         }
         return array($min, $max);
@@ -225,12 +227,12 @@ class RadarGraph extends Graph
                 $this->axis_title[$i] = $i + 1;
             }
         } elseif (count($this->axis_title) < $nbrpnts) {
-            JpGraphError::RaiseL(18007);
+            Util\JpGraphError::RaiseL(18007);
             // ("Number of titles does not match number of points in plot.");
         }
         for ($i = 0; $i < $n; ++$i) {
             if ($nbrpnts != $this->plots[$i]->GetCount()) {
-                JpGraphError::RaiseL(18008);
+                Util\JpGraphError::RaiseL(18008);
                 //("Each radar plot must have the same number of data points.");
             }
         }

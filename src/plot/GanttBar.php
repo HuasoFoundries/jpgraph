@@ -124,7 +124,7 @@ class GanttBar extends GanttPlotObject
         } elseif (is_int($this->iHeightFactor) && $this->iHeightFactor > 2 && $this->iHeightFactor < 200) {
             $vs = $this->iHeightFactor;
         } else {
-            JpGraphError::RaiseL(6028, $this->iHeightFactor);
+            Util\JpGraphError::RaiseL(6028, $this->iHeightFactor);
             //    ("Specified height (".$this->iHeightFactor.") for gantt bar is out of range.");
         }
 

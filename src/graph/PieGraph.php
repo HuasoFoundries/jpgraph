@@ -247,7 +247,7 @@ class PieGraph extends Graph
             if ($this->iImgTrans) {
                 if (!class_exists('ImgTrans', false)) {
                     require_once 'jpgraph_imgtrans.php';
-                    //JpGraphError::Raise('In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.');
+                    //Util\JpGraphError::Raise('In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.');
                 }
 
                 $tform = new ImgTrans($this->img->img);

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
+
 class PolarGraph extends Graph
 {
     public $scale;
@@ -45,7 +47,7 @@ class PolarGraph extends Graph
         } elseif ($aScale == 'log') {
             $this->scale = new PolarLogScale($rmax, $this, $this->iClockwise);
         } else {
-            JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
+            Util\JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }
 
         $this->axis = new PolarAxis($this->img, $this->scale);
