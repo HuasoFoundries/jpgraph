@@ -258,7 +258,7 @@ function CheckPHPVersion($aMinVersion)
 // Make sure PHP version is high enough
 //
 if (!CheckPHPVersion(MIN_PHPVERSION)) {
-    JpGraphError::RaiseL(13, PHP_VERSION, MIN_PHPVERSION);
+    Amenadiel\JpGraph\Util\JpGraphError::RaiseL(13, PHP_VERSION, MIN_PHPVERSION);
     die();
 }
 
@@ -266,7 +266,7 @@ if (!CheckPHPVersion(MIN_PHPVERSION)) {
 // Make GD sanity check
 //
 if (!function_exists("imagetypes") || !function_exists('imagecreatefromstring')) {
-    JpGraphError::RaiseL(25001);
+    Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25001);
     //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
 }
 
@@ -277,7 +277,7 @@ function _phpErrorHandler($errno, $errmsg, $filename, $linenum, $vars)
 {
     // Respect current error level
     if ($errno & error_reporting()) {
-        JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
+        Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
     }
 }
 
@@ -291,7 +291,7 @@ if (INSTALL_PHP_ERR_HANDLER) {
 // debugging difficult. This is controlled by the user setting CATCH_PHPERRMSG
 //
 if (isset($GLOBALS['php_errormsg']) && CATCH_PHPERRMSG && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
-    JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
+    Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
 }
 
 // Useful mathematical function
@@ -321,7 +321,7 @@ function GenImgName()
     }
 
     if (!isset($_SERVER['PHP_SELF'])) {
-        JpGraphError::RaiseL(25005);
+        Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25005);
         //(" Can't access PHP_SELF, PHP global variable. You can't run PHP from command line if you want to use the 'auto' naming of cache or image files.");
     }
     $fname = basename($_SERVER['PHP_SELF']);
@@ -335,7 +335,7 @@ function GenImgName()
 }
 
 // Global object handlers
-$gDateLocale = new DateLocale();
-$gJpgDateLocale = new DateLocale();
+$gDateLocale = new Amenadiel\JpGraph\Util\DateLocale();
+$gJpgDateLocale = new Amenadiel\JpGraph\Util\DateLocale();
 
 // <EOF>

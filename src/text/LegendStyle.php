@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
+
 /*=======================================================================
 // File:        JPGRAPH_WINDROSE.PHP
 // Description: Windrose extension for JpGraph

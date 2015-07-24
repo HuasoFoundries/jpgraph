@@ -2,6 +2,9 @@
 
 namespace Amenadiel\JpGraph\Image;
 
+use \Amenadiel\JpGraph\Text\LanguageConv;
+use \Amenadiel\JpGraph\Text\TTF;
+
 //=======================================================================
 // File:        GD_IMAGE.INC.PHP
 // Description: PHP Graph Plotting library. Low level image drawing routines
@@ -10,10 +13,6 @@ namespace Amenadiel\JpGraph\Image;
 //
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
-
-require_once 'jpgraph_rgb.inc.php';
-require_once 'jpgraph_ttf.inc.php';
-require_once 'includes/imageSmoothArc.php';
 
 // Line styles
 define('LINESTYLE_SOLID', 1);
@@ -92,11 +91,11 @@ class Image
         $this->ttf = new TTF();
         $this->langconv = new LanguageConv();
 
-        $this->ff_font0 = imageloadfont(dirname(__FILE__) . "/fonts/FF_FONT0.gdf");
-        $this->ff_font1 = imageloadfont(dirname(__FILE__) . "/fonts/FF_FONT1.gdf");
-        $this->ff_font2 = imageloadfont(dirname(__FILE__) . "/fonts/FF_FONT2.gdf");
-        $this->ff_font1_bold = imageloadfont(dirname(__FILE__) . "/fonts/FF_FONT1-Bold.gdf");
-        $this->ff_font2_bold = imageloadfont(dirname(__FILE__) . "/fonts/FF_FONT2-Bold.gdf");
+        $this->ff_font0 = imageloadfont(dirname(dirname(__FILE__)) . "/fonts/FF_FONT0.gdf");
+        $this->ff_font1 = imageloadfont(dirname(dirname(__FILE__)) . "/fonts/FF_FONT1.gdf");
+        $this->ff_font2 = imageloadfont(dirname(dirname(__FILE__)) . "/fonts/FF_FONT2.gdf");
+        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)) . "/fonts/FF_FONT1-Bold.gdf");
+        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)) . "/fonts/FF_FONT2-Bold.gdf");
     }
 
     // Enable interlacing in images

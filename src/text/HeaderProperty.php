@@ -1,4 +1,5 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
 
 //===================================================
 // CLASS HeaderProperty

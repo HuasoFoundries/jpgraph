@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
+
 //=======================================================================
 // File:        JPGRAPH_LEGEND.INC.PHP
 // Description: Class to handle the legend box in the graph that gives

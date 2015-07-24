@@ -1,4 +1,5 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
 
 //===================================================
 // CLASS LinkArrow

@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
+
 //=======================================================================
 // File:        JPGRAPH_GB2312.PHP
 // Description: Chinese font conversions

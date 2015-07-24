@@ -1,4 +1,7 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
+use \Amenadiel\JpGraph\Text\Text;
 
 //=======================================================
 // CLASS Footer

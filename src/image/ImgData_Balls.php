@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //=======================================================================
 // File:        IMGDATA_ROUNDBALLS.INC
 // Description: Base64 encoded images for small round markers
@@ -7,7 +9,6 @@
 //
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
-namespace Amenadiel\JpGraph\Image;
 
 class ImgData_Balls extends ImgData
 {

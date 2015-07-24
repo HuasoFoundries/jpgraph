@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 /*=======================================================================
 // File:        JPGRAPH_GRADIENT.PHP
 // Description: Create a color gradient

@@ -1,11 +1,11 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //========================================================================
 // CLASS ImgData
 // Description: Base class for all image data classes that contains the
 // real image data.
 //========================================================================
-
-namespace Amenadiel\JpGraph\Image;
 
 class ImgData
 {

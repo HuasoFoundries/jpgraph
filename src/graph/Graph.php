@@ -1,6 +1,14 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use \Amenadiel\JpGraph\Image\Footer;
+use \Amenadiel\JpGraph\Image\ImgStreamCache;
+use \Amenadiel\JpGraph\Image\RotImage;
+use \Amenadiel\JpGraph\Scale\LinearScale;
+use \Amenadiel\JpGraph\Text\GraphTabTitle;
+use \Amenadiel\JpGraph\Text\Legend;
+use \Amenadiel\JpGraph\Text\Text;
+
 //===================================================
 // CLASS Graph
 // Description: Main class to handle graphs

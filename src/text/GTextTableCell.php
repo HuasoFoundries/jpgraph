@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
+
 /*=======================================================================
 // File:        JPGRAPH_TABLE.PHP
 // Description: Classes to create basic tables of data

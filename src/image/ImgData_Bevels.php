@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //=======================================================================
 // File:        IMGDATA_BEVELS.INC
 // Description: Base64 encoded images for round bevels
@@ -7,7 +9,6 @@
 //
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
-namespace Amenadiel\JpGraph\Image;
 
 class ImgData_Bevels extends ImgData
 {
