@@ -1,6 +1,9 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Text;
+
 /*=======================================================================
 // File:        JPGRAPH_PIE.PHP
 // Description: Pie plot extension for JpGraph
@@ -63,12 +66,12 @@ class PiePlot
     public function __construct($data)
     {
         $this->data = array_reverse($data);
-        $this->title = new Text("");
+        $this->title = new Text\Text("");
         $this->title->SetFont(FF_DEFAULT, FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.1f%%');
-        $this->guideline = new LineProperty();
+        $this->guideline = new Graph\LineProperty();
     }
 
     //---------------

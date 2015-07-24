@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Text;
+
 /*=======================================================================
 // File:        JPGRAPH_PIE3D.PHP
 // Description: 3D Pie plot extension for JpGraph
@@ -29,7 +31,7 @@ class PiePlot3D extends PiePlot
     {
         $this->radius = 0.5;
         $this->data = $data;
-        $this->title = new Text("");
+        $this->title = new Text\Text("");
         $this->title->SetFont(FF_FONT1, FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();

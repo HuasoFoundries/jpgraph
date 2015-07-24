@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Text;
+
 //===================================================
 // CLASS PiePlotC
 // Description: Same as a normal pie plot but with a
@@ -16,7 +18,7 @@ class PiePlotC extends PiePlot
     public function __construct($data, $aCenterTitle = '')
     {
         parent::__construct($data);
-        $this->midtitle = new Text();
+        $this->midtitle = new Text\Text();
         $this->midtitle->ParagraphAlign('center');
     }
 

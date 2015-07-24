@@ -1,5 +1,5 @@
 <?php
-namespace Amenadiel\JpGraph\Image;
+namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
 // CLASS LineProperty

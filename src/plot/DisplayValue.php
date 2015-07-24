@@ -1,7 +1,7 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
-use \Amenadiel\JpGraph\Text\Text;
+use \Amenadiel\JpGraph\Text;
 
 //===================================================
 // CLASS DisplayValue
@@ -22,7 +22,7 @@ class DisplayValue
 
     public function __construct()
     {
-        $this->txt = new Text();
+        $this->txt = new Text\Text();
     }
 
     public function Show($aFlag = true)

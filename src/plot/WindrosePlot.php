@@ -2,6 +2,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Text;
 
 define('WINDROSE_TYPE4', 1);
 define('WINDROSE_TYPE8', 2);
@@ -312,7 +313,7 @@ class WindrosePlot
         $nlw = count($this->iLegweights);
 
         // Setup font for ranges
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetAlign('center', 'bottom');
         $value->SetFont($this->legend->iLblFontFamily,
             $this->legend->iLblFontStyle,
@@ -962,7 +963,7 @@ class WindrosePlot
             $this->iSize *= min($aImg->width, $aImg->height);
         }
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
         // Setup extra size around the graph needed so that the labels
@@ -1003,7 +1004,7 @@ class WindrosePlot
             $this->iSize *= min($aImg->width, $aImg->height);
         }
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
         // Setup extra size around the graph needed so that the labels
@@ -1061,7 +1062,7 @@ class WindrosePlot
 
         $scaling = $this->iAntiAlias ? 2 : 1;
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
 

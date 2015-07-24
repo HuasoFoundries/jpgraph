@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+
 class GanttVLine extends GanttPlotObject
 {
 
@@ -12,7 +14,7 @@ class GanttVLine extends GanttPlotObject
     public function __construct($aDate, $aTitle = "", $aColor = "darkred", $aWeight = 2, $aStyle = "solid")
     {
         GanttPlotObject::__construct();
-        $this->iLine = new LineProperty();
+        $this->iLine = new Graph\LineProperty();
         $this->iLine->SetColor($aColor);
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);

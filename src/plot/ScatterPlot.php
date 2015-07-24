@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+
 //===================================================
 // CLASS ScatterPlot
 // Description: Render X and Y plots
@@ -22,7 +24,7 @@ class ScatterPlot extends Plot
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link = new LineProperty(1, 'black', 'solid');
+        $this->link = new Graph\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 
