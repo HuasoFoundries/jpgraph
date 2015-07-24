@@ -259,7 +259,8 @@ class TTF
         }
 
         if (!file_exists($font_file)) {
-            Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
+            //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
+            return $this->File(FF_DV_SANSSERIF, $style);
         }
 
         return $font_file;

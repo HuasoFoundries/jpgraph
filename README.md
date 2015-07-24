@@ -8,6 +8,8 @@ following differences:
 - it has release tags, to let `composer install` use your cached packages instead of pulling from github every time
 - I stripped the docs because they are useless weight in a dependency. [You can find them here](http://jpgraph.net/doc/)
 
+- If the chosen font isn't found, it fallsback to DejaVu instead of crashing
+
 ![jpgraph_logo](https://cloud.githubusercontent.com/assets/238439/8861477/e8aac1f0-3160-11e5-9d02-36838810ca26.jpg)
 
 README FOR JPGRAPH 3.5.x

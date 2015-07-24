@@ -334,6 +334,7 @@ function GenImgName()
     return $fname;
 }
 
+global $gDateLocale;
 // Global object handlers
 $gDateLocale = new Amenadiel\JpGraph\Util\DateLocale();
 $gJpgDateLocale = new Amenadiel\JpGraph\Util\DateLocale();
