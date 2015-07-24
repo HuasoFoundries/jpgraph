@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 //=======================================================================
 // File:        JPGRAPH.PHP
 // Description: PHP Graph Plotting library. Base module.
@@ -8,7 +11,7 @@
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
 
-require_once 'includes/jpg-config.inc.php';
+/*require_once 'includes/jpg-config.inc.php';
 require_once 'jpgraph_gradient.php';
 require_once 'jpgraph_errhandler.inc.php';
 require_once 'jpgraph_ttf.inc.php';
@@ -16,7 +19,7 @@ require_once 'jpgraph_rgb.inc.php';
 require_once 'jpgraph_text.inc.php';
 require_once 'jpgraph_legend.inc.php';
 require_once 'jpgraph_theme.inc.php';
-require_once 'gd_image.inc.php';
+require_once 'gd_image.inc.php';*/
 
 // Version info
 define('JPG_VERSION', '3.5.0b1');
