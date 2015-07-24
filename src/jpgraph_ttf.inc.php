@@ -486,7 +486,7 @@ class TTF
             if ($font_file === '') {
                 JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][FS_NORMAL]);
             }
-//('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][FS_NORMAL].'.');
+            //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][FS_NORMAL].'.');
             if (!$font_file) {
                 JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
             }

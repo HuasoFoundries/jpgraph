@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //=======================================================================
 // File:        IMGDATA_STARS.INC
 // Description: Base64 encoded images for stars
@@ -7,7 +9,6 @@
 //
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
-namespace Amenadiel\JpGraph\Image;
 
 class ImgData_Stars extends ImgData
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Amenadiel\JpGraph\Plot;
+namespace Amenadiel\JpGraph\Scale;
 
 //===================================================
 // CLASS LinearScale

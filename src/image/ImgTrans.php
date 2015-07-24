@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //=======================================================================
 // File:        JPGRAPH_IMGTRANS.PHP
 // Description: Extension for JpGraph to do some simple img transformations

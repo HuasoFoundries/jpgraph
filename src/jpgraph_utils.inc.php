@@ -37,7 +37,7 @@ class FuncGenerator
         } else {
             JpGraphError::RaiseL(24001);
         }
-//('FuncGenerator : No function specified. ');
+        //('FuncGenerator : No function specified. ');
 
         @eval($t);
 
@@ -46,7 +46,7 @@ class FuncGenerator
         if (empty($xa) || empty($ya)) {
             JpGraphError::RaiseL(24002);
         }
-//('FuncGenerator : Syntax error in function specification ');
+        //('FuncGenerator : Syntax error in function specification ');
 
         return array($xa, $ya);
     }

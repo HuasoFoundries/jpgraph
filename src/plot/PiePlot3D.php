@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Plot;
+
 /*=======================================================================
 // File:        JPGRAPH_PIE3D.PHP
 // Description: 3D Pie plot extension for JpGraph

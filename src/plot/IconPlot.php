@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Plot;
+
 //=======================================================================
 // File:        JPGRAPH_ICONPLOT.PHP
 // Description: Extension module to add icons to plots

@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Graph;
+
 /*=======================================================================
 // File:        JPGRAPH_CANVAS.PHP
 // Description: Canvas drawing extension for JpGraph

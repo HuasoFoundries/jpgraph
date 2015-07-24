@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Scale;
+
 /*=======================================================================
 // File:        JPGRAPH_LOG.PHP
 // Description: Log scale plot extension for JpGraph

@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Image;
+
 //=======================================================================
 // File:        JPGRAPH_FLAGS.PHP
 // Description: Class Jpfile. Handles plotmarks

@@ -1,4 +1,6 @@
 <?php
+namespace Amenadiel\JpGraph\Text;
+
 //=======================================================================
 // File:        JPGRAPH_TEXT.INC.PHP
 // Description: Class to handle text as object in the graph.
@@ -195,7 +197,7 @@ class Text
         } else {
             JpGraphError::RaiseL(25051);
         }
-//(" Invalid direction specified for text.");
+        //(" Invalid direction specified for text.");
     }
 
     // Total width of text
