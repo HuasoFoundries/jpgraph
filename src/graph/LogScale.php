@@ -29,7 +29,7 @@ class LogScale extends LinearScale
     public function __construct($min, $max, $type = "y")
     {
         parent::__construct($min, $max, $type);
-        $this->ticks = new LogTicks();
+        $this->ticks = new LogTicks('log');
         $this->name = 'log';
     }
 

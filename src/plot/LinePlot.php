@@ -426,7 +426,7 @@ class LinePlot extends Plot
             }
         }
 
-        if ($this->mark->type == -1 || $this->mark->show == false) {
+        if (!is_object($this->mark) || $this->mark->type == -1 || $this->mark->show == false) {
             return;
         }
 
