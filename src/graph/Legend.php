@@ -14,7 +14,7 @@ use Amenadiel\JpGraph\Plot;
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
 
-DEFINE('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
+DEFINED('_DEFAULT_LPM_SIZE') || DEFINE('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 //===================================================
 // CLASS Legend

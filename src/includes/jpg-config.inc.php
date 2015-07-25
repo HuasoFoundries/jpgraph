@@ -129,7 +129,7 @@ define('CACHE_FILE_GROUP', 'www');
 define('CACHE_FILE_MOD', 0664);
 
 // Default theme class name
-define('DEFAULT_THEME_CLASS', 'UniversalTheme');
+defined('DEFAULT_THEME_CLASS') || define('DEFAULT_THEME_CLASS', 'UniversalTheme');
 
 define('SUPERSAMPLING', true);
 define('SUPERSAMPLING_SCALE', 1);
