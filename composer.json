@@ -1,6 +1,5 @@
 {
 	"name": "amenadiel/jpgraph",
-	"version": "3.6.0",
 	"type": "library",
 	"description": "jpGraph, library to make graphs and charts",
 	"keywords": [
