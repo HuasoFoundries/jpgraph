@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
+
 //============================================================
 // CLASS WindroseGraph
 //============================================================
@@ -61,7 +63,7 @@ class WindroseGraph extends Graph
         } elseif (($cl instanceof WindrosePlot) || ($cl instanceof LayoutRect) || ($cl instanceof LayoutHor)) {
             $this->plots[] = $aObj;
         } else {
-            JpgraphError::RaiseL(22021);
+            Util\JpGraphError::RaiseL(22021);
         }
     }
 

@@ -45,7 +45,7 @@ class ContourPlot extends Plot
         if ($this->interpFactor > 1) {
 
             if ($this->interpFactor > 5) {
-                JpGraphError::RaiseL(28007); // ContourPlot interpolation factor is too large (>5)
+                Util\JpGraphError::RaiseL(28007); // ContourPlot interpolation factor is too large (>5)
             }
 
             $ip = new MeshInterpolate();
@@ -186,7 +186,7 @@ class ContourPlot extends Plot
         if (count($this->manualIsobarColors) > 0) {
             $this->contourColor = $this->manualIsobarColors;
             if (count($this->manualIsobarColors) != $this->nbrContours) {
-                JpGraphError::RaiseL(28002);
+                Util\JpGraphError::RaiseL(28002);
             }
         }
 

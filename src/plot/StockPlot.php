@@ -25,7 +25,7 @@ class StockPlot extends Plot
     public function __construct($datay, $datax = false)
     {
         if (count($datay) % $this->iTupleSize) {
-            JpGraphError::RaiseL(21001, $this->iTupleSize);
+            Util\JpGraphError::RaiseL(21001, $this->iTupleSize);
             //('Data values for Stock charts must contain an even multiple of '.$this->iTupleSize.' data points.');
         }
         parent::__construct($datay, $datax);
@@ -79,7 +79,7 @@ class StockPlot extends Plot
 
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $n) {
-                JpGraphError::RaiseL(2003, count($this->coords[1]), $n);
+                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $n);
                 // ("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;

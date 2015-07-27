@@ -11,8 +11,6 @@ namespace Amenadiel\JpGraph\Plot;
 //========================================================================
  */
 
-require_once 'jpgraph_plotmark.inc.php';
-
 // constants for the (filled) area
 DEFINE("LP_AREA_FILLED", true);
 DEFINE("LP_AREA_NOT_FILLED", false);
@@ -189,7 +187,7 @@ class LinePlot extends Plot
             } elseif ($y == '-' && $pnts > 0) {
                 // Just ignore
             } else {
-                JpGraphError::RaiseL(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
+                Util\JpGraphError::RaiseL(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
             }
             ++$pnts;
         } // WHILE
@@ -203,7 +201,7 @@ class LinePlot extends Plot
         $numpoints = count($this->coords[0]);
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
-                JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
+                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
                 //("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
@@ -428,7 +426,7 @@ class LinePlot extends Plot
             }
         }
 
-        if ($this->mark->type == -1 || $this->mark->show == false) {
+        if (!is_object($this->mark) || $this->mark->type == -1 || $this->mark->show == false) {
             return;
         }
 

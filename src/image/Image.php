@@ -14,19 +14,6 @@ use \Amenadiel\JpGraph\Text\TTF;
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
 
-// Line styles
-define('LINESTYLE_SOLID', 1);
-define('LINESTYLE_DOTTED', 2);
-define('LINESTYLE_DASHED', 3);
-define('LINESTYLE_LONGDASH', 4);
-
-// The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
-// PNG, JPG or GIF depending on what is installed on the target system
-// in that order.
-if (!DEFINED("DEFAULT_GFORMAT")) {
-    define("DEFAULT_GFORMAT", "auto");
-}
-
 //========================================================================
 // CLASS Image
 // Description: The very coor image drawing class that encapsulates all

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Text;
 
+use \Amenadiel\JpGraph\Util;
+
 //=============================================================
 // CLASS TTF
 // Description: Handle TTF font names and mapping and loading of
@@ -46,8 +48,12 @@ class TTF
                 FS_BOLD => 'comicbd.ttf',
                 FS_ITALIC => '',
                 FS_BOLDITALIC => ''),
+            /*FF_ARIAL => array(FS_NORMAL => 'arial.ttf',
+            FS_BOLD => 'arialbd.ttf',
+            FS_ITALIC => 'ariali.ttf',
+            FS_BOLDITALIC => 'arialbi.ttf'),*/
             FF_ARIAL => array(FS_NORMAL => 'arial.ttf',
-                FS_BOLD => 'arialbd.ttf',
+                FS_BOLD => 'msttcorefonts/Arial_Black.ttf',
                 FS_ITALIC => 'ariali.ttf',
                 FS_BOLDITALIC => 'arialbi.ttf'),
             FF_VERA => array(FS_NORMAL => 'Vera.ttf',
@@ -211,7 +217,7 @@ class TTF
     {
         $fam = @$this->font_files[$family];
         if (!$fam) {
-            JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
+            Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
         }
         $ff = @$fam[$style];
 
@@ -221,17 +227,17 @@ class TTF
             $ff = array($ff);
         }
 
-        $jpgraph_font_dir = dirname(__FILE__) . '/fonts/';
+        $jpgraph_font_dir = dirname(dirname(__FILE__)) . '/fonts/';
 
         foreach ($ff as $font_file) {
             // All font families are guaranteed to have the normal style
 
             if ($font_file === '') {
-                JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][FS_NORMAL]);
+                Util\JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][FS_NORMAL]);
             }
             //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][FS_NORMAL].'.');
             if (!$font_file) {
-                JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
+                Util\JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
             }
 
             // check jpgraph/src/fonts dir
@@ -253,7 +259,8 @@ class TTF
         }
 
         if (!file_exists($font_file)) {
-            JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
+            //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
+            return $this->File(FF_DV_SANSSERIF, $style);
         }
 
         return $font_file;

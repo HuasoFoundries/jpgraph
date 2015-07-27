@@ -1,6 +1,9 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Text;
+
 define('WINDROSE_TYPE4', 1);
 define('WINDROSE_TYPE8', 2);
 define('WINDROSE_TYPE16', 3);
@@ -68,10 +71,10 @@ class WindrosePlot
         $this->legend = new LegendStyle();
 
         // Setup the scale
-        $this->scale = new WindrosePlotScale($this->iData);
+        $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f' . SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
@@ -142,7 +145,7 @@ class WindrosePlot
     public function SetCompassLabels($aLabels)
     {
         if (count($aLabels) != 16) {
-            JpgraphError::RaiseL(22004); //('Label specification for windrose directions must have 16 values (one for each compass direction).');
+            Util\JpGraphError::RaiseL(22004); //('Label specification for windrose directions must have 16 values (one for each compass direction).');
         }
         $this->iAllDirectionLabels = $aLabels;
 
@@ -192,7 +195,7 @@ class WindrosePlot
     {
         $aStyle = strtolower($aStyle);
         if (!in_array($aStyle, ['solid', 'dotted', 'dashed', 'longdashed'])) {
-            JpGraphError::RaiseL(22005); //("Line style for radial lines must be on of ('solid','dotted','dashed','longdashed') ");
+            Util\JpGraphError::RaiseL(22005); //("Line style for radial lines must be on of ('solid','dotted','dashed','longdashed') ");
         }
         $this->iRadialGridStyle = $aStyle;
     }
@@ -225,7 +228,7 @@ class WindrosePlot
     public function SetType($aType)
     {
         if ($aType < WINDROSE_TYPE4 || $aType > WINDROSE_TYPEFREE) {
-            JpGraphError::RaiseL(22006); //('Illegal windrose type specified.');
+            Util\JpGraphError::RaiseL(22006); //('Illegal windrose type specified.');
         }
         $this->iType = $aType;
     }
@@ -310,7 +313,7 @@ class WindrosePlot
         $nlw = count($this->iLegweights);
 
         // Setup font for ranges
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetAlign('center', 'bottom');
         $value->SetFont($this->legend->iLblFontFamily,
             $this->legend->iLblFontStyle,
@@ -368,7 +371,7 @@ class WindrosePlot
         $txty = $y -
         round($this->iLegweights[($this->scale->iMaxNum - 1) % $nlw] * $scaling) - 4 * $scaling;
         if ($this->scale->iMaxNum >= count($this->iRanges)) {
-            JpGraphError::RaiseL(22007); //('To few values for the range legend.');
+            Util\JpGraphError::RaiseL(22007); //('To few values for the range legend.');
         }
         $i = 0;
         $idx = 0;
@@ -577,7 +580,7 @@ class WindrosePlot
         // Plot radial grid lines and remember the end position
         // and the angle for later use when plotting the labels
         if ($this->iType != WINDROSE_TYPEFREE) {
-            JpGraphError::RaiseL(22008); //('Internal error: Trying to plot free Windrose even though type is not a free windorose');
+            Util\JpGraphError::RaiseL(22008); //('Internal error: Trying to plot free Windrose even though type is not a free windorose');
         }
 
         // Check if we should auto-position the angle for the
@@ -599,7 +602,7 @@ class WindrosePlot
             if (in_array($dir, $this->iAllDirectionLabels, true) === true) {
                 $a = $this->iStandardDirections[strtoupper($dir)];
                 if (in_array($a * 180 / M_PI, $keys)) {
-                    JpGraphError::RaiseL(22009, round($a * 180 / M_PI));
+                    Util\JpGraphError::RaiseL(22009, round($a * 180 / M_PI));
                     //('You have specified the same direction twice, once with an angle and once with a compass direction ('.$a*180/M_PI.' degrees.)');
                 }
             } elseif (is_numeric($dir)) {
@@ -611,7 +614,7 @@ class WindrosePlot
 
                 $a = $dir * M_PI / 180;
             } else {
-                JpGraphError::RaiseL(22010); //('Direction must either be a numeric value or one of the 16 compass directions');
+                Util\JpGraphError::RaiseL(22010); //('Direction must either be a numeric value or one of the 16 compass directions');
             }
 
             $xxc = round($xc + cos($a) * $ri);
@@ -757,20 +760,20 @@ class WindrosePlot
                 $idx = strtoupper($idx);
                 $res = array_search($idx, $this->iAllDirectionLabels);
                 if ($res === false) {
-                    JpGraphError::RaiseL(22011, $idx); //('Windrose index must be numeric or direction label. You have specified index='.$idx);
+                    Util\JpGraphError::RaiseL(22011, $idx); //('Windrose index must be numeric or direction label. You have specified index='.$idx);
                 }
                 $idx = $res;
                 if ($idx % (16 / $num) !== 0) {
-                    JpGraphError::RaiseL(22012); //('Windrose radial axis specification contains a direction which is not enabled.');
+                    Util\JpGraphError::RaiseL(22012); //('Windrose radial axis specification contains a direction which is not enabled.');
                 }
                 $idx /= (16 / $num);
 
                 if (in_array($idx, $keys, 1)) {
-                    JpgraphError::RaiseL(22013, $idx); //('You have specified the look&feel for the same compass direction twice, once with text and once with index (Index='.$idx.')');
+                    Util\JpGraphError::RaiseL(22013, $idx); //('You have specified the look&feel for the same compass direction twice, once with text and once with index (Index='.$idx.')');
                 }
             }
             if ($idx < 0 || $idx > 15) {
-                JpgraphError::RaiseL(22014); //('Index for copmass direction must be between 0 and 15.');
+                Util\JpGraphError::RaiseL(22014); //('Index for copmass direction must be between 0 and 15.');
             }
             $ret[$idx] = $data;
         }
@@ -793,7 +796,7 @@ class WindrosePlot
                 $num = 16;
                 break;
             default:
-                JpGraphError::RaiseL(22015); //('You have specified an undefined Windrose plot type.');
+                Util\JpGraphError::RaiseL(22015); //('You have specified an undefined Windrose plot type.');
         }
 
         // Check if we should auto-position the angle for the
@@ -921,20 +924,20 @@ class WindrosePlot
                 $idx = strtoupper($idx);
                 $idx = array_search($idx, $this->iAllDirectionLabels);
                 if ($idx === false) {
-                    JpGraphError::RaiseL(22016); //('Windrose leg index must be numeric or direction label.');
+                    Util\JpGraphError::RaiseL(22016); //('Windrose leg index must be numeric or direction label.');
                 }
                 if ($idx % (16 / $num) !== 0) {
-                    JpGraphError::RaiseL(22017); //('Windrose data contains a direction which is not enabled. Please adjust what labels are displayed.');
+                    Util\JpGraphError::RaiseL(22017); //('Windrose data contains a direction which is not enabled. Please adjust what labels are displayed.');
                 }
                 $idx /= (16 / $num);
 
                 if (in_array($idx, $keys, 1)) {
-                    JpgraphError::RaiseL(22018, $idx); //('You have specified data for the same compass direction twice, once with text and once with index (Index='.$idx.')');
+                    Util\JpGraphError::RaiseL(22018, $idx); //('You have specified data for the same compass direction twice, once with text and once with index (Index='.$idx.')');
 
                 }
             }
             if ($idx < 0 || $idx > 15) {
-                JpgraphError::RaiseL(22019); //('Index for direction must be between 0 and 15. You can\'t specify angles for a Regular Windplot, only index and compass directions.');
+                Util\JpGraphError::RaiseL(22019); //('Index for direction must be between 0 and 15. You can\'t specify angles for a Regular Windplot, only index and compass directions.');
             }
             $a = $idx * (360 / $num);
             $a *= M_PI / 180.0;
@@ -960,7 +963,7 @@ class WindrosePlot
             $this->iSize *= min($aImg->width, $aImg->height);
         }
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
         // Setup extra size around the graph needed so that the labels
@@ -1001,7 +1004,7 @@ class WindrosePlot
             $this->iSize *= min($aImg->width, $aImg->height);
         }
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
         // Setup extra size around the graph needed so that the labels
@@ -1059,7 +1062,7 @@ class WindrosePlot
 
         $scaling = $this->iAntiAlias ? 2 : 1;
 
-        $value = new Text();
+        $value = new Text\Text();
         $value->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize * $scaling);
         $value->SetColor($this->iFontColor);
 
@@ -1176,7 +1179,7 @@ class WindrosePlot
         $this->_ThickCircle($dblImg, $xc, $yc, $ri, $this->iCircGridWeight, $this->iGridColor1);
 
         if ($ww > $aImg->width) {
-            JpgraphError::RaiseL(22020);
+            Util\JpGraphError::RaiseL(22020);
             //('Windrose plot is too large to fit the specified Graph size. Please use WindrosePlot::SetSize() to make the plot smaller or increase the size of the Graph in the initial WindroseGraph() call.');
         }
 

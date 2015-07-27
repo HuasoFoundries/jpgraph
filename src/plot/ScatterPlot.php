@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+
 //===================================================
 // CLASS ScatterPlot
 // Description: Render X and Y plots
@@ -14,7 +16,7 @@ class ScatterPlot extends Plot
     public function __construct($datay, $datax = false)
     {
         if ((count($datax) != count($datay)) && is_array($datax)) {
-            JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
+            Util\JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
@@ -22,7 +24,7 @@ class ScatterPlot extends Plot
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link = new LineProperty(1, 'black', 'solid');
+        $this->link = new Graph\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 

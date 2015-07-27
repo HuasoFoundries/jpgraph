@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Text;
+
 //=======================================================================
 // File:        JPGRAPH_PLOTMARK.PHP
 // Description: Class file. Handles plotmarks
@@ -36,7 +38,7 @@ class PlotMark
     // CONSTRUCTOR
     public function __construct()
     {
-        $this->title = new Text();
+        $this->title = new Text\Text();
         $this->title->Hide();
         $this->csimareas = '';
         $this->type = -1;
@@ -48,7 +50,7 @@ class PlotMark
     {
         $this->type = $aType;
         if ($aType == MARK_IMG && $aFileName == '') {
-            JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to MARK_IMG.');
+            Util\JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to MARK_IMG.');
         }
         $this->iFileName = $aFileName;
         $this->iScale = $aScale;

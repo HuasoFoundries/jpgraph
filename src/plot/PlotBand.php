@@ -25,7 +25,7 @@ class PlotBand
         $f = new RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
         if (is_numeric($aMin) && is_numeric($aMax) && ($aMin > $aMax)) {
-            JpGraphError::RaiseL(16004);
+            Util\JpGraphError::RaiseL(16004);
         }
 
         //('Min value for plotband is larger than specified max value. Please correct.');

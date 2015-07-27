@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+
 class GanttVLine extends GanttPlotObject
 {
 
@@ -12,7 +14,7 @@ class GanttVLine extends GanttPlotObject
     public function __construct($aDate, $aTitle = "", $aColor = "darkred", $aWeight = 2, $aStyle = "solid")
     {
         GanttPlotObject::__construct();
-        $this->iLine = new LineProperty();
+        $this->iLine = new Graph\LineProperty();
         $this->iLine->SetColor($aColor);
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);
@@ -35,7 +37,7 @@ class GanttVLine extends GanttPlotObject
     public function SetDayOffset($aOff = 0.5)
     {
         if ($aOff < 0.0 || $aOff > 1.0) {
-            JpGraphError::RaiseL(6029);
+            Util\JpGraphError::RaiseL(6029);
             //("Offset for vertical line must be in range [0,1]");
         }
         $this->iDayOffset = $aOff;

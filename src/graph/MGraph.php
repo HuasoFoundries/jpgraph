@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Util;
+
 /*=======================================================================
 // File:        JPGRAPH_MGRAPH.PHP
 // Description: Class to handle multiple graphs in the same image
@@ -112,7 +114,7 @@ class MGraph
         // Get extension to determine image type
         $e = explode('.', $aFileName);
         if (!$e) {
-            JpGraphError::RaiseL(12002, $aFileName);
+            Util\JpGraphError::RaiseL(12002, $aFileName);
             //('Incorrect file name for MGraph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
         }
 
@@ -121,7 +123,7 @@ class MGraph
         if ($aImgFormat == 'jpeg') {
             $aImgFormat = 'jpg';
         } elseif (!in_array($aImgFormat, $valid_formats)) {
-            JpGraphError::RaiseL(12003, $aImgFormat, $aFileName);
+            Util\JpGraphError::RaiseL(12003, $aImgFormat, $aFileName);
             //('Unknown file extension ($aImgFormat) in MGraph::SetBackgroundImage() for filename: '.$aFileName);
         }
 
@@ -186,7 +188,7 @@ class MGraph
             $w = @imagesx($agdCanvas);
         }
         if ($w === null) {
-            JpGraphError::RaiseL(12007);
+            Util\JpGraphError::RaiseL(12007);
             //('Argument to MGraph::Add() is not a valid GD image handle.');
             return;
         }

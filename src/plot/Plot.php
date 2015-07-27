@@ -30,7 +30,7 @@ class Plot
     {
         $this->numpoints = count($aDatay);
         if ($this->numpoints == 0) {
-            JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");
+            Util\JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");
         }
 
         if (!$this->isRunningClear) {
@@ -45,7 +45,7 @@ class Plot
             $n = count($aDatax);
             for ($i = 0; $i < $n; ++$i) {
                 if (!is_numeric($aDatax[$i])) {
-                    JpGraphError::RaiseL(25070);
+                    Util\JpGraphError::RaiseL(25070);
                 }
             }
         }
@@ -57,7 +57,7 @@ class Plot
     // the subclasses
     public function Stroke($aImg, $aXScale, $aYScale)
     {
-        JpGraphError::RaiseL(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
+        Util\JpGraphError::RaiseL(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
     }
 
     public function HideLegend($f = true)
@@ -97,7 +97,7 @@ class Plot
     public function PreStrokeAdjust($aGraph)
     {
         if (substr($aGraph->axtype, 0, 4) == "text" && (isset($this->coords[1]))) {
-            JpGraphError::RaiseL(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
+            Util\JpGraphError::RaiseL(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
         }
         return true;
     }

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use \Amenadiel\JpGraph\Image;
+
 /*=======================================================================
 // File:        JPGRAPH_BAR.PHP
 // Description: Bar plot extension for JpGraph
@@ -10,8 +12,6 @@ namespace Amenadiel\JpGraph\Plot;
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
  */
-
-require_once 'jpgraph_plotband.php';
 
 // Pattern for Bars
 DEFINE('PATTERN_DIAG1', 1);
@@ -239,7 +239,7 @@ class BarPlot extends Plot
         // In that case convert it to a hex string since it will otherwise be
         // interpretated as an array of colors for each individual bar.
 
-        $aColor = RGB::tryHexConversion($aColor);
+        $aColor = Image\RGB::tryHexConversion($aColor);
         $this->fill = true;
         $this->fill_color = $aColor;
 
@@ -267,7 +267,7 @@ class BarPlot extends Plot
             if (is_array($aColor)) {
                 $this->iPatternColor = array();
                 if (count($aColor) != $n) {
-                    JpGraphError::RaiseL(2001); //('NUmber of colors is not the same as the number of patterns in BarPlot::SetPattern()');
+                    Util\JpGraphError::RaiseL(2001); //('NUmber of colors is not the same as the number of patterns in BarPlot::SetPattern()');
                 }
             } else {
                 $this->iPatternColor = $aColor;
@@ -328,7 +328,7 @@ class BarPlot extends Plot
                 $aDensity = 85;
                 break;
             default:
-                JpGraphError::RaiseL(2002);
+                Util\JpGraphError::RaiseL(2002);
                 //('Unknown pattern specified in call to BarPlot::SetPattern()');
         }
     }
@@ -339,7 +339,7 @@ class BarPlot extends Plot
         $numpoints = count($this->coords[0]);
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
-                JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
+                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
                 //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
@@ -453,7 +453,7 @@ class BarPlot extends Plot
             $val = $this->coords[0][$i];
 
             if (!empty($val) && !is_numeric($val)) {
-                JpGraphError::RaiseL(2004, $i, $val);
+                Util\JpGraphError::RaiseL(2004, $i, $val);
                 //'All values for a barplot must be numeric. You have specified value['.$i.'] == \''.$val.'\'');
             }
 
@@ -493,7 +493,7 @@ class BarPlot extends Plot
                 if (is_array($this->bar_shadow_color)) {
                     $numcolors = count($this->bar_shadow_color);
                     if ($numcolors == 0) {
-                        JpGraphError::RaiseL(2005); //('You have specified an empty array for shadow colors in the bar plot.');
+                        Util\JpGraphError::RaiseL(2005); //('You have specified an empty array for shadow colors in the bar plot.');
                     }
                     $img->PushColor($this->bar_shadow_color[$i % $numcolors]);
                 } else {
@@ -675,7 +675,7 @@ class BarPlot extends Plot
                 $this->value->SetMargin(3);
                 $this->value->Stroke($img, $val, $x, $y);
             } else {
-                JpGraphError::RaiseL(2006, $this->valuepos);
+                Util\JpGraphError::RaiseL(2006, $this->valuepos);
                 //'Unknown position for values on bars :'.$this->valuepos);
             }
             // Create the client side image map

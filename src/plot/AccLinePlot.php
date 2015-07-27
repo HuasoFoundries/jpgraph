@@ -20,7 +20,7 @@ class AccLinePlot extends Plot
         // Verify that all plots have the same number of data points
         for ($i = 1; $i < $this->nbrplots; ++$i) {
             if ($plots[$i]->numpoints != $this->numpoints) {
-                JpGraphError::RaiseL(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
+                Util\JpGraphError::RaiseL(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
             }
         }
 
