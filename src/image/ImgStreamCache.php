@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //=======================================================================
 // CLASS ImgStreamCache
 // Description: Handle caching of graphs to files. All image output goes
@@ -53,7 +55,7 @@ class ImgStreamCache
                 // exist we need to delete the old file first
                 if (!@unlink($aStrokeFileName)) {
                     $lock = flock($fd, LOCK_UN);
-                    JpGraphError::RaiseL(25111, $aStrokeFileName);
+                    Util\JpGraphError::RaiseL(25111, $aStrokeFileName);
                     //(" Can't delete cached image $aStrokeFileName. Permission problem?");
                 }
                 $aImage->Stream($aStrokeFileName);
@@ -77,7 +79,7 @@ class ImgStreamCache
                     // then do nothing, just return.
                     $diff = time() - filemtime($aCacheFileName);
                     if ($diff < 0) {
-                        JpGraphError::RaiseL(25112, $aCacheFileName);
+                        Util\JpGraphError::RaiseL(25112, $aCacheFileName);
                         //(" Cached imagefile ($aCacheFileName) has file date in the future!!");
                     }
                     if ($this->timeout > 0 && ($diff <= $this->timeout * 60)) {
@@ -92,7 +94,7 @@ class ImgStreamCache
 
                 if (!@unlink($aCacheFileName)) {
                     $lock = flock($fd, LOCK_UN);
-                    JpGraphError::RaiseL(25113, $aStrokeFileName);
+                    Util\JpGraphError::RaiseL(25113, $aStrokeFileName);
                     //(" Can't delete cached image $aStrokeFileName. Permission problem?");
                 }
                 $aImage->Stream($aCacheFileName);
@@ -102,7 +104,7 @@ class ImgStreamCache
             } else {
                 $this->MakeDirs(dirname($aCacheFileName));
                 if (!is_writeable(dirname($aCacheFileName))) {
-                    JpGraphError::RaiseL(25114, $aCacheFileName);
+                    Util\JpGraphError::RaiseL(25114, $aCacheFileName);
                     //('PHP has not enough permissions to write to the cache file '.$aCacheFileName.'. Please make sure that the user running PHP has write permission for this file if you wan to use the cache system with JpGraph.');
                 }
                 $aImage->Stream($aCacheFileName);
@@ -117,7 +119,7 @@ class ImgStreamCache
                 $res = @chmod($aCacheFileName, CACHE_FILE_MOD);
             }
             if (!$res) {
-                JpGraphError::RaiseL(25115, $aStrokeFileName);
+                Util\JpGraphError::RaiseL(25115, $aStrokeFileName);
                 //(" Can't set permission for cached image $aStrokeFileName. Permission problem?");
             }
 
@@ -128,7 +130,7 @@ class ImgStreamCache
                     fpassthru($fh);
                     return;
                 } else {
-                    JpGraphError::RaiseL(25116, $aFile); //(" Cant open file from cache [$aFile]");
+                    Util\JpGraphError::RaiseL(25116, $aFile); //(" Cant open file from cache [$aFile]");
                 }
             }
         } elseif ($aInline) {
@@ -164,7 +166,7 @@ class ImgStreamCache
             fclose($fh);
             return true;
         } else {
-            JpGraphError::RaiseL(25117, $aCacheFileName); //(" Can't open cached image \"$aCacheFileName\" for reading.");
+            Util\JpGraphError::RaiseL(25117, $aCacheFileName); //(" Can't open cached image \"$aCacheFileName\" for reading.");
         }
     }
 
@@ -194,7 +196,7 @@ class ImgStreamCache
         }
         for ($i = sizeof($dirs) - 1; $i >= 0; $i--) {
             if (!@mkdir($dirs[$i], 0777)) {
-                JpGraphError::RaiseL(25118, $aFile); //(" Can't create directory $aFile. Make sure PHP has write permission to this directory.");
+                Util\JpGraphError::RaiseL(25118, $aFile); //(" Can't create directory $aFile. Make sure PHP has write permission to this directory.");
             }
             // We also specify mode here after we have changed group.
             // This is necessary if Apache user doesn't belong the
@@ -205,7 +207,7 @@ class ImgStreamCache
                 $res = @chgrp($dirs[$i], CACHE_FILE_GROUP);
                 $res = @chmod($dirs[$i], 0777);
                 if (!$res) {
-                    JpGraphError::RaiseL(25119, $aFile); //(" Can't set permissions for $aFile. Permission problems?");
+                    Util\JpGraphError::RaiseL(25119, $aFile); //(" Can't set permissions for $aFile. Permission problems?");
                 }
             }
         }

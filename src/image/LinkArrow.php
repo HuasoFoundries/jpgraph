@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS LinkArrow
 // Handles the drawing of a an arrow
@@ -56,7 +58,7 @@ class LinkArrow
                 $c = array($x, $y, $x - $dy, $y - $dx, $x - $dy, $y + $dx, $x, $y);
                 break;
             default:
-                JpGraphError::RaiseL(6030);
+                Util\JpGraphError::RaiseL(6030);
                 //('Unknown arrow direction for link.');
                 die();
                 break;
@@ -70,7 +72,7 @@ class LinkArrow
                 $aImg->Polygon($c);
                 break;
             default:
-                JpGraphError::RaiseL(6031);
+                Util\JpGraphError::RaiseL(6031);
                 //('Unknown arrow type for link.');
                 die();
                 break;

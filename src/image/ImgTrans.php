@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //=======================================================================
 // File:        JPGRAPH_IMGTRANS.PHP
 // Description: Extension for JpGraph to do some simple img transformations
@@ -33,7 +35,7 @@ class ImgTrans
 
         // Parameter check
         if ($aHorizonPos < 0 || $aHorizonPos > 1.0) {
-            JpGraphError::RaiseL(9001);
+            Util\JpGraphError::RaiseL(9001);
             //("Value for image transformation out of bounds.\nVanishing point on horizon must be specified as a value between 0 and 1.");
         }
 

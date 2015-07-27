@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS PredefIcons
 // Description: Predefined icons for use with Gantt charts
@@ -31,7 +33,7 @@ class PredefIcons
     public function GetImg($aIdx)
     {
         if ($aIdx < 0 || $aIdx >= $this->iLen) {
-            JpGraphError::RaiseL(6010, $aIdx);
+            Util\JpGraphError::RaiseL(6010, $aIdx);
             //('Illegal icon index for Gantt builtin icon ['.$aIdx.']');
         }
         return Image::CreateFromString(base64_decode($this->iBuiltinIcon[$aIdx][1]));

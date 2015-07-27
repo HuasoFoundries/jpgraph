@@ -4,6 +4,7 @@ namespace Amenadiel\JpGraph\Image;
 
 use \Amenadiel\JpGraph\Text\LanguageConv;
 use \Amenadiel\JpGraph\Text\TTF;
+use \Amenadiel\JpGraph\Util;
 
 //=======================================================================
 // File:        GD_IMAGE.INC.PHP
@@ -73,7 +74,7 @@ class Image
         }
 
         if (!$this->SetImgFormat($aFormat)) {
-            JpGraphError::RaiseL(25081, $aFormat); //("JpGraph: Selected graphic format is either not supported or unknown [$aFormat]");
+            Util\JpGraphError::RaiseL(25081, $aFormat); //("JpGraph: Selected graphic format is either not supported or unknown [$aFormat]");
         }
         $this->ttf = new TTF();
         $this->langconv = new LanguageConv();
@@ -98,7 +99,7 @@ class Image
         if (function_exists('imageantialias')) {
             imageantialias($this->img, $aFlg);
         } else {
-            JpGraphError::RaiseL(25128); //('The function imageantialias() is not available in your PHP installation. Use the GD version that comes with PHP and not the standalone version.')
+            Util\JpGraphError::RaiseL(25128); //('The function imageantialias() is not available in your PHP installation. Use the GD version that comes with PHP and not the standalone version.')
         }
     }
 
@@ -114,12 +115,12 @@ class Image
         $aHeight *= SUPERSAMPLING_SCALE;
 
         if ($aWidth <= 1 || $aHeight <= 1) {
-            JpGraphError::RaiseL(25082, $aWidth, $aHeight); //("Illegal sizes specified for width or height when creating an image, (width=$aWidth, height=$aHeight)");
+            Util\JpGraphError::RaiseL(25082, $aWidth, $aHeight); //("Illegal sizes specified for width or height when creating an image, (width=$aWidth, height=$aHeight)");
         }
 
         $this->img = @imagecreatetruecolor($aWidth, $aHeight);
         if ($this->img < 1) {
-            JpGraphError::RaiseL(25126);
+            Util\JpGraphError::RaiseL(25126);
             //die("Can't create truecolor image. Check that you really have GD2 library installed.");
         }
         $this->SetAlphaBlending();
@@ -197,13 +198,13 @@ class Image
             if (($fromWidth != -1 && ($fromWidth != $toWidth)) || ($fromHeight != -1 && ($fromHeight != $fromHeight))) {
                 // Create a new canvas that will hold the re-scaled original from image
                 if ($toWidth <= 1 || $toHeight <= 1) {
-                    JpGraphError::RaiseL(25083); //('Illegal image size when copying image. Size for copied to image is 1 pixel or less.');
+                    Util\JpGraphError::RaiseL(25083); //('Illegal image size when copying image. Size for copied to image is 1 pixel or less.');
                 }
 
                 $tmpimg = @imagecreatetruecolor($toWidth, $toHeight);
 
                 if ($tmpimg < 1) {
-                    JpGraphError::RaiseL(25084); //('Failed to create temporary GD canvas. Out of memory ?');
+                    Util\JpGraphError::RaiseL(25084); //('Failed to create temporary GD canvas. Out of memory ?');
                 }
                 $this->CopyCanvasH($tmpimg, $fromImg, 0, 0, 0, 0,
                     $toWidth, $toHeight, $fromWidth, $fromHeight);
@@ -233,7 +234,7 @@ class Image
     {
         $img = imagecreatefromstring($aStr);
         if ($img === false) {
-            JpGraphError::RaiseL(25085);
+            Util\JpGraphError::RaiseL(25085);
             //('An image can not be created from the supplied string. It is either in a format not supported or the string is representing an corrupt image.');
         }
         return $img;
@@ -284,7 +285,7 @@ class Image
             if (!function_exists('imagettfbbox')) {
                 // use internal font when php is configured without '--with-ttf'
                 $this->font_family = FF_FONT1;
-                //  JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+                //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
             } else {
                 $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
             }
@@ -305,14 +306,14 @@ class Image
             if ($angle == 0) {
                 $h = imagefontheight($this->font_family);
                 if ($h === false) {
-                    JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                    Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
                 }
 
                 return $n * $h;
             } else {
                 $w = @imagefontwidth($this->font_family);
                 if ($w === false) {
-                    JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                    Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
                 }
 
                 return $m * $w;
@@ -358,14 +359,14 @@ class Image
             if ($angle == 0) {
                 $w = @imagefontwidth($this->font_family);
                 if ($w === false) {
-                    JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                    Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
                 }
                 return $m * $w;
             } else {
                 // 90 degrees internal so height becomes width
                 $h = @imagefontheight($this->font_family);
                 if ($h === false) {
-                    JpGraphError::RaiseL(25089); //('You have a misconfigured GD font support. The call to imagefontheight() fails.');
+                    Util\JpGraphError::RaiseL(25089); //('You have a misconfigured GD font support. The call to imagefontheight() fails.');
                 }
                 return $n * $h;
             }
@@ -400,7 +401,7 @@ class Image
             } elseif ($dir == "v") {
                 $dir = 90;
             } else {
-                JpGraphError::RaiseL(25090, $dir);
+                Util\JpGraphError::RaiseL(25090, $dir);
             }
             //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
         }
@@ -492,7 +493,7 @@ class Image
         // 2) The only two alignment that makes sense are centered or baselined
 
         if ($this->font_family <= FF_FONT2 + 1) {
-            JpGraphError::RaiseL(25131); //StrokeBoxedText2() Only support TTF fonts and not built in bitmap fonts
+            Util\JpGraphError::RaiseL(25131); //StrokeBoxedText2() Only support TTF fonts and not built in bitmap fonts
         }
 
         $oldx = $this->lastx;
@@ -505,7 +506,7 @@ class Image
             } elseif ($dir == "v") {
                 $dir = 90;
             } else {
-                JpGraphError::RaiseL(25090, $dir);
+                Util\JpGraphError::RaiseL(25090, $dir);
             }
             //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
         }
@@ -643,7 +644,7 @@ class Image
     {
 
         if (is_numeric($dir) && $dir != 90 && $dir != 0) {
-            JpGraphError::RaiseL(25091);
+            Util\JpGraphError::RaiseL(25091);
         }
         //(" Internal font does not support drawing text at arbitrary angle. Use TTF fonts instead.");
 
@@ -746,7 +747,7 @@ class Image
 
             $bbox = @imagettfbbox($size, $angle, $fontfile, $text);
             if ($bbox === false) {
-                JpGraphError::RaiseL(25092, $this->font_file);
+                Util\JpGraphError::RaiseL(25092, $this->font_file);
                 //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
             }
             $this->bbox_cache = $bbox;
@@ -758,7 +759,7 @@ class Image
         // angle = 0 and then rotate the bounding box manually
         $bbox = @imagettfbbox($size, 0, $fontfile, $text);
         if ($bbox === false) {
-            JpGraphError::RaiseL(25092, $this->font_file);
+            Util\JpGraphError::RaiseL(25092, $this->font_file);
             //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
         }
 
@@ -843,7 +844,7 @@ class Image
         $aTxt = $this->AddTxtCR($aTxt);
 
         if (!is_readable($this->font_file)) {
-            JpGraphError::RaiseL(25093, $this->font_file);
+            Util\JpGraphError::RaiseL(25093, $this->font_file);
             //('Can not read font file ('.$this->font_file.') in call to Image::GetBBoxTTF. Please make sure that you have set a font before calling this method and that the font is installed in the TTF directory.');
         }
         $bbox = $this->imagettfbbox_fixed($this->font_size, $aAngle, $this->font_file, $aTxt);
@@ -1104,7 +1105,7 @@ class Image
         $txt = $this->langconv->Convert($txt, $this->font_family);
 
         if (!is_numeric($dir)) {
-            JpGraphError::RaiseL(25094); //(" Direction for text most be given as an angle between 0 and 90.");
+            Util\JpGraphError::RaiseL(25094); //(" Direction for text most be given as an angle between 0 and 90.");
         }
 
         if ($this->font_family >= FF_FONT0 && $this->font_family <= FF_FONT2 + 1) {
@@ -1112,7 +1113,7 @@ class Image
         } elseif ($this->font_family >= _FIRST_FONT && $this->font_family <= _LAST_FONT) {
             $this->_StrokeTTF($x, $y, $txt, $dir, $paragraph_align, $boundingbox, $debug);
         } else {
-            JpGraphError::RaiseL(25095); //(" Unknown font font family specification. ");
+            Util\JpGraphError::RaiseL(25095); //(" Unknown font font family specification. ");
         }
         return $boundingbox;
     }
@@ -1130,8 +1131,8 @@ class Image
 
         if ($this->width > 0 && $this->height > 0) {
             if ($this->plotwidth < 0 || $this->plotheight < 0) {
-                JpGraphError::RaiseL(25130, $this->plotwidth, $this->plotheight);
-                //JpGraphError::raise("To small plot area. ($lm,$rm,$tm,$bm : $this->plotwidth x $this->plotheight). With the given image size and margins there is to little space left for the plot. Increase the plot size or reduce the margins.");
+                Util\JpGraphError::RaiseL(25130, $this->plotwidth, $this->plotheight);
+                //Util\JpGraphError::raise("To small plot area. ($lm,$rm,$tm,$bm : $this->plotwidth x $this->plotheight). With the given image size and margins there is to little space left for the plot. Increase the plot size or reduce the margins.");
             }
         }
     }
@@ -1147,7 +1148,7 @@ class Image
         $this->current_color = $this->rgb->allocate($color, $aAlpha);
         if ($this->current_color == -1) {
             $tc = imagecolorstotal($this->img);
-            JpGraphError::RaiseL(25096);
+            Util\JpGraphError::RaiseL(25096);
             //("Can't allocate any more colors. Image has already allocated maximum of <b>$tc colors</b>. This might happen if you have anti-aliasing turned on together with a background image or perhaps gradient fill since this requires many, many colors. Try to turn off anti-aliasing. If there is still a problem try downgrading the quality of the background image to use a smaller pallete to leave some entries for your graphs. You should try to limit the number of colors in your background image to 64. If there is still problem set the constant DEFINE(\"USE_APPROX_COLORS\",true); in jpgraph.php This will use approximative colors when the palette is full. Unfortunately there is not much JpGraph can do about this since the palette size is a limitation of current graphic format and what the underlying GD library suppports.");
         }
         return $this->current_color;
@@ -1161,14 +1162,14 @@ class Image
             $this->colorstackidx += 2;
             $this->SetColor($color);
         } else {
-            JpGraphError::RaiseL(25097); //("Color specified as empty string in PushColor().");
+            Util\JpGraphError::RaiseL(25097); //("Color specified as empty string in PushColor().");
         }
     }
 
     public function PopColor()
     {
         if ($this->colorstackidx < 1) {
-            JpGraphError::RaiseL(25098); //(" Negative Color stack index. Unmatched call to PopColor()");
+            Util\JpGraphError::RaiseL(25098); //(" Negative Color stack index. Unmatched call to PopColor()");
         }
         $this->current_color = $this->colorstack[--$this->colorstackidx];
         $this->current_color_name = $this->colorstack[--$this->colorstackidx];
@@ -1299,7 +1300,7 @@ class Image
     {
         if (is_numeric($s)) {
             if ($s < 1 || $s > 4) {
-                JpGraphError::RaiseL(25101, $s); //(" Illegal numeric argument to SetLineStyle(): ($s)");
+                Util\JpGraphError::RaiseL(25101, $s); //(" Illegal numeric argument to SetLineStyle(): ($s)");
             }
         } elseif (is_string($s)) {
             if ($s == "solid") {
@@ -1311,10 +1312,10 @@ class Image
             } elseif ($s == "longdashed") {
                 $s = 4;
             } else {
-                JpGraphError::RaiseL(25102, $s); //(" Illegal string argument to SetLineStyle(): $s");
+                Util\JpGraphError::RaiseL(25102, $s); //(" Illegal string argument to SetLineStyle(): $s");
             }
         } else {
-            JpGraphError::RaiseL(25103, $s); //(" Illegal argument to SetLineStyle $s");
+            Util\JpGraphError::RaiseL(25103, $s); //(" Illegal argument to SetLineStyle $s");
         }
         $old = $this->line_style;
         $this->line_style = $s;
@@ -1363,7 +1364,7 @@ class Image
                     $this->$dashed_line_method($x1, $y1, $x2, $y2, 9, 13);
                     break;
                 default:
-                    JpGraphError::RaiseL(25104, $this->line_style); //(" Unknown line style: $this->line_style ");
+                    Util\JpGraphError::RaiseL(25104, $this->line_style); //(" Unknown line style: $this->line_style ");
                     break;
             }
             if ($oldaa) {
@@ -1383,7 +1384,7 @@ class Image
         // Dashed line does not work with anti-alias enabled. This
         // is a limitation in GD.
         if ($this->use_anti_aliasing) {
-            //            JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
+            //            Util\JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
 
         $x1 = round($x1);
@@ -1414,7 +1415,7 @@ class Image
         // Dashed line does not work with anti-alias enabled. This
         // is a limitation in GD.
         if ($this->use_anti_aliasing) {
-            //            JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
+            //            Util\JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
 
         $x1 = round($x1);
@@ -1492,7 +1493,7 @@ class Image
     {
         $n = count($pts);
         if ($n == 0) {
-            JpGraphError::RaiseL(25105); //('NULL data specified for a filled polygon. Check that your data is not NULL.');
+            Util\JpGraphError::RaiseL(25105); //('NULL data specified for a filled polygon. Check that your data is not NULL.');
         }
         for ($i = 0; $i < $n; ++$i) {
             $pts[$i] = round($pts[$i]);
@@ -1692,7 +1693,7 @@ class Image
     {
         $bc = $this->rgb->allocate($aBordColor);
         if ($bc == -1) {
-            JpGraphError::RaiseL(25106); //('Image::FillToBorder : Can not allocate more colors');
+            Util\JpGraphError::RaiseL(25106); //('Image::FillToBorder : Can not allocate more colors');
         }
         imagefilltoborder($this->img, round($x), round($y), $bc, $this->current_color);
     }
@@ -1751,12 +1752,12 @@ class Image
             if ($aFile != "") {
                 $res = @$func($this->img, $aFile);
                 if (!$res) {
-                    JpGraphError::RaiseL(25107, $aFile); //("Can't write to file '$aFile'. Check that the process running PHP has enough permission.");
+                    Util\JpGraphError::RaiseL(25107, $aFile); //("Can't write to file '$aFile'. Check that the process running PHP has enough permission.");
                 }
             } else {
                 $res = @$func($this->img);
                 if (!$res) {
-                    JpGraphError::RaiseL(25108); //("Can't stream image. This is most likely due to a faulty PHP/GD setup. Try to recompile PHP and use the built-in GD library that comes with PHP.");
+                    Util\JpGraphError::RaiseL(25108); //("Can't stream image. This is most likely due to a faulty PHP/GD setup. Try to recompile PHP and use the built-in GD library that comes with PHP.");
                 }
 
             }
@@ -1803,7 +1804,7 @@ class Image
             } elseif ($supported & IMG_XPM) {
                 $this->img_format = "xpm";
             } else {
-                JpGraphError::RaiseL(25109); //("Your PHP (and GD-lib) installation does not appear to support any known graphic formats. You need to first make sure GD is compiled as a module to PHP. If you also want to use JPEG images you must get the JPEG library. Please see the PHP docs for details.");
+                Util\JpGraphError::RaiseL(25109); //("Your PHP (and GD-lib) installation does not appear to support any known graphic formats. You need to first make sure GD is compiled as a module to PHP. If you also want to use JPEG images you must get the JPEG library. Please see the PHP docs for details.");
             }
             return true;
         } else {
@@ -1826,7 +1827,7 @@ class Image
                 $tst = false;
             }
             if (!$tst) {
-                JpGraphError::RaiseL(25110, $aFormat); //(" Your PHP installation does not support the chosen graphic format: $aFormat");
+                Util\JpGraphError::RaiseL(25110, $aFormat); //(" Your PHP installation does not support the chosen graphic format: $aFormat");
             }
         }
     }
@@ -2022,7 +2023,7 @@ class Image
         if (isset($this->$variable_name)) {
             return $this->$variable_name * SUPERSAMPLING_SCALE;
         } else {
-            JpGraphError::RaiseL('25132', $name);
+            Util\JpGraphError::RaiseL('25132', $name);
         }
     }
 

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //========================================================================
 // CLASS ImgData
 // Description: Base class for all image data classes that contains the
@@ -27,12 +29,12 @@ class ImgData
         $n = $this->an[$aMark];
         if (is_string($aIdx)) {
             if (!in_array($aIdx, $this->colors)) {
-                JpGraphError::RaiseL(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
+                Util\JpGraphError::RaiseL(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
             }
             $idx = $this->index[$aIdx];
         } elseif (!is_integer($aIdx) ||
             (is_integer($aIdx) && $aIdx > $this->maxidx)) {
-            JpGraphError::RaiseL(23002, $this->name); //('Mark color index too large for marker "'.($this->name).'"');
+            Util\JpGraphError::RaiseL(23002, $this->name); //('Mark color index too large for marker "'.($this->name).'"');
         } else {
             $idx = $aIdx;
         }
