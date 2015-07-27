@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS GanttLink
 // Handles the drawing of a link line between 2 points
@@ -87,7 +89,7 @@ class GanttLink
                         $c = array($x1, $y1, $x2, $y1, $x2, $y2);
                         break;
                     default:
-                        JpGraphError::RaiseL(6032, $this->iPathType);
+                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type (='.$this->iPathType .') specified for link.');
                         exit(1);
                         break;
@@ -119,7 +121,7 @@ class GanttLink
                         }
                         break;
                     default:
-                        JpGraphError::RaiseL(6032, $this->iPathType);
+                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         exit(1);
                         break;
@@ -145,7 +147,7 @@ class GanttLink
                         }
                         break;
                     default:
-                        JpGraphError::RaiseL(6032, $this->iPathType);
+                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         break;
                 }
@@ -172,7 +174,7 @@ class GanttLink
                         }
                         break;
                     default:
-                        JpGraphError::RaiseL(6032, $this->iPathType);
+                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         break;
                 }

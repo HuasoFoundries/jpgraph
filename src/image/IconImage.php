@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS IconImage
 // Description: Holds properties for an icon image
@@ -21,7 +23,7 @@ class IconImage
             // Builtin image
             $this->iGDImage = $_gPredefIcons->GetImg($aIcon);
         } else {
-            JpGraphError::RaiseL(6011);
+            Util\JpGraphError::RaiseL(6011);
             //('Argument to IconImage must be string or integer');
         }
         $this->iScale = $aScale;

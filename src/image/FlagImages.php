@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //=======================================================================
 // File:        JPGRAPH_FLAGS.PHP
 // Description: Class Jpfile. Handles plotmarks
@@ -282,7 +284,7 @@ class FlagImages
                 $this->iFlagData = unserialize($rawdata);
                 break;
             default:
-                JpGraphError::RaiseL(5001, $aSize);
+                Util\JpGraphError::RaiseL(5001, $aSize);
                 //('Unknown flag size. ('.$aSize.')');
         }
         $this->iFlagCount = count($this->iCountryNameMap);
@@ -305,7 +307,7 @@ class FlagImages
             $d = $this->iFlagData[$aIdx][1];
             return Image::CreateFromString($d);
         } else {
-            JpGraphError::RaiseL(5002, $aIdx);
+            Util\JpGraphError::RaiseL(5002, $aIdx);
             //("Flag index \"�$aIdx\" does not exist.");
         }
     }
@@ -330,7 +332,7 @@ class FlagImages
             $outFullName = $tmp[1];
             return $tmp[0];
         } else {
-            JpGraphError::RaiseL(5003, $aOrd);
+            Util\JpGraphError::RaiseL(5003, $aOrd);
             //('Invalid ordinal number specified for flag index.');
         }
     }
@@ -368,7 +370,7 @@ class FlagImages
             $outFullName = $key;
             return $val;
         } else {
-            JpGraphError::RaiseL(5004, $aName);
+            Util\JpGraphError::RaiseL(5004, $aName);
             //("The (partial) country name \"$aName\" does not have a cooresponding flag image. The flag may still exist but under another name, e.g. insted of \"usa\" try \"united states\".");
         }
     }

@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util;
+
 //=======================================================================
 // File:        JPGRAPH_RGB.INC.PHP
 // Description: Class to handle RGb color space specification and
@@ -495,7 +497,7 @@ class RGB
             // 9: adjust value with : stripped
             $regex = '/(#([0-9a-fA-F]{1,2})([0-9a-fA-F]{1,2})([0-9a-fA-F]{1,2}))?([\w]+)?(@([\d\.,]+))?(:([\d\.,]+))?/';
             if (!preg_match($regex, $aColor, $matches)) {
-                JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
+                Util\JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
             }
             if (empty($matches[5])) {
                 $r = strlen($matches[2]) == 1 ? $matches[2] . $matches[2] : $matches[2];
@@ -506,7 +508,7 @@ class RGB
                 $b = hexdec($b);
             } else {
                 if (!isset($this->rgb_table[$matches[5]])) {
-                    JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
+                    Util\JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
                 }
                 $r = $this->rgb_table[$matches[5]][0];
                 $g = $this->rgb_table[$matches[5]][1];
@@ -516,7 +518,7 @@ class RGB
             $adj = isset($matches[9]) ? str_replace(',', '.', $matches[9]) : 1.0;
 
             if ($adj < 0) {
-                JpGraphError::RaiseL(25077); //('Adjustment factor for color must be > 0');
+                Util\JpGraphError::RaiseL(25077); //('Adjustment factor for color must be > 0');
             }
 
             // Scale adj so that an adj=2 always
@@ -538,7 +540,7 @@ class RGB
 
             return $aColor;
         } else {
-            JpGraphError::RaiseL(25079, $aColor, count($aColor)); //(" Unknown color specification: $aColor , size=".count($aColor));
+            Util\JpGraphError::RaiseL(25079, $aColor, count($aColor)); //(" Unknown color specification: $aColor , size=".count($aColor));
         }
     }
 
@@ -562,7 +564,7 @@ class RGB
             $aAlpha = $a;
         }
         if ($aAlpha < 0 || $aAlpha > 1) {
-            JpGraphError::RaiseL(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
+            Util\JpGraphError::RaiseL(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
         }
         return imagecolorresolvealpha($this->img, $r, $g, $b, round($aAlpha * 127));
     }
