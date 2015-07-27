@@ -12,6 +12,14 @@ This is an unnoficial refactor of [JpGraph](http://jpgraph.net/) with thefollowi
 - If the chosen font isn't found, it falls back to existing fonts instead of crashing
 - If you try to use antialiasing functions not present in your current GD installation, it disables them instead of crashing
 
+## How to install
+
+Using composer
+
+```sh
+composer require amenadiel/jpgraph:^3.6
+```
+
 ## How to use
 
 See the [examples folder](https://github.com/amenadiel/jpgraph/tree/master/Examples) for working samples. The general concept is:
