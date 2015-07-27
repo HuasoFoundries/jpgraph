@@ -1,26 +1,12 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\Util;
-use \Amenadiel\JpGraph\Image\Footer;
-use \Amenadiel\JpGraph\Image\ImgStreamCache;
-use \Amenadiel\JpGraph\Image\RotImage;
-use \Amenadiel\JpGraph\Text\GraphTabTitle;
-use \Amenadiel\JpGraph\Text\Text;
+use \Amenadiel\JpGraph\Image;
+use \Amenadiel\JpGraph\Text;
+use \Amenadiel\JpGraph\Util;
 
-// Styles for gradient color fill
-define("GRAD_VER", 1);
-define("GRAD_VERT", 1);
-define("GRAD_HOR", 2);
-define("GRAD_MIDHOR", 3);
-define("GRAD_MIDVER", 4);
-define("GRAD_CENTER", 5);
-define("GRAD_WIDE_MIDVER", 6);
-define("GRAD_WIDE_MIDHOR", 7);
-define("GRAD_LEFT_REFLECTION", 8);
-define("GRAD_RIGHT_REFLECTION", 9);
-define("GRAD_RAISED_PANEL", 10);
-define("GRAD_DIAGONAL", 11);
+require_once dirname(__FILE__) . "/../includes/jpgraph.php";
+
 //===================================================
 // CLASS Graph
 // Description: Main class to handle graphs
@@ -130,31 +116,31 @@ class Graph
         // Should the image be streamed back to the browser or only to the cache?
         $this->inline = $aInline;
 
-        $this->img = new RotImage($aWidth, $aHeight);
-        $this->cache = new ImgStreamCache();
+        $this->img = new Image\RotImage($aWidth, $aHeight);
+        $this->cache = new Image\ImgStreamCache();
 
         // Window doesn't like '?' in the file name so replace it with an '_'
         $aCachedName = str_replace("?", "_", $aCachedName);
         $this->SetupCache($aCachedName, $aTimeout);
 
-        $this->title = new Text();
+        $this->title = new Text\Text();
         $this->title->ParagraphAlign('center');
         $this->title->SetFont(FF_DEFAULT, FS_NORMAL); //FF_FONT2, FS_BOLD
         $this->title->SetMargin(5);
         $this->title->SetAlign('center');
 
-        $this->subtitle = new Text();
+        $this->subtitle = new Text\Text();
         $this->subtitle->ParagraphAlign('center');
         $this->subtitle->SetMargin(3);
         $this->subtitle->SetAlign('center');
 
-        $this->subsubtitle = new Text();
+        $this->subsubtitle = new Text\Text();
         $this->subsubtitle->ParagraphAlign('center');
         $this->subsubtitle->SetMargin(3);
         $this->subsubtitle->SetAlign('center');
 
         $this->legend = new Legend();
-        $this->footer = new Footer();
+        $this->footer = new Image\Footer();
 
         // If the cached version exist just read it directly from the
         // cache, stream it back to browser and exit
@@ -166,7 +152,7 @@ class Graph
 
         $this->SetTickDensity(); // Normal density
 
-        $this->tabtitle = new GraphTabTitle();
+        $this->tabtitle = new Text\GraphTabTitle();
 
         if (!$this->isRunningClear) {
             $this->inputValues = array();
@@ -176,7 +162,8 @@ class Graph
             $this->inputValues['aTimeout'] = $aTimeout;
             $this->inputValues['aInline'] = $aInline;
 
-            $theme_class = DEFAULT_THEME_CLASS;
+            $theme_class = '\Amenadiel\JpGraph\Themes\\' . DEFAULT_THEME_CLASS;
+
             if (class_exists($theme_class)) {
                 $this->graph_theme = new $theme_class();
             }

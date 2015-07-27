@@ -4,9 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1154558e41cd55bdc39c6aa06a56c70c",
+    "hash": "1981b7b5bb0ef76473d880bc87a89d54",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "jpgraph/jpgraph",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ztec/JpGraph.git",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ztec/JpGraph/zipball/ad26df5941e847cf1255aecd2011ce16207304cf",
+                "reference": "ad26df5941e847cf1255aecd2011ce16207304cf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JpGraph": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "QPL 1.0"
+            ],
+            "authors": [
+                {
+                    "name": "JpGraph team"
+                }
+            ],
+            "description": "jpGraph, library to make graphs and charts",
+            "homepage": "http://jpgraph.net/",
+            "keywords": [
+                "chart",
+                "data",
+                "graph",
+                "jpgraph",
+                "pie"
+            ],
+            "time": "2013-05-23 14:04:00"
+        },
         {
             "name": "raveren/kint",
             "version": "1.0.6",
@@ -61,7 +101,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jpgraph/jpgraph": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

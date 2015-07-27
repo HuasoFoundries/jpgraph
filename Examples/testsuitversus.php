@@ -20,17 +20,19 @@ class TestDriver
 
     private $iType;
     private $iDir;
+    private $subFolders;
 
-    public function TestDriver($aType = 1, $aDir = '')
+    public function TestDriver($aType = 1, $subFolders = [])
     {
         $this->iType = $aType;
-        if ($aDir == '') {
-            $aDir = getcwd();
-        }
-        if (!chdir($aDir)) {
+
+        $basePath = getcwd();
+
+        if (!chdir($basePath)) {
             die("PANIC: Can't access directory : $aDir");
         }
-        $this->iDir = $aDir;
+        $this->iDir = $basePath;
+        $this->subFolders = $subFolders;
     }
 
     public function GetFiles()
@@ -38,8 +40,25 @@ class TestDriver
         $d = @dir($this->iDir);
         $a = array();
         while ($entry = $d->Read()) {
-            //echo $entry . ':' . (is_dir($entry) ? 'folder' : 'file') . '<br>';
-            if (is_dir($entry) && ($entry == "examples_pie")) {
+            if (strstr($entry, ".php") && strstr($entry, "x") && !strstr($entry, "show") && !strstr($entry, "csim")) {
+                $a[] = $entry;
+            }
+        }
+        $d->Close();
+        if (count($a) == 0) {
+            die("PANIC: Apache/PHP does not have enough permission to read the scripts in directory: $this->iDir");
+        }
+        sort($a);
+        return $a;
+    }
+
+    public function GetFilespath($path)
+    {
+        $d = @dir($this->iDir);
+        $a = array();
+
+        while ($entry = $d->Read()) {
+            if (is_dir($entry) && $entry == $path) {
                 $examplefolder = @dir($entry);
                 while ($file = $examplefolder->Read()) {
                     if (strstr($file, ".php") && strstr($file, "x") && !strstr($file, "show") && !strstr($file, "csim")) {
@@ -78,7 +97,8 @@ class TestDriver
     {
         switch ($this->iType) {
             case 1:
-                $files = $this->GetFiles();
+                $files = $this->GetFilespath($this->subFolders[0]);
+                $files2 = $this->GetFilespath($this->subFolders[1]);
                 break;
             case 2:
                 $files = $this->GetCSIMFiles();
@@ -87,15 +107,43 @@ class TestDriver
                 die('Panic: Unknown type of test');
                 break;
         }
+
         $n = count($files);
         echo "<h2>Visual test suit for JpGraph</h2>";
         echo "Testtype: " . ($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
         echo "<br>Number of tests: $n<p>";
         echo "<ol>";
 
-        for ($i = 0; $i < $n; ++$i) {
+        foreach ($files as $i => $file) {
             if ($this->iType == 1) {
-                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target=' . urlencode($files[$i]) . '"><img src="' . $files[$i] . '" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . "</a></i>\n";
+                echo '<li style="border:1px solid #CCC;padding:10px;">';
+
+                echo '<table>';
+                echo '<tr>';
+                echo '<td>';
+                echo '<a href="show-example.php?target=' . urlencode($files[$i]) . '">';
+                echo '<img src="' . $files[$i] . '" border=0 align=top>';
+                echo '</a>';
+                echo '</td>';
+                echo '<td>';
+                echo '<a href="show-example.php?target=' . urlencode($files2[$i]) . '">';
+                echo '<img src="' . $files2[$i] . '" border=0 align=top>';
+                echo '</a>';
+                echo '</td>';
+                echo '</tr>';
+
+                echo '<tr>';
+                echo '<td>';
+                echo '<strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . "</a>";
+                echo '</td>';
+                echo '<td>';
+                echo '<strong>Filename:</strong> <i><a href="' . $files2[$i] . '">' . basename($files2[$i]) . "</a>";
+                echo '</td>';
+                echo '</tr>';
+                echo '</table>';
+
+                echo "</i>\n";
+
             } else {
                 echo '<li><a href="show-example.php?target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
             }
@@ -111,5 +159,16 @@ if (empty($type)) {
     $type = 1;
 }
 
-$driver = new TestDriver($type);
+echo '<div style="float:left">';
+
+$driver = new TestDriver($type, ['examples_pie', 'examples_pie_jpgraph']);
 $driver->Run();
+echo '</div>';
+
+/*
+echo '<div style="float:left">';
+
+$driver2 = new TestDriver($type, 'examples_pie_jpgraph');
+$driver2->Run();
+
+echo '</div>';*/

@@ -11,15 +11,45 @@ ini_set("display_errors", 1);
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
 
-/*require_once 'includes/jpg-config.inc.php';
-require_once 'jpgraph_gradient.php';
-require_once 'jpgraph_errhandler.inc.php';
+require_once 'jpg-config.inc.php';
+//require_once('jpgraph_gradient.php'); *
+//require_once('jpgraph_errhandler.inc.php');*
 require_once 'jpgraph_ttf.inc.php';
-require_once 'jpgraph_rgb.inc.php';
-require_once 'jpgraph_text.inc.php';
-require_once 'jpgraph_legend.inc.php';
-require_once 'jpgraph_theme.inc.php';
-require_once 'gd_image.inc.php';*/
+//require_once('jpgraph_rgb.inc.php');*
+//require_once('jpgraph_text.inc.php');*
+//require_once('jpgraph_legend.inc.php');*
+//require_once('jpgraph_theme.inc.php');*
+//require_once('gd_image.inc.php');*
+
+// Line styles
+define('LINESTYLE_SOLID', 1);
+define('LINESTYLE_DOTTED', 2);
+define('LINESTYLE_DASHED', 3);
+define('LINESTYLE_LONGDASH', 4);
+
+// The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
+// PNG, JPG or GIF depending on what is installed on the target system
+// in that order.
+if (!DEFINED("DEFAULT_GFORMAT")) {
+    define("DEFAULT_GFORMAT", "auto");
+}
+
+require_once 'imageSmoothArc.php';
+
+// Styles for gradient color fill
+define("GRAD_VER", 1);
+define("GRAD_VERT", 1);
+define("GRAD_HOR", 2);
+define("GRAD_MIDHOR", 3);
+define("GRAD_MIDVER", 4);
+define("GRAD_CENTER", 5);
+define("GRAD_WIDE_MIDVER", 6);
+define("GRAD_WIDE_MIDHOR", 7);
+define("GRAD_LEFT_REFLECTION", 8);
+define("GRAD_RIGHT_REFLECTION", 9);
+define("GRAD_RAISED_PANEL", 10);
+define("GRAD_DIAGONAL", 11);
+DEFINE('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 // Version info
 define('JPG_VERSION', '3.5.0b1');
