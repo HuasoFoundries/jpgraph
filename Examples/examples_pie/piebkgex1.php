@@ -14,6 +14,7 @@ $titles = array('USA', 'Sweden', 'South America', 'Australia');
 
 $n = count($piepos) / 2;
 
+define('DEFAULT_THEME_CLASS', 'NoTheme');
 // A new Graph\Graph
 $graph = new Graph\PieGraph(550, 400, 'auto');
 
