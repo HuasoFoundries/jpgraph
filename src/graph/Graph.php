@@ -2,9 +2,9 @@
 namespace Amenadiel\JpGraph\Graph;
 
 use \Amenadiel\JpGraph\Image;
+use \Amenadiel\JpGraph\Plot;
 use \Amenadiel\JpGraph\Text;
 use \Amenadiel\JpGraph\Util;
-use \Amenadiel\JpGraph\Gradient;
 
 require_once dirname(__FILE__) . "/../includes/jpgraph.php";
 
@@ -1791,7 +1791,7 @@ class Graph
                     //Util\JpGraphError::Raise('In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.');
                 }
 
-                $tform = new ImgTrans($this->img->img);
+                $tform = new Image\ImgTrans($this->img->img);
                 $this->img->img = $tform->Skew3D($this->iImgTransHorizon, $this->iImgTransSkewDist,
                     $this->iImgTransDirection, $this->iImgTransHighQ,
                     $this->iImgTransMinSize, $this->iImgTransFillColor,
@@ -2048,7 +2048,7 @@ class Graph
             return;
         }
 
-        $grad = new Gradient($this->img);
+        $grad = new Plot\Gradient($this->img);
         $xl = $this->img->left_margin;
         $yt = $this->img->top_margin;
         $xr = $xl + $this->img->plotwidth + 1;
@@ -2063,7 +2063,7 @@ class Graph
             return;
         }
 
-        $grad = new Gradient($this->img);
+        $grad = new Plot\Gradient($this->img);
         if ($this->bkg_gradstyle == BGRAD_PLOT) {
             $xl = $this->img->left_margin;
             $yt = $this->img->top_margin;
@@ -2102,7 +2102,7 @@ class Graph
             if (!class_exists('FlagImages', false)) {
                 Util\JpGraphError::RaiseL(25041); //('In order to use Country flags as backgrounds you must include the "jpgraph_flags.php" file.');
             }
-            $fobj = new FlagImages(FLAGSIZE4);
+            $fobj = new Images\FlagImages(FLAGSIZE4);
             $dummy = '';
             $bkgimg = $fobj->GetImgByName($this->background_cflag, $dummy);
             $this->background_image_mix = $this->background_cflag_mix;
