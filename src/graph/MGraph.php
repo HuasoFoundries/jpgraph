@@ -1,7 +1,9 @@
 <?php
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\Util;
+use \Amenadiel\JpGraph\Image;
+use \Amenadiel\JpGraph\Text;
+use \Amenadiel\JpGraph\Util;
 
 /*=======================================================================
 // File:        JPGRAPH_MGRAPH.PHP
@@ -47,7 +49,7 @@ class MGraph
         // If the cached version exist just read it directly from the
         // cache, stream it back to browser and exit
         if ($aCachedName != '' && READ_CACHE && $aInline) {
-            $this->cache = new ImgStreamCache();
+            $this->cache = new Image\ImgStreamCache();
             $this->cache->SetTimeOut($aTimeOut);
             $image = new Image\Image();
             if ($this->cache->GetAndStream($image, $aCachedName)) {
@@ -57,25 +59,25 @@ class MGraph
         $this->inline = $aInline;
         $this->cache_name = $aCachedName;
 
-        $this->title = new Text();
+        $this->title = new Text\Text();
         $this->title->ParagraphAlign('center');
         $this->title->SetFont(FF_FONT2, FS_BOLD);
         $this->title->SetMargin(3);
         $this->title->SetAlign('center');
 
-        $this->subtitle = new Text();
+        $this->subtitle = new Text\Text();
         $this->subtitle->ParagraphAlign('center');
         $this->subtitle->SetFont(FF_FONT1, FS_BOLD);
         $this->subtitle->SetMargin(3);
         $this->subtitle->SetAlign('center');
 
-        $this->subsubtitle = new Text();
+        $this->subsubtitle = new Text\Text();
         $this->subsubtitle->ParagraphAlign('center');
         $this->subsubtitle->SetFont(FF_FONT1, FS_NORMAL);
         $this->subsubtitle->SetMargin(3);
         $this->subsubtitle->SetAlign('center');
 
-        $this->footer = new Footer();
+        $this->footer = new Image\Footer();
 
     }
 
@@ -351,7 +353,7 @@ class MGraph
             return $image->img;
         } else {
             //Finally stream the generated picture
-            $this->cache = new ImgStreamCache();
+            $this->cache = new Image\ImgStreamCache();
             $this->cache->PutAndStream($image, $this->cache_name, $this->inline, $aFileName);
         }
     }
