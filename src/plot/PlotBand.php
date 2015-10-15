@@ -1,4 +1,9 @@
 <?php
+namespace Amenadiel\JpGraph\Plot;
+
+use Amenadiel\JpGraph\Graph\RectPatternFactory;
+use Amenadiel\JpGraph\Util;
+
 //=======================================================================
 // File:        JPGRAPH_PLOTBAND.PHP
 // Description: PHP4 Graph Plotting library. Extension module.
