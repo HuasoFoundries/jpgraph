@@ -4,6 +4,7 @@ namespace Amenadiel\JpGraph\Graph;
 use \Amenadiel\JpGraph\Image;
 use \Amenadiel\JpGraph\Text;
 use \Amenadiel\JpGraph\Util;
+use \Amenadiel\JpGraph\Gradient;
 
 require_once dirname(__FILE__) . "/../includes/jpgraph.php";
 

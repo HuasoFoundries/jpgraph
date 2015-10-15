@@ -1,6 +1,8 @@
 <?php
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 /*=======================================================================
 // File:           JPGRAPH_LINE.PHP
 // Description: Line plot extension for JpGraph
@@ -36,11 +38,11 @@ class LinePlot extends Plot
 
     //---------------
     // CONSTRUCTOR
-    public function LinePlot($datay, $datax = false)
+    public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
-        $this->color = ColorFactory::getColor();
+        $this->color = Util\ColorFactory::getColor();
         $this->fill_color = $this->color;
     }
 
