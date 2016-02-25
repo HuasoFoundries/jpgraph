@@ -5,6 +5,7 @@ namespace Amenadiel\JpGraph\Image;
 use \Amenadiel\JpGraph\Text\LanguageConv;
 use \Amenadiel\JpGraph\Text\TTF;
 use \Amenadiel\JpGraph\Util;
+use \Amenadiel\JpGraph\Util\ErrMsgText;
 
 //=======================================================================
 // File:        GD_IMAGE.INC.PHP
