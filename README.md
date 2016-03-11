@@ -1,4 +1,6 @@
-## JPGRAPH 3.6.0
+## JPGRAPH 3.6.6, Community Edition
+
+[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph)
 
 This is an unnoficial refactor of [JpGraph](http://jpgraph.net/) with thefollowing differences:
 - the app was fully refactored adding namespaces, proper folder hierarchy, separating each class in its own file and stripping the use of `require` and `include` to the bare minimum
