@@ -2,7 +2,7 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.5",
+    "version": "3.6.6",
     "keywords": [
         "graph",
         "chart",
