@@ -1,0 +1,43 @@
+engines:
+  eslint:
+    enabled: true
+
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - FIXME
+      - BUG
+      - TODO
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "PSR1,PSR2"
+  csslint:
+    enabled: true
+
+  phpmd:
+    enabled: true
+    config:
+      file_extensions: "php"
+      rulesets: "unusedcode,codesize,naming,design,cleancode"
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
+      - javascript
+ratings:
+  paths:
+  - "app/**.php"
+  - "public/js/**.js"
+
+exclude_paths:
+  - tests/
+  - vendor/
+  - temp/
+  - public/assets/
+  - public/img/
+  - public/font/
+  - public/apps/
+  - public/dist/
