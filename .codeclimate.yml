@@ -1,7 +1,4 @@
 engines:
-  eslint:
-    enabled: true
-
   fixme:
     enabled: true
     config:
@@ -13,9 +10,6 @@ engines:
     enabled: true
     config:
       standard: "PSR1,PSR2"
-  csslint:
-    enabled: true
-
   phpmd:
     enabled: true
     config:
@@ -29,15 +23,6 @@ engines:
       - javascript
 ratings:
   paths:
-  - "app/**.php"
-  - "public/js/**.js"
-
+  - "src/**.php"
 exclude_paths:
-  - tests/
-  - vendor/
-  - temp/
-  - public/assets/
-  - public/img/
-  - public/font/
-  - public/apps/
-  - public/dist/
+  - Examples/
