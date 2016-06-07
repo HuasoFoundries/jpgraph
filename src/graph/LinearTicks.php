@@ -273,7 +273,9 @@ class LinearTicks extends Ticks
                 }
             }
         } else {
-            $l = sprintf('%01.' . $precision . 'f', round($aVal, $precision));
+            //FIX: if negative precision  is returned "0f" , instead of formatted values
+            $format = $precision>0?'%01.' . $precision . 'f':'%01.0f';
+            $l =  sprintf($format, round($aVal, $precision));
         }
 
         if (($this->supress_zerolabel && $l == 0) || ($this->supress_first && $aIdx == 0) || ($this->supress_last && $aIdx == $aNbrTicks - 1)) {
