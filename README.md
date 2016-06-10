@@ -1,10 +1,11 @@
-## JPGRAPH 3.6.6, Community Edition
+## JPGRAPH 3.6.7, Community Edition
 
 [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph)
 [![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph)
 
 This is an unnoficial refactor of [JpGraph](http://jpgraph.net/) with thefollowing differences:
 - the app was fully refactored adding namespaces, proper folder hierarchy, separating each class in its own file and stripping the use of `require` and `include` to the bare minimum
+- dropping support for PHP < 5.4. 
 - it provides full composer compatibility
 - it has PSR-4 autoloading
 - it makes requirement checks so you can't go wrong
@@ -25,7 +26,9 @@ composer require amenadiel/jpgraph:^3.6
 
 ## How to use
 
-See the [examples folder](https://github.com/amenadiel/jpgraph/tree/master/Examples) for working samples. The general concept is:
+See the [examples folder](https://github.com/amenadiel/jpgraph/tree/master/Examples) for working samples. 
+
+The examples work the same way you should use this library:
 
    - run `composer install`
 
@@ -50,6 +53,17 @@ See the [examples folder](https://github.com/amenadiel/jpgraph/tree/master/Examp
    $graph->Add($p1);
    $graph->Stroke();
    ```
+
+See the examples working by performing the following steps:
+
+ - `composer install`
+ - `php -S localhost:8000`
+ - Open your browser at http://localhost:8000/Examples/index.html
+
+
+
+
+
 
 ### Wishlist
 
