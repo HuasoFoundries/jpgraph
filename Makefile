@@ -19,7 +19,7 @@ test:
 update_version:
 	@echo "Current version is " ${VERSION}
 	@echo "Next version is " $(v)
-	sed -i s/"$(VERSION)"/"$(v)"/g composer.json
+	sed -i s/'"$(VERSION)"'/'"$(v)"'/ composer.json
 
 tag_and_push:
 		git add --all
