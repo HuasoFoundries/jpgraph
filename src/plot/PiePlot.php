@@ -3,6 +3,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 /*=======================================================================
 // File:        JPGRAPH_PIE.PHP
