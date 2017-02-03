@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 //=======================================================================
 // File:        JPGRAPH.PHP
 // Description: PHP Graph Plotting library. Base module.
