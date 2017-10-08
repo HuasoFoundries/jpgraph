@@ -50,9 +50,11 @@ define('SECPERMIN', 60);
 
 class DateScale extends LinearScale
 {
-    private $date_format = '';
-    private $iStartAlign = false, $iEndAlign = false;
-    private $iStartTimeAlign = false, $iEndTimeAlign = false;
+    private $date_format     = '';
+    private $iStartAlign     = false;
+    private $iEndAlign     = false;
+    private $iStartTimeAlign = false;
+    private $iEndTimeAlign = false;
 
     //---------------
     // CONSTRUCTOR
@@ -61,11 +63,11 @@ class DateScale extends LinearScale
         assert($aType == "x");
         assert($aMin <= $aMax);
 
-        $this->type = $aType;
-        $this->scale = [$aMin, $aMax];
+        $this->type       = $aType;
+        $this->scale      = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
-        $this->ticks = new LinearTicks();
-        $this->intscale = true;
+        $this->ticks      = new LinearTicks();
+        $this->intscale   = true;
     }
 
     //------------------------------------------------------------------------------------------
@@ -120,7 +122,6 @@ class DateScale extends LinearScale
                     } else {
                         --$w;
                     }
-
                 }
                 if ($aRound == 0) {
                     $d -= $w;
@@ -133,7 +134,6 @@ class DateScale extends LinearScale
             }
         }
         return mktime($h, $i, $s, $m, $d, $y);
-
     }
 
     //------------------------------------------------------------------------------------------
@@ -335,12 +335,12 @@ class DateScale extends LinearScale
         }
 
         $done = false;
-        $i = 0;
+        $i    = 0;
         while (!$done) {
             if ($diff > $scalePoints[2 * $i]) {
                 // Get major and minor scale for this intervall
                 $scaleSteps = $scalePoints[2 * $i + 1];
-                $major = $scaleSteps[0][min($aDensity, count($scaleSteps[0]) - 1)];
+                $major      = $scaleSteps[0][min($aDensity, count($scaleSteps[0]) - 1)];
                 // Try to find out which minor step looks best
                 $minor = $scaleSteps[1][min($aDensity, count($scaleSteps[1]) - 1)];
                 if ($aAdjust) {
@@ -351,13 +351,13 @@ class DateScale extends LinearScale
                         $adj = $scaleSteps[2][$idx + 1];
                         if ($adj >= 30) {
                             $start = $this->AdjStartDate($aStartTime, $adj - 30);
-                            $end = $this->AdjEndDate($aEndTime, $adj - 30);
+                            $end   = $this->AdjEndDate($aEndTime, $adj - 30);
                         } elseif ($adj >= 20) {
                             $start = $this->AdjStartDate($aStartTime, false, $adj - 20);
-                            $end = $this->AdjEndDate($aEndTime, false, $adj - 20);
+                            $end   = $this->AdjEndDate($aEndTime, false, $adj - 20);
                         } else {
                             $start = $this->AdjStartDate($aStartTime, false, false, $adj);
-                            $end = $this->AdjEndDate($aEndTime, false, false, $adj);
+                            $end   = $this->AdjEndDate($aEndTime, false, false, $adj);
                             // We add 1 second for date adjustment to make sure we end on 00:00 the following day
                             // This makes the final major tick be srawn when we step day-by-day instead of ending
                             // on xx:59:59 which would not draw the final major tick
@@ -368,13 +368,13 @@ class DateScale extends LinearScale
                         $adj = $scaleSteps[2][$idx + 1];
                         if ($adj >= 30) {
                             $start = $this->AdjStartTime($aStartTime, $adj - 30);
-                            $end = $this->AdjEndTime($aEndTime, $adj - 30);
+                            $end   = $this->AdjEndTime($aEndTime, $adj - 30);
                         } elseif ($adj >= 20) {
                             $start = $this->AdjStartTime($aStartTime, false, $adj - 20);
-                            $end = $this->AdjEndTime($aEndTime, false, $adj - 20);
+                            $end   = $this->AdjEndTime($aEndTime, false, $adj - 20);
                         } else {
                             $start = $this->AdjStartTime($aStartTime, false, false, $adj);
-                            $end = $this->AdjEndTime($aEndTime, false, false, $adj);
+                            $end   = $this->AdjEndTime($aEndTime, false, false, $adj);
                         }
                     }
                 }
@@ -416,7 +416,7 @@ class DateScale extends LinearScale
             $aEndAlign = $aStartAlign;
         }
         $this->iStartAlign = $aStartAlign;
-        $this->iEndAlign = $aEndAlign;
+        $this->iEndAlign   = $aEndAlign;
     }
 
     public function SetTimeAlign($aStartAlign, $aEndAlign = false)
@@ -425,7 +425,7 @@ class DateScale extends LinearScale
             $aEndAlign = $aStartAlign;
         }
         $this->iStartTimeAlign = $aStartAlign;
-        $this->iEndTimeAlign = $aEndAlign;
+        $this->iEndTimeAlign   = $aEndAlign;
     }
 
     public function AutoScale($img, $aStartTime, $aEndTime, $aNumSteps, $_adummy = false)
@@ -439,10 +439,10 @@ class DateScale extends LinearScale
             $aEndTime += 10;
         }
         $done = false;
-        $i = 0;
+        $i    = 0;
         while (!$done && $i < 5) {
             list($adjstart, $adjend, $maj, $min, $format) = $this->DoDateAutoScale($aStartTime, $aEndTime, $i);
-            $n = floor(($adjend - $adjstart) / $maj);
+            $n                                            = floor(($adjend - $adjstart) / $maj);
             if ($n * 1.7 > $aNumSteps) {
                 $done = true;
             }
@@ -513,6 +513,5 @@ class DateScale extends LinearScale
         } else {
             $this->ticks->SetLabelDateFormat($this->date_format);
         }
-
     }
 }
