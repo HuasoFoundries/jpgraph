@@ -6,10 +6,10 @@ namespace Amenadiel\JpGraph\Themes;
  */
 class UniversalTheme extends Theme
 {
-    private $font_color = '#444444';
+    private $font_color       = '#444444';
     private $background_color = '#F4F4F4';
-    private $axis_color = '#888888';
-    private $grid_color = '#E3E3E3';
+    private $axis_color       = '#888888';
+    private $grid_color       = '#E3E3E3';
 
     public function GetColorList()
     {
@@ -115,7 +115,7 @@ class UniversalTheme extends Theme
     public function PreStrokeApply($graph)
     {
         if ($graph->legend->HasItems()) {
-            $img = $graph->img;
+            $img    = $graph->img;
             $height = $img->height;
             $graph->SetMargin(
                 $img->raw_left_margin,
@@ -128,7 +128,6 @@ class UniversalTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
