@@ -9,7 +9,7 @@ class PolarScale extends LinearScale
     public function __construct($aMax, $graph, $aClockwise)
     {
         parent::__construct(0, $aMax, 'x');
-        $this->graph = $graph;
+        $this->graph     = $graph;
         $this->clockwise = $aClockwise;
     }
 
@@ -25,9 +25,8 @@ class PolarScale extends LinearScale
 
     public function PTranslate($aAngle, $aRad)
     {
-
-        $m = $this->scale[1];
-        $w = $this->graph->img->plotwidth / 2;
+        $m    = $this->scale[1];
+        $w    = $this->graph->img->plotwidth / 2;
         $aRad = $aRad / $m * $w;
 
         $a = $aAngle / 180 * M_PI;
