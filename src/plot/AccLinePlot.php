@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -7,8 +8,10 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class AccLinePlot extends Plot
 {
-    protected $plots = null, $nbrplots = 0;
+    protected $plots = null;
+    protected $nbrplots = 0;
     private $iStartEndZero = true;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($plots)
@@ -47,7 +50,7 @@ class AccLinePlot extends Plot
             $nc = count($this->plots[$i]->coords[0]);
             $nmax = max($nmax, $nc);
             list($x) = $this->plots[$i]->Max();
-            $xmax = Max($xmax, $x);
+            $xmax = max($xmax, $x);
         }
         for ($i = 0; $i < $nmax; $i++) {
             // Get y-value for line $i by adding the
@@ -62,7 +65,8 @@ class AccLinePlot extends Plot
             $ymax[$i] = $y;
         }
         $ymax = max($ymax);
-        return array($xmax, $ymax);
+
+        return [$xmax, $ymax];
     }
 
     public function Min()
@@ -74,8 +78,8 @@ class AccLinePlot extends Plot
             $nc = count($this->plots[$i]->coords[0]);
             $nmax = max($nmax, $nc);
             list($x, $y) = $this->plots[$i]->Min();
-            $xmin = Min($xmin, $x);
-            $ysetmin = Min($y, $ysetmin);
+            $xmin = min($xmin, $x);
+            $ysetmin = min($y, $ysetmin);
         }
         for ($i = 0; $i < $nmax; $i++) {
             // Get y-value for line $i by adding the
@@ -89,8 +93,9 @@ class AccLinePlot extends Plot
             }
             $ymin[$i] = $y;
         }
-        $ymin = Min($ysetmin, Min($ymin));
-        return array($xmin, $ymin);
+        $ymin = min($ysetmin, min($ymin));
+
+        return [$xmin, $ymin];
     }
 
     // Gets called before any axis are stroked
@@ -116,7 +121,6 @@ class AccLinePlot extends Plot
             $graph->SetTextScaleOff($b);
             $graph->xaxis->scale->ticks->SupressMinorTickMarks();
         }
-
     }
 
     public function SetInterpolateMode($aIntMode)
@@ -129,7 +133,6 @@ class AccLinePlot extends Plot
     // will be replaced by the the first valid data point
     public function LineInterpolate(&$aData)
     {
-
         $n = count($aData);
         $i = 0;
 
@@ -147,7 +150,6 @@ class AccLinePlot extends Plot
                     } else {
                         $aData[$j] = $aData[$i];
                     }
-
                 }
             } else {
                 // All '-' => Error
@@ -185,10 +187,10 @@ class AccLinePlot extends Plot
                             $aData[$j] = $aData[$pstart];
                         }
                     }
-
                 }
             }
         }
+
         return true;
     }
 

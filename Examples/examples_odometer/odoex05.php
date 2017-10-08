@@ -1,10 +1,11 @@
 <?php
+
 //=============================================================================
 // File:	ODOEX05.PHP
 // Description: Example 1 for odometer graphs
 // Created:	2002-02-22
 // Version:	$Id$
-// 
+//
 // Comment:
 // Example file for odometer graph. This examples extends odoex04
 // by 1) changing color of odometer canvas 2) Adding a second indicator
@@ -13,52 +14,52 @@
 //
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
-require_once ('jpgraph/jpgraph.php');
-require_once ('jpgraph/jpgraph_odo.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=250, height=200 pixels)
 //---------------------------------------------------------------------
-$graph = new OdoGraph(250,200);
+$graph = new OdoGraph(250, 200);
 
 //---------------------------------------------------------------------
 // Change the color of the odometer plotcanvas. NOT the odometer
 // fill color itself.
 //---------------------------------------------------------------------
-$graph->SetColor("lightyellow");
+$graph->SetColor('lightyellow');
 
 //---------------------------------------------------------------------
 // Specify title and subtitle using default fonts
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
 //---------------------------------------------------------------------
-$graph->title->Set("Odometer title");
-$graph->title->SetColor("white");
-$graph->subtitle->Set("2002-02-13");
-$graph->subtitle->SetColor("white");
+$graph->title->Set('Odometer title');
+$graph->title->SetColor('white');
+$graph->subtitle->Set('2002-02-13');
+$graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------
 // Specify caption.
 // * (This is the text at the bottom of the graph.) The margins will
 // automatically adjust to fit the height of the text. A caption
-// may have multiple lines by including a '\n' character in the 
+// may have multiple lines by including a '\n' character in the
 // string.
 //---------------------------------------------------------------------
 $graph->caption->Set("First caption row\n... second row");
-$graph->caption->SetColor("white");
+$graph->caption->SetColor('white');
 
 //---------------------------------------------------------------------
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
 //---------------------------------------------------------------------
-$odo = new Odometer(); 
+$odo = new Odometer();
 
 //---------------------------------------------------------------------
-// Set color indication 
+// Set color indication
 //---------------------------------------------------------------------
-$odo->AddIndication(0,50,"green");
-$odo->AddIndication(50,80,"yellow");
-$odo->AddIndication(80,100,"red");
+$odo->AddIndication(0, 50, 'green');
+$odo->AddIndication(50, 80, 'yellow');
+$odo->AddIndication(80, 100, 'red');
 
 //---------------------------------------------------------------------
 // Set the center area that will not be affected by the color bands
@@ -69,7 +70,7 @@ $odo->SetCenterAreaWidth(0.4);  // Fraction of radius
 // Adjust scale ticks to be shown at 10 steps interval and scale
 // labels at every second tick
 //---------------------------------------------------------------------
-$odo->scale->SetTicks(10,2);
+$odo->scale->SetTicks(10, 2);
 
 //---------------------------------------------------------------------
 // Make the tick marks 2 pixel wide
@@ -88,16 +89,16 @@ $odo->needle->Set(78);
 
 //---------------------------------------------------------------------
 // Specify scale caption. Note that depending on the position of the
-// indicator needle this label might be partially hidden. 
+// indicator needle this label might be partially hidden.
 //---------------------------------------------------------------------
-$odo->label->Set("% Passed");
+$odo->label->Set('% Passed');
 
 //---------------------------------------------------------------------
 // Set a new style for the needle
 //---------------------------------------------------------------------
 $odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
 $odo->needle->SetLength(0.7);  // Length as 70% of the radius
-$odo->needle->SetFillColor("orange");
+$odo->needle->SetFillColor('orange');
 
 //---------------------------------------------------------------------
 // Setup the second indicator needle
@@ -105,9 +106,8 @@ $odo->needle->SetFillColor("orange");
 $odo->needle2->Set(24);
 $odo->needle2->SetStyle(NEEDLE_STYLE_SMALL_TRIANGLE);
 $odo->needle2->SetLength(0.55);  // Length as 70% of the radius
-$odo->needle2->SetFillColor("lightgray");
-$odo->needle2->Show();  
-
+$odo->needle2->SetFillColor('lightgray');
+$odo->needle2->Show();
 
 //---------------------------------------------------------------------
 // Add the odometer to the graph
@@ -120,4 +120,3 @@ $graph->Add($odo);
 $graph->Stroke();
 
 // EOF
-?>

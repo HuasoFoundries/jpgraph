@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_line.php';
 
@@ -14,7 +16,6 @@ for ($i = 0; $i < 480; ++$i) {
     } else {
         $months[$i] = 'xx';
     }
-
 }
 
 // new Graph\Graph with a drop shadow

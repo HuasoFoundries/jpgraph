@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -12,8 +13,10 @@ class Progress
 {
     public $iProgress = -1;
     public $iPattern = GANTT_SOLID;
-    public $iColor = "black", $iFillColor = 'black';
-    public $iDensity = 98, $iHeight = 0.65;
+    public $iColor = 'black';
+    public $iFillColor = 'black';
+    public $iDensity = 98;
+    public $iHeight = 0.65;
 
     public function Set($aProg)
     {
@@ -24,7 +27,7 @@ class Progress
         $this->iProgress = $aProg;
     }
 
-    public function SetPattern($aPattern, $aColor = "blue", $aDensity = 98)
+    public function SetPattern($aPattern, $aColor = 'blue', $aDensity = 98)
     {
         $this->iPattern = $aPattern;
         $this->iColor = $aColor;

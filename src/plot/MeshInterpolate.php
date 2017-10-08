@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -12,7 +13,8 @@ namespace Amenadiel\JpGraph\Plot;
  */
 
 /**
- * Utility function to do linear mesh interpolation
+ * Utility function to do linear mesh interpolation.
+ *
  * @param $aDat Matrix to interpolate
  * @param $aFactor Interpolation factor
  */
@@ -23,17 +25,16 @@ function doMeshInterpolate(&$aData, $aFactor)
 }
 
 /**
- * Utility class to interpolate a given data matrix
- *
+ * Utility class to interpolate a given data matrix.
  */
 class MeshInterpolate
 {
-    private $data = array();
+    private $data = [];
 
     /**
      * Calculate the mid points of the given rectangle which has its top left
      * corner at $row,$col. The $aFactordecides how many spliots should be done.
-     * i.e. how many more divisions should be done recursively
+     * i.e. how many more divisions should be done recursively.
      *
      * @param $row Top left corner of square to work with
      * @param $col Top left corner of square to work with
@@ -73,6 +74,7 @@ class MeshInterpolate
      *
      * @param  $ &$aData The original data matricde
      * @param  $aInNbr Interpolation factor
+     *
      * @return the interpolated matrice
      */
     public function Linear(&$aData, $aIntFactor)

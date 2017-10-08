@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -63,7 +64,6 @@ class ErrorPlot extends Plot
             else {
                 $exist_x = true;
             }
-
         } else {
             $exist_x = false;
         }
@@ -87,6 +87,7 @@ class ErrorPlot extends Plot
             $img->Line($xt - $this->errwidth, $yt1, $xt + $this->errwidth, $yt1);
             $img->Line($xt - $this->errwidth, $yt2, $xt + $this->errwidth, $yt2);
         }
+
         return true;
     }
 } // Class

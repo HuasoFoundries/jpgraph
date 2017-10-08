@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
@@ -19,14 +20,25 @@ use Amenadiel\JpGraph\Text;
 
 class PlotMark
 {
-    public $title, $show = true;
-    public $type, $weight = 1;
-    public $iFormatCallback = "", $iFormatCallback2 = "";
-    public $fill_color = "blue";
-    public $color = "black", $width = 4;
-    private $yvalue, $xvalue = '', $csimtarget, $csimwintarget = '', $csimalt, $csimareas;
-    private $markimg = '', $iScale = 1.0;
-    private $oldfilename = '', $iFileName = '';
+    public $title;
+    public $show = true;
+    public $type;
+    public $weight = 1;
+    public $iFormatCallback = '';
+    public $iFormatCallback2 = '';
+    public $fill_color = 'blue';
+    public $color = 'black';
+    public $width = 4;
+    private $yvalue;
+    private $xvalue = '';
+    private $csimtarget;
+    private $csimwintarget = '';
+    private $csimalt;
+    private $csimareas;
+    private $markimg = '';
+    private $iScale = 1.0;
+    private $oldfilename = '';
+    private $iFileName = '';
     private $imgdata_balls = null;
     private $imgdata_diamonds = null;
     private $imgdata_squares = null;
@@ -148,17 +160,17 @@ class PlotMark
 
     public function AddCSIMPoly($aPts)
     {
-        $coords = round($aPts[0]) . ", " . round($aPts[1]);
+        $coords = round($aPts[0]).', '.round($aPts[1]);
         $n = count($aPts) / 2;
         for ($i = 1; $i < $n; ++$i) {
-            $coords .= ", " . round($aPts[2 * $i]) . ", " . round($aPts[2 * $i + 1]);
+            $coords .= ', '.round($aPts[2 * $i]).', '.round($aPts[2 * $i + 1]);
         }
-        $this->csimareas = "";
+        $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"" . htmlentities($this->csimtarget) . "\"";
+            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"".htmlentities($this->csimtarget).'"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= " target=\"" . $this->csimwintarget . "\" ";
+                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -174,12 +186,12 @@ class PlotMark
         $x = round($x);
         $y = round($y);
         $r = round($r);
-        $this->csimareas = "";
+        $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"circle\" coords=\"$x,$y,$r\" href=\"" . htmlentities($this->csimtarget) . "\"";
+            $this->csimareas .= "<area shape=\"circle\" coords=\"$x,$y,$r\" href=\"".htmlentities($this->csimtarget).'"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= " target=\"" . $this->csimwintarget . "\" ";
+                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -197,7 +209,6 @@ class PlotMark
         }
 
         if ($this->iFormatCallback != '' || $this->iFormatCallback2 != '') {
-
             if ($this->iFormatCallback != '') {
                 $f = $this->iFormatCallback;
                 list($width, $color, $fcolor) = call_user_func($f, $this->yvalue);
@@ -206,28 +217,26 @@ class PlotMark
             } else {
                 $f = $this->iFormatCallback2;
                 list($width, $color, $fcolor, $filename, $imgscale) = call_user_func($f, $this->yvalue, $this->xvalue);
-                if ($filename == "") {
+                if ($filename == '') {
                     $filename = $this->iFileName;
                 }
 
-                if ($imgscale == "") {
+                if ($imgscale == '') {
                     $imgscale = $this->iScale;
                 }
-
             }
 
-            if ($width == "") {
+            if ($width == '') {
                 $width = $this->width;
             }
 
-            if ($color == "") {
+            if ($color == '') {
                 $color = $this->color;
             }
 
-            if ($fcolor == "") {
+            if ($fcolor == '') {
                 $fcolor = $this->fill_color;
             }
-
         } else {
             $fcolor = $this->fill_color;
             $color = $this->color;
@@ -332,12 +341,12 @@ class PlotMark
 
             $img->Copy($this->markimg, $dx, $dy, 0, 0, $dw, $dh, $w, $h);
             if (!empty($this->csimtarget)) {
-                $this->csimareas = "<area shape=\"rect\" coords=\"" .
-                $dx . ',' . $dy . ',' . round($dx + $dw) . ',' . round($dy + $dh) . '" ' .
-                "href=\"" . htmlentities($this->csimtarget) . "\"";
+                $this->csimareas = '<area shape="rect" coords="'.
+                $dx.','.$dy.','.round($dx + $dw).','.round($dy + $dh).'" '.
+                'href="'.htmlentities($this->csimtarget).'"';
 
                 if (!empty($this->csimwintarget)) {
-                    $this->csimareas .= " target=\"" . $this->csimwintarget . "\" ";
+                    $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
                 }
 
                 if (!empty($this->csimalt)) {
@@ -348,8 +357,9 @@ class PlotMark
             }
 
             // Stroke title
-            $this->title->Align("center", "top");
+            $this->title->Align('center', 'top');
             $this->title->Stroke($img, $x, $y + round($dh / 2));
+
             return;
         }
 
@@ -492,7 +502,7 @@ class PlotMark
         }
 
         // Stroke title
-        $this->title->Align("center", "center");
+        $this->title->Align('center', 'center');
         $this->title->Stroke($img, $x, $y);
     }
 } // Class

@@ -1,10 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some (random) data
-$ydata = array(17, 3, '', 10, 7, '', 3, 19, 9, 7);
+$ydata = [17, 3, '', 10, 7, '', 3, 19, 9, 7];
 
 // Size of the overall graph
 $width = 350;

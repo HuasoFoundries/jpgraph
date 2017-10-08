@@ -1,9 +1,10 @@
 <?php
-require_once ('jpgraph/jpgraph.php');
-require_once ('jpgraph/jpgraph_odo.php');
+
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
-$graph = new OdoGraph(250,140);
+$graph = new OdoGraph(250, 140);
 
 // Setup a title
 $graph->title->Set('An example with drop shadows');
@@ -12,7 +13,7 @@ $graph->title->Set('An example with drop shadows');
 $graph->SetShadow();
 
 // Set some nonstandard colors
-$color = array(205,220,205);
+$color = [205, 220, 205];
 $graph->SetMarginColor($color);
 $graph->SetColor($color);
 
@@ -32,5 +33,3 @@ $graph->Add($odo);
 
 // ... and finally stroke and stream the image back to the browser
 $graph->Stroke();
-
-?>

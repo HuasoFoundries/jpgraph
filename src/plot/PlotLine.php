@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -18,10 +19,15 @@ namespace Amenadiel\JpGraph\Plot;
 
 class PlotLine
 {
-    public $scaleposition, $direction = -1;
+    public $scaleposition;
+    public $direction = -1;
     protected $weight = 1;
     protected $color = 'black';
-    private $legend = '', $hidelegend = false, $legendcsimtarget = '', $legendcsimalt = '', $legendcsimwintarget = '';
+    private $legend = '';
+    private $hidelegend = false;
+    private $legendcsimtarget = '';
+    private $legendcsimalt = '';
+    private $legendcsimwintarget = '';
     private $iLineStyle = 'solid';
     public $numpoints = 0; // Needed since the framework expects this property
 
@@ -84,7 +90,6 @@ class PlotLine
         if (!$this->hidelegend) {
             $this->Legend($graph);
         }
-
     }
 
     // Framework function the chance for each plot class to set a legend
@@ -118,12 +123,12 @@ class PlotLine
 
     public function Min()
     {
-        return array(null, null);
+        return [null, null];
     }
 
     public function Max()
     {
-        return array(null, null);
+        return [null, null];
     }
 
     public function _Stroke($aImg, $aMinX, $aMinY, $aMaxX, $aMaxY, $aXPos, $aYPos)

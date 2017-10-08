@@ -1,8 +1,10 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../jpgraph.php';
 require_once '../jpgraph_bar.php';
 
-$datay = array(12, 26, 9, 17, 31);
+$datay = [12, 26, 9, 17, 31];
 
 // Create the graph.
 $graph = new Graph\Graph(400, 250);
@@ -17,12 +19,12 @@ $n = count($datay); // Number of bars
 global $_wrapperfilename;
 
 // Create targets for the image maps. One for each column
-$targ = array();
-$alt = array();
-$wtarg = array();
+$targ = [];
+$alt = [];
+$wtarg = [];
 for ($i = 0; $i < $n; ++$i) {
-    $urlarg = 'clickedon=' . ($i + 1);
-    $targ[] = $_wrapperfilename . '?' . $urlarg;
+    $urlarg = 'clickedon='.($i + 1);
+    $targ[] = $_wrapperfilename.'?'.$urlarg;
     $alt[] = 'val=%d';
     $wtarg[] = '';
 }
@@ -36,11 +38,11 @@ $graph->title->SetCSIMTarget('#45', 'Title for Bar', '_blank');
 
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetCSIMTarget('#55', 'Y-axis title');
-$graph->yaxis->title->Set("Y-title");
+$graph->yaxis->title->Set('Y-title');
 
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->xaxis->title->SetCSIMTarget('#55', 'X-axis title');
-$graph->xaxis->title->Set("X-title");
+$graph->xaxis->title->Set('X-title');
 
 // Send back the image when we are called from within the <img> tag
 $graph->StrokeCSIMImage();

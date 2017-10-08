@@ -1,4 +1,5 @@
 <?php
+
 //=======================================================================
 // File:        JPGRAPH_THEME.INC.PHP
 // Description: Class to define graph theme
@@ -26,19 +27,10 @@ abstract class Theme
         $this->color_index = 0;
     }
 
-    /**
-     *
-     */
     abstract public function GetColorList();
 
-    /**
-     *
-     */
     abstract public function ApplyPlot($plot);
 
-    /**
-     *
-     */
     public function SetupPlot($plot)
     {
         if (is_array($plot)) {
@@ -50,12 +42,8 @@ abstract class Theme
         }
     }
 
-    /**
-     *
-     */
     public function ApplyGraph($graph)
     {
-
         $this->graph = $graph;
         $method_name = '';
         $graphClass = explode('\\', get_class($graph));
@@ -64,7 +52,7 @@ abstract class Theme
         if ($classname == 'Graph') {
             $method_name = 'SetupGraph';
         } else {
-            $method_name = 'Setup' . $classname;
+            $method_name = 'Setup'.$classname;
         }
 
         if (method_exists($this, $method_name)) {
@@ -74,19 +62,13 @@ abstract class Theme
         }
     }
 
-    /**
-     *
-     */
     public function PreStrokeApply($graph)
     {
     }
 
-    /**
-     *
-     */
     public function GetThemeColors($num = 30)
     {
-        $result_list = array();
+        $result_list = [];
 
         $old_index = $this->color_index;
         $this->color_index = 0;
@@ -108,9 +90,6 @@ abstract class Theme
         return $result_list;
     }
 
-    /**
-     *
-     */
     public function GetNextColor()
     {
         $color_list = $this->GetColorList();
@@ -124,12 +103,12 @@ abstract class Theme
                 $color_tmp = $color_list[$this->color_index % $color_count];
                 $brightness = 1.0 - intval($this->color_index / $color_count) * 0.2;
                 $rgb = new RGB();
-                $color = $color_tmp . ':' . $brightness;
+                $color = $color_tmp.':'.$brightness;
                 $color = $rgb->Color($color);
                 $alpha = array_pop($color);
                 $color = $rgb->tryHexConversion($color);
                 if ($alpha) {
-                    $color .= '@' . $alpha;
+                    $color .= '@'.$alpha;
                 }
             }
         }
@@ -138,5 +117,4 @@ abstract class Theme
 
         return $color;
     }
-
 } // Class

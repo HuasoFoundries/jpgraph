@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 /*=======================================================================
@@ -20,13 +21,14 @@ class Spline
 {
     // 3:rd degree polynom approximation
 
-    private $xdata, $ydata; // Data vectors
+    private $xdata;
+    private $ydata; // Data vectors
     private $y2; // 2:nd derivate of ydata
     private $n = 0;
 
     public function __construct($xdata, $ydata)
     {
-        $this->y2 = array();
+        $this->y2 = [];
         $this->xdata = $xdata;
         $this->ydata = $ydata;
 
@@ -68,21 +70,21 @@ class Spline
     {
         $n = $this->n;
         $step = ($this->xdata[$n - 1] - $this->xdata[0]) / ($num - 1);
-        $xnew = array();
-        $ynew = array();
+        $xnew = [];
+        $ynew = [];
         $xnew[0] = $this->xdata[0];
         $ynew[0] = $this->ydata[0];
         for ($j = 1; $j < $num; ++$j) {
             $xnew[$j] = $xnew[0] + $j * $step;
             $ynew[$j] = $this->Interpolate($xnew[$j]);
         }
-        return array($xnew, $ynew);
+
+        return [$xnew, $ynew];
     }
 
     // Return a single interpolated Y-value from an x value
     public function Interpolate($xpoint)
     {
-
         $max = $this->n - 1;
         $min = 0;
 
@@ -94,7 +96,6 @@ class Spline
             } else {
                 $min = $k;
             }
-
         }
 
         // Each interval is interpolated by a 3:degree polynom function
@@ -107,6 +108,7 @@ class Spline
 
         $a = ($this->xdata[$max] - $xpoint) / $h;
         $b = ($xpoint - $this->xdata[$min]) / $h;
+
         return $a * $this->ydata[$min] + $b * $this->ydata[$max] +
         (($a * $a * $a - $a) * $this->y2[$min] + ($b * $b * $b - $b) * $this->y2[$max]) * ($h * $h) / 6.0;
     }

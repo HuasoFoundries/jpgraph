@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -9,14 +10,20 @@ namespace Amenadiel\JpGraph\Graph;
 class HeaderProperty
 {
     public $grid;
-    public $iShowLabels = true, $iShowGrid = true;
-    public $iTitleVertMargin = 3, $iFFamily = FF_FONT0, $iFStyle = FS_NORMAL, $iFSize = 8;
+    public $iShowLabels = true;
+    public $iShowGrid = true;
+    public $iTitleVertMargin = 3;
+    public $iFFamily = FF_FONT0;
+    public $iFStyle = FS_NORMAL;
+    public $iFSize = 8;
     public $iStyle = 0;
-    public $iFrameColor = "black", $iFrameWeight = 1;
-    public $iBackgroundColor = "white";
-    public $iWeekendBackgroundColor = "lightgray", $iSundayTextColor = "red"; // these are only used with day scale
-    public $iTextColor = "black";
-    public $iLabelFormStr = "%d";
+    public $iFrameColor = 'black';
+    public $iFrameWeight = 1;
+    public $iBackgroundColor = 'white';
+    public $iWeekendBackgroundColor = 'lightgray';
+    public $iSundayTextColor = 'red'; // these are only used with day scale
+    public $iTextColor = 'black';
+    public $iLabelFormStr = '%d';
     public $iIntervall = 1;
 
     //---------------
@@ -63,18 +70,21 @@ class HeaderProperty
     public function GetFontHeight($aImg)
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+
         return $aImg->GetFontHeight();
     }
 
     public function GetFontWidth($aImg)
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+
         return $aImg->GetFontWidth();
     }
 
     public function GetStrWidth($aImg, $aStr)
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+
         return $aImg->GetTextWidth($aStr);
     }
 
@@ -124,5 +134,4 @@ class HeaderProperty
     {
         $this->SetLabelFormatString($aStr);
     }
-
 }

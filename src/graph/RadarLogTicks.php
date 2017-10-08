@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -7,7 +8,6 @@ namespace Amenadiel\JpGraph\Graph;
 //===================================================
 class RadarLogTicks extends Ticks
 {
-
     public function __construct()
     {
         // Empty
@@ -28,8 +28,8 @@ class RadarLogTicks extends Ticks
         $dx_min = round(sin($aAxisAngle) * $ticklen_min);
         $dy_min = round(cos($aAxisAngle) * $ticklen_min);
 
-        $aMajPos = array();
-        $aMajLabel = array();
+        $aMajPos = [];
+        $aMajLabel = [];
 
         if ($this->supress_first) {
             $aMajLabel[] = '';

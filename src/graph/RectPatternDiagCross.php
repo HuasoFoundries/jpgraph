@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //=====================================================================
@@ -10,7 +11,8 @@ class RectPatternDiagCross extends RectPattern
 {
     private $left = null;
     private $right = null;
-    public function __construct($aColor = "black", $aWeight = 1)
+
+    public function __construct($aColor = 'black', $aWeight = 1)
     {
         parent::__construct($aColor, $aWeight);
         $this->right = new RectPatternRDiag($aColor, $aWeight);
@@ -41,5 +43,4 @@ class RectPatternDiagCross extends RectPattern
         $this->left->DoPattern($aImg);
         $this->right->DoPattern($aImg);
     }
-
 }

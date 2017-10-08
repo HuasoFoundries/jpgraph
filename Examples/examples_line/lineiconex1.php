@@ -1,17 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
 //$datay = array(20,15,23,15,17,35,22);
-$datay = array(30, 25, 33, 25, 27, 45, 32);
-$datay2 = array(3, 25, 10, 15, 50, 5, 18);
-$datay3 = array(10, 5, 10, 15, 5, 2, 1);
+$datay = [30, 25, 33, 25, 27, 45, 32];
+$datay2 = [3, 25, 10, 15, 50, 5, 18];
+$datay3 = [10, 5, 10, 15, 5, 2, 1];
 
 // Setup the graph
 $graph = new Graph\Graph(400, 250);
 $graph->SetMargin(40, 40, 20, 30);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 $graph->title->Set('Adding an icon ("tux") in the background');
 $graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
@@ -21,15 +23,15 @@ $graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
 $graph->xaxis->SetPos('min');
 
 $p1 = new Plot\LinePlot($datay);
-$p1->SetColor("blue");
+$p1->SetColor('blue');
 $p1->SetFillGradient('yellow@0.4', 'red@0.4');
 
 $p2 = new Plot\LinePlot($datay2);
-$p2->SetColor("black");
+$p2->SetColor('black');
 $p2->SetFillGradient('green@0.4', 'white');
 
 $p3 = new Plot\LinePlot($datay3);
-$p3->SetColor("blue");
+$p3->SetColor('blue');
 $p3->SetFillGradient('navy@0.4', 'white@0.4');
 
 $graph->Add($p1);

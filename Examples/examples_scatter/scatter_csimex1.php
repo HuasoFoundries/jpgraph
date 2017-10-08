@@ -1,28 +1,30 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
 // Some data for the points
-$datax = array(3.5, 13.7, 3, 4, 6.2, 6, 3.5, 8, 14, 8, 11.1, 13.7);
-$datay = array(10, 22, 12, 13, 17, 20, 16, 19, 30, 31, 40, 43);
+$datax = [3.5, 13.7, 3, 4, 6.2, 6, 3.5, 8, 14, 8, 11.1, 13.7];
+$datay = [10, 22, 12, 13, 17, 20, 16, 19, 30, 31, 40, 43];
 
 // A new scatter graph
 $graph = new Graph\Graph(300, 200, 'auto');
 $graph->SetShadow();
-$graph->SetScale("linlin");
+$graph->SetScale('linlin');
 
 //$graph->img->SetMargin(40,40,40,40);
 
-$graph->title->Set("Scatter plot with Image Map");
+$graph->title->Set('Scatter plot with Image Map');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Client side image map targets
-$targ = array("pie_csimex1.php#1", "pie_csimex1.php#2", "pie_csimex1.php#3",
-    "pie_csimex1.php#4", "pie_csimex1.php#5", "pie_csimex1.php#6",
-    "pie_csimex1.php#7", "pie_csimex1.php#8", "pie_csimex1.php#9");
+$targ = ['pie_csimex1.php#1', 'pie_csimex1.php#2', 'pie_csimex1.php#3',
+    'pie_csimex1.php#4', 'pie_csimex1.php#5', 'pie_csimex1.php#6',
+    'pie_csimex1.php#7', 'pie_csimex1.php#8', 'pie_csimex1.php#9', ];
 
 // Strings to put as "alts" (and "title" value)
-$alts = array("val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d");
+$alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 
 // Create a new scatter plot
 $sp1 = new ScatterPlot($datay, $datax);

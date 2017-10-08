@@ -1,11 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
 function readsunspotdata($aFile, &$aYears, &$aSunspots)
 {
-
     $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($lines === false) {
         throw new JpGraphException('Can not read sunspot data file.');
@@ -17,8 +18,8 @@ function readsunspotdata($aFile, &$aYears, &$aSunspots)
     }
 }
 
-$year = array();
-$ydata = array();
+$year = [];
+$ydata = [];
 readsunspotdata('yearssn.txt', $year, $ydata);
 
 // Width and height of the graph

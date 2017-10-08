@@ -13,16 +13,23 @@ class Ticks
     public $label_formfunc = '';
     public $label_dateformatstr = '';
     public $direction = 1; // Should ticks be in(=1) the plot area or outside (=-1)
-    public $supress_last = false, $supress_tickmarks = false, $supress_minor_tickmarks = false;
-    public $maj_ticks_pos = array(), $maj_ticklabels_pos = array(),
-    $ticks_pos = array(), $maj_ticks_label = array();
+    public $supress_last = false;
+    public $supress_tickmarks = false;
+    public $supress_minor_tickmarks = false;
+    public $maj_ticks_pos = [];
+    public $maj_ticklabels_pos = [];
+    public $ticks_pos = [];
+    public $maj_ticks_label = [];
     public $precision;
 
-    protected $minor_abs_size = 3, $major_abs_size = 5;
+    protected $minor_abs_size = 3;
+    protected $major_abs_size = 5;
     protected $scale;
     protected $is_set = false;
-    protected $supress_zerolabel = false, $supress_first = false;
-    protected $mincolor = '', $majcolor = '';
+    protected $supress_zerolabel = false;
+    protected $supress_first = false;
+    protected $mincolor = '';
+    protected $majcolor = '';
     protected $weight = 1;
     protected $label_usedateformat = false;
 
@@ -136,5 +143,4 @@ class Ticks
     {
         $this->weight = $aWeight;
     }
-
 } // Class

@@ -1,14 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_bar.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_plotline.php';
 
-$datay = array(2, 3, 5, 8.5, 11.5, 6, 3);
+$datay = [2, 3, 5, 8.5, 11.5, 6, 3];
 
 // Create the graph.
 $graph = new Graph\Graph(460, 400, 'auto');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMargin(40, 20, 50, 70);
 
 $graph->legend->SetPos(0.5, 0.97, 'center', 'bottom');

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -10,8 +11,12 @@ namespace Amenadiel\JpGraph\Graph;
 class CanvasScale
 {
     private $g;
-    private $w, $h;
-    private $ixmin = 0, $ixmax = 10, $iymin = 0, $iymax = 10;
+    private $w;
+    private $h;
+    private $ixmin = 0;
+    private $ixmax = 10;
+    private $iymin = 0;
+    private $iymax = 10;
 
     public function __construct($graph, $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10)
     {
@@ -34,26 +39,28 @@ class CanvasScale
 
     public function Get()
     {
-        return array($this->ixmin, $this->ixmax, $this->iymin, $this->iymax);
+        return [$this->ixmin, $this->ixmax, $this->iymin, $this->iymax];
     }
 
     public function Translate($x, $y)
     {
         $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
         $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
-        return array($xp, $yp);
+
+        return [$xp, $yp];
     }
 
     public function TranslateX($x)
     {
         $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
+
         return $xp;
     }
 
     public function TranslateY($y)
     {
         $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
+
         return $yp;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -22,77 +23,77 @@ define('MAX_GANTTIMG_SIZE_W', 8000);
 define('MAX_GANTTIMG_SIZE_H', 5000);
 
 // Scale Header types
-define("GANTT_HDAY", 1);
-define("GANTT_HWEEK", 2);
-define("GANTT_HMONTH", 4);
-define("GANTT_HYEAR", 8);
-define("GANTT_HHOUR", 16);
-define("GANTT_HMIN", 32);
+define('GANTT_HDAY', 1);
+define('GANTT_HWEEK', 2);
+define('GANTT_HMONTH', 4);
+define('GANTT_HYEAR', 8);
+define('GANTT_HHOUR', 16);
+define('GANTT_HMIN', 32);
 
 // Bar patterns
-define("GANTT_RDIAG", BAND_RDIAG); // Right diagonal lines
-define("GANTT_LDIAG", BAND_LDIAG); // Left diagonal lines
-define("GANTT_SOLID", BAND_SOLID); // Solid one color
-define("GANTT_VLINE", BAND_VLINE); // Vertical lines
-define("GANTT_HLINE", BAND_HLINE); // Horizontal lines
-define("GANTT_3DPLANE", BAND_3DPLANE); // "3D" Plane
-define("GANTT_HVCROSS", BAND_HVCROSS); // Vertical/Hor crosses
-define("GANTT_DIAGCROSS", BAND_DIAGCROSS); // Diagonal crosses
+define('GANTT_RDIAG', BAND_RDIAG); // Right diagonal lines
+define('GANTT_LDIAG', BAND_LDIAG); // Left diagonal lines
+define('GANTT_SOLID', BAND_SOLID); // Solid one color
+define('GANTT_VLINE', BAND_VLINE); // Vertical lines
+define('GANTT_HLINE', BAND_HLINE); // Horizontal lines
+define('GANTT_3DPLANE', BAND_3DPLANE); // "3D" Plane
+define('GANTT_HVCROSS', BAND_HVCROSS); // Vertical/Hor crosses
+define('GANTT_DIAGCROSS', BAND_DIAGCROSS); // Diagonal crosses
 
 // Conversion constant
-define("SECPERDAY", 3600 * 24);
+define('SECPERDAY', 3600 * 24);
 
 // Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
 // You should use the proper locale strings directly
 // from now on.
-define("LOCALE_EN", "en_UK");
-define("LOCALE_SV", "sv_SE");
+define('LOCALE_EN', 'en_UK');
+define('LOCALE_SV', 'sv_SE');
 
 // Layout of bars
-define("GANTT_EVEN", 1);
-define("GANTT_FROMTOP", 2);
+define('GANTT_EVEN', 1);
+define('GANTT_FROMTOP', 2);
 
 // Style for minute header
-define("MINUTESTYLE_MM", 0); // 15
-define("MINUTESTYLE_CUSTOM", 2); // Custom format
+define('MINUTESTYLE_MM', 0); // 15
+define('MINUTESTYLE_CUSTOM', 2); // Custom format
 
 // Style for hour header
-define("HOURSTYLE_HM24", 0); // 13:10
-define("HOURSTYLE_HMAMPM", 1); // 1:10pm
-define("HOURSTYLE_H24", 2); // 13
-define("HOURSTYLE_HAMPM", 3); // 1pm
-define("HOURSTYLE_CUSTOM", 4); // User defined
+define('HOURSTYLE_HM24', 0); // 13:10
+define('HOURSTYLE_HMAMPM', 1); // 1:10pm
+define('HOURSTYLE_H24', 2); // 13
+define('HOURSTYLE_HAMPM', 3); // 1pm
+define('HOURSTYLE_CUSTOM', 4); // User defined
 
 // Style for day header
-define("DAYSTYLE_ONELETTER", 0); // "M"
-define("DAYSTYLE_LONG", 1); // "Monday"
-define("DAYSTYLE_LONGDAYDATE1", 2); // "Monday 23 Jun"
-define("DAYSTYLE_LONGDAYDATE2", 3); // "Monday 23 Jun 2003"
-define("DAYSTYLE_SHORT", 4); // "Mon"
-define("DAYSTYLE_SHORTDAYDATE1", 5); // "Mon 23/6"
-define("DAYSTYLE_SHORTDAYDATE2", 6); // "Mon 23 Jun"
-define("DAYSTYLE_SHORTDAYDATE3", 7); // "Mon 23"
-define("DAYSTYLE_SHORTDATE1", 8); // "23/6"
-define("DAYSTYLE_SHORTDATE2", 9); // "23 Jun"
-define("DAYSTYLE_SHORTDATE3", 10); // "Mon 23"
-define("DAYSTYLE_SHORTDATE4", 11); // "23"
-define("DAYSTYLE_CUSTOM", 12); // "M"
+define('DAYSTYLE_ONELETTER', 0); // "M"
+define('DAYSTYLE_LONG', 1); // "Monday"
+define('DAYSTYLE_LONGDAYDATE1', 2); // "Monday 23 Jun"
+define('DAYSTYLE_LONGDAYDATE2', 3); // "Monday 23 Jun 2003"
+define('DAYSTYLE_SHORT', 4); // "Mon"
+define('DAYSTYLE_SHORTDAYDATE1', 5); // "Mon 23/6"
+define('DAYSTYLE_SHORTDAYDATE2', 6); // "Mon 23 Jun"
+define('DAYSTYLE_SHORTDAYDATE3', 7); // "Mon 23"
+define('DAYSTYLE_SHORTDATE1', 8); // "23/6"
+define('DAYSTYLE_SHORTDATE2', 9); // "23 Jun"
+define('DAYSTYLE_SHORTDATE3', 10); // "Mon 23"
+define('DAYSTYLE_SHORTDATE4', 11); // "23"
+define('DAYSTYLE_CUSTOM', 12); // "M"
 
 // Styles for week header
-define("WEEKSTYLE_WNBR", 0);
-define("WEEKSTYLE_FIRSTDAY", 1);
-define("WEEKSTYLE_FIRSTDAY2", 2);
-define("WEEKSTYLE_FIRSTDAYWNBR", 3);
-define("WEEKSTYLE_FIRSTDAY2WNBR", 4);
+define('WEEKSTYLE_WNBR', 0);
+define('WEEKSTYLE_FIRSTDAY', 1);
+define('WEEKSTYLE_FIRSTDAY2', 2);
+define('WEEKSTYLE_FIRSTDAYWNBR', 3);
+define('WEEKSTYLE_FIRSTDAY2WNBR', 4);
 
 // Styles for month header
-define("MONTHSTYLE_SHORTNAME", 0);
-define("MONTHSTYLE_LONGNAME", 1);
-define("MONTHSTYLE_LONGNAMEYEAR2", 2);
-define("MONTHSTYLE_SHORTNAMEYEAR2", 3);
-define("MONTHSTYLE_LONGNAMEYEAR4", 4);
-define("MONTHSTYLE_SHORTNAMEYEAR4", 5);
-define("MONTHSTYLE_FIRSTLETTER", 6);
+define('MONTHSTYLE_SHORTNAME', 0);
+define('MONTHSTYLE_LONGNAME', 1);
+define('MONTHSTYLE_LONGNAMEYEAR2', 2);
+define('MONTHSTYLE_SHORTNAMEYEAR2', 3);
+define('MONTHSTYLE_LONGNAMEYEAR4', 4);
+define('MONTHSTYLE_SHORTNAMEYEAR4', 5);
+define('MONTHSTYLE_FIRSTLETTER', 6);
 
 // Types of constrain links
 define('CONSTRAIN_STARTSTART', 0);
@@ -129,10 +130,11 @@ define('ACTINFO_2D', 0);
 if (!function_exists('array_fill')) {
     function array_fill($iStart, $iLen, $vValue)
     {
-        $aResult = array();
+        $aResult = [];
         for ($iCount = $iStart; $iCount < $iLen + $iStart; $iCount++) {
             $aResult[$iCount] = $vValue;
         }
+
         return $aResult;
     }
 }
@@ -144,13 +146,20 @@ if (!function_exists('array_fill')) {
 class GanttActivityInfo
 {
     public $iShow = true;
-    public $iLeftColMargin = 4, $iRightColMargin = 1, $iTopColMargin = 1, $iBottomColMargin = 3;
+    public $iLeftColMargin = 4;
+    public $iRightColMargin = 1;
+    public $iTopColMargin = 1;
+    public $iBottomColMargin = 3;
     public $vgrid = null;
     private $iColor = 'black';
     private $iBackgroundColor = 'lightgray';
-    private $iFFamily = FF_FONT1, $iFStyle = FS_NORMAL, $iFSize = 10, $iFontColor = 'black';
-    private $iTitles = array();
-    private $iWidth = array(), $iHeight = -1;
+    private $iFFamily = FF_FONT1;
+    private $iFStyle = FS_NORMAL;
+    private $iFSize = 10;
+    private $iFontColor = 'black';
+    private $iTitles = [];
+    private $iWidth = [];
+    private $iHeight = -1;
     private $iTopHeaderMargin = 4;
     private $iStyle = 1;
     private $iHeaderAlign = 'center';
@@ -245,6 +254,7 @@ class GanttActivityInfo
         }
         $this->iHeight = $h + $this->iTopHeaderMargin;
         $txt = '';
+
         return $w;
     }
 
@@ -252,7 +262,7 @@ class GanttActivityInfo
     {
         $n = count($this->iTitles);
         $adj = $aAddLeftMargin ? $this->iLeftColMargin : 0;
-        $aStart = array($aImg->left_margin + $adj);
+        $aStart = [$aImg->left_margin + $adj];
         for ($i = 1; $i < $n; ++$i) {
             $aStart[$i] = $aStart[$i - 1] + $this->iLeftColMargin + $this->iWidth[$i - 1];
         }
@@ -266,7 +276,6 @@ class GanttActivityInfo
 
     public function Stroke($aImg, $aXLeft, $aYTop, $aXRight, $aYBottom, $aUseTextHeight = false)
     {
-
         if (!$this->iShow) {
             return;
         }
@@ -330,7 +339,7 @@ class GanttActivityInfo
         $aImg->Line($aXLeft, $yTop, $aXRight, $yTop);
 
         // Stroke vertical column dividers
-        $cols = array();
+        $cols = [];
         $this->GetColStart($aImg, $cols);
         $n = count($cols);
         for ($i = 1; $i < $n; ++$i) {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 //===================================================
@@ -7,9 +8,11 @@ namespace Amenadiel\JpGraph\Util;
 //===================================================
 class DateLocale
 {
-
     public $iLocale = 'C'; // environmental locale be used by default
-    private $iDayAbb = null, $iShortDay = null, $iShortMonth = null, $iMonthName = null;
+    private $iDayAbb = null;
+    private $iShortDay = null;
+    private $iShortMonth = null;
+    private $iMonthName = null;
 
     public function __construct()
     {
@@ -24,6 +27,7 @@ class DateLocale
     {
         if (in_array($aLocale, array_keys($this->iDayAbb))) {
             $this->iLocale = $aLocale;
+
             return true; // already cached nothing else to do!
         }
 
@@ -56,7 +60,7 @@ class DateLocale
         }
 
         for ($i = 1; $i <= 12; ++$i) {
-            list($short, $full) = explode('|', strftime("%b|%B", strtotime("2001-$i-01")));
+            list($short, $full) = explode('|', strftime('%b|%B', strtotime("2001-$i-01")));
             $this->iShortMonth[$aLocale][] = ucfirst($short);
             $this->iMonthName[$aLocale][] = ucfirst($full);
         }

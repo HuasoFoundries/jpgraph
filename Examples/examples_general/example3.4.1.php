@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -11,9 +13,9 @@ function numberToRoman($aNum)
     $result = '';
 
     // Declare a lookup array that we will use to traverse the number:
-    $lookup = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
-        'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40,
-        'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
+    $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+        'C'        => 100, 'XC' => 90, 'L' => 50, 'XL' => 40,
+        'X'        => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1, ];
 
     foreach ($lookup as $roman => $value) {
         // Determine the number of matches
@@ -32,11 +34,11 @@ function numberToRoman($aNum)
 
 function formatCallback($aVal)
 {
-    return '(' . numberToRoman($aVal) . ')';
+    return '('.numberToRoman($aVal).')';
 }
 
 // Some (random) data
-$ydata = array(11, 3, 8, 12, 5, 1, 9, 13, 5, 7);
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
 // Size of the overall graph
 $width = 350;

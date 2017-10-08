@@ -1,16 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
-$datay = array(20, 22, 12, 13, 17, 20, 16, 19, 30, 31, 40, 43);
+$datay = [20, 22, 12, 13, 17, 20, 16, 19, 30, 31, 40, 43];
 
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
 
-$graph->title->Set("Simple mpuls plot");
+$graph->title->Set('Simple mpuls plot');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $sp1 = new ScatterPlot($datay);

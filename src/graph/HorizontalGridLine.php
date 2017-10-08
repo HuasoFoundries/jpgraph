@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 define('GANTT_HGRID1', 0);
@@ -11,7 +12,8 @@ define('GANTT_HGRID2', 1);
 class HorizontalGridLine
 {
     private $iGraph = null;
-    private $iRowColor1 = '', $iRowColor2 = '';
+    private $iRowColor1 = '';
+    private $iRowColor2 = '';
     private $iShow = false;
     private $line = null;
     private $iStart = 0; // 0=from left margin, 1=just along header
@@ -41,7 +43,6 @@ class HorizontalGridLine
 
     public function Stroke($aImg, $aScale)
     {
-
         if (!$this->iShow) {
             return;
         }

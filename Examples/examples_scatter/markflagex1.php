@@ -1,16 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
-$datay = array(
-    array(4, 26, 15, 44),
-    array(20, 51, 32, 20));
+$datay = [
+    [4, 26, 15, 44],
+    [20, 51, 32, 20], ];
 
 // Setup the graph
 $graph = new Graph\Graph(300, 200);
 $graph->SetMarginColor('white');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetFrame(false);
 $graph->SetMargin(30, 5, 25, 20);
 
@@ -24,7 +26,7 @@ $graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
 // Create the plots
 //------------------------
 $p1 = new Plot\LinePlot($datay[0]);
-$p1->SetColor("navy");
+$p1->SetColor('navy');
 
 // Use a flag
 $p1->mark->SetType(MARK_FLAG1, 197);
@@ -48,7 +50,7 @@ $graph->Add($p1);
 // 2:nd plot
 //------------
 $p2 = new Plot\LinePlot($datay[1]);
-$p2->SetColor("navy");
+$p2->SetColor('navy');
 
 // Use a flag
 $p2->mark->SetType(MARK_FLAG1, 'united states');

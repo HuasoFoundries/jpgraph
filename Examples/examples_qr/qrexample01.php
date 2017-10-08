@@ -1,5 +1,6 @@
 <?php
-require_once ('jpgraph/QR/qrencoder.inc.php');
+
+require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Data to be encoded
 $data = '01234567';
@@ -16,4 +17,3 @@ $backend->SetModuleWidth(5);
 
 // .. send the barcode back to the browser for the data
 $backend->Stroke($data);
-?>

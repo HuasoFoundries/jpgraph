@@ -1,19 +1,21 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 // Example of a stock chart
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_stock.php';
 
 // Data must be in the format : open,close,min,max
-$datay = array(
+$datay = [
     34, 42, 27, 45,
     55, 25, 14, 59,
     15, 40, 12, 47,
     62, 38, 25, 65,
-    38, 49, 32, 64);
+    38, 49, 32, 64, ];
 
 // Setup a simple graph
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
 $graph->title->Set('Stockchart example');
 

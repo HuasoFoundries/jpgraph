@@ -1,5 +1,6 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'This is a 64x64 datamatrix symbol';
 
@@ -21,5 +22,3 @@ try {
     $errstr = $e->GetMessage();
     echo "Datamatrix error message: $errstr\n";
 }
-
-?>

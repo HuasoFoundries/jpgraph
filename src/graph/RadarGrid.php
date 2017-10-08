@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 /*=======================================================================
@@ -22,7 +23,8 @@ class RadarGrid
     //extends Grid {
     private $type = 'solid';
     private $grid_color = '#DDDDDD';
-    private $show = false, $weight = 1;
+    private $show = false;
+    private $weight = 1;
 
     public function __construct()
     {
@@ -78,9 +80,8 @@ class RadarGrid
                 } elseif ($this->type == 'longdashed') {
                     $img->DashedLine($pnts[$k * 2], $pnts[$k * 2 + 1], $pnts[$l * 2], $pnts[$l * 2 + 1], 8, 6);
                 }
-
             }
-            $pnts = array();
+            $pnts = [];
         }
     }
 } // Class
@@ -95,12 +96,13 @@ class RadarPlot
     public $legend = '';
     public $legendcsimtarget = '';
     public $legendcsimalt = '';
-    public $csimtargets = array(); // Array of targets for CSIM
-    public $csimareas = ""; // Resultant CSIM area tags
+    public $csimtargets = []; // Array of targets for CSIM
+    public $csimareas = ''; // Resultant CSIM area tags
     public $csimalts = null; // ALT:s for corresponding target
-    private $data = array();
-    private $fill = false, $fill_color = array(200, 170, 180);
-    private $color = array(0, 0, 0);
+    private $data = [];
+    private $fill = false;
+    private $fill_color = [200, 170, 180];
+    private $color = [0, 0, 0];
     private $weight = 1;
     private $linestyle = 'solid';
 
@@ -114,12 +116,12 @@ class RadarPlot
 
     public function Min()
     {
-        return Min($this->data);
+        return min($this->data);
     }
 
     public function Max()
     {
-        return Max($this->data);
+        return max($this->data);
     }
 
     public function SetLegend($legend)
@@ -232,7 +234,6 @@ class RadarPlot
                 }
             }
         }
-
     }
 
     public function GetCount()
@@ -251,7 +252,6 @@ class RadarPlot
             $graph->legend->Add($this->legend, $this->color, $this->mark);
         }
     }
-
 } // Class
 
 /* EOF */

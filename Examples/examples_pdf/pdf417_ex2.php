@@ -1,5 +1,7 @@
-<?php // content="text/plain; charset=utf-8"
-require_once ('jpgraph/pdf417/jpgraph_pdf417.php');
+<?php
+
+// content="text/plain; charset=utf-8"
+require_once 'jpgraph/pdf417/jpgraph_pdf417.php';
 
 $data = 'PDF-417';
 
@@ -12,13 +14,11 @@ $height = 3;    // Height factor
 
 // Create a new encoder and backend to generate PNG images
 try {
-	$encoder = new PDF417Barcode($columns,$errlevel);
-	$backend = PDF417BackendFactory::Create(BACKEND_IMAGE,$encoder);
-	$backend->SetModuleWidth($modwidth);
-	$backend->SetHeight($height);
-	$backend->Stroke($data);
+    $encoder = new PDF417Barcode($columns, $errlevel);
+    $backend = PDF417BackendFactory::Create(BACKEND_IMAGE, $encoder);
+    $backend->SetModuleWidth($modwidth);
+    $backend->SetHeight($height);
+    $backend->Stroke($data);
+} catch (JpGraphException $e) {
+    echo 'PDF417 Error: '.$e->GetMessage();
 }
-catch(JpGraphException $e) {
-	echo 'PDF417 Error: '.$e->GetMessage();
-}
-?>

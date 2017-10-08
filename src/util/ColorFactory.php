@@ -1,13 +1,13 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 // Provide a deterministic list of new colors whenever the getColor() method
 // is called. Used to automatically set colors of plots.
 class ColorFactory
 {
-
     private static $iIdx = 0;
-    private static $iColorList = array(
+    private static $iColorList = [
         'black',
         'blue',
         'orange',
@@ -40,16 +40,15 @@ class ColorFactory
         'peru',
         'slategray',
         'yellow4',
-        'springgreen2');
+        'springgreen2', ];
     private static $iNum = 33;
 
     public static function getColor()
     {
-        if (ColorFactory::$iIdx >= ColorFactory::$iNum) {
-            ColorFactory::$iIdx = 0;
+        if (self::$iIdx >= self::$iNum) {
+            self::$iIdx = 0;
         }
 
-        return ColorFactory::$iColorList[ColorFactory::$iIdx++];
+        return self::$iColorList[self::$iIdx++];
     }
-
 }

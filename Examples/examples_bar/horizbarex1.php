@@ -1,10 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(2, 3, 5, 8, 12, 6, 3);
-$datax = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul');
+$datay = [2, 3, 5, 8, 12, 6, 3];
+$datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
 
 // Size of graph
 $width = 400;

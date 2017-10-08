@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -12,11 +13,12 @@ use Amenadiel\JpGraph\Util;
 class ImgData
 {
     protected $name = ''; // Each subclass gives a name
-    protected $an = array(); // Data array names
-    protected $colors = array(); // Available colors
-    protected $index = array(); // Index for colors
+    protected $an = []; // Data array names
+    protected $colors = []; // Available colors
+    protected $index = []; // Index for colors
     protected $maxidx = 0; // Max color index
-    protected $anchor_x = 0.5, $anchor_y = 0.5; // Where is the center of the image
+    protected $anchor_x = 0.5;
+    protected $anchor_y = 0.5; // Where is the center of the image
 
     public function __construct()
     {
@@ -32,8 +34,8 @@ class ImgData
                 Util\JpGraphError::RaiseL(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
             }
             $idx = $this->index[$aIdx];
-        } elseif (!is_integer($aIdx) ||
-            (is_integer($aIdx) && $aIdx > $this->maxidx)) {
+        } elseif (!is_int($aIdx) ||
+            (is_int($aIdx) && $aIdx > $this->maxidx)) {
             Util\JpGraphError::RaiseL(23002, $this->name); //('Mark color index too large for marker "'.($this->name).'"');
         } else {
             $idx = $aIdx;
@@ -44,6 +46,6 @@ class ImgData
 
     public function GetAnchor()
     {
-        return array($this->anchor_x, $this->anchor_y);
+        return [$this->anchor_x, $this->anchor_y];
     }
 }

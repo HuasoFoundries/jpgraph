@@ -1,14 +1,16 @@
 <?php
+
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 // Data can be specified using both ordinal index of the axis
 // as well as the direction label
-$data = array(
-    0 => array(1, 1, 2.5, 4),
-    1 => array(3, 4, 1, 4),
-    3 => array(2, 7, 4, 4, 3),
-    5 => array(2, 7, 1, 2));
+$data = [
+    0 => [1, 1, 2.5, 4],
+    1 => [3, 4, 1, 4],
+    3 => [2, 7, 4, 4, 3],
+    5 => [2, 7, 1, 2], ];
 
 // First create a new windrose graph with a title
 $graph = new Graph\WindroseGraph(400, 400);

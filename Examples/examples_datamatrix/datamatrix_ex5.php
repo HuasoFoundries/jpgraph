@@ -1,5 +1,6 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'This is a 20x20 symbol';
 
@@ -17,7 +18,7 @@ $backend->SetModuleWidth(4);
 $backend->SetQuietZone(10);
 
 // Set other than default colors (one, zero, quiet zone/background)
-$backend->SetColor('navy','white','lightgray');
+$backend->SetColor('navy', 'white', 'lightgray');
 
 // Create the barcode from the given data string and write to output file
 try {
@@ -26,5 +27,3 @@ try {
     $errstr = $e->GetMessage();
     echo "Datamatrix error message: $errstr\n";
 }
-
-?>

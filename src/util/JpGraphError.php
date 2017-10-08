@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 //
@@ -11,6 +12,7 @@ class JpGraphError
     private static $__iImgFlg = true;
     private static $__iLogFile = '';
     private static $__iTitle = 'JpGraph Error: ';
+
     public static function Raise($aMsg, $aHalt = true)
     {
         throw new JpGraphException($aMsg);

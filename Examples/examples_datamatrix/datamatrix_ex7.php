@@ -1,5 +1,6 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'A Datamatrix barcode';
 
@@ -18,5 +19,3 @@ try {
     $errstr = $e->GetMessage();
     echo "Datamatrix error message: $errstr\n";
 }
-
-?>

@@ -1,16 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
-$month = array(
-    "Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec");
+$month = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec', ];
 
 // Create datapoints where every point
 $steps = 100;
 for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
-    $databarx[] = sprintf("198%d %s", floor($i / 12), $month[$i % 12]);
+    $databarx[] = sprintf('198%d %s', floor($i / 12), $month[$i % 12]);
 
     // Simulate an accumulated value for every 5:th data point
     if ($i % 6 == 0) {
@@ -18,19 +20,18 @@ for ($i = 0; $i < $steps; ++$i) {
     } else {
         $databary[] = 0;
     }
-
 }
 
 // new Graph\Graph with a background image and drop shadow
 $graph = new Graph\Graph(450, 300);
-$graph->SetBackgroundImage("tiger_bkg.png", BGIMG_FILLFRAME);
+$graph->SetBackgroundImage('tiger_bkg.png', BGIMG_FILLFRAME);
 $graph->SetShadow();
 
 // Use an integer X-scale
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 // Set title and subtitle
-$graph->title->Set("Combined bar and line plot");
+$graph->title->Set('Combined bar and line plot');
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font
@@ -42,7 +43,7 @@ $graph->img->SetMargin(40, 140, 40, 80);
 
 // Slightly adjust the legend from it's default position in the
 // top right corner to middle right side
-$graph->legend->Pos(0.05, 0.5, "right", "center");
+$graph->legend->Pos(0.05, 0.5, 'right', 'center');
 
 // Display every 10:th datalabel
 $graph->xaxis->SetTextTickInterval(6);
@@ -52,12 +53,12 @@ $graph->xaxis->SetLabelAngle(90);
 
 // Create a red line plot
 $p1 = new Plot\LinePlot($datay);
-$p1->SetColor("red");
-$p1->SetLegend("Pressure");
+$p1->SetColor('red');
+$p1->SetLegend('Pressure');
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);
-$b1->SetLegend("Temperature");
+$b1->SetLegend('Temperature');
 $b1->SetAbsWidth(6);
 $b1->SetShadow();
 

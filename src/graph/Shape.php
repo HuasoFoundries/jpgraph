@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 /*=======================================================================
@@ -22,7 +23,8 @@ define('CORNER_BOTTOMLEFT', 3);
 //===================================================
 class Shape
 {
-    private $img, $scale;
+    private $img;
+    private $scale;
 
     public function __construct($aGraph, $scale)
     {
@@ -173,7 +175,7 @@ class Shape
         $this->img->FilledRoundedRectangle($x1, $y1, $x2, $y2, $r);
     }
 
-    public function ShadowRectangle($x1, $y1, $x2, $y2, $fcolor = false, $shadow_width = null, $shadow_color = array(102, 102, 102))
+    public function ShadowRectangle($x1, $y1, $x2, $y2, $fcolor = false, $shadow_width = null, $shadow_color = [102, 102, 102])
     {
         list($x1, $y1) = $this->scale->Translate($x1, $y1);
         list($x2, $y2) = $this->scale->Translate($x2, $y2);
@@ -186,12 +188,12 @@ class Shape
         $this->img->ShadowRectangle($x1, $y1, $x2, $y2, $fcolor, $shadow_width, $shadow_color);
     }
 
-    public function SetTextAlign($halign, $valign = "bottom")
+    public function SetTextAlign($halign, $valign = 'bottom')
     {
-        $this->img->SetTextAlign($halign, $valign = "bottom");
+        $this->img->SetTextAlign($halign, $valign = 'bottom');
     }
 
-    public function StrokeText($x1, $y1, $txt, $dir = 0, $paragraph_align = "left")
+    public function StrokeText($x1, $y1, $txt, $dir = 0, $paragraph_align = 'left')
     {
         list($x1, $y1) = $this->scale->Translate($x1, $y1);
         $this->img->StrokeText($x1, $y1, $txt, $dir, $paragraph_align);
@@ -200,9 +202,8 @@ class Shape
     // A rounded rectangle where one of the corner has been moved "into" the
     // rectangle 'iw' width and 'ih' height. Corners:
     // 0=Top left, 1=top right, 2=bottom right, 3=bottom left
-    public function IndentedRectangle($xt, $yt, $w, $h, $iw = 0, $ih = 0, $aCorner = 3, $aFillColor = "", $r = 4)
+    public function IndentedRectangle($xt, $yt, $w, $h, $iw = 0, $ih = 0, $aCorner = 3, $aFillColor = '', $r = 4)
     {
-
         list($xt, $yt) = $this->scale->Translate($xt, $yt);
         list($w, $h) = $this->scale->Translate($w, $h);
         list($iw, $ih) = $this->scale->Translate($iw, $ih);

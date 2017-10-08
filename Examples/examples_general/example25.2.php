@@ -1,8 +1,10 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
-$datay = array(12, 8, 19, 3, 10, 5);
+$datay = [12, 8, 19, 3, 10, 5];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(300, 200);
@@ -28,9 +30,9 @@ $txt->SetColor('red');
 $graph->AddText($txt);
 
 // Setup the titles
-$graph->title->Set("A simple bar graph");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->title->Set('A simple bar graph');
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);

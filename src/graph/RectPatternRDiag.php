@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //=====================================================================
@@ -7,8 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 //=====================================================================
 class RectPatternRDiag extends RectPattern
 {
-
-    public function __construct($aColor = "black", $aWeight = 1, $aLineSpacing = 12)
+    public function __construct($aColor = 'black', $aWeight = 1, $aLineSpacing = 12)
     {
         parent::__construct($aColor, $aWeight);
         $this->linespacing = $aLineSpacing;

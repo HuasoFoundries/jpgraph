@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Rose Theme class
+ * Rose Theme class.
  */
 class RoseTheme extends Theme
 {
@@ -13,7 +14,7 @@ class RoseTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#FF0000',
             '#FF99FF',
             '#AA0099',
@@ -32,7 +33,7 @@ class RoseTheme extends Theme
             '#DD7711',
             '#AA6600',
             '#EE5500',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -120,7 +121,6 @@ class RoseTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -153,7 +153,7 @@ class RoseTheme extends Theme
                 {
                     $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     break;
                 }

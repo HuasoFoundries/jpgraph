@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -9,10 +10,13 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class LinkArrow
 {
-    private $ix, $iy;
-    private $isizespec = array(
-        array(2, 3), array(3, 5), array(3, 8), array(6, 15), array(8, 22));
-    private $iDirection = ARROW_DOWN, $iType = ARROWT_SOLID, $iSize = ARROW_S2;
+    private $ix;
+    private $iy;
+    private $isizespec = [
+        [2, 3], [3, 5], [3, 8], [6, 15], [8, 22], ];
+    private $iDirection = ARROW_DOWN;
+    private $iType = ARROWT_SOLID;
+    private $iSize = ARROW_S2;
     private $iColor = 'black';
 
     public function __construct($x, $y, $aDirection, $aType = ARROWT_SOLID, $aSize = ARROW_S2)
@@ -46,16 +50,16 @@ class LinkArrow
         $y = $this->iy;
         switch ($this->iDirection) {
             case ARROW_DOWN:
-                $c = array($x, $y, $x - $dx, $y - $dy, $x + $dx, $y - $dy, $x, $y);
+                $c = [$x, $y, $x - $dx, $y - $dy, $x + $dx, $y - $dy, $x, $y];
                 break;
             case ARROW_UP:
-                $c = array($x, $y, $x - $dx, $y + $dy, $x + $dx, $y + $dy, $x, $y);
+                $c = [$x, $y, $x - $dx, $y + $dy, $x + $dx, $y + $dy, $x, $y];
                 break;
             case ARROW_LEFT:
-                $c = array($x, $y, $x + $dy, $y - $dx, $x + $dy, $y + $dx, $x, $y);
+                $c = [$x, $y, $x + $dy, $y - $dx, $x + $dy, $y + $dx, $x, $y];
                 break;
             case ARROW_RIGHT:
-                $c = array($x, $y, $x - $dy, $y - $dx, $x - $dy, $y + $dx, $x, $y);
+                $c = [$x, $y, $x - $dy, $y - $dx, $x - $dy, $y + $dx, $x, $y];
                 break;
             default:
                 Util\JpGraphError::RaiseL(6030);

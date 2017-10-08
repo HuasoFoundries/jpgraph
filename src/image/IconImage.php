@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -10,8 +11,10 @@ use Amenadiel\JpGraph\Util;
 class IconImage
 {
     private $iGDImage = null;
-    private $iWidth, $iHeight;
-    private $ixalign = 'left', $iyalign = 'center';
+    private $iWidth;
+    private $iHeight;
+    private $ixalign = 'left';
+    private $iyalign = 'center';
     private $iScale = 1.0;
 
     public function __construct($aIcon, $aScale = 1)
@@ -19,7 +22,7 @@ class IconImage
         global $_gPredefIcons;
         if (is_string($aIcon)) {
             $this->iGDImage = Graph::LoadBkgImage('', $aIcon);
-        } elseif (is_integer($aIcon)) {
+        } elseif (is_int($aIcon)) {
             // Builtin image
             $this->iGDImage = $_gPredefIcons->GetImg($aIcon);
         } else {
@@ -49,7 +52,6 @@ class IconImage
 
     public function Stroke($aImg, $x, $y)
     {
-
         if ($this->ixalign == 'right') {
             $x -= $this->iWidth;
         } elseif ($this->ixalign == 'center') {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -19,7 +20,10 @@ class StockPlot extends Plot
     protected $iTupleSize = 4;
     private $iWidth = 9;
     private $iEndLines = 1;
-    private $iStockColor1 = 'white', $iStockColor2 = 'darkred', $iStockColor3 = 'darkred';
+    private $iStockColor1 = 'white';
+    private $iStockColor2 = 'darkred';
+    private $iStockColor3 = 'darkred';
+
     //---------------
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
@@ -108,7 +112,6 @@ class StockPlot extends Plot
                 if ($x === null) {
                     continue;
                 }
-
             } else {
                 $x = $i;
             }
@@ -161,10 +164,10 @@ class StockPlot extends Plot
 
             // Setup image maps
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="rect" coords="' .
-                round($xl) . ',' . round($ytop) . ',' .
-                round($xr) . ',' . round($ybottom) . '" ';
-                $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
+                $this->csimareas .= '<area shape="rect" coords="'.
+                round($xl).','.round($ytop).','.
+                round($xr).','.round($ybottom).'" ';
+                $this->csimareas .= ' href="'.$this->csimtargets[$i].'"';
                 if (!empty($this->csimalts[$i])) {
                     $sval = $this->csimalts[$i];
                     $this->csimareas .= " title=\"$sval\" alt=\"$sval\" ";
@@ -172,11 +175,12 @@ class StockPlot extends Plot
                 $this->csimareas .= "  />\n";
             }
         }
+
         return true;
     }
 
     // A hook for subclasses to modify the plot
     public function ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg)
-    {}
-
+    {
+    }
 } // Class

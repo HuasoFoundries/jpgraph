@@ -1,15 +1,17 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
-$datay1 = array(20, 15, 23, 15);
-$datay2 = array(12, 9, 42, 8);
-$datay3 = array(5, 17, 32, 24);
+$datay1 = [20, 15, 23, 15];
+$datay2 = [12, 9, 42, 8];
+$datay3 = [5, 17, 32, 24];
 
 // Setup the graph
 $graph = new Graph\Graph(300, 200);
 $graph->SetMarginColor('white');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetFrame(false);
 $graph->SetMargin(30, 50, 30, 30);
 
@@ -23,19 +25,19 @@ $graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay1);
-$p1->SetColor("navy");
+$p1->SetColor('navy');
 $p1->SetLegend('Line 1');
 $graph->Add($p1);
 
 // Create the second line
 $p2 = new Plot\LinePlot($datay2);
-$p2->SetColor("red");
+$p2->SetColor('red');
 $p2->SetLegend('Line 2');
 $graph->Add($p2);
 
 // Create the third line
 $p3 = new Plot\LinePlot($datay3);
-$p3->SetColor("orange");
+$p3->SetColor('orange');
 $p3->SetLegend('Line 3');
 $graph->Add($p3);
 

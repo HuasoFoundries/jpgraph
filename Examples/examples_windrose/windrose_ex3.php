@@ -1,29 +1,31 @@
 <?php
+
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 // Data can be specified using both ordinal index of the axis
 // as well as the direction label
-$data[0] = array(
-    0 => array(1, 1, 2.5, 4),
-    1 => array(3, 4, 1, 4),
-    3 => array(2, 7, 4, 4, 3),
-    5 => array(2, 7, 1, 2));
+$data[0] = [
+    0 => [1, 1, 2.5, 4],
+    1 => [3, 4, 1, 4],
+    3 => [2, 7, 4, 4, 3],
+    5 => [2, 7, 1, 2], ];
 
-$data[1] = array(
-    "n" => array(1, 1, 2.5, 4),
-    "ssw" => array(3, 4, 1, 4),
-    "se" => array(2, 7, 4, 4, 3));
+$data[1] = [
+    'n'   => [1, 1, 2.5, 4],
+    'ssw' => [3, 4, 1, 4],
+    'se'  => [2, 7, 4, 4, 3], ];
 
 // Store the position and size data for each plot in an
 // array to make it easier to create multiple plots.
 // The format choosen for the layout data is
 // (type,x-pos,y-pos,size, z-circle size)
-$layout = array(
-    array(WINDROSE_TYPE8, 0.25, 0.55, 0.4, 0.25),
-    array(WINDROSE_TYPE16, 0.75, 0.55, 0.4, 0.25));
+$layout = [
+    [WINDROSE_TYPE8, 0.25, 0.55, 0.4, 0.25],
+    [WINDROSE_TYPE16, 0.75, 0.55, 0.4, 0.25], ];
 
-$legendtxt = array('(m/s) Station 7', '(m/s) Station 12');
+$legendtxt = ['(m/s) Station 7', '(m/s) Station 12'];
 
 // First create a new windrose graph with a dropshadow
 $graph = new Graph\WindroseGraph(600, 350);

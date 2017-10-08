@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -9,9 +10,10 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class RadarLinearTicks extends Ticks
 {
-
-    private $minor_step = 1, $major_step = 2;
-    private $xlabel_offset = 0, $xtick_offset = 0;
+    private $minor_step = 1;
+    private $major_step = 2;
+    private $xlabel_offset = 0;
+    private $xtick_offset = 0;
 
     public function __construct()
     {
@@ -64,8 +66,8 @@ class RadarLinearTicks extends Ticks
 
         $aImg->SetLineWeight($this->weight);
 
-        $aMajPos = array();
-        $aMajLabel = array();
+        $aMajPos = [];
+        $aMajLabel = [];
 
         for ($i = 1; $i <= $nbrmaj; ++$i) {
             $xt = round($i * $maj_step_abs * cos($aAxisAngle)) + $aScale->scale_abs[0];

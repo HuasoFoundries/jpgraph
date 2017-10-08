@@ -1,12 +1,14 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
-$datay = array(12, 26, 9, 17, 31);
+$datay = [12, 26, 9, 17, 31];
 
 // Create the graph.
 $graph = new Graph\Graph(400, 250);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMargin(50, 80, 20, 40);
 $graph->yaxis->SetTitleMargin(30);
 $graph->yaxis->scale->SetGrace(30);
@@ -16,17 +18,17 @@ $graph->SetShadow();
 $bplot = new Plot\BarPlot($datay);
 
 // Create targets for the bars image maps. One for each column
-$targ = array("bar_clsmex1.php#1", "bar_clsmex1.php#2", "bar_clsmex1.php#3", "bar_clsmex1.php#4", "bar_clsmex1.php#5", "bar_clsmex1.php#6");
-$alts = array("val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d");
+$targ = ['bar_clsmex1.php#1', 'bar_clsmex1.php#2', 'bar_clsmex1.php#3', 'bar_clsmex1.php#4', 'bar_clsmex1.php#5', 'bar_clsmex1.php#6'];
+$alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $bplot->SetCSIMTargets($targ, $alts);
-$bplot->SetFillColor("orange");
+$bplot->SetFillColor('orange');
 $bplot->SetLegend('Year 2001 %%', '#kalle ', '%s');
 
 // Display the values on top of each bar
 $bplot->SetShadow();
-$bplot->value->SetFormat(" $ %2.1f", 70);
+$bplot->value->SetFormat(' $ %2.1f', 70);
 $bplot->value->SetFont(FF_ARIAL, FS_NORMAL, 9);
-$bplot->value->SetColor("blue");
+$bplot->value->SetColor('blue');
 $bplot->value->Show();
 
 $graph->Add($bplot);
@@ -42,11 +44,11 @@ $graph->Add($txt1);
 
 // Add image map to the graph title as well (you can do this to the
 // sub- and subsub-title as well)
-$graph->title->Set("Image maps barex1");
+$graph->title->Set('Image maps barex1');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetCSIMTarget('#45', 'Title for Bar');
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 // Setup the axis title image map and font style
 $graph->yaxis->title->SetFont(FF_FONT2, FS_BOLD);
