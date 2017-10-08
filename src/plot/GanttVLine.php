@@ -1,17 +1,20 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 
 class GanttVLine extends GanttPlotObject
 {
-
-    private $iLine, $title_margin = 3, $iDayOffset = 0.5;
-    private $iStartRow = -1, $iEndRow = -1;
+    private $iLine;
+    private $title_margin = 3;
+    private $iDayOffset = 0.5;
+    private $iStartRow = -1;
+    private $iEndRow = -1;
 
     //---------------
     // CONSTRUCTOR
-    public function __construct($aDate, $aTitle = "", $aColor = "darkred", $aWeight = 2, $aStyle = "solid")
+    public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
         GanttPlotObject::__construct();
         $this->iLine = new Graph\LineProperty();
@@ -79,7 +82,7 @@ class GanttVLine extends GanttPlotObject
         }
 
         $this->iLine->Stroke($aImg, $x, $y1, $x, $y2);
-        $this->title->Align("center", "top");
+        $this->title->Align('center', 'top');
         $this->title->Stroke($aImg, $x, $y2 + $this->title_margin);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -13,8 +14,8 @@ use Amenadiel\JpGraph\Util;
 //========================================================================
  */
 
-DEFINE('LOGLABELS_PLAIN', 0);
-DEFINE('LOGLABELS_MAGNITUDE', 1);
+define('LOGLABELS_PLAIN', 0);
+define('LOGLABELS_MAGNITUDE', 1);
 
 //===================================================
 // CLASS LogScale
@@ -26,7 +27,7 @@ class LogScale extends LinearScale
     // CONSTRUCTOR
 
     // Log scale is specified using the log of min and max
-    public function __construct($min, $max, $type = "y")
+    public function __construct($min, $max, $type = 'y')
     {
         parent::__construct($min, $max, $type);
         $this->ticks = new LogTicks('log');
@@ -44,6 +45,7 @@ class LogScale extends LinearScale
                 Util\JpGraphError::RaiseL(11001);
                 // ('Your data contains non-numeric values.');
             }
+
             return 1;
         }
         if ($a < 0) {
@@ -56,6 +58,7 @@ class LogScale extends LinearScale
         }
 
         $a = log10($a);
+
         return ceil($this->off + ($a * 1.0 - $this->scale[0]) * $this->scale_factor);
     }
 
@@ -68,19 +71,21 @@ class LogScale extends LinearScale
                 Util\JpGraphError::RaiseL(11001);
                 //('Your data contains non-numeric values.');
             }
+
             return 1;
         }
         if ($a == 0) {
             $a = 1;
         }
         $a = log10($a);
+
         return round(($a * 1.0 - $this->scale[0]) * $this->scale_factor);
     }
 
     // Use bcpow() for increased precision
     public function GetMinVal()
     {
-        if (function_exists("bcpow")) {
+        if (function_exists('bcpow')) {
             return round(bcpow(10, $this->scale[0], 15), 14);
         } else {
             return round(pow(10, $this->scale[0]), 14);
@@ -89,7 +94,7 @@ class LogScale extends LinearScale
 
     public function GetMaxVal()
     {
-        if (function_exists("bcpow")) {
+        if (function_exists('bcpow')) {
             return round(bcpow(10, $this->scale[1], 15), 14);
         } else {
             return round(pow(10, $this->scale[1]), 14);
@@ -127,7 +132,6 @@ class LogScale extends LinearScale
             } else {
                 $smax = ceil(log10($max));
             }
-
         }
 
         $this->Update($img, $smin, $smax);

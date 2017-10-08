@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -9,8 +10,10 @@ use Amenadiel\JpGraph\Graph;
 //===================================================
 class ScatterPlot extends Plot
 {
-    public $mark, $link;
+    public $mark;
+    public $link;
     private $impuls = false;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
@@ -41,7 +44,7 @@ class ScatterPlot extends Plot
     }
 
     // Combine the scatter plot points with a line
-    public function SetLinkPoints($aFlag = true, $aColor = "black", $aWeight = 1, $aStyle = 'solid')
+    public function SetLinkPoints($aFlag = true, $aColor = 'black', $aWeight = 1, $aStyle = 'solid')
     {
         $this->link->iShow = $aFlag;
         $this->link->iColor = $aColor;
@@ -51,7 +54,6 @@ class ScatterPlot extends Plot
 
     public function Stroke($img, $xscale, $yscale)
     {
-
         $ymin = $yscale->scale_abs[0];
         if ($yscale->scale[0] < 0) {
             $yzero = $yscale->Translate(0);
@@ -117,7 +119,7 @@ class ScatterPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend != "") {
+        if ($this->legend != '') {
             $aGraph->legend->Add($this->legend, $this->mark->fill_color, $this->mark, 0,
                 $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
         }

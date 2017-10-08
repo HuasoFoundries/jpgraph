@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -8,13 +9,23 @@ use Amenadiel\JpGraph\Util;
 //--------------------------------------------------------------------------
 class PolarAxis extends Axis
 {
-    private $angle_step = 15, $angle_color = 'lightgray', $angle_label_color = 'black';
-    private $angle_fontfam = FF_FONT1, $angle_fontstyle = FS_NORMAL, $angle_fontsize = 10;
+    private $angle_step = 15;
+    private $angle_color = 'lightgray';
+    private $angle_label_color = 'black';
+    private $angle_fontfam = FF_FONT1;
+    private $angle_fontstyle = FS_NORMAL;
+    private $angle_fontsize = 10;
     private $angle_fontcolor = 'navy';
-    private $gridminor_color = 'lightgray', $gridmajor_color = 'lightgray';
-    private $show_minor_grid = false, $show_major_grid = true;
-    private $show_angle_mark = true, $show_angle_grid = true, $show_angle_label = true;
-    private $angle_tick_len = 3, $angle_tick_len2 = 3, $angle_tick_color = 'black';
+    private $gridminor_color = 'lightgray';
+    private $gridmajor_color = 'lightgray';
+    private $show_minor_grid = false;
+    private $show_major_grid = true;
+    private $show_angle_mark = true;
+    private $show_angle_grid = true;
+    private $show_angle_label = true;
+    private $angle_tick_len = 3;
+    private $angle_tick_len2 = 3;
+    private $angle_tick_color = 'black';
     private $show_angle_tick = true;
     private $radius_tick_color = 'black';
 
@@ -168,7 +179,6 @@ class PolarAxis extends Axis
                         $pos - $start_radius * sin($a / 180 * M_PI),
                         $x + $start_radius * cos($a / 180 * M_PI) + 1,
                         $pos - $d * sin($a / 180 * M_PI));
-
                 } else {
                     $this->img->Line($x + $start_radius * cos($a / 180 * M_PI) + 1,
                         $pos - $start_radius * sin($a / 180 * M_PI),
@@ -182,7 +192,6 @@ class PolarAxis extends Axis
 
     public function StrokeAngleLabels($pos, $type)
     {
-
         if (!$this->show_angle_label) {
             return;
         }
@@ -364,7 +373,6 @@ class PolarAxis extends Axis
 
     public function Stroke($pos, $dummy = true)
     {
-
         $this->img->SetLineWeight($this->weight);
         $this->img->SetColor($this->color);
         $this->img->SetFont($this->font_family, $this->font_style, $this->font_size);
@@ -374,13 +382,13 @@ class PolarAxis extends Axis
                 $pos + $this->weight - 1);
         }
         $y = $pos + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
-        if ($this->title_adjust == "high") {
-            $this->title->SetPos($this->img->width - $this->img->right_margin, $y, "right", "top");
-        } elseif ($this->title_adjust == "middle" || $this->title_adjust == "center") {
+        if ($this->title_adjust == 'high') {
+            $this->title->SetPos($this->img->width - $this->img->right_margin, $y, 'right', 'top');
+        } elseif ($this->title_adjust == 'middle' || $this->title_adjust == 'center') {
             $this->title->SetPos(($this->img->width - $this->img->left_margin - $this->img->right_margin) / 2 + $this->img->left_margin,
-                $y, "center", "top");
-        } elseif ($this->title_adjust == "low") {
-            $this->title->SetPos($this->img->left_margin, $y, "left", "top");
+                $y, 'center', 'top');
+        } elseif ($this->title_adjust == 'low') {
+            $this->title->SetPos($this->img->left_margin, $y, 'left', 'top');
         } else {
             Util\JpGraphError::RaiseL(17002, $this->title_adjust);
             //('Unknown alignment specified for X-axis title. ('.$this->title_adjust.')');

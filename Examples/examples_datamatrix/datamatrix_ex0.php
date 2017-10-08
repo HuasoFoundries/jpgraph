@@ -1,5 +1,6 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'The first datamatrix';
 $encoder = DatamatrixFactory::Create();
@@ -15,4 +16,3 @@ try {
     echo 'Datamatrix error: '.$e->GetMessage()."\n";
     exit(1);
 }
-?>

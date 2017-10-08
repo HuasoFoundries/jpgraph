@@ -2,7 +2,7 @@
     // Example 3 : QR Barcode with specified version and stored to a file
 
     // Include the library
-    require_once ('jpgraph/QR/qrencoder.inc.php');
+    require_once 'jpgraph/QR/qrencoder.inc.php';
 
     // Data to be encoded
     $data = '01234567';
@@ -20,8 +20,7 @@
     $backend->SetModuleWidth(5);
 
     // Store the barcode in the specifed file
-    $backend->Stroke($data,$fileName);
-    list($version,$errorcorrection) = $backend->GetQRInfo();
+    $backend->Stroke($data, $fileName);
+    list($version, $errorcorrection) = $backend->GetQRInfo();
 
     echo "QR Barcode, (<b>Version: $version-$errorcorrection</b>), image stored in file $fileName";
-?>

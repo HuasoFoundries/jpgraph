@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Pastel Theme class
+ * Pastel Theme class.
  */
 class PastelTheme extends Theme
 {
@@ -13,7 +14,7 @@ class PastelTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#FFAACC',
             '#AAEECC',
             '#AACCFF',
@@ -26,7 +27,7 @@ class PastelTheme extends Theme
             '#FFEEDD',
             '#FFCCEE',
             '#BFECFA',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -114,7 +115,6 @@ class PastelTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -146,7 +146,7 @@ class PastelTheme extends Theme
             case 'LinePlot':
                 {
                     $plot->Clear();
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     //                $plot->SetBarCenter();
                     break;

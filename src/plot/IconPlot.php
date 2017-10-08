@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 //=======================================================================
@@ -17,15 +18,21 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class IconPlot
 {
-    public $iX = 0, $iY = 0, $iScale = 1.0, $iMix = 100;
-    private $iHorAnchor = 'left', $iVertAnchor = 'top';
+    public $iX = 0;
+    public $iY = 0;
+    public $iScale = 1.0;
+    public $iMix = 100;
+    private $iHorAnchor = 'left';
+    private $iVertAnchor = 'top';
     private $iFile = '';
-    private $iAnchors = array('left', 'right', 'top', 'bottom', 'center');
-    private $iCountryFlag = '', $iCountryStdSize = 3;
-    private $iScalePosY = null, $iScalePosX = null;
+    private $iAnchors = ['left', 'right', 'top', 'bottom', 'center'];
+    private $iCountryFlag = '';
+    private $iCountryStdSize = 3;
+    private $iScalePosY = null;
+    private $iScalePosX = null;
     private $iImgString = '';
 
-    public function __construct($aFile = "", $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
+    public function __construct($aFile = '', $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
     {
         $this->iFile = $aFile;
         $this->iX = $aX;
@@ -102,27 +109,35 @@ class IconPlot
 
     public function Max()
     {
-        return array(false, false);
+        return [false, false];
     }
 
     // The next four function are framework function tht gets called
     // from Gantt and is not menaiungfull in the context of Icons but
     // they must be implemented to avoid errors.
     public function GetMaxDate()
-    {return false;}
+    {
+        return false;
+    }
 
     public function GetMinDate()
-    {return false;}
+    {
+        return false;
+    }
 
     public function GetLineNbr()
-    {return 0;}
+    {
+        return 0;
+    }
 
     public function GetAbsHeight()
-    {return 0;}
+    {
+        return 0;
+    }
 
     public function Min()
     {
-        return array(false, false);
+        return [false, false];
     }
 
     public function StrokeMargin(&$aImg)
@@ -150,6 +165,7 @@ class IconPlot
     public function GetWidthHeight()
     {
         $dummy = 0;
+
         return $this->_Stroke($dummy, null, null, true);
     }
 
@@ -175,7 +191,7 @@ class IconPlot
         $iconh = imagesy($gdimg);
 
         if ($aReturnWidthHeight) {
-            return array(round($iconw * $this->iScale), round($iconh * $this->iScale));
+            return [round($iconw * $this->iScale), round($iconh * $this->iScale)];
         }
 
         if ($x !== null && $y !== null) {

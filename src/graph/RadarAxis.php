@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -11,13 +12,13 @@ class RadarAxis extends AxisPrototype
     private $title_color = 'navy';
     private $len = 0;
 
-    public function __construct($img, $aScale, $color = array(0, 0, 0))
+    public function __construct($img, $aScale, $color = [0, 0, 0])
     {
         parent::__construct($img, $aScale, $color);
         $this->len = $img->plotheight;
         $this->title = new Text();
         $this->title->SetFont(FF_FONT1, FS_BOLD);
-        $this->color = array(0, 0, 0);
+        $this->color = [0, 0, 0];
     }
 
     // Stroke the axis
@@ -144,5 +145,4 @@ class RadarAxis extends AxisPrototype
             $this->title->Stroke($this->img, $xt - $dx * $w, $yt - $dy * $h, $title);
         }
     }
-
 } // Class

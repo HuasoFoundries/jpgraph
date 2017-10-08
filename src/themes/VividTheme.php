@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Vivid Theme class
+ * Vivid Theme class.
  */
 class VividTheme extends Theme
 {
@@ -13,7 +14,7 @@ class VividTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#FFFB11',
             '#005EBC',
             '#9AEB67',
@@ -26,7 +27,7 @@ class VividTheme extends Theme
             '#2E97E0',
             '#02927F',
             '#FF005A',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -114,7 +115,6 @@ class VividTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -146,7 +146,7 @@ class VividTheme extends Theme
             case 'LinePlot':
                 {
                     $plot->Clear();
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     //                $plot->SetBarCenter();
                     break;

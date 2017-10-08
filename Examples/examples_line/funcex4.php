@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_utils.inc.php';
@@ -11,7 +13,7 @@ list($x2data, $y2data) = $f->E(-2, 2);
 
 // Setup the basic graph
 $graph = new Graph\Graph(450, 350);
-$graph->SetScale("linlin");
+$graph->SetScale('linlin');
 //$graph->SetShadow();
 $graph->img->SetMargin(5, 10, 60, 9);
 $graph->SetBox(true, 'green', 2);

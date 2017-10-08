@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Text;
 
 /*=======================================================================
@@ -12,13 +13,13 @@ namespace Amenadiel\JpGraph\Text;
  */
 
 // Style of grid lines in table
-DEFINE('TGRID_SINGLE', 1);
-DEFINE('TGRID_DOUBLE', 2);
-DEFINE('TGRID_DOUBLE2', 3);
+define('TGRID_SINGLE', 1);
+define('TGRID_DOUBLE', 2);
+define('TGRID_DOUBLE2', 3);
 
 // Type of constrain for image constrain
-DEFINE('TIMG_WIDTH', 1);
-DEFINE('TIMG_HEIGHT', 2);
+define('TIMG_WIDTH', 1);
+define('TIMG_HEIGHT', 2);
 
 //---------------------------------------------------------------------
 // CLASS GTextTableCell
@@ -27,21 +28,36 @@ DEFINE('TIMG_HEIGHT', 2);
 //---------------------------------------------------------------------
 class GTextTableCell
 {
-    public $iColSpan = 1, $iRowSpan = 1;
-    public $iMarginLeft = 5, $iMarginRight = 5, $iMarginTop = 5, $iMarginBottom = 5;
+    public $iColSpan = 1;
+    public $iRowSpan = 1;
+    public $iMarginLeft = 5;
+    public $iMarginRight = 5;
+    public $iMarginTop = 5;
+    public $iMarginBottom = 5;
     public $iVal = null;
-    private $iBGColor = '', $iFontColor = 'black';
-    private $iFF = FF_FONT1, $iFS = FS_NORMAL, $iFSize = 10;
-    private $iRow = 0, $iCol = 0;
-    private $iVertAlign = 'bottom', $iHorAlign = 'left';
-    private $iMerged = false, $iPRow = null, $iPCol = null;
+    private $iBGColor = '';
+    private $iFontColor = 'black';
+    private $iFF = FF_FONT1;
+    private $iFS = FS_NORMAL;
+    private $iFSize = 10;
+    private $iRow = 0;
+    private $iCol = 0;
+    private $iVertAlign = 'bottom';
+    private $iHorAlign = 'left';
+    private $iMerged = false;
+    private $iPRow = null;
+    private $iPCol = null;
     private $iTable = null;
-    private $iGridColor = array('darkgray', 'darkgray', 'darkgray', 'darkgray');
-    private $iGridWeight = array(1, 1, 0, 0); // left,top,bottom,right;
-    private $iGridStyle = array(TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE); // left,top,bottom,right;
+    private $iGridColor = ['darkgray', 'darkgray', 'darkgray', 'darkgray'];
+    private $iGridWeight = [1, 1, 0, 0]; // left,top,bottom,right;
+    private $iGridStyle = [TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE]; // left,top,bottom,right;
     private $iNumberFormat = null;
-    private $iIcon = null, $iIconConstrain = array();
-    private $iCSIMtarget = '', $iCSIMwintarget = '', $iCSIMalt = '', $iCSIMArea = '';
+    private $iIcon = null;
+    private $iIconConstrain = [];
+    private $iCSIMtarget = '';
+    private $iCSIMwintarget = '';
+    private $iCSIMalt = '';
+    private $iCSIMArea = '';
 
     public function __construct($aVal = '', $aRow = 0, $aCol = 0)
     {
@@ -50,7 +66,7 @@ class GTextTableCell
         $this->iCol = $aCol;
         $this->iPRow = $aRow; // Initialiy each cell is its own parent
         $this->iPCol = $aCol;
-        $this->iIconConstrain = array(-1, -1);
+        $this->iIconConstrain = [-1, -1];
     }
 
     public function Init($aTable)
@@ -72,15 +88,14 @@ class GTextTableCell
         } else {
             return '';
         }
-
     }
 
     public function SetImageConstrain($aType, $aVal)
     {
-        if (!in_array($aType, array(TIMG_WIDTH, TIMG_HEIGHT))) {
+        if (!in_array($aType, [TIMG_WIDTH, TIMG_HEIGHT])) {
             JpGraphError::RaiseL(27015);
         }
-        $this->iIconConstrain = array($aType, $aVal);
+        $this->iIconConstrain = [$aType, $aVal];
     }
 
     public function SetCountryFlag($aFlag, $aScale = 1.0, $aMix = 100, $aStdSize = 3)
@@ -96,7 +111,7 @@ class GTextTableCell
 
     public function SetImageFromString($aStr, $aScale = 1.0, $aMix = 100)
     {
-        $this->iIcon = new IconPlot("", 0, 0, $aScale, $aMix);
+        $this->iIcon = new IconPlot('', 0, 0, $aScale, $aMix);
         $this->iIcon->CreateFromString($aStr);
     }
 
@@ -164,7 +179,6 @@ class GTextTableCell
         if ($aRight !== null) {
             $this->iGridColor[3] = $aRight;
         }
-
     }
 
     public function SetGridStyle($aLeft, $aTop = null, $aBottom = null, $aRight = null)
@@ -184,7 +198,6 @@ class GTextTableCell
         if ($aRight !== null) {
             $this->iGridStyle[3] = $aRight;
         }
-
     }
 
     public function SetGridWeight($aLeft = null, $aTop = null, $aBottom = null, $aRight = null)
@@ -204,7 +217,6 @@ class GTextTableCell
         if ($aRight !== null) {
             $this->iGridWeight[3] = $aRight;
         }
-
     }
 
     public function SetMargin($aLeft, $aRight, $aTop, $aBottom)
@@ -241,6 +253,7 @@ class GTextTableCell
         }
 
         $pcolspan = $this->iTable->iCells[$this->iPRow][$this->iPCol]->iColSpan;
+
         return round(max($iwidth, $pwidth) / $pcolspan) + $this->iMarginLeft + $this->iMarginRight;
     }
 
@@ -267,6 +280,7 @@ class GTextTableCell
             $pheight = $this->iTable->iCells[$this->iPRow][$this->iPCol]->iVal->GetHeight($aImg) + 1;
         }
         $prowspan = $this->iTable->iCells[$this->iPRow][$this->iPCol]->iRowSpan;
+
         return round(max($iheight, $pheight) / $prowspan) + $this->iMarginTop + $this->iMarginBottom;
     }
 
@@ -274,7 +288,7 @@ class GTextTableCell
     {
         $aHorAlign = strtolower($aHorAlign);
         $aVertAlign = strtolower($aVertAlign);
-        $chk = array('left', 'right', 'center', 'bottom', 'top', 'middle');
+        $chk = ['left', 'right', 'center', 'bottom', 'top', 'middle'];
         if (!in_array($aHorAlign, $chk) || !in_array($aVertAlign, $chk)) {
             JpGraphError::RaiseL(27011, $aHorAlign, $aVertAlign);
         }
@@ -441,14 +455,14 @@ class GTextTableCell
             $aImg->FilledRectangle($aX, $aY, $aX + $aWidth - 1, $aY + $aHeight - 1);
         }
 
-        $coords = $aX . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . ($aY + $aHeight - 1) . ',' . $aX . ',' . ($aY + $aHeight - 1);
+        $coords = $aX.','.$aY.','.($aX + $aWidth - 1).','.$aY.','.($aX + $aWidth - 1).','.($aY + $aHeight - 1).','.$aX.','.($aY + $aHeight - 1);
         if (!empty($this->iCSIMtarget)) {
-            $this->iCSIMArea = '<area shape="poly" coords="' . $coords . '" href="' . $this->iCSIMtarget . '"';
+            $this->iCSIMArea = '<area shape="poly" coords="'.$coords.'" href="'.$this->iCSIMtarget.'"';
             if (!empty($this->iCSIMwintarget)) {
-                $this->iCSIMArea .= " target=\"" . $this->iCSIMwintarget . "\"";
+                $this->iCSIMArea .= ' target="'.$this->iCSIMwintarget.'"';
             }
             if (!empty($this->iCSIMalt)) {
-                $this->iCSIMArea .= ' alt="' . $this->iCSIMalt . '" title="' . $this->iCSIMalt . "\" ";
+                $this->iCSIMArea .= ' alt="'.$this->iCSIMalt.'" title="'.$this->iCSIMalt.'" ';
             }
             $this->iCSIMArea .= " />\n";
         }

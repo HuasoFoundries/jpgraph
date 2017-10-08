@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -7,7 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 //===================================================
 class LineProperty
 {
-    public $iWeight = 1, $iColor = 'black', $iStyle = 'solid', $iShow = false;
+    public $iWeight = 1;
+    public $iColor = 'black';
+    public $iStyle = 'solid';
+    public $iShow = false;
 
     public function __construct($aWeight = 1, $aColor = 'black', $aStyle = 'solid')
     {
@@ -48,7 +52,6 @@ class LineProperty
             $aImg->PopColor($this->iColor);
             $aImg->line_style = $oldls;
             $aImg->line_weight = $oldlw;
-
         }
     }
 }

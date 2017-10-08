@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../jpgraph.php';
 require_once '../jpgraph_mgraph.php';
 require_once '../jpgraph_line.php';
@@ -9,8 +11,8 @@ require_once '../jpgraph_utils.inc.php';
 // Create some random data for the plot. We use the current time for the
 // first X-position
 //------------------------------------------------------------------
-$datay = array();
-$datax = array();
+$datay = [];
+$datax = [];
 $ts = time();
 $n = 70; // Number of data points
 for ($i = 0; $i < $n; ++$i) {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -50,7 +51,6 @@ class RectPattern
         // 1% corresponds to linespacing=50
         // 100 % corresponds to linespacing 1
         $this->linespacing = floor(((100 - $aDens) / 100.0) * 50) + 1;
-
     }
 
     public function Stroke($aImg)
@@ -76,7 +76,5 @@ class RectPattern
         if ($this->doframe) {
             $aImg->Rectangle($this->rect->x, $this->rect->y, $this->rect->xe, $this->rect->ye);
         }
-
     }
-
 }

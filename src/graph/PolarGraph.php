@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -10,7 +11,7 @@ class PolarGraph extends Graph
     public $iType = POLAR_360;
     private $iClockwise = false;
 
-    public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = "", $aTimeOut = 0, $aInline = true)
+    public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
         $this->SetDensity(TICKD_DENSE);
@@ -75,10 +76,11 @@ class PolarGraph extends Graph
             $m = max($this->plots[$i]->Max(), $m);
             ++$i;
         }
+
         return $m;
     }
 
-    public function Stroke($aStrokeFileName = "")
+    public function Stroke($aStrokeFileName = '')
     {
 
         // Start by adjusting the margin so that potential titles will fit.
@@ -201,7 +203,6 @@ class PolarGraph extends Graph
         $this->legend->Stroke($this->img);
 
         if (!$_csim) {
-
             $this->StrokeTexts();
             $this->img->SetAngle($aa);
 

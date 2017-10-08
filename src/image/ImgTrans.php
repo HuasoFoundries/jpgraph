@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -64,7 +65,6 @@ class ImgTrans
 
         $last = $h;
         for ($y = 0; $y < $h; ++$y) {
-
             $yp = $h - $y - 1;
             $yt = floor($yp * $aHorizon / ($aSkewDist + $yp));
 
@@ -119,7 +119,6 @@ class ImgTrans
     // --------------------------------------------------------------------
     public function _TransHor3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = SKEW3D_LEFT, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
     {
-
         $w = imagesx($aGdImg);
         $h = imagesy($aGdImg);
 
@@ -235,7 +234,5 @@ class ImgTrans
         } else {
             return $this->_TransHor3D($aGdImg, $aHorizon, $aSkewDist, $aDir, $aMinSize, $aFillColor, $aHiQuality, $aBorder);
         }
-
     }
-
 }

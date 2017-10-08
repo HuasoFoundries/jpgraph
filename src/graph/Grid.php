@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -11,10 +12,16 @@ class Grid
 {
     protected $img;
     protected $scale;
-    protected $majorcolor = '#CCCCCC', $minorcolor = '#DDDDDD';
-    protected $majortype = 'solid', $minortype = 'solid';
-    protected $show = false, $showMinor = false, $majorweight = 1, $minorweight = 1;
-    protected $fill = false, $fillcolor = array('#EFEFEF', '#BBCCFF');
+    protected $majorcolor = '#CCCCCC';
+    protected $minorcolor = '#DDDDDD';
+    protected $majortype = 'solid';
+    protected $minortype = 'solid';
+    protected $show = false;
+    protected $showMinor = false;
+    protected $majorweight = 1;
+    protected $minorweight = 1;
+    protected $fill = false;
+    protected $fillcolor = ['#EFEFEF', '#BBCCFF'];
 
     public function __construct($aAxis)
     {
@@ -59,7 +66,7 @@ class Grid
     public function SetFill($aFlg = true, $aColor1 = 'lightgray', $aColor2 = 'lightblue')
     {
         $this->fill = $aFlg;
-        $this->fillcolor = array($aColor1, $aColor2);
+        $this->fillcolor = [$aColor1, $aColor2];
     }
 
     // Display the grid
@@ -164,6 +171,7 @@ class Grid
         } else {
             Util\JpGraphError::RaiseL(25054, $this->scale->type); //('Internal error: Unknown grid axis ['.$this->scale->type.']');
         }
+
         return true;
     }
 } // Class

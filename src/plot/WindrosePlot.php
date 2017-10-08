@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -39,9 +40,11 @@ class WindrosePlot
 {
     private $iAntiAlias = true;
     private $iData = [];
-    public $iX = 0.5, $iY = 0.5;
+    public $iX = 0.5;
+    public $iY = 0.5;
     public $iSize = 0.55;
-    private $iGridColor1 = 'gray', $iGridColor2 = 'darkgreen';
+    private $iGridColor1 = 'gray';
+    private $iGridColor2 = 'darkgreen';
     private $iRadialColorArray = [];
     private $iRadialWeightArray = [];
     private $iRadialStyleArray = [];
@@ -49,19 +52,26 @@ class WindrosePlot
     private $iRangeStyle = RANGE_OVERLAPPING;
     public $iCenterSize = 60;
     private $iType = WINDROSE_TYPE16;
-    public $iFontFamily = FF_VERDANA, $iFontStyle = FS_NORMAL, $iFontSize = 10;
+    public $iFontFamily = FF_VERDANA;
+    public $iFontStyle = FS_NORMAL;
+    public $iFontSize = 10;
     public $iFontColor = 'darkgray';
     private $iRadialGridStyle = 'longdashed';
     private $iAllDirectionLabels = ['E', 'ENE', 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW', 'W', 'WSW', 'SW', 'SSW', 'S', 'SSE', 'SE', 'ESE'];
     private $iStandardDirections = [];
-    private $iCircGridWeight = 3, $iRadialGridWeight = 1;
+    private $iCircGridWeight = 3;
+    private $iRadialGridWeight = 1;
     private $iLabelMargin = 12;
     private $iLegweights = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
     private $iLegColors = ['orange', 'black', 'blue', 'red', 'green', 'purple', 'navy', 'yellow', 'brown'];
-    private $iLabelFormatString = '', $iLabels = [];
+    private $iLabelFormatString = '';
+    private $iLabels = [];
     private $iLabelPositioning = LBLPOSITION_EDGE;
     private $iColor = 'white';
-    private $iShowBox = false, $iBoxColor = 'black', $iBoxWeight = 1, $iBoxStyle = 'solid';
+    private $iShowBox = false;
+    private $iBoxColor = 'black';
+    private $iBoxWeight = 1;
+    private $iBoxStyle = 'solid';
     private $iOrdinalEncoding = KEYENCODING_ANTICLOCKWISE;
     public $legend = null;
 
@@ -74,7 +84,7 @@ class WindrosePlot
         $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f'.Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
@@ -153,7 +163,6 @@ class WindrosePlot
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
             $this->iStandardDirections[$this->iAllDirectionLabels[$i]] = $a;
         }
-
     }
 
     public function SetCenterSize($aSize)
@@ -222,7 +231,6 @@ class WindrosePlot
             $aWeights[$i] = floor($aWeights[$i] / 2);
         }
         $this->iLegweights = $aWeights;
-
     }
 
     public function SetType($aType)
@@ -252,12 +260,10 @@ class WindrosePlot
         if (!$aFlag) {
             $this->iCircGridWeight = 1;
         }
-
     }
 
-    public function _ThickCircle($aImg, $aXC, $aYC, $aRad, $aWeight = 2, $aColor)
+    public function _ThickCircle($aImg, $aXC, $aYC, $aRad, $aWeight, $aColor)
     {
-
         $aImg->SetColor($aColor);
         $aRad *= 2;
         $aImg->Ellipse($aXC, $aYC, $aRad, $aRad);
@@ -299,12 +305,10 @@ class WindrosePlot
         $pts = [$x1, $y1, $x2, $y2, $x3, $y3, $x4, $y4];
         $aImg->SetColor($color);
         $aImg->FilledPolygon($pts);
-
     }
 
     public function _StrokeLegend($aImg, $x, $y, $scaling = 1, $aReturnWidth = false)
     {
-
         if (!$this->legend->iShow) {
             return 0;
         }
@@ -324,7 +328,7 @@ class WindrosePlot
         $xcenter = $x;
 
         // Construct format string
-        $fmt = $this->legend->iFormatString . '-' . $this->legend->iFormatString;
+        $fmt = $this->legend->iFormatString.'-'.$this->legend->iFormatString;
 
         // Make sure that the length of each range is enough to cover the
         // size of the labels
@@ -390,7 +394,8 @@ class WindrosePlot
             $value->Set($lbl);
             $value->Stroke($aImg, $x + $l / 2, $txty);
             $x = $x2;
-            ++$i; ++$idx;
+            ++$i;
+            ++$idx;
         }
 
         // Setup circle font
@@ -566,6 +571,7 @@ class WindrosePlot
         while ($a > 360) {
             $a -= 360;
         }
+
         return $a;
     }
 
@@ -652,7 +658,6 @@ class WindrosePlot
         }
 
         for ($i = 0; $i < $num; ++$i) {
-
             list($x, $y, $a) = $txtpos[$i];
 
             // Determine the label
@@ -709,7 +714,6 @@ class WindrosePlot
                 if ($a >= 5 * M_PI / 4 && $a <= 7 * M_PI / 4) {
                     $dy = 0;
                 }
-
             }
 
             $value->Set($lbl);
@@ -777,6 +781,7 @@ class WindrosePlot
             }
             $ret[$idx] = $data;
         }
+
         return $ret;
     }
 
@@ -897,7 +902,6 @@ class WindrosePlot
                 if ($a >= 5 * M_PI / 4 && $a <= 7 * M_PI / 4) {
                     $dy = 0;
                 }
-
             }
 
             $value->Set($this->iAllDirectionLabels[$i * (16 / $num)]);
@@ -910,7 +914,7 @@ class WindrosePlot
         }
 
         if (__DEBUG) {
-            $dblImg->SetColor("red");
+            $dblImg->SetColor('red');
             $dblImg->Circle($xc, $yc, $lr + $r);
         }
 
@@ -933,7 +937,6 @@ class WindrosePlot
 
                 if (in_array($idx, $keys, 1)) {
                     Util\JpGraphError::RaiseL(22018, $idx); //('You have specified data for the same compass direction twice, once with text and once with index (Index='.$idx.')');
-
                 }
             }
             if ($idx < 0 || $idx > 15) {
@@ -957,7 +960,6 @@ class WindrosePlot
 
     public function getWidth($aImg)
     {
-
         $scaling = 1; //$this->iAntiAlias ? 2 : 1 ;
         if ($this->iSize > 0 && $this->iSize < 1) {
             $this->iSize *= min($aImg->width, $aImg->height);
@@ -998,7 +1000,6 @@ class WindrosePlot
 
     public function getHeight($aImg)
     {
-
         $scaling = 1; //$this->iAntiAlias ? 2 : 1 ;
         if ($this->iSize > 0 && $this->iSize < 1) {
             $this->iSize *= min($aImg->width, $aImg->height);
@@ -1039,7 +1040,6 @@ class WindrosePlot
 
     public function Stroke($aGraph)
     {
-
         $aImg = $aGraph->img;
 
         if ($this->iX > 0 && $this->iX < 1) {
@@ -1193,7 +1193,5 @@ class WindrosePlot
 
         // We need to restore the translation matrix
         $aImg->SetTranslation(0, 0);
-
     }
-
 }

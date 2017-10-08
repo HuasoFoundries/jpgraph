@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Universal Theme class
+ * Universal Theme class.
  */
 class UniversalTheme extends Theme
 {
@@ -13,12 +14,12 @@ class UniversalTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
-            '#61a9f3', #blue
-            '#f381b9', #red
-            '#61E3A9', #green
+        return [
+            '#61a9f3', //blue
+            '#f381b9', //red
+            '#61E3A9', //green
 
-            #'#D56DE2',
+            //'#D56DE2',
             '#85eD82',
             '#F7b7b7',
             '#CFDF49',
@@ -30,7 +31,7 @@ class UniversalTheme extends Theme
             '#EC8833',
             '#FFF100',
             '#87C9A5',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -128,7 +129,6 @@ class UniversalTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -160,7 +160,7 @@ class UniversalTheme extends Theme
             case 'LinePlot':
                 {
                     $plot->Clear();
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     break;
                 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -16,11 +17,11 @@ use Amenadiel\JpGraph\Util;
  */
 
 // Defines for PiePlot::SetLabelType()
-define("PIE_VALUE_ABS", 1);
-define("PIE_VALUE_PER", 0);
-define("PIE_VALUE_PERCENTAGE", 0);
-define("PIE_VALUE_ADJPERCENTAGE", 2);
-define("PIE_VALUE_ADJPER", 2);
+define('PIE_VALUE_ABS', 1);
+define('PIE_VALUE_PER', 0);
+define('PIE_VALUE_PERCENTAGE', 0);
+define('PIE_VALUE_ADJPERCENTAGE', 2);
+define('PIE_VALUE_ADJPER', 2);
 
 //===================================================
 // CLASS PiePlot
@@ -28,46 +29,59 @@ define("PIE_VALUE_ADJPER", 2);
 //===================================================
 class PiePlot
 {
-    public $posx = 0.5, $posy = 0.5;
+    public $posx = 0.5;
+    public $posy = 0.5;
     public $is_using_plot_theme = false;
-    public $theme = "earth";
+    public $theme = 'earth';
     protected $use_plot_theme_colors = false;
     protected $radius = 0.3;
-    protected $explode_radius = array(), $explode_all = false, $explode_r = 20;
-    protected $labels = null, $legends = null;
-    protected $csimtargets = null, $csimwintargets = null; // Array of targets for CSIM
+    protected $explode_radius = [];
+    protected $explode_all = false;
+    protected $explode_r = 20;
+    protected $labels = null;
+    protected $legends = null;
+    protected $csimtargets = null;
+    protected $csimwintargets = null; // Array of targets for CSIM
     protected $csimareas = ''; // Generated CSIM text
     protected $csimalts = null; // ALT tags for corresponding target
     protected $data = null;
     public $title;
     protected $startangle = 0;
-    protected $weight = 1, $color = "black";
-    protected $legend_margin = 6, $show_labels = true;
-    protected $themearr = array(
-        "earth" => array(136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430),
-        "pastel" => array(27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38),
-        "water" => array(8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388),
-        "sand" => array(27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393));
-    protected $setslicecolors = array();
+    protected $weight = 1;
+    protected $color = 'black';
+    protected $legend_margin = 6;
+    protected $show_labels = true;
+    protected $themearr = [
+        'earth'  => [136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430],
+        'pastel' => [27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38],
+        'water'  => [8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388],
+        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393], ];
+    protected $setslicecolors = [];
     protected $labeltype = 0; // Default to percentage
-    protected $pie_border = true, $pie_interior_border = true;
+    protected $pie_border = true;
+    protected $pie_interior_border = true;
     public $value;
-    protected $ishadowcolor = '', $ishadowdrop = 4;
+    protected $ishadowcolor = '';
+    protected $ishadowdrop = 4;
     protected $ilabelposadj = 1;
-    protected $legendcsimtargets = array(), $legendcsimwintargets = array();
-    protected $legendcsimalts = array();
-    protected $adjusted_data = array();
+    protected $legendcsimtargets = [];
+    protected $legendcsimwintargets = [];
+    protected $legendcsimalts = [];
+    protected $adjusted_data = [];
     public $guideline = null;
-    protected $guidelinemargin = 10, $iShowGuideLineForSingle = false;
-    protected $iGuideLineCurve = false, $iGuideVFactor = 1.4, $iGuideLineRFactor = 0.8;
-    protected $la = array(); // Holds the exact angle for each label
+    protected $guidelinemargin = 10;
+    protected $iShowGuideLineForSingle = false;
+    protected $iGuideLineCurve = false;
+    protected $iGuideVFactor = 1.4;
+    protected $iGuideLineRFactor = 0.8;
+    protected $la = []; // Holds the exact angle for each label
 
     //---------------
     // CONSTRUCTOR
     public function __construct($data)
     {
         $this->data = array_reverse($data);
-        $this->title = new Text\Text("");
+        $this->title = new Text\Text('');
         $this->title->SetFont(FF_DEFAULT, FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();
@@ -124,7 +138,6 @@ class PiePlot
         if (is_array($aAlts)) {
             $this->csimalts = array_reverse($aAlts);
         }
-
     }
 
     public function GetCSIMareas()
@@ -190,10 +203,10 @@ class PiePlot
         $yp = floor($yc - $radius * sin($sa));
         $coords .= ", $xp, $yp";
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"" . $this->csimtargets[$i] . "\"";
-            $tmp = "";
+            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"".$this->csimtargets[$i].'"';
+            $tmp = '';
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= " target=\"" . $this->csimwintargets[$i] . "\" ";
+                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
@@ -218,7 +231,7 @@ class PiePlot
 
     public function ExplodeSlice($e, $radius = 20)
     {
-        if (!is_integer($e)) {
+        if (!is_int($e)) {
             Util\JpGraphError::RaiseL(15002);
         }
         //('Argument to PiePlot::ExplodeSlice() must be an integer');
@@ -272,7 +285,7 @@ class PiePlot
     }
 
     // Set text labels for slices
-    public function SetLabels($aLabels, $aLblPosAdj = "auto")
+    public function SetLabels($aLabels, $aLblPosAdj = 'auto')
     {
         $this->labels = array_reverse($aLabels);
         $this->ilabelposadj = $aLblPosAdj;
@@ -342,7 +355,7 @@ class PiePlot
         // Make sure we don't plot more values than data points
         // (in case the user added more legends than data points)
         $n = min(count($this->legends), count($this->data));
-        if ($this->legends != "") {
+        if ($this->legends != '') {
             $this->legends = array_reverse(array_slice($this->legends, 0, $n));
         }
         for ($i = $n - 1; $i >= 0; --$i) {
@@ -351,16 +364,14 @@ class PiePlot
             if (count($this->csimalts) > $i) {
                 $fmt = $this->csimalts[$i];
             } else {
-                $fmt = "%d"; // Deafult Alt if no other has been specified
+                $fmt = '%d'; // Deafult Alt if no other has been specified
             }
             if ($this->labeltype == 0) {
                 $l = sprintf($l, 100 * $this->data[$i] / $sum);
                 $alt = sprintf($fmt, $this->data[$i]);
-
             } elseif ($this->labeltype == 1) {
                 $l = sprintf($l, $this->data[$i]);
                 $alt = sprintf($fmt, $this->data[$i]);
-
             } else {
                 $l = sprintf($l, $this->adjusted_data[$i]);
                 $alt = sprintf($fmt, $this->adjusted_data[$i]);
@@ -373,9 +384,9 @@ class PiePlot
             }
 
             if ($this->setslicecolors == null) {
-                $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], "", 0, $this->csimtargets[$i], $alt, $wintarg);
+                $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], '', 0, $this->csimtargets[$i], $alt, $wintarg);
             } else {
-                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], "", 0, $this->csimtargets[$i], $alt, $wintarg);
+                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $this->csimtargets[$i], $alt, $wintarg);
             }
         }
     }
@@ -392,11 +403,10 @@ class PiePlot
             } else {
                 $mul = 10000;
             }
-
         }
 
-        $tmp = array();
-        $result = array();
+        $tmp = [];
+        $result = [];
         $quote_sum = 0;
         $n = count($aData);
         for ($i = 0, $sum = 0; $i < $n; ++$i) {
@@ -416,6 +426,7 @@ class PiePlot
                     $result[$i] /= $tmp;
                 }
             }
+
             return $result;
         }
         arsort($tmp, SORT_NUMERIC);
@@ -430,6 +441,7 @@ class PiePlot
                 $result[$i] /= $tmp;
             }
         }
+
         return $result;
     }
 
@@ -513,7 +525,7 @@ class PiePlot
         }
 
         // If we have a shadow and not just drawing the labels
-        if ($this->ishadowcolor != "" && $aaoption !== 2) {
+        if ($this->ishadowcolor != '' && $aaoption !== 2) {
             $accsum = 0;
             $angle2 = $this->startangle;
             $img->SetColor($this->ishadowcolor);
@@ -625,7 +637,7 @@ class PiePlot
             } else {
                 $img->SetColor($slicecolor);
             }
-            $arccolor = $this->pie_border && $aaoption === 0 ? $this->color : "";
+            $arccolor = $this->pie_border && $aaoption === 0 ? $this->color : '';
 
             // Calculate the x,y coordinates for the base of this slice taking
             // the exploded distance into account. Here we use the mid angle as the
@@ -636,7 +648,6 @@ class PiePlot
 
             // If we are not just drawing the labels then draw this cake slice
             if ($aaoption !== 2) {
-
                 $_sa = round($angle1 * 180 / M_PI);
                 $_ea = round($angle2 * 180 / M_PI);
                 $_la = round($this->la[$i] * 180 / M_PI);
@@ -665,7 +676,6 @@ class PiePlot
                     } else {
                         $l = 0.0;
                     }
-
                 } elseif ($this->labeltype == 1) {
                     $l = $this->data[$i] * 1.0;
                 } else {
@@ -676,7 +686,6 @@ class PiePlot
                 } else {
                     $this->labels[$i] = $l;
                 }
-
             }
         }
 
@@ -688,10 +697,9 @@ class PiePlot
         if ($aaoption !== 1) {
             $this->title->SetPos($xc,
                 $yc - $this->title->GetFontHeight($img) - $radius - $this->title->margin,
-                "center", "bottom");
+                'center', 'bottom');
             $this->title->Stroke($img);
         }
-
     }
 
     //---------------
@@ -728,7 +736,6 @@ class PiePlot
         if ($a > 1.5 * M_PI) {
             return 3;
         }
-
     }
 
     public function StrokeGuideLabels($img, $xc, $yc, $radius)
@@ -742,7 +749,7 @@ class PiePlot
         //-----------------------------------------------------------------------
         $tresh_hold = 25 * M_PI / 180; // 25 degrees difference to be in a cluster
         $incluster = false; // flag if we are currently in a cluster or not
-        $clusters = array(); // array of clusters
+        $clusters = []; // array of clusters
         $cidx = -1; // running cluster index
 
         // Go through all the labels and construct a number of clusters
@@ -954,7 +961,6 @@ class PiePlot
                             $yt += $fh;
                         }
                     }
-
                 } else {
                     // The step is at minimum $vstep but if the slices are relatively large
                     // we make sure that we add at least a step that corresponds to the vertical
@@ -966,7 +972,6 @@ class PiePlot
                     } else {
                         $yt += min($vstep, -$dy);
                     }
-
                 }
 
                 $label = $this->labels[$clusters[$i][0] + $idx];
@@ -981,21 +986,20 @@ class PiePlot
                     if ($this->iShowGuideLineForSingle) {
                         $this->guideline->Stroke($img, $x, $y, $xt, $yt);
                     }
-
                 } else {
                     $this->guideline->Stroke($img, $x, $y, $xt, $yt);
                     if ($q == 1 || $q == 2) {
                         // Left side of Pie
                         $this->guideline->Stroke($img, $xt, $yt, $xt - $this->guidelinemargin, $yt);
                         $lbladj = -$this->guidelinemargin - 5;
-                        $this->value->halign = "right";
-                        $this->value->valign = "center";
+                        $this->value->halign = 'right';
+                        $this->value->valign = 'center';
                     } else {
                         // Right side of pie
                         $this->guideline->Stroke($img, $xt, $yt, $xt + $this->guidelinemargin, $yt);
                         $lbladj = $this->guidelinemargin + 5;
-                        $this->value->halign = "left";
-                        $this->value->valign = "center";
+                        $this->value->halign = 'left';
+                        $this->value->valign = 'center';
                     }
                     $this->value->Stroke($img, $label, $xt + $lbladj, $yt);
                 }
@@ -1037,7 +1041,6 @@ class PiePlot
         // We position the values diferently depending on if they are inside
         // or outside the pie
         if ($this->ilabelposadj < 1.0) {
-
             $this->value->SetAlign('center', 'center');
             $this->value->margin = 0;
 
@@ -1046,9 +1049,8 @@ class PiePlot
 
             $this->value->Stroke($img, $label, $xt, $yt);
         } else {
-
-            $this->value->halign = "left";
-            $this->value->valign = "top";
+            $this->value->halign = 'left';
+            $this->value->valign = 'top';
             $this->value->margin = 0;
 
             // Position the axis title.
@@ -1066,7 +1068,6 @@ class PiePlot
                 } else {
                     $w = $img->GetTextWidth(sprintf($this->value->negformat, $label));
                 }
-
             } else {
                 $w = $img->GetTextWidth($label);
             }

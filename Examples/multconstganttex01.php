@@ -1,30 +1,30 @@
-<?php // content="text/plain; charset=utf-8" 
-// Gantt example 
-require_once ('jpgraph/jpgraph.php'); 
-require_once ('jpgraph/jpgraph_gantt.php'); 
+<?php
 
-// Create the basic graph 
-$graph = new GanttGraph(); 
-$graph->title->Set("Example with multiple constrains"); 
+// content="text/plain; charset=utf-8"
+// Gantt example
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_gantt.php';
 
-$bar1 = new GanttBar(0, "Label 1", "2003-06-08", "2003-06-12"); 
-$bar2 = new GanttBar(1, "Label 2", "2003-06-16", "2003-06-19"); 
-$bar3 = new GanttBar(2, "Label 3", "2003-06-15", "2003-06-21"); 
+// Create the basic graph
+$graph = new GanttGraph();
+$graph->title->Set('Example with multiple constrains');
 
-//create constraints 
-$bar1->SetConstrain(1, CONSTRAIN_ENDSTART); 
-$bar1->SetConstrain(2, CONSTRAIN_ENDSTART); 
+$bar1 = new GanttBar(0, 'Label 1', '2003-06-08', '2003-06-12');
+$bar2 = new GanttBar(1, 'Label 2', '2003-06-16', '2003-06-19');
+$bar3 = new GanttBar(2, 'Label 3', '2003-06-15', '2003-06-21');
 
-// Setup scale 
-$graph->ShowHeaders(/*GANTT_HYEAR | GANTT_HMONTH |*/ GANTT_HDAY | GANTT_HWEEK); 
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAYWNBR); 
+//create constraints
+$bar1->SetConstrain(1, CONSTRAIN_ENDSTART);
+$bar1->SetConstrain(2, CONSTRAIN_ENDSTART);
 
-// Add the specified activities 
-$graph->Add($bar1); 
-$graph->Add($bar2); 
-$graph->Add($bar3); 
+// Setup scale
+$graph->ShowHeaders(/*GANTT_HYEAR | GANTT_HMONTH |*/ GANTT_HDAY | GANTT_HWEEK);
+$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAYWNBR);
 
-// .. and stroke the graph 
-$graph->Stroke(); 
+// Add the specified activities
+$graph->Add($bar1);
+$graph->Add($bar2);
+$graph->Add($bar3);
 
-?>
+// .. and stroke the graph
+$graph->Stroke();

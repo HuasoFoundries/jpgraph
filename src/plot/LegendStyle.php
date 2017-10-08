@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -20,15 +21,28 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class LegendStyle
 {
-    public $iLength = 40, $iMargin = 20, $iBottomMargin = 5;
-    public $iCircleWeight = 2, $iCircleRadius = 18, $iCircleColor = 'black';
-    public $iTxtFontFamily = FF_VERDANA, $iTxtFontStyle = FS_NORMAL, $iTxtFontSize = 8;
-    public $iLblFontFamily = FF_VERDANA, $iLblFontStyle = FS_NORMAL, $iLblFontSize = 8;
-    public $iCircleFontFamily = FF_VERDANA, $iCircleFontStyle = FS_NORMAL, $iCircleFontSize = 8;
-    public $iLblFontColor = 'black', $iTxtFontColor = 'black', $iCircleFontColor = 'black';
+    public $iLength = 40;
+    public $iMargin = 20;
+    public $iBottomMargin = 5;
+    public $iCircleWeight = 2;
+    public $iCircleRadius = 18;
+    public $iCircleColor = 'black';
+    public $iTxtFontFamily = FF_VERDANA;
+    public $iTxtFontStyle = FS_NORMAL;
+    public $iTxtFontSize = 8;
+    public $iLblFontFamily = FF_VERDANA;
+    public $iLblFontStyle = FS_NORMAL;
+    public $iLblFontSize = 8;
+    public $iCircleFontFamily = FF_VERDANA;
+    public $iCircleFontStyle = FS_NORMAL;
+    public $iCircleFontSize = 8;
+    public $iLblFontColor = 'black';
+    public $iTxtFontColor = 'black';
+    public $iCircleFontColor = 'black';
     public $iShow = true;
     public $iFormatString = '%.1f';
-    public $iTxtMargin = 6, $iTxt = '';
+    public $iTxtMargin = 6;
+    public $iTxt = '';
     public $iZCircleTxt = 'Calm';
 
     public function SetFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
@@ -137,5 +151,4 @@ class LegendStyle
     {
         $this->iTxt = $aTxt;
     }
-
 }

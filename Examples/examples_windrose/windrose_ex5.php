@@ -1,32 +1,34 @@
 <?php
+
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 // Data
-$data = array(
-    0 => array(1, 1, 2.5, 4),
-    1 => array(3, 4, 1, 4),
-    3 => array(2, 7, 4, 4, 3),
-    5 => array(2, 7, 1, 2));
+$data = [
+    0 => [1, 1, 2.5, 4],
+    1 => [3, 4, 1, 4],
+    3 => [2, 7, 4, 4, 3],
+    5 => [2, 7, 1, 2], ];
 
 // Text to be added.
-$txt = array();
-$txt[0] = "It is possible to add arbitrary,multi line, text to a graph. ";
+$txt = [];
+$txt[0] = 'It is possible to add arbitrary,multi line, text to a graph. ';
 $txt[0] .= "Such a paragraph can have it's text be left, right or center ";
-$txt[0] .= "aligned.";
-$txt[1] = "This is an example of a right aligned paragraph.";
-$txt[2] = "Finally we can show a center aligned paragraph without box.";
+$txt[0] .= 'aligned.';
+$txt[1] = 'This is an example of a right aligned paragraph.';
+$txt[2] = 'Finally we can show a center aligned paragraph without box.';
 
 // We store the layout for each of the text boxes in an array
 // to keep the code clean
-$txtlayout = array(
-    array(0.97, 0.15, 25, 'left', 'black', 'lightblue'),
-    array(0.97, 0.4, 20, 'right', 'black', 'lightblue'),
-    array(0.97, 0.7, 20, 'center', 'darkred', false, FF_COMIC, FS_NORMAL, 12),
-);
+$txtlayout = [
+    [0.97, 0.15, 25, 'left', 'black', 'lightblue'],
+    [0.97, 0.4, 20, 'right', 'black', 'lightblue'],
+    [0.97, 0.7, 20, 'center', 'darkred', false, FF_COMIC, FS_NORMAL, 12],
+];
 
 // Range colors to be used
-$rangeColors = array('silver', 'khaki', 'orange', 'brown', 'blue', 'navy', 'maroon', 'red');
+$rangeColors = ['silver', 'khaki', 'orange', 'brown', 'blue', 'navy', 'maroon', 'red'];
 
 // First create a new windrose graph with a title
 $graph = new Graph\WindroseGraph(570, 430);
@@ -49,7 +51,6 @@ for ($i = 0; $i < $n; ++$i) {
     if (count($txtlayout[$i]) > 6) {
         $txtbox[$i]->SetFont($txtlayout[$i][6], $txtlayout[$i][7], $txtlayout[$i][8]);
     }
-
 }
 $graph->Add($txtbox);
 

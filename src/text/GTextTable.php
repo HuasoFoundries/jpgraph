@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Text;
 
 //---------------------------------------------------------------------
@@ -8,16 +9,24 @@ namespace Amenadiel\JpGraph\Text;
 //---------------------------------------------------------------------
 class GTextTable
 {
-    public $iCells = array(), $iSize = array(0, 0); // Need to be public since they are used by the cell
-    private $iWidth = 0, $iHeight = 0;
-    private $iColWidth = null, $iRowHeight = null;
+    public $iCells = [];
+    public $iSize = [0, 0]; // Need to be public since they are used by the cell
+    private $iWidth = 0;
+    private $iHeight = 0;
+    private $iColWidth = null;
+    private $iRowHeight = null;
     private $iImg = null;
-    private $iXPos = 0, $iYPos = 0;
-    private $iScaleXPos = null, $iScaleYPos = null;
+    private $iXPos = 0;
+    private $iYPos = 0;
+    private $iScaleXPos = null;
+    private $iScaleYPos = null;
     private $iBGColor = '';
-    private $iBorderColor = 'black', $iBorderWeight = 1;
+    private $iBorderColor = 'black';
+    private $iBorderWeight = 1;
     private $iInit = false;
-    private $iYAnchor = 'top', $iXAnchor = 'left';
+    private $iYAnchor = 'top';
+    private $iXAnchor = 'left';
+
     /*-----------------------------------------------------------------
      * First and second phase constructors
      *-----------------------------------------------------------------
@@ -81,7 +90,6 @@ class GTextTable
         $this->_chkR($aRow);
         $this->_chkC($aCol);
         $this->iCells[$aRow][$aCol]->SetCountryFlag($aFlag, $aScale, $aMix, $aStdSize);
-
     }
 
     /*-----------------------------------------------------------------
@@ -162,14 +170,15 @@ class GTextTable
                     $t .= 'M ';
                 }
 
-                $t .= 'val=' . $this->iCells[$i][$j]->iVal->t;
-                $t .= ' (cs=' . $this->iCells[$i][$j]->iColSpan .
-                ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
+                $t .= 'val='.$this->iCells[$i][$j]->iVal->t;
+                $t .= ' (cs='.$this->iCells[$i][$j]->iColSpan.
+                ', rs='.$this->iCells[$i][$j]->iRowSpan.')';
                 $t .= '</td>';
             }
             $t .= '</tr>';
         }
         $t .= '</table>';
+
         return $t;
     }
 
@@ -427,7 +436,6 @@ class GTextTable
             $aR1 = 0;
             $aC2 = $this->iSize[1] - 1;
             $aC1 = 0;
-
         } elseif ($numargs == 6 || $numargs == 7) {
             $aR1 = func_get_arg(0);
             $aC1 = func_get_arg(1);
@@ -440,7 +448,6 @@ class GTextTable
             } else {
                 $aFSize = 10;
             }
-
         } else {
             JpGraphError::RaiseL(27003);
             //('Wrong number of arguments to GTextTable::SetColor()');
@@ -729,7 +736,7 @@ class GTextTable
         for ($i = 0; $i < $m; ++$i) {
             for ($j = 0; $j < $n; ++$j) {
                 if ($aAutoTarget) {
-                    $t = $aTarget . "?row=$i&col=$j";
+                    $t = $aTarget."?row=$i&col=$j";
                 } else {
                     $t = $aTarget;
                 }
@@ -761,6 +768,7 @@ class GTextTable
                 $csim .= $this->iCells[$i][$j]->GetCSIMArea();
             }
         }
+
         return $csim;
     }
 
@@ -793,7 +801,8 @@ class GTextTable
         if ($this->iScaleXPos === null || $this->iScaleYPos === null) {
             return false;
         }
-        return array($this->iScaleXPos, $this->iScaleYPos);
+
+        return [$this->iScaleXPos, $this->iScaleYPos];
     }
 
     public function _autoSizeTable($aImg)
@@ -815,7 +824,6 @@ class GTextTable
             } else {
                 $this->iRowHeight[$i] = $h;
             }
-
         }
 
         // Get maximum col width per columns
@@ -829,7 +837,6 @@ class GTextTable
             } else {
                 $this->iColWidth[$j] = $w;
             }
-
         }
     }
 
@@ -963,7 +970,6 @@ class GTextTable
                     $this->iXPos + $width - 1 + $this->iBorderWeight - $i,
                     $this->iYPos + $height - 1 + $this->iBorderWeight - $i);
             }
-
         }
     }
 }

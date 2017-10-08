@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 

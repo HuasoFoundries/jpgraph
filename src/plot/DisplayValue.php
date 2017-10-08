@@ -1,7 +1,8 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
-use \Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Text;
 
 //===================================================
 // CLASS DisplayValue
@@ -11,12 +12,17 @@ class DisplayValue
 {
     public $margin = 5;
     public $show = false;
-    public $valign = '', $halign = 'center';
-    public $format = '%.1f', $negformat = '';
-    private $ff = FF_DEFAULT, $fs = FS_NORMAL, $fsize = 8;
+    public $valign = '';
+    public $halign = 'center';
+    public $format = '%.1f';
+    public $negformat = '';
+    private $ff = FF_DEFAULT;
+    private $fs = FS_NORMAL;
+    private $fsize = 8;
     private $iFormCallback = '';
     private $angle = 0;
-    private $color = 'navy', $negcolor = '';
+    private $color = 'navy';
+    private $negcolor = '';
     private $iHideZero = false;
     public $txt = null;
 
@@ -82,7 +88,6 @@ class DisplayValue
 
     public function Stroke($img, $aVal, $x, $y)
     {
-
         if ($this->show) {
             if ($this->negformat == '') {
                 $this->negformat = $this->format;
@@ -123,9 +128,9 @@ class DisplayValue
             $this->txt->SetFont($this->ff, $this->fs, $this->fsize);
             if ($this->valign == '') {
                 if ($aVal >= 0) {
-                    $valign = "bottom";
+                    $valign = 'bottom';
                 } else {
-                    $valign = "top";
+                    $valign = 'top';
                 }
             } else {
                 $valign = $this->valign;

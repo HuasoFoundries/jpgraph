@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 //===================================================
@@ -9,7 +10,8 @@ namespace Amenadiel\JpGraph\Util;
 //===================================================
 class JpgTimer
 {
-    private $start, $idx;
+    private $start;
+    private $idx;
 
     public function __construct()
     {
@@ -19,7 +21,7 @@ class JpgTimer
     // Push a new timer start on stack
     public function Push()
     {
-        list($ms, $s) = explode(" ", microtime());
+        list($ms, $s) = explode(' ', microtime());
         $this->start[$this->idx++] = floor($ms * 1000) + 1000 * $s;
     }
 
@@ -28,9 +30,10 @@ class JpgTimer
     public function Pop()
     {
         assert($this->idx > 0);
-        list($ms, $s) = explode(" ", microtime());
+        list($ms, $s) = explode(' ', microtime());
         $etime = floor($ms * 1000) + (1000 * $s);
         $this->idx--;
+
         return $etime - $this->start[$this->idx];
     }
 } // Class

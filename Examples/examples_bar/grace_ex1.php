@@ -1,15 +1,17 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data
-$datay = array(7, 19, 11, 4, 20);
+$datay = [7, 19, 11, 4, 20];
 
 // Create the graph and setup the basic parameters
 $graph = new Graph\Graph(300, 200, 'auto');
 $graph->img->SetMargin(40, 30, 40, 50);
-$graph->SetScale("textint");
+$graph->SetScale('textint');
 $graph->SetFrame(true, 'blue', 1);
 $graph->SetColor('lightblue');
 $graph->SetMarginColor('lightblue');

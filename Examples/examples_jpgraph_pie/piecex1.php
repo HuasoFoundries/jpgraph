@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 // $Id
 // Example of pie with center circle
 require_once '../../vendor/autoload.php';
@@ -6,13 +8,13 @@ require_once '../../vendor/autoload.php';
 \JpGraph\JpGraph::module('pie');
 
 // Some data
-$data = array(50, 28, 25, 27, 31, 20);
+$data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
 $graph = new \PieGraph(300, 300, 'auto');
 
 // Setup title
-$graph->title->Set("Pie plot with center circle");
+$graph->title->Set('Pie plot with center circle');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 

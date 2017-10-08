@@ -3,13 +3,13 @@
     // (Note: Normally there would be no need to ever use manually specified encodation)
 
     // Include the library
-    require_once ('jpgraph/QR/qrencoder.inc.php');
+    require_once 'jpgraph/QR/qrencoder.inc.php';
 
     // Data to be encoded
-    $data = array(
-        array(QREncoder::MODE_ALPHANUM,'01234567'),
-        array(QREncoder::MODE_NUMERIC,'89012345')
-    );
+    $data = [
+        [QREncoder::MODE_ALPHANUM, '01234567'],
+        [QREncoder::MODE_NUMERIC, '89012345'],
+    ];
 
     // Create a new instance of the encoder (automatically determined QR version and
     // error correction level)
@@ -23,4 +23,3 @@
 
     // Store the barcode in the specifed file
     $backend->Stroke($data);
-?>

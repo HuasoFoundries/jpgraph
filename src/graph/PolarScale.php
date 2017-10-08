@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 class PolarScale extends LinearScale
@@ -25,7 +26,6 @@ class PolarScale extends LinearScale
 
     public function PTranslate($aAngle, $aRad)
     {
-
         $m = $this->scale[1];
         $w = $this->graph->img->plotwidth / 2;
         $aRad = $aRad / $m * $w;
@@ -45,6 +45,7 @@ class PolarScale extends LinearScale
         } else {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight) - $y;
         }
+
         return [$x, $y];
     }
 }

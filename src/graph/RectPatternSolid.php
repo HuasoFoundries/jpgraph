@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 //=====================================================================
@@ -7,8 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 //=====================================================================
 class RectPatternSolid extends RectPattern
 {
-
-    public function __construct($aColor = "black", $aWeight = 1)
+    public function __construct($aColor = 'black', $aWeight = 1)
     {
         parent::__construct($aColor, $aWeight);
     }

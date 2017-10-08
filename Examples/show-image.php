@@ -1,4 +1,4 @@
-<?php $target =  urldecode($_GET['target']); ?>
+<?php $target = urldecode($_GET['target']); ?>
 <!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>

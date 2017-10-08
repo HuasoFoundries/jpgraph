@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -19,7 +20,9 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class Gradient
 {
-    private $img = null, $numcolors = 100;
+    private $img = null;
+    private $numcolors = 100;
+
     //---------------
     // CONSTRUCTOR
     public function __construct(&$img)
@@ -165,8 +168,8 @@ class Gradient
                 $from_color = $this->img->rgb->Color($from_color);
                 $adj = 1.4;
                 $m = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
-                $from_color2 = array(min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m));
+                $from_color2 = [min(255, $from_color[0] + $m),
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
 
                 $this->GetColArray($from_color2, $to_color, $steps1, $colors, $this->numcolors);
                 $n = count($colors);
@@ -212,8 +215,8 @@ class Gradient
                 $from_color = $this->img->rgb->Color($from_color);
                 $adj = 1.4;
                 $m = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
-                $from_color = array(min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m));
+                $from_color = [min(255, $from_color[0] + $m),
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
 
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
@@ -312,7 +315,6 @@ class Gradient
                         $this->img->Line($x, $yb, $xr, $y);
                         $x += $delta;
                     }
-
                 }
                 break;
 
@@ -344,7 +346,7 @@ class Gradient
             $maxy = max($maxy, $y);
         }
 
-        $colors = array();
+        $colors = [];
         $this->GetColArray($from_color, $to_color, abs($maxy - $miny) + 1, $colors, $this->numcolors);
         for ($i = $miny, $idx = 0; $i <= $maxy; ++$i) {
             $colmap[$i] = $colors[$idx++];
@@ -353,8 +355,8 @@ class Gradient
         $n = count($pts) / 2;
         $idx = 0;
         while ($idx < $n - 1) {
-            $p1 = array(round($pts[$idx * 2]), round($pts[$idx * 2 + 1]));
-            $p2 = array(round($pts[++$idx * 2]), round($pts[$idx * 2 + 1]));
+            $p1 = [round($pts[$idx * 2]), round($pts[$idx * 2 + 1])];
+            $p2 = [round($pts[++$idx * 2]), round($pts[$idx * 2 + 1])];
 
             // Find the largest rectangle we can fill
             $y = max($p1[1], $p2[1]);
@@ -421,7 +423,7 @@ class Gradient
                 $g = floor($from_color[1] + $colnum * $gdelta);
                 $b = floor($from_color[2] + $colnum * $bdelta);
                 $alpha = $from_alpha + $colnum * $adelta;
-                $colidx = $this->img->rgb->Allocate(sprintf("#%02x%02x%02x", $r, $g, $b), $alpha);
+                $colidx = $this->img->rgb->Allocate(sprintf('#%02x%02x%02x', $r, $g, $b), $alpha);
                 $colors[$i] = $colidx;
             }
             $prevcolnum = $colnum;

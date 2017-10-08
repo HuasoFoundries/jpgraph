@@ -1,4 +1,5 @@
 <?php
+
 //=======================================================================
 // File:        JPG-CONFIG.INC
 // Description: Configuration file for JpGraph library

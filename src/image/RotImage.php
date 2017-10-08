@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Image;
 
 //===================================================
@@ -9,8 +10,11 @@ namespace Amenadiel\JpGraph\Image;
 class RotImage extends Image
 {
     public $a = 0;
-    public $dx = 0, $dy = 0, $transx = 0, $transy = 0;
-    private $m = array();
+    public $dx = 0;
+    public $dy = 0;
+    public $transx = 0;
+    public $transy = 0;
+    private $m = [];
 
     public function __construct($aWidth, $aHeight, $a = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
@@ -27,14 +31,16 @@ class RotImage extends Image
         $this->dx = $dx;
         $this->dy = $dy;
         $this->SetAngle($this->a);
-        return array($old_dx, $old_dy);
+
+        return [$old_dx, $old_dy];
     }
 
     public function SetTranslation($dx, $dy)
     {
-        $old = array($this->transx, $this->transy);
+        $old = [$this->transx, $this->transy];
         $this->transx = $dx;
         $this->transy = $dy;
+
         return $old;
     }
 
@@ -58,6 +64,7 @@ class RotImage extends Image
         $tmp = $this->a;
         $this->a = $a;
         $this->UpdateRotMatrice();
+
         return $tmp;
     }
 
@@ -101,11 +108,12 @@ class RotImage extends Image
     {
         // Optimization. Ignore rotation if Angle==0 || Angle==360
         if ($this->a == 0 || $this->a == 360) {
-            return array($x + $this->transx, $y + $this->transy);
+            return [$x + $this->transx, $y + $this->transy];
         } else {
             $x1 = round($this->m[0][0] * $x + $this->m[0][1] * $y, 1) + $this->m[0][2] + $this->transx;
             $y1 = round($this->m[1][0] * $x + $this->m[1][1] * $y, 1) + $this->m[1][2] + $this->transy;
-            return array($x1, $y1);
+
+            return [$x1, $y1];
         }
     }
 
@@ -113,7 +121,6 @@ class RotImage extends Image
     {
         list($toX, $toY) = $this->Rotate($toX, $toY);
         parent::CopyMerge($fromImg, $toX, $toY, $fromX, $fromY, $toWidth, $toHeight, $fromWidth, $fromHeight, $aMix);
-
     }
 
     public function ArrRotate($pnts)
@@ -124,6 +131,7 @@ class RotImage extends Image
             $pnts[$i] = $x;
             $pnts[$i + 1] = $y;
         }
+
         return $pnts;
     }
 
@@ -152,9 +160,8 @@ class RotImage extends Image
         if ($y1 == $y2 || $x1 == $x2) {
             $this->Line($x1, $y1, $x2, $y2);
         } else {
-            $this->FilledPolygon(array($x1, $y1, $x2, $y1, $x2, $y2, $x1, $y2));
+            $this->FilledPolygon([$x1, $y1, $x2, $y1, $x2, $y2, $x1, $y2]);
         }
-
     }
 
     public function Polygon($pnts, $closed = false, $fast = false)
@@ -179,9 +186,10 @@ class RotImage extends Image
         parent::Point($xp, $yp);
     }
 
-    public function StrokeText($x, $y, $txt, $dir = 0, $paragraph_align = "left", $debug = false)
+    public function StrokeText($x, $y, $txt, $dir = 0, $paragraph_align = 'left', $debug = false)
     {
         list($xp, $yp) = $this->Rotate($x, $y);
+
         return parent::StrokeText($xp, $yp, $txt, $dir, $paragraph_align, $debug);
     }
 }

@@ -10,12 +10,16 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class LinearTicks extends Ticks
 {
-    public $minor_step = 1, $major_step = 2;
-    public $xlabel_offset = 0, $xtick_offset = 0;
+    public $minor_step = 1;
+    public $major_step = 2;
+    public $xlabel_offset = 0;
+    public $xtick_offset = 0;
     private $label_offset = 0; // What offset should the displayed label have
     // i.e should we display 0,1,2 or 1,2,3,4 or 2,3,4 etc
     private $text_label_start = 0;
-    private $iManualTickPos = null, $iManualMinTickPos = null, $iManualTickLabels = null;
+    private $iManualTickPos = null;
+    private $iManualMinTickPos = null;
+    private $iManualTickLabels = null;
     private $iAdjustForDST = false; // If a date falls within the DST period add one hour to the diaplyed time
 
     public function __construct()
@@ -84,9 +88,9 @@ class LinearTicks extends Ticks
         $m = count($this->iManualMinTickPos);
         $doLbl = count($this->iManualTickLabels) > 0;
 
-        $this->maj_ticks_pos = array();
-        $this->maj_ticklabels_pos = array();
-        $this->ticks_pos = array();
+        $this->maj_ticks_pos = [];
+        $this->maj_ticklabels_pos = [];
+        $this->ticks_pos = [];
 
         // Now loop through the supplied positions and translate them to screen coordinates
         // and store them in the maj_label_positions
@@ -172,7 +176,7 @@ class LinearTicks extends Ticks
             $j = 0;
             $i = 0;
             $step = round($maj_step_abs / $min_step_abs);
-            if ($aScale->type == "x") {
+            if ($aScale->type == 'x') {
                 // For a normal linear type of scale the major ticks will always be multiples
                 // of the minor ticks. In order to avoid any rounding issues the major ticks are
                 // defined as every "step" minor ticks and not calculated separately
@@ -190,7 +194,7 @@ class LinearTicks extends Ticks
                     $abs_pos += $min_step_abs;
                     $label += $this->minor_step;
                 }
-            } elseif ($aScale->type == "y") {
+            } elseif ($aScale->type == 'y') {
                 //@todo  s=2:20,12  s=1:50,6  $this->major_step:$nbr
                 // abs_point,limit s=1:270,80 s=2:540,160
                 // $this->major_step = 50;
@@ -243,7 +247,7 @@ class LinearTicks extends Ticks
         } elseif ($this->label_formatstr != '' || $this->label_dateformatstr != '') {
             if ($this->label_usedateformat) {
                 // Adjust the value to take daylight savings into account
-                if (date("I", $aVal) == 1 && $this->iAdjustForDST) {
+                if (date('I', $aVal) == 1 && $this->iAdjustForDST) {
                     // DST
                     $aVal += 3600;
                 }
@@ -252,12 +256,12 @@ class LinearTicks extends Ticks
                 if ($this->label_formatstr == 'W') {
                     // If we use week formatting then add a single 'w' in front of the
                     // week number to differentiate it from dates
-                    $l = 'w' . $l;
+                    $l = 'w'.$l;
                 }
             } else {
                 if ($this->label_dateformatstr !== '') {
                     // Adjust the value to take daylight savings into account
-                    if (date("I", $aVal) == 1 && $this->iAdjustForDST) {
+                    if (date('I', $aVal) == 1 && $this->iAdjustForDST) {
                         // DST
                         $aVal += 3600;
                     }
@@ -266,7 +270,7 @@ class LinearTicks extends Ticks
                     if ($this->label_formatstr == 'W') {
                         // If we use week formatting then add a single 'w' in front of the
                         // week number to differentiate it from dates
-                        $l = 'w' . $l;
+                        $l = 'w'.$l;
                     }
                 } else {
                     $l = sprintf($this->label_formatstr, $aVal);
@@ -274,13 +278,14 @@ class LinearTicks extends Ticks
             }
         } else {
             //FIX: if negative precision  is returned "0f" , instead of formatted values
-            $format = $precision>0?'%01.' . $precision . 'f':'%01.0f';
-            $l =  sprintf($format, round($aVal, $precision));
+            $format = $precision > 0 ? '%01.'.$precision.'f' : '%01.0f';
+            $l = sprintf($format, round($aVal, $precision));
         }
 
         if (($this->supress_zerolabel && $l == 0) || ($this->supress_first && $aIdx == 0) || ($this->supress_last && $aIdx == $aNbrTicks - 1)) {
             $l = '';
         }
+
         return $l;
     }
 
@@ -342,7 +347,6 @@ class LinearTicks extends Ticks
                 }
             }
         }
-
     }
 
     // Draw linear ticks
@@ -383,5 +387,4 @@ class LinearTicks extends Ticks
     {
         $this->text_label_start = $aTextLabelOff;
     }
-
 } // Class

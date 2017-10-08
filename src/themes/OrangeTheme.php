@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Orange Theme class
+ * Orange Theme class.
  */
 class OrangeTheme extends Theme
 {
@@ -13,7 +14,7 @@ class OrangeTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#FF9900',
             '#FFCC00',
             '#AA6600',
@@ -32,7 +33,7 @@ class OrangeTheme extends Theme
             '#AADD00',
             '#99CC44',
             '#887711',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -120,7 +121,6 @@ class OrangeTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -153,7 +153,7 @@ class OrangeTheme extends Theme
                 {
                     $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     break;
                 }

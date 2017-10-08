@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -8,14 +9,21 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class WindrosePlotScale
 {
-    private $iMax, $iDelta = 5;
+    private $iMax;
+    private $iDelta = 5;
     private $iNumCirc = 3;
     public $iMaxNum = 0;
     private $iLblFmt = '%.0f%%';
-    public $iFontFamily = FF_VERDANA, $iFontStyle = FS_NORMAL, $iFontSize = 10;
-    public $iZFontFamily = FF_ARIAL, $iZFontStyle = FS_NORMAL, $iZFontSize = 10;
-    public $iFontColor = 'black', $iZFontColor = 'black';
-    private $iFontFrameColor = false, $iFontBkgColor = false;
+    public $iFontFamily = FF_VERDANA;
+    public $iFontStyle = FS_NORMAL;
+    public $iFontSize = 10;
+    public $iZFontFamily = FF_ARIAL;
+    public $iZFontStyle = FS_NORMAL;
+    public $iZFontSize = 10;
+    public $iFontColor = 'black';
+    public $iZFontColor = 'black';
+    private $iFontFrameColor = false;
+    private $iFontBkgColor = false;
     private $iLblZeroTxt = null;
     private $iLblAlign = LBLALIGN_CENTER;
     public $iAngle = 'auto';
@@ -50,6 +58,7 @@ class WindrosePlotScale
     {
         // Never return less than 1 circles
         $num = ceil($this->iMax / $this->iDelta);
+
         return max(1, $num);
     }
 
@@ -65,6 +74,7 @@ class WindrosePlotScale
     {
         if ($aDelta == null) {
             $this->SetMaxValue($aMax);
+
             return;
         }
         $this->iDelta = $aDelta;
@@ -78,7 +88,6 @@ class WindrosePlotScale
 
     public function AutoScale($aRadius, $aMinDist = 30)
     {
-
         if ($this->iManualScale) {
             return;
         }
@@ -135,6 +144,7 @@ class WindrosePlotScale
     public function RelTranslate($aVal, $r, $ri)
     {
         $tv = round($aVal / $this->iMaxVal * ($r - $ri));
+
         return $tv;
     }
 
@@ -150,7 +160,6 @@ class WindrosePlotScale
 
     public function SetLabelFillColor($aBkgColor, $aBorderColor = false)
     {
-
         $this->iFontBkgColor = $aBkgColor;
         if ($aBorderColor === false) {
             $this->iFontFrameColor = $aBkgColor;
@@ -192,7 +201,6 @@ class WindrosePlotScale
 
     public function StrokeLabels($aImg, $xc, $yc, $ri, $rr)
     {
-
         if ($this->iHideLabels) {
             return;
         }

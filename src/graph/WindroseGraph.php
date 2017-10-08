@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -8,10 +9,11 @@ use Amenadiel\JpGraph\Util;
 //============================================================
 class WindroseGraph extends Graph
 {
-    private $posx, $posy;
+    private $posx;
+    private $posy;
     public $plots = [];
 
-    public function __construct($width = 300, $height = 200, $cachedName = "", $timeout = 0, $inline = 1)
+    public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($width, $height, $cachedName, $timeout, $inline);
         $this->posx = $width / 2;
@@ -78,7 +80,7 @@ class WindroseGraph extends Graph
     }
 
     // Method description
-    public function Stroke($aStrokeFileName = "")
+    public function Stroke($aStrokeFileName = '')
     {
 
         // If the filename is the predefined value = '_csim_special_'
@@ -96,7 +98,7 @@ class WindroseGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        if ($this->background_image != "" || $this->background_cflag != "") {
+        if ($this->background_image != '' || $this->background_cflag != '') {
             $this->StrokeFrameBackground();
         } else {
             $this->StrokeFrame();
@@ -124,5 +126,4 @@ class WindroseGraph extends Graph
                 $aStrokeFileName);
         }
     }
-
 } // Class

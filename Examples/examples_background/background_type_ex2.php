@@ -1,13 +1,15 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
 // Some data
-$ydata = array(11, 3, 8, 12, 5, 1, 9, 13, 5, 7);
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(350, 250);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMargin(40, 40, 50, 50);
 
 // Setup the grid and plotarea box
@@ -28,7 +30,7 @@ $graph->SetBackgroundImageMix(25);
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);
-$lineplot->SetColor("blue");
+$lineplot->SetColor('blue');
 
 // Add the plot to the graph
 $graph->Add($lineplot);

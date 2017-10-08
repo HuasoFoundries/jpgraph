@@ -1,10 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(1992, 1993, 1995, 1996, 1997, 1998, 2001);
+$datay = [1992, 1993, 1995, 1996, 1997, 1998, 2001];
 
 // Size of graph
 $width = 400;
@@ -24,8 +26,8 @@ $graph->Set90AndMargin($left, $right, $top, $bottom);
 $graph->SetShadow();
 
 // Setup labels
-$lbl = array("Andrew\nTait", "Thomas\nAnderssen", "Kevin\nSpacey", "Nick\nDavidsson",
-    "David\nLindquist", "Jason\nTait", "Lorin\nPersson");
+$lbl = ["Andrew\nTait", "Thomas\nAnderssen", "Kevin\nSpacey", "Nick\nDavidsson",
+    "David\nLindquist", "Jason\nTait", "Lorin\nPersson", ];
 $graph->xaxis->SetTickLabels($lbl);
 
 // Label align for X-axis

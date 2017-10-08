@@ -1,8 +1,9 @@
 <?php
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Green Theme class
+ * Green Theme class.
  */
 class GreenTheme extends Theme
 {
@@ -13,7 +14,7 @@ class GreenTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#66CC00',
             '#009900',
             '#AAFF77',
@@ -30,7 +31,7 @@ class GreenTheme extends Theme
             '#77CCBB',
             '#668833',
             '#BBEE66',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
@@ -118,7 +119,6 @@ class GreenTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-
         switch (get_class($plot)) {
             case 'GroupBarPlot':
                 {
@@ -151,7 +151,7 @@ class GreenTheme extends Theme
                 {
                     $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
                     break;
                 }

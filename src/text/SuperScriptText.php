@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -8,8 +9,12 @@ namespace Amenadiel\JpGraph\Text;
 class SuperScriptText extends Text
 {
     private $iSuper = '';
-    private $sfont_family = '', $sfont_style = '', $sfont_size = 8;
-    private $iSuperMargin = 2, $iVertOverlap = 4, $iSuperScale = 0.65;
+    private $sfont_family = '';
+    private $sfont_style = '';
+    private $sfont_size = 8;
+    private $iSuperMargin = 2;
+    private $iVertOverlap = 4;
+    private $iSuperScale = 0.65;
     private $iSDir = 0;
     private $iSimple = false;
 
@@ -29,14 +34,14 @@ class SuperScriptText extends Text
         }
 
         $l = floor(log10($aVal));
-        $a = sprintf("%0." . $aPrecision . "f", round($aVal / pow(10, $l), $aPrecision));
+        $a = sprintf('%0.'.$aPrecision.'f', round($aVal / pow(10, $l), $aPrecision));
         $a *= $neg;
         if ($this->iSimple && ($a == 1 || $a == -1)) {
             $a = '';
         }
 
         if ($a != '') {
-            $this->t = $a . ' * 10';
+            $this->t = $a.' * 10';
         } else {
             if ($neg == 1) {
                 $this->t = '10';
@@ -68,6 +73,7 @@ class SuperScriptText extends Text
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $w += $aImg->GetTextWidth($this->iSuper);
         $w += $this->iSuperMargin;
+
         return $w;
     }
 
@@ -78,6 +84,7 @@ class SuperScriptText extends Text
         $h = $aImg->GetFontHeight();
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $h += $aImg->GetFontHeight();
+
         return $h;
     }
 
@@ -88,6 +95,7 @@ class SuperScriptText extends Text
         $h = $aImg->GetTextHeight($this->t);
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $h += $aImg->GetTextHeight($this->iSuper);
+
         return $h;
     }
 
@@ -158,7 +166,6 @@ class SuperScriptText extends Text
                 if ($sfz < 8) {
                     $sfz = 8;
                 }
-
             }
             $this->sfont_family = $sff;
             $this->sfont_style = $sfs;

@@ -11,14 +11,16 @@ class Plot
     public $numpoints = 0;
     public $value;
     public $legend = '';
-    public $coords = array();
+    public $coords = [];
     public $color = 'black';
     public $hidelegend = false;
     public $line_weight = 1;
-    public $csimtargets = array(), $csimwintargets = array(); // Array of targets for CSIM
+    public $csimtargets = [];
+    public $csimwintargets = []; // Array of targets for CSIM
     public $csimareas = ''; // Resultant CSIM area tags
     public $csimalts = null; // ALT:s for corresponding target
-    public $legendcsimtarget = '', $legendcsimwintarget = '';
+    public $legendcsimtarget = '';
+    public $legendcsimwintarget = '';
     public $legendcsimalt = '';
     protected $weight = 1;
     protected $center = false;
@@ -34,7 +36,7 @@ class Plot
         }
 
         if (!$this->isRunningClear) {
-            $this->inputValues = array();
+            $this->inputValues = [];
             $this->inputValues['aDatay'] = $aDatay;
             $this->inputValues['aDatax'] = $aDatax;
         }
@@ -70,7 +72,6 @@ class Plot
         if (!$this->hidelegend) {
             $this->Legend($graph);
         }
-
     }
 
     public function StrokeDataValue($img, $aVal, $x, $y)
@@ -96,9 +97,10 @@ class Plot
     // or axis are stroked used to do any plot specific adjustment
     public function PreStrokeAdjust($aGraph)
     {
-        if (substr($aGraph->axtype, 0, 4) == "text" && (isset($this->coords[1]))) {
+        if (substr($aGraph->axtype, 0, 4) == 'text' && (isset($this->coords[1]))) {
             Util\JpGraphError::RaiseL(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
         }
+
         return true;
     }
 
@@ -138,7 +140,8 @@ class Plot
         } else {
             $ym = '';
         }
-        return array($xm, $ym);
+
+        return [$xm, $ym];
     }
 
     // Get maximum value in plot
@@ -171,7 +174,8 @@ class Plot
         } else {
             $ym = '';
         }
-        return array($xm, $ym);
+
+        return [$xm, $ym];
     }
 
     public function SetColor($aColor)
@@ -223,5 +227,4 @@ class Plot
         $this->__construct($this->inputValues['aDatay'], $this->inputValues['aDatax']);
         $this->isRunningClear = false;
     }
-
 } // Class

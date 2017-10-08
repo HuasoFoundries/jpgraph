@@ -11,7 +11,8 @@ use Amenadiel\JpGraph\Util;
 class LogTicks extends Ticks
 {
     private $label_logtype = LOGLABELS_MAGNITUDE;
-    private $ticklabels_pos = array();
+    private $ticklabels_pos = [];
+
     //---------------
     // CONSTRUCTOR
     public function LogTicks()
@@ -62,7 +63,7 @@ class LogTicks extends Ticks
 
         $img->SetLineWeight($this->weight);
 
-        if ($scale->type == "y") {
+        if ($scale->type == 'y') {
             // member direction specified if the ticks should be on
             // left or right side.
             $a = $pos + $this->direction * $this->GetMinTickAbsSize();
@@ -72,7 +73,7 @@ class LogTicks extends Ticks
             $this->maj_ticks_pos[0] = $scale->Translate($start);
             $this->maj_ticklabels_pos[0] = $scale->Translate($start);
             if ($this->supress_first) {
-                $this->maj_ticks_label[0] = "";
+                $this->maj_ticks_label[0] = '';
             } else {
                 if ($this->label_formfunc != '') {
                     $f = $this->label_formfunc;
@@ -80,7 +81,7 @@ class LogTicks extends Ticks
                 } elseif ($this->label_logtype == LOGLABELS_PLAIN) {
                     $this->maj_ticks_label[0] = $start;
                 } else {
-                    $this->maj_ticks_label[0] = '10^' . round(log10($start));
+                    $this->maj_ticks_label[0] = '10^'.round(log10($start));
                 }
             }
             $i = 1;
@@ -90,7 +91,7 @@ class LogTicks extends Ticks
                 $this->ticklabels_pos[] = $ys;
                 if ($count % 10 == 0) {
                     if (!$this->supress_tickmarks) {
-                        if ($this->majcolor != "") {
+                        if ($this->majcolor != '') {
                             $img->PushColor($this->majcolor);
                             $img->Line($pos, $ys, $a2, $ys);
                             $img->PopColor();
@@ -108,7 +109,7 @@ class LogTicks extends Ticks
                     } elseif ($this->label_logtype == 0) {
                         $this->maj_ticks_label[$i] = $nextMajor;
                     } else {
-                        $this->maj_ticks_label[$i] = '10^' . round(log10($nextMajor));
+                        $this->maj_ticks_label[$i] = '10^'.round(log10($nextMajor));
                     }
                     ++$i;
                     $nextMajor *= 10;
@@ -116,11 +117,11 @@ class LogTicks extends Ticks
                     $count = 1;
                 } else {
                     if (!$this->supress_tickmarks && !$this->supress_minor_tickmarks) {
-                        if ($this->mincolor != "") {
+                        if ($this->mincolor != '') {
                             $img->PushColor($this->mincolor);
                         }
                         $img->Line($pos, $ys, $a, $ys);
-                        if ($this->mincolor != "") {
+                        if ($this->mincolor != '') {
                             $img->PopColor();
                         }
                     }
@@ -133,7 +134,7 @@ class LogTicks extends Ticks
             $this->maj_ticks_pos[0] = $scale->Translate($start);
             $this->maj_ticklabels_pos[0] = $scale->Translate($start);
             if ($this->supress_first) {
-                $this->maj_ticks_label[0] = "";
+                $this->maj_ticks_label[0] = '';
             } else {
                 if ($this->label_formfunc != '') {
                     $f = $this->label_formfunc;
@@ -141,7 +142,7 @@ class LogTicks extends Ticks
                 } elseif ($this->label_logtype == 0) {
                     $this->maj_ticks_label[0] = $start;
                 } else {
-                    $this->maj_ticks_label[0] = '10^' . round(log10($start));
+                    $this->maj_ticks_label[0] = '10^'.round(log10($start));
                 }
             }
             $i = 1;
@@ -162,7 +163,7 @@ class LogTicks extends Ticks
                     } elseif ($this->label_logtype == 0) {
                         $this->maj_ticks_label[$i] = $nextMajor;
                     } else {
-                        $this->maj_ticks_label[$i] = '10^' . round(log10($nextMajor));
+                        $this->maj_ticks_label[$i] = '10^'.round(log10($nextMajor));
                     }
                     ++$i;
                     $nextMajor *= 10;
@@ -175,6 +176,7 @@ class LogTicks extends Ticks
                 }
             }
         }
+
         return true;
     }
 } // Class

@@ -1,11 +1,13 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(2, 3, 5, 8, 12, 6, 3);
-$datax = array("320x240", "640x480", "600x800", "1024x768", "1280x1024(16)", "1280x1024(32)",
-    "1600x1200(32)");
+$datay = [2, 3, 5, 8, 12, 6, 3];
+$datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
+    '1600x1200(32)', ];
 
 // Size of graph
 $width = 300;
@@ -13,7 +15,7 @@ $height = 400;
 
 // Set the basic parameters of the graph
 $graph = new Graph\Graph($width, $height, 'auto');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 // No frame around the image
 $graph->SetFrame(false);
@@ -31,9 +33,9 @@ $graph->SetBox();
 $graph->SetBackgroundGradient('white', 'lightblue', GRAD_HOR, BGRAD_PLOT);
 
 // Setup title
-$graph->title->Set("Graphic card performance");
+$graph->title->Set('Graphic card performance');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 11);
-$graph->subtitle->Set("(Non optimized)");
+$graph->subtitle->Set('(Non optimized)');
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
@@ -66,7 +68,7 @@ $bplot->SetFillGradient('darkred', 'yellow', GRAD_HOR);
 $bplot->value->Show();
 $bplot->value->SetFont(FF_ARIAL, FS_BOLD, 10);
 //$bplot->value->SetAlign('left','center');
-$bplot->value->SetColor("white");
+$bplot->value->SetColor('white');
 $bplot->value->SetFormat('%.1f');
 $bplot->SetValuePos('max');
 

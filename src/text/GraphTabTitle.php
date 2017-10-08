@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -7,9 +8,14 @@ namespace Amenadiel\JpGraph\Text;
 //===================================================
 class GraphTabTitle extends Text
 {
-    private $corner = 6, $posx = 7, $posy = 4;
-    private $fillcolor = 'lightyellow', $bordercolor = 'black';
-    private $align = 'left', $width = TABTITLE_WIDTHFIT;
+    private $corner = 6;
+    private $posx = 7;
+    private $posy = 4;
+    private $fillcolor = 'lightyellow';
+    private $bordercolor = 'black';
+    private $align = 'left';
+    private $width = TABTITLE_WIDTHFIT;
+
     public function __construct()
     {
         $this->t = '';
@@ -66,28 +72,28 @@ class GraphTabTitle extends Text
 
         if ($this->width === TABTITLE_WIDTHFIT) {
             if ($this->align == 'left') {
-                $p = array($x, $y,
+                $p = [$x, $y,
                     $x, $y - $h + $this->corner,
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y);
+                    $x + $w, $y, ];
             } elseif ($this->align == 'center') {
                 $x += round($aImg->plotwidth / 2) - round($w / 2);
-                $p = array($x, $y,
+                $p = [$x, $y,
                     $x, $y - $h + $this->corner,
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y);
+                    $x + $w, $y, ];
             } else {
                 $x += $aImg->plotwidth - $w;
-                $p = array($x, $y,
+                $p = [$x, $y,
                     $x, $y - $h + $this->corner,
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y);
+                    $x + $w, $y, ];
             }
         } else {
             if ($this->width === TABTITLE_WIDTHFULL) {
@@ -97,13 +103,12 @@ class GraphTabTitle extends Text
             }
 
             // Make the tab fit the width of the plot area
-            $p = array($x, $y,
+            $p = [$x, $y,
                 $x, $y - $h + $this->corner,
                 $x + $this->corner, $y - $h,
                 $x + $w - $this->corner, $y - $h,
                 $x + $w, $y - $h + $this->corner,
-                $x + $w, $y);
-
+                $x + $w, $y, ];
         }
         if ($this->halign == 'left') {
             $aImg->SetTextAlign('left', 'bottom');
@@ -129,5 +134,4 @@ class GraphTabTitle extends Text
         $aImg->SetFont($this->font_family, $this->font_style, $this->font_size);
         $aImg->StrokeText($x, $y, $this->t, 0, 'center');
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 //=============================================================================
@@ -24,7 +25,7 @@ class ReadFileData
         if ($rh === false) {
             return false;
         }
-        $tmp = array();
+        $tmp = [];
         $lineofdata = fgetcsv($rh, 1000, ',');
         while ($lineofdata !== false) {
             $tmp = array_merge($tmp, $lineofdata);
@@ -35,13 +36,14 @@ class ReadFileData
         // Now make sure that all data is numeric. By default
         // all data is read as strings
         $n = count($tmp);
-        $aData = array();
+        $aData = [];
         $cnt = 0;
         for ($i = 0; $i < $n; ++$i) {
-            if ($tmp[$i] !== "") {
+            if ($tmp[$i] !== '') {
                 $aData[$cnt++] = floatval($tmp[$i]);
             }
         }
+
         return $cnt;
     }
 
@@ -65,19 +67,19 @@ class ReadFileData
     // Returns:
     // The number of lines read on success, FALSE on failure
     //----------------------------------------------------------------------------
-    public static function FromCSV2($aFile, &$aData, $aOptions = array())
+    public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {
-        $aDefaults = array(
-            'separator' => ',',
-            'enclosure' => chr(34),
-            'escape' => chr(92),
-            'readlength' => 1024,
+        $aDefaults = [
+            'separator'    => ',',
+            'enclosure'    => chr(34),
+            'escape'       => chr(92),
+            'readlength'   => 1024,
             'ignore_first' => false,
             'first_as_key' => false,
-        );
+        ];
 
         $aOptions = array_merge(
-            $aDefaults, is_array($aOptions) ? $aOptions : array());
+            $aDefaults, is_array($aOptions) ? $aOptions : []);
 
         if ($aOptions['first_as_key']) {
             $aOptions['ignore_first'] = true;
@@ -89,7 +91,7 @@ class ReadFileData
             return false;
         }
 
-        $aData = array();
+        $aData = [];
         $aLine = fgetcsv($rh,
             $aOptions['readlength'],
             $aOptions['separator'],
@@ -183,8 +185,8 @@ class ReadFileData
         if ($lines === false) {
             return false;
         }
-        $mat = array();
-        $reg = '/' . $aSepChar . '/';
+        $mat = [];
+        $reg = '/'.$aSepChar.'/';
         foreach ($lines as $line => $datarow) {
             $row = preg_split($reg, trim($datarow));
             foreach ($row as $key => $cell) {
@@ -192,7 +194,7 @@ class ReadFileData
             }
             $mat[] = $row;
         }
+
         return $mat;
     }
-
 }

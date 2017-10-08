@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
@@ -13,7 +14,9 @@ class PiePlotC extends PiePlot
     private $imidsize = 0.5; // Fraction of total width
     private $imidcolor = 'white';
     public $midtitle = '';
-    private $middlecsimtarget = '', $middlecsimwintarget = '', $middlecsimalt = '';
+    private $middlecsimtarget = '';
+    private $middlecsimwintarget = '';
+    private $middlecsimalt = '';
 
     public function __construct($data, $aCenterTitle = '')
     {
@@ -130,10 +133,10 @@ class PiePlotC extends PiePlot
         $coords .= ", $xp, $yp";
 
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"" .
-            $this->csimtargets[$i] . "\"";
+            $this->csimareas .= "<area shape=\"poly\" coords=\"$coords\" href=\"".
+            $this->csimtargets[$i].'"';
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= " target=\"" . $this->csimwintargets[$i] . "\" ";
+                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
@@ -158,8 +161,7 @@ class PiePlotC extends PiePlot
         $radius = floor($this->radius * min($img->width, $img->height));
 
         if ($this->imidsize > 0 && $aaoption !== 2) {
-
-            if ($this->ishadowcolor != "") {
+            if ($this->ishadowcolor != '') {
                 $img->SetColor($this->ishadowcolor);
                 $img->FilledCircle($xc + $this->ishadowdrop, $yc + $this->ishadowdrop,
                     round($radius * $this->imidsize));
@@ -176,7 +178,6 @@ class PiePlotC extends PiePlot
             if (!empty($this->middlecsimtarget)) {
                 $this->AddMiddleCSIM($xc, $yc, round($radius * $this->imidsize));
             }
-
         }
 
         if ($this->value->show && $aaoption !== 1) {
@@ -184,7 +185,6 @@ class PiePlotC extends PiePlot
             $this->midtitle->SetPos($xc, $yc, 'center', 'center');
             $this->midtitle->Stroke($img);
         }
-
     }
 
     public function AddMiddleCSIM($xc, $yc, $r)
@@ -192,10 +192,10 @@ class PiePlotC extends PiePlot
         $xc = round($xc);
         $yc = round($yc);
         $r = round($r);
-        $this->csimareas .= "<area shape=\"circle\" coords=\"$xc,$yc,$r\" href=\"" .
-        $this->middlecsimtarget . "\"";
+        $this->csimareas .= "<area shape=\"circle\" coords=\"$xc,$yc,$r\" href=\"".
+        $this->middlecsimtarget.'"';
         if (!empty($this->middlecsimwintarget)) {
-            $this->csimareas .= " target=\"" . $this->middlecsimwintarget . "\"";
+            $this->csimareas .= ' target="'.$this->middlecsimwintarget.'"';
         }
         if (!empty($this->middlecsimalt)) {
             $tmp = $this->middlecsimalt;
@@ -206,13 +206,10 @@ class PiePlotC extends PiePlot
 
     public function StrokeLabel($label, $img, $xc, $yc, $a, $r)
     {
-
         if ($this->ilabelposadj === 'auto') {
             $this->ilabelposadj = (1 - $this->imidsize) / 2 + $this->imidsize;
         }
 
         parent::StrokeLabel($label, $img, $xc, $yc, $a, $r);
-
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 //=============================================================================
@@ -22,11 +23,18 @@ define('DSUTILS_YEAR5', 13); // Major ticks on a five-yearly basis
 
 class DateScaleUtils
 {
-    public static $iMin = 0, $iMax = 0;
+    public static $iMin = 0;
+    public static $iMax = 0;
 
-    private static $starthour, $startmonth, $startday, $startyear;
-    private static $endmonth, $endyear, $endday;
-    private static $tickPositions = array(), $minTickPositions = array();
+    private static $starthour;
+    private static $startmonth;
+    private static $startday;
+    private static $startyear;
+    private static $endmonth;
+    private static $endyear;
+    private static $endday;
+    private static $tickPositions = [];
+    private static $minTickPositions = [];
     private static $iUseWeeks = true;
 
     public static function UseWeekFormat($aFlg)
@@ -225,7 +233,6 @@ class DateScaleUtils
                                 if (!($y == self::$endyear && $m == $stopmonth && self::$endday < 15)) {
                                     self::$minTickPositions[$j++] = mktime(0, 0, 0, $m, 15, $y);
                                 }
-
                             }
                         }
                         // Major at month
@@ -281,12 +288,13 @@ class DateScaleUtils
             self::$tickPositions[$i++] = mktime(0, 0, 0, self::$startmonth + 1, 1, self::$startyear);
         }
 
-        return array(self::$tickPositions, self::$minTickPositions);
+        return [self::$tickPositions, self::$minTickPositions];
     }
 
     public static function GetTicks($aData, $aType = 1, $aMinor = false, $aEndPoints = false)
     {
         $n = count($aData);
+
         return self::GetTicksFromMinMax($aData[0], $aData[$n - 1], $aType, $aMinor, $aEndPoints);
     }
 
@@ -307,11 +315,11 @@ class DateScaleUtils
         // Decision table for suitable scales
         // First value: Main decision point
         // Second value: Array of formatting depending on divisor for wanted max number of ticks. <divisor><formatting><format-string>,..
-        $tt = array(
-            array($spw, array(1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', -1, DSUTILS_DAY4, 'd M')),
-            array($spm, array(1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, -1, DSUTILS_WEEK2, $w)),
-            array($spy, array(1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, 14, DSUTILS_WEEK2, $w, 30, DSUTILS_MONTH1, 'M', 60, DSUTILS_MONTH2, 'M', -1, DSUTILS_MONTH3, 'M')),
-            array(-1, array(30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y')));
+        $tt = [
+            [$spw, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', -1, DSUTILS_DAY4, 'd M']],
+            [$spm, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, -1, DSUTILS_WEEK2, $w]],
+            [$spy, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, 14, DSUTILS_WEEK2, $w, 30, DSUTILS_MONTH1, 'M', 60, DSUTILS_MONTH2, 'M', -1, DSUTILS_MONTH3, 'M']],
+            [-1, [30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y']], ];
 
         $ntt = count($tt);
         $nd = floor($diff / $spd);
@@ -324,7 +332,8 @@ class DateScaleUtils
                         $type = $t[3 * $j + 1];
                         $fs = $t[3 * $j + 2];
                         list($tickPositions, $minTickPositions) = self::GetTicksFromMinMax($aMin, $aMax, $type, $aMinor);
-                        return array($fs, $tickPositions, $minTickPositions, $type);
+
+                        return [$fs, $tickPositions, $minTickPositions, $type];
                     }
                 }
             }
@@ -364,6 +373,6 @@ class DateScaleUtils
             $tickPositions[$i] = $aData[$n - 1];
         }
 
-        return array(self::$tickPositions, self::$minTickPositions);
+        return [self::$tickPositions, self::$minTickPositions];
     }
 }

@@ -1,14 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data and the labels
-$data = array(19, 12, 4, 7, 3, 12, 3);
-$labels = array("First\n(%.1f%%)",
+$data = [19, 12, 4, 7, 3, 12, 3];
+$labels = ["First\n(%.1f%%)",
     "Second\n(%.1f%%)", "Third\n(%.1f%%)",
     "Fourth\n(%.1f%%)", "Fifth\n(%.1f%%)",
-    "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)");
+    "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)", ];
 
 // Create the Pie Graph.
 $graph = new Graph\PieGraph(300, 300);

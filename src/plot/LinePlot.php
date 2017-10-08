@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
@@ -14,10 +15,10 @@ use Amenadiel\JpGraph\Util;
  */
 
 // constants for the (filled) area
-DEFINE("LP_AREA_FILLED", true);
-DEFINE("LP_AREA_NOT_FILLED", false);
-DEFINE("LP_AREA_BORDER", false);
-DEFINE("LP_AREA_NO_BORDER", true);
+define('LP_AREA_FILLED', true);
+define('LP_AREA_NOT_FILLED', false);
+define('LP_AREA_BORDER', false);
+define('LP_AREA_NO_BORDER', true);
 
 //===================================================
 // CLASS LinePlot
@@ -28,12 +29,17 @@ class LinePlot extends Plot
     public $mark = null;
     protected $filled = false;
     protected $fill_color = 'blue';
-    protected $step_style = false, $center = false;
+    protected $step_style = false;
+    protected $center = false;
     protected $line_style = 1; // Default to solid
-    protected $filledAreas = array(); // array of arrays(with min,max,col,filled in them)
+    protected $filledAreas = []; // array of arrays(with min,max,col,filled in them)
     public $barcenter = false; // When we mix line and bar. Should we center the line in the bar.
-    protected $fillFromMin = false, $fillFromMax = false;
-    protected $fillgrad = false, $fillgrad_fromcolor = 'navy', $fillgrad_tocolor = 'silver', $fillgrad_numcolors = 100;
+    protected $fillFromMin = false;
+    protected $fillFromMax = false;
+    protected $fillgrad = false;
+    protected $fillgrad_fromcolor = 'navy';
+    protected $fillgrad_tocolor = 'silver';
+    protected $fillgrad_numcolors = 100;
     protected $iFastStroke = false;
 
     //---------------
@@ -102,15 +108,15 @@ class LinePlot extends Plot
 
     public function Legend($graph)
     {
-        if ($this->legend != "") {
+        if ($this->legend != '') {
             if ($this->filled && !$this->fillgrad) {
                 $graph->legend->Add($this->legend,
                     $this->fill_color, $this->mark, 0,
                     $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
             } elseif ($this->fillgrad) {
-                $color = array($this->fillgrad_fromcolor, $this->fillgrad_tocolor);
+                $color = [$this->fillgrad_fromcolor, $this->fillgrad_tocolor];
                 // In order to differentiate between gradients and cooors specified as an RGB triple
-                $graph->legend->Add($this->legend, $color, "", -2/* -GRAD_HOR */,
+                $graph->legend->Add($this->legend, $color, '', -2/* -GRAD_HOR */,
                     $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
             } else {
                 $graph->legend->Add($this->legend,
@@ -120,7 +126,7 @@ class LinePlot extends Plot
         }
     }
 
-    public function AddArea($aMin = 0, $aMax = 0, $aFilled = LP_AREA_NOT_FILLED, $aColor = "gray9", $aBorder = LP_AREA_BORDER)
+    public function AddArea($aMin = 0, $aMax = 0, $aFilled = LP_AREA_NOT_FILLED, $aColor = 'gray9', $aBorder = LP_AREA_BORDER)
     {
         if ($aMin > $aMax) {
             // swap
@@ -128,7 +134,7 @@ class LinePlot extends Plot
             $aMin = $aMax;
             $aMax = $tmp;
         }
-        $this->filledAreas[] = array($aMin, $aMax, $aColor, $aFilled, $aBorder);
+        $this->filledAreas[] = [$aMin, $aMax, $aColor, $aFilled, $aBorder];
     }
 
     // Gets called before any axis are stroked
@@ -231,6 +237,7 @@ class LinePlot extends Plot
 
         if ($this->iFastStroke) {
             $this->FastStroke($img, $xscale, $yscale, $startpoint, $exist_x);
+
             return;
         }
 
@@ -277,7 +284,6 @@ class LinePlot extends Plot
         $firstnonumeric = false;
 
         while ($pnts < $numpoints) {
-
             if ($exist_x) {
                 $x = $this->coords[1][$pnts];
             } else {
@@ -391,11 +397,10 @@ class LinePlot extends Plot
         }
 
         if (!empty($this->filledAreas)) {
-
             $minY = $yscale->Translate($yscale->GetMinVal());
             $factor = ($this->step_style ? 4 : 2);
 
-            for ($i = 0; $i < sizeof($this->filledAreas); ++$i) {
+            for ($i = 0; $i < count($this->filledAreas); ++$i) {
                 // go through all filled area elements ordered by insertion
                 // fill polygon array
                 $areaCoords[] = $cord[$this->filledAreas[$i][0] * $factor];
@@ -406,7 +411,7 @@ class LinePlot extends Plot
                     array_slice($cord,
                         $this->filledAreas[$i][0] * $factor,
                         ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor));
-                $areaCoords[] = $areaCoords[sizeof($areaCoords) - 2]; // last x
+                $areaCoords[] = $areaCoords[count($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y
 
                 if ($this->filledAreas[$i][3]) {
@@ -424,7 +429,7 @@ class LinePlot extends Plot
                     $img->Polygon($cord);
                 }
 
-                $areaCoords = array();
+                $areaCoords = [];
             }
         }
 
@@ -433,7 +438,6 @@ class LinePlot extends Plot
         }
 
         for ($pnts = 0; $pnts < $numpoints; ++$pnts) {
-
             if ($exist_x) {
                 $x = $this->coords[1][$pnts];
             } else {

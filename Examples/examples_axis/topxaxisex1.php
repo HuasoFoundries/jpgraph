@@ -1,16 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
 // Some data
-$datay = array(25, 29, 29, 39, 55);
+$datay = [25, 29, 29, 39, 55];
 
 $graph = new Graph\Graph(400, 200, 'auto');
 $graph->img->SetMargin(40, 40, 40, 20);
 
-$graph->SetScale("linlin");
+$graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->title->Set("Top X-axis");
+$graph->title->Set('Top X-axis');
 
 // Start at 0
 $graph->yscale->SetAutoMin(0);
@@ -22,17 +24,17 @@ $graph->yscale->SetGrace(100);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Adjust the X-axis
-$graph->xaxis->SetPos("max");
+$graph->xaxis->SetPos('max');
 $graph->xaxis->SetLabelSide(SIDE_UP);
 $graph->xaxis->SetTickSide(SIDE_DOWN);
 
 // Create the line plot
 $p1 = new Plot\LinePlot($datay);
-$p1->SetColor("blue");
+$p1->SetColor('blue');
 
 // Specify marks for the line plots
 $p1->mark->SetType(MARK_FILLEDCIRCLE);
-$p1->mark->SetFillColor("red");
+$p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 
 // Show values

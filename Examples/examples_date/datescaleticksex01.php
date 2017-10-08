@@ -1,9 +1,11 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../jpgraph.php';
 require_once '../jpgraph_line.php';
 require_once '../jpgraph_date.php';
 
-DEFINE('INTERVAL', 5 * 60);
+define('INTERVAL', 5 * 60);
 
 // First create some "dummy" data
 $m = 5; // Number of data sets
@@ -11,14 +13,14 @@ $n = 4; // Number of bids to show
 $startbid = 8000;
 
 for ($i = 0; $i < $m; ++$i) {
-    $bids[$i] = array($startbid + rand(100, 500) * 10);
+    $bids[$i] = [$startbid + rand(100, 500) * 10];
     for ($j = 1; $j < $n; ++$j) {
         $bids[$i][$j] = $bids[$i][$j - 1] + rand(20, 500) * 10;
     }
 }
 
 $start = floor(time() / INTERVAL) * INTERVAL;
-$times = array($start);
+$times = [$start];
 for ($i = 1; $i < $n; ++$i) {
     // Create a timestamp for every 5 minutes
     $times[$i] = $times[$i - 1] + INTERVAL;
@@ -51,7 +53,7 @@ $graph->xaxis->scale->ticks->Set(INTERVAL);
 $graph->xaxis->scale->SetTimeAlign(MINADJ_5);
 
 // Create the plots using the dummy data created at the beginning
-$line = array();
+$line = [];
 for ($i = 0; $i < $m; ++$i) {
     $line[$i] = new Plot\LinePlot($bids[$i], $times);
     $line[$i]->mark->SetType(MARK_SQUARE);

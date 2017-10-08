@@ -1,4 +1,6 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -6,7 +8,7 @@ use Amenadiel\JpGraph\Plot;
 // Some data
 $months = $gDateLocale->GetShortMonth();
 
-srand((double) microtime() * 1000000);
+srand((float) microtime() * 1000000);
 for ($i = 0; $i < 25; ++$i) {
     $databary[] = rand(1, 50);
     $databarx[] = $months[$i % 12];
@@ -17,7 +19,7 @@ $graph = new Graph\Graph(300, 200, 'auto');
 $graph->SetShadow();
 
 // Use a "text" X-scale
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 // Specify X-labels
 //$databarx = array('tXi','','','xxx','','','iXii','','','OOO','','','tOO');
@@ -26,14 +28,14 @@ $graph->xaxis->SetTickLabels($databarx);
 $graph->xaxis->SetTextLabelInterval(3);
 
 // Set title and subtitle
-$graph->title->Set("Displaying only every third label");
+$graph->title->Set('Displaying only every third label');
 
 // Use built in font
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);
-$b1->SetLegend("Temperature");
+$b1->SetLegend('Temperature');
 //$b1->SetAbsWidth(6);
 //$b1->SetShadow();
 

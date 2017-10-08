@@ -1,15 +1,17 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+// content="text/plain; charset=utf-8"
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_log.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata = array(11, 3, 8, 42, 5, 1, 9, 13, 5, 7);
-$datax = array("Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "aug", "Sep", "Oct");
+$ydata = [11, 3, 8, 42, 5, 1, 9, 13, 5, 7];
+$datax = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'aug', 'Sep', 'Oct'];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(350, 200);
-$graph->SetScale("textlog");
+$graph->SetScale('textlog');
 
 $graph->img->SetMargin(40, 110, 20, 40);
 $graph->SetShadow();
@@ -28,22 +30,22 @@ $lineplot = new Plot\LinePlot($ydata);
 // Add the plot to the graph
 $graph->Add($lineplot);
 
-$graph->title->Set("Examples 9");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->title->Set('Examples 9');
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 
-$lineplot->SetColor("blue");
+$lineplot->SetColor('blue');
 $lineplot->SetWeight(2);
 
-$graph->yaxis->SetColor("blue");
+$graph->yaxis->SetColor('blue');
 
-$lineplot->SetLegend("Plot 1");
+$lineplot->SetLegend('Plot 1');
 
-$graph->legend->Pos(0.05, 0.5, "right", "center");
+$graph->legend->Pos(0.05, 0.5, 'right', 'center');
 
 // Display the graph
 $graph->Stroke();

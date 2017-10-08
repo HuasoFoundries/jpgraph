@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Util;
 
 define('__LR_EPSILON', 1.0e-8);
@@ -7,10 +8,14 @@ define('__LR_EPSILON', 1.0e-8);
 //=============================================================================
 class LinearRegression
 {
-    private $ix = array(), $iy = array();
-    private $ib = 0, $ia = 0;
+    private $ix = [];
+    private $iy = [];
+    private $ib = 0;
+    private $ia = 0;
     private $icalculated = false;
-    public $iDet = 0, $iCorr = 0, $iStdErr = 0;
+    public $iDet = 0;
+    public $iCorr = 0;
+    public $iStdErr = 0;
 
     public function __construct($aDataX, $aDataY)
     {
@@ -23,7 +28,6 @@ class LinearRegression
 
     public function Calc()
     {
-
         $this->icalculated = true;
 
         $n = count($this->ix);
@@ -60,7 +64,6 @@ class LinearRegression
             $this->ib = 0;
             $this->ia = 0;
         }
-
     }
 
     public function GetAB()
@@ -69,7 +72,7 @@ class LinearRegression
             $this->Calc();
         }
 
-        return array($this->ia, $this->ib);
+        return [$this->ia, $this->ib];
     }
 
     public function GetStat()
@@ -78,7 +81,7 @@ class LinearRegression
             $this->Calc();
         }
 
-        return array($this->iStdErr, $this->iCorr, $this->iDet);
+        return [$this->iStdErr, $this->iCorr, $this->iDet];
     }
 
     public function GetY($aMinX, $aMaxX, $aStep = 1)
@@ -87,14 +90,13 @@ class LinearRegression
             $this->Calc();
         }
 
-        $yy = array();
+        $yy = [];
         $i = 0;
         for ($x = $aMinX; $x <= $aMaxX; $x += $aStep) {
             $xx[$i] = $x;
             $yy[$i++] = $this->ia + $this->ib * $x;
         }
 
-        return array($xx, $yy);
+        return [$xx, $yy];
     }
-
 }

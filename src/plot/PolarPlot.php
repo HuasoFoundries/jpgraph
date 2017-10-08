@@ -1,4 +1,5 @@
 <?php
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -12,7 +13,7 @@ namespace Amenadiel\JpGraph\Plot;
  */
 
 require_once 'jpgraph_plotmark.inc.php';
-require_once "jpgraph_log.php";
+require_once 'jpgraph_log.php';
 
 define('POLAR_360', 1);
 define('POLAR_180', 2);
@@ -34,16 +35,18 @@ define('POLAR_180', 2);
 //--------------------------------------------------------------------------
 class PolarPlot
 {
-    public $line_style = 'solid', $mark;
+    public $line_style = 'solid';
+    public $mark;
     public $legendcsimtarget = '';
     public $legendcsimalt = '';
-    public $legend = "";
+    public $legend = '';
     public $csimtargets = []; // Array of targets for CSIM
-    public $csimareas = ""; // Resultant CSIM area tags
+    public $csimareas = ''; // Resultant CSIM area tags
     public $csimalts = null; // ALT:s for corresponding target
     public $scale = null;
     private $numpoints = 0;
-    private $iColor = 'navy', $iFillColor = '';
+    private $iColor = 'navy';
+    private $iFillColor = '';
     private $iLineWeight = 1;
     private $coord = null;
 
@@ -82,6 +85,7 @@ class PolarPlot
             $m = max($m, $this->coord[2 * $i + 1]);
             ++$i;
         }
+
         return $m;
     }
 
@@ -98,7 +102,7 @@ class PolarPlot
         return $this->csimareas;
     }
 
-    public function SetLegend($aLegend, $aCSIM = "", $aCSIMAlt = "")
+    public function SetLegend($aLegend, $aCSIM = '', $aCSIMAlt = '')
     {
         $this->legend = $aLegend;
         $this->legendcsimtarget = $aCSIM;
@@ -110,7 +114,7 @@ class PolarPlot
     public function Legend($aGraph)
     {
         $color = $this->iColor;
-        if ($this->legend != "") {
+        if ($this->legend != '') {
             if ($this->iFillColor != '') {
                 $color = $this->iFillColor;
                 $aGraph->legend->Add($this->legend, $color, $this->mark, 0,
@@ -124,7 +128,6 @@ class PolarPlot
 
     public function Stroke($img, $scale)
     {
-
         $i = 0;
         $p = [];
         $this->csimareas = '';
