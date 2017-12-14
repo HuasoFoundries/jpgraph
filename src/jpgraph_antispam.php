@@ -12,7 +12,7 @@ class HandDigits
 {
     public $chars   = array();
     public $iHeight = 30;
-    public $iWidth = 30;
+    public $iWidth  = 30;
 
     public function __construct()
     {

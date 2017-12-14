@@ -14,12 +14,12 @@ class GanttLink
     private $ix2;
     private $iy1;
     private $iy2;
-    private $iPathType  = 2;
+    private $iPathType    = 2;
     private $iPathExtend  = 15;
-    private $iColor     = 'black';
-    private $iWeight     = 1;
-    private $iArrowSize = ARROW_S2;
-    private $iArrowType = ARROWT_SOLID;
+    private $iColor       = 'black';
+    private $iWeight      = 1;
+    private $iArrowSize   = ARROW_S2;
+    private $iArrowType   = ARROWT_SOLID;
 
     public function __construct($x1 = 0, $y1 = 0, $x2 = 0, $y2 = 0)
     {

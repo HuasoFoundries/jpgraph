@@ -25,18 +25,18 @@ define('VERT_EDGE', 1);
  */
 class Contour
 {
-    private $dataPoints   = array();
-    private $nbrCols      = 0;
-    private $nbrRows      = 0;
-    private $horizEdges   = array();
-    private $vertEdges   = array();
-    private $isobarValues = array();
-    private $stack        = null;
-    private $isobarCoord  = array();
-    private $nbrIsobars   = 10;
+    private $dataPoints     = array();
+    private $nbrCols        = 0;
+    private $nbrRows        = 0;
+    private $horizEdges     = array();
+    private $vertEdges      = array();
+    private $isobarValues   = array();
+    private $stack          = null;
+    private $isobarCoord    = array();
+    private $nbrIsobars     = 10;
     private $isobarColors   = array();
-    private $invert       = true;
-    private $highcontrast = false;
+    private $invert         = true;
+    private $highcontrast   = false;
     private $highcontrastbw = false;
 
     /**

@@ -19,16 +19,16 @@ namespace Amenadiel\JpGraph\Plot;
 class PlotLine
 {
     public $scaleposition;
-    public $direction = -1;
-    protected $weight                 = 1;
-    protected $color                  = 'black';
-    private $legend                   = '';
-    private $hidelegend                   = false;
-    private $legendcsimtarget                   = '';
-    private $legendcsimalt                   = '';
+    public $direction                              = -1;
+    protected $weight                              = 1;
+    protected $color                               = 'black';
+    private $legend                                = '';
+    private $hidelegend                            = false;
+    private $legendcsimtarget                      = '';
+    private $legendcsimalt                         = '';
     private $legendcsimwintarget                   = '';
-    private $iLineStyle               = 'solid';
-    public $numpoints                 = 0; // Needed since the framework expects this property
+    private $iLineStyle                            = 'solid';
+    public $numpoints                              = 0; // Needed since the framework expects this property
 
     public function __construct($aDir = HORIZONTAL, $aPos = 0, $aColor = 'black', $aWeight = 1)
     {

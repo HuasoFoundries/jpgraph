@@ -15,33 +15,33 @@ require_once dirname(__FILE__) . "/../includes/jpgraph.php";
 //===================================================
 class Graph
 {
-    public $cache   = null; // Cache object (singleton)
-    public $img     = null; // Img object (singleton)
-    public $plots   = []; // Array of all plot object in the graph (for Y 1 axis)
-    public $y2plots = []; // Array of all plot object in the graph (for Y 2 axis)
-    public $ynplots = [];
-    public $xscale  = null; // X Scale object (could be instance of LinearScale or LogScale
-    public $yscale  = null;
+    public $cache    = null; // Cache object (singleton)
+    public $img      = null; // Img object (singleton)
+    public $plots    = []; // Array of all plot object in the graph (for Y 1 axis)
+    public $y2plots  = []; // Array of all plot object in the graph (for Y 2 axis)
+    public $ynplots  = [];
+    public $xscale   = null; // X Scale object (could be instance of LinearScale or LogScale
+    public $yscale   = null;
     public $y2scale  = null;
     public $ynscale  = [];
-    public $iIcons  = []; // Array of Icons to add to
+    public $iIcons   = []; // Array of Icons to add to
     public $cache_name; // File name to be used for the current graph in the cache directory
-    public $xgrid = null; // X Grid object (linear or logarithmic)
-    public $ygrid = null;
+    public $xgrid  = null; // X Grid object (linear or logarithmic)
+    public $ygrid  = null;
     public $y2grid = null; //dito for Y
     public $doframe;
     public $frame_color;
     public $frame_weight; // Frame around graph
-    public $boxed    = false;
-    public $box_color    = 'black';
+    public $boxed         = false;
+    public $box_color     = 'black';
     public $box_weight    = 1; // Box around plot area
-    public $doshadow = false;
-    public $shadow_width = 4;
-    public $shadow_color = 'gray@0.5'; // Shadow for graph
-    public $xaxis    = null; // X-axis (instane of Axis class)
-    public $yaxis    = null;
-    public $y2axis    = null;
-    public $ynaxis    = []; // Y axis (instance of Axis class)
+    public $doshadow      = false;
+    public $shadow_width  = 4;
+    public $shadow_color  = 'gray@0.5'; // Shadow for graph
+    public $xaxis         = null; // X-axis (instane of Axis class)
+    public $yaxis         = null;
+    public $y2axis        = null;
+    public $ynaxis        = []; // Y axis (instance of Axis class)
     public $margin_color; // Margin color of graph
     public $plotarea_color = [255, 255, 255]; // Plot area color
     public $title;
@@ -50,50 +50,50 @@ class Graph
     public $axtype = "linlin"; // Type of axis
     public $xtick_factor;
     public $ytick_factor; // Factor to determine the maximum number of ticks depending on the plot width
-    public $texts                   = null;
-    public $y2texts                   = null; // Text object to ge shown in the graph
-    public $lines                   = null;
-    public $y2lines                   = null;
-    public $bands                   = null;
-    public $y2bands                   = null;
-    public $text_scale_off          = 0;
+    public $texts                            = null;
+    public $y2texts                          = null; // Text object to ge shown in the graph
+    public $lines                            = null;
+    public $y2lines                          = null;
+    public $bands                            = null;
+    public $y2bands                          = null;
+    public $text_scale_off                   = 0;
     public $text_scale_abscenteroff          = -1; // Text scale in fractions and for centering bars
-    public $background_image        = '';
-    public $background_image_type        = -1;
-    public $background_image_format        = "png";
-    public $background_image_bright = 0;
-    public $background_image_contr = 0;
-    public $background_image_sat = 0;
-    public $background_image_xpos   = 0;
-    public $background_image_ypos   = 0;
-    public $image_bright            = 0;
-    public $image_contr            = 0;
-    public $image_sat            = 0;
+    public $background_image                 = '';
+    public $background_image_type            = -1;
+    public $background_image_format          = "png";
+    public $background_image_bright          = 0;
+    public $background_image_contr           = 0;
+    public $background_image_sat             = 0;
+    public $background_image_xpos            = 0;
+    public $background_image_ypos            = 0;
+    public $image_bright                     = 0;
+    public $image_contr                      = 0;
+    public $image_sat                        = 0;
     public $inline;
-    public $showcsim     = 0;
+    public $showcsim      = 0;
     public $csimcolor     = "red"; //debug stuff, draw the csim boundaris on the image if <>0
-    public $grid_depth   = DEPTH_BACK; // Draw grid under all plots as default
-    public $iAxisStyle   = AXSTYLE_SIMPLE;
-    public $iCSIMdisplay = false;
-    public $iHasStroked = false;
+    public $grid_depth    = DEPTH_BACK; // Draw grid under all plots as default
+    public $iAxisStyle    = AXSTYLE_SIMPLE;
+    public $iCSIMdisplay  = false;
+    public $iHasStroked   = false;
     public $footer;
-    public $csimcachename = '';
+    public $csimcachename    = '';
     public $csimcachetimeout = 0;
-    public $iCSIMImgAlt = '';
-    public $iDoClipping   = false;
-    public $y2orderback   = true;
+    public $iCSIMImgAlt      = '';
+    public $iDoClipping      = false;
+    public $y2orderback      = true;
     public $tabtitle;
-    public $bkg_gradtype  = -1;
+    public $bkg_gradtype   = -1;
     public $bkg_gradstyle  = BGRAD_MARGIN;
-    public $bkg_gradfrom  = 'navy';
-    public $bkg_gradto  = 'silver';
-    public $plot_gradtype = -1;
+    public $bkg_gradfrom   = 'navy';
+    public $bkg_gradto     = 'silver';
+    public $plot_gradtype  = -1;
     public $plot_gradstyle = BGRAD_MARGIN;
-    public $plot_gradfrom = 'silver';
-    public $plot_gradto = 'navy';
+    public $plot_gradfrom  = 'silver';
+    public $plot_gradto    = 'navy';
 
-    public $titlebackground       = false;
-    public $titlebackground_color = 'lightblue';
+    public $titlebackground              = false;
+    public $titlebackground_color        = 'lightblue';
     public $titlebackground_style        = 1;
     public $titlebackground_framecolor;
     public $titlebackground_framestyle;
@@ -108,29 +108,29 @@ class Graph
     public $framebevelbordercolor;
     public $framebevelcolor1;
     public $framebevelcolor2;
-    public $background_image_mix  = 100;
-    public $background_cflag      = '';
-    public $background_cflag_type = BGIMG_FILLPLOT;
-    public $background_cflag_mix  = 100;
-    public $iImgTrans             = false;
-    public $iImgTransHorizon             = 100;
-    public $iImgTransSkewDist             = 150;
-    public $iImgTransDirection           = 1;
-    public $iImgTransMinSize           = true;
-    public $iImgTransFillColor           = 'white';
-    public $iImgTransHighQ           = false;
-    public $iImgTransBorder              = false;
+    public $background_image_mix             = 100;
+    public $background_cflag                 = '';
+    public $background_cflag_type            = BGIMG_FILLPLOT;
+    public $background_cflag_mix             = 100;
+    public $iImgTrans                        = false;
+    public $iImgTransHorizon                 = 100;
+    public $iImgTransSkewDist                = 150;
+    public $iImgTransDirection               = 1;
+    public $iImgTransMinSize                 = true;
+    public $iImgTransFillColor               = 'white';
+    public $iImgTransHighQ                   = false;
+    public $iImgTransBorder                  = false;
     public $iImgTransHorizonPos              = 0.5;
     public $legend;
     public $graph_theme;
-    protected $iYAxisDeltaPos = 50;
-    protected $iIconDepth     = DEPTH_BACK;
-    protected $iAxisLblBgType = 0;
+    protected $iYAxisDeltaPos           = 50;
+    protected $iIconDepth               = DEPTH_BACK;
+    protected $iAxisLblBgType           = 0;
     protected $iXAxisLblBgFillColor     = 'lightgray';
-    protected $iXAxisLblBgColor     = 'black';
+    protected $iXAxisLblBgColor         = 'black';
     protected $iYAxisLblBgFillColor     = 'lightgray';
-    protected $iYAxisLblBgColor     = 'black';
-    protected $iTables        = null;
+    protected $iYAxisLblBgColor         = 'black';
+    protected $iTables                  = null;
 
     protected $isRunningClear = false;
     protected $inputValues;

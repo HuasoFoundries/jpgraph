@@ -11,16 +11,16 @@ class Grid
 {
     protected $img;
     protected $scale;
-    protected $majorcolor = '#CCCCCC';
-    protected $minorcolor = '#DDDDDD';
-    protected $majortype  = 'solid';
-    protected $minortype  = 'solid';
-    protected $show       = false;
-    protected $showMinor       = false;
+    protected $majorcolor        = '#CCCCCC';
+    protected $minorcolor        = '#DDDDDD';
+    protected $majortype         = 'solid';
+    protected $minortype         = 'solid';
+    protected $show              = false;
+    protected $showMinor         = false;
     protected $majorweight       = 1;
     protected $minorweight       = 1;
-    protected $fill       = false;
-    protected $fillcolor       = array('#EFEFEF', '#BBCCFF');
+    protected $fill              = false;
+    protected $fillcolor         = array('#EFEFEF', '#BBCCFF');
 
     public function __construct($aAxis)
     {

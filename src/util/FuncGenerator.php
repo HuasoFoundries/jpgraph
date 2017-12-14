@@ -18,7 +18,7 @@ namespace Amenadiel\JpGraph\Util;
 //===================================================
 class FuncGenerator
 {
-    private $iFunc = '';
+    private $iFunc  = '';
     private $iXFunc = '';
     private $iMin;
     private $iMax;

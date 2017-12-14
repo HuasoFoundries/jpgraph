@@ -52,9 +52,9 @@ class DateScale extends LinearScale
 {
     private $date_format     = '';
     private $iStartAlign     = false;
-    private $iEndAlign     = false;
+    private $iEndAlign       = false;
     private $iStartTimeAlign = false;
-    private $iEndTimeAlign = false;
+    private $iEndTimeAlign   = false;
 
     //---------------
     // CONSTRUCTOR

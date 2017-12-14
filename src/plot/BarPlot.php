@@ -31,28 +31,28 @@ DEFINE('PATTERN_STRIPE2', 10);
 //===================================================
 class BarPlot extends Plot
 {
-    public $fill                = false;
-    public $fill_color                = "lightblue"; // Default is to fill with light blue
-    public $iPattern            = -1;
+    public $fill                       = false;
+    public $fill_color                 = "lightblue"; // Default is to fill with light blue
+    public $iPattern                   = -1;
     public $iPatternDensity            = 80;
-    public $iPatternColor            = 'black';
-    public $valuepos            = 'top';
-    public $grad                = false;
-    public $grad_style                = 1;
-    public $grad_fromcolor      = [50, 50, 200];
-    public $grad_tocolor      = [255, 255, 255];
-    public $ymin                = 0;
-    protected $width            = 0.4; // in percent of major ticks
-    protected $abswidth         = -1; // Width in absolute pixels
-    protected $ybase            = 0; // Bars start at 0
-    protected $align            = "center";
-    protected $bar_shadow       = false;
-    protected $bar_shadow_color = "black";
-    protected $bar_shadow_hsize = 3;
-    protected $bar_shadow_vsize = 3;
-    protected $bar_3d           = false;
-    protected $bar_3d_hsize     = 3;
-    protected $bar_3d_vsize     = 3;
+    public $iPatternColor              = 'black';
+    public $valuepos                   = 'top';
+    public $grad                       = false;
+    public $grad_style                 = 1;
+    public $grad_fromcolor             = [50, 50, 200];
+    public $grad_tocolor               = [255, 255, 255];
+    public $ymin                       = 0;
+    protected $width                   = 0.4; // in percent of major ticks
+    protected $abswidth                = -1; // Width in absolute pixels
+    protected $ybase                   = 0; // Bars start at 0
+    protected $align                   = "center";
+    protected $bar_shadow              = false;
+    protected $bar_shadow_color        = "black";
+    protected $bar_shadow_hsize        = 3;
+    protected $bar_shadow_vsize        = 3;
+    protected $bar_3d                  = false;
+    protected $bar_3d_hsize            = 3;
+    protected $bar_3d_vsize            = 3;
 
     //---------------
     // CONSTRUCTOR

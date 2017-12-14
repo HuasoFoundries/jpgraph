@@ -10,20 +10,20 @@ class Plot
 {
     public $numpoints = 0;
     public $value;
-    public $legend           = '';
-    public $coords           = array();
-    public $color            = 'black';
-    public $hidelegend       = false;
-    public $line_weight      = 1;
-    public $csimtargets      = array();
+    public $legend              = '';
+    public $coords              = array();
+    public $color               = 'black';
+    public $hidelegend          = false;
+    public $line_weight         = 1;
+    public $csimtargets         = array();
     public $csimwintargets      = array(); // Array of targets for CSIM
-    public $csimareas        = ''; // Resultant CSIM area tags
-    public $csimalts         = null; // ALT:s for corresponding target
-    public $legendcsimtarget = '';
+    public $csimareas           = ''; // Resultant CSIM area tags
+    public $csimalts            = null; // ALT:s for corresponding target
+    public $legendcsimtarget    = '';
     public $legendcsimwintarget = '';
-    public $legendcsimalt    = '';
-    protected $weight        = 1;
-    protected $center        = false;
+    public $legendcsimalt       = '';
+    protected $weight           = 1;
+    protected $center           = false;
 
     protected $inputValues;
     protected $isRunningClear = false;

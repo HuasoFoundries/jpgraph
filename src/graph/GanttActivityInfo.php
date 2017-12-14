@@ -143,24 +143,24 @@ if (!function_exists('array_fill')) {
 //===================================================
 class GanttActivityInfo
 {
-    public $iShow             = true;
-    public $iLeftColMargin    = 4;
-    public $iRightColMargin    = 1;
-    public $iTopColMargin    = 1;
+    public $iShow               = true;
+    public $iLeftColMargin      = 4;
+    public $iRightColMargin     = 1;
+    public $iTopColMargin       = 1;
     public $iBottomColMargin    = 3;
-    public $vgrid             = null;
-    private $iColor           = 'black';
-    private $iBackgroundColor = 'lightgray';
-    private $iFFamily         = FF_FONT1;
-    private $iFStyle         = FS_NORMAL;
-    private $iFSize         = 10;
+    public $vgrid               = null;
+    private $iColor             = 'black';
+    private $iBackgroundColor   = 'lightgray';
+    private $iFFamily           = FF_FONT1;
+    private $iFStyle            = FS_NORMAL;
+    private $iFSize             = 10;
     private $iFontColor         = 'black';
-    private $iTitles          = array();
-    private $iWidth           = array();
-    private $iHeight           = -1;
-    private $iTopHeaderMargin = 4;
-    private $iStyle           = 1;
-    private $iHeaderAlign     = 'center';
+    private $iTitles            = array();
+    private $iWidth             = array();
+    private $iHeight            = -1;
+    private $iTopHeaderMargin   = 4;
+    private $iStyle             = 1;
+    private $iHeaderAlign       = 'center';
 
     public function __construct()
     {

@@ -9,16 +9,16 @@ namespace Amenadiel\JpGraph\Graph;
 //===================================================
 class Ticks
 {
-    public $label_formatstr     = ''; // C-style format string to use for labels
-    public $label_formfunc      = '';
-    public $label_dateformatstr = '';
-    public $direction           = 1; // Should ticks be in(=1) the plot area or outside (=-1)
-    public $supress_last        = false;
-    public $supress_tickmarks        = false;
-    public $supress_minor_tickmarks        = false;
-    public $maj_ticks_pos       = array();
-    public $maj_ticklabels_pos       = array();
-    public $ticks_pos                  = array();
+    public $label_formatstr                  = ''; // C-style format string to use for labels
+    public $label_formfunc                   = '';
+    public $label_dateformatstr              = '';
+    public $direction                        = 1; // Should ticks be in(=1) the plot area or outside (=-1)
+    public $supress_last                     = false;
+    public $supress_tickmarks                = false;
+    public $supress_minor_tickmarks          = false;
+    public $maj_ticks_pos                    = array();
+    public $maj_ticklabels_pos               = array();
+    public $ticks_pos                        = array();
     public $maj_ticks_label                  = array();
     public $precision;
 
@@ -27,7 +27,7 @@ class Ticks
     protected $scale;
     protected $is_set              = false;
     protected $supress_zerolabel   = false;
-    protected $supress_first   = false;
+    protected $supress_first       = false;
     protected $mincolor            = '';
     protected $majcolor            = '';
     protected $weight              = 1;

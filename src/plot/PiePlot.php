@@ -28,52 +28,52 @@ define("PIE_VALUE_ADJPER", 2);
 //===================================================
 class PiePlot
 {
-    public $posx                     = 0.5;
-    public $posy                     = 0.5;
-    public $is_using_plot_theme      = false;
-    public $theme                    = "earth";
-    protected $use_plot_theme_colors = false;
-    protected $radius                = 0.3;
-    protected $explode_radius        = array();
-    protected $explode_all        = false;
-    protected $explode_r        = 20;
-    protected $labels                = null;
-    protected $legends                = null;
-    protected $csimtargets           = null;
+    public $posx                        = 0.5;
+    public $posy                        = 0.5;
+    public $is_using_plot_theme         = false;
+    public $theme                       = "earth";
+    protected $use_plot_theme_colors    = false;
+    protected $radius                   = 0.3;
+    protected $explode_radius           = array();
+    protected $explode_all              = false;
+    protected $explode_r                = 20;
+    protected $labels                   = null;
+    protected $legends                  = null;
+    protected $csimtargets              = null;
     protected $csimwintargets           = null; // Array of targets for CSIM
-    protected $csimareas             = ''; // Generated CSIM text
-    protected $csimalts              = null; // ALT tags for corresponding target
-    protected $data                  = null;
+    protected $csimareas                = ''; // Generated CSIM text
+    protected $csimalts                 = null; // ALT tags for corresponding target
+    protected $data                     = null;
     public $title;
     protected $startangle    = 0;
     protected $weight        = 1;
-    protected $color        = "black";
+    protected $color         = "black";
     protected $legend_margin = 6;
-    protected $show_labels = true;
+    protected $show_labels   = true;
     protected $themearr      = array(
         "earth"  => array(136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430),
         "pastel" => array(27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38),
         "water"  => array(8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388),
         "sand"   => array(27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393));
-    protected $setslicecolors = array();
-    protected $labeltype      = 0; // Default to percentage
-    protected $pie_border     = true;
+    protected $setslicecolors          = array();
+    protected $labeltype               = 0; // Default to percentage
+    protected $pie_border              = true;
     protected $pie_interior_border     = true;
     public $value;
-    protected $ishadowcolor      = '';
-    protected $ishadowdrop      = 4;
-    protected $ilabelposadj      = 1;
-    protected $legendcsimtargets = array();
-    protected $legendcsimwintargets = array();
-    protected $legendcsimalts    = array();
-    protected $adjusted_data     = array();
-    public $guideline            = null;
-    protected $guidelinemargin   = 10;
+    protected $ishadowcolor              = '';
+    protected $ishadowdrop               = 4;
+    protected $ilabelposadj              = 1;
+    protected $legendcsimtargets         = array();
+    protected $legendcsimwintargets      = array();
+    protected $legendcsimalts            = array();
+    protected $adjusted_data             = array();
+    public $guideline                    = null;
+    protected $guidelinemargin           = 10;
     protected $iShowGuideLineForSingle   = false;
-    protected $iGuideLineCurve   = false;
-    protected $iGuideVFactor   = 1.4;
-    protected $iGuideLineRFactor   = 0.8;
-    protected $la                = array(); // Holds the exact angle for each label
+    protected $iGuideLineCurve           = false;
+    protected $iGuideVFactor             = 1.4;
+    protected $iGuideLineRFactor         = 0.8;
+    protected $la                        = array(); // Holds the exact angle for each label
 
     //---------------
     // CONSTRUCTOR

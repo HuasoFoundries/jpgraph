@@ -8,25 +8,25 @@ use Amenadiel\JpGraph\Util;
 //--------------------------------------------------------------------------
 class PolarAxis extends Axis
 {
-    private $angle_step        = 15;
-    private $angle_color        = 'lightgray';
+    private $angle_step               = 15;
+    private $angle_color              = 'lightgray';
     private $angle_label_color        = 'black';
-    private $angle_fontfam     = FF_FONT1;
-    private $angle_fontstyle     = FS_NORMAL;
-    private $angle_fontsize     = 10;
-    private $angle_fontcolor   = 'navy';
-    private $gridminor_color   = 'lightgray';
-    private $gridmajor_color   = 'lightgray';
-    private $show_minor_grid   = false;
-    private $show_major_grid   = true;
-    private $show_angle_mark   = true;
-    private $show_angle_grid   = true;
-    private $show_angle_label   = true;
-    private $angle_tick_len    = 3;
-    private $angle_tick_len2    = 3;
-    private $angle_tick_color    = 'black';
-    private $show_angle_tick   = true;
-    private $radius_tick_color = 'black';
+    private $angle_fontfam            = FF_FONT1;
+    private $angle_fontstyle          = FS_NORMAL;
+    private $angle_fontsize           = 10;
+    private $angle_fontcolor          = 'navy';
+    private $gridminor_color          = 'lightgray';
+    private $gridmajor_color          = 'lightgray';
+    private $show_minor_grid          = false;
+    private $show_major_grid          = true;
+    private $show_angle_mark          = true;
+    private $show_angle_grid          = true;
+    private $show_angle_label         = true;
+    private $angle_tick_len           = 3;
+    private $angle_tick_len2          = 3;
+    private $angle_tick_color         = 'black';
+    private $show_angle_tick          = true;
+    private $radius_tick_color        = 'black';
 
     public function __construct($img, $aScale)
     {
