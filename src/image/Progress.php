@@ -10,12 +10,12 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class Progress
 {
-    public $iProgress = -1;
-    public $iPattern  = GANTT_SOLID;
-    public $iColor    = "black";
+    public $iProgress     = -1;
+    public $iPattern      = GANTT_SOLID;
+    public $iColor        = "black";
     public $iFillColor    = 'black';
-    public $iDensity  = 98;
-    public $iHeight  = 0.65;
+    public $iDensity      = 98;
+    public $iHeight       = 0.65;
 
     public function Set($aProg)
     {

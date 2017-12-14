@@ -36,18 +36,18 @@ class PolarPlot
 {
     public $line_style       = 'solid';
     public $mark;
-    public $legendcsimtarget = '';
-    public $legendcsimalt    = '';
-    public $legend           = "";
-    public $csimtargets      = []; // Array of targets for CSIM
-    public $csimareas        = ""; // Resultant CSIM area tags
-    public $csimalts         = null; // ALT:s for corresponding target
-    public $scale            = null;
-    private $numpoints       = 0;
-    private $iColor          = 'navy';
+    public $legendcsimtarget     = '';
+    public $legendcsimalt        = '';
+    public $legend               = "";
+    public $csimtargets          = []; // Array of targets for CSIM
+    public $csimareas            = ""; // Resultant CSIM area tags
+    public $csimalts             = null; // ALT:s for corresponding target
+    public $scale                = null;
+    private $numpoints           = 0;
+    private $iColor              = 'navy';
     private $iFillColor          = '';
-    private $iLineWeight     = 1;
-    private $coord           = null;
+    private $iLineWeight         = 1;
+    private $coord               = null;
 
     public function __construct($aData)
     {

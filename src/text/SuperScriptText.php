@@ -9,11 +9,11 @@ class SuperScriptText extends Text
 {
     private $iSuper       = '';
     private $sfont_family = '';
-    private $sfont_style = '';
-    private $sfont_size = 8;
+    private $sfont_style  = '';
+    private $sfont_size   = 8;
     private $iSuperMargin = 2;
     private $iVertOverlap = 4;
-    private $iSuperScale = 0.65;
+    private $iSuperScale  = 0.65;
     private $iSDir        = 0;
     private $iSimple      = false;
 

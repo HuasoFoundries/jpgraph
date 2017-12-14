@@ -9,13 +9,13 @@ use \Amenadiel\JpGraph\Text\Text;
 //=======================================================
 class Footer
 {
-    public $iLeftMargin = 3;
-    public $iRightMargin = 3;
+    public $iLeftMargin   = 3;
+    public $iRightMargin  = 3;
     public $iBottomMargin = 3;
     public $left;
     public $center;
     public $right;
-    private $iTimer = null;
+    private $iTimer           = null;
     private $itimerpoststring = '';
 
     public function __construct()

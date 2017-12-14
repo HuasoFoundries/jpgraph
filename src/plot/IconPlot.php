@@ -17,19 +17,19 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class IconPlot
 {
-    public $iX            = 0;
-    public $iY            = 0;
+    public $iX                = 0;
+    public $iY                = 0;
     public $iScale            = 1.0;
-    public $iMix            = 100;
-    private $iHorAnchor   = 'left';
-    private $iVertAnchor   = 'top';
-    private $iFile        = '';
-    private $iAnchors     = array('left', 'right', 'top', 'bottom', 'center');
-    private $iCountryFlag = '';
-    private $iCountryStdSize = 3;
-    private $iScalePosY   = null;
-    private $iScalePosX   = null;
-    private $iImgString   = '';
+    public $iMix              = 100;
+    private $iHorAnchor       = 'left';
+    private $iVertAnchor      = 'top';
+    private $iFile            = '';
+    private $iAnchors         = array('left', 'right', 'top', 'bottom', 'center');
+    private $iCountryFlag     = '';
+    private $iCountryStdSize  = 3;
+    private $iScalePosY       = null;
+    private $iScalePosX       = null;
+    private $iImgString       = '';
 
     public function __construct($aFile = "", $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
     {

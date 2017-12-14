@@ -19,7 +19,7 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class Gradient
 {
-    private $img = null;
+    private $img       = null;
     private $numcolors = 100;
     //---------------
     // CONSTRUCTOR

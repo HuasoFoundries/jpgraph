@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Graph;
 class LineProperty
 {
     public $iWeight = 1;
-    public $iColor = 'black';
-    public $iStyle = 'solid';
-    public $iShow = false;
+    public $iColor  = 'black';
+    public $iStyle  = 'solid';
+    public $iShow   = false;
 
     public function __construct($aWeight = 1, $aColor = 'black', $aStyle = 'solid')
     {

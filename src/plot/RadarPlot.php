@@ -7,19 +7,19 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class RadarPlot
 {
-    public $mark             = null;
-    public $legend           = '';
-    public $legendcsimtarget = '';
-    public $legendcsimalt    = '';
-    public $csimtargets      = array(); // Array of targets for CSIM
-    public $csimareas        = ""; // Resultant CSIM area tags
-    public $csimalts         = null; // ALT:s for corresponding target
-    private $data            = array();
-    private $fill            = false;
+    public $mark                   = null;
+    public $legend                 = '';
+    public $legendcsimtarget       = '';
+    public $legendcsimalt          = '';
+    public $csimtargets            = array(); // Array of targets for CSIM
+    public $csimareas              = ""; // Resultant CSIM area tags
+    public $csimalts               = null; // ALT:s for corresponding target
+    private $data                  = array();
+    private $fill                  = false;
     private $fill_color            = array(200, 170, 180);
-    private $color           = array(0, 0, 0);
-    private $weight          = 1;
-    private $linestyle       = 'solid';
+    private $color                 = array(0, 0, 0);
+    private $weight                = 1;
+    private $linestyle             = 'solid';
 
     //---------------
     // CONSTRUCTOR

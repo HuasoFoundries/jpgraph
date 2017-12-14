@@ -14,8 +14,8 @@ class LinkArrow
     private $isizespec = array(
         array(2, 3), array(3, 5), array(3, 8), array(6, 15), array(8, 22));
     private $iDirection = ARROW_DOWN;
-    private $iType = ARROWT_SOLID;
-    private $iSize = ARROW_S2;
+    private $iType      = ARROWT_SOLID;
+    private $iSize      = ARROW_S2;
     private $iColor     = 'black';
 
     public function __construct($x, $y, $aDirection, $aType = ARROWT_SOLID, $aSize = ARROW_S2)

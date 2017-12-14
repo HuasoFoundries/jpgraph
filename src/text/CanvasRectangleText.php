@@ -14,9 +14,9 @@ class CanvasRectangleText
     private $ih;
     private $ir = 4;
     private $iTxt;
-    private $iColor          = 'black';
-    private $iFillColor          = '';
-    private $iFontColor          = 'black';
+    private $iColor                 = 'black';
+    private $iFillColor             = '';
+    private $iFontColor             = 'black';
     private $iParaAlign             = 'center';
     private $iAutoBoxMargin         = 5;
     private $iShadowWidth           = 3;

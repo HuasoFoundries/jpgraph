@@ -8,12 +8,12 @@ namespace Amenadiel\JpGraph\Image;
 //===================================================
 class RotImage extends Image
 {
-    public $a  = 0;
-    public $dx = 0;
-    public $dy = 0;
+    public $a      = 0;
+    public $dx     = 0;
+    public $dy     = 0;
     public $transx = 0;
     public $transy = 0;
-    private $m = array();
+    private $m     = array();
 
     public function __construct($aWidth, $aHeight, $a = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {

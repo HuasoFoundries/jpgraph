@@ -26,10 +26,10 @@ class LinearScale
     public $name       = 'lin';
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
     public $world_abs_size; // Plot area size in pixels (Needed public in jpgraph_radar.php)
-    public $intscale         = false; // Restrict autoscale to integers
-    protected $autoscale_min = false; // Forced minimum value, auto determine max
-    protected $autoscale_max = false; // Forced maximum value, auto determine min
-    private $gracetop        = 0;
+    public $intscale            = false; // Restrict autoscale to integers
+    protected $autoscale_min    = false; // Forced minimum value, auto determine max
+    protected $autoscale_max    = false; // Forced maximum value, auto determine min
+    private $gracetop           = 0;
     private $gracebottom        = 0;
 
     private $_world_size; // Plot area size in world coordinates

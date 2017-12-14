@@ -12,7 +12,7 @@ class RadarLinearTicks extends Ticks
     private $minor_step    = 1;
     private $major_step    = 2;
     private $xlabel_offset = 0;
-    private $xtick_offset = 0;
+    private $xtick_offset  = 0;
 
     public function __construct()
     {

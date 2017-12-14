@@ -27,7 +27,7 @@ class CCBPGraph
         array('#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'));
     private $iMarginColor = array('darkgreen@0.7', 'darkgreen@0.9');
     private $iSubTitle    = '';
-    private $iTitle    = 'CC Buffer penetration';
+    private $iTitle       = 'CC Buffer penetration';
     /**
      * Construct a new instance of CCBPGraph
      *
