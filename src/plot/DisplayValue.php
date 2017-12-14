@@ -9,21 +9,21 @@ use \Amenadiel\JpGraph\Text;
 //===================================================
 class DisplayValue
 {
-    public $margin         = 5;
-    public $show           = false;
-    public $valign         = '';
-    public $halign         = 'center';
-    public $format         = '%.1f';
+    public $margin            = 5;
+    public $show              = false;
+    public $valign            = '';
+    public $halign            = 'center';
+    public $format            = '%.1f';
     public $negformat         = '';
-    private $ff            = FF_DEFAULT;
-    private $fs            = FS_NORMAL;
+    private $ff               = FF_DEFAULT;
+    private $fs               = FS_NORMAL;
     private $fsize            = 8;
-    private $iFormCallback = '';
-    private $angle         = 0;
-    private $color         = 'navy';
+    private $iFormCallback    = '';
+    private $angle            = 0;
+    private $color            = 'navy';
     private $negcolor         = '';
-    private $iHideZero     = false;
-    public $txt            = null;
+    private $iHideZero        = false;
+    public $txt               = null;
 
     public function __construct()
     {

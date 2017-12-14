@@ -7,13 +7,13 @@ define('__LR_EPSILON', 1.0e-8);
 //=============================================================================
 class LinearRegression
 {
-    private $ix          = array();
-    private $iy          = array();
-    private $ib          = 0;
-    private $ia          = 0;
-    private $icalculated = false;
-    public $iDet         = 0;
-    public $iCorr         = 0;
+    private $ix             = array();
+    private $iy             = array();
+    private $ib             = 0;
+    private $ia             = 0;
+    private $icalculated    = false;
+    public $iDet            = 0;
+    public $iCorr           = 0;
     public $iStdErr         = 0;
 
     public function __construct($aDataX, $aDataY)

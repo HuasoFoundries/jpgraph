@@ -27,36 +27,36 @@ DEFINE('TIMG_HEIGHT', 2);
 //---------------------------------------------------------------------
 class GTextTableCell
 {
-    public $iColSpan       = 1;
-    public $iRowSpan       = 1;
-    public $iMarginLeft    = 5;
-    public $iMarginRight    = 5;
-    public $iMarginTop    = 5;
-    public $iMarginBottom    = 5;
-    public $iVal           = null;
-    private $iBGColor      = '';
-    private $iFontColor      = 'black';
-    private $iFF           = FF_FONT1;
-    private $iFS           = FS_NORMAL;
-    private $iFSize           = 10;
-    private $iRow          = 0;
-    private $iCol          = 0;
-    private $iVertAlign    = 'bottom';
-    private $iHorAlign    = 'left';
-    private $iMerged       = false;
-    private $iPRow       = null;
-    private $iPCol       = null;
-    private $iTable        = null;
-    private $iGridColor    = array('darkgray', 'darkgray', 'darkgray', 'darkgray');
-    private $iGridWeight   = array(1, 1, 0, 0); // left,top,bottom,right;
-    private $iGridStyle    = array(TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE); // left,top,bottom,right;
-    private $iNumberFormat = null;
-    private $iIcon         = null;
+    public $iColSpan                = 1;
+    public $iRowSpan                = 1;
+    public $iMarginLeft             = 5;
+    public $iMarginRight            = 5;
+    public $iMarginTop              = 5;
+    public $iMarginBottom           = 5;
+    public $iVal                    = null;
+    private $iBGColor               = '';
+    private $iFontColor             = 'black';
+    private $iFF                    = FF_FONT1;
+    private $iFS                    = FS_NORMAL;
+    private $iFSize                 = 10;
+    private $iRow                   = 0;
+    private $iCol                   = 0;
+    private $iVertAlign             = 'bottom';
+    private $iHorAlign              = 'left';
+    private $iMerged                = false;
+    private $iPRow                  = null;
+    private $iPCol                  = null;
+    private $iTable                 = null;
+    private $iGridColor             = array('darkgray', 'darkgray', 'darkgray', 'darkgray');
+    private $iGridWeight            = array(1, 1, 0, 0); // left,top,bottom,right;
+    private $iGridStyle             = array(TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE); // left,top,bottom,right;
+    private $iNumberFormat          = null;
+    private $iIcon                  = null;
     private $iIconConstrain         = array();
-    private $iCSIMtarget   = '';
-    private $iCSIMwintarget   = '';
-    private $iCSIMalt   = '';
-    private $iCSIMArea   = '';
+    private $iCSIMtarget            = '';
+    private $iCSIMwintarget         = '';
+    private $iCSIMalt               = '';
+    private $iCSIMArea              = '';
 
     public function __construct($aVal = '', $aRow = 0, $aCol = 0)
     {

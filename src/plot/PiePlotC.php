@@ -10,12 +10,12 @@ use Amenadiel\JpGraph\Text;
 //===================================================
 class PiePlotC extends PiePlot
 {
-    private $imidsize         = 0.5; // Fraction of total width
-    private $imidcolor        = 'white';
-    public $midtitle          = '';
-    private $middlecsimtarget = '';
+    private $imidsize            = 0.5; // Fraction of total width
+    private $imidcolor           = 'white';
+    public $midtitle             = '';
+    private $middlecsimtarget    = '';
     private $middlecsimwintarget = '';
-    private $middlecsimalt = '';
+    private $middlecsimalt       = '';
 
     public function __construct($data, $aCenterTitle = '')
     {

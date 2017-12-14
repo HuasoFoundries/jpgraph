@@ -32,9 +32,9 @@ class DateScaleUtils
     private static $endmonth;
     private static $endyear;
     private static $endday;
-    private static $tickPositions = array();
+    private static $tickPositions    = array();
     private static $minTickPositions = array();
-    private static $iUseWeeks     = true;
+    private static $iUseWeeks        = true;
 
     public static function UseWeekFormat($aFlg)
     {

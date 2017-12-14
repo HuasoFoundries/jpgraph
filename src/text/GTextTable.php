@@ -8,23 +8,23 @@ namespace Amenadiel\JpGraph\Text;
 //---------------------------------------------------------------------
 class GTextTable
 {
-    public $iCells        = array();
-    public $iSize        = array(0, 0); // Need to be public since they are used by the cell
-    private $iWidth       = 0;
+    public $iCells         = array();
+    public $iSize          = array(0, 0); // Need to be public since they are used by the cell
+    private $iWidth        = 0;
     private $iHeight       = 0;
-    private $iColWidth    = null;
+    private $iColWidth     = null;
     private $iRowHeight    = null;
-    private $iImg         = null;
-    private $iXPos        = 0;
-    private $iYPos        = 0;
-    private $iScaleXPos   = null;
-    private $iScaleYPos   = null;
-    private $iBGColor     = '';
-    private $iBorderColor = 'black';
+    private $iImg          = null;
+    private $iXPos         = 0;
+    private $iYPos         = 0;
+    private $iScaleXPos    = null;
+    private $iScaleYPos    = null;
+    private $iBGColor      = '';
+    private $iBorderColor  = 'black';
     private $iBorderWeight = 1;
-    private $iInit        = false;
-    private $iYAnchor     = 'top';
-    private $iXAnchor     = 'left';
+    private $iInit         = false;
+    private $iYAnchor      = 'top';
+    private $iXAnchor      = 'left';
     /*-----------------------------------------------------------------
      * First and second phase constructors
      *-----------------------------------------------------------------

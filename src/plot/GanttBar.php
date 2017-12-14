@@ -11,19 +11,19 @@ class GanttBar extends GanttPlotObject
     public $leftMark;
     public $rightMark;
     private $iEnd;
-    private $iHeightFactor = 0.5;
-    private $iFillColor    = "white";
-    private $iFrameColor    = "black";
-    private $iShadow       = false;
-    private $iShadowColor       = "darkgray";
-    private $iShadowWidth       = 1;
-    private $iShadowFrame       = "black";
-    private $iPattern      = GANTT_RDIAG;
-    private $iPatternColor      = "blue";
+    private $iHeightFactor        = 0.5;
+    private $iFillColor           = "white";
+    private $iFrameColor          = "black";
+    private $iShadow              = false;
+    private $iShadowColor         = "darkgray";
+    private $iShadowWidth         = 1;
+    private $iShadowFrame         = "black";
+    private $iPattern             = GANTT_RDIAG;
+    private $iPatternColor        = "blue";
     private $iPatternDensity      = 95;
-    private $iBreakStyle   = false;
-    private $iBreakLineStyle   = 'dotted';
-    private $iBreakLineWeight   = 1;
+    private $iBreakStyle          = false;
+    private $iBreakLineStyle      = 'dotted';
+    private $iBreakLineWeight     = 1;
     //---------------
     // CONSTRUCTOR
     public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = "", $aHeightFactor = 0.6)

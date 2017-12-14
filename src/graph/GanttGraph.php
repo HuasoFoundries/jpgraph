@@ -11,20 +11,20 @@ use \Amenadiel\JpGraph\ImgTrans;
 class GanttGraph extends Graph
 {
     public $scale; // Public accessible
-    public $hgrid                    = null;
-    private $iObj                    = []; // Gantt objects
-    private $iLabelHMarginFactor     = 0.2; // 10% margin on each side of the labels
-    private $iLabelVMarginFactor     = 0.4; // 40% margin on top and bottom of label
-    private $iLayout                 = GANTT_FROMTOP; // Could also be GANTT_EVEN
-    private $iSimpleFont             = FF_FONT1;
+    public $hgrid                        = null;
+    private $iObj                        = []; // Gantt objects
+    private $iLabelHMarginFactor         = 0.2; // 10% margin on each side of the labels
+    private $iLabelVMarginFactor         = 0.4; // 40% margin on top and bottom of label
+    private $iLayout                     = GANTT_FROMTOP; // Could also be GANTT_EVEN
+    private $iSimpleFont                 = FF_FONT1;
     private $iSimpleFontSize             = 11;
-    private $iSimpleStyle            = GANTT_RDIAG;
-    private $iSimpleColor            = 'yellow';
-    private $iSimpleBkgColor            = 'red';
-    private $iSimpleProgressBkgColor = 'gray';
-    private $iSimpleProgressColor = 'darkgreen';
-    private $iSimpleProgressStyle    = GANTT_SOLID;
-    private $iZoomFactor             = 1.0;
+    private $iSimpleStyle                = GANTT_RDIAG;
+    private $iSimpleColor                = 'yellow';
+    private $iSimpleBkgColor             = 'red';
+    private $iSimpleProgressBkgColor     = 'gray';
+    private $iSimpleProgressColor        = 'darkgreen';
+    private $iSimpleProgressStyle        = GANTT_SOLID;
+    private $iZoomFactor                 = 1.0;
     //---------------
     // CONSTRUCTOR
     // Create a new gantt graph

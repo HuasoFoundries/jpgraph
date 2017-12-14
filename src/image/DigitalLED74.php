@@ -47,8 +47,8 @@ if (!function_exists('mb_strlen')) {
 //========================================================================
 class DigitalLED74
 {
-    private $iLED_X = 4;
-    private $iLED_Y = 7;
+    private $iLED_X       = 4;
+    private $iLED_Y       = 7;
     private $iColorSchema = array(
         LEDC_RED         => array('red', 'darkred:0.9', 'red:0.3'), // 0
         LEDC_GREEN       => array('green', 'darkgreen', 'green:0.3'), // 1
@@ -187,8 +187,8 @@ class DigitalLED74
         'Я' => array(7, 9, 9, 7, 3, 5, 9),
     );
     private $iSuperSampling = 3;
-    private $iMarg = 1;
-    private $iRad = 4;
+    private $iMarg          = 1;
+    private $iRad           = 4;
 
     public function __construct($aRadius = 2, $aMargin = 0.6)
     {

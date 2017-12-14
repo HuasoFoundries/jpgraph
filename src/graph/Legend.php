@@ -24,41 +24,41 @@ DEFINED('_DEFAULT_LPM_SIZE') || DEFINE('_DEFAULT_LPM_SIZE', 8); // Default Legen
 
 class Legend
 {
-    public $txtcol          = [];
-    public $font_family     = FF_DEFAULT;
-    public $font_style     = FS_NORMAL;
-    public $font_size     = 8; // old. 12
-    private $color          = [120, 120, 120]; // Default frame color
-    private $fill_color     = [245, 245, 245]; // Default fill color
-    private $shadow         = false; // Shadow around legend "box"
-    private $shadow_color   = 'darkgray';
-    private $mark_abs_hsize = _DEFAULT_LPM_SIZE;
-    private $mark_abs_vsize = _DEFAULT_LPM_SIZE;
-    private $xmargin        = 10;
-    private $ymargin        = 0;
+    public $txtcol               = [];
+    public $font_family          = FF_DEFAULT;
+    public $font_style           = FS_NORMAL;
+    public $font_size            = 8; // old. 12
+    private $color               = [120, 120, 120]; // Default frame color
+    private $fill_color          = [245, 245, 245]; // Default fill color
+    private $shadow              = false; // Shadow around legend "box"
+    private $shadow_color        = 'darkgray';
+    private $mark_abs_hsize      = _DEFAULT_LPM_SIZE;
+    private $mark_abs_vsize      = _DEFAULT_LPM_SIZE;
+    private $xmargin             = 10;
+    private $ymargin             = 0;
     private $shadow_width        = 2;
-    private $xlmargin       = 4;
-    private $ylinespacing   = 5;
+    private $xlmargin            = 4;
+    private $ylinespacing        = 5;
 
     // We need a separate margin since the baseline of the last text would coincide with the bottom otherwise
     private $ybottom_margin = 8;
 
-    private $xpos         = 0.05;
-    private $ypos         = 0.15;
-    private $xabspos         = -1;
-    private $yabspos         = -1;
-    private $halign       = "right";
-    private $valign       = "top";
-    private $font_color   = 'black';
-    private $hide         = false;
-    private $layout_n         = 1;
-    private $weight       = 1;
+    private $xpos              = 0.05;
+    private $ypos              = 0.15;
+    private $xabspos           = -1;
+    private $yabspos           = -1;
+    private $halign            = "right";
+    private $valign            = "top";
+    private $font_color        = 'black';
+    private $hide              = false;
+    private $layout_n          = 1;
+    private $weight            = 1;
     private $frameweight       = 1;
-    private $csimareas    = '';
-    private $reverse      = false;
-    private $bkg_gradtype = -1;
-    private $bkg_gradfrom = 'lightgray';
-    private $bkg_gradto = 'gray';
+    private $csimareas         = '';
+    private $reverse           = false;
+    private $bkg_gradtype      = -1;
+    private $bkg_gradfrom      = 'lightgray';
+    private $bkg_gradto        = 'gray';
 
     //---------------
     // CONSTRUCTOR

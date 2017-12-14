@@ -33,39 +33,39 @@ class Image
     public $line_style = LINESTYLE_SOLID;
     public $current_color;
     public $current_color_name;
-    public $original_width = 0;
+    public $original_width  = 0;
     public $original_height = 0;
-    public $plotwidth      = 0;
+    public $plotwidth       = 0;
     public $plotheight      = 0;
 
     // for __get, __set
-    private $_left_margin = 30;
-    private $_right_margin = 30;
-    private $_top_margin = 20;
+    private $_left_margin   = 30;
+    private $_right_margin  = 30;
+    private $_top_margin    = 20;
     private $_bottom_margin = 30;
     //private $_plotwidth=0,$_plotheight=0;
-    private $_width       = 0;
+    private $_width        = 0;
     private $_height       = 0;
-    private $_line_weight = 1;
+    private $_line_weight  = 1;
 
-    protected $expired           = true;
-    protected $lastx             = 0;
-    protected $lasty             = 0;
-    protected $obs_list          = [];
-    protected $font_size         = 12;
-    protected $font_family         = FF_DEFAULT;
-    protected $font_style         = FS_NORMAL;
-    protected $font_file         = '';
-    protected $text_halign       = "left";
-    protected $text_valign       = "bottom";
-    protected $use_anti_aliasing = false;
-    protected $quality           = null;
-    protected $colorstack        = [];
+    protected $expired              = true;
+    protected $lastx                = 0;
+    protected $lasty                = 0;
+    protected $obs_list             = [];
+    protected $font_size            = 12;
+    protected $font_family          = FF_DEFAULT;
+    protected $font_style           = FS_NORMAL;
+    protected $font_file            = '';
+    protected $text_halign          = "left";
+    protected $text_valign          = "bottom";
+    protected $use_anti_aliasing    = false;
+    protected $quality              = null;
+    protected $colorstack           = [];
     protected $colorstackidx        = 0;
-    protected $canvascolor       = 'white';
-    protected $langconv          = null;
-    protected $iInterlace        = false;
-    protected $bbox_cache        = []; // STore the last found tetx bounding box
+    protected $canvascolor          = 'white';
+    protected $langconv             = null;
+    protected $iInterlace           = false;
+    protected $bbox_cache           = []; // STore the last found tetx bounding box
     protected $ff_font0;
     protected $ff_font0_bold;
     protected $ff_font1;

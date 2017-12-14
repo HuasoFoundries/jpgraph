@@ -20,12 +20,12 @@ use Amenadiel\JpGraph\Text;
 //===================================================
 class PiePlot3D extends PiePlot
 {
-    private $labelhintcolor = "red";
-    private $showlabelhint = true;
-    private $angle          = 50;
-    private $edgecolor      = "";
+    private $labelhintcolor  = "red";
+    private $showlabelhint   = true;
+    private $angle           = 50;
+    private $edgecolor       = "";
     private $edgeweight      = 1;
-    private $iThickness     = false;
+    private $iThickness      = false;
 
     //---------------
     // CONSTRUCTOR

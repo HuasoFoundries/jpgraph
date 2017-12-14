@@ -147,7 +147,7 @@ class UniversalTheme extends Theme
 
             case 'BarPlot':
                 {
-                    if(!$plot->fill){
+                    if (!$plot->fill) {
                         $plot->Clear();
                         $color = $this->GetNextColor();
                         $plot->SetColor($color);

@@ -11,16 +11,16 @@ class ContourPlot extends Plot
     private $contourCoord;
     private $contourVal;
     private $contourColor;
-    private $nbrCountours       = 0;
-    private $dataMatrix         = array();
-    private $invertLegend       = false;
-    private $interpFactor       = 1;
-    private $flipData           = false;
-    private $isobar             = 10;
-    private $showLegend         = false;
-    private $highcontrast       = false;
+    private $nbrCountours         = 0;
+    private $dataMatrix           = array();
+    private $invertLegend         = false;
+    private $interpFactor         = 1;
+    private $flipData             = false;
+    private $isobar               = 10;
+    private $showLegend           = false;
+    private $highcontrast         = false;
     private $highcontrastbw       = false;
-    private $manualIsobarColors = array();
+    private $manualIsobarColors   = array();
 
     /**
      * Construct a contour plotting algorithm. The end result of the algorithm is a sequence of

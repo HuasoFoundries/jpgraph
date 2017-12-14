@@ -13,14 +13,14 @@ class LinearTicks extends Ticks
     public $minor_step    = 1;
     public $major_step    = 2;
     public $xlabel_offset = 0;
-    public $xtick_offset = 0;
+    public $xtick_offset  = 0;
     private $label_offset = 0; // What offset should the displayed label have
     // i.e should we display 0,1,2 or 1,2,3,4 or 2,3,4 etc
-    private $text_label_start = 0;
-    private $iManualTickPos   = null;
+    private $text_label_start    = 0;
+    private $iManualTickPos      = null;
     private $iManualMinTickPos   = null;
     private $iManualTickLabels   = null;
-    private $iAdjustForDST    = false; // If a date falls within the DST period add one hour to the diaplyed time
+    private $iAdjustForDST       = false; // If a date falls within the DST period add one hour to the diaplyed time
 
     public function __construct()
     {

@@ -7,13 +7,13 @@ namespace Amenadiel\JpGraph\Text;
 //===================================================
 class GraphTabTitle extends Text
 {
-    private $corner    = 6;
-    private $posx    = 7;
-    private $posy    = 4;
-    private $fillcolor = 'lightyellow';
+    private $corner      = 6;
+    private $posx        = 7;
+    private $posy        = 4;
+    private $fillcolor   = 'lightyellow';
     private $bordercolor = 'black';
-    private $align     = 'left';
-    private $width     = TABTITLE_WIDTHFIT;
+    private $align       = 'left';
+    private $width       = TABTITLE_WIDTHFIT;
     public function __construct()
     {
         $this->t          = '';

@@ -82,7 +82,7 @@ class ColorMapDriver
             // Loop through all colors in the map
             $x = $xs;
             $y = $ys;
-            $k=0;
+            $k =0;
             for ($i=0; $i < $n; ++$i) {
                 $graph->img->SetColor($colbuckets[$i]);
                 $graph->img->FilledRectangle($x, $y, $x + $mw, $y + $mh);

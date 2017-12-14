@@ -22,24 +22,24 @@ class GanttScale
     public $dividerh;
     public $tableTitle;
     public $iStartDate = -1;
-    public $iEndDate = -1;
+    public $iEndDate   = -1;
     // Number of gantt bar position (n.b not necessariliy the same as the number of bars)
     // we could have on bar in position 1, and one bar in position 5 then there are two
     // bars but the number of bar positions is 5
     public $actinfo;
-    public $iTopPlotMargin  = 10;
+    public $iTopPlotMargin     = 10;
     public $iBottomPlotMargin  = 15;
-    public $iVertLines      = -1;
-    public $iVertHeaderSize = -1;
+    public $iVertLines         = -1;
+    public $iVertHeaderSize    = -1;
     // The width of the labels (defaults to the widest of all labels)
     private $iLabelWidth;
     // Out image to stroke the scale to
     private $iImg;
     private $iTableHeaderBackgroundColor = "white";
-    private $iTableHeaderFrameColor = "black";
+    private $iTableHeaderFrameColor      = "black";
     private $iTableHeaderFrameWeight     = 1;
     private $iAvailableHeight            = -1;
-    private $iVertSpacing            = -1;
+    private $iVertSpacing                = -1;
     private $iDateLocale;
     private $iVertLayout               = GANTT_EVEN;
     private $iUsePlotWeekendBackground = true;

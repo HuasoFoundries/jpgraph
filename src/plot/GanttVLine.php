@@ -6,10 +6,10 @@ use Amenadiel\JpGraph\Graph;
 class GanttVLine extends GanttPlotObject
 {
     private $iLine;
-    private $title_margin = 3;
-    private $iDayOffset = 0.5;
+    private $title_margin         = 3;
+    private $iDayOffset           = 0.5;
     private $iStartRow            = -1;
-    private $iEndRow            = -1;
+    private $iEndRow              = -1;
 
     //---------------
     // CONSTRUCTOR

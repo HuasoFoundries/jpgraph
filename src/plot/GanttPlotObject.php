@@ -9,16 +9,16 @@ class GanttPlotObject
 {
     public $title;
     public $caption;
-    public $csimarea            = '';
-    public $csimtarget            = '';
+    public $csimarea                 = '';
+    public $csimtarget               = '';
     public $csimwintarget            = '';
-    public $csimalt            = '';
-    public $constraints         = array();
-    public $iCaptionMargin      = 5;
-    public $iConstrainPos       = array();
-    protected $iStart           = ""; // Start date
-    public $iVPos               = 0; // Vertical position
-    protected $iLabelLeftMargin = 2; // Title margin
+    public $csimalt                  = '';
+    public $constraints              = array();
+    public $iCaptionMargin           = 5;
+    public $iConstrainPos            = array();
+    protected $iStart                = ""; // Start date
+    public $iVPos                    = 0; // Vertical position
+    protected $iLabelLeftMargin      = 2; // Title margin
 
     public function __construct()
     {

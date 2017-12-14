@@ -25,21 +25,21 @@ DEFINE("LP_AREA_NO_BORDER", true);
 //===================================================
 class LinePlot extends Plot
 {
-    public $mark           = null;
-    protected $filled      = false;
-    protected $fill_color  = 'blue';
-    protected $step_style  = false;
-    protected $center  = false;
-    protected $line_style  = 1; // Default to solid
-    protected $filledAreas = array(); // array of arrays(with min,max,col,filled in them)
-    public $barcenter      = false; // When we mix line and bar. Should we center the line in the bar.
-    protected $fillFromMin = false;
-    protected $fillFromMax = false;
-    protected $fillgrad    = false;
+    public $mark                     = null;
+    protected $filled                = false;
+    protected $fill_color            = 'blue';
+    protected $step_style            = false;
+    protected $center                = false;
+    protected $line_style            = 1; // Default to solid
+    protected $filledAreas           = array(); // array of arrays(with min,max,col,filled in them)
+    public $barcenter                = false; // When we mix line and bar. Should we center the line in the bar.
+    protected $fillFromMin           = false;
+    protected $fillFromMax           = false;
+    protected $fillgrad              = false;
     protected $fillgrad_fromcolor    = 'navy';
-    protected $fillgrad_tocolor    = 'silver';
+    protected $fillgrad_tocolor      = 'silver';
     protected $fillgrad_numcolors    = 100;
-    protected $iFastStroke = false;
+    protected $iFastStroke           = false;
 
     //---------------
     // CONSTRUCTOR

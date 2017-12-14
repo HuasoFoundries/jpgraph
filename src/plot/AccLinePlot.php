@@ -7,9 +7,9 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class AccLinePlot extends Plot
 {
-    protected $plots       = null;
+    protected $plots          = null;
     protected $nbrplots       = 0;
-    private $iStartEndZero = true;
+    private $iStartEndZero    = true;
     //---------------
     // CONSTRUCTOR
     public function __construct($plots)
