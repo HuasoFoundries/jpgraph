@@ -344,7 +344,7 @@ class BarPlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-                //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
+            //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
