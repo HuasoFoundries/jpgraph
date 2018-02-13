@@ -30,3 +30,7 @@ tag_and_push:
 		git push --tags
 
 tag: update_version tag_and_push	
+
+delete_tag:
+	git tag -d $(v)
+	git push origin :refs/tags/$(v)
