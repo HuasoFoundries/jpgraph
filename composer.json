@@ -2,7 +2,7 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.12",
+    "version": "3.6.13",
     "keywords": [
         "graph",
         "chart",
@@ -11,17 +11,21 @@
         "data"
     ],
     "homepage": "http://jpgraph.net/",
-    "license": "QPL 1.0",
+    "license": "QPL-1.0",
 
-    "support": {
+    "support":
+    {
         "issues": "https://github.com/huasofoundries/jpgraph/issues"
     },
-    "require": {
+    "require":
+    {
         "php": ">=5.4.0",
         "ext-gd": "*"
     },
-    "autoload": {
-        "psr-4": {
+    "autoload":
+    {
+        "psr-4":
+        {
             "Amenadiel\\JpGraph\\": "src/",
             "Amenadiel\\JpGraph\\Graph\\": "src/graph",
             "Amenadiel\\JpGraph\\Image\\": "src/image",
