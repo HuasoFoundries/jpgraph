@@ -2740,7 +2740,7 @@ class Graph
     {
         if ($do) {
             define('SUPERSAMPLING_SCALE', $scale);
-            // $this->img->scale = $scale;
+        // $this->img->scale = $scale;
         } else {
             define('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;
