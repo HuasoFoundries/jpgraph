@@ -77,7 +77,7 @@ See the examples working by performing the following steps:
 
 
 
-![jpgraph_logo](https://cloud.githubusercontent.com/assets/238439/8861477/e8aac1f0-3160-11e5-9d02-36838810ca26.jpg)
+![jpgraph_logo](https://raw.githubusercontent.com/HuasoFoundries/jpgraph/master/jpgraph_logo.jpg)
 
 README FOR JPGRAPH 3.5.x
 =========================
