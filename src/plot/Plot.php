@@ -2,6 +2,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 //===================================================
 // CLASS Plot
 // Description: Abstract base class for all concrete plot classes
