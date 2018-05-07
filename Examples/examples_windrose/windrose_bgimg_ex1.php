@@ -6,8 +6,8 @@ use Amenadiel\JpGraph\Plot;
 // Data can be specified using both ordinal idex of axis as well
 // as the direction label
 $data2 = array(
-	'vsv' => array(12, 8, 2, 3),
-	6 => array(5, 4, 4, 5, 4),
+    'vsv' => array(12, 8, 2, 3),
+    6     => array(5, 4, 4, 5, 4),
 );
 
 $se_CompassLbl = array('O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV', 'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO');

@@ -5,7 +5,7 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util\FuncGenerator;
 
-$f = new FuncGenerator('cos($i)', '$i*$i*$i');
+$f                   = new FuncGenerator('cos($i)', '$i*$i*$i');
 list($xdata, $ydata) = $f->E(-M_PI, M_PI, 25);
 
 $graph = new Graph\Graph(300, 200);
