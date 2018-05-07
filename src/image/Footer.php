@@ -60,7 +60,11 @@ class Footer
         $x = $aImg->width - $this->iRightMargin;
         $this->right->Align('right', 'bottom');
         if ($this->iTimer != null) {
-            $this->right->Set($this->right->t . sprintf('%.3f', $this->iTimer->Pop() / 1000.0) . $this->itimerpoststring);
+            $this->right->Set(
+                $this->right->t.
+                sprintf('%.3f', $this->iTimer->Pop() / 1000.0).
+                $this->itimerpoststring
+            );
         }
         $this->right->Stroke($aImg, $x, $y);
     }

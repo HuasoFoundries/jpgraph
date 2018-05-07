@@ -467,14 +467,14 @@ class GTextTableCell
             $aImg->FilledRectangle($aX, $aY, $aX + $aWidth - 1, $aY + $aHeight - 1);
         }
 
-        $coords = $aX . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . ($aY + $aHeight - 1) . ',' . $aX . ',' . ($aY + $aHeight - 1);
+        $coords = $aX.','.$aY.','.($aX + $aWidth - 1).','.$aY.','.($aX + $aWidth - 1).','.($aY + $aHeight - 1).','.$aX.','.($aY + $aHeight - 1);
         if (!empty($this->iCSIMtarget)) {
-            $this->iCSIMArea = '<area shape="poly" coords="' . $coords . '" href="' . $this->iCSIMtarget . '"';
+            $this->iCSIMArea = '<area shape="poly" coords="'.$coords.'" href="'.$this->iCSIMtarget.'"';
             if (!empty($this->iCSIMwintarget)) {
-                $this->iCSIMArea .= ' target="' . $this->iCSIMwintarget . '"';
+                $this->iCSIMArea .= ' target="'.$this->iCSIMwintarget.'"';
             }
             if (!empty($this->iCSIMalt)) {
-                $this->iCSIMArea .= ' alt="' . $this->iCSIMalt . '" title="' . $this->iCSIMalt . '" ';
+                $this->iCSIMArea .= ' alt="'.$this->iCSIMalt.'" title="'.$this->iCSIMalt.'" ';
             }
             $this->iCSIMArea .= " />\n";
         }

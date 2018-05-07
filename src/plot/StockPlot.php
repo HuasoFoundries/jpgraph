@@ -167,10 +167,10 @@ class StockPlot extends Plot
 
             // Setup image maps
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="rect" coords="' .
-                round($xl) . ',' . round($ytop) . ',' .
-                round($xr) . ',' . round($ybottom) . '" ';
-                $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
+                $this->csimareas .= '<area shape="rect" coords="'.
+                round($xl).','.round($ytop).','.
+                round($xr).','.round($ybottom).'" ';
+                $this->csimareas .= ' href="'.$this->csimtargets[$i].'"';
                 if (!empty($this->csimalts[$i])) {
                     $sval = $this->csimalts[$i];
                     $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";

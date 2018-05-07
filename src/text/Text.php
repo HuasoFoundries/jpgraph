@@ -23,30 +23,30 @@ namespace Amenadiel\JpGraph\Text;
 class Text
 {
     public $t;
-    public $x                       = 0;
-    public $y                       = 0;
-    public $halign                  = 'left';
-    public $valign                  = 'top';
-    public $color                   = [0, 0, 0];
-    public $hide                    = false;
-    public $dir                     = 0;
+    public $x      = 0;
+    public $y      = 0;
+    public $halign = 'left';
+    public $valign = 'top';
+    public $color  = [0, 0, 0];
+    public $hide   = false;
+    public $dir    = 0;
     public $iScalePosY;
     public $iScalePosX;
-    public $iWordwrap               = 0;
-    public $font_family             = FF_DEFAULT;
-    public $font_style              = FS_NORMAL; // old. FF_FONT1
-    protected $boxed                = false; // Should the text be boxed
-    protected $paragraph_align      = 'left';
-    protected $icornerradius        = 0;
-    protected $ishadowwidth         = 3;
-    protected $fcolor               = 'white';
-    protected $bcolor               = 'black';
-    protected $shadow               = false;
-    protected $iCSIMarea            = '';
-    protected $iCSIMalt             = '';
-    protected $iCSIMtarget          = '';
-    protected $iCSIMWinTarget       = '';
-    private $iBoxType               = 1; // Which variant of filled box around text we want
+    public $iWordwrap          = 0;
+    public $font_family        = FF_DEFAULT;
+    public $font_style         = FS_NORMAL; // old. FF_FONT1
+    protected $boxed           = false; // Should the text be boxed
+    protected $paragraph_align = 'left';
+    protected $icornerradius   = 0;
+    protected $ishadowwidth    = 3;
+    protected $fcolor          = 'white';
+    protected $bcolor          = 'black';
+    protected $shadow          = false;
+    protected $iCSIMarea       = '';
+    protected $iCSIMalt        = '';
+    protected $iCSIMtarget     = '';
+    protected $iCSIMWinTarget  = '';
+    private $iBoxType          = 1; // Which variant of filled box around text we want
 
     // for __get, __set
     private $_margin;
@@ -363,14 +363,17 @@ class Text
         }
 
         // Create CSIM targets
-        $coords          = $bbox[0] . ',' . $bbox[1] . ',' . $bbox[2] . ',' . $bbox[3] . ',' . $bbox[4] . ',' . $bbox[5] . ',' . $bbox[6] . ',' . $bbox[7];
-        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($this->iCSIMtarget) . '" ';
+        $coords = implode(',', [
+            $bbox[0], $bbox[1], $bbox[2], $bbox[3], $bbox[4], $bbox[5], $bbox[6], $bbox[7],
+        ]);
+        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
+        $this->iCSIMarea .= htmlentities($this->iCSIMtarget).'" ';
         if (trim($this->iCSIMalt) != '') {
-            $this->iCSIMarea .= ' alt="' . $this->iCSIMalt . '" ';
-            $this->iCSIMarea .= ' title="' . $this->iCSIMalt . '" ';
+            $this->iCSIMarea .= ' alt="'.$this->iCSIMalt.'" ';
+            $this->iCSIMarea .= ' title="'.$this->iCSIMalt.'" ';
         }
         if (trim($this->iCSIMWinTarget) != '') {
-            $this->iCSIMarea .= ' target="' . $this->iCSIMWinTarget . '" ';
+            $this->iCSIMarea .= ' target="'.$this->iCSIMWinTarget.'" ';
         }
         $this->iCSIMarea .= " />\n";
 
@@ -381,12 +384,12 @@ class Text
     {
         if (strpos($name, 'raw_') !== false) {
             // if $name == 'raw_left_margin' , return $this->_left_margin;
-            $variable_name = '_' . str_replace('raw_', '', $name);
+            $variable_name = '_'.str_replace('raw_', '', $name);
 
             return $this->{$variable_name};
         }
 
-        $variable_name = '_' . $name;
+        $variable_name = '_'.$name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -396,6 +399,6 @@ class Text
 
     public function __set($name, $value)
     {
-        $this->{'_' . $name} = $value;
+        $this->{'_'.$name} = $value;
     }
 } // Class

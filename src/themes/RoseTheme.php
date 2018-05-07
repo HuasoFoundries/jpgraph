@@ -152,7 +152,7 @@ class RoseTheme extends Theme
 
                     $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
+                    $plot->SetColor($this->GetNextColor().'@0.4');
                     $plot->SetWeight(2);
 
                     break;

@@ -259,7 +259,7 @@ class LinearTicks extends Ticks
                 if ($this->label_formatstr == 'W') {
                     // If we use week formatting then add a single 'w' in front of the
                     // week number to differentiate it from dates
-                    $l = 'w' . $l;
+                    $l = 'w'.$l;
                 }
             } else {
                 if ($this->label_dateformatstr !== '') {
@@ -273,7 +273,7 @@ class LinearTicks extends Ticks
                     if ($this->label_formatstr == 'W') {
                         // If we use week formatting then add a single 'w' in front of the
                         // week number to differentiate it from dates
-                        $l = 'w' . $l;
+                        $l = 'w'.$l;
                     }
                 } else {
                     $l = sprintf($this->label_formatstr, $aVal);
@@ -281,7 +281,7 @@ class LinearTicks extends Ticks
             }
         } else {
             //FIX: if negative precision  is returned "0f" , instead of formatted values
-            $format = $precision > 0 ? '%01.' . $precision . 'f' : '%01.0f';
+            $format = $precision > 0 ? '%01.'.$precision.'f' : '%01.0f';
             $l      = sprintf($format, round($aVal, $precision));
         }
 

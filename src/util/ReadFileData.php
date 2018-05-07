@@ -194,7 +194,7 @@ class ReadFileData
             return false;
         }
         $mat = [];
-        $reg = '/' . $aSepChar . '/';
+        $reg = '/'.$aSepChar.'/';
         foreach ($lines as $line => $datarow) {
             $row = preg_split($reg, trim($datarow));
             foreach ($row as $key => $cell) {

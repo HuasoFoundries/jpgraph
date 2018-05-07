@@ -174,9 +174,9 @@ class GTextTable
                     $t .= 'M ';
                 }
 
-                $t .= 'val=' . $this->iCells[$i][$j]->iVal->t;
-                $t .= ' (cs=' . $this->iCells[$i][$j]->iColSpan .
-                ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
+                $t .= 'val='.$this->iCells[$i][$j]->iVal->t;
+                $t .= ' (cs='.$this->iCells[$i][$j]->iColSpan.
+                ', rs='.$this->iCells[$i][$j]->iRowSpan.')';
                 $t .= '</td>';
             }
             $t .= '</tr>';
@@ -740,7 +740,7 @@ class GTextTable
         for ($i = 0; $i < $m; ++$i) {
             for ($j = 0; $j < $n; ++$j) {
                 if ($aAutoTarget) {
-                    $t = $aTarget . "?row=${i}&col=${j}";
+                    $t = $aTarget."?row=${i}&col=${j}";
                 } else {
                     $t = $aTarget;
                 }

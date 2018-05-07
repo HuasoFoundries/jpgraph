@@ -503,9 +503,9 @@ class RGB
                 JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
             }
             if (empty($matches[5])) {
-                $r = strlen($matches[2]) == 1 ? $matches[2] . $matches[2] : $matches[2];
-                $g = strlen($matches[3]) == 1 ? $matches[3] . $matches[3] : $matches[3];
-                $b = strlen($matches[4]) == 1 ? $matches[4] . $matches[4] : $matches[4];
+                $r = strlen($matches[2]) == 1 ? $matches[2].$matches[2] : $matches[2];
+                $g = strlen($matches[3]) == 1 ? $matches[3].$matches[3] : $matches[3];
+                $b = strlen($matches[4]) == 1 ? $matches[4].$matches[4] : $matches[4];
                 $r = hexdec($r);
                 $g = hexdec($g);
                 $b = hexdec($b);

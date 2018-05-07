@@ -282,7 +282,7 @@ class FlagImages
             case FLAGSIZE2:
             case FLAGSIZE3:
             case FLAGSIZE4:
-                $file            = dirname(__FILE__) . '/flags/' . $this->iFlagSetMap[$aSize] . '.dat';
+                $file            = dirname(__FILE__).'/flags/'.$this->iFlagSetMap[$aSize].'.dat';
                 $fp              = fopen($file, 'rb');
                 $rawdata         = fread($fp, filesize($file));
                 $this->iFlagData = unserialize($rawdata);

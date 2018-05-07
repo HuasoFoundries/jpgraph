@@ -605,11 +605,11 @@ class BarPlot extends Plot
 
                 $base_color = $this->fill_color;
 
-                $img->PushColor($base_color . ':0.7');
+                $img->PushColor($base_color.':0.7');
                 $img->FilledPolygon($sp1);
                 $img->PopColor();
 
-                $img->PushColor($base_color . ':1.1');
+                $img->PushColor($base_color.':1.1');
                 $img->FilledPolygon($sp2);
                 $img->PopColor();
             }
@@ -731,16 +731,16 @@ class BarPlot extends Plot
             }
             // Create the client side image map
             $rpts      = $img->ArrRotate($pts);
-            $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);
+            $csimcoord = round($rpts[0]).', '.round($rpts[1]);
             for ($j = 1; $j < 4; ++$j) {
-                $csimcoord .= ', ' . round($rpts[2 * $j]) . ', ' . round($rpts[2 * $j + 1]);
+                $csimcoord .= ', '.round($rpts[2 * $j]).', '.round($rpts[2 * $j + 1]);
             }
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
-                $this->csimareas .= ' href="' . htmlentities($this->csimtargets[$i]) . '"';
+                $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
+                $this->csimareas .= ' href="'.htmlentities($this->csimtargets[$i]).'"';
 
                 if (!empty($this->csimwintargets[$i])) {
-                    $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
+                    $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
                 }
 
                 $sval = '';

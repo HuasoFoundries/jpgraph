@@ -95,11 +95,11 @@ class Image
         $this->ttf      = new TTF();
         $this->langconv = new LanguageConv();
 
-        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf');
-        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf');
-        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf');
-        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf');
-        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf');
+        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT0.gdf');
+        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT1.gdf');
+        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT2.gdf');
+        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT1-Bold.gdf');
+        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT2-Bold.gdf');
     }
 
     // Enable interlacing in images
@@ -1824,7 +1824,7 @@ class Image
 
         if ($this->expired) {
             header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . 'GMT');
+            header('Last-Modified: '.gmdate('D, d M Y H:i:s').'GMT');
             header('Cache-Control: no-cache, must-revalidate');
             header('Pragma: no-cache');
         }
@@ -1842,7 +1842,7 @@ class Image
     {
         $this->DoSupersampling();
 
-        $func = 'image' . $this->img_format;
+        $func = 'image'.$this->img_format;
         if ($this->img_format == 'jpeg' && $this->quality != null) {
             $res = @$func($this->img, $aFile, $this->quality);
         } else {
@@ -2112,12 +2112,12 @@ class Image
     {
         if (strpos($name, 'raw_') !== false) {
             // if $name == 'raw_left_margin' , return $this->_left_margin;
-            $variable_name = '_' . str_replace('raw_', '', $name);
+            $variable_name = '_'.str_replace('raw_', '', $name);
 
             return $this->{$variable_name};
         }
 
-        $variable_name = '_' . $name;
+        $variable_name = '_'.$name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -2127,6 +2127,6 @@ class Image
 
     public function __set($name, $value)
     {
-        $this->{'_' . $name} = $value;
+        $this->{'_'.$name} = $value;
     }
 } // CLASS
