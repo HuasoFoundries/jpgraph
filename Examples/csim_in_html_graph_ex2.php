@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Example of pie with center circle
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_pie.php';
@@ -43,7 +43,7 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
 $lbl = ["Jan\n%.1f%%", "Feb\n%.1f%%", "March\n%.1f%%",
-             "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%", ];
+    "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%"];
 $p1->SetLabels($lbl);
 
 // Add drop shadow to slices
@@ -54,10 +54,12 @@ $p1->ExplodeAll(15);
 
 // Setup the CSIM targets
 global $_wrapperfilename;
-$targ = []; $alt = []; $wtarg = [];
-for ($i=0; $i <= $n; ++$i) {
-    $urlarg  = 'pie_clickedon='.($i + 1);
-    $targ[]  = $_wrapperfilename.'?'.$urlarg;
+$targ  = [];
+$alt   = [];
+$wtarg = [];
+for ($i = 0; $i <= $n; ++$i) {
+    $urlarg  = 'pie_clickedon=' . ($i + 1);
+    $targ[]  = $_wrapperfilename . '?' . $urlarg;
     $alt[]   = 'val=%d';
     $wtarg[] = '';
 }
@@ -69,7 +71,3 @@ $piegraph->Add($p1);
 
 // Send back the image when we are called from within the <img> tag
 $piegraph->StrokeCSIMImage();
-
-?>
-
-

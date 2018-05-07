@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt horizontal grid example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -8,7 +8,7 @@ $data = [
     [0, 'Group 1  Johan', '2001-10-23', '2001-11-06', FF_FONT1, FS_BOLD, 8],
     [1, '  Label 2', '2001-10-26', '2001-11-04'],
     [3, 'Group 2', '2001-11-20', '2001-11-28', FF_FONT1, FS_BOLD, 8],
-    [4, '  Label 1', '2001-11-20', '2001-12-1'], ];
+    [4, '  Label 1', '2001-11-20', '2001-12-1']];
 
 // New Gantt Graph
 $graph = new GanttGraph(500);
@@ -27,7 +27,7 @@ $graph->scale->week->SetFont(FF_FONT0);
 $graph->hgrid->Show();
 $graph->hgrid->SetRowFillColor('darkblue@0.9');
 
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[5%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -56,7 +56,3 @@ $graph->Add($icon);
 
 // .. and finally send it back to the browser
 $graph->Stroke();
-
-?>
-
-

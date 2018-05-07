@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -7,14 +7,14 @@ require_once 'jpgraph/jpgraph_gantt.php';
 // The data for the graphs
 //
 $data = [
-    [0, ACTYPE_GROUP,    'Phase 1',        '2001-10-26', '2001-11-23', ''],
-    [1, ACTYPE_NORMAL,   '  Label 2',      '2001-11-01', '2001-11-20', ''],
-    [2, ACTYPE_NORMAL,   '  Label 3',      '2001-10-26', '2001-11-03', ''],
-    [3, ACTYPE_MILESTONE, '  Phase 1 Done', '2001-11-23', 'M2'], ];
+    [0, ACTYPE_GROUP, 'Phase 1', '2001-10-26', '2001-11-23', ''],
+    [1, ACTYPE_NORMAL, '  Label 2', '2001-11-01', '2001-11-20', ''],
+    [2, ACTYPE_NORMAL, '  Label 3', '2001-10-26', '2001-11-03', ''],
+    [3, ACTYPE_MILESTONE, '  Phase 1 Done', '2001-11-23', 'M2']];
 
 // The constrains between the activities
 $constrains = [[2, 1, CONSTRAIN_ENDSTART],
-            [1, 3, CONSTRAIN_STARTSTART], ];
+    [1, 3, CONSTRAIN_STARTSTART]];
 
 $progress = [[1, 0.4]];
 
@@ -32,7 +32,3 @@ $graph->CreateSimple($data, $constrains, $progress);
 
 // .. and stroke the graph
 $graph->Stroke();
-
-?>
-
-

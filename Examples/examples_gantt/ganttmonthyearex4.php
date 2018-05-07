@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -44,13 +44,13 @@ $graph->scale->actinfo->vgrid->SetColor('gray');
 $data = [
     [0, ['Pre-study', '102 days', "23 Nov '01", "1 Mar '02"], '2001-11-23', '2002-03-1', FF_ARIAL, FS_NORMAL, 8],
     [1, ['Prototype', '21 days', "26 Oct '01", "16 Nov '01"],
-          '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8, ],
+        '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8],
     [2, ['Report', '12 days', "1 Mar '02", "13 Mar '02"],
-          '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8, ],
+        '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8],
 ];
 
 // Create the bars and add them to the gantt chart
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -64,7 +64,3 @@ for ($i=0; $i < count($data); ++$i) {
 
 // Output the chart
 $graph->Stroke();
-
-?>
-
-

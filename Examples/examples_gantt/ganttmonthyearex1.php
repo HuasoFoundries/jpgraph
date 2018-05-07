@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -28,10 +28,10 @@ $graph->scale->year->grid->Show(true);
 // Data for our example activities
 $data = [
     [0, 'Group 1  Johan', '2001-11-23', '2002-03-1', FF_FONT1, FS_BOLD, 8],
-    [1, '  Label 2', '2001-10-26', '2001-11-16'], ];
+    [1, '  Label 2', '2001-10-26', '2001-11-16']];
 
 // Create the bars and add them to the gantt chart
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -45,7 +45,3 @@ for ($i=0; $i < count($data); ++$i) {
 
 // Output the chart
 $graph->Stroke();
-
-?>
-
-

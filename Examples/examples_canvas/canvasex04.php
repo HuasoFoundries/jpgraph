@@ -1,15 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // $Id: canvasex04.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_canvas.php';
-require_once 'jpgraph/jpgraph_canvtools.php';
+
+require_once '../../vendor/autoload.php';
+
+use Amenadiel\JpGraph\Graph;
 
 // Define work space
-$xmax=20;
-$ymax=20;
+$xmax = 20;
+$ymax = 20;
 
 // Setup a basic canvas we can work
-$g = new CanvasGraph(200, 100, 'auto');
+$g = new Graph\CanvasGraph(200, 100, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');
@@ -18,13 +19,13 @@ $g->SetMarginColor('teal');
 // text since we otherwise would overwrite the text.
 $g->InitFrame();
 
-// Create a new scale
-$scale = new CanvasScale($g);
+// Create a new Graph\scale
+$scale = new Graph\CanvasScale($g);
 $scale->Set(0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Shape($g, $scale);
+$shape = new Graph\Shape($g, $scale);
 $shape->SetColor('black');
 
 // Add a black line
@@ -51,6 +52,3 @@ $shape->RoundedRectangle(2, 3, 8, 6);
 
 // Stroke the graph
 $g->Stroke();
-
-?>
-

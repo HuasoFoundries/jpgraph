@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_canvas.php';
@@ -46,9 +46,12 @@ $t->SetFontColor('black');
 $t->SetColor('black');
 $t->SetShadow('gray');
 
-$r=6; $c=1; $w=7.5; $h=3.5;
+$r = 6;
+$c = 1;
+$w = 7.5;
+$h = 3.5;
 
-$fonts=[
+$fonts = [
     ['Font 0', FF_FONT0, FS_NORMAL],
     ['', FF_FONT0, FS_ITALIC],
     ['', FF_FONT0, FS_BOLD],
@@ -120,11 +123,11 @@ $fonts=[
     ['DejaVuCond sans serif', FF_DV_SANSSERIFCOND, FS_NORMAL],
     ['DejaVuCond sans serif', FF_DV_SANSSERIFCOND, FS_ITALIC],
     ['DejaVuCond sans serif', FF_DV_SANSSERIFCOND, FS_BOLD],
-    ];
+];
 
-$n=count($fonts);
+$n = count($fonts);
 
-for ($i=0; $i < $n; ++$i) {
+for ($i = 0; $i < $n; ++$i) {
     if ($i == 9) {
         $r += 3;
     }
@@ -144,5 +147,3 @@ for ($i=0; $i < $n; ++$i) {
 }
 
 $g->Stroke();
-?>
-

@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_log.php';
 require_once 'jpgraph/jpgraph_radar.php';
@@ -56,5 +56,3 @@ $plot2->SetFillColor('red@0.9');
 $graph->Add($plot);
 $graph->Add($plot2);
 $graph->Stroke();
-?>
-

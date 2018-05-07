@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt example to create CSIM
 
 require_once 'jpgraph/jpgraph.php';
@@ -21,7 +21,3 @@ $graph->Add([$bar1, $bar2]);
 
 // And stroke
 $graph->StrokeCSIM();
-
-?>
-
-
