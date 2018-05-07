@@ -15,7 +15,7 @@ $graph->SetBox();
 
 $graph->SetGridDepth(DEPTH_FRONT);
 $graph->ygrid->SetColor('gray@0.7');
-$graph->SetBackgroundImage('classroom.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage('../assets/classroom.jpg', BGIMG_FILLPLOT);
 
 // Masking graph
 $p1 = new Plot\LinePlot($datay);

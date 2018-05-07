@@ -17,7 +17,7 @@ $theme_class = "PastelTheme";
 $graph->SetTheme(new $theme_class());
 
 // Setup background
-$graph->SetBackgroundImage('worldmap1.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage('../assets/worldmap1.jpg', BGIMG_FILLFRAME);
 
 // Setup title
 $graph->title->Set("Pie plots with background image");
@@ -27,36 +27,36 @@ $graph->SetTitleBackground('#4169E1', TITLEBKG_STYLE2, TITLEBKG_FRAME_FULL, '#41
 $p = array();
 // Create the plots
 for ($i = 0; $i < $n; ++$i) {
-    $p[] = new Plot\PiePlot3D($data);
+	$p[] = new Plot\PiePlot3D($data);
 }
 for ($i = 0; $i < $n; ++$i) {
-    $graph->Add($p[$i]);
+	$graph->Add($p[$i]);
 }
 
 // Position the four pies and change color
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->SetCenter($piepos[2 * $i], $piepos[2 * $i + 1]);
-    $p[$i]->SetSliceColors(array('#1E90FF', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3'));
+	$p[$i]->SetCenter($piepos[2 * $i], $piepos[2 * $i + 1]);
+	$p[$i]->SetSliceColors(array('#1E90FF', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3'));
 }
 
 // Set the titles
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->title->Set($titles[$i]);
-    $p[$i]->title->SetFont(FF_ARIAL, FS_NORMAL, 8);
+	$p[$i]->title->Set($titles[$i]);
+	$p[$i]->title->SetFont(FF_ARIAL, FS_NORMAL, 8);
 }
 
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->value->Show(false);
+	$p[$i]->value->Show(false);
 }
 
 // Size of pie in fraction of the width of the graph
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->SetSize(0.13);
+	$p[$i]->SetSize(0.13);
 }
 
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->SetEdge(false);
-    $p[$i]->ExplodeSlice(1, 7);
+	$p[$i]->SetEdge(false);
+	$p[$i]->ExplodeSlice(1, 7);
 }
 
 $graph->Stroke();

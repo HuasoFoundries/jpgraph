@@ -1,6 +1,8 @@
 <?php // content="text/plain; charset=utf-8"
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once '../../vendor/autoload.php';
+
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $n = 8;
 for ($i = 0; $i < $n; ++$i) {

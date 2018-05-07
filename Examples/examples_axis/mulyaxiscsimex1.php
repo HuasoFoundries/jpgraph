@@ -1,6 +1,8 @@
 <?php // content="text/plain; charset=utf-8"
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once '../../vendor/autoload.php';
+
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // Setup some dummy targets for the CSIM
 $n = 5;
@@ -8,25 +10,25 @@ for ($i = 0; $i < $n; ++$i) {
     $targ1[$i] = "#$i";
     $targ2[$i] = "#$i";
     $targ3[$i] = "#$i";
-    $alts1[$i] = "val=%d";
-    $alts2[$i] = "val=%d";
-    $alts3[$i] = "val=%d";
+    $alts1[$i] = 'val=%d';
+    $alts2[$i] = 'val=%d';
+    $alts3[$i] = 'val=%d';
 }
 
 // Some data for the points
-$datay1 = array(3, 10, 4, 1, 6);
-$datay2 = array(25, 22, 18, 24, 20);
-$datay3 = array(89, 70, 92, 77, 96);
+$datay1 = [3, 10, 4, 1, 6];
+$datay2 = [25, 22, 18, 24, 20];
+$datay3 = [89, 70, 92, 77, 96];
 
 // Create a basic graph with some suitable margins
 $graph = new Graph\Graph(500, 250);
 $graph->SetMargin(60, 180, 50, 40);
 $graph->SetMarginColor('white');
-$graph->title->Set("Multi Y-axes with Image Map");
+$graph->title->Set('Multi Y-axes with Image Map');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Setup the scales for all axes
-$graph->SetScale("intlin");
+$graph->SetScale('intlin');
 $graph->SetYScale(0, 'int');
 $graph->SetYScale(1, 'int');
 

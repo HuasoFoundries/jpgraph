@@ -6,8 +6,8 @@ use Amenadiel\JpGraph\Plot;
 // Data can be specified using both ordinal idex of axis as well
 // as the direction label
 $data2 = array(
-    'vsv' => array(12, 8, 2, 3),
-    6     => array(5, 4, 4, 5, 4),
+	'vsv' => array(12, 8, 2, 3),
+	6 => array(5, 4, 4, 5, 4),
 );
 
 $se_CompassLbl = array('O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV', 'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO');
@@ -20,7 +20,7 @@ $graph->SetFrame();
 $graph->title->Set('Example with background flag');
 #$graph->title->SetFont(FF_VERA,FS_BOLD,14);
 
-//$graph->SetBackgroundImage('bkgimg.jpg',BGIMG_FILLFRAME);
+//$graph->SetBackgroundImage('../assets/bkgimg.jpg',BGIMG_FILLFRAME);
 //$graph->SetBackgroundImageMix(90);
 $graph->SetBackgroundCFlag(28, BGIMG_FILLFRAME, 15);
 

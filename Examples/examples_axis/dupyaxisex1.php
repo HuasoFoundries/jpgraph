@@ -1,9 +1,11 @@
 <?php // content="text/plain; charset=utf-8"
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_utils.inc.php';
+require_once '../../vendor/autoload.php';
 
-$f                   = new FuncGenerator('cos($i)', '$i*$i*$i');
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util\FuncGenerator;
+
+$f = new FuncGenerator('cos($i)', '$i*$i*$i');
 list($xdata, $ydata) = $f->E(-M_PI, M_PI, 25);
 
 $graph = new Graph\Graph(300, 200);

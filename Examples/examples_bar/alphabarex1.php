@@ -26,7 +26,7 @@ $graph->legend->SetFillColor('lightblue@0.3');
 $graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
 
 // Set a nice summer (in Stockholm) image
-$graph->SetBackgroundImage('stship.jpg', BGIMG_COPY);
+$graph->SetBackgroundImage('../assets/stship.jpg', BGIMG_COPY);
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
