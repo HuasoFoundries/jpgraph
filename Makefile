@@ -30,7 +30,7 @@ tag_and_push:
 		git push
 		git push --tags
 
-tag: update_version tag_and_push	
+tag: csfixer update_version tag_and_push	
 
 delete_tag:
 	git tag -d $(v)
