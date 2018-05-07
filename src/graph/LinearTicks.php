@@ -20,11 +20,11 @@ class LinearTicks extends Ticks
     public $xtick_offset  = 0;
     private $label_offset = 0; // What offset should the displayed label have
     // i.e should we display 0,1,2 or 1,2,3,4 or 2,3,4 etc
-    private $text_label_start    = 0;
+    private $text_label_start = 0;
     private $iManualTickPos;
     private $iManualMinTickPos;
     private $iManualTickLabels;
-    private $iAdjustForDST       = false; // If a date falls within the DST period add one hour to the diaplyed time
+    private $iAdjustForDST = false; // If a date falls within the DST period add one hour to the diaplyed time
 
     public function __construct()
     {
@@ -259,7 +259,7 @@ class LinearTicks extends Ticks
                 if ($this->label_formatstr == 'W') {
                     // If we use week formatting then add a single 'w' in front of the
                     // week number to differentiate it from dates
-                    $l = 'w'.$l;
+                    $l = 'w' . $l;
                 }
             } else {
                 if ($this->label_dateformatstr !== '') {
@@ -273,7 +273,7 @@ class LinearTicks extends Ticks
                     if ($this->label_formatstr == 'W') {
                         // If we use week formatting then add a single 'w' in front of the
                         // week number to differentiate it from dates
-                        $l = 'w'.$l;
+                        $l = 'w' . $l;
                     }
                 } else {
                     $l = sprintf($this->label_formatstr, $aVal);
@@ -281,8 +281,8 @@ class LinearTicks extends Ticks
             }
         } else {
             //FIX: if negative precision  is returned "0f" , instead of formatted values
-            $format = $precision > 0 ? '%01.'.$precision.'f' : '%01.0f';
-            $l      =  sprintf($format, round($aVal, $precision));
+            $format = $precision > 0 ? '%01.' . $precision . 'f' : '%01.0f';
+            $l      = sprintf($format, round($aVal, $precision));
         }
 
         if (($this->supress_zerolabel && $l == 0) || ($this->supress_first && $aIdx == 0) || ($this->supress_last && $aIdx == $aNbrTicks - 1)) {

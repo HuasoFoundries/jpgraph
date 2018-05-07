@@ -12,7 +12,7 @@ namespace Amenadiel\JpGraph\Util;
 //===================================================
 class DateLocale
 {
-    public $iLocale      = 'C'; // environmental locale be used by default
+    public $iLocale = 'C'; // environmental locale be used by default
     private $iDayAbb;
     private $iShortDay;
     private $iShortMonth;

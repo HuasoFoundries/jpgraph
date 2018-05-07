@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-require_once dirname(__FILE__).'/../includes/jpgraph.php';
+require_once dirname(__FILE__) . '/../includes/jpgraph.php';
 
 //===================================================
 // CLASS Graph
@@ -45,7 +45,7 @@ class Graph
     public $xaxis; // X-axis (instane of Axis class)
     public $yaxis;
     public $y2axis;
-    public $ynaxis        = []; // Y axis (instance of Axis class)
+    public $ynaxis = []; // Y axis (instance of Axis class)
     public $margin_color; // Margin color of graph
     public $plotarea_color = [255, 255, 255]; // Plot area color
     public $title;
@@ -210,7 +210,7 @@ class Graph
             $this->inputValues['aTimeout']    = $aTimeout;
             $this->inputValues['aInline']     = $aInline;
 
-            $theme_class = '\Amenadiel\JpGraph\Themes\\'.DEFAULT_THEME_CLASS;
+            $theme_class = '\Amenadiel\JpGraph\Themes\\' . DEFAULT_THEME_CLASS;
 
             if (class_exists($theme_class)) {
                 $this->graph_theme = new $theme_class();
@@ -904,7 +904,7 @@ class Graph
         }
 
         $urlarg                 = $this->GetURLArguments();
-        $this->csimcachename    = CSIMCACHE_DIR.$aCacheName.$urlarg;
+        $this->csimcachename    = CSIMCACHE_DIR . $aCacheName . $urlarg;
         $this->csimcachetimeout = $aTimeOut;
 
         // First determine if we need to check for a cached version
@@ -918,8 +918,8 @@ class Graph
             $base     = basename($this->csimcachename);
             $base     = strtok($base, '.');
             $suffix   = strtok('.');
-            $basecsim = $dir.'/'.$base.'?'.$urlarg.'_csim_.html';
-            $baseimg  = $dir.'/'.$base.'?'.$urlarg.'.'.$this->img->img_format;
+            $basecsim = $dir . '/' . $base . '?' . $urlarg . '_csim_.html';
+            $baseimg  = $dir . '/' . $base . '?' . $urlarg . '.' . $this->img->img_format;
 
             $timedout = false;
             // Does it exist at all ?
@@ -951,7 +951,7 @@ class Graph
         if ($aAddRecursiveBlocker) {
             // This is a JPGRAPH internal defined that prevents
             // us from recursively coming here again
-            $urlarg = _CSIM_DISPLAY.'=1';
+            $urlarg = _CSIM_DISPLAY . '=1';
         }
 
         // Now reconstruct any user URL argument
@@ -959,10 +959,10 @@ class Graph
         while (list($key, $value) = each($_GET)) {
             if (is_array($value)) {
                 foreach ($value as $k => $v) {
-                    $urlarg .= '&amp;'.$key.'%5B'.$k.'%5D='.urlencode($v);
+                    $urlarg .= '&amp;' . $key . '%5B' . $k . '%5D=' . urlencode($v);
                 }
             } else {
-                $urlarg .= '&amp;'.$key.'='.urlencode($value);
+                $urlarg .= '&amp;' . $key . '=' . urlencode($value);
             }
         }
 
@@ -973,10 +973,10 @@ class Graph
         while (list($key, $value) = each($_POST)) {
             if (is_array($value)) {
                 foreach ($value as $k => $v) {
-                    $urlarg .= '&amp;'.$key.'%5B'.$k.'%5D='.urlencode($v);
+                    $urlarg .= '&amp;' . $key . '%5B' . $k . '%5D=' . urlencode($v);
                 }
             } else {
-                $urlarg .= '&amp;'.$key.'='.urlencode($value);
+                $urlarg .= '&amp;' . $key . '=' . urlencode($value);
             }
         }
 
@@ -994,7 +994,7 @@ class Graph
             // create a random map name
             srand((float) microtime() * 1000000);
             $r         = rand(0, 100000);
-            $aCSIMName = '__mapname'.$r.'__';
+            $aCSIMName = '__mapname' . $r . '__';
         }
 
         if ($aScriptName == 'auto') {
@@ -1015,8 +1015,8 @@ class Graph
                 $base     = basename($this->csimcachename);
                 $base     = strtok($base, '.');
                 $suffix   = strtok('.');
-                $basecsim = $dir.'/'.$base.'?'.$urlarg.'_csim_.html';
-                $baseimg  = $base.'?'.$urlarg.'.'.$this->img->img_format;
+                $basecsim = $dir . '/' . $base . '?' . $urlarg . '_csim_.html';
+                $baseimg  = $base . '?' . $urlarg . '.' . $this->img->img_format;
 
                 // Check that apache can write to directory specified
 
@@ -1028,15 +1028,15 @@ class Graph
                 $this->cache->MakeDirs($dir);
 
                 // Write the image file
-                $this->Stroke(CSIMCACHE_DIR.$baseimg);
+                $this->Stroke(CSIMCACHE_DIR . $baseimg);
 
                 // Construct wrapper HTML and write to file and send it back to browser
 
                 // In the src URL we must replace the '?' with its encoding to prevent the arguments
                 // to be converted to real arguments.
                 $tmp      = str_replace('?', '%3f', $baseimg);
-                $htmlwrap = $this->GetHTMLImageMap($aCSIMName)."\n".
-                '<img src="'.CSIMCACHE_HTTP_DIR.$tmp.'" ismap="ismap" usemap="#'.$aCSIMName.' width="'.$this->img->width.'" height="'.$this->img->height.'" alt="'.$this->iCSIMImgAlt."\" />\n";
+                $htmlwrap = $this->GetHTMLImageMap($aCSIMName) . "\n" .
+                '<img src="' . CSIMCACHE_HTTP_DIR . $tmp . '" ismap="ismap" usemap="#' . $aCSIMName . ' width="' . $this->img->width . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
 
                 if ($fh = @fopen($basecsim, 'w')) {
                     fwrite($fh, $htmlwrap);
@@ -1049,7 +1049,7 @@ class Graph
                 if ($aScriptName == '') {
                     Util\JpGraphError::RaiseL(25030); //('Missing script name in call to StrokeCSIM(). You must specify the name of the actual image script as the first parameter to StrokeCSIM().');
                 }
-                echo $this->GetHTMLImageMap($aCSIMName).$this->GetCSIMImgHTML($aCSIMName, $aScriptName, $aBorder);
+                echo $this->GetHTMLImageMap($aCSIMName) . $this->GetCSIMImgHTML($aCSIMName, $aScriptName, $aBorder);
             }
         } else {
             $this->Stroke();
@@ -1070,7 +1070,7 @@ class Graph
         }
         $urlarg = $this->GetURLArguments(true);
 
-        return '<img src="'.$aScriptName.'?'.$urlarg.'" ismap="ismap" usemap="#'.$aCSIMName.'" height="'.$this->img->height.'" alt="'.$this->iCSIMImgAlt."\" />\n";
+        return '<img src="' . $aScriptName . '?' . $urlarg . '" ismap="ismap" usemap="#' . $aCSIMName . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
     }
 
     public function GetTextsYMinMax($aY2 = false)
@@ -2104,7 +2104,7 @@ class Graph
             $f      = 'imagecreatefromjpeg';
             $imgtag = 'jpg';
         } else {
-            $f = 'imagecreatefrom'.$imgtag;
+            $f = 'imagecreatefrom' . $imgtag;
         }
 
         // Compare specified image type and file extension

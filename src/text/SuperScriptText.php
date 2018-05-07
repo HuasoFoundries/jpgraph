@@ -38,14 +38,14 @@ class SuperScriptText extends Text
         }
 
         $l = floor(log10($aVal));
-        $a = sprintf('%0.'.$aPrecision.'f', round($aVal / pow(10, $l), $aPrecision));
+        $a = sprintf('%0.' . $aPrecision . 'f', round($aVal / pow(10, $l), $aPrecision));
         $a *= $neg;
         if ($this->iSimple && ($a == 1 || $a == -1)) {
             $a = '';
         }
 
         if ($a != '') {
-            $this->t = $a.' * 10';
+            $this->t = $a . ' * 10';
         } else {
             if ($neg == 1) {
                 $this->t = '10';

@@ -39,7 +39,7 @@ define('POLAR_180', 2);
 //--------------------------------------------------------------------------
 class PolarPlot
 {
-    public $line_style       = 'solid';
+    public $line_style = 'solid';
     public $mark;
     public $legendcsimtarget     = '';
     public $legendcsimalt        = '';

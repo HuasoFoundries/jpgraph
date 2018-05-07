@@ -168,10 +168,10 @@ class GanttBar extends GanttPlotObject
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'" ';
+                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {
@@ -217,10 +217,10 @@ class GanttBar extends GanttPlotObject
         // CSIM for bar
         if (!empty($this->csimtarget)) {
             $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtarget.'"';
+            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtarget . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimarea .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimarea .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if ($this->csimalt != '') {

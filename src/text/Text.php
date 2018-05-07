@@ -363,14 +363,14 @@ class Text
         }
 
         // Create CSIM targets
-        $coords          = $bbox[0].','.$bbox[1].','.$bbox[2].','.$bbox[3].','.$bbox[4].','.$bbox[5].','.$bbox[6].','.$bbox[7];
-        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"".htmlentities($this->iCSIMtarget).'" ';
+        $coords          = $bbox[0] . ',' . $bbox[1] . ',' . $bbox[2] . ',' . $bbox[3] . ',' . $bbox[4] . ',' . $bbox[5] . ',' . $bbox[6] . ',' . $bbox[7];
+        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($this->iCSIMtarget) . '" ';
         if (trim($this->iCSIMalt) != '') {
-            $this->iCSIMarea .= ' alt="'.$this->iCSIMalt.'" ';
-            $this->iCSIMarea .= ' title="'.$this->iCSIMalt.'" ';
+            $this->iCSIMarea .= ' alt="' . $this->iCSIMalt . '" ';
+            $this->iCSIMarea .= ' title="' . $this->iCSIMalt . '" ';
         }
         if (trim($this->iCSIMWinTarget) != '') {
-            $this->iCSIMarea .= ' target="'.$this->iCSIMWinTarget.'" ';
+            $this->iCSIMarea .= ' target="' . $this->iCSIMWinTarget . '" ';
         }
         $this->iCSIMarea .= " />\n";
 
@@ -381,12 +381,12 @@ class Text
     {
         if (strpos($name, 'raw_') !== false) {
             // if $name == 'raw_left_margin' , return $this->_left_margin;
-            $variable_name = '_'.str_replace('raw_', '', $name);
+            $variable_name = '_' . str_replace('raw_', '', $name);
 
             return $this->{$variable_name};
         }
 
-        $variable_name = '_'.$name;
+        $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -396,6 +396,6 @@ class Text
 
     public function __set($name, $value)
     {
-        $this->{'_'.$name} = $value;
+        $this->{'_' . $name} = $value;
     }
 } // Class

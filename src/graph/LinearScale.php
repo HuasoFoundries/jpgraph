@@ -596,7 +596,7 @@ class LinearScale
 
     public function __get($name)
     {
-        $variable_name = '_'.$name;
+        $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -606,6 +606,6 @@ class LinearScale
 
     public function __set($name, $value)
     {
-        $this->{'_'.$name} = $value;
+        $this->{'_' . $name} = $value;
     }
 } // Class

@@ -40,7 +40,7 @@ class AxisPrototype
     protected $show_last_label          = true;
     protected $label_step               = 1; // Used by a text axis to specify what multiple of major steps
     // should be labeled.
-    protected $labelPos                                 = 0; // Which side of the axis should the labels be?
+    protected $labelPos = 0; // Which side of the axis should the labels be?
     protected $title_adjust;
     protected $title_margin;
     protected $title_side                                   = SIDE_LEFT;

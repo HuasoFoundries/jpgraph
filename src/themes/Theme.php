@@ -55,7 +55,7 @@ abstract class Theme
         if ($classname == 'Graph') {
             $method_name = 'SetupGraph';
         } else {
-            $method_name = 'Setup'.$classname;
+            $method_name = 'Setup' . $classname;
         }
 
         if (method_exists($this, $method_name)) {
@@ -106,12 +106,12 @@ abstract class Theme
                 $color_tmp  = $color_list[$this->color_index % $color_count];
                 $brightness = 1.0 - (int) ($this->color_index / $color_count) * 0.2;
                 $rgb        = new RGB();
-                $color      = $color_tmp.':'.$brightness;
+                $color      = $color_tmp . ':' . $brightness;
                 $color      = $rgb->Color($color);
                 $alpha      = array_pop($color);
                 $color      = $rgb->tryHexConversion($color);
                 if ($alpha) {
-                    $color .= '@'.$alpha;
+                    $color .= '@' . $alpha;
                 }
             }
         }

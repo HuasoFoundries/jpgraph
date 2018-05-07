@@ -137,10 +137,10 @@ class PiePlotC extends PiePlot
         $coords .= ", ${xp}, ${yp}";
 
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".
-            $this->csimtargets[$i].'"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" .
+            $this->csimtargets[$i] . '"';
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
+                $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
@@ -198,10 +198,10 @@ class PiePlotC extends PiePlot
         $xc = round($xc);
         $yc = round($yc);
         $r  = round($r);
-        $this->csimareas .= "<area shape=\"circle\" coords=\"${xc},${yc},${r}\" href=\"".
-        $this->middlecsimtarget.'"';
+        $this->csimareas .= "<area shape=\"circle\" coords=\"${xc},${yc},${r}\" href=\"" .
+        $this->middlecsimtarget . '"';
         if (!empty($this->middlecsimwintarget)) {
-            $this->csimareas .= ' target="'.$this->middlecsimwintarget.'"';
+            $this->csimareas .= ' target="' . $this->middlecsimwintarget . '"';
         }
         if (!empty($this->middlecsimalt)) {
             $tmp = $this->middlecsimalt;

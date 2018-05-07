@@ -160,7 +160,7 @@ class UniversalTheme extends Theme
             case 'LinePlot':
 
                     $plot->Clear();
-                    $plot->SetColor($this->GetNextColor().'@0.4');
+                    $plot->SetColor($this->GetNextColor() . '@0.4');
                     $plot->SetWeight(2);
 
                     break;

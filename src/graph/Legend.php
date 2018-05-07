@@ -528,10 +528,10 @@ class Legend
                 $ye     = $y1 - $rowheight[$row] + 1;
                 $coords = "${xs},${ys},${xe},${y1},${xe},${ye},${xs},${ye}";
                 if (!empty($p[4])) {
-                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".htmlentities($p[4]).'"';
+                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($p[4]) . '"';
 
                     if (!empty($p[6])) {
-                        $this->csimareas .= ' target="'.$p[6].'"';
+                        $this->csimareas .= ' target="' . $p[6] . '"';
                     }
 
                     if (!empty($p[5])) {

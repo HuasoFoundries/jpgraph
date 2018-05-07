@@ -206,7 +206,7 @@ if (USE_CACHE) {
                 $msg = $t->Get(11, $file, $lineno);
                 die($msg);
             }
-            define('CACHE_DIR', $_SERVER['TEMP'].'/');
+            define('CACHE_DIR', $_SERVER['TEMP'] . '/');
         } else {
             define('CACHE_DIR', '/tmp/jpgraph_cache/');
         }
@@ -226,7 +226,7 @@ if (!defined('TTF_DIR')) {
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('TTF_DIR', $sroot.'/fonts/');
+        define('TTF_DIR', $sroot . '/fonts/');
     } else {
         define('TTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -243,7 +243,7 @@ if (!defined('MBTTF_DIR')) {
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('MBTTF_DIR', $sroot.'/fonts/');
+        define('MBTTF_DIR', $sroot . '/fonts/');
     } else {
         define('MBTTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -332,9 +332,9 @@ function GenImgName()
     $fname = basename($_SERVER['PHP_SELF']);
     if (!empty($_SERVER['QUERY_STRING'])) {
         $q = @$_SERVER['QUERY_STRING'];
-        $fname .= '_'.preg_replace('/\\W/', '_', $q).'.'.$img_format;
+        $fname .= '_' . preg_replace('/\\W/', '_', $q) . '.' . $img_format;
     } else {
-        $fname = substr($fname, 0, strlen($fname) - 4).'.'.$img_format;
+        $fname = substr($fname, 0, strlen($fname) - 4) . '.' . $img_format;
     }
 
     return $fname;

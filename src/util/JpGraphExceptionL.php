@@ -13,7 +13,7 @@ class JpGraphExceptionL extends JpGraphException
     {
         // make sure everything is assigned properly
         $errtxt = new ErrMsgText();
-        JpGraphError::SetTitle('JpGraph Error: '.$errcode);
+        JpGraphError::SetTitle('JpGraph Error: ' . $errcode);
         parent::__construct($errtxt->Get($errcode, $a1, $a2, $a3, $a4, $a5), 0);
     }
 }

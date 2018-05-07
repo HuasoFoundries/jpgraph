@@ -46,7 +46,7 @@ class PiePlot
     protected $legends;
     protected $csimtargets;
     protected $csimwintargets; // Array of targets for CSIM
-    protected $csimareas                = ''; // Generated CSIM text
+    protected $csimareas = ''; // Generated CSIM text
     protected $csimalts; // ALT tags for corresponding target
     protected $data;
     public $title;
@@ -207,10 +207,10 @@ class PiePlot
         $yp = floor($yc - $radius * sin($sa));
         $coords .= ", ${xp}, ${yp}";
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtargets[$i].'"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtargets[$i] . '"';
             $tmp = '';
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
+                $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);

@@ -231,7 +231,7 @@ class TTF
             $ff = [$ff];
         }
 
-        $jpgraph_font_dir = dirname(dirname(__FILE__)).'/fonts/';
+        $jpgraph_font_dir = dirname(dirname(__FILE__)) . '/fonts/';
 
         foreach ($ff as $font_file) {
             // All font families are guaranteed to have the normal style
@@ -245,7 +245,7 @@ class TTF
             }
 
             // check jpgraph/src/fonts dir
-            $jpgraph_font_file = $jpgraph_font_dir.$font_file;
+            $jpgraph_font_file = $jpgraph_font_dir . $font_file;
             if (file_exists($jpgraph_font_file) === true && is_readable($jpgraph_font_file) === true) {
                 $font_file = $jpgraph_font_file;
 
@@ -254,9 +254,9 @@ class TTF
 
             // check OS font dir
             if ($family >= FF_MINCHO && $family <= FF_PGOTHIC) {
-                $font_file = MBTTF_DIR.$font_file;
+                $font_file = MBTTF_DIR . $font_file;
             } else {
-                $font_file = TTF_DIR.$font_file;
+                $font_file = TTF_DIR . $font_file;
             }
             if (file_exists($font_file) === true && is_readable($font_file) === true) {
                 break;

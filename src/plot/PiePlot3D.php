@@ -131,16 +131,16 @@ class PiePlot3D extends PiePlot
         $yp = floor($yc - $height * sin($ea) / 2);
 
         if ($ea >= M_PI && $ea <= 2 * M_PI * 1.01) {
-            $coords .= ", ${xp}, ".floor($yp + $thick);
+            $coords .= ", ${xp}, " . floor($yp + $thick);
         }
         $coords .= ", ${xp}, ${yp}";
         $alt = '';
 
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtargets[$i].'"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtargets[$i] . '"';
 
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
+                $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
 
             if (!empty($this->csimalts[$i])) {
@@ -399,7 +399,7 @@ class PiePlot3D extends PiePlot
             $pt[] = $yc;
         }
 
-        $img->PushColor($fillcolor.':'.$shadow);
+        $img->PushColor($fillcolor . ':' . $shadow);
         $img->FilledPolygon($p);
         $img->PopColor();
 

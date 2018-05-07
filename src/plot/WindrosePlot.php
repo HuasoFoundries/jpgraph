@@ -88,7 +88,7 @@ class WindrosePlot
         $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f'.Graph\SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
@@ -333,7 +333,7 @@ class WindrosePlot
         $xcenter = $x;
 
         // Construct format string
-        $fmt = $this->legend->iFormatString.'-'.$this->legend->iFormatString;
+        $fmt = $this->legend->iFormatString . '-' . $this->legend->iFormatString;
 
         // Make sure that the length of each range is enough to cover the
         // size of the labels

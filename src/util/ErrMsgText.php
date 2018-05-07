@@ -35,16 +35,16 @@ class ErrMsgText
     public function __construct()
     {
         global $__jpg_err_locale;
-        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
 
         // If the chosen locale doesn't exist try english
         if (!file_exists($file)) {
             $__jpg_err_locale = 'en';
         }
 
-        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
         if (!file_exists($file)) {
-            die('Chosen locale file ("'.$file.'") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
+            die('Chosen locale file ("' . $file . '") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
         }
         require $file;
         $this->lt = $_jpg_messages;
@@ -54,7 +54,7 @@ class ErrMsgText
     {
         global $__jpg_err_locale;
         if (!isset($this->lt[$errnbr])) {
-            return 'Internal error: The specified error message ('.$errnbr.') does not exist in the chosen locale ('.$__jpg_err_locale.')';
+            return 'Internal error: The specified error message (' . $errnbr . ') does not exist in the chosen locale (' . $__jpg_err_locale . ')';
         }
         $ea = $this->lt[$errnbr];
         $j  = 0;
