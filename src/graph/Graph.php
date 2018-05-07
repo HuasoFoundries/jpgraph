@@ -2575,6 +2575,10 @@ class Graph
     // Get Y min and max values for added lines
     public function GetLinesYMinMax($aLines)
     {
+        if(is_null($aLines)) {
+          return false;
+        }
+
         $n = count($aLines);
         if ($n == 0) {
             return false;
