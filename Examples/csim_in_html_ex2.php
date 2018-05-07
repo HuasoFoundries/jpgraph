@@ -15,8 +15,8 @@ $_mapname1 = '__mapname'.rand(0, 1000000).'__';
 $_mapname2 = '__mapname'.rand(0, 1000000).'__';
 
 // Get the graph scripts
-require_once($_graphfilename1);
-require_once($_graphfilename2);
+require_once $_graphfilename1;
+require_once $_graphfilename2;
 
 // This line gets the image map and inserts it on the page
 $imgmap1 = $graph->GetHTMLImageMap($_mapname1);

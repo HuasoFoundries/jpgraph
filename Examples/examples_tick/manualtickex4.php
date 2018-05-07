@@ -1,4 +1,9 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 //
 // Basic example on how to use custom tickmark feature to have a label
 // at the start of each month.
@@ -15,16 +20,16 @@ $f                   = new FuncGenerator('cos($x)+1.5*cos(2*$x)');
 list($datax, $datay) = $f->E(0, 10);
 
 // Now get labels at 1/2 PI intervall
-$tickPositions    = array();
-$tickLabels       = array();
+$tickPositions    = [];
+$tickLabels       = [];
 $tickPositions[0] = 0;
 $tickLabels[0]    = '0';
 for ($i = 1; $i / 2 * M_PI < 11; ++$i) {
     $tickPositions[$i] = $i / 2 * M_PI;
     if ($i % 2) {
-        $tickLabels[$i] = $i . '/2' . SymChar::Get('pi');
+        $tickLabels[$i] = $i.'/2'.SymChar::Get('pi');
     } else {
-        $tickLabels[$i] = ($i / 2) . SymChar::Get('pi');
+        $tickLabels[$i] = ($i / 2).SymChar::Get('pi');
     }
 }
 

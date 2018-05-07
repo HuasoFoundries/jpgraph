@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -104,7 +109,6 @@ class CanvasRectangleText
 
     public function Stroke($aImg, $scale)
     {
-
         // If coordinates are specifed as negative this means we should
         // treat them as abolsute (pixels) coordinates
         if ($this->ix > 0) {
@@ -131,29 +135,37 @@ class CanvasRectangleText
 
         if ($this->iShadowColor != '') {
             $aImg->PushColor($this->iShadowColor);
-            $aImg->FilledRoundedRectangle($this->ix + $this->iShadowWidth,
+            $aImg->FilledRoundedRectangle(
+                $this->ix + $this->iShadowWidth,
                 $this->iy + $this->iShadowWidth,
                 $this->ix + $this->iw - 1 + $this->iShadowWidth,
                 $this->iy + $this->ih - 1 + $this->iShadowWidth,
-                $this->ir);
+                $this->ir
+            );
             $aImg->PopColor();
         }
 
         if ($this->iFillColor != '') {
             $aImg->PushColor($this->iFillColor);
-            $aImg->FilledRoundedRectangle($this->ix, $this->iy,
+            $aImg->FilledRoundedRectangle(
+                $this->ix,
+                $this->iy,
                 $this->ix + $this->iw - 1,
                 $this->iy + $this->ih - 1,
-                $this->ir);
+                $this->ir
+            );
             $aImg->PopColor();
         }
 
         if ($this->iColor != '') {
             $aImg->PushColor($this->iColor);
-            $aImg->RoundedRectangle($this->ix, $this->iy,
+            $aImg->RoundedRectangle(
+                $this->ix,
+                $this->iy,
                 $this->ix + $this->iw - 1,
                 $this->iy + $this->ih - 1,
-                $this->ir);
+                $this->ir
+            );
             $aImg->PopColor();
         }
 
@@ -162,6 +174,6 @@ class CanvasRectangleText
         $this->iTxt->SetColor($this->iFontColor);
         $this->iTxt->Stroke($aImg, $this->ix + $this->iw / 2, $this->iy + $this->ih / 2);
 
-        return array($this->iw, $this->ih);
+        return [$this->iw, $this->ih];
     }
 }

@@ -1,9 +1,14 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
-use \Amenadiel\JpGraph\Image;
-use \Amenadiel\JpGraph\Text;
-use \Amenadiel\JpGraph\Util;
+use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 /*=======================================================================
 // File:        JPGRAPH_MGRAPH.PHP
@@ -21,13 +26,13 @@ use \Amenadiel\JpGraph\Util;
 //=============================================================================
 class MGraph
 {
-    public $title       = null;
-    public $subtitle    = null;
-    public $subsubtitle = null;
+    public $title;
+    public $subtitle;
+    public $subsubtitle;
 
-    protected $img                        = null;
+    protected $img;
     protected $iCnt                       = 0;
-    protected $iGraphs                    = array(); // image_handle, x, y, fx, fy, sizex, sizey
+    protected $iGraphs                    = []; // image_handle, x, y, fx, fy, sizex, sizey
     protected $iFillColor                 = 'white';
     protected $iCurrentColor              = 0;
     protected $lm                         = 4;
@@ -39,19 +44,19 @@ class MGraph
     protected $iFrameWeight               = 1;
     protected $iLineWeight                = 1;
     protected $expired                    = false;
-    protected $cache                      = null;
+    protected $cache;
     protected $cache_name                 = '';
     protected $inline                     = true;
     protected $image_format               = 'png';
     protected $image_quality              = 75;
-    protected $iWidth                     = null;
-    protected $iHeight                    = null;
+    protected $iWidth;
+    protected $iHeight;
     protected $background_image           = '';
     protected $background_image_center    = true;
     protected $backround_image_format     = '';
     protected $background_image_mix       = 100;
-    protected $background_image_y         = null;
-    protected $background_image_x         = null;
+    protected $background_image_y;
+    protected $background_image_x;
     private $doshadow                     = false;
     private $shadow_width                 = 4;
     private $shadow_color                 = 'gray@0.5';
@@ -136,11 +141,11 @@ class MGraph
             //('Incorrect file name for MGraph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
         }
 
-        $valid_formats = array('png', 'jpg', 'gif');
+        $valid_formats = ['png', 'jpg', 'gif'];
         $aImgFormat    = strtolower($e[count($e) - 1]);
         if ($aImgFormat == 'jpeg') {
             $aImgFormat = 'jpg';
-        } elseif (!in_array($aImgFormat, $valid_formats)) {
+        } elseif (!in_array($aImgFormat, $valid_formats, true)) {
             Util\JpGraphError::RaiseL(12003, $aImgFormat, $aFileName);
             //('Unknown file extension ($aImgFormat) in MGraph::SetBackgroundImage() for filename: '.$aFileName);
         }
@@ -213,7 +218,7 @@ class MGraph
         if ($h == 0) {
             $h = @imagesy($agdCanvas);
         }
-        $this->iGraphs[$this->iCnt++] = array($agdCanvas, $x, $y, $fx, $fy, $w, $h, $mix);
+        $this->iGraphs[$this->iCnt++] = [$agdCanvas, $x, $y, $fx, $fy, $w, $h, $mix];
     }
 
     public function SetMargin($lm, $rm, $tm, $bm)
@@ -350,12 +355,18 @@ class MGraph
 
         // Copy all sub graphs to the container
         for ($i = 0; $i < $this->iCnt; ++$i) {
-            $image->CopyMerge($this->iGraphs[$i][0],
-                $this->iGraphs[$i][1] + $this->lm, $this->iGraphs[$i][2] + $this->tm,
-                $this->iGraphs[$i][3], $this->iGraphs[$i][4],
-                $this->iGraphs[$i][5], $this->iGraphs[$i][6],
-                -1, -1, /* Full from width and height */
-                $this->iGraphs[$i][7]);
+            $image->CopyMerge(
+                $this->iGraphs[$i][0],
+                $this->iGraphs[$i][1] + $this->lm,
+                $this->iGraphs[$i][2] + $this->tm,
+                $this->iGraphs[$i][3],
+                $this->iGraphs[$i][4],
+                $this->iGraphs[$i][5],
+                $this->iGraphs[$i][6],
+                -1,
+                -1, /* Full from width and height */
+                $this->iGraphs[$i][7]
+            );
         }
 
         $this->StrokeTitle($image, $w, $h);
@@ -364,11 +375,10 @@ class MGraph
         // Output image
         if ($aFileName == _IMG_HANDLER) {
             return $image->img;
-        } else {
-            //Finally stream the generated picture
-            $this->cache = new Image\ImgStreamCache();
-            $this->cache->PutAndStream($image, $this->cache_name, $this->inline, $aFileName);
         }
+        //Finally stream the generated picture
+        $this->cache = new Image\ImgStreamCache();
+        $this->cache->PutAndStream($image, $this->cache_name, $this->inline, $aFileName);
     }
 }
 

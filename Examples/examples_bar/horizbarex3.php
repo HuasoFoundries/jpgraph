@@ -1,10 +1,14 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(2, 3, -5, 8, 12, 6, 3);
-$datax = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul");
+$datay = [2, 3, -5, 8, 12, 6, 3];
+$datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
 
 // Size of graph
 $width  = 400;
@@ -12,7 +16,7 @@ $height = 500;
 
 // Set the basic parameters of the graph
 $graph = new Graph\Graph($width, $height, 'auto');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 $top    = 50;
 $bottom = 80;
@@ -26,9 +30,9 @@ $graph->xaxis->SetPos('min');
 $graph->SetShadow();
 
 // Setup title
-$graph->title->Set("Horizontal bar graph ex 3");
+$graph->title->Set('Horizontal bar graph ex 3');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
-$graph->subtitle->Set("(Axis at bottom)");
+$graph->subtitle->Set('(Axis at bottom)');
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
@@ -79,7 +83,7 @@ $graph->yaxis->SetFont(FF_FONT2, FS_NORMAL);
 
 // Now create a bar pot
 $bplot = new Plot\BarPlot($datay);
-$bplot->SetFillColor("orange");
+$bplot->SetFillColor('orange');
 $bplot->SetShadow();
 
 //You can change the width of the bars if you like
@@ -89,7 +93,7 @@ $bplot->SetShadow();
 $bplot->value->Show();
 $bplot->value->SetFont(FF_ARIAL, FS_BOLD, 12);
 $bplot->value->SetAlign('left', 'center');
-$bplot->value->SetColor("black", "darkred");
+$bplot->value->SetColor('black', 'darkred');
 $bplot->value->SetFormat('%.1f mkr');
 
 // Add the bar to the graph

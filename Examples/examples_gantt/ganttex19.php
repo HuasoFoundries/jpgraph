@@ -1,6 +1,10 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_gantt.php');
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_gantt.php';
 
 $graph = new GanttGraph();
 $graph->SetBox();
@@ -27,9 +31,7 @@ $graph->scale->divider->SetStyle('solid');
 $graph->scale->divider->SetWeight(2);
 $graph->scale->divider->SetColor('black');
 
-
 $graph->SetBox(true, 'navy', 2);
-
 
 // Use the short name of the month together with a 2 digit year
 // on the month scale

@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -14,7 +19,7 @@ class RectPattern
 {
     protected $color;
     protected $weight;
-    protected $rect    = null;
+    protected $rect;
     protected $doframe = true;
     protected $linespacing; // Line spacing in pixels
     protected $iBackgroundColor = -1; // Default is no background fill

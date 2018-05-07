@@ -1,5 +1,9 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'The first datamatrix';
 

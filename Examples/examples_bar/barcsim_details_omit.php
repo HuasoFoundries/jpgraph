@@ -1,5 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 if (empty($_GET['id'])) {
     echo 'Incorrect argument(s) to script <b>'.basename(__FILE__).'</b>.';
 } else {

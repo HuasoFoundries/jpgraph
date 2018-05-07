@@ -1,6 +1,10 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_radar.php');
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_radar.php';
 
 $graph = new RadarGraph(300, 300);
 $graph->SetScale('lin', 0, 50);
@@ -22,9 +26,9 @@ $graph->ShowMinorTickMarks();
 
 $graph->title->Set('Quality result');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->SetTitles(array('One','Two','Three','Four','Five','Sex','Seven','Eight','Nine','Ten'));
+$graph->SetTitles(['One', 'Two', 'Three', 'Four', 'Five', 'Sex', 'Seven', 'Eight', 'Nine', 'Ten']);
 
-$plot = new RadarPlot(array(12,35,20,30,33,15,37));
+$plot = new RadarPlot([12, 35, 20, 30, 33, 15, 37]);
 $plot->SetLegend('Goal');
 $plot->SetColor('red', 'lightred');
 $plot->SetFillColor('lightblue');

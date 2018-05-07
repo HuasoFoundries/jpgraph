@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -27,8 +32,8 @@ class RadarLogTicks extends Ticks
         $dx_min      = round(sin($aAxisAngle) * $ticklen_min);
         $dy_min      = round(cos($aAxisAngle) * $ticklen_min);
 
-        $aMajPos   = array();
-        $aMajLabel = array();
+        $aMajPos   = [];
+        $aMajLabel = [];
 
         if ($this->supress_first) {
             $aMajLabel[] = '';

@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_log.php';

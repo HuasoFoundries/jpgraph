@@ -1,17 +1,20 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 require_once 'jpgraph/jpgraph_line.php';
 
-$datay = array(2, 3, 5, 8.5, 11.5, 6, 3);
+$datay = [2, 3, 5, 8.5, 11.5, 6, 3];
 
 // Create the graph.
 $graph = new Graph\Graph(350, 300);
 
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 $graph->SetMarginColor('navy:1.9');
 $graph->SetBox();

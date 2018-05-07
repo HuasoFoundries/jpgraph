@@ -1,15 +1,20 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // A simple Polar graph,
 
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_polar.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_polar.php';
 
-$data = array(5,1,20,5,30,25,40,60,
-          50,110,60,160,70,210,75,230,80,260,85,370,
-          90,480,
-          95,370,100,260,105,230,
-          110,210,120,160,130,110,140,60,
-          150,25,160,5,175,1);
+$data = [5, 1, 20, 5, 30, 25, 40, 60,
+          50, 110, 60, 160, 70, 210, 75, 230, 80, 260, 85, 370,
+          90, 480,
+          95, 370, 100, 260, 105, 230,
+          110, 210, 120, 160, 130, 110, 140, 60,
+          150, 25, 160, 5, 175, 1, ];
 $n = count($data);
 /*
 for($i=0; $i < $n; $i+=2 ) {
@@ -44,7 +49,6 @@ $graph->axis->SetLabelMargin(6);
 $graph->axis->SetFont(FF_ARIAL, FS_NORMAL, 8);
 $graph->axis->SetAngleFont(FF_ARIAL, FS_NORMAL, 8);
 
-
 // Setup graph title
 $graph->title->Set('Polar plot #10');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
@@ -53,7 +57,6 @@ $graph->title->SetColor('navy');
 // Setup tab title
 $graph->tabtitle->Set('Microphone #1');
 $graph->tabtitle->SetColor('brown:0.5', 'lightyellow');
-
 
 $p = new PolarPlot($data);
 $p->SetFillColor('lightblue@0.5');

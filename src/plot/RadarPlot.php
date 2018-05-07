@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -7,17 +12,17 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class RadarPlot
 {
-    public $mark                   = null;
+    public $mark;
     public $legend                 = '';
     public $legendcsimtarget       = '';
     public $legendcsimalt          = '';
-    public $csimtargets            = array(); // Array of targets for CSIM
-    public $csimareas              = ""; // Resultant CSIM area tags
-    public $csimalts               = null; // ALT:s for corresponding target
-    private $data                  = array();
+    public $csimtargets            = []; // Array of targets for CSIM
+    public $csimareas              = ''; // Resultant CSIM area tags
+    public $csimalts; // ALT:s for corresponding target
+    private $data                  = [];
     private $fill                  = false;
-    private $fill_color            = array(200, 170, 180);
-    private $color                 = array(0, 0, 0);
+    private $fill_color            = [200, 170, 180];
+    private $color                 = [0, 0, 0];
     private $weight                = 1;
     private $linestyle             = 'solid';
 
@@ -31,12 +36,12 @@ class RadarPlot
 
     public function Min()
     {
-        return Min($this->data);
+        return min($this->data);
     }
 
     public function Max()
     {
-        return Max($this->data);
+        return max($this->data);
     }
 
     public function SetLegend($legend)
@@ -94,7 +99,6 @@ class RadarPlot
         $a       = $startangle;
 
         for ($i = 0; $i < $nbrpnts; ++$i) {
-
             // Rotate each non null point to the correct axis-angle
             $cs = $scale->RelTranslate($this->data[$i]);
             $x  = round($cs * cos($a) + $scale->scale_abs[0]);

@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
@@ -7,9 +11,9 @@ use Amenadiel\JpGraph\Plot;
 // Setup some dummy targets for the CSIM
 $n = 5;
 for ($i = 0; $i < $n; ++$i) {
-    $targ1[$i] = "#$i";
-    $targ2[$i] = "#$i";
-    $targ3[$i] = "#$i";
+    $targ1[$i] = "#${i}";
+    $targ2[$i] = "#${i}";
+    $targ3[$i] = "#${i}";
     $alts1[$i] = 'val=%d';
     $alts2[$i] = 'val=%d';
     $alts3[$i] = 'val=%d';

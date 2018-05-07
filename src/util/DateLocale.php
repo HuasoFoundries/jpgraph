@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 //===================================================
@@ -8,10 +13,10 @@ namespace Amenadiel\JpGraph\Util;
 class DateLocale
 {
     public $iLocale      = 'C'; // environmental locale be used by default
-    private $iDayAbb     = null;
-    private $iShortDay   = null;
-    private $iShortMonth = null;
-    private $iMonthName  = null;
+    private $iDayAbb;
+    private $iShortDay;
+    private $iShortMonth;
+    private $iMonthName;
 
     public function __construct()
     {
@@ -24,8 +29,9 @@ class DateLocale
 
     public function Set($aLocale)
     {
-        if (in_array($aLocale, array_keys($this->iDayAbb))) {
+        if (in_array($aLocale, array_keys($this->iDayAbb), true)) {
             $this->iLocale = $aLocale;
+
             return true; // already cached nothing else to do!
         }
 
@@ -36,6 +42,7 @@ class DateLocale
                 $res = @setlocale(LC_TIME, $loc);
                 if ($res) {
                     $aLocale = $loc;
+
                     break;
                 }
             }
@@ -51,14 +58,14 @@ class DateLocale
 
         $this->iLocale = $aLocale;
         for ($i = 0, $ofs = 0 - strftime('%w'); $i < 7; $i++, $ofs++) {
-            $day                         = strftime('%a', strtotime("$ofs day"));
+            $day                         = strftime('%a', strtotime("${ofs} day"));
             $day[0]                      = strtoupper($day[0]);
             $this->iDayAbb[$aLocale][]   = $day[0];
             $this->iShortDay[$aLocale][] = $day;
         }
 
         for ($i = 1; $i <= 12; ++$i) {
-            list($short, $full)            = explode('|', strftime("%b|%B", strtotime("2001-$i-01")));
+            list($short, $full)            = explode('|', strftime('%b|%B', strtotime("2001-${i}-01")));
             $this->iShortMonth[$aLocale][] = ucfirst($short);
             $this->iMonthName[$aLocale][]  = ucfirst($full);
         }

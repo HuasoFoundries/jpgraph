@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -17,12 +21,12 @@ class LinearScale
     // stroke method. So we let graph store the status here
     // when the linear scale is created. A real cludge...
     public $type; // is this x or y scale ?
-    public $ticks          = null; // Store ticks
+    public $ticks; // Store ticks
     public $text_scale_off = 0;
-    public $scale_abs      = array(0, 0);
+    public $scale_abs      = [0, 0];
     public $scale_factor; // Scale factor between world and screen
     public $off; // Offset between image edge and plot area
-    public $scale      = array(0, 0);
+    public $scale      = [0, 0];
     public $name       = 'lin';
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
     public $world_abs_size; // Plot area size in pixels (Needed public in jpgraph_radar.php)
@@ -40,7 +44,7 @@ class LinearScale
         assert($aMin <= $aMax);
 
         $this->type       = $aType;
-        $this->scale      = array($aMin, $aMax);
+        $this->scale      = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
         $this->ticks      = new LinearTicks();
     }
@@ -53,6 +57,7 @@ class LinearScale
             // Scale not set
             return false;
         }
+
         return true;
     }
 
@@ -104,7 +109,7 @@ class LinearScale
     // Specify a new min/max value for sclae
     public function Update($aImg, $aMin, $aMax)
     {
-        $this->scale      = array($aMin, $aMax);
+        $this->scale      = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
         $this->InitConstants($aImg);
     }
@@ -116,10 +121,11 @@ class LinearScale
             if ($aCoord != '' && $aCoord != '-' && $aCoord != 'x') {
                 Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
             }
+
             return 0;
-        } else {
-            return round($this->off + ($aCoord - $this->scale[0]) * $this->scale_factor);
         }
+
+        return round($this->off + ($aCoord - $this->scale[0]) * $this->scale_factor);
     }
 
     // Relative translate (don't include offset) usefull when we just want
@@ -130,10 +136,11 @@ class LinearScale
             if ($aCoord != '' && $aCoord != '-' && $aCoord != 'x') {
                 Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
             }
+
             return 0;
-        } else {
-            return ($aCoord - $this->scale[0]) * $this->scale_factor;
         }
+
+        return ($aCoord - $this->scale[0]) * $this->scale_factor;
     }
 
     // Restrict autoscaling to only use integers
@@ -243,14 +250,17 @@ class LinearScale
             case 1:
                 $this->ticks->Set($maj1step, $maj1step);
                 $this->Update($img, $adj1min, $adj1max);
+
                 break;
             case 2:
                 $this->ticks->Set($maj2step, $maj2step);
                 $this->Update($img, $adj2min, $adj2max);
+
                 break;
             case 3:
                 $this->ticks->Set($maj5step, $maj5step);
                 $this->Update($img, $adj5min, $adj5max);
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(25073, $r); //('Internal error. Integer scale algorithm comparison out of bound (r=$r)');
@@ -267,6 +277,7 @@ class LinearScale
 
         if ($this->intscale) {
             $this->IntAutoScale($img, $min, $max, $maxsteps, $majend);
+
             return;
         }
         if (abs($min - $max) < 0.00001) {
@@ -348,14 +359,17 @@ class LinearScale
             case 1:
                 $this->Update($img, $adj1min, $adj1max);
                 $this->ticks->Set($maj1step, $min1step);
+
                 break;
             case 2:
                 $this->Update($img, $adj2min, $adj2max);
                 $this->ticks->Set($maj2step, $min2step);
+
                 break;
             case 3:
                 $this->Update($img, $adj5min, $adj5max);
                 $this->ticks->Set($maj5step, $min5step);
+
                 break;
         }
     }
@@ -386,7 +400,7 @@ class LinearScale
             }
         }
         $size            = $this->world_size * $this->scale_factor;
-        $this->scale_abs = array($this->off, $this->off + $size);
+        $this->scale_abs = [$this->off, $this->off + $size];
     }
 
     // Initialize the conversion constants for this scale
@@ -410,7 +424,7 @@ class LinearScale
         $this->scale_factor = $this->world_abs_size / ($this->world_size * 1.0);
 
         // scale_abs = start and end points of scale in absolute pixels
-        $this->scale_abs = array($this->off, $this->off + $this->world_size * $this->scale_factor);
+        $this->scale_abs = [$this->off, $this->off + $this->world_size * $this->scale_factor];
     }
 
     // Calculate number of ticks steps with a specific division
@@ -462,7 +476,7 @@ class LinearScale
             $adjmax = ceil($max / $minstep) * $minstep;
         }
 
-        return array($numsteps, $adjmin, $adjmax, $minstep, $majstep);
+        return [$numsteps, $adjmin, $adjmax, $minstep, $majstep];
     }
 
     public function CalcTicksFreeze($maxsteps, $min, $max, $a, $b)
@@ -486,7 +500,8 @@ class LinearScale
             ++$ld;
         }
         $minstep = $majstep / $b;
-        return array($numsteps, $minstep, $majstep);
+
+        return [$numsteps, $minstep, $majstep];
     }
 
     public function IntCalcTicks($maxsteps, $min, $max, $a, $majend = true)
@@ -531,7 +546,7 @@ class LinearScale
             $adjmax = ceil($max / $majstep) * $majstep;
         }
 
-        return array($numsteps, $adjmin, $adjmax, $majstep);
+        return [$numsteps, $adjmin, $adjmax, $majstep];
     }
 
     public function IntCalcTicksFreeze($maxsteps, $min, $max, $a)
@@ -559,7 +574,7 @@ class LinearScale
             ++$ld;
         }
 
-        return array($numsteps, $majstep);
+        return [$numsteps, $majstep];
     }
 
     // Determine the minimum of three values witha  weight for last value
@@ -568,28 +583,29 @@ class LinearScale
         if ($a < $b) {
             if ($a < ($c * $weight)) {
                 return 1; // $a smallest
-            } else {
-                return 3; // $c smallest
             }
-        } elseif ($b < ($c * $weight)) {
+
+            return 3; // $c smallest
+        }
+        if ($b < ($c * $weight)) {
             return 2; // $b smallest
         }
+
         return 3; // $c smallest
     }
 
     public function __get($name)
     {
-        $variable_name = '_' . $name;
+        $variable_name = '_'.$name;
 
-        if (isset($this->$variable_name)) {
-            return $this->$variable_name * SUPERSAMPLING_SCALE;
-        } else {
-            Util\JpGraphError::RaiseL('25132', $name);
+        if (isset($this->{$variable_name})) {
+            return $this->{$variable_name} * SUPERSAMPLING_SCALE;
         }
+        Util\JpGraphError::RaiseL('25132', $name);
     }
 
     public function __set($name, $value)
     {
-        $this->{'_' . $name} = $value;
+        $this->{'_'.$name} = $value;
     }
 } // Class

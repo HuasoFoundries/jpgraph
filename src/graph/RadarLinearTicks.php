@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -65,8 +70,8 @@ class RadarLinearTicks extends Ticks
 
         $aImg->SetLineWeight($this->weight);
 
-        $aMajPos   = array();
-        $aMajLabel = array();
+        $aMajPos   = [];
+        $aMajLabel = [];
 
         for ($i = 1; $i <= $nbrmaj; ++$i) {
             $xt = round($i * $maj_step_abs * cos($aAxisAngle)) + $aScale->scale_abs[0];

@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -13,7 +18,7 @@ class GanttVLine extends GanttPlotObject
 
     //---------------
     // CONSTRUCTOR
-    public function __construct($aDate, $aTitle = "", $aColor = "darkred", $aWeight = 2, $aStyle = "solid")
+    public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
         GanttPlotObject::__construct();
         $this->iLine = new Graph\LineProperty();
@@ -81,7 +86,7 @@ class GanttVLine extends GanttPlotObject
         }
 
         $this->iLine->Stroke($aImg, $x, $y1, $x, $y2);
-        $this->title->Align("center", "top");
+        $this->title->Align('center', 'top');
         $this->title->Stroke($aImg, $x, $y2 + $this->title_margin);
     }
 }

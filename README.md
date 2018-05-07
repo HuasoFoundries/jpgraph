@@ -1,4 +1,4 @@
-## JPGRAPH 3.6.7, Community Edition
+## JPGRAPH v3.6.15, Community Edition
 
 [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph)
 [![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph)

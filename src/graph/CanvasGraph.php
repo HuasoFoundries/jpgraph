@@ -1,7 +1,12 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
-use \Amenadiel\JpGraph\ImgTrans;
+use Amenadiel\JpGraph\ImgTrans;
 
 /*=======================================================================
 // File:        JPGRAPH_CANVAS.PHP
@@ -25,7 +30,7 @@ class CanvasGraph extends Graph
 {
     //---------------
     // CONSTRUCTOR
-    public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = "", $timeout = 0, $inline = 1)
+    public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $timeout, $inline);
     }
@@ -39,7 +44,7 @@ class CanvasGraph extends Graph
     }
 
     // Method description
-    public function Stroke($aStrokeFileName = "")
+    public function Stroke($aStrokeFileName = '')
     {
         if ($this->texts != null) {
             for ($i = 0; $i < count($this->texts); ++$i) {
@@ -69,14 +74,18 @@ class CanvasGraph extends Graph
         $this->iHasStroked = true;
 
         if (!$_csim) {
-
             // Should we do any final image transformation
             if ($this->iImgTrans) {
                 $tform          = new ImgTrans($this->img->img);
-                $this->img->img = $tform->Skew3D($this->iImgTransHorizon, $this->iImgTransSkewDist,
-                    $this->iImgTransDirection, $this->iImgTransHighQ,
-                    $this->iImgTransMinSize, $this->iImgTransFillColor,
-                    $this->iImgTransBorder);
+                $this->img->img = $tform->Skew3D(
+                    $this->iImgTransHorizon,
+                    $this->iImgTransSkewDist,
+                    $this->iImgTransDirection,
+                    $this->iImgTransHighQ,
+                    $this->iImgTransMinSize,
+                    $this->iImgTransFillColor,
+                    $this->iImgTransBorder
+                );
             }
 
             // If the filename is given as the special _IMG_HANDLER
@@ -84,11 +93,11 @@ class CanvasGraph extends Graph
             // streamed back
             if ($aStrokeFileName == _IMG_HANDLER) {
                 return $this->img->img;
-            } else {
-                // Finally stream the generated picture
-                $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
-                return true;
             }
+            // Finally stream the generated picture
+            $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
+
+            return true;
         }
     }
 } // Class

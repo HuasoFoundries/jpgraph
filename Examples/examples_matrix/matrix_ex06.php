@@ -1,24 +1,25 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_matrix.php');
-require_once('jpgraph/jpgraph_plotline.php');
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_matrix.php';
+require_once 'jpgraph/jpgraph_plotline.php';
 
-$data = array(
-        array(0,null,2,3,4,5,6,7,8,9,10,8,6,4,2),
-        array(10,9,8,7,6,5,4,3,2,1,0,8,5,9,2),
-        array(0,1,2,3,4,5,6,7,8,9,10,2,4,5,7),
-        array(10,9,8,17,6,5,4,3,2,1,0,8,6,4,2),
-        array(0,1,2,3,4,4,9,7,8,9,10,3,2,7,2),
-        array(8,1,2,3,4,8,3,7,8,9,10,5,3,9,1),
-        array(10,3,5,7,6,5,4,3,12,1,0,6,5,10,2),
-        array(10,9,8,7,6,5,4,3,2,1,null,8,6,4,2),
-);
+$data = [
+        [0, null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 8, 6, 4, 2],
+        [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 8, 5, 9, 2],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 4, 5, 7],
+        [10, 9, 8, 17, 6, 5, 4, 3, 2, 1, 0, 8, 6, 4, 2],
+        [0, 1, 2, 3, 4, 4, 9, 7, 8, 9, 10, 3, 2, 7, 2],
+        [8, 1, 2, 3, 4, 8, 3, 7, 8, 9, 10, 5, 3, 9, 1],
+        [10, 3, 5, 7, 6, 5, 4, 3, 12, 1, 0, 6, 5, 10, 2],
+        [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, null, 8, 6, 4, 2],
+];
 
 $nx = count($data[0]);
 $ny = count($data);
-
-
 
 for ($i=0; $i < $nx; ++$i) {
     $collabels[$i] = sprintf('column label: %02d', $i);

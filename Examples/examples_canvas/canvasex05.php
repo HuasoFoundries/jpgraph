@@ -1,8 +1,8 @@
 <?php // content="text/plain; charset=utf-8"
 // $Id: canvasex05.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_canvas.php');
-require_once('jpgraph/jpgraph_canvtools.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
+require_once 'jpgraph/jpgraph_canvtools.php';
 
 // Define work space
 $xmax=40;
@@ -12,7 +12,7 @@ $ymax=40;
 $g = new CanvasGraph(400, 200, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
-$g->SetMarginColor("teal");
+$g->SetMarginColor('teal');
 
 // We need to stroke the plotarea and margin before we add the
 // text since we otherwise would overwrite the text.
@@ -26,7 +26,6 @@ $scale->Set(0, $xmax, 0, $ymax);
 // the coordinates for us
 $shape = new Shape($g, $scale);
 $shape->SetColor('black');
-
 
 // Add a black line
 $shape->SetColor('black');
@@ -49,7 +48,6 @@ $shape->FilledRoundedRectangle(2, 3, 8, 6);
 // .. with a darker border
 $shape->SetColor('darkgreen');
 $shape->RoundedRectangle(2, 3, 8, 6);
-
 
 // Stroke the graph
 $g->Stroke();

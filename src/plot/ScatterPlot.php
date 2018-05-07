@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -12,6 +17,7 @@ class ScatterPlot extends Plot
     public $mark;
     public $link;
     private $impuls = false;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
@@ -42,7 +48,7 @@ class ScatterPlot extends Plot
     }
 
     // Combine the scatter plot points with a line
-    public function SetLinkPoints($aFlag = true, $aColor = "black", $aWeight = 1, $aStyle = 'solid')
+    public function SetLinkPoints($aFlag = true, $aColor = 'black', $aWeight = 1, $aStyle = 'solid')
     {
         $this->link->iShow   = $aFlag;
         $this->link->iColor  = $aColor;
@@ -61,7 +67,6 @@ class ScatterPlot extends Plot
 
         $this->csimareas = '';
         for ($i = 0; $i < $this->numpoints; ++$i) {
-
             // Skip null values
             if ($this->coords[0][$i] === '' || $this->coords[0][$i] === '-' || $this->coords[0][$i] === 'x') {
                 continue;
@@ -117,9 +122,16 @@ class ScatterPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend != "") {
-            $aGraph->legend->Add($this->legend, $this->mark->fill_color, $this->mark, 0,
-                $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+        if ($this->legend != '') {
+            $aGraph->legend->Add(
+                $this->legend,
+                $this->mark->fill_color,
+                $this->mark,
+                0,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
         }
     }
 } // Class

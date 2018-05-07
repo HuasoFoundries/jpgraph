@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 define('GANTT_HGRID1', 0);
@@ -10,11 +15,11 @@ define('GANTT_HGRID2', 1);
 //===================================================
 class HorizontalGridLine
 {
-    private $iGraph     = null;
+    private $iGraph;
     private $iRowColor1 = '';
     private $iRowColor2 = '';
     private $iShow      = false;
-    private $line       = null;
+    private $line;
     private $iStart     = 0; // 0=from left margin, 1=just along header
 
     public function __construct()

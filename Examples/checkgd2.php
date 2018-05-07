@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 $im        =  imagecreatetruecolor(300, 200);
 $black     = imagecolorallocate($im, 0, 0, 0);
 $lightgray = imagecolorallocate($im, 230, 230, 230);
@@ -9,5 +13,5 @@ imagefilledrectangle($im, 0, 0, 299, 199, $lightgray);
 imagerectangle($im, 0, 0, 299, 199, $black);
 imagefilledellipse($im, 150, 100, 210, 110, $white);
 imagefilledellipse($im, 150, 100, 200, 100, $darkgreen);
-header("Content-type: image/png");
+header('Content-type: image/png');
 imagepng($im);

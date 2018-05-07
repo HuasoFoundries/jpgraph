@@ -1,15 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_log.php';
 require_once 'jpgraph/jpgraph_error.php';
 
-$xdata = array(2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0,
+$xdata = [2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0,
     12.0, 15.0, 20.0, 25.0, 30.0, 40.0, 50.0, 60.0,
     75.0, 100., 125., 150., 175., 200., 250., 300.,
     400., 500., 600., 800., 950.,
-    1200., 1500., 2000., 2500.);
-$ydata = array(270., 280., // 2 m
+    1200., 1500., 2000., 2500., ];
+$ydata = [270., 280., // 2 m
     330., 340., // 2.5
     410., 420., // 3
     550., 560., // 4
@@ -42,14 +45,14 @@ $ydata = array(270., 280., // 2 m
     8., 10., // 1500
     7., 9., // 2000
     8., 10., // 2500 m
-);
+];
 
 $graph = new Graph\Graph(500, 300);
-$graph->SetScale("linlog");
+$graph->SetScale('linlog');
 $graph->img->SetMargin(40, 20, 20, 40);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->Set("ab/2");
-$graph->yaxis->title->Set("rho_s");
+$graph->xaxis->title->Set('ab/2');
+$graph->yaxis->title->Set('rho_s');
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->ygrid->Show(true, true);

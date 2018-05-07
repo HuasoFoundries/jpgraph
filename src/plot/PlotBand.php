@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph\RectPatternFactory;
@@ -22,12 +27,12 @@ use Amenadiel\JpGraph\Util;
 class PlotBand
 {
     public $depth; // Determine if band should be over or under the plots
-    private $prect = null;
+    private $prect;
     private $dir;
     private $min;
     private $max;
 
-    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = "black", $aWeight = 1, $aDepth = DEPTH_BACK)
+    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = DEPTH_BACK)
     {
         $f           = new RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
@@ -100,7 +105,6 @@ class PlotBand
 
             // Only draw the bar if it actually appears in the range
             if ($this->min < $aYScale->GetMaxVal() && $this->max > $aYScale->GetMinVal()) {
-
                 // Trucate to limit of axis
                 $this->min = max($this->min, $aYScale->GetMinVal());
                 $this->max = min($this->max, $aYScale->GetMaxVal());
@@ -124,7 +128,6 @@ class PlotBand
 
             // Only draw the bar if it actually appears in the range
             if ($this->min < $aXScale->GetMaxVal() && $this->max > $aXScale->GetMinVal()) {
-
                 // Trucate to limit of axis
                 $this->min = max($this->min, $aXScale->GetMinVal());
                 $this->max = min($this->max, $aXScale->GetMaxVal());

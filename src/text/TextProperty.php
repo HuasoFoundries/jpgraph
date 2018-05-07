@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -14,11 +19,11 @@ class TextProperty
     private $iFFamily      = FF_FONT1;
     private $iFStyle       = FS_NORMAL;
     private $iFSize        = 10;
-    private $iFontArray    = array();
-    private $iColor        = "black";
-    private $iText         = "";
-    private $iHAlign       = "left";
-    private $iVAlign       = "bottom";
+    private $iFontArray    = [];
+    private $iColor        = 'black';
+    private $iText         = '';
+    private $iHAlign       = 'left';
+    private $iVAlign       = 'bottom';
 
     //---------------
     // CONSTRUCTOR
@@ -37,19 +42,19 @@ class TextProperty
     public function SetCSIMTarget($aTarget, $aAltText = '', $aWinTarget = '')
     {
         if (is_string($aTarget)) {
-            $aTarget = array($aTarget);
+            $aTarget = [$aTarget];
         }
 
         $this->csimtarget = $aTarget;
 
         if (is_string($aWinTarget)) {
-            $aWinTarget = array($aWinTarget);
+            $aWinTarget = [$aWinTarget];
         }
 
         $this->csimwintarget = $aWinTarget;
 
         if (is_string($aAltText)) {
-            $aAltText = array($aAltText);
+            $aAltText = [$aAltText];
         }
 
         $this->csimalt = $aAltText;
@@ -58,7 +63,7 @@ class TextProperty
     public function SetCSIMAlt($aAltText)
     {
         if (is_string($aAltText)) {
-            $aAltText = array($aAltText);
+            $aAltText = [$aAltText];
         }
 
         $this->csimalt = $aAltText;
@@ -74,7 +79,8 @@ class TextProperty
     {
         if (is_string($this->iText)) {
             return substr_count($this->iText, "\t") > 0;
-        } elseif (is_array($this->iText)) {
+        }
+        if (is_array($this->iText)) {
             return false;
         }
     }
@@ -84,20 +90,20 @@ class TextProperty
     {
         if (is_string($this->iText)) {
             return substr_count($this->iText, "\t");
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     // Set alignment
-    public function Align($aHAlign, $aVAlign = "bottom")
+    public function Align($aHAlign, $aVAlign = 'bottom')
     {
         $this->iHAlign = $aHAlign;
         $this->iVAlign = $aVAlign;
     }
 
     // Synonym
-    public function SetAlign($aHAlign, $aVAlign = "bottom")
+    public function SetAlign($aHAlign, $aVAlign = 'bottom')
     {
         $this->iHAlign = $aHAlign;
         $this->iVAlign = $aVAlign;
@@ -140,20 +146,23 @@ class TextProperty
             $tmp = preg_split('/\t/', $this->iText);
             if (count($tmp) <= 1 || !$aUseTabs) {
                 $w = $aImg->GetTextWidth($this->iText);
+
                 return $w + 2 * $extra_margin;
-            } else {
-                $tot = 0;
-                $n   = count($tmp);
-                for ($i = 0; $i < $n; ++$i) {
-                    $res[$i] = $aImg->GetTextWidth($tmp[$i]);
-                    $tot += $res[$i] * $aTabExtraMargin;
-                }
-                return array(round($tot), $res);
             }
-        } elseif (is_object($this->iText)) {
+            $tot = 0;
+            $n   = count($tmp);
+            for ($i = 0; $i < $n; ++$i) {
+                $res[$i] = $aImg->GetTextWidth($tmp[$i]);
+                $tot += $res[$i] * $aTabExtraMargin;
+            }
+
+            return [round($tot), $res];
+        }
+        if (is_object($this->iText)) {
             // A single icon
             return $this->iText->GetWidth() + 2 * $extra_margin;
-        } elseif (is_array($this->iText)) {
+        }
+        if (is_array($this->iText)) {
             // Must be an array of texts. In this case we return the sum of the
             // length + a fixed margin of 4 pixels on each text string
             $n  = count($this->iText);
@@ -174,10 +183,10 @@ class TextProperty
                     $w += $tmp->GetWidth() + $extra_margin;
                 }
             }
+
             return $w;
-        } else {
-            JpGraphError::RaiseL(6012);
         }
+        JpGraphError::RaiseL(6012);
     }
 
     // for the case where we have multiple columns this function returns the width of each
@@ -189,7 +198,7 @@ class TextProperty
         if (is_array($this->iText)) {
             $n  = count($this->iText);
             $nf = count($this->iFontArray);
-            for ($i = 0, $w = array(); $i < $n; ++$i) {
+            for ($i = 0, $w = []; $i < $n; ++$i) {
                 $tmp = $this->iText[$i];
                 if (is_string($tmp)) {
                     if ($i < $nf) {
@@ -205,10 +214,11 @@ class TextProperty
                     $w[$i] = $tmp->GetWidth() + $aMargin;
                 }
             }
+
             return $w;
-        } else {
-            return array($this->GetWidth($aImg));
         }
+
+        return [$this->GetWidth($aImg)];
     }
 
     // Get total height of text
@@ -230,6 +240,7 @@ class TextProperty
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         $height    = $aImg->GetFontHeight();
         $maxheight = max($height, $maxheight);
+
         return $maxheight;
     }
 
@@ -285,7 +296,7 @@ class TextProperty
                             } else {
                                 $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
                             }
-                            $aImg->StrokeText($aX[$i], $aY[$i], str_replace("\t", " ", $tmp));
+                            $aImg->StrokeText($aX[$i], $aY[$i], str_replace("\t", ' ', $tmp));
                         }
                     }
                 }

@@ -1,7 +1,12 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
-use \Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Text;
 
 //===================================================
 // CLASS DisplayValue
@@ -23,7 +28,7 @@ class DisplayValue
     private $color            = 'navy';
     private $negcolor         = '';
     private $iHideZero        = false;
-    public $txt               = null;
+    public $txt;
 
     public function __construct()
     {
@@ -127,9 +132,9 @@ class DisplayValue
             $this->txt->SetFont($this->ff, $this->fs, $this->fsize);
             if ($this->valign == '') {
                 if ($aVal >= 0) {
-                    $valign = "bottom";
+                    $valign = 'bottom';
                 } else {
-                    $valign = "top";
+                    $valign = 'top';
                 }
             } else {
                 $valign = $this->valign;

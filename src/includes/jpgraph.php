@@ -1,5 +1,9 @@
 <?php
-//=======================================================================
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // File:        JPGRAPH.PHP
 // Description: PHP Graph Plotting library. Base module.
 // Created:     2001-01-08
@@ -27,26 +31,26 @@ define('LINESTYLE_LONGDASH', 4);
 // The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
 // PNG, JPG or GIF depending on what is installed on the target system
 // in that order.
-if (!DEFINED("DEFAULT_GFORMAT")) {
-    define("DEFAULT_GFORMAT", "auto");
+if (!defined('DEFAULT_GFORMAT')) {
+    define('DEFAULT_GFORMAT', 'auto');
 }
 
 require_once 'imageSmoothArc.php';
 
 // Styles for gradient color fill
-define("GRAD_VER", 1);
-define("GRAD_VERT", 1);
-define("GRAD_HOR", 2);
-define("GRAD_MIDHOR", 3);
-define("GRAD_MIDVER", 4);
-define("GRAD_CENTER", 5);
-define("GRAD_WIDE_MIDVER", 6);
-define("GRAD_WIDE_MIDHOR", 7);
-define("GRAD_LEFT_REFLECTION", 8);
-define("GRAD_RIGHT_REFLECTION", 9);
-define("GRAD_RAISED_PANEL", 10);
-define("GRAD_DIAGONAL", 11);
-DEFINE('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
+define('GRAD_VER', 1);
+define('GRAD_VERT', 1);
+define('GRAD_HOR', 2);
+define('GRAD_MIDHOR', 3);
+define('GRAD_MIDVER', 4);
+define('GRAD_CENTER', 5);
+define('GRAD_WIDE_MIDVER', 6);
+define('GRAD_WIDE_MIDHOR', 7);
+define('GRAD_LEFT_REFLECTION', 8);
+define('GRAD_RIGHT_REFLECTION', 9);
+define('GRAD_RAISED_PANEL', 10);
+define('GRAD_DIAGONAL', 11);
+define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 // Version info
 define('JPG_VERSION', '3.5.0b1');
@@ -74,73 +78,73 @@ define('_IMG_HANDLER', '__handle');
 define('_IMG_AUTO', 'auto');
 
 // Tick density
-define("TICKD_DENSE", 1);
-define("TICKD_NORMAL", 2);
-define("TICKD_SPARSE", 3);
-define("TICKD_VERYSPARSE", 4);
+define('TICKD_DENSE', 1);
+define('TICKD_NORMAL', 2);
+define('TICKD_SPARSE', 3);
+define('TICKD_VERYSPARSE', 4);
 
 // Side for ticks and labels.
-define("SIDE_LEFT", -1);
-define("SIDE_RIGHT", 1);
-define("SIDE_DOWN", -1);
-define("SIDE_BOTTOM", -1);
-define("SIDE_UP", 1);
-define("SIDE_TOP", 1);
+define('SIDE_LEFT', -1);
+define('SIDE_RIGHT', 1);
+define('SIDE_DOWN', -1);
+define('SIDE_BOTTOM', -1);
+define('SIDE_UP', 1);
+define('SIDE_TOP', 1);
 
 // Legend type stacked vertical or horizontal
-define("LEGEND_VERT", 0);
-define("LEGEND_HOR", 1);
+define('LEGEND_VERT', 0);
+define('LEGEND_HOR', 1);
 
 // Mark types for plot marks
-define("MARK_SQUARE", 1);
-define("MARK_UTRIANGLE", 2);
-define("MARK_DTRIANGLE", 3);
-define("MARK_DIAMOND", 4);
-define("MARK_CIRCLE", 5);
-define("MARK_FILLEDCIRCLE", 6);
-define("MARK_CROSS", 7);
-define("MARK_STAR", 8);
-define("MARK_X", 9);
-define("MARK_LEFTTRIANGLE", 10);
-define("MARK_RIGHTTRIANGLE", 11);
-define("MARK_FLASH", 12);
-define("MARK_IMG", 13);
-define("MARK_FLAG1", 14);
-define("MARK_FLAG2", 15);
-define("MARK_FLAG3", 16);
-define("MARK_FLAG4", 17);
+define('MARK_SQUARE', 1);
+define('MARK_UTRIANGLE', 2);
+define('MARK_DTRIANGLE', 3);
+define('MARK_DIAMOND', 4);
+define('MARK_CIRCLE', 5);
+define('MARK_FILLEDCIRCLE', 6);
+define('MARK_CROSS', 7);
+define('MARK_STAR', 8);
+define('MARK_X', 9);
+define('MARK_LEFTTRIANGLE', 10);
+define('MARK_RIGHTTRIANGLE', 11);
+define('MARK_FLASH', 12);
+define('MARK_IMG', 13);
+define('MARK_FLAG1', 14);
+define('MARK_FLAG2', 15);
+define('MARK_FLAG3', 16);
+define('MARK_FLAG4', 17);
 
 // Builtin images
-define("MARK_IMG_PUSHPIN", 50);
-define("MARK_IMG_SPUSHPIN", 50);
-define("MARK_IMG_LPUSHPIN", 51);
-define("MARK_IMG_DIAMOND", 52);
-define("MARK_IMG_SQUARE", 53);
-define("MARK_IMG_STAR", 54);
-define("MARK_IMG_BALL", 55);
-define("MARK_IMG_SBALL", 55);
-define("MARK_IMG_MBALL", 56);
-define("MARK_IMG_LBALL", 57);
-define("MARK_IMG_BEVEL", 58);
+define('MARK_IMG_PUSHPIN', 50);
+define('MARK_IMG_SPUSHPIN', 50);
+define('MARK_IMG_LPUSHPIN', 51);
+define('MARK_IMG_DIAMOND', 52);
+define('MARK_IMG_SQUARE', 53);
+define('MARK_IMG_STAR', 54);
+define('MARK_IMG_BALL', 55);
+define('MARK_IMG_SBALL', 55);
+define('MARK_IMG_MBALL', 56);
+define('MARK_IMG_LBALL', 57);
+define('MARK_IMG_BEVEL', 58);
 
 // Inline defines
-define("INLINE_YES", 1);
-define("INLINE_NO", 0);
+define('INLINE_YES', 1);
+define('INLINE_NO', 0);
 
 // Format for background images
-define("BGIMG_FILLPLOT", 1);
-define("BGIMG_FILLFRAME", 2);
-define("BGIMG_COPY", 3);
-define("BGIMG_CENTER", 4);
-define("BGIMG_FREE", 5);
+define('BGIMG_FILLPLOT', 1);
+define('BGIMG_FILLFRAME', 2);
+define('BGIMG_COPY', 3);
+define('BGIMG_CENTER', 4);
+define('BGIMG_FREE', 5);
 
 // Depth of objects
-define("DEPTH_BACK", 0);
-define("DEPTH_FRONT", 1);
+define('DEPTH_BACK', 0);
+define('DEPTH_FRONT', 1);
 
 // Direction
-define("VERTICAL", 1);
-define("HORIZONTAL", 0);
+define('VERTICAL', 1);
+define('HORIZONTAL', 0);
 
 // Axis styles for scientific style axis
 define('AXSTYLE_SIMPLE', 1);
@@ -186,9 +190,9 @@ define('SKEW3D_LEFT', 2);
 define('SKEW3D_RIGHT', 3);
 
 // For internal use only
-define("_JPG_DEBUG", false);
-define("_FORCE_IMGTOFILE", false);
-define("_FORCE_IMGDIR", '/tmp/jpgimg/');
+define('_JPG_DEBUG', false);
+define('_FORCE_IMGTOFILE', false);
+define('_FORCE_IMGDIR', '/tmp/jpgimg/');
 
 //
 // Automatic settings of path for cache and font directory
@@ -201,9 +205,8 @@ if (USE_CACHE) {
                 $t   = new ErrMsgText();
                 $msg = $t->Get(11, $file, $lineno);
                 die($msg);
-            } else {
-                define('CACHE_DIR', $_SERVER['TEMP'] . '/');
             }
+            define('CACHE_DIR', $_SERVER['TEMP'].'/');
         } else {
             define('CACHE_DIR', '/tmp/jpgraph_cache/');
         }
@@ -222,9 +225,8 @@ if (!defined('TTF_DIR')) {
             $t   = new ErrMsgText();
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
-        } else {
-            define('TTF_DIR', $sroot . '/fonts/');
         }
+        define('TTF_DIR', $sroot.'/fonts/');
     } else {
         define('TTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -240,9 +242,8 @@ if (!defined('MBTTF_DIR')) {
             $t   = new ErrMsgText();
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
-        } else {
-            define('MBTTF_DIR', $sroot . '/fonts/');
         }
+        define('MBTTF_DIR', $sroot.'/fonts/');
     } else {
         define('MBTTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -267,7 +268,7 @@ if (!CheckPHPVersion(MIN_PHPVERSION)) {
 //
 // Make GD sanity check
 //
-if (!function_exists("imagetypes") || !function_exists('imagecreatefromstring')) {
+if (!function_exists('imagetypes') || !function_exists('imagecreatefromstring')) {
     Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25001);
     //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
 }
@@ -284,7 +285,7 @@ function _phpErrorHandler($errno, $errmsg, $filename, $linenum, $vars)
 }
 
 if (INSTALL_PHP_ERR_HANDLER) {
-    set_error_handler("_phpErrorHandler");
+    set_error_handler('_phpErrorHandler');
 }
 
 //
@@ -313,15 +314,15 @@ function GenImgName()
     // Determine what format we should use when we save the images
     $supported = imagetypes();
     if ($supported & IMG_PNG) {
-        $img_format = "png";
+        $img_format = 'png';
     } elseif ($supported & IMG_GIF) {
-        $img_format = "gif";
+        $img_format = 'gif';
     } elseif ($supported & IMG_JPG) {
-        $img_format = "jpeg";
+        $img_format = 'jpeg';
     } elseif ($supported & IMG_WBMP) {
-        $img_format = "wbmp";
+        $img_format = 'wbmp';
     } elseif ($supported & IMG_XPM) {
-        $img_format = "xpm";
+        $img_format = 'xpm';
     }
 
     if (!isset($_SERVER['PHP_SELF'])) {
@@ -331,10 +332,11 @@ function GenImgName()
     $fname = basename($_SERVER['PHP_SELF']);
     if (!empty($_SERVER['QUERY_STRING'])) {
         $q = @$_SERVER['QUERY_STRING'];
-        $fname .= '_' . preg_replace("/\W/", "_", $q) . '.' . $img_format;
+        $fname .= '_'.preg_replace('/\\W/', '_', $q).'.'.$img_format;
     } else {
-        $fname = substr($fname, 0, strlen($fname) - 4) . '.' . $img_format;
+        $fname = substr($fname, 0, strlen($fname) - 4).'.'.$img_format;
     }
+
     return $fname;
 }
 

@@ -1,13 +1,17 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
-$datay = array(20, 10, 35, 5, 17, 35, 22);
+$datay = [20, 10, 35, 5, 17, 35, 22];
 
 // Setup the graph
 $graph = new Graph\Graph(400, 200);
 $graph->SetMargin(40, 40, 20, 30);
-$graph->SetScale("intlin");
+$graph->SetScale('intlin');
 $graph->SetBox();
 $graph->SetMarginColor('darkgreen@0.8');
 

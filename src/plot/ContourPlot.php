@@ -1,9 +1,13 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 /**
- * This class represent a plotting of a contour outline of data given as a X-Y matrice
- *
+ * This class represent a plotting of a contour outline of data given as a X-Y matrice.
  */
 class ContourPlot extends Plot
 {
@@ -12,7 +16,7 @@ class ContourPlot extends Plot
     private $contourVal;
     private $contourColor;
     private $nbrCountours         = 0;
-    private $dataMatrix           = array();
+    private $dataMatrix           = [];
     private $invertLegend         = false;
     private $interpFactor         = 1;
     private $flipData             = false;
@@ -20,7 +24,7 @@ class ContourPlot extends Plot
     private $showLegend           = false;
     private $highcontrast         = false;
     private $highcontrastbw       = false;
-    private $manualIsobarColors   = array();
+    private $manualIsobarColors   = [];
 
     /**
      * Construct a contour plotting algorithm. The end result of the algorithm is a sequence of
@@ -35,9 +39,12 @@ class ContourPlot extends Plot
      * Y-value 0. In affect flipping the matrice around an imaginary horizontal axis.
      * @param $aHighContrast Use high contrast colors (blue/red:ish)
      * @param $aHighContrastBW Use only black colors for contours
+     * @param mixed $aFactor
+     * @param mixed $aIsobarColors
+     *
      * @return an instance of the contour plot algorithm
      */
-    public function __construct($aDataMatrix, $aIsobar = 10, $aFactor = 1, $aInvert = false, $aIsobarColors = array())
+    public function __construct($aDataMatrix, $aIsobar = 10, $aFactor = 1, $aInvert = false, $aIsobarColors = [])
     {
         $this->dataMatrix   = $aDataMatrix;
         $this->flipData     = $aInvert;
@@ -63,10 +70,9 @@ class ContourPlot extends Plot
     }
 
     /**
-     * Flipe the data around the center
+     * Flipe the data around the center.
      *
      * @param $aFlg
-     *
      */
     public function SetInvert($aFlg = true)
     {
@@ -74,10 +80,9 @@ class ContourPlot extends Plot
     }
 
     /**
-     * Set the colors for the isobar lines
+     * Set the colors for the isobar lines.
      *
      * @param $aColorArray
-     *
      */
     public function SetIsobarColors($aColorArray)
     {
@@ -85,10 +90,9 @@ class ContourPlot extends Plot
     }
 
     /**
-     * Show the legend
+     * Show the legend.
      *
      * @param $aFlg true if the legend should be shown
-     *
      */
     public function ShowLegend($aFlg = true)
     {
@@ -97,6 +101,7 @@ class ContourPlot extends Plot
 
     /**
      * @param $aFlg true if the legend should start with the lowest isobar on top
+     *
      * @return unknown_type
      */
     public function Invertlegend($aFlg = true)
@@ -109,7 +114,7 @@ class ContourPlot extends Plot
      */
     public function Min()
     {
-        return array(0, 0);
+        return [0, 0];
     }
 
     /* Internal method. Give the max value to be used for the scaling
@@ -117,11 +122,12 @@ class ContourPlot extends Plot
      */
     public function Max()
     {
-        return array(count($this->dataMatrix[0]) - 1, count($this->dataMatrix) - 1);
+        return [count($this->dataMatrix[0]) - 1, count($this->dataMatrix) - 1];
     }
 
     /**
      * Internal ramewrok method to setup the legend to be used for this plot.
+     *
      * @param $aGraph The parent graph class
      */
     public function Legend($aGraph)
@@ -131,21 +137,22 @@ class ContourPlot extends Plot
         }
 
         if ($this->invertLegend) {
-            for ($i = 0; $i < $this->nbrContours; $i++) {
+            for ($i = 0; $i < $this->nbrContours; ++$i) {
                 $aGraph->legend->Add(sprintf('%.1f', $this->contourVal[$i]), $this->contourColor[$i]);
             }
         } else {
-            for ($i = $this->nbrContours - 1; $i >= 0; $i--) {
+            for ($i = $this->nbrContours - 1; $i >= 0; --$i) {
                 $aGraph->legend->Add(sprintf('%.1f', $this->contourVal[$i]), $this->contourColor[$i]);
             }
         }
     }
 
     /**
-     *  Framework function which gets called before the Stroke() method is called
+     *  Framework function which gets called before the Stroke() method is called.
      *
      *  @see Plot#PreScaleSetup($aGraph)
      *
+     * @param mixed $aGraph
      */
     public function PreScaleSetup($aGraph)
     {
@@ -160,7 +167,7 @@ class ContourPlot extends Plot
     }
 
     /**
-     * Use high contrast color schema
+     * Use high contrast color schema.
      *
      * @param $aFlg True, to use high contrast color
      * @param $aBW True, Use only black and white color schema
@@ -173,7 +180,7 @@ class ContourPlot extends Plot
     }
 
     /**
-     * Internal method. Stroke the contour plot to the graph
+     * Internal method. Stroke the contour plot to the graph.
      *
      * @param $img Image handler
      * @param $xscale Instance of the xscale to use
@@ -190,7 +197,7 @@ class ContourPlot extends Plot
 
         $img->SetLineWeight($this->line_weight);
 
-        for ($c = 0; $c < $this->nbrContours; $c++) {
+        for ($c = 0; $c < $this->nbrContours; ++$c) {
             $img->SetColor($this->contourColor[$c]);
 
             $n = count($this->contourCoord[$c]);

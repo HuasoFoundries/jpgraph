@@ -1,5 +1,9 @@
 <?php
-//=======================================================================
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // File:        JPG-CONFIG.INC
 // Description: Configuration file for JpGraph library
 // Created:     2004-03-27

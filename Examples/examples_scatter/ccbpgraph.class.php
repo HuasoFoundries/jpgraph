@@ -1,7 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 /**
  * Class CCBPGraph
- * Utility class to create Critical Chain Buffer penetration charts
+ * Utility class to create Critical Chain Buffer penetration charts.
  */
 class CCBPGraph
 {
@@ -9,30 +14,32 @@ class CCBPGraph
     const YTitle     = '% Buffer used';
     const XTitle     = '% CC Completed';
     const NColorMaps = 2;
-    private $graph   = null;
+    private $graph;
     private $iWidth;
     private $iHeight;
-    private $iPlots    = array();
+    private $iPlots    = [];
     private $iXMin     = -50;
     private $iXMax     = 100;
     private $iYMin     = -50;
     private $iYMax     = 150;
-    private $iColorInd = array(
-        array(5, 75), /* Green */
-        array(25, 85), /* Yellow */
-        array(50, 100)); /* Red */
+    private $iColorInd = [
+        [5, 75], /* Green */
+        [25, 85], /* Yellow */
+        [50, 100], ]; /* Red */
     private $iColorMap  = 0;
-    private $iColorSpec = array(
-        array('darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'),
-        array('#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'));
-    private $iMarginColor = array('darkgreen@0.7', 'darkgreen@0.9');
+    private $iColorSpec = [
+        ['darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'],
+        ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'], ];
+    private $iMarginColor = ['darkgreen@0.7', 'darkgreen@0.9'];
     private $iSubTitle    = '';
     private $iTitle       = 'CC Buffer penetration';
+
     /**
-     * Construct a new instance of CCBPGraph
+     * Construct a new instance of CCBPGraph.
      *
      * @param int $aWidth
      * @param int $aHeight
+     *
      * @return CCBPGraph
      */
     public function __construct($aWidth, $aHeight)
@@ -42,7 +49,7 @@ class CCBPGraph
     }
 
     /**
-     * Set the title and subtitle for the graph
+     * Set the title and subtitle for the graph.
      *
      * @param string $aTitle
      * @param string $aSubTitle
@@ -54,7 +61,7 @@ class CCBPGraph
     }
 
     /**
-     * Set the x-axis min and max values
+     * Set the x-axis min and max values.
      *
      * @param int $aMin
      * @param int $aMax
@@ -66,7 +73,7 @@ class CCBPGraph
     }
 
     /**
-     * Specify what color map to use
+     * Specify what color map to use.
      *
      * @param int $aMap
      */
@@ -76,7 +83,7 @@ class CCBPGraph
     }
 
     /**
-     * Set the y-axis min and max values
+     * Set the y-axis min and max values.
      *
      * @param int $aMin
      * @param int $aMax
@@ -89,12 +96,12 @@ class CCBPGraph
 
     /**
      * Set the specification of the color backgrounds and also the
-     * optional exact colors to be used
+     * optional exact colors to be used.
      *
-     * @param mixed $aSpec  An array of 3 1x2 arrays. Each array specify the
-     * color indication value at x=0 and x=max x in order to determine the slope
-     * @param mixed $aColors  An array with four elements specifying the colors
-     * of each color indicator
+     * @param mixed $aSpec   An array of 3 1x2 arrays. Each array specify the
+     *                       color indication value at x=0 and x=max x in order to determine the slope
+     * @param mixed $aColors An array with four elements specifying the colors
+     *                       of each color indicator
      */
     public function SetColorIndication(array $aSpec, array $aColors = null)
     {
@@ -112,12 +119,10 @@ class CCBPGraph
     }
 
     /**
-     * Construct the graph
-     *
+     * Construct the graph.
      */
     private function Init()
     {
-
         // Setup limits for color indications
         $lowx   = $this->iXMin;
         $highx  = $this->iXMax;
@@ -184,7 +189,7 @@ class CCBPGraph
         $n1 = floor(abs($this->iXMin / 25)) + 1;
         $n2 = floor($this->iXMax / 25);
         if ($this->iColorMap == 0) {
-            $xlcolors = array();
+            $xlcolors = [];
             for ($i = 0; $i < $n1; ++$i) {
                 $xlcolors[$i] = 'black';
             }
@@ -234,14 +239,16 @@ class CCBPGraph
         for ($i = 0; $i < $n; ++$i) {
             $b           = $this->iColorInd[$i][0];
             $k           = ($this->iColorInd[$i][1] - $this->iColorInd[$i][0]) / $this->iXMax;
-            $colarea[$i] = array(array($lowx, $lowx * $k + $b), array($highx, $highx * $k + $b));
+            $colarea[$i] = [[$lowx, $lowx * $k + $b], [$highx, $highx * $k + $b]];
         }
-        $colarea[3] = array(array($lowx, $highy), array($highx, $highy));
+        $colarea[3] = [[$lowx, $highy], [$highx, $highy]];
 
-        $cb = array();
+        $cb = [];
         for ($i = 0; $i < 4; ++$i) {
-            $cb[$i] = new Plot\LinePlot(array($colarea[$i][0][1], $colarea[$i][1][1]),
-                array($colarea[$i][0][0], $colarea[$i][1][0]));
+            $cb[$i] = new Plot\LinePlot(
+                [$colarea[$i][0][1], $colarea[$i][1][1]],
+                [$colarea[$i][0][0], $colarea[$i][1][0]]
+            );
             $cb[$i]->SetFillColor($this->iColorSpec[$this->iColorMap][$i]);
             $cb[$i]->SetFillFromYMin();
         }
@@ -251,7 +258,7 @@ class CCBPGraph
     }
 
     /**
-     * Add a line or scatter plot to the graph
+     * Add a line or scatter plot to the graph.
      *
      * @param mixed $aPlots
      */
@@ -265,7 +272,7 @@ class CCBPGraph
     }
 
     /**
-     * Stroke the graph back to the client or to a file
+     * Stroke the graph back to the client or to a file.
      *
      * @param mixed $aFile
      */

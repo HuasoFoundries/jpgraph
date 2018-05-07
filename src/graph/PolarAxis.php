@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -117,7 +122,7 @@ class PolarAxis extends Axis
             if ($this->show_minor_grid) {
                 $this->img->Circle($x, $pos, $r);
             }
-            $i++;
+            ++$i;
         }
 
         $limit = max($this->img->plotwidth, $this->img->plotheight) * 1.4;
@@ -131,7 +136,7 @@ class PolarAxis extends Axis
                 if ($this->show_minor_grid) {
                     $this->img->Circle($x, $pos, $r);
                 }
-                $i++;
+                ++$i;
             }
         }
 
@@ -159,7 +164,7 @@ class PolarAxis extends Axis
             while ($r < $limit && $i < $n) {
                 $r = $pmin[$i * $step];
                 $this->img->Circle($x, $pos, $r);
-                $i++;
+                ++$i;
             }
         }
 
@@ -174,15 +179,19 @@ class PolarAxis extends Axis
                 if ($a == 90 || $a == 270) {
                     // Make sure there are no rounding problem with
                     // exactly vertical lines
-                    $this->img->Line($x + $start_radius * cos($a / 180 * M_PI) + 1,
+                    $this->img->Line(
+                        $x + $start_radius * cos($a / 180 * M_PI) + 1,
                         $pos - $start_radius * sin($a / 180 * M_PI),
                         $x + $start_radius * cos($a / 180 * M_PI) + 1,
-                        $pos - $d * sin($a / 180 * M_PI));
+                        $pos - $d * sin($a / 180 * M_PI)
+                    );
                 } else {
-                    $this->img->Line($x + $start_radius * cos($a / 180 * M_PI) + 1,
+                    $this->img->Line(
+                        $x + $start_radius * cos($a / 180 * M_PI) + 1,
                         $pos - $start_radius * sin($a / 180 * M_PI),
                         $x + $d * cos($a / 180 * M_PI),
-                        $pos - $d * sin($a / 180 * M_PI));
+                        $pos - $d * sin($a / 180 * M_PI)
+                    );
                 }
                 $a += $this->angle_step;
             }
@@ -221,7 +230,6 @@ class PolarAxis extends Axis
         $rot90 = $this->img->a == 90;
 
         if ($type == POLAR_360) {
-
             // Corner angles of the four corners
             $ca1 = atan($h / $w) / M_PI * 180;
             $ca2 = 180 - $ca1;
@@ -376,18 +384,25 @@ class PolarAxis extends Axis
         $this->img->SetColor($this->color);
         $this->img->SetFont($this->font_family, $this->font_style, $this->font_size);
         if (!$this->hide_line) {
-            $this->img->FilledRectangle($this->img->left_margin, $pos,
+            $this->img->FilledRectangle(
+                $this->img->left_margin,
+                $pos,
                 $this->img->width - $this->img->right_margin,
-                $pos + $this->weight - 1);
+                $pos + $this->weight - 1
+            );
         }
         $y = $pos + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
-        if ($this->title_adjust == "high") {
-            $this->title->SetPos($this->img->width - $this->img->right_margin, $y, "right", "top");
-        } elseif ($this->title_adjust == "middle" || $this->title_adjust == "center") {
-            $this->title->SetPos(($this->img->width - $this->img->left_margin - $this->img->right_margin) / 2 + $this->img->left_margin,
-                $y, "center", "top");
-        } elseif ($this->title_adjust == "low") {
-            $this->title->SetPos($this->img->left_margin, $y, "left", "top");
+        if ($this->title_adjust == 'high') {
+            $this->title->SetPos($this->img->width - $this->img->right_margin, $y, 'right', 'top');
+        } elseif ($this->title_adjust == 'middle' || $this->title_adjust == 'center') {
+            $this->title->SetPos(
+                ($this->img->width - $this->img->left_margin - $this->img->right_margin) / 2 + $this->img->left_margin,
+                $y,
+                'center',
+                'top'
+            );
+        } elseif ($this->title_adjust == 'low') {
+            $this->title->SetPos($this->img->left_margin, $y, 'left', 'top');
         } else {
             Util\JpGraphError::RaiseL(17002, $this->title_adjust);
             //('Unknown alignment specified for X-axis title. ('.$this->title_adjust.')');

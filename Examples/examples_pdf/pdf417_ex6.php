@@ -1,15 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/pdf417/jpgraph_pdf417.php');
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/pdf417/jpgraph_pdf417.php';
 
 $data1 = '12345';
 $data2 = 'Abcdef';
 $data3 = '6789';
 
 // Manually specify several encodation schema
-$data = array(
-    array(USE_NC,$data1),
-    array(USE_TC,$data2),
-    array(USE_NC,$data3));
+$data = [
+    [USE_NC, $data1],
+    [USE_TC, $data2],
+    [USE_NC, $data3], ];
 
 //$data = "12345Abcdef6789";
 

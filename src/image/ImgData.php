@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -12,9 +17,9 @@ use Amenadiel\JpGraph\Util;
 class ImgData
 {
     protected $name     = ''; // Each subclass gives a name
-    protected $an       = array(); // Data array names
-    protected $colors   = array(); // Available colors
-    protected $index    = array(); // Index for colors
+    protected $an       = []; // Data array names
+    protected $colors   = []; // Available colors
+    protected $index    = []; // Index for colors
     protected $maxidx   = 0; // Max color index
     protected $anchor_x = 0.5;
     protected $anchor_y = 0.5; // Where is the center of the image
@@ -29,7 +34,7 @@ class ImgData
     {
         $n = $this->an[$aMark];
         if (is_string($aIdx)) {
-            if (!in_array($aIdx, $this->colors)) {
+            if (!in_array($aIdx, $this->colors, true)) {
                 Util\JpGraphError::RaiseL(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
             }
             $idx = $this->index[$aIdx];
@@ -40,11 +45,11 @@ class ImgData
             $idx = $aIdx;
         }
 
-        return Image::CreateFromString(base64_decode($this->{$n}[$idx][1]));
+        return Image::CreateFromString(base64_decode($this->{$n}[$idx][1], true));
     }
 
     public function GetAnchor()
     {
-        return array($this->anchor_x, $this->anchor_y);
+        return [$this->anchor_x, $this->anchor_y];
     }
 }

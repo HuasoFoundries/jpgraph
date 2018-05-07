@@ -1,6 +1,6 @@
 <?php // content="text/plain; charset=utf-8"
-require_once "jpgraph/jpgraph.php";
-require_once "jpgraph/jpgraph_canvas.php";
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
 
 // We accept a URI argument to adjust the angle at what we display the text
 if (empty($_GET['a'])) {
@@ -14,13 +14,12 @@ $caption = "Demonstration of different anchor points for texts as specified with
     "TextAlign(). The red cross marks the coordinate that was given to\n".
     "stroke each instance of the string.\n(The green box is the bounding rectangle for the text.)";
 
-$txt="TextAlign()";
-
+$txt='TextAlign()';
 
 // Initial width and height since we need a "dummy" canvas to
 // calculate the height of the text strings
-$w =480;$h =50;
-$xm=90;$ym=80;
+$w =480; $h =50;
+$xm=90; $ym=80;
 
 $g = new CanvasGraph($w, $h);
 
@@ -41,15 +40,15 @@ $g   = new CanvasGraph($w, $h);
 $img = $g->img;
 
 // Alignment for anchor points to use
-$anchors = array('left','top',
-              'center','top',
-              'right','top',
-              'left','center',
-              'center','center',
-              'right','center',
-              'left','bottom',
-              'center','bottom',
-              'right','bottom');
+$anchors = ['left', 'top',
+              'center', 'top',
+              'right', 'top',
+              'left', 'center',
+              'center', 'center',
+              'right', 'center',
+              'left', 'bottom',
+              'center', 'bottom',
+              'right', 'bottom', ];
 
 $n = count($anchors) / 2;
 
@@ -60,7 +59,7 @@ for ($i=0,$r=0,$c=0; $i < $n; ++$i) {
     $img->SetColor('blue');
     $img->SetTextAlign($anchors[$i * 2], $anchors[$i * 2 + 1]);
     $img->SetFont(FF_ARIAL, FS_NORMAL, 16);
-    $img->StrokeText($x, $y, $txt, $angle, "left", true);
+    $img->StrokeText($x, $y, $txt, $angle, 'left', true);
 
     $img->SetColor('black');
     $img->SetFont(FF_FONT1, FS_BOLD);
@@ -68,10 +67,10 @@ for ($i=0,$r=0,$c=0; $i < $n; ++$i) {
     $align = sprintf('("%s","%s")', $anchors[$i * 2], $anchors[$i * 2 + 1]);
     $img->StrokeText($c * ($tw / 2 + $xm) + $xm / 2 + $tw / 2, $r * ($th / 2 + $ym) + $th + $ym / 2 - 4, $align);
 
-    $c++;
+    ++$c;
     if ($c == 3) {
         $c=0;
-        $r++;
+        ++$r;
     }
 }
 

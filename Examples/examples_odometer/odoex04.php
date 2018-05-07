@@ -1,5 +1,9 @@
 <?php
-//=============================================================================
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // File:	ODOEX04.PHP
 // Description: Example 1 for odometer graphs
 // Created:	2002-02-22
@@ -12,8 +16,8 @@
 //
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_odo.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=250, height=200 pixels)
@@ -25,10 +29,10 @@ $graph = new OdoGraph(250, 200);
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
 //---------------------------------------------------------------------
-$graph->title->Set("Odometer title");
-$graph->title->SetColor("white");
-$graph->subtitle->Set("2002-02-13");
-$graph->subtitle->SetColor("white");
+$graph->title->Set('Odometer title');
+$graph->title->SetColor('white');
+$graph->subtitle->Set('2002-02-13');
+$graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------
 // Specify caption.
@@ -38,7 +42,7 @@ $graph->subtitle->SetColor("white");
 // string.
 //---------------------------------------------------------------------
 $graph->caption->Set("First caption row\n... second row");
-$graph->caption->SetColor("white");
+$graph->caption->SetColor('white');
 
 //---------------------------------------------------------------------
 // Now we need to create an odometer to add to the graph.
@@ -49,9 +53,9 @@ $odo = new Odometer();
 //---------------------------------------------------------------------
 // Set color indication
 //---------------------------------------------------------------------
-$odo->AddIndication(0, 50, "green");
-$odo->AddIndication(50, 80, "yellow");
-$odo->AddIndication(80, 100, "red");
+$odo->AddIndication(0, 50, 'green');
+$odo->AddIndication(50, 80, 'yellow');
+$odo->AddIndication(80, 100, 'red');
 
 //---------------------------------------------------------------------
 // Set the center area that will not be affected by the color bands
@@ -79,8 +83,7 @@ $odo->needle->Set(30);
 //---------------------------------------------------------------------
 $odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
 $odo->needle->SetLength(0.7);  // Length as 70% of the radius
-$odo->needle->SetFillColor("orange");
-
+$odo->needle->SetFillColor('orange');
 
 //---------------------------------------------------------------------
 // Add the odometer to the graph

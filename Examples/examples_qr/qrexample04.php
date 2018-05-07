@@ -1,13 +1,16 @@
 <?php
-    // Example 4 : QR Barcode with specified version and error correction level
+
+/**
+ * JPGraph v3.6.15
+ */    
 
     // Include the library
-    require_once('jpgraph/QR/qrencoder.inc.php');
+    require_once 'jpgraph/QR/qrencoder.inc.php';
 
     // Data to be encoded
     $data      = '01234567';
     $version   = 12;  // Use QR version 4
-    $corrlevel = QRCapacity::ErrH ; // Level H error correction (the highest possible)
+    $corrlevel = QRCapacity::ErrH; // Level H error correction (the highest possible)
 
     // Create a new instance of the encoder using the specified
     // QR version and error correction

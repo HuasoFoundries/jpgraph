@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -11,19 +16,19 @@ class MileStone extends GanttPlotObject
 
     //---------------
     // CONSTRUCTOR
-    public function __construct($aVPos, $aLabel, $aDate, $aCaption = "")
+    public function __construct($aVPos, $aLabel, $aDate, $aCaption = '')
     {
         GanttPlotObject::__construct();
         $this->caption->Set($aCaption);
-        $this->caption->Align("left", "center");
+        $this->caption->Align('left', 'center');
         $this->caption->SetFont(FF_FONT1, FS_BOLD);
         $this->title->Set($aLabel);
-        $this->title->SetColor("darkred");
+        $this->title->SetColor('darkred');
         $this->mark = new PlotMark();
         $this->mark->SetWidth(10);
         $this->mark->SetType(MARK_DIAMOND);
-        $this->mark->SetColor("darkred");
-        $this->mark->SetFillColor("darkred");
+        $this->mark->SetColor('darkred');
+        $this->mark->SetFillColor('darkred');
         $this->iVPos  = $aVPos;
         $this->iStart = $aDate;
     }
@@ -51,24 +56,24 @@ class MileStone extends GanttPlotObject
             $yb = round($y + $this->title->GetHeight($aImg) / 2);
 
             $colwidth  = $this->title->GetColWidth($aImg);
-            $colstarts = array();
+            $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
             $n = min(count($colwidth), count($this->title->csimtarget));
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
-                $coords   = "$title_xt,$yt,$title_xb,$yt,$title_xb,$yb,$title_xt,$yb";
+                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"$coords\" href=\"" . $this->title->csimtarget[$i] . "\"";
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= "target=\"" . $this->title->csimwintarget[$i] . "\"";
+                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'"';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {
                         $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"$tmp\" alt=\"$tmp\" ";
+                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
                     }
                     $this->csimarea .= " />\n";
                 }

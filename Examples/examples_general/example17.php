@@ -1,15 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay1 = array(11, 7, 5, 8, 3, 5, 5, 4, 8, 6, 5, 5, 3, 2, 5, 1, 2, 0);
-$datay2 = array(4, 5, 4, 5, 6, 5, 7, 4, 7, 4, 4, 3, 2, 4, 1, 2, 2, 1);
-$datay3 = array(4, 5, 7, 10, 13, 15, 15, 22, 26, 26, 30, 34, 40, 43, 47, 55, 60, 62);
+$datay1 = [11, 7, 5, 8, 3, 5, 5, 4, 8, 6, 5, 5, 3, 2, 5, 1, 2, 0];
+$datay2 = [4, 5, 4, 5, 6, 5, 7, 4, 7, 4, 4, 3, 2, 4, 1, 2, 2, 1];
+$datay3 = [4, 5, 7, 10, 13, 15, 15, 22, 26, 26, 30, 34, 40, 43, 47, 55, 60, 62];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 20, 40);
 
@@ -18,9 +22,9 @@ $dplot[] = new Plot\LinePlot($datay1);
 $dplot[] = new Plot\LinePlot($datay2);
 $dplot[] = new Plot\LinePlot($datay3);
 
-$dplot[0]->SetFillColor("red");
-$dplot[1]->SetFillColor("blue");
-$dplot[2]->SetFillColor("green");
+$dplot[0]->SetFillColor('red');
+$dplot[1]->SetFillColor('blue');
+$dplot[2]->SetFillColor('green');
 
 // Create the accumulated graph
 $accplot = new AccLinePlot($dplot);
@@ -29,9 +33,9 @@ $accplot = new AccLinePlot($dplot);
 $graph->Add($accplot);
 
 $graph->xaxis->SetTextTickInterval(2);
-$graph->title->Set("Example 17");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->title->Set('Example 17');
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);

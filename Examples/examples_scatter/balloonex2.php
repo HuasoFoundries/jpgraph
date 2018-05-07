@@ -1,15 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
 // Each ballon is specificed by four values.
 // (X,Y,Size,Color)
-$data = array(
-    array(1, 12, 10, 'orange'),
-    array(3, 41, 15, 'red'),
-    array(4, 5, 19, 'lightblue'),
-    array(5, 70, 22, 'yellow'),
-);
+$data = [
+    [1, 12, 10, 'orange'],
+    [3, 41, 15, 'red'],
+    [4, 5, 19, 'lightblue'],
+    [5, 70, 22, 'yellow'],
+];
 
 // We need to create X,Y data vectors suitable for the
 // library from the above raw data.
@@ -20,7 +24,7 @@ for ($i = 0; $i < $n; ++$i) {
 
     // Create a faster lookup array so we don't have to search
     // for the correct values in the callback function
-    $format[strval($datax[$i])][strval($datay[$i])] = array($data[$i][2], $data[$i][3]);
+    $format[(string) ($datax[$i])][(string) ($datay[$i])] = [$data[$i][2], $data[$i][3]];
 }
 
 // Callback for markers
@@ -30,17 +34,18 @@ for ($i = 0; $i < $n; ++$i) {
 function FCallback($aYVal, $aXVal)
 {
     global $format;
-    return array($format[strval($aXVal)][strval($aYVal)][0], '',
-        $format[strval($aXVal)][strval($aYVal)][1], '', '');
+
+    return [$format[(string) $aXVal][(string) $aYVal][0], '',
+        $format[(string) $aXVal][(string) $aYVal][1], '', '', ];
 }
 
 // Setup a basic graph
 $graph = new Graph\Graph(450, 300, 'auto');
-$graph->SetScale("intlin");
+$graph->SetScale('intlin');
 $graph->SetMargin(40, 40, 40, 40);
 $graph->SetMarginColor('wheat');
 
-$graph->title->Set("Example of ballon scatter plot with X,Y callback");
+$graph->title->Set('Example of ballon scatter plot with X,Y callback');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 
@@ -64,7 +69,7 @@ $sp1->value->Show();
 $sp1->value->SetFont(FF_FONT1, FS_BOLD);
 
 // Specify the callback
-$sp1->mark->SetCallbackYX("FCallback");
+$sp1->mark->SetCallbackYX('FCallback');
 
 // Add the scatter plot to the graph
 $graph->Add($sp1);

@@ -1,27 +1,31 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_matrix.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
-$data = array(
-	array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-	array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0),
-	array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-	array(10, 9, 8, 17, 6, 5, 4, 3, 2, 1, 0),
-	array(0, 1, 2, 3, 4, 4, 9, 7, 8, 9, 10),
-	array(8, 1, 2, 3, 4, 8, 3, 7, 8, 9, 10),
-	array(10, 3, 5, 7, 6, 5, 4, 3, 12, 1, 0),
-	array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0),
-);
+$data = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    [10, 9, 8, 17, 6, 5, 4, 3, 2, 1, 0],
+    [0, 1, 2, 3, 4, 4, 9, 7, 8, 9, 10],
+    [8, 1, 2, 3, 4, 8, 3, 7, 8, 9, 10],
+    [10, 3, 5, 7, 6, 5, 4, 3, 12, 1, 0],
+    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+];
 
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 4);
 $r = count($data);
 $c = count($data[0]);
 
-$width = 300;
+$width  = 300;
 $height = 300;
-$graph = new MatrixGraph($width, $height);
+$graph  = new MatrixGraph($width, $height);
 $graph->title->Set('Adding a background image');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->subtitle->Set('Alphablending = 0.2');

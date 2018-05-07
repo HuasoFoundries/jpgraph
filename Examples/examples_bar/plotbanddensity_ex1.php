@@ -1,9 +1,13 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(10, 29, 3, 6);
+$datay = [10, 29, 3, 6];
 
 // Create the graph.
 $graph = new Graph\Graph(200, 200);
@@ -16,7 +20,7 @@ $graph->yscale->SetGrace(10);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
-$bplot->SetFillColor("lightblue");
+$bplot->SetFillColor('lightblue');
 
 $graph->ygrid->Show(false);
 

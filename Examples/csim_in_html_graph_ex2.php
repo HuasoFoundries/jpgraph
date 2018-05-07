@@ -1,21 +1,21 @@
 <?php // content="text/plain; charset=utf-8"
 // Example of pie with center circle
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_pie.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_pie.php';
 
 // Some data
-$data = array(50,28,25,27,31,20);
+$data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
 $piegraph = new PieGraph(400, 320);
 
-$n = count($data) ; // Number of slices
+$n = count($data); // Number of slices
 
 // No border around graph
 $piegraph->SetFrame(false);
 
 // Setup title
-$piegraph->title->Set("CSIM Center Pie plot");
+$piegraph->title->Set('CSIM Center Pie plot');
 $piegraph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
 $piegraph->title->SetMargin(8); // Add a little bit more margin from the top
 
@@ -42,8 +42,8 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // The label array values may have printf() formatting in them. The argument to the
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
-$lbl = array("Jan\n%.1f%%","Feb\n%.1f%%","March\n%.1f%%",
-             "Apr\n%.1f%%","May\n%.1f%%","Jun\n%.1f%%");
+$lbl = ["Jan\n%.1f%%", "Feb\n%.1f%%", "March\n%.1f%%",
+             "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%", ];
 $p1->SetLabels($lbl);
 
 // Add drop shadow to slices
@@ -54,7 +54,7 @@ $p1->ExplodeAll(15);
 
 // Setup the CSIM targets
 global $_wrapperfilename;
-$targ = array(); $alt = array(); $wtarg = array();
+$targ = []; $alt = []; $wtarg = [];
 for ($i=0; $i <= $n; ++$i) {
     $urlarg  = 'pie_clickedon='.($i + 1);
     $targ[]  = $_wrapperfilename.'?'.$urlarg;

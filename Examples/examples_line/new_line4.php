@@ -1,20 +1,24 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
-$datay1 = array(33, 20, 24, 5, 38, 24, 22);
-$datay2 = array(9, 7, 10, 25, 10, 8, 4);
+$datay1 = [33, 20, 24, 5, 38, 24, 22];
+$datay2 = [9, 7, 10, 25, 10, 8, 4];
 
 // Setup the graph
 $graph = new Graph\Graph(300, 250);
 
-$graph->SetScale("textlin", 0, 50);
+$graph->SetScale('textlin', 0, 50);
 
-$theme_class = new UniversalTheme;
+$theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
 
-$graph->title->Set("Line Plots with Markers");
+$graph->title->Set('Line Plots with Markers');
 
 $graph->SetBox(false);
 $graph->ygrid->SetFill(false);
@@ -22,7 +26,7 @@ $graph->yaxis->HideLine(false);
 $graph->yaxis->HideTicks(false, false);
 $graph->yaxis->HideZeroLabel();
 
-$graph->xaxis->SetTickLabels(array('A', 'B', 'C', 'D', 'E', 'F', 'G'));
+$graph->xaxis->SetTickLabels(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
 // Create the plot
 $p1 = new Plot\LinePlot($datay1);
 $graph->Add($p1);

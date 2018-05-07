@@ -1,4 +1,9 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 //=======================================================================
 // File:	    MKGRAD.PHP
 // Description:	Simple tool to create a gradient background
@@ -6,10 +11,9 @@
 //=======================================================================
 
 // Basic library classes
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_bar.php');
-require_once('jpgraph/jpgraph_canvas.php');
-  
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_bar.php';
+require_once 'jpgraph/jpgraph_canvas.php';
 
 // Must have a global comparison method for usort()
 function _cmp($a, $b)
@@ -22,20 +26,21 @@ class Form
 {
     public $iColors;
     public $iGradstyles;
-    public function Form()
+
+    public function __construct()
     {
         $rgb           = new RGB();
         $this->iColors = array_keys($rgb->rgb_table);
         usort($this->iColors, '_cmp');
 
-        $this->iGradstyles = array(
-        "Vertical",2,
-        "Horizontal",1,
-        "Vertical from middle",3,
-        "Horizontal from middle",4,
-        "Horizontal wider middle",6,
-        "Vertical wider middle",7,
-        "Rectangle",5 );
+        $this->iGradstyles = [
+        'Vertical', 2,
+        'Horizontal', 1,
+        'Vertical from middle', 3,
+        'Horizontal from middle', 4,
+        'Horizontal wider middle', 6,
+        'Vertical wider middle', 7,
+        'Rectangle', 5, ];
     }
 
     public function Run()
@@ -67,45 +72,46 @@ class Form
         return '<INPUT TYPE=submit name="ok"  value=" Ok " >';
     }
 
-
     public function GenHTMLInput($name, $len, $maxlen=100, $val='')
     {
         return '<INPUT TYPE=TEXT NAME='.$name.' VALUE="'.$val.'" SIZE='.$len.' MAXLENGTH='.$maxlen.'>';
     }
 
-    public function GenHTMLSelect($name, $option, $selected="", $size=0)
+    public function GenHTMLSelect($name, $option, $selected='', $size=0)
     {
-        $txt="<select name=$name";
+        $txt="<select name=${name}";
         if ($size > 0) {
-            $txt .= " size=$size >";
+            $txt .= " size=${size} >";
         } else {
-            $txt .= ">";
+            $txt .= '>';
         }
-        for ($i=0; $i < count($option); $i++) {
+        for ($i=0; $i < count($option); ++$i) {
             if ($selected == $option[$i]) {
-                $txt=$txt."<option selected value=\"$option[$i]\">$option[$i]</option>\n";
+                $txt=$txt."<option selected value=\"{$option[$i]}\">{$option[$i]}</option>\n";
             } else {
-                $txt=$txt."<option value=\"".$option[$i]."\">$option[$i]</option>\n";
+                $txt=$txt.'<option value="'.$option[$i]."\">{$option[$i]}</option>\n";
             }
         }
+
         return $txt."</select>\n";
     }
-    
-    public function GenHTMLSelectCode($name, $option, $selected="", $size=0)
+
+    public function GenHTMLSelectCode($name, $option, $selected='', $size=0)
     {
-        $txt="<select name=$name";
+        $txt="<select name=${name}";
         if ($size > 0) {
-            $txt .= " size=$size >";
+            $txt .= " size=${size} >";
         } else {
-            $txt .= ">";
+            $txt .= '>';
         }
         for ($i=0; $i < count($option); $i += 2) {
             if ($selected == $option[($i + 1)]) {
-                $txt=$txt."<option selected value=".$option[($i + 1)].">$option[$i]</option>\n";
+                $txt=$txt.'<option selected value='.$option[($i + 1)].">{$option[$i]}</option>\n";
             } else {
-                $txt=$txt."<option value=\"".$option[($i + 1)]."\">$option[$i]</option>\n";
+                $txt=$txt.'<option value="'.$option[($i + 1)]."\">{$option[$i]}</option>\n";
             }
         }
+
         return $txt."</select>\n";
     }
 }
@@ -123,15 +129,15 @@ class Driver
     public $iStyle;
     public $iForm;
 
-    public function Driver()
+    public function __construct()
     {
         $this->iForm = new Form();
     }
 
     public function GenGradImage()
     {
-        $aWidth     = (int)@$_POST['w'];
-        $aHeight    = (int)@$_POST['h'];
+        $aWidth     = (int) @$_POST['w'];
+        $aHeight    = (int) @$_POST['h'];
         $aFrom      = @$_POST['fc'];
         $aTo        = @$_POST['tc'];
         $aStyle     = @$_POST['s'];
@@ -145,20 +151,23 @@ class Driver
 
         $this->graph = new CanvasGraph($aWidth, $aHeight);
         $this->grad  = new Gradient($this->graph->img);
-        $this->grad->FilledRectangle(0,0,
-                     $this->iWidth,$this->iHeight,
+        $this->grad->FilledRectangle(
+            0,
+            0,
+                     $this->iWidth,
+            $this->iHeight,
                      $this->iFromColor,
                      $this->iToColor,
-                     $this->iStyle);
+                     $this->iStyle
+        );
 
-        if ($aFileName != "") {
+        if ($aFileName != '') {
             $this->graph->Stroke($aFileName);
-            echo "Image file '$aFileName' created.";
+            echo "Image file '${aFileName}' created.";
         } else {
             $this->graph->Stroke();
         }
     }
-
 
     public function Run()
     {

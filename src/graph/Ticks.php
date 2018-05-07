@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -16,10 +20,10 @@ class Ticks
     public $supress_last                     = false;
     public $supress_tickmarks                = false;
     public $supress_minor_tickmarks          = false;
-    public $maj_ticks_pos                    = array();
-    public $maj_ticklabels_pos               = array();
-    public $ticks_pos                        = array();
-    public $maj_ticks_label                  = array();
+    public $maj_ticks_pos                    = [];
+    public $maj_ticklabels_pos               = [];
+    public $ticks_pos                        = [];
+    public $maj_ticks_label                  = [];
     public $precision;
 
     protected $minor_abs_size = 3;

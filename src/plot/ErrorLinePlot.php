@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -9,7 +14,8 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class ErrorLinePlot extends ErrorPlot
 {
-    public $line = null;
+    public $line;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
@@ -27,7 +33,7 @@ class ErrorLinePlot extends ErrorPlot
     // PUBLIC METHODS
     public function Legend($graph)
     {
-        if ($this->legend != "") {
+        if ($this->legend != '') {
             $graph->legend->Add($this->legend, $this->color);
         }
 

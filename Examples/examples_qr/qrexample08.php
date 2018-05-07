@@ -1,9 +1,12 @@
 <?php
-    // Example 8 : QR Barcode with data read from file
+
+/**
+ * JPGraph v3.6.15
+ */    
 
     // Include the library
-    require_once('jpgraph/jpgraph.php');
-    require_once('jpgraph/QR/qrencoder.inc.php');
+    require_once 'jpgraph/jpgraph.php';
+    require_once 'jpgraph/QR/qrencoder.inc.php';
 
     $readFromFilename = 'qr-input.txt';
 

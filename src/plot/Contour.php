@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
@@ -21,31 +26,33 @@ define('VERT_EDGE', 1);
  * of the specified isobars in the data matrix specified. It is assumed that the
  * data matrix models an equspaced X-Y mesh of datavalues corresponding to the Z
  * values.
- *
  */
 class Contour
 {
-    private $dataPoints     = array();
+    private $dataPoints     = [];
     private $nbrCols        = 0;
     private $nbrRows        = 0;
-    private $horizEdges     = array();
-    private $vertEdges      = array();
-    private $isobarValues   = array();
-    private $stack          = null;
-    private $isobarCoord    = array();
+    private $horizEdges     = [];
+    private $vertEdges      = [];
+    private $isobarValues   = [];
+    private $stack;
+    private $isobarCoord    = [];
     private $nbrIsobars     = 10;
-    private $isobarColors   = array();
+    private $isobarColors   = [];
     private $invert         = true;
     private $highcontrast   = false;
     private $highcontrastbw = false;
 
     /**
      * Create a new contour level "algorithm machine".
+     *
      * @param $aMatrix    The values to find the contour from
      * @param $aIsobars Mixed. If integer it determines the number of isobars to be used. The levels are determined
      * automatically as equdistance between the min and max value of the matrice.
      * If $aIsobars is an array then this is interpretated as an array of values to be used as isobars in the
      * contour plot.
+     * @param null|mixed $aColors
+     *
      * @return an instance of the contour algorithm
      */
     public function __construct($aMatrix, $aIsobars = 10, $aColors = null)
@@ -64,7 +71,7 @@ class Contour
             list($min, $max)  = $this->getMinMaxVal();
             $stepSize         = ($max - $min) / $aIsobars;
             $isobar           = $min + $stepSize / 2;
-            for ($i = 0; $i < $aIsobars; $i++) {
+            for ($i = 0; $i < $aIsobars; ++$i) {
                 $this->isobarValues[$i] = $isobar;
                 $isobar += $stepSize;
             }
@@ -87,7 +94,7 @@ class Contour
 
     /**
      * Flip the plot around the Y-coordinate. This has the same affect as flipping the input
-     * data matrice
+     * data matrice.
      *
      * @param $aFlg If true the the vertice in input data matrice position (0,0) corresponds to the top left
      * corner of teh plot otherwise it will correspond to the bottom left corner (a horizontal flip)
@@ -98,7 +105,7 @@ class Contour
     }
 
     /**
-     * Find the min and max values in the data matrice
+     * Find the min and max values in the data matrice.
      *
      * @return array(min_value,max_value)
      */
@@ -106,7 +113,7 @@ class Contour
     {
         $min = $this->dataPoints[0][0];
         $max = $this->dataPoints[0][0];
-        for ($i = 0; $i < $this->nbrRows; $i++) {
+        for ($i = 0; $i < $this->nbrRows; ++$i) {
             if (($mi = min($this->dataPoints[$i])) < $min) {
                 $min = $mi;
             }
@@ -115,18 +122,19 @@ class Contour
                 $max = $ma;
             }
         }
-        return array($min, $max);
+
+        return [$min, $max];
     }
 
     /**
      * Reset the two matrices that keeps track on where the isobars crosses the
-     * horizontal and vertical edges
+     * horizontal and vertical edges.
      */
     public function resetEdgeMatrices()
     {
-        for ($k = 0; $k < 2; $k++) {
-            for ($i = 0; $i <= $this->nbrRows; $i++) {
-                for ($j = 0; $j <= $this->nbrCols; $j++) {
+        for ($k = 0; $k < 2; ++$k) {
+            for ($i = 0; $i <= $this->nbrRows; ++$i) {
+                for ($j = 0; $j <= $this->nbrCols; ++$j) {
                     $this->edges[$k][$i][$j] = false;
                 }
             }
@@ -134,11 +142,12 @@ class Contour
     }
 
     /**
-     * Determine if the specified isobar crosses the horizontal edge specified by its row and column
+     * Determine if the specified isobar crosses the horizontal edge specified by its row and column.
      *
      * @param $aRow Row index of edge to be checked
      * @param $aCol Col index of edge to be checked
      * @param $aIsobar Isobar value
+     *
      * @return true if the isobar is crossing this edge
      */
     public function isobarHCrossing($aRow, $aCol, $aIsobar)
@@ -159,11 +168,12 @@ class Contour
     }
 
     /**
-     * Determine if the specified isobar crosses the vertical edge specified by its row and column
+     * Determine if the specified isobar crosses the vertical edge specified by its row and column.
      *
      * @param $aRow Row index of edge to be checked
      * @param $aCol Col index of edge to be checked
      * @param $aIsobar Isobar value
+     *
      * @return true if the isobar is crossing this edge
      */
     public function isobarVCrossing($aRow, $aCol, $aIsobar)
@@ -193,18 +203,18 @@ class Contour
     {
         $ib = $this->isobarValues[$aIsobar];
 
-        for ($i = 0; $i < $this->nbrRows - 1; $i++) {
-            for ($j = 0; $j < $this->nbrCols - 1; $j++) {
+        for ($i = 0; $i < $this->nbrRows - 1; ++$i) {
+            for ($j = 0; $j < $this->nbrCols - 1; ++$j) {
                 $this->edges[HORIZ_EDGE][$i][$j] = $this->isobarHCrossing($i, $j, $ib);
                 $this->edges[VERT_EDGE][$i][$j]  = $this->isobarVCrossing($i, $j, $ib);
             }
         }
 
         // We now have the bottom and rightmost edges unsearched
-        for ($i = 0; $i < $this->nbrRows - 1; $i++) {
+        for ($i = 0; $i < $this->nbrRows - 1; ++$i) {
             $this->edges[VERT_EDGE][$i][$j] = $this->isobarVCrossing($i, $this->nbrCols - 1, $ib);
         }
-        for ($j = 0; $j < $this->nbrCols - 1; $j++) {
+        for ($j = 0; $j < $this->nbrCols - 1; ++$j) {
             $this->edges[HORIZ_EDGE][$i][$j] = $this->isobarHCrossing($this->nbrRows - 1, $j, $ib);
         }
     }
@@ -212,17 +222,18 @@ class Contour
     /**
      * Return the normalized coordinates for the crossing of the specified edge with the specified
      * isobar- The crossing is simpy detrmined with a linear interpolation between the two vertices
-     * on each side of the edge and the value of the isobar
+     * on each side of the edge and the value of the isobar.
      *
      * @param $aRow Row of edge
      * @param $aCol Column of edge
      * @param $aEdgeDir Determine if this is a horizontal or vertical edge
      * @param $ib The isobar value
+     * @param mixed $aIsobarVal
+     *
      * @return unknown_type
      */
     public function getCrossingCoord($aRow, $aCol, $aEdgeDir, $aIsobarVal)
     {
-
         // In order to avoid numerical problem when two vertices are very close
         // we have to check and avoid dividing by close to zero denumerator.
         if ($aEdgeDir == HORIZ_EDGE) {
@@ -245,7 +256,8 @@ class Contour
         if ($this->invert) {
             $ycoord = $this->nbrRows - 1 - $ycoord;
         }
-        return array($xcoord, $ycoord);
+
+        return [$xcoord, $ycoord];
     }
 
     /**
@@ -253,12 +265,11 @@ class Contour
      * controls for the degenerated case where the contour levels exactly crosses
      * one of the vertices we add a very small delta (0.1%) to the data point value.
      * This has no visible affect but it makes the code sooooo much cleaner.
-     *
      */
     public function adjustDataPointValues()
     {
         $ni = count($this->isobarValues);
-        for ($k = 0; $k < $ni; $k++) {
+        for ($k = 0; $k < $ni; ++$k) {
             $ib = $this->isobarValues[$k];
             for ($row = 0; $row < $this->nbrRows - 1; ++$row) {
                 for ($col = 0; $col < $this->nbrCols - 1; ++$col) {
@@ -273,6 +284,7 @@ class Contour
     /**
      * @param $aFlg
      * @param $aBW
+     *
      * @return unknown_type
      */
     public function UseHighContrastColor($aFlg = true, $aBW = false)
@@ -282,28 +294,27 @@ class Contour
     }
 
     /**
-     * Calculate suitable colors for each defined isobar
-     *
+     * Calculate suitable colors for each defined isobar.
      */
     public function CalculateColors()
     {
         if ($this->highcontrast) {
             if ($this->highcontrastbw) {
-                for ($ib = 0; $ib < $this->nbrIsobars; $ib++) {
+                for ($ib = 0; $ib < $this->nbrIsobars; ++$ib) {
                     $this->isobarColors[$ib] = 'black';
                 }
             } else {
                 // Use only blue/red scale
                 $step = round(255 / ($this->nbrIsobars - 1));
-                for ($ib = 0; $ib < $this->nbrIsobars; $ib++) {
-                    $this->isobarColors[$ib] = array($ib * $step, 50, 255 - $ib * $step);
+                for ($ib = 0; $ib < $this->nbrIsobars; ++$ib) {
+                    $this->isobarColors[$ib] = [$ib * $step, 50, 255 - $ib * $step];
                 }
             }
         } else {
             $n    = $this->nbrIsobars;
             $v    = 0;
             $step = 1 / ($this->nbrIsobars - 1);
-            for ($ib = 0; $ib < $this->nbrIsobars; $ib++) {
+            for ($ib = 0; $ib < $this->nbrIsobars; ++$ib) {
                 $this->isobarColors[$ib] = Image\RGB::GetSpectrum($v);
                 $v += $step;
             }
@@ -323,41 +334,40 @@ class Contour
     {
         $this->adjustDataPointValues();
 
-        for ($isobar = 0; $isobar < $this->nbrIsobars; $isobar++) {
+        for ($isobar = 0; $isobar < $this->nbrIsobars; ++$isobar) {
             $ib = $this->isobarValues[$isobar];
             $this->resetEdgeMatrices();
             $this->determineIsobarEdgeCrossings($isobar);
-            $this->isobarCoord[$isobar] = array();
+            $this->isobarCoord[$isobar] = [];
 
             $ncoord = 0;
 
             for ($row = 0; $row < $this->nbrRows - 1; ++$row) {
                 for ($col = 0; $col < $this->nbrCols - 1; ++$col) {
-
                     // Find out how many crossings around the edges
                     $n = 0;
                     if ($this->edges[HORIZ_EDGE][$row][$col]) {
-                        $neigh[$n++] = array($row, $col, HORIZ_EDGE);
+                        $neigh[$n++] = [$row, $col, HORIZ_EDGE];
                     }
 
                     if ($this->edges[HORIZ_EDGE][$row + 1][$col]) {
-                        $neigh[$n++] = array($row + 1, $col, HORIZ_EDGE);
+                        $neigh[$n++] = [$row + 1, $col, HORIZ_EDGE];
                     }
 
                     if ($this->edges[VERT_EDGE][$row][$col]) {
-                        $neigh[$n++] = array($row, $col, VERT_EDGE);
+                        $neigh[$n++] = [$row, $col, VERT_EDGE];
                     }
 
                     if ($this->edges[VERT_EDGE][$row][$col + 1]) {
-                        $neigh[$n++] = array($row, $col + 1, VERT_EDGE);
+                        $neigh[$n++] = [$row, $col + 1, VERT_EDGE];
                     }
 
                     if ($n == 2) {
                         $n1                                    = 0;
                         $n2                                    = 1;
-                        $this->isobarCoord[$isobar][$ncoord++] = array(
+                        $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib));
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
                     } elseif ($n == 4) {
                         // We must determine how to connect the edges either northwest->southeast or
                         // northeast->southwest. We do that by calculating the imaginary middle value of
@@ -385,13 +395,13 @@ class Contour
                             $n4 = 1;
                         }
 
-                        $this->isobarCoord[$isobar][$ncoord++] = array(
+                        $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib));
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
 
-                        $this->isobarCoord[$isobar][$ncoord++] = array(
+                        $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n3][0], $neigh[$n3][1], $neigh[$n3][2], $ib),
-                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib));
+                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib), ];
                     }
                 }
             }
@@ -401,7 +411,8 @@ class Contour
             // No manually specified colors. Calculate them automatically.
             $this->CalculateColors();
         }
-        return array($this->isobarCoord, $this->isobarValues, $this->isobarColors);
+
+        return [$this->isobarCoord, $this->isobarValues, $this->isobarColors];
     }
 }
 

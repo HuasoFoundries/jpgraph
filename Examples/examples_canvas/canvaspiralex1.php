@@ -1,8 +1,7 @@
 <?php // content="text/plain; charset=utf-8"
 // $Id: canvaspiralex1.php,v 1.1 2002/10/26 11:35:42 aditus Exp $
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_canvas.php');
-
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
 
 if (empty($_GET['r'])) {
     $r = 0.44;
@@ -29,7 +28,6 @@ if ($h < 60) {
     $h=60;
 }
 
-
 function SeaShell($img, $x, $y, $w, $h, $r, $n=12, $color1='navy', $color2='red')
 {
     $x += $w;
@@ -48,7 +46,7 @@ function SeaShell($img, $x, $y, $w, $h, $r, $n=12, $color1='navy', $color2='red'
         if ($i % 2 == 1) {
             $y = $y + $s1 * $h * $r;
             $h = (1 - $r) * $h;
-            $w = $w / (1 - $r) * $r ;
+            $w = $w / (1 - $r) * $r;
             $s1 *= -1;
             $img->SetColor($color1);
             $img->Line($x, $y, $x + $s1 * $w, $y);
@@ -79,7 +77,7 @@ $g->img->SetColor('black');
 $g->img->Rectangle(0, 20, $w - 1, $h - 1);
 $g->img->SetFont(FF_FONT2, FS_BOLD);
 $g->img->SetTextAlign('center', 'top');
-$g->img->StrokeText($w / 2, 0, "Canvas Spiral");
+$g->img->StrokeText($w / 2, 0, 'Canvas Spiral');
 
 $g->Stroke();
 ?>

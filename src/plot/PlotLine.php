@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -97,8 +102,15 @@ class PlotLine
         if ($this->legend != '') {
             $dummyPlotMark = new PlotMark();
             $lineStyle     = 1;
-            $aGraph->legend->Add($this->legend, $this->color, $dummyPlotMark, $lineStyle,
-                $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+            $aGraph->legend->Add(
+                $this->legend,
+                $this->color,
+                $dummyPlotMark,
+                $lineStyle,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
         }
     }
 
@@ -122,12 +134,12 @@ class PlotLine
 
     public function Min()
     {
-        return array(null, null);
+        return [null, null];
     }
 
     public function Max()
     {
-        return array(null, null);
+        return [null, null];
     }
 
     public function _Stroke($aImg, $aMinX, $aMinY, $aMaxX, $aMaxY, $aXPos, $aYPos)
@@ -153,7 +165,8 @@ class PlotLine
 
     public function Stroke($aImg, $aXScale, $aYScale)
     {
-        $this->_Stroke($aImg,
+        $this->_Stroke(
+            $aImg,
             $aImg->left_margin,
             $aYScale->Translate($aYScale->GetMinVal()),
             $aImg->width - $aImg->right_margin,

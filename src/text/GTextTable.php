@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Text;
 
 //---------------------------------------------------------------------
@@ -8,23 +13,24 @@ namespace Amenadiel\JpGraph\Text;
 //---------------------------------------------------------------------
 class GTextTable
 {
-    public $iCells         = array();
-    public $iSize          = array(0, 0); // Need to be public since they are used by the cell
+    public $iCells         = [];
+    public $iSize          = [0, 0]; // Need to be public since they are used by the cell
     private $iWidth        = 0;
     private $iHeight       = 0;
-    private $iColWidth     = null;
-    private $iRowHeight    = null;
-    private $iImg          = null;
+    private $iColWidth;
+    private $iRowHeight;
+    private $iImg;
     private $iXPos         = 0;
     private $iYPos         = 0;
-    private $iScaleXPos    = null;
-    private $iScaleYPos    = null;
+    private $iScaleXPos;
+    private $iScaleYPos;
     private $iBGColor      = '';
     private $iBorderColor  = 'black';
     private $iBorderWeight = 1;
     private $iInit         = false;
     private $iYAnchor      = 'top';
     private $iXAnchor      = 'left';
+
     /*-----------------------------------------------------------------
      * First and second phase constructors
      *-----------------------------------------------------------------
@@ -168,14 +174,15 @@ class GTextTable
                     $t .= 'M ';
                 }
 
-                $t .= 'val=' . $this->iCells[$i][$j]->iVal->t;
-                $t .= ' (cs=' . $this->iCells[$i][$j]->iColSpan .
-                ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
+                $t .= 'val='.$this->iCells[$i][$j]->iVal->t;
+                $t .= ' (cs='.$this->iCells[$i][$j]->iColSpan.
+                ', rs='.$this->iCells[$i][$j]->iRowSpan.')';
                 $t .= '</td>';
             }
             $t .= '</tr>';
         }
         $t .= '</table>';
+
         return $t;
     }
 
@@ -733,7 +740,7 @@ class GTextTable
         for ($i = 0; $i < $m; ++$i) {
             for ($j = 0; $j < $n; ++$j) {
                 if ($aAutoTarget) {
-                    $t = $aTarget . "?row=$i&col=$j";
+                    $t = $aTarget."?row=${i}&col=${j}";
                 } else {
                     $t = $aTarget;
                 }
@@ -765,6 +772,7 @@ class GTextTable
                 $csim .= $this->iCells[$i][$j]->GetCSIMArea();
             }
         }
+
         return $csim;
     }
 
@@ -797,7 +805,8 @@ class GTextTable
         if ($this->iScaleXPos === null || $this->iScaleYPos === null) {
             return false;
         }
-        return array($this->iScaleXPos, $this->iScaleYPos);
+
+        return [$this->iScaleXPos, $this->iScaleYPos];
     }
 
     public function _autoSizeTable($aImg)
@@ -910,9 +919,11 @@ class GTextTable
                 break;
             case 'center':
                 $this->iXPos -= round($width / 2);
+
                 break;
             case 'right':
                 $this->iXPos -= $width;
+
                 break;
         }
         switch (strtolower($this->iYAnchor)) {
@@ -921,9 +932,11 @@ class GTextTable
             case 'center':
             case 'middle':
                 $this->iYPos -= round($height / 2);
+
                 break;
             case 'bottom':
                 $this->iYPos -= $height;
+
                 break;
         }
 
@@ -961,9 +974,12 @@ class GTextTable
             $aImg->Rectangle($this->iXPos, $this->iYPos, $this->iXPos + $width, $this->iYPos + $height);
         } else {
             for ($i = 0; $i < $this->iBorderWeight; ++$i) {
-                $aImg->Rectangle($this->iXPos + $i, $this->iYPos + $i,
+                $aImg->Rectangle(
+                    $this->iXPos + $i,
+                    $this->iYPos + $i,
                     $this->iXPos + $width - 1 + $this->iBorderWeight - $i,
-                    $this->iYPos + $height - 1 + $this->iBorderWeight - $i);
+                    $this->iYPos + $height - 1 + $this->iBorderWeight - $i
+                );
             }
         }
     }

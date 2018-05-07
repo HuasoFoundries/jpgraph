@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -87,49 +92,56 @@ class GanttLink
             if ($x2 > $x1) {
                 switch ($this->iPathType) {
                     case 0:
-                        $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                        $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
+
                         break;
                     case 1:
                     case 2:
                     case 3:
-                        $c = array($x1, $y1, $x2, $y1, $x2, $y2);
+                        $c = [$x1, $y1, $x2, $y1, $x2, $y2];
+
                         break;
                     default:
                         Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type (='.$this->iPathType .') specified for link.');
                         exit(1);
+
                         break;
                 }
             } else {
                 switch ($this->iPathType) {
                     case 0:
                     case 1:
-                        $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                        $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
+
                         break;
                     case 2:
                         // Always extend out horizontally a bit from the first point
                         // If we draw a link back in time (end to start) and the bars
                         // are very close we also change the path so it comes in from
                         // the left on the activity
-                        $c = array($x1, $y1, $x1 + $this->iPathExtend, $y1,
+                        $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2);
+                            $x2, $midy, $x2, $y2, ];
+
                         break;
                     case 3:
                         if ($y2 - $midy < 6) {
-                            $c = array($x1, $y1, $x1, $midy,
+                            $c = [$x1, $y1, $x1, $midy,
                                 $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2);
+                                $x2, $y2, ];
                             $arrowtype = ARROW_RIGHT;
                         } else {
-                            $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                            $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }
+
                         break;
                     default:
                         Util\JpGraphError::RaiseL(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         exit(1);
+
                         break;
                 }
             }
@@ -142,15 +154,17 @@ class GanttLink
                 switch ($this->iPathType) {
                     case 0:
                     case 1:
-                        $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                        $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
+
                         break;
                     case 3:
                         if ($midy - $y2 < 8) {
                             $arrowtype = ARROW_RIGHT;
-                            $c         = array($x1, $y1, $x1, $y2, $x2, $y2);
+                            $c         = [$x1, $y1, $x1, $y2, $x2, $y2];
                         } else {
-                            $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                            $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }
+
                         break;
                     default:
                         Util\JpGraphError::RaiseL(6032, $this->iPathType);
@@ -161,23 +175,26 @@ class GanttLink
                 switch ($this->iPathType) {
                     case 0:
                     case 1:
-                        $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                        $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
+
                         break;
                     case 2:
                         // Always extend out horizontally a bit from the first point
-                        $c = array($x1, $y1, $x1 + $this->iPathExtend, $y1,
+                        $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2);
+                            $x2, $midy, $x2, $y2, ];
+
                         break;
                     case 3:
                         if ($midy - $y2 < 16) {
                             $arrowtype = ARROW_RIGHT;
-                            $c         = array($x1, $y1, $x1, $midy, $x2 - $this->iPathExtend, $midy,
+                            $c         = [$x1, $y1, $x1, $midy, $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2);
+                                $x2, $y2, ];
                         } else {
-                            $c = array($x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2);
+                            $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }
+
                         break;
                     default:
                         Util\JpGraphError::RaiseL(6032, $this->iPathType);

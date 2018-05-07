@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //=======================================================================
@@ -24,14 +29,14 @@ class IconPlot
     private $iHorAnchor       = 'left';
     private $iVertAnchor      = 'top';
     private $iFile            = '';
-    private $iAnchors         = array('left', 'right', 'top', 'bottom', 'center');
+    private $iAnchors         = ['left', 'right', 'top', 'bottom', 'center'];
     private $iCountryFlag     = '';
     private $iCountryStdSize  = 3;
-    private $iScalePosY       = null;
-    private $iScalePosX       = null;
+    private $iScalePosY;
+    private $iScalePosX;
     private $iImgString       = '';
 
-    public function __construct($aFile = "", $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
+    public function __construct($aFile = '', $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
     {
         $this->iFile  = $aFile;
         $this->iX     = $aX;
@@ -88,8 +93,8 @@ class IconPlot
 
     public function SetAnchor($aXAnchor = 'left', $aYAnchor = 'center')
     {
-        if (!in_array($aXAnchor, $this->iAnchors) ||
-            !in_array($aYAnchor, $this->iAnchors)) {
+        if (!in_array($aXAnchor, $this->iAnchors, true) ||
+            !in_array($aYAnchor, $this->iAnchors, true)) {
             Util\JpGraphError::RaiseL(8002); //("Anchor position for icons must be one of 'top', 'bottom', 'left', 'right' or 'center'");
         }
         $this->iHorAnchor  = $aXAnchor;
@@ -108,7 +113,7 @@ class IconPlot
 
     public function Max()
     {
-        return array(false, false);
+        return [false, false];
     }
 
     // The next four function are framework function tht gets called
@@ -136,7 +141,7 @@ class IconPlot
 
     public function Min()
     {
-        return array(false, false);
+        return [false, false];
     }
 
     public function StrokeMargin(&$aImg)
@@ -155,15 +160,18 @@ class IconPlot
             $axscale === null || $ayscale === null) {
             $this->_Stroke($aImg);
         } else {
-            $this->_Stroke($aImg,
+            $this->_Stroke(
+                $aImg,
                 round($axscale->Translate($this->iScalePosX)),
-                round($ayscale->Translate($this->iScalePosY)));
+                round($ayscale->Translate($this->iScalePosY))
+            );
         }
     }
 
     public function GetWidthHeight()
     {
         $dummy = 0;
+
         return $this->_Stroke($dummy, null, null, true);
     }
 
@@ -189,7 +197,7 @@ class IconPlot
         $iconh = imagesy($gdimg);
 
         if ($aReturnWidthHeight) {
-            return array(round($iconw * $this->iScale), round($iconh * $this->iScale));
+            return [round($iconw * $this->iScale), round($iconh * $this->iScale)];
         }
 
         if ($x !== null && $y !== null) {
@@ -221,9 +229,17 @@ class IconPlot
             $this->iY -= round($iconh * $this->iScale);
         }
 
-        $aImg->CopyMerge($gdimg, $this->iX, $this->iY, 0, 0,
-            round($iconw * $this->iScale), round($iconh * $this->iScale),
-            $iconw, $iconh,
-            $this->iMix);
+        $aImg->CopyMerge(
+            $gdimg,
+            $this->iX,
+            $this->iY,
+            0,
+            0,
+            round($iconw * $this->iScale),
+            round($iconh * $this->iScale),
+            $iconw,
+            $iconh,
+            $this->iMix
+        );
     }
 }

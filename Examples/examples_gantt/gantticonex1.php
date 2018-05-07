@@ -1,11 +1,11 @@
 <?php // content="text/plain; charset=utf-8"
 // Gantt example
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_gantt.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_gantt.php';
 
 // Basic Gantt graph
 $graph = new GanttGraph();
-$graph->title->Set("Gantt chart with title columns and icons");
+$graph->title->Set('Gantt chart with title columns and icons');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 
@@ -32,7 +32,9 @@ $graph->scale->year->grid->Show(true);
 
 // For the titles we also add a minimum width of 100 pixels for the Task name column
 $graph->scale->actinfo->SetColTitles(
-    array('Note','Task','Duration','Start','Finish'), array(30,100));
+    ['Note', 'Task', 'Duration', 'Start', 'Finish'],
+    [30, 100]
+);
 $graph->scale->actinfo->SetBackgroundColor('green:0.5@0.5');
 $graph->scale->actinfo->SetFont(FF_ARIAL, FS_NORMAL, 10);
 $graph->scale->actinfo->vgrid->SetStyle('solid');
@@ -47,26 +49,25 @@ $startconicon = new IconImage(GICON_FOLDEROPEN, 0.6);
 $endconicon   = new IconImage(GICON_TEXTIMPORTANT, 0.5);
 
 // Store the icons in the first column and use plain text in the others
-$data = array(
-    array(0,array($erricon,"Pre-study","102 days","23 Nov '01","1 Mar '02")
-          , "2001-11-23","2002-03-1",FF_ARIAL,FS_NORMAL,8),
-    array(1,array($startconicon,"Prototype","21 days","26 Oct '01","16 Nov '01"),
-          "2001-10-26","2001-11-16",FF_ARIAL,FS_NORMAL,8),
-    array(2,array($endconicon,"Report","12 days","1 Mar '02","13 Mar '02"),
-          "2002-03-01","2002-03-13",FF_ARIAL,FS_NORMAL,8)
-);
+$data = [
+    [0, [$erricon, 'Pre-study', '102 days', "23 Nov '01", "1 Mar '02"], '2001-11-23', '2002-03-1', FF_ARIAL, FS_NORMAL, 8],
+    [1, [$startconicon, 'Prototype', '21 days', "26 Oct '01", "16 Nov '01"],
+          '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8, ],
+    [2, [$endconicon, 'Report', '12 days', "1 Mar '02", "13 Mar '02"],
+          '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8, ],
+];
 
 // Create the bars and add them to the gantt chart
 for ($i=0; $i < count($data); ++$i) {
-    $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], "[50%]", 10);
+    $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
-    $bar->SetPattern(BAND_RDIAG, "yellow");
-    $bar->SetFillColor("gray");
+    $bar->SetPattern(BAND_RDIAG, 'yellow');
+    $bar->SetFillColor('gray');
     $bar->progress->Set(0.5);
-    $bar->progress->SetPattern(GANTT_SOLID, "darkgreen");
-    $bar->title->SetCSIMTarget(array('#1'.$i,'#2'.$i,'#3'.$i,'#4'.$i,'#5'.$i), array('11'.$i,'22'.$i,'33'.$i));
+    $bar->progress->SetPattern(GANTT_SOLID, 'darkgreen');
+    $bar->title->SetCSIMTarget(['#1'.$i, '#2'.$i, '#3'.$i, '#4'.$i, '#5'.$i], ['11'.$i, '22'.$i, '33'.$i]);
     $graph->Add($bar);
 }
 

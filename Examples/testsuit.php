@@ -1,4 +1,9 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 //=======================================================================
 // File:    TESTSUIT.PHP
 // Description:    Run all the example script in current directory
@@ -20,14 +25,14 @@ class TestDriver
     private $iType;
     private $iDir;
 
-    public function TestDriver($aType = 1, $aDir = '')
+    public function __construct($aType = 1, $aDir = '')
     {
         $this->iType = $aType;
         if ($aDir == '') {
             $aDir = getcwd();
         }
         if (!chdir($aDir)) {
-            die("PANIC: Can't access directory : $aDir");
+            die("PANIC: Can't access directory : ${aDir}");
         }
         $this->iDir = $aDir;
     }
@@ -35,40 +40,42 @@ class TestDriver
     public function GetFiles()
     {
         $d = @dir($this->iDir);
-        $a = array();
+        $a = [];
         while ($entry = $d->Read()) {
             //echo $entry . ':' . (is_dir($entry) ? 'folder' : 'file') . '<br>';
-            if (is_dir($entry) && ($entry == "examples_pie")) {
+            if (is_dir($entry) && ($entry == 'examples_pie')) {
                 $examplefolder = @dir($entry);
                 while ($file = $examplefolder->Read()) {
-                    if (strstr($file, ".php") && strstr($file, "x") && !strstr($file, "show") && !strstr($file, "csim")) {
-                        $a[] = $entry . '/' . $file;
+                    if (strstr($file, '.php') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
+                        $a[] = $entry.'/'.$file;
                     }
                 }
             }
         }
         $d->Close();
         if (count($a) == 0) {
-            die("PANIC: Apache/PHP does not have enough permission to read the scripts in directory: $this->iDir");
+            die("PANIC: Apache/PHP does not have enough permission to read the scripts in directory: {$this->iDir}");
         }
         sort($a);
+
         return $a;
     }
 
     public function GetCSIMFiles()
     {
         $d = @dir($this->iDir);
-        $a = array();
+        $a = [];
         while ($entry = $d->Read()) {
-            if (strstr($entry, ".php") && strstr($entry, "csim")) {
+            if (strstr($entry, '.php') && strstr($entry, 'csim')) {
                 $a[] = $entry;
             }
         }
         $d->Close();
         if (count($a) == 0) {
-            die("PANIC: Apache/PHP does not have enough permission to read the CSIM scripts in directory: $this->iDir");
+            die("PANIC: Apache/PHP does not have enough permission to read the CSIM scripts in directory: {$this->iDir}");
         }
         sort($a);
+
         return $a;
     }
 
@@ -77,30 +84,33 @@ class TestDriver
         switch ($this->iType) {
             case 1:
                 $files = $this->GetFiles();
+
                 break;
             case 2:
                 $files = $this->GetCSIMFiles();
+
                 break;
             default:
                 die('Panic: Unknown type of test');
+
                 break;
         }
         $n = count($files);
-        echo "<h2>Visual test suit for JpGraph</h2>";
-        echo "Testtype: " . ($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
-        echo "<br>Number of tests: $n<p>";
-        echo "<ol>";
+        echo '<h2>Visual test suit for JpGraph</h2>';
+        echo 'Testtype: '.($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
+        echo "<br>Number of tests: ${n}<p>";
+        echo '<ol>';
 
         for ($i = 0; $i < $n; ++$i) {
             if ($this->iType == 1) {
-                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target=' . urlencode($files[$i]) . '"><img src="' . $files[$i] . '" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . "</a></i>\n";
+                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target='.urlencode($files[$i]).'"><img src="'.$files[$i].'" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="'.$files[$i].'">'.basename($files[$i])."</a></i>\n";
             } else {
-                echo '<li><a href="show-example.php?target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
+                echo '<li><a href="show-example.php?target='.urlencode($files[$i]).'">'.$files[$i]."</a>\n";
             }
         }
-        echo "</ol>";
+        echo '</ol>';
 
-        echo "<p>Done.</p>";
+        echo '<p>Done.</p>';
     }
 }
 

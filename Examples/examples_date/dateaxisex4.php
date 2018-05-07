@@ -1,15 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_date.php';
 
 // Create a data set in range (50,70) and X-positions
-DEFINE('NDATAPOINTS', 360);
-DEFINE('SAMPLERATE', 240);
+define('NDATAPOINTS', 360);
+define('SAMPLERATE', 240);
 $start = time();
 $end   = $start + NDATAPOINTS * SAMPLERATE;
-$data  = array();
-$xdata = array();
+$data  = [];
+$xdata = [];
 for ($i = 0; $i < NDATAPOINTS; ++$i) {
     $data[$i]  = rand(50, 70);
     $xdata[$i] = $start + $i * SAMPLERATE;
@@ -24,7 +28,7 @@ $graph->SetMargin(40, 40, 30, 130);
 
 // Fix the Y-scale to go between [0,100] and use date for the x-axis
 $graph->SetScale('datlin', 0, 100);
-$graph->title->Set("Example on Date scale");
+$graph->title->Set('Example on Date scale');
 
 // Set the angle for the labels to 90 degrees
 $graph->xaxis->SetLabelAngle(90);

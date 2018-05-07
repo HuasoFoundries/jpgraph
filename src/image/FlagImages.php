@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -15,14 +20,14 @@ use Amenadiel\JpGraph\Util;
 //------------------------------------------------------------
 // Defines for the different basic sizes of flags
 //------------------------------------------------------------
-DEFINE('FLAGSIZE1', 1);
-DEFINE('FLAGSIZE2', 2);
-DEFINE('FLAGSIZE3', 3);
-DEFINE('FLAGSIZE4', 4);
+define('FLAGSIZE1', 1);
+define('FLAGSIZE2', 2);
+define('FLAGSIZE3', 3);
+define('FLAGSIZE4', 4);
 
 class FlagImages
 {
-    public $iCountryNameMap = array(
+    public $iCountryNameMap = [
         'Afghanistan'                                             => 'afgh',
         'Republic of Angola'                                      => 'agla',
         'Republic of Albania'                                     => 'alba',
@@ -257,18 +262,18 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe');
+        'Republic of Zimbabwe'                                    => 'zbwe', ];
 
     private $iFlagCount  = -1;
-    private $iFlagSetMap = array(
+    private $iFlagSetMap = [
         FLAGSIZE1 => 'flags_thumb35x35',
         FLAGSIZE2 => 'flags_thumb60x60',
         FLAGSIZE3 => 'flags_thumb100x100',
         FLAGSIZE4 => 'flags',
-    );
+    ];
 
     private $iFlagData;
-    private $iOrdIdx = array();
+    private $iOrdIdx = [];
 
     public function FlagImages($aSize = FLAGSIZE1)
     {
@@ -277,10 +282,11 @@ class FlagImages
             case FLAGSIZE2:
             case FLAGSIZE3:
             case FLAGSIZE4:
-                $file            = dirname(__FILE__) . '/flags/' . $this->iFlagSetMap[$aSize] . '.dat';
+                $file            = dirname(__FILE__).'/flags/'.$this->iFlagSetMap[$aSize].'.dat';
                 $fp              = fopen($file, 'rb');
                 $rawdata         = fread($fp, filesize($file));
                 $this->iFlagData = unserialize($rawdata);
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(5001, $aSize);
@@ -297,6 +303,7 @@ class FlagImages
     public function GetImgByName($aName, &$outFullName)
     {
         $idx = $this->GetIdxByName($aName, $outFullName);
+
         return $this->GetImgByIdx($idx);
     }
 
@@ -304,41 +311,44 @@ class FlagImages
     {
         if (array_key_exists($aIdx, $this->iFlagData)) {
             $d = $this->iFlagData[$aIdx][1];
+
             return Image::CreateFromString($d);
-        } else {
-            Util\JpGraphError::RaiseL(5002, $aIdx);
-            //("Flag index \"�$aIdx\" does not exist.");
         }
+        Util\JpGraphError::RaiseL(5002, $aIdx);
+        //("Flag index \"�$aIdx\" does not exist.");
     }
 
     public function GetIdxByOrdinal($aOrd, &$outFullName)
     {
-        $aOrd--;
+        --$aOrd;
         $n = count($this->iOrdIdx);
         if ($n == 0) {
             reset($this->iCountryNameMap);
-            $this->iOrdIdx = array();
+            $this->iOrdIdx = [];
             $i             = 0;
             while (list($key, $val) = each($this->iCountryNameMap)) {
-                $this->iOrdIdx[$i++] = array($val, $key);
+                $this->iOrdIdx[$i++] = [$val, $key];
             }
             $tmp         = $this->iOrdIdx[$aOrd];
             $outFullName = $tmp[1];
+
             return $tmp[0];
-        } elseif ($aOrd >= 0 && $aOrd < $n) {
+        }
+        if ($aOrd >= 0 && $aOrd < $n) {
             $tmp         = $this->iOrdIdx[$aOrd];
             $outFullName = $tmp[1];
+
             return $tmp[0];
-        } else {
-            Util\JpGraphError::RaiseL(5003, $aOrd);
-            //('Invalid ordinal number specified for flag index.');
         }
+        Util\JpGraphError::RaiseL(5003, $aOrd);
+        //('Invalid ordinal number specified for flag index.');
     }
 
     public function GetIdxByName($aName, &$outFullName)
     {
         if (is_integer($aName)) {
             $idx = $this->GetIdxByOrdinal($aName, $outFullName);
+
             return $idx;
         }
 
@@ -350,6 +360,7 @@ class FlagImages
         while (list($key, $val) = each($this->iCountryNameMap)) {
             if ($nlen == strlen($val) && $val == $aName) {
                 $found = true;
+
                 break;
             }
         }
@@ -359,16 +370,17 @@ class FlagImages
             while (list($key, $val) = each($this->iCountryNameMap)) {
                 if (strpos(strtolower($key), $aName) !== false) {
                     $found = true;
+
                     break;
                 }
             }
         }
         if ($found) {
             $outFullName = $key;
+
             return $val;
-        } else {
-            Util\JpGraphError::RaiseL(5004, $aName);
-            //("The (partial) country name \"$aName\" does not have a cooresponding flag image. The flag may still exist but under another name, e.g. insted of \"usa\" try \"united states\".");
         }
+        Util\JpGraphError::RaiseL(5004, $aName);
+        //("The (partial) country name \"$aName\" does not have a cooresponding flag image. The flag may still exist but under another name, e.g. insted of \"usa\" try \"united states\".");
     }
 }

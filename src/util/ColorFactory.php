@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 // Provide a deterministic list of new colors whenever the getColor() method
@@ -6,7 +11,7 @@ namespace Amenadiel\JpGraph\Util;
 class ColorFactory
 {
     private static $iIdx       = 0;
-    private static $iColorList = array(
+    private static $iColorList = [
         'black',
         'blue',
         'orange',
@@ -39,7 +44,7 @@ class ColorFactory
         'peru',
         'slategray',
         'yellow4',
-        'springgreen2');
+        'springgreen2', ];
     private static $iNum = 33;
 
     public static function getColor()

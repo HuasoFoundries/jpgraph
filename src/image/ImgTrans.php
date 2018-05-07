@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -18,7 +23,7 @@ use Amenadiel\JpGraph\Util;
 //------------------------------------------------------------------------
 class ImgTrans
 {
-    private $gdImg = null;
+    private $gdImg;
 
     public function __construct($aGdImg)
     {
@@ -32,7 +37,6 @@ class ImgTrans
     // --------------------------------------------------------------------
     public function _TransVert3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = SKEW3D_DOWN, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
     {
-
         // Parameter check
         if ($aHorizonPos < 0 || $aHorizonPos > 1.0) {
             Util\JpGraphError::RaiseL(9001);
@@ -99,8 +103,12 @@ class ImgTrans
                     $nr     = ($nrgb >> 16) & 0xFF;
                     $ng     = ($nrgb >> 8) & 0xFF;
                     $nb     = $nrgb & 0xFF;
-                    $colidx = imagecolorallocate($newgdh, floor(($r + $nr) / 2),
-                        floor(($g + $ng) / 2), floor(($b + $nb) / 2));
+                    $colidx = imagecolorallocate(
+                        $newgdh,
+                        floor(($r + $nr) / 2),
+                        floor(($g + $ng) / 2),
+                        floor(($b + $nb) / 2)
+                    );
                 }
 
                 imagesetpixel($newgdh, $xt, $syt, $colidx);
@@ -178,8 +186,12 @@ class ImgTrans
                     $nr     = ($nrgb >> 16) & 0xFF;
                     $ng     = ($nrgb >> 8) & 0xFF;
                     $nb     = $nrgb & 0xFF;
-                    $colidx = imagecolorallocate($newgdh, floor(($r + $nr) / 2),
-                        floor(($g + $ng) / 2), floor(($b + $nb) / 2));
+                    $colidx = imagecolorallocate(
+                        $newgdh,
+                        floor(($r + $nr) / 2),
+                        floor(($g + $ng) / 2),
+                        floor(($b + $nb) / 2)
+                    );
                 }
                 imagesetpixel($newgdh, $sxt, $yt, $colidx);
             }
@@ -222,16 +234,24 @@ class ImgTrans
     // --------------------------------------------------------------------
     public function Skew3D($aHorizon = 120, $aSkewDist = 150, $aDir = SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
     {
-        return $this->_Skew3D($this->gdImg, $aHorizon, $aSkewDist, $aDir, $aHiQuality,
-            $aMinSize, $aFillColor, $aBorder);
+        return $this->_Skew3D(
+            $this->gdImg,
+            $aHorizon,
+            $aSkewDist,
+            $aDir,
+            $aHiQuality,
+            $aMinSize,
+            $aFillColor,
+            $aBorder
+        );
     }
 
     public function _Skew3D($aGdImg, $aHorizon = 120, $aSkewDist = 150, $aDir = SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
     {
         if ($aDir == SKEW3D_DOWN || $aDir == SKEW3D_UP) {
             return $this->_TransVert3D($aGdImg, $aHorizon, $aSkewDist, $aDir, $aMinSize, $aFillColor, $aHiQuality, $aBorder);
-        } else {
-            return $this->_TransHor3D($aGdImg, $aHorizon, $aSkewDist, $aDir, $aMinSize, $aFillColor, $aHiQuality, $aBorder);
         }
+
+        return $this->_TransHor3D($aGdImg, $aHorizon, $aSkewDist, $aDir, $aMinSize, $aFillColor, $aHiQuality, $aBorder);
     }
 }

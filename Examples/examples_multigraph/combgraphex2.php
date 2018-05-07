@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../jpgraph.php';
 require_once '../jpgraph_mgraph.php';
 require_once '../jpgraph_line.php';
@@ -9,14 +13,14 @@ require_once '../jpgraph_utils.inc.php';
 // Create some random data for the plot. We use the current time for the
 // first X-position
 //------------------------------------------------------------------
-$datay = array();
-$datax = array();
-$ts = time();
-$n = 70; // Number of data points
+$datay = [];
+$datax = [];
+$ts    = time();
+$n     = 70; // Number of data points
 for ($i = 0; $i < $n; ++$i) {
-	$datax[$i] = $ts + $i * 150000;
-	$datay[$i] = rand(5, 60);
-	$datay2[$i] = rand(1, 8);
+    $datax[$i]  = $ts + $i * 150000;
+    $datay[$i]  = rand(5, 60);
+    $datay2[$i] = rand(1, 8);
 }
 
 // Now get labels at the start of each month
@@ -28,8 +32,8 @@ list($tickPositions, $minTickPositions) = DateScaleUtils::getTicks($datax, DSUTI
 // We add some grace to the end of the X-axis scale so that the first and last
 // data point isn't exactly at the very end or beginning of the scale
 $grace = 400000;
-$xmin = $datax[0] - $grace;
-$xmax = $datax[$n - 1] + $grace;
+$xmin  = $datax[0] - $grace;
+$xmax  = $datax[$n - 1] + $grace;
 
 // Overall width of graphs
 $w = 450;

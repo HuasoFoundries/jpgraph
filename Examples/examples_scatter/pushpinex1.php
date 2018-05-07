@@ -1,8 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
-DEFINE('WORLDMAP', 'worldmap1.jpg');
+define('WORLDMAP', 'worldmap1.jpg');
 
 function markCallback($y, $x)
 {
@@ -12,15 +16,15 @@ function markCallback($y, $x)
     // be used.
     // We only make one pushpin another color
     if ($x == 54) {
-        return array(false, false, false, 'red', 0.8);
-    } else {
-        return array(false, false, false, 'green', 0.8);
+        return [false, false, false, 'red', 0.8];
     }
+
+    return [false, false, false, 'green', 0.8];
 }
 
 // Data arrays
-$datax = array(10, 20, 30, 40, 54, 60, 70, 80);
-$datay = array(12, 23, 65, 18, 84, 28, 86, 44);
+$datax = [10, 20, 30, 40, 54, 60, 70, 80];
+$datay = [12, 23, 65, 18, 84, 28, 86, 44];
 
 // Setup the graph
 $graph = new Graph\Graph(400, 270);
@@ -38,7 +42,7 @@ $graph->yaxis->Hide();
 $graph->SetBackgroundImage(WORLDMAP, BGIMG_FILLPLOT);
 
 // Setup a nice title with a striped bevel background
-$graph->title->Set("Pushpin graph");
+$graph->title->Set('Pushpin graph');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('white');
 $graph->SetTitleBackground('darkgreen', TITLEBKG_STYLE1, TITLEBKG_FRAME_BEVEL);

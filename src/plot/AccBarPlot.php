@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -7,8 +12,9 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class AccBarPlot extends BarPlot
 {
-    public $plots     = null;
+    public $plots;
     private $nbrplots = 0;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($plots)
@@ -65,7 +71,7 @@ class AccBarPlot extends BarPlot
             list($x) = $this->plots[$i]->Max();
             $xmax    = max($xmax, $x);
         }
-        for ($i = 0; $i < $nmax; $i++) {
+        for ($i = 0; $i < $nmax; ++$i) {
             // Get y-value for bar $i by adding the
             // individual bars from all the plots added.
             // It would be wrong to just add the
@@ -79,7 +85,7 @@ class AccBarPlot extends BarPlot
                 $y = $this->plots[0]->coords[0][$i];
             }
 
-            for ($j = 1; $j < $this->nbrplots; $j++) {
+            for ($j = 1; $j < $this->nbrplots; ++$j) {
                 if (!isset($this->plots[$j]->coords[0][$i])) {
                     Util\JpGraphError::RaiseL(2014);
                 }
@@ -107,10 +113,10 @@ class AccBarPlot extends BarPlot
             $n           = count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $n);
             list($x, $y) = $this->plots[$i]->Min();
-            $xmin        = Min($xmin, $x);
-            $ysetmin     = Min($y, $ysetmin);
+            $xmin        = min($xmin, $x);
+            $ysetmin     = min($y, $ysetmin);
         }
-        for ($i = 0; $i < $nmax; $i++) {
+        for ($i = 0; $i < $nmax; ++$i) {
             // Get y-value for bar $i by adding the
             // individual bars from all the plots added.
             // It would be wrong to just add the
@@ -121,14 +127,14 @@ class AccBarPlot extends BarPlot
                 $y = $this->plots[0]->coords[0][$i];
             }
 
-            for ($j = 1; $j < $this->nbrplots; $j++) {
+            for ($j = 1; $j < $this->nbrplots; ++$j) {
                 if ($this->plots[$j]->coords[0][$i] < 0) {
                     $y += $this->plots[$j]->coords[0][$i];
                 }
             }
             $ymin[$i] = $y;
         }
-        $ymin = Min($ysetmin, Min($ymin));
+        $ymin = min($ysetmin, min($ymin));
         // Bar always start at baseline
         if ($ymin >= $this->ybase) {
             $ymin = $this->ybase;
@@ -143,7 +149,7 @@ class AccBarPlot extends BarPlot
         $pattern = null;
         $img->SetLineWeight($this->weight);
         $grad = null;
-        for ($i = 0; $i < $this->numpoints - 1; $i++) {
+        for ($i = 0; $i < $this->numpoints - 1; ++$i) {
             $accy     = 0;
             $accy_neg = 0;
             for ($j = 0; $j < $this->nbrplots; ++$j) {
@@ -267,15 +273,25 @@ class AccBarPlot extends BarPlot
                             $tocolor   = $this->plots[$j]->grad_fromcolor[$i % $ng][1];
                             $style     = $this->plots[$j]->grad_fromcolor[$i % $ng][2];
                         }
-                        $grad->FilledRectangle($pts[2], $pts[3],
-                            $pts[6], $pts[7],
-                            $fromcolor, $tocolor, $style);
+                        $grad->FilledRectangle(
+                            $pts[2],
+                            $pts[3],
+                            $pts[6],
+                            $pts[7],
+                            $fromcolor,
+                            $tocolor,
+                            $style
+                        );
                     } else {
-                        $grad->FilledRectangle($pts[2], $pts[3],
-                            $pts[6], $pts[7],
+                        $grad->FilledRectangle(
+                            $pts[2],
+                            $pts[3],
+                            $pts[6],
+                            $pts[7],
                             $this->plots[$j]->grad_fromcolor,
                             $this->plots[$j]->grad_tocolor,
-                            $this->plots[$j]->grad_style);
+                            $this->plots[$j]->grad_style
+                        );
                     }
                 } else {
                     if (is_array($this->plots[$j]->fill_color)) {
@@ -324,24 +340,24 @@ class AccBarPlot extends BarPlot
                 if ($i < count($this->plots[$j]->csimtargets)) {
                     // Create the client side image map
                     $rpts      = $img->ArrRotate($pts);
-                    $csimcoord = round($rpts[0]) . ", " . round($rpts[1]);
+                    $csimcoord = round($rpts[0]).', '.round($rpts[1]);
                     for ($k = 1; $k < 4; ++$k) {
-                        $csimcoord .= ", " . round($rpts[2 * $k]) . ", " . round($rpts[2 * $k + 1]);
+                        $csimcoord .= ', '.round($rpts[2 * $k]).', '.round($rpts[2 * $k + 1]);
                     }
                     if (!empty($this->plots[$j]->csimtargets[$i])) {
-                        $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
-                        $this->csimareas .= " href=\"" . $this->plots[$j]->csimtargets[$i] . "\" ";
+                        $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
+                        $this->csimareas .= ' href="'.$this->plots[$j]->csimtargets[$i].'" ';
 
                         if (!empty($this->plots[$j]->csimwintargets[$i])) {
-                            $this->csimareas .= " target=\"" . $this->plots[$j]->csimwintargets[$i] . "\" ";
+                            $this->csimareas .= ' target="'.$this->plots[$j]->csimwintargets[$i].'" ';
                         }
 
                         $sval = '';
                         if (!empty($this->plots[$j]->csimalts[$i])) {
                             $sval = sprintf($this->plots[$j]->csimalts[$i], $this->plots[$j]->coords[0][$i]);
-                            $this->csimareas .= " title=\"$sval\" ";
+                            $this->csimareas .= " title=\"${sval}\" ";
                         }
-                        $this->csimareas .= " alt=\"$sval\" />\n";
+                        $this->csimareas .= " alt=\"${sval}\" />\n";
                     }
                 }
 
@@ -380,7 +396,6 @@ class AccBarPlot extends BarPlot
             $accy     = 0;
             $accy_neg = 0;
             for ($j = 0; $j < $this->nbrplots; ++$j) {
-
                 // We don't print 0 values in an accumulated bar plot
                 if ($this->plots[$j]->coords[0][$i] == 0) {
                     continue;
@@ -399,7 +414,7 @@ class AccBarPlot extends BarPlot
                     }
                     $accy += $this->plots[$j]->coords[0][$i];
                     if ($this->plots[$j]->valuepos == 'center') {
-                        $this->plots[$j]->value->SetAlign("center", "center");
+                        $this->plots[$j]->value->SetAlign('center', 'center');
                         $this->plots[$j]->value->SetMargin(0);
                     } elseif ($this->plots[$j]->valuepos == 'bottom') {
                         $this->plots[$j]->value->SetAlign('center', 'bottom');
@@ -420,7 +435,7 @@ class AccBarPlot extends BarPlot
                         $y = $accyt - ($accyt - $yt);
                     }
                     if ($this->plots[$j]->valuepos == 'center') {
-                        $this->plots[$j]->value->SetAlign("center", "center");
+                        $this->plots[$j]->value->SetAlign('center', 'center');
                         $this->plots[$j]->value->SetMargin(0);
                     } elseif ($this->plots[$j]->valuepos == 'bottom') {
                         $this->plots[$j]->value->SetAlign('center', $j == 0 ? 'bottom' : 'top');
@@ -433,6 +448,7 @@ class AccBarPlot extends BarPlot
                 $this->plots[$j]->value->Stroke($img, $this->plots[$j]->coords[0][$i], $x, $y);
             }
         }
+
         return true;
     }
 } // Class

@@ -1,7 +1,12 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
-use \Amenadiel\JpGraph\Text\Text;
+use Amenadiel\JpGraph\Text\Text;
 
 //=======================================================
 // CLASS Footer
@@ -15,7 +20,7 @@ class Footer
     public $left;
     public $center;
     public $right;
-    private $iTimer           = null;
+    private $iTimer;
     private $itimerpoststring = '';
 
     public function __construct()
@@ -55,7 +60,7 @@ class Footer
         $x = $aImg->width - $this->iRightMargin;
         $this->right->Align('right', 'bottom');
         if ($this->iTimer != null) {
-            $this->right->Set($this->right->t . sprintf('%.3f', $this->iTimer->Pop() / 1000.0) . $this->itimerpoststring);
+            $this->right->Set($this->right->t.sprintf('%.3f', $this->iTimer->Pop() / 1000.0).$this->itimerpoststring);
         }
         $this->right->Stroke($aImg, $x, $y);
     }

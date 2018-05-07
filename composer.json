@@ -2,7 +2,7 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.14",
+    "version": "3.6.15",
     "keywords": [
         "graph",
         "chart",
@@ -21,6 +21,11 @@
     {
         "php": ">=5.4.0",
         "ext-gd": "*"
+    },
+    "require-dev":
+    {
+        "friendsofphp/php-cs-fixer": "^2.4",
+        "codeception/codeception": "*"
     },
     "autoload":
     {

@@ -1,11 +1,15 @@
 <?php
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_odo.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph
 $graph = new OdoGraph(500, 180);
 
-$odo = array();
+$odo = [];
 
 // Now we need to create an odometer to add to the graph.
 for ($i=0; $i < 5; ++$i) {
@@ -25,9 +29,9 @@ for ($i=0; $i < 5; ++$i) {
 }
 
 // Create the layout
-$row1 = new LayoutHor(array($odo[0],$odo[1]));
-$row2 = new LayoutHor(array($odo[2],$odo[3],$odo[4]));
-$col1 = new LayoutVert(array($row1,$row2));
+$row1 = new LayoutHor([$odo[0], $odo[1]]);
+$row2 = new LayoutHor([$odo[2], $odo[3], $odo[4]]);
+$col1 = new LayoutVert([$row1, $row2]);
 
 // Add the odometer to the graph
 $graph->Add($col1);

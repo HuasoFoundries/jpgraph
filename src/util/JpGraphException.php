@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 class JpGraphException extends \Exception
@@ -13,7 +18,7 @@ class JpGraphException extends \Exception
     // custom string representation of object
     public function _toString()
     {
-        return __CLASS__ . ": [{$this->code}]: {$this->message} at " . basename($this->getFile()) . ":" . $this->getLine() . "\n" . $this->getTraceAsString() . "\n";
+        return __CLASS__.": [{$this->code}]: {$this->message} at ".basename($this->getFile()).':'.$this->getLine()."\n".$this->getTraceAsString()."\n";
     }
 
     // custom representation of error as an image
@@ -40,6 +45,7 @@ class JpGraphException extends \Exception
             if ($__jpg_OldHandler !== null) {
                 set_exception_handler($__jpg_OldHandler);
             }
+
             throw $exception;
         }
     }

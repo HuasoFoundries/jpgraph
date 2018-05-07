@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -23,7 +28,7 @@ class WindrosePlotScale
     public $iZFontColor       = 'black';
     private $iFontFrameColor  = false;
     private $iFontBkgColor    = false;
-    private $iLblZeroTxt      = null;
+    private $iLblZeroTxt;
     private $iLblAlign        = LBLALIGN_CENTER;
     public $iAngle            = 'auto';
     private $iManualScale     = false;
@@ -57,6 +62,7 @@ class WindrosePlotScale
     {
         // Never return less than 1 circles
         $num = ceil($this->iMax / $this->iDelta);
+
         return max(1, $num);
     }
 
@@ -72,6 +78,7 @@ class WindrosePlotScale
     {
         if ($aDelta == null) {
             $this->SetMaxValue($aMax);
+
             return;
         }
         $this->iDelta   = $aDelta;
@@ -141,6 +148,7 @@ class WindrosePlotScale
     public function RelTranslate($aVal, $r, $ri)
     {
         $tv = round($aVal / $this->iMaxVal * ($r - $ri));
+
         return $tv;
     }
 

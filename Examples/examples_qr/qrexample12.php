@@ -1,6 +1,9 @@
 <?php
-// Include the library
-require_once('jpgraph/QR/qrencoder.inc.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Example 11 : Generate postscript output
 

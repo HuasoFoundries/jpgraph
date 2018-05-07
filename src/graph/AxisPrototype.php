@@ -1,8 +1,13 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text\Text;
 use Amenadiel\JpGraph\Util;
-use \Amenadiel\JpGraph\Text\Text;
 
 //===================================================
 // CLASS Axis
@@ -14,23 +19,23 @@ use \Amenadiel\JpGraph\Text\Text;
 //===================================================
 class AxisPrototype
 {
-    public $scale              = null;
-    public $img                = null;
+    public $scale;
+    public $img;
     public $hide               = false;
     public $hide_labels        = false;
-    public $title              = null;
+    public $title;
     public $font_family        = FF_DEFAULT;
     public $font_style         = FS_NORMAL;
     public $font_size          = 8;
     public $label_angle        = 0;
     public $tick_step          = 1;
     public $pos                = false;
-    public $ticks_label        = array();
+    public $ticks_label        = [];
 
     protected $weight                   = 1;
-    protected $color                    = array(0, 0, 0);
-    protected $label_color              = array(0, 0, 0);
-    protected $ticks_label_colors       = null;
+    protected $color                    = [0, 0, 0];
+    protected $label_color              = [0, 0, 0];
+    protected $ticks_label_colors;
     protected $show_first_label         = true;
     protected $show_last_label          = true;
     protected $label_step               = 1; // Used by a text axis to specify what multiple of major steps
@@ -46,7 +51,7 @@ class AxisPrototype
     protected $hide_line                                    = false;
     protected $iDeltaAbsPos                                 = 0;
 
-    public function __construct($img, $aScale, $color = array(0, 0, 0))
+    public function __construct($img, $aScale, $color = [0, 0, 0])
     {
         $this->img   = $img;
         $this->scale = $aScale;

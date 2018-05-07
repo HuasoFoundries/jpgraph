@@ -1,10 +1,14 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata  = array(11, 3, 8, 12, 5, 1, 9, 13, 5, 7);
-$y2data = array(354, 200, 265, 99, 111, 91, 198, 225, 293, 251);
+$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 
 // Create the graph and specify the scale for both Y-axis
 $graph = new Graph\Graph(400, 200);

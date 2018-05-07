@@ -1,5 +1,9 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = '123456';
 
@@ -12,5 +16,5 @@ try {
     $backend->Stroke($data);
 } catch (Exception $e) {
     $errstr = $e->GetMessage();
-    echo "Datamatrix error message: $errstr\n";
+    echo "Datamatrix error message: ${errstr}\n";
 }

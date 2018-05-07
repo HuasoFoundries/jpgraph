@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -60,7 +65,7 @@ class DateScale extends LinearScale
     // CONSTRUCTOR
     public function __construct($aMin = 0, $aMax = 0, $aType = 'x')
     {
-        assert($aType == "x");
+        assert($aType == 'x');
         assert($aMin <= $aMax);
 
         $this->type       = $aType;
@@ -133,6 +138,7 @@ class DateScale extends LinearScale
                 }
             }
         }
+
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
@@ -175,7 +181,7 @@ class DateScale extends LinearScale
                 $h = floor($h / $hourAdj[$aHourType]) * $hourAdj[$aHourType];
             } else {
                 if (($h % $hourAdj[$aHourType] == 0) && ($i > 0 || $s > 0)) {
-                    $h++;
+                    ++$h;
                 }
                 $h = ceil($h / $hourAdj[$aHourType]) * $hourAdj[$aHourType];
                 if ($h >= 24) {
@@ -195,7 +201,7 @@ class DateScale extends LinearScale
                 $i = floor($i / $minAdj[$aMinType]) * $minAdj[$aMinType];
             } else {
                 if (($i % $minAdj[$aMinType] == 0) && $s > 0) {
-                    $i++;
+                    ++$i;
                 }
                 $i = ceil($i / $minAdj[$aMinType]) * $minAdj[$aMinType];
                 if ($i >= 60) {
@@ -226,6 +232,7 @@ class DateScale extends LinearScale
                 }
             }
         }
+
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
@@ -266,65 +273,65 @@ class DateScale extends LinearScale
             /* Intervall larger than 10 years */
             SECPERYEAR * 10, [[SECPERYEAR * 5, SECPERYEAR * 2],
                 [SECPERYEAR],
-                [0, YEARADJ_1, 0, YEARADJ_1]],
+                [0, YEARADJ_1, 0, YEARADJ_1], ],
 
             /* Intervall larger than 2 years */
             SECPERYEAR * 2, [[SECPERYEAR], [SECPERYEAR],
-                [0, YEARADJ_1]],
+                [0, YEARADJ_1], ],
 
             /* Intervall larger than 90 days (approx 3 month) */
             SECPERDAY * 90, [[SECPERDAY * 30, SECPERDAY * 14, SECPERDAY * 7, SECPERDAY],
                 [SECPERDAY * 5, SECPERDAY * 7, SECPERDAY, SECPERDAY],
-                [0, MONTHADJ_1, 0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1]],
+                [0, MONTHADJ_1, 0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1], ],
 
             /* Intervall larger than 30 days (approx 1 month) */
             SECPERDAY * 30, [[SECPERDAY * 14, SECPERDAY * 7, SECPERDAY * 2, SECPERDAY],
                 [SECPERDAY, SECPERDAY, SECPERDAY, SECPERDAY],
-                [0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1, 0, DAYADJ_1]],
+                [0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1, 0, DAYADJ_1], ],
 
             /* Intervall larger than 7 days */
             SECPERDAY * 7, [[SECPERDAY, SECPERHOUR * 12, SECPERHOUR * 6, SECPERHOUR * 2],
                 [SECPERHOUR * 6, SECPERHOUR * 3, SECPERHOUR, SECPERHOUR],
-                [0, DAYADJ_1, 1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1]],
+                [0, DAYADJ_1, 1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1], ],
 
             /* Intervall larger than 1 day */
             SECPERDAY, [[SECPERDAY, SECPERHOUR * 12, SECPERHOUR * 6, SECPERHOUR * 2, SECPERHOUR],
                 [SECPERHOUR * 6, SECPERHOUR * 2, SECPERHOUR, SECPERHOUR, SECPERHOUR],
-                [1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1, 1, HOURADJ_1]],
+                [1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1, 1, HOURADJ_1], ],
 
             /* Intervall larger than 12 hours */
             SECPERHOUR * 12, [[SECPERHOUR * 2, SECPERHOUR, SECPERMIN * 30, 900, 600],
                 [1800, 1800, 900, 300, 300],
-                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
+                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
 
             /* Intervall larger than 2 hours */
             SECPERHOUR * 2, [[SECPERHOUR, SECPERMIN * 30, 900, 600, 300],
                 [1800, 900, 300, 120, 60],
-                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
+                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
 
             /* Intervall larger than 1 hours */
             SECPERHOUR, [[SECPERMIN * 30, 900, 600, 300], [900, 300, 120, 60],
-                [1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
+                [1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
 
             /* Intervall larger than 30 min */
             SECPERMIN * 30, [[SECPERMIN * 15, SECPERMIN * 10, SECPERMIN * 5, SECPERMIN],
                 [300, 300, 60, 10],
-                [1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5, 1, MINADJ_1]],
+                [1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5, 1, MINADJ_1], ],
 
             /* Intervall larger than 1 min */
             SECPERMIN, [[SECPERMIN, 15, 10, 5],
                 [15, 5, 2, 1],
-                [1, MINADJ_1, 1, SECADJ_15, 1, SECADJ_10, 1, SECADJ_5]],
+                [1, MINADJ_1, 1, SECADJ_15, 1, SECADJ_10, 1, SECADJ_5], ],
 
             /* Intervall larger than 10 sec */
             10, [[5, 2],
                 [1, 1],
-                [1, SECADJ_5, 1, SECADJ_1]],
+                [1, SECADJ_5, 1, SECADJ_1], ],
 
             /* Intervall larger than 1 sec */
             1, [[1],
                 [1],
-                [1, SECADJ_1]],
+                [1, SECADJ_1], ],
         ];
 
         $ns = count($scalePoints);
@@ -361,7 +368,7 @@ class DateScale extends LinearScale
                             // We add 1 second for date adjustment to make sure we end on 00:00 the following day
                             // This makes the final major tick be srawn when we step day-by-day instead of ending
                             // on xx:59:59 which would not draw the final major tick
-                            $end++;
+                            ++$end;
                         }
                     } else {
                         // Use time adjustment
@@ -395,6 +402,7 @@ class DateScale extends LinearScale
             }
             ++$i;
         }
+
         return [$start, $end, $major, $minor, $format];
     }
 
@@ -446,7 +454,7 @@ class DateScale extends LinearScale
             if ($n * 1.7 > $aNumSteps) {
                 $done = true;
             }
-            $i++;
+            ++$i;
         }
 
         /*

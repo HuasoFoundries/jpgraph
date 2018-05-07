@@ -1,18 +1,21 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_polar.php');
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_polar.php';
 
-$data = array(0,1,10,2,30,25,40,60,
-          50,110,60,160,70,210,75,230,80,260,85,370,
-          90,480,
-          95,370,100,260,105,230,
-          110,210,120,160,130,110,140,60,
-          150,25,170,2,180,1);
+$data = [0, 1, 10, 2, 30, 25, 40, 60,
+          50, 110, 60, 160, 70, 210, 75, 230, 80, 260, 85, 370,
+          90, 480,
+          95, 370, 100, 260, 105, 230,
+          110, 210, 120, 160, 130, 110, 140, 60,
+          150, 25, 170, 2, 180, 1, ];
 
 $n = count($data);
 for ($i=0; $i < $n; ++$i) {
-    $targets[$i] = "#$i";
+    $targets[$i] = "#${i}";
 }
 
 $graph = new PolarGraph(350, 320);

@@ -1,4 +1,9 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // $Id: piec_csimex1.php,v 1.1.2.1 2003/10/09 21:05:39 aditus Exp $
 // Example of pie with center circle
 require_once '../../vendor/autoload.php';
@@ -6,7 +11,7 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data
-$data = array(50, 28, 25, 27, 31, 20);
+$data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
 $graph = new Graph\PieGraph(400, 400);
@@ -18,7 +23,7 @@ $graph = new Graph\PieGraph(400, 400);
 // $graph->SetShadow();
 
 // Setup title
-$graph->title->Set("CSIM Center Pie plot ex 1");
+$graph->title->Set('CSIM Center Pie plot ex 1');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 
@@ -48,8 +53,8 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // The label array values may have printf() formatting in them. The argument to the
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
-$lbl = array("adam\n%.1f%%", "bertil\n%.1f%%", "johan\n%.1f%%",
-    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%");
+$lbl = ["adam\n%.1f%%", "bertil\n%.1f%%", "johan\n%.1f%%",
+    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%", ];
 $p1->SetLabels($lbl);
 
 // Uncomment this line to remove the borders around the slices
@@ -62,11 +67,11 @@ $p1->SetShadow();
 $p1->ExplodeAll(15);
 
 // Setup the CSIM targets
-$targ = array("piec_csimex1.php#1", "piec_csimex1.php#2", "piec_csimex1.php#3",
-    "piec_csimex1.php#4", "piec_csimex1.php#5", "piec_csimex1.php#6");
-$alts = array("val=%d", "val=%d", "val=%d", "val=%d", "val=%d", "val=%d");
+$targ = ['piec_csimex1.php#1', 'piec_csimex1.php#2', 'piec_csimex1.php#3',
+    'piec_csimex1.php#4', 'piec_csimex1.php#5', 'piec_csimex1.php#6', ];
+$alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $p1->SetCSIMTargets($targ, $alts);
-$p1->SetMidCSIM("piec_csimex1.php#7", "Center");
+$p1->SetMidCSIM('piec_csimex1.php#7', 'Center');
 
 // Setup a small help text in the image
 $txt = new Text("Note: This is an example of image map. Hold\nyour mouse over the slices to see the values.\nThe URL just points back to this page");

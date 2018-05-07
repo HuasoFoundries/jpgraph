@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -9,7 +14,7 @@ use Amenadiel\JpGraph\Util;
 //===================================================
 class IconImage
 {
-    private $iGDImage = null;
+    private $iGDImage;
     private $iWidth;
     private $iHeight;
     private $ixalign = 'left';
@@ -63,9 +68,16 @@ class IconImage
             $y -= round($this->iHeight / 2 * $this->iScale);
         }
 
-        $aImg->Copy($this->iGDImage,
-            $x, $y, 0, 0,
-            round($this->iWidth * $this->iScale), round($this->iHeight * $this->iScale),
-            $this->iWidth, $this->iHeight);
+        $aImg->Copy(
+            $this->iGDImage,
+            $x,
+            $y,
+            0,
+            0,
+            round($this->iWidth * $this->iScale),
+            round($this->iHeight * $this->iScale),
+            $this->iWidth,
+            $this->iHeight
+        );
     }
 }

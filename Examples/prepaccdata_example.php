@@ -1,11 +1,15 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../jpgraph.php';
 require_once '../jpgraph_line.php';
 require_once '../jpgraph_date.php';
 
 //Create some test data
-$xdata = array();
-$ydata = array();
+$xdata = [];
+$ydata = [];
 
 // Timestamps - 2h (=7200s) apart starting
 $sampling = 7200;
@@ -46,7 +50,7 @@ $p1 = new Plot\LinePlot($ydata[1]);
 $p1->SetFillColor('lightblue');
 $p2 = new Plot\LinePlot($ydata[2]);
 $p2->SetFillColor('red');
-$ap = new AccLinePlot(array($p0, $p1, $p2));
+$ap = new AccLinePlot([$p0, $p1, $p2]);
 
 $graph->xaxis->SetTickLabels($xdata);
 $graph->xaxis->SetTextLabelInterval(4);

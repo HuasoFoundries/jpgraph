@@ -1,5 +1,9 @@
 <?php
-//=======================================================================
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // File:        JPGRAPH_THEME.INC.PHP
 // Description: Class to define graph theme
 // Created:     2010-09-29
@@ -26,19 +30,10 @@ abstract class Theme
         $this->color_index = 0;
     }
 
-    /**
-     *
-     */
     abstract public function GetColorList();
 
-    /**
-     *
-     */
     abstract public function ApplyPlot($plot);
 
-    /**
-     *
-     */
     public function SetupPlot($plot)
     {
         if (is_array($plot)) {
@@ -50,9 +45,6 @@ abstract class Theme
         }
     }
 
-    /**
-     *
-     */
     public function ApplyGraph($graph)
     {
         $this->graph = $graph;
@@ -63,29 +55,23 @@ abstract class Theme
         if ($classname == 'Graph') {
             $method_name = 'SetupGraph';
         } else {
-            $method_name = 'Setup' . $classname;
+            $method_name = 'Setup'.$classname;
         }
 
         if (method_exists($this, $method_name)) {
-            $this->$method_name($graph);
+            $this->{$method_name}($graph);
         } else {
             Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not defined. \nPlease make %s(\$graph) function in your theme classs.
         }
     }
 
-    /**
-     *
-     */
     public function PreStrokeApply($graph)
     {
     }
 
-    /**
-     *
-     */
     public function GetThemeColors($num = 30)
     {
-        $result_list = array();
+        $result_list = [];
 
         $old_index         = $this->color_index;
         $this->color_index = 0;
@@ -93,13 +79,13 @@ abstract class Theme
 
         $i = 0;
         while (true) {
-            for ($j = 0; $j < count($this->GetColorList()); $j++) {
+            for ($j = 0; $j < count($this->GetColorList()); ++$j) {
                 if (++$count > $num) {
                     break 2;
                 }
                 $result_list[] = $this->GetNextColor();
             }
-            $i++;
+            ++$i;
         }
 
         $this->color_index = $old_index;
@@ -107,9 +93,6 @@ abstract class Theme
         return $result_list;
     }
 
-    /**
-     *
-     */
     public function GetNextColor()
     {
         $color_list = $this->GetColorList();
@@ -121,19 +104,19 @@ abstract class Theme
             $color_count = count($color_list);
             if ($color_count <= $this->color_index) {
                 $color_tmp  = $color_list[$this->color_index % $color_count];
-                $brightness = 1.0 - intval($this->color_index / $color_count) * 0.2;
+                $brightness = 1.0 - (int) ($this->color_index / $color_count) * 0.2;
                 $rgb        = new RGB();
-                $color      = $color_tmp . ':' . $brightness;
+                $color      = $color_tmp.':'.$brightness;
                 $color      = $rgb->Color($color);
                 $alpha      = array_pop($color);
                 $color      = $rgb->tryHexConversion($color);
                 if ($alpha) {
-                    $color .= '@' . $alpha;
+                    $color .= '@'.$alpha;
                 }
             }
         }
 
-        $this->color_index++;
+        ++$this->color_index;
 
         return $color;
     }

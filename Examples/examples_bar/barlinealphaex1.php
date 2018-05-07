@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -6,15 +10,15 @@ use Amenadiel\JpGraph\Plot;
 require_once 'jpgraph/jpgraph_line.php';
 
 // Some "random" data
-$ydata  = array(10, 120, 80, 190, 260, 170, 60, 40, 20, 230);
-$ydata2 = array(10, 70, 40, 120, 200, 60, 80, 40, 20, 5);
+$ydata  = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
+$ydata2 = [10, 70, 40, 120, 200, 60, 80, 40, 20, 5];
 
 // Get a list of month using the current locale
 $months = $gDateLocale->GetShortMonth();
 
 // Create the graph.
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
 // Adjust the margin slightly so that we use the

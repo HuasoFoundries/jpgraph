@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
@@ -11,8 +15,8 @@ function FldCallback($x, $y, $a)
     $maxr = 3000;
 
     // Size and arrow size is constant
-    $size      = "";
-    $arrowsize = "";
+    $size      = '';
+    $arrowsize = '';
 
     // Since we have different scales we need the data points
     // to be of the same magnitude to give it a distance
@@ -28,15 +32,15 @@ function FldCallback($x, $y, $a)
 
     $red   = floor((1 - $f) * 255);
     $blue  = floor($f * 255);
-    $color = array($red, 0, $blue);
+    $color = [$red, 0, $blue];
     //echo "x=$x, y=$y, blue=$blue, red=$red<br>";
-    return array($color, $size, $arrowsize);
+    return [$color, $size, $arrowsize];
 }
 
 // Create data for a simulated pseudo-magnetic radient field
-$datax = array();
-$datay = array();
-$angle = array();
+$datax = [];
+$datay = [];
+$angle = [];
 for ($x = 1; $x < 10; ++$x) {
     for ($y = 10; $y < 100; $y += 10) {
         $a = -1;
@@ -82,11 +86,11 @@ for ($x = 1; $x < 10; ++$x) {
 
 // Setup the graph
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("intlin", 0, 100, 0, 10);
+$graph->SetScale('intlin', 0, 100, 0, 10);
 $graph->SetMarginColor('lightblue');
 
 // ..and titles
-$graph->title->Set("Field plot");
+$graph->title->Set('Field plot');
 
 // Setup the field plot
 $fp = new FieldPlot($datay, $datax, $angle);

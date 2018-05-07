@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -12,21 +17,22 @@ class GanttBar extends GanttPlotObject
     public $rightMark;
     private $iEnd;
     private $iHeightFactor        = 0.5;
-    private $iFillColor           = "white";
-    private $iFrameColor          = "black";
+    private $iFillColor           = 'white';
+    private $iFrameColor          = 'black';
     private $iShadow              = false;
-    private $iShadowColor         = "darkgray";
+    private $iShadowColor         = 'darkgray';
     private $iShadowWidth         = 1;
-    private $iShadowFrame         = "black";
+    private $iShadowFrame         = 'black';
     private $iPattern             = GANTT_RDIAG;
-    private $iPatternColor        = "blue";
+    private $iPatternColor        = 'blue';
     private $iPatternDensity      = 95;
     private $iBreakStyle          = false;
     private $iBreakLineStyle      = 'dotted';
     private $iBreakLineWeight     = 1;
+
     //---------------
     // CONSTRUCTOR
-    public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = "", $aHeightFactor = 0.6)
+    public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = '', $aHeightFactor = 0.6)
     {
         parent::__construct();
         $this->iStart = $aStart;
@@ -46,7 +52,7 @@ class GanttBar extends GanttPlotObject
         $this->iHeightFactor = $aHeightFactor;
         $this->title->Set($aLabel);
         $this->caption = new TextProperty($aCaption);
-        $this->caption->Align("left", "center");
+        $this->caption->Align('left', 'center');
         $this->leftMark = new PlotMark();
         $this->leftMark->Hide();
         $this->rightMark = new PlotMark();
@@ -56,7 +62,7 @@ class GanttBar extends GanttPlotObject
 
     //---------------
     // PUBLIC METHODS
-    public function SetShadow($aShadow = true, $aColor = "gray")
+    public function SetShadow($aShadow = true, $aColor = 'gray')
     {
         $this->iShadow      = $aShadow;
         $this->iShadowColor = $aColor;
@@ -106,12 +112,12 @@ class GanttBar extends GanttPlotObject
             }
 
             return $m;
-        } else {
-            return -1;
         }
+
+        return -1;
     }
 
-    public function SetPattern($aPattern, $aColor = "blue", $aDensity = 95)
+    public function SetPattern($aPattern, $aColor = 'blue', $aDensity = 95)
     {
         $this->iPattern        = $aPattern;
         $this->iPatternColor   = $aColor;
@@ -159,18 +165,18 @@ class GanttBar extends GanttPlotObject
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
-                $coords   = "$title_xt,$yt,$title_xb,$yt,$title_xb,$yb,$title_xt,$yb";
+                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"$coords\" href=\"" . $this->title->csimtarget[$i] . "\"";
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= "target=\"" . $this->title->csimwintarget[$i] . "\" ";
+                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'" ';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {
                         $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"$tmp\" alt=\"$tmp\" ";
+                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
                     }
                     $this->csimarea .= " />\n";
                 }
@@ -210,16 +216,16 @@ class GanttBar extends GanttPlotObject
         }
         // CSIM for bar
         if (!empty($this->csimtarget)) {
-            $coords = "$xt,$yt,$xb,$yt,$xb,$yb,$xt,$yb";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"$coords\" href=\"" . $this->csimtarget . "\"";
+            $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
+            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtarget.'"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimarea .= " target=\"" . $this->csimwintarget . "\" ";
+                $this->csimarea .= ' target="'.$this->csimwintarget.'" ';
             }
 
             if ($this->csimalt != '') {
                 $tmp = $this->csimalt;
-                $this->csimarea .= " title=\"$tmp\" alt=\"$tmp\" ";
+                $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
             }
             $this->csimarea .= " />\n";
         }
@@ -232,7 +238,6 @@ class GanttBar extends GanttPlotObject
 
             $endpos = $xtp + $len;
             if ($endpos > $xt) {
-
                 // Take away the length of the progress that is not visible (before the start date)
                 $len -= ($xt - $xtp);
 

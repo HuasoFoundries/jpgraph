@@ -1,15 +1,15 @@
 <?php
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_canvas.php');
-require_once('jpgraph/jpgraph_table.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
+require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
 $rows = 3;
-$data = array( array('2007'),
-               array('','Q1','','','Q2'),
-           array('','Jan','Feb','Mar','Apr','May','Jun'),
-           array('Min','15.2', '12.5', '9.9', '70.0', '22.4','21.5'),
-           array('Max','23.9', '14.2', '18.6', '71.3','66.8','42.6'));
+$data = [['2007'],
+               ['', 'Q1', '', '', 'Q2'],
+           ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+           ['Min', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
+           ['Max', '23.9', '14.2', '18.6', '71.3', '66.8', '42.6'], ];
 
 $q=1;
 

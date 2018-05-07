@@ -1,11 +1,15 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$l1datay = array(11, 9, 2, 4, 3, 13, 17);
-$l2datay = array(23, 12, 5, 19, 17, 10, 15);
-$datax   = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug');
+$l1datay = [11, 9, 2, 4, 3, 13, 17];
+$l2datay = [23, 12, 5, 19, 17, 10, 15];
+$datax   = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
 
 // Create the graph.
 $graph = new Graph\Graph(400, 200);

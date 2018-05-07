@@ -3,7 +3,7 @@ VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
 SHELL = /usr/bin/env bash
 
 default: clean
-.PHONY: version install test tag start
+.PHONY: version install test tag start csfixer
 
 version:
 	@echo $(VERSION)
@@ -11,7 +11,7 @@ version:
 
 
 install:
-	composer install
+	composer install --no-dev
 
 test:
 	php vendor/bin/codecept run
@@ -19,7 +19,8 @@ test:
 update_version:
 	@echo "Current version is " ${VERSION}
 	@echo "Next version is " $(v)
-	sed -i s/'"$(VERSION)"'/'"$(v)"'/ composer.json
+	@sed -i s/'"$(VERSION)"'/'"$(v)"'/ composer.json
+	@sed -i s/'"$(VERSION)"'/'"$(v)"'/ README.md
 	composer update nothing --lock --root-reqs
 
 tag_and_push:
@@ -37,3 +38,6 @@ delete_tag:
 
 start:
 	php -S localhost:8000
+
+csfixer:
+	./vendor/bin/php-cs-fixer --verbose fix	

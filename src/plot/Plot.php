@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
@@ -13,14 +17,14 @@ class Plot
     public $numpoints = 0;
     public $value;
     public $legend              = '';
-    public $coords              = array();
+    public $coords              = [];
     public $color               = 'black';
     public $hidelegend          = false;
     public $line_weight         = 1;
-    public $csimtargets         = array();
-    public $csimwintargets      = array(); // Array of targets for CSIM
+    public $csimtargets         = [];
+    public $csimwintargets      = []; // Array of targets for CSIM
     public $csimareas           = ''; // Resultant CSIM area tags
-    public $csimalts            = null; // ALT:s for corresponding target
+    public $csimalts; // ALT:s for corresponding target
     public $legendcsimtarget    = '';
     public $legendcsimwintarget = '';
     public $legendcsimalt       = '';
@@ -38,7 +42,7 @@ class Plot
         }
 
         if (!$this->isRunningClear) {
-            $this->inputValues           = array();
+            $this->inputValues           = [];
             $this->inputValues['aDatay'] = $aDatay;
             $this->inputValues['aDatax'] = $aDatax;
         }
@@ -99,9 +103,10 @@ class Plot
     // or axis are stroked used to do any plot specific adjustment
     public function PreStrokeAdjust($aGraph)
     {
-        if (substr($aGraph->axtype, 0, 4) == "text" && (isset($this->coords[1]))) {
+        if (substr($aGraph->axtype, 0, 4) == 'text' && (isset($this->coords[1]))) {
             Util\JpGraphError::RaiseL(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
         }
+
         return true;
     }
 
@@ -130,7 +135,7 @@ class Plot
         if ($cnt > 0) {
             $i = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
-                $i++;
+                ++$i;
             }
             while ($i < $cnt) {
                 if (is_numeric($y[$i])) {
@@ -141,7 +146,8 @@ class Plot
         } else {
             $ym = '';
         }
-        return array($xm, $ym);
+
+        return [$xm, $ym];
     }
 
     // Get maximum value in plot
@@ -163,7 +169,7 @@ class Plot
             $cnt = count($y);
             $i   = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
-                $i++;
+                ++$i;
             }
             while ($i < $cnt) {
                 if (is_numeric($y[$i])) {
@@ -174,7 +180,8 @@ class Plot
         } else {
             $ym = '';
         }
-        return array($xm, $ym);
+
+        return [$xm, $ym];
     }
 
     public function SetColor($aColor)

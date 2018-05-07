@@ -1,5 +1,9 @@
 <?php
-require_once('jpgraph/datamatrix/datamatrix.inc.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/datamatrix/datamatrix.inc.php';
 
 $data = 'This is a datamatrix symbol';
 
@@ -20,12 +24,13 @@ $backend->SetColor('navy', 'white');
 // Create the barcode from the given data string and write to output file
 $dir  = dirname(__FILE__);
 $file = '<span style="font-weight:bold;">"'.$dir.'/'.$outputfile.'"</span>';
+
 try {
     $backend->Stroke($data, $outputfile);
     echo 'Barcode sucessfully written to file: '.$file;
 } catch (Exception $e) {
     $errstr  = $e->GetMessage();
     $errcode = $e->GetCode();
-    echo "Failed writing file: ".$file.'<br>';
-    echo "Datamatrix error ($errcode). Message: $errstr\n";
+    echo 'Failed writing file: '.$file.'<br>';
+    echo "Datamatrix error (${errcode}). Message: ${errstr}\n";
 }

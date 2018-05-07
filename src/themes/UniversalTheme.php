@@ -1,8 +1,13 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Themes;
 
 /**
- * Universal Theme class
+ * Universal Theme class.
  */
 class UniversalTheme extends Theme
 {
@@ -13,7 +18,7 @@ class UniversalTheme extends Theme
 
     public function GetColorList()
     {
-        return array(
+        return [
             '#61a9f3', #blue
             '#f381b9', #red
             '#61E3A9', #green
@@ -30,12 +35,11 @@ class UniversalTheme extends Theme
             '#EC8833',
             '#FFF100',
             '#87C9A5',
-        );
+        ];
     }
 
     public function SetupGraph($graph)
     {
-
         // graph
         /*
         $img = $graph->img;
@@ -89,7 +93,6 @@ class UniversalTheme extends Theme
 
     public function SetupPieGraph($graph)
     {
-
         // graph
         $graph->SetFrame(false);
 
@@ -130,23 +133,21 @@ class UniversalTheme extends Theme
     {
         switch (get_class($plot)) {
             case 'GroupBarPlot':
-                {
+
                     foreach ($plot->plots as $_plot) {
                         $this->ApplyPlot($_plot);
                     }
-                    break;
-                }
 
+                    break;
             case 'AccBarPlot':
-                {
+
                     foreach ($plot->plots as $_plot) {
                         $this->ApplyPlot($_plot);
                     }
-                    break;
-                }
 
+                    break;
             case 'BarPlot':
-                {
+
                     if (!$plot->fill) {
                         $plot->Clear();
                         $color = $this->GetNextColor();
@@ -154,34 +155,28 @@ class UniversalTheme extends Theme
                         $plot->SetFillColor($color);
                         $plot->SetShadow('red', 3, 4, false);
                     }
-                    break;
-                }
 
+                    break;
             case 'LinePlot':
-                {
-                    $plot->Clear();
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
-                    $plot->SetWeight(2);
-                    break;
-                }
 
+                    $plot->Clear();
+                    $plot->SetColor($this->GetNextColor().'@0.4');
+                    $plot->SetWeight(2);
+
+                    break;
             case 'PiePlot':
-                {
+
                     $plot->SetCenter(0.5, 0.45);
                     $plot->ShowBorder(false);
                     $plot->SetSliceColors($this->GetThemeColors());
-                    break;
-                }
 
+                    break;
             case 'PiePlot3D':
-                {
-                    $plot->SetSliceColors($this->GetThemeColors());
-                    break;
-                }
 
+                    $plot->SetSliceColors($this->GetThemeColors());
+
+                    break;
             default:
-                {
-                }
         }
     }
 }

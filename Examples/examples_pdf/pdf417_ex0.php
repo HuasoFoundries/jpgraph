@@ -1,5 +1,9 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/pdf417/jpgraph_pdf417.php');
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/pdf417/jpgraph_pdf417.php';
 
 $data = 'PDF-417';
 // Create a new encoder and backend to generate PNG images

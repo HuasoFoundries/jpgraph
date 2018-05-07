@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 //=====================================================================
@@ -7,7 +12,7 @@ namespace Amenadiel\JpGraph\Graph;
 //=====================================================================
 class RectPatternVert extends RectPattern
 {
-    public function __construct($aColor = "black", $aWeight = 1, $aLineSpacing = 7)
+    public function __construct($aColor = 'black', $aWeight = 1, $aLineSpacing = 7)
     {
         parent::__construct($aColor, $aWeight);
         $this->linespacing = $aLineSpacing;

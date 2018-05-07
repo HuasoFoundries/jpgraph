@@ -1,6 +1,10 @@
 <?php
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_odo.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
 $graph = new OdoGraph(250, 170);
@@ -15,7 +19,7 @@ $graph->SetShadow();
 
 // Now we need to create an odometer to add to the graph.
 $odo = new Odometer();
-$odo->SetColor("lightgray:1.9");
+$odo->SetColor('lightgray:1.9');
 
 // Setup the scale
 $odo->scale->Set(100, 600);

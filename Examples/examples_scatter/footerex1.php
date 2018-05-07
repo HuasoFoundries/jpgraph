@@ -1,14 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 
-$datay1 = array(4, 26, 15, 44);
+$datay1 = [4, 26, 15, 44];
 
 // Setup the graph
 $graph = new Graph\Graph(300, 250);
 $graph->SetMarginColor('white');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetFrame(false);
 $graph->SetMargin(30, 5, 25, 50);
 
@@ -35,7 +39,7 @@ $graph->footer->right->SetColor('darkred');
 
 // Create the plot
 $p1 = new Plot\LinePlot($datay1);
-$p1->SetColor("navy");
+$p1->SetColor('navy');
 
 // Use an image of favourite car as marker
 $p1->mark->SetType(MARK_IMG, 'saab_95.jpg', 0.5);

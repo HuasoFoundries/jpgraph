@@ -1,16 +1,20 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Data can be specified using both ordinal index of the axis
 // as well as the direction label.
-$data = array(
-    0  => array(3, 2, 1, 2, 2),
-    4  => array(1, 1, 1.5, 2),
-    6  => array(1, 1, 1.5, 2),
-    12 => array(2, 3, 5, 1),
-);
+$data = [
+    0  => [3, 2, 1, 2, 2],
+    4  => [1, 1, 1.5, 2],
+    6  => [1, 1, 1.5, 2],
+    12 => [2, 3, 5, 1],
+];
 
 $xpos1 = 0.26;
 $xpos2 = 0.74;

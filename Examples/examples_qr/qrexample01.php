@@ -1,5 +1,9 @@
 <?php
-require_once('jpgraph/QR/qrencoder.inc.php');
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Data to be encoded
 $data = '01234567';

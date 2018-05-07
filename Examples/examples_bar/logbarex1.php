@@ -1,28 +1,33 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_log.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(4, 13, 30, 28, 12, 45, 30, 12, 55, 3, 0.5);
-$datax = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov");
+$datay = [4, 13, 30, 28, 12, 45, 30, 12, 55, 3, 0.5];
+$datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 
 // Create the graph.
 $graph = new Graph\Graph(400, 220, 'auto');
 //$graph->img->SetMargin(50,30,50,50);
-$graph->SetScale("textlog");
+$graph->SetScale('textlog');
 //$graph->SetShadow();
 
 // Setup titles for graph and axis
-$graph->title->Set("Bar with logarithmic Y-scale");
+$graph->title->Set('Bar with logarithmic Y-scale');
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 18);
 
-$graph->xaxis->SetTitle("2002");
+$graph->xaxis->SetTitle('2002');
 $graph->xaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 16);
 
 $graph->yaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 16);
-$graph->yaxis->SetTitle("Y-title", 'center');
+$graph->yaxis->SetTitle('Y-title', 'center');
 $graph->yaxis->SetTitleMargin(30);
 
 // Setup month on X-scale
@@ -30,7 +35,7 @@ $graph->yaxis->SetTitleMargin(30);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
-$bplot->SetFillColor("orange");
+$bplot->SetFillColor('orange');
 
 //You can also set a manual base of the bars
 //$bplot->SetYBase(0.001);

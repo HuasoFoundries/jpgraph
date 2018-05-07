@@ -1,9 +1,13 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay = array(12, 8, 19, 3, 10, 5);
+$datay = [12, 8, 19, 3, 10, 5];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(300, 200);

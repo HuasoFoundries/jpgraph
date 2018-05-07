@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -17,6 +22,6 @@ class TextPropertyBelow extends TextProperty
     {
         // Since we are not stroking the title in the columns
         // but rather under the graph we want this to return 0.
-        return array(0);
+        return [0];
     }
 }

@@ -1,8 +1,12 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../jpgraph.php';
 require_once '../jpgraph_line.php';
 
-$datay = array(0, 3, 5, 12, 15, 18, 22, 36, 37, 41);
+$datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 
 // Setup the graph
 $graph = new Graph\Graph(320, 200);

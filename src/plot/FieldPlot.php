@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -8,7 +13,7 @@ namespace Amenadiel\JpGraph\Plot;
 class FieldPlot extends Plot
 {
     public $arrow      = '';
-    private $iAngles   = array();
+    private $iAngles   = [];
     private $iCallback = '';
 
     public function __construct($datay, $datax, $angles)
@@ -38,7 +43,6 @@ class FieldPlot extends Plot
 
     public function Stroke($img, $xscale, $yscale)
     {
-
         // Remeber base color and size
         $bc  = $this->arrow->iColor;
         $bs  = $this->arrow->iSize;
@@ -46,23 +50,23 @@ class FieldPlot extends Plot
 
         for ($i = 0; $i < $this->numpoints; ++$i) {
             // Skip null values
-            if ($this->coords[0][$i] === "") {
+            if ($this->coords[0][$i] === '') {
                 continue;
             }
 
             $f = $this->iCallback;
-            if ($f != "") {
+            if ($f != '') {
                 list($cc, $cs, $cas) = call_user_func($f, $this->coords[1][$i], $this->coords[0][$i], $this->iAngles[$i]);
                 // Fall back on global data if the callback isn't set
-                if ($cc == "") {
+                if ($cc == '') {
                     $cc = $bc;
                 }
 
-                if ($cs == "") {
+                if ($cs == '') {
                     $cs = $bs;
                 }
 
-                if ($cas == "") {
+                if ($cas == '') {
                     $cas = $bas;
                 }
 
@@ -81,9 +85,16 @@ class FieldPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend != "") {
-            $aGraph->legend->Add($this->legend, $this->mark->fill_color, $this->mark, 0,
-                $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+        if ($this->legend != '') {
+            $aGraph->legend->Add(
+                $this->legend,
+                $this->mark->fill_color,
+                $this->mark,
+                0,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
         }
     }
 }

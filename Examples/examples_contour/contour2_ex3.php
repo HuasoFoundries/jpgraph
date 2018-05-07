@@ -1,16 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 
 // Setup some data to use for the contour
-$data = array(
-    array(12, 12, 10, 10),
-    array(10, 10, 8, 14),
-    array(7, 7, 13, 17),
-    array(4, 5, 8, 12),
-    array(10, 8, 7, 8));
+$data = [
+    [12, 12, 10, 10],
+    [10, 10, 8, 14],
+    [7, 7, 13, 17],
+    [4, 5, 8, 12],
+    [10, 8, 7, 8], ];
 
 // create a basic graph as a container
 $graph = new Graph\Graph(300, 300);
@@ -29,7 +32,7 @@ $graph->subtitle->SetFont(FF_VERDANA, FS_ITALIC, 10);
 $cp = new FilledContourPlot($data, 3);
 
 // Specify the colors manually
-$isobar_colors = array('lightgray', 'teal:1.3', 'orange', 'red');
+$isobar_colors = ['lightgray', 'teal:1.3', 'orange', 'red'];
 $cp->SetIsobarColors($isobar_colors);
 
 // Use only blue/red color schema

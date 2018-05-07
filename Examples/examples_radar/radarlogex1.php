@@ -1,11 +1,11 @@
 <?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_log.php');
-require_once('jpgraph/jpgraph_radar.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_log.php';
+require_once 'jpgraph/jpgraph_radar.php';
 
 // Some data to plot
-$data  = array(242,58,1500,12,1397,810,373);
-$data2 = array(447,176,1472,191,1616,42,46);
+$data  = [242, 58, 1500, 12, 1397, 810, 373];
+$data2 = [447, 176, 1472, 191, 1616, 42, 46];
 
 // Create the graph
 $graph = new RadarGraph(300, 350);

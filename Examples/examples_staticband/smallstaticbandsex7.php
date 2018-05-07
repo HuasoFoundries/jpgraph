@@ -1,14 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // Illustration of the different patterns for bands
 // $Id: smallstaticbandsex7.php,v 1.1 2002/09/01 21:51:08 aditus Exp $
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
-$datay = array(10, 29, 3, 6);
+$datay = [10, 29, 3, 6];
 
 // Create the graph.
 $graph = new Graph\Graph(200, 150);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 20, 20);
 
 // Add 10% grace ("space") at top and botton of Y-scale.
@@ -16,10 +21,10 @@ $graph->yscale->SetGrace(10);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
-$bplot->SetFillColor("lightblue");
+$bplot->SetFillColor('lightblue');
 
 // Position the X-axis at the bottom of the plotare
-$graph->xaxis->SetPos("min");
+$graph->xaxis->SetPos('min');
 
 $graph->ygrid->Show(false);
 

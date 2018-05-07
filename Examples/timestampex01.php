@@ -1,19 +1,24 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // Example on how to treat and format timestamp as human readable labels
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
 // Number of "fake" data points
-DEFINE('NDATAPOINTS', 500);
+define('NDATAPOINTS', 500);
 
 // Assume data points are sample every 10th second
-DEFINE('SAMPLERATE', 10);
+define('SAMPLERATE', 10);
 
 // Callback formatting function for the X-scale to convert timestamps
 // to hour and minutes.
 function TimeCallback($aVal)
 {
-    return Date('H:i', $aVal);
+    return date('H:i', $aVal);
 }
 
 // Get start time
@@ -24,8 +29,8 @@ $adjstart = floor($start / 60);
 // Create a data set in range (20,100) and X-positions
 // We also apply a simple low pass filter on the data to make it less
 // random and a little smoother
-$data     = array();
-$xdata    = array();
+$data     = [];
+$xdata    = [];
 $data[0]  = rand(20, 100);
 $xdata[0] = $adjstart;
 for ($i = 1; $i < NDATAPOINTS; ++$i) {
@@ -42,8 +47,8 @@ $graph = new Graph\Graph(500, 250);
 $graph->SetMargin(40, 20, 30, 50);
 
 // Now specify the X-scale explicit but let the Y-scale be auto-scaled
-$graph->SetScale("intlin", 0, 0, $adjstart, $adjend);
-$graph->title->Set("Example on TimeStamp Callback");
+$graph->SetScale('intlin', 0, 0, $adjstart, $adjend);
+$graph->title->Set('Example on TimeStamp Callback');
 
 // Setup the callback and adjust the angle of the labels
 $graph->xaxis->SetLabelFormatCallback('TimeCallback');

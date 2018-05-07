@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_date.php';
@@ -6,12 +10,12 @@ require_once 'jpgraph/jpgraph_mgraph.php';
 
 // Setup some fake data to simulate some wind speed and direction
 
-DEFINE('NDATAPOINTS', 420);
-DEFINE('SAMPLERATE', 300);
+define('NDATAPOINTS', 420);
+define('SAMPLERATE', 300);
 $start                 = time();
 $end                   = $start + NDATAPOINTS * SAMPLERATE;
-$data                  = array();
-$xdata                 = array();
+$data                  = [];
+$xdata                 = [];
 $data_winddirection[0] = rand(100, 200);
 $data_windspeed[0]     = rand(7, 10);
 for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
@@ -29,9 +33,9 @@ for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
 }
 $xdata[$i] = $start + $i * SAMPLERATE;
 
-DEFINE('BKG_COLOR', 'lightgray:1.7');
-DEFINE('WIND_HEIGHT', 800);
-DEFINE('WIND_WIDTH', 280);
+define('BKG_COLOR', 'lightgray:1.7');
+define('WIND_HEIGHT', 800);
+define('WIND_WIDTH', 280);
 
 // Setup the Wind direction graph
 $graph = new Graph\Graph(WIND_WIDTH, WIND_HEIGHT);

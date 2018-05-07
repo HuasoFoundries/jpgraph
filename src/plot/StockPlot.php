@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -22,6 +27,7 @@ class StockPlot extends Plot
     private $iStockColor1 = 'white';
     private $iStockColor2 = 'darkred';
     private $iStockColor3 = 'darkred';
+
     //---------------
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
@@ -62,7 +68,7 @@ class StockPlot extends Plot
         if ($this->center) {
             $a = 0.5;
             $b = 0.5;
-            $this->numpoints++;
+            ++$this->numpoints;
         } else {
             $a = 0;
             $b = 0;
@@ -76,7 +82,7 @@ class StockPlot extends Plot
     {
         $n = $this->numpoints;
         if ($this->center) {
-            $n--;
+            --$n;
         }
 
         if (isset($this->coords[1])) {
@@ -99,7 +105,6 @@ class StockPlot extends Plot
         $ts              = $this->iTupleSize;
         $this->csimareas = '';
         for ($i = 0; $i < $n; ++$i) {
-
             //If value is NULL, then don't draw a bar at all
             if ($this->coords[0][$i * $ts] === null) {
                 continue;
@@ -162,17 +167,18 @@ class StockPlot extends Plot
 
             // Setup image maps
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="rect" coords="' .
-                round($xl) . ',' . round($ytop) . ',' .
-                round($xr) . ',' . round($ybottom) . '" ';
-                $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
+                $this->csimareas .= '<area shape="rect" coords="'.
+                round($xl).','.round($ytop).','.
+                round($xr).','.round($ybottom).'" ';
+                $this->csimareas .= ' href="'.$this->csimtargets[$i].'"';
                 if (!empty($this->csimalts[$i])) {
                     $sval = $this->csimalts[$i];
-                    $this->csimareas .= " title=\"$sval\" alt=\"$sval\" ";
+                    $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
                 }
                 $this->csimareas .= "  />\n";
             }
         }
+
         return true;
     }
 

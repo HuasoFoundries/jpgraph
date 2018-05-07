@@ -1,14 +1,18 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
-$datay1 = array(4, 26, 12, 18, 8, 22);
-$datay2 = array(12, 9, 42, 8, 20, 19);
+$datay1 = [4, 26, 12, 18, 8, 22];
+$datay2 = [12, 9, 42, 8, 20, 19];
 
 // Setup the graph
 $graph = new Graph\Graph(300, 200);
 $graph->SetMarginColor('white');
-$graph->SetScale("textlin", 0, 50);
+$graph->SetScale('textlin', 0, 50);
 $graph->SetMargin(30, 50, 30, 30);
 
 // We must have the frame enabled to get the gradient
@@ -46,14 +50,14 @@ $graph->legend->SetPos(0.05, 0.05, 'right', 'top');
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay1);
-$p1->SetColor("red");
+$p1->SetColor('red');
 $p1->SetWeight(2);
 $p1->SetLegend('2002');
 $graph->Add($p1);
 
 // Create the second line
 $p2 = new Plot\LinePlot($datay2);
-$p2->SetColor("lightyellow");
+$p2->SetColor('lightyellow');
 $p2->SetLegend('2001');
 $p2->SetWeight(2);
 $graph->Add($p2);

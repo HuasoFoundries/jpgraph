@@ -1,10 +1,14 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata = array(12, 19, 3, 9, 15, 10);
+$ydata = [12, 19, 3, 9, 15, 10];
 
 // The code to setup a very basic graph
 $graph = new Graph\Graph(200, 150);

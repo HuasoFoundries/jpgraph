@@ -1,18 +1,21 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data
-$datay1 = array(140, 110, 50, 60);
-$datay2 = array(35, 90, 190, 190);
-$datay3 = array(20, 60, 70, 140);
+$datay1 = [140, 110, 50, 60];
+$datay2 = [35, 90, 190, 190];
+$datay3 = [20, 60, 70, 140];
 
 // Create the basic graph
 $graph = new Graph\Graph(450, 250, 'auto');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->img->SetMargin(40, 80, 30, 40);
 
 // Adjust the position of the legend box
@@ -68,7 +71,7 @@ $bplot1->SetShadow('black@0.4');
 $bplot2->SetShadow('black@0.4');
 $bplot3->SetShadow('black@0.4');
 
-$gbarplot = new Plot\GroupBarPlot(array($bplot1, $bplot2, $bplot3));
+$gbarplot = new Plot\GroupBarPlot([$bplot1, $bplot2, $bplot3]);
 $gbarplot->SetWidth(0.6);
 $graph->Add($gbarplot);
 

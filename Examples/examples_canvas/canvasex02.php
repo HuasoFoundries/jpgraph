@@ -1,13 +1,13 @@
 <?php // content="text/plain; charset=utf-8"
 // $Id: canvasex02.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_canvas.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
 
 // Setup a basic canvas we can work
 $g = new CanvasGraph(400, 200, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
-$g->SetMarginColor("teal");
+$g->SetMarginColor('teal');
 
 // We need to stroke the plotarea and margin before we add the
 // text since we otherwise would overwrite the text.

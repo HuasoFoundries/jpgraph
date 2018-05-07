@@ -1,7 +1,12 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
-use \Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Image;
 
 /*=======================================================================
 // File:        JPGRAPH_BAR.PHP
@@ -14,16 +19,16 @@ use \Amenadiel\JpGraph\Image;
  */
 
 // Pattern for Bars
-DEFINE('PATTERN_DIAG1', 1);
-DEFINE('PATTERN_DIAG2', 2);
-DEFINE('PATTERN_DIAG3', 3);
-DEFINE('PATTERN_DIAG4', 4);
-DEFINE('PATTERN_CROSS1', 5);
-DEFINE('PATTERN_CROSS2', 6);
-DEFINE('PATTERN_CROSS3', 7);
-DEFINE('PATTERN_CROSS4', 8);
-DEFINE('PATTERN_STRIPE1', 9);
-DEFINE('PATTERN_STRIPE2', 10);
+define('PATTERN_DIAG1', 1);
+define('PATTERN_DIAG2', 2);
+define('PATTERN_DIAG3', 3);
+define('PATTERN_DIAG4', 4);
+define('PATTERN_CROSS1', 5);
+define('PATTERN_CROSS2', 6);
+define('PATTERN_CROSS3', 7);
+define('PATTERN_CROSS4', 8);
+define('PATTERN_STRIPE1', 9);
+define('PATTERN_STRIPE2', 10);
 
 //===================================================
 // CLASS BarPlot
@@ -32,7 +37,7 @@ DEFINE('PATTERN_STRIPE2', 10);
 class BarPlot extends Plot
 {
     public $fill                       = false;
-    public $fill_color                 = "lightblue"; // Default is to fill with light blue
+    public $fill_color                 = 'lightblue'; // Default is to fill with light blue
     public $iPattern                   = -1;
     public $iPatternDensity            = 80;
     public $iPatternColor              = 'black';
@@ -45,9 +50,9 @@ class BarPlot extends Plot
     protected $width                   = 0.4; // in percent of major ticks
     protected $abswidth                = -1; // Width in absolute pixels
     protected $ybase                   = 0; // Bars start at 0
-    protected $align                   = "center";
+    protected $align                   = 'center';
     protected $bar_shadow              = false;
-    protected $bar_shadow_color        = "black";
+    protected $bar_shadow_color        = 'black';
     protected $bar_shadow_hsize        = 3;
     protected $bar_shadow_vsize        = 3;
     protected $bar_3d                  = false;
@@ -66,7 +71,7 @@ class BarPlot extends Plot
     // PUBLIC METHODS
 
     // Set a drop shadow for the bar (or rather an "up-right" shadow)
-    public function SetShadow($aColor = "black", $aHSize = 3, $aVSize = 3, $aShow = true)
+    public function SetShadow($aColor = 'black', $aHSize = 3, $aVSize = 3, $aShow = true)
     {
         $this->bar_shadow       = $aShow;
         $this->bar_shadow_color = $aColor;
@@ -108,19 +113,26 @@ class BarPlot extends Plot
         $rotate = [1 => 2, 2 => 1, 3 => 3, 4 => 5, 5 => 4, 6 => 6, 7 => 7, 8 => 8];
         if ($aRotate) {
             return $rotate[$aPat];
-        } else {
-            return $aPat;
         }
+
+        return $aPat;
     }
 
     public function Legend($graph)
     {
-        if ($this->grad && $this->legend != "" && !$this->fill) {
+        if ($this->grad && $this->legend != '' && !$this->fill) {
             $color = [$this->grad_fromcolor, $this->grad_tocolor];
             // In order to differentiate between gradients and cooors specified as an RGB triple
-            $graph->legend->Add($this->legend, $color, "", -$this->grad_style,
-                $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
-        } elseif ($this->legend != "" && ($this->iPattern > -1 || is_array($this->iPattern))) {
+            $graph->legend->Add(
+                $this->legend,
+                $color,
+                '',
+                -$this->grad_style,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
+        } elseif ($this->legend != '' && ($this->iPattern > -1 || is_array($this->iPattern))) {
             if (is_array($this->iPattern)) {
                 $p1 = $this->RotatePattern($this->iPattern[0], $graph->img->a == 90);
                 $p2 = $this->iPatternColor[0];
@@ -136,15 +148,36 @@ class BarPlot extends Plot
 
             $color = [$p1, $p2, $p3, $this->fill_color];
             // A kludge: Too mark that we add a pattern we use a type value of < 100
-            $graph->legend->Add($this->legend, $color, "", -101,
-                $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
-        } elseif ($this->fill_color && $this->legend != "") {
+            $graph->legend->Add(
+                $this->legend,
+                $color,
+                '',
+                -101,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
+        } elseif ($this->fill_color && $this->legend != '') {
             if (is_array($this->fill_color)) {
-                $graph->legend->Add($this->legend, $this->fill_color[0], "", 0,
-                    $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+                $graph->legend->Add(
+                    $this->legend,
+                    $this->fill_color[0],
+                    '',
+                    0,
+                    $this->legendcsimtarget,
+                    $this->legendcsimalt,
+                    $this->legendcsimwintarget
+                );
             } else {
-                $graph->legend->Add($this->legend, $this->fill_color, "", 0,
-                    $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+                $graph->legend->Add(
+                    $this->legend,
+                    $this->fill_color,
+                    '',
+                    0,
+                    $this->legendcsimtarget,
+                    $this->legendcsimalt,
+                    $this->legendcsimwintarget
+                );
             }
         }
     }
@@ -157,13 +190,13 @@ class BarPlot extends Plot
         // If we are using a log Y-scale we want the base to be at the
         // minimum Y-value unless the user have specifically set some other
         // value than the default.
-        if (substr($graph->axtype, -3, 3) == "log" && $this->ybase == 0) {
+        if (substr($graph->axtype, -3, 3) == 'log' && $this->ybase == 0) {
             $this->ybase = $graph->yaxis->scale->GetMinVal();
         }
 
         // For a "text" X-axis scale we will adjust the
         // display of the bars a little bit.
-        if (substr($graph->axtype, 0, 3) == "tex") {
+        if (substr($graph->axtype, 0, 3) == 'tex') {
             // Position the ticks between the bars
             $graph->xaxis->scale->ticks->SetXLabelOffset(0.5, 0);
 
@@ -171,9 +204,9 @@ class BarPlot extends Plot
             if ($this->abswidth > -1) {
                 $graph->SetTextScaleAbsCenterOff($this->abswidth);
             } else {
-                if ($this->align == "center") {
+                if ($this->align == 'center') {
                     $graph->SetTextScaleOff(0.5 - $this->width / 2);
-                } elseif ($this->align == "right") {
+                } elseif ($this->align == 'right') {
                     $graph->SetTextScaleOff(1 - $this->width);
                 }
             }
@@ -295,42 +328,52 @@ class BarPlot extends Plot
             case PATTERN_DIAG1:
                 $aPatternValue = 1;
                 $aDensity      = 92;
+
                 break;
             case PATTERN_DIAG2:
                 $aPatternValue = 1;
                 $aDensity      = 78;
+
                 break;
             case PATTERN_DIAG3:
                 $aPatternValue = 2;
                 $aDensity      = 92;
+
                 break;
             case PATTERN_DIAG4:
                 $aPatternValue = 2;
                 $aDensity      = 78;
+
                 break;
             case PATTERN_CROSS1:
                 $aPatternValue = 8;
                 $aDensity      = 90;
+
                 break;
             case PATTERN_CROSS2:
                 $aPatternValue = 8;
                 $aDensity      = 78;
+
                 break;
             case PATTERN_CROSS3:
                 $aPatternValue = 8;
                 $aDensity      = 65;
+
                 break;
             case PATTERN_CROSS4:
                 $aPatternValue = 7;
                 $aDensity      = 90;
+
                 break;
             case PATTERN_STRIPE1:
                 $aPatternValue = 5;
                 $aDensity      = 94;
+
                 break;
             case PATTERN_STRIPE2:
                 $aPatternValue = 5;
                 $aDensity      = 85;
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(2002);
@@ -376,7 +419,6 @@ class BarPlot extends Plot
 
         $grad = null;
         for ($i = 0; $i < $numbars; ++$i) {
-
             // If value is NULL, or 0 then don't draw a bar at all
             if ($this->coords[0][$i] === null || $this->coords[0][$i] === '') {
                 continue;
@@ -405,7 +447,7 @@ class BarPlot extends Plot
                 $x, $zp,
                 $x, $yscale->Translate($this->coords[0][$i]),
                 $x + $abswidth, $yscale->Translate($this->coords[0][$i]),
-                $x + $abswidth, $zp];
+                $x + $abswidth, $zp, ];
             if ($this->grad) {
                 if ($grad === null) {
                     $grad = new Gradient($img);
@@ -433,13 +475,25 @@ class BarPlot extends Plot
                         $tocolor   = $this->grad_fromcolor[$i % $ng][1];
                         $style     = $this->grad_fromcolor[$i % $ng][2];
                     }
-                    $grad->FilledRectangle($pts[2], $pts[3],
-                        $pts[6], $pts[7],
-                        $fromcolor, $tocolor, $style);
+                    $grad->FilledRectangle(
+                        $pts[2],
+                        $pts[3],
+                        $pts[6],
+                        $pts[7],
+                        $fromcolor,
+                        $tocolor,
+                        $style
+                    );
                 } else {
-                    $grad->FilledRectangle($pts[2], $pts[3],
-                        $pts[6], $pts[7],
-                        $this->grad_fromcolor, $this->grad_tocolor, $this->grad_style);
+                    $grad->FilledRectangle(
+                        $pts[2],
+                        $pts[3],
+                        $pts[6],
+                        $pts[7],
+                        $this->grad_fromcolor,
+                        $this->grad_tocolor,
+                        $this->grad_style
+                    );
                 }
             } elseif (!empty($this->fill_color)) {
                 if (is_array($this->fill_color)) {
@@ -551,11 +605,11 @@ class BarPlot extends Plot
 
                 $base_color = $this->fill_color;
 
-                $img->PushColor($base_color . ':0.7');
+                $img->PushColor($base_color.':0.7');
                 $img->FilledPolygon($sp1);
                 $img->PopColor();
 
-                $img->PushColor($base_color . ':1.1');
+                $img->PushColor($base_color.':1.1');
                 $img->FilledPolygon($sp2);
                 $img->PopColor();
             }
@@ -677,26 +731,27 @@ class BarPlot extends Plot
             }
             // Create the client side image map
             $rpts      = $img->ArrRotate($pts);
-            $csimcoord = round($rpts[0]) . ", " . round($rpts[1]);
+            $csimcoord = round($rpts[0]).', '.round($rpts[1]);
             for ($j = 1; $j < 4; ++$j) {
-                $csimcoord .= ", " . round($rpts[2 * $j]) . ", " . round($rpts[2 * $j + 1]);
+                $csimcoord .= ', '.round($rpts[2 * $j]).', '.round($rpts[2 * $j + 1]);
             }
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
-                $this->csimareas .= " href=\"" . htmlentities($this->csimtargets[$i]) . "\"";
+                $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
+                $this->csimareas .= ' href="'.htmlentities($this->csimtargets[$i]).'"';
 
                 if (!empty($this->csimwintargets[$i])) {
-                    $this->csimareas .= " target=\"" . $this->csimwintargets[$i] . "\" ";
+                    $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
                 }
 
                 $sval = '';
                 if (!empty($this->csimalts[$i])) {
                     $sval = sprintf($this->csimalts[$i], $this->coords[0][$i]);
-                    $this->csimareas .= " title=\"$sval\" alt=\"$sval\" ";
+                    $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
                 }
                 $this->csimareas .= " />\n";
             }
         }
+
         return true;
     }
 } // Class

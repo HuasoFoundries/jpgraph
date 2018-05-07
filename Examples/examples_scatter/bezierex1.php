@@ -1,12 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 require_once 'jpgraph/jpgraph_regstat.php';
 
 // Original data points
-$xdata = array(1, 3, 12, 15);
-$ydata = array(5, 15, 2, 19);
+$xdata = [1, 3, 12, 15];
+$ydata = [5, 15, 2, 19];
 
 // Get the interpolated values by creating
 // a new Spline object.
@@ -19,7 +23,7 @@ list($newx, $newy) = $bez->Get(50);
 // Create the graph
 $g = new Graph\Graph(300, 200);
 $g->SetMargin(30, 20, 40, 30);
-$g->title->Set("Bezier interpolation");
+$g->title->Set('Bezier interpolation');
 $g->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
 $g->subtitle->Set('(Control points shown in red)');
 $g->subtitle->SetColor('darkred');

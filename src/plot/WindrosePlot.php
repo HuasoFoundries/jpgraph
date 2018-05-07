@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
@@ -72,7 +77,7 @@ class WindrosePlot
     private $iBoxWeight            = 1;
     private $iBoxStyle             = 'solid';
     private $iOrdinalEncoding      = KEYENCODING_ANTICLOCKWISE;
-    public $legend                 = null;
+    public $legend;
 
     public function __construct($aData)
     {
@@ -83,7 +88,7 @@ class WindrosePlot
         $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f'.Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
@@ -202,7 +207,7 @@ class WindrosePlot
     public function SetRadialGridStyle($aStyle)
     {
         $aStyle = strtolower($aStyle);
-        if (!in_array($aStyle, ['solid', 'dotted', 'dashed', 'longdashed'])) {
+        if (!in_array($aStyle, ['solid', 'dotted', 'dashed', 'longdashed'], true)) {
             Util\JpGraphError::RaiseL(22005); //("Line style for radial lines must be on of ('solid','dotted','dashed','longdashed') ");
         }
         $this->iRadialGridStyle = $aStyle;
@@ -261,7 +266,7 @@ class WindrosePlot
         }
     }
 
-    public function _ThickCircle($aImg, $aXC, $aYC, $aRad, $aWeight = 2, $aColor)
+    public function _ThickCircle($aImg, $aXC, $aYC, $aRad, $aWeight, $aColor)
     {
         $aImg->SetColor($aColor);
         $aRad *= 2;
@@ -279,7 +284,6 @@ class WindrosePlot
 
     public function _StrokeWindLeg($aImg, $xc, $yc, $a, $ri, $r, $weight, $color)
     {
-
         // If less than 1 px long then we assume this has been caused by rounding problems
         // and should not be stroked
         if ($r < 1) {
@@ -318,16 +322,18 @@ class WindrosePlot
         // Setup font for ranges
         $value = new Text\Text();
         $value->SetAlign('center', 'bottom');
-        $value->SetFont($this->legend->iLblFontFamily,
+        $value->SetFont(
+            $this->legend->iLblFontFamily,
             $this->legend->iLblFontStyle,
-            $this->legend->iLblFontSize * $scaling);
+            $this->legend->iLblFontSize * $scaling
+        );
         $value->SetColor($this->legend->iLblFontColor);
 
         // Remember x-center
         $xcenter = $x;
 
         // Construct format string
-        $fmt = $this->legend->iFormatString . '-' . $this->legend->iFormatString;
+        $fmt = $this->legend->iFormatString.'-'.$this->legend->iFormatString;
 
         // Make sure that the length of each range is enough to cover the
         // size of the labels
@@ -360,8 +366,14 @@ class WindrosePlot
         }
 
         // Stroke 0-circle
-        $this->_ThickCircle($aImg, $x, $y, $r, $this->legend->iCircleWeight,
-            $this->legend->iCircleColor);
+        $this->_ThickCircle(
+            $aImg,
+            $x,
+            $y,
+            $r,
+            $this->legend->iCircleWeight,
+            $this->legend->iCircleColor
+        );
 
         // Remember the center of the circe
         $xc = $x;
@@ -398,9 +410,11 @@ class WindrosePlot
         }
 
         // Setup circle font
-        $value->SetFont($this->legend->iCircleFontFamily,
+        $value->SetFont(
+            $this->legend->iCircleFontFamily,
             $this->legend->iCircleFontStyle,
-            $this->legend->iCircleFontSize * $scaling);
+            $this->legend->iCircleFontSize * $scaling
+        );
         $value->SetColor($this->legend->iCircleFontColor);
 
         // Stroke 0-circle text
@@ -410,9 +424,11 @@ class WindrosePlot
         $value->Stroke($aImg, $xc, $yc);
 
         // Setup circle font
-        $value->SetFont($this->legend->iTxtFontFamily,
+        $value->SetFont(
+            $this->legend->iTxtFontFamily,
             $this->legend->iTxtFontStyle,
-            $this->legend->iTxtFontSize * $scaling);
+            $this->legend->iTxtFontSize * $scaling
+        );
         $value->SetColor($this->legend->iTxtFontColor);
 
         // Draw the text under the legend
@@ -424,7 +440,6 @@ class WindrosePlot
 
     public function SetAutoScaleAngle($aIsRegRose = true)
     {
-
         // If the user already has manually set an angle don't
         // trye to find a position
         if (is_numeric($this->scale->iAngle)) {
@@ -432,7 +447,6 @@ class WindrosePlot
         }
 
         if ($aIsRegRose) {
-
             // Create a complete data for all directions
             // and translate string directions to ordinal values.
             // This will much simplify the logic below
@@ -472,7 +486,7 @@ class WindrosePlot
             $n = count($this->iData);
             foreach ($this->iData as $dir => $leg) {
                 if (!is_numeric($dir)) {
-                    $pos = array_search(strtoupper($dir), $this->iAllDirectionLabels);
+                    $pos = array_search(strtoupper($dir), $this->iAllDirectionLabels, true);
                     if ($pos !== false) {
                         $dir = $pos * 22.5;
                     }
@@ -494,7 +508,7 @@ class WindrosePlot
                     break;
                 }
 
-                if (in_array($try_a, $keys)) {
+                if (in_array($try_a, $keys, true)) {
                     continue;
                 }
 
@@ -570,6 +584,7 @@ class WindrosePlot
         while ($a > 360) {
             $a -= 360;
         }
+
         return $a;
     }
 
@@ -580,7 +595,6 @@ class WindrosePlot
 
     public function _StrokeFreeRose($dblImg, $value, $scaling, $xc, $yc, $r, $ri)
     {
-
         // Plot radial grid lines and remember the end position
         // and the angle for later use when plotting the labels
         if ($this->iType != WINDROSE_TYPEFREE) {
@@ -605,7 +619,7 @@ class WindrosePlot
         foreach ($this->iData as $dir => $legdata) {
             if (in_array($dir, $this->iAllDirectionLabels, true) === true) {
                 $a = $this->iStandardDirections[strtoupper($dir)];
-                if (in_array($a * 180 / M_PI, $keys)) {
+                if (in_array($a * 180 / M_PI, $keys, true)) {
                     Util\JpGraphError::RaiseL(22009, round($a * 180 / M_PI));
                     //('You have specified the same direction twice, once with an angle and once with a compass direction ('.$a*180/M_PI.' degrees.)');
                 }
@@ -740,11 +754,16 @@ class WindrosePlot
             for ($j = 0; $j < $nn; ++$j) {
                 // We want the non scaled original radius
                 $legr = $this->scale->RelTranslate($legdata[$j], $r / $scaling, $ri / $scaling);
-                $this->_StrokeWindLeg($dblImg, $xc, $yc, $a,
+                $this->_StrokeWindLeg(
+                    $dblImg,
+                    $xc,
+                    $yc,
+                    $a,
                     $rri * $scaling,
                     $legr * $scaling,
                     $this->iLegweights[$j % $nlw] * $scaling,
-                    $this->iLegColors[$j % $nlc]);
+                    $this->iLegColors[$j % $nlc]
+                );
                 $rri += $legr;
             }
             ++$i;
@@ -760,7 +779,7 @@ class WindrosePlot
         foreach ($aDataArray as $idx => $data) {
             if (is_string($idx)) {
                 $idx = strtoupper($idx);
-                $res = array_search($idx, $this->iAllDirectionLabels);
+                $res = array_search($idx, $this->iAllDirectionLabels, true);
                 if ($res === false) {
                     Util\JpGraphError::RaiseL(22011, $idx); //('Windrose index must be numeric or direction label. You have specified index='.$idx);
                 }
@@ -779,6 +798,7 @@ class WindrosePlot
             }
             $ret[$idx] = $data;
         }
+
         return $ret;
     }
 
@@ -790,12 +810,15 @@ class WindrosePlot
         switch ($this->iType) {
             case WINDROSE_TYPE4:
                 $num = 4;
+
                 break;
             case WINDROSE_TYPE8:
                 $num = 8;
+
                 break;
             case WINDROSE_TYPE16:
                 $num = 16;
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(22015); //('You have specified an undefined Windrose plot type.');
@@ -911,7 +934,7 @@ class WindrosePlot
         }
 
         if (__DEBUG) {
-            $dblImg->SetColor("red");
+            $dblImg->SetColor('red');
             $dblImg->Circle($xc, $yc, $lr + $r);
         }
 
@@ -923,7 +946,7 @@ class WindrosePlot
             $nn      = count($legdata);
             if (is_string($idx)) {
                 $idx = strtoupper($idx);
-                $idx = array_search($idx, $this->iAllDirectionLabels);
+                $idx = array_search($idx, $this->iAllDirectionLabels, true);
                 if ($idx === false) {
                     Util\JpGraphError::RaiseL(22016); //('Windrose leg index must be numeric or direction label.');
                 }
@@ -945,11 +968,16 @@ class WindrosePlot
             for ($j = 0; $j < $nn; ++$j) {
                 // We want the non scaled original radius
                 $legr = $this->scale->RelTranslate($legdata[$j], $r / $scaling, $ri / $scaling);
-                $this->_StrokeWindLeg($dblImg, $xc, $yc, $a,
+                $this->_StrokeWindLeg(
+                    $dblImg,
+                    $xc,
+                    $yc,
+                    $a,
                     $rri * $scaling,
                     $legr * $scaling,
                     $this->iLegweights[$j % $nlw] * $scaling,
-                    $this->iLegColors[$j % $nlc]);
+                    $this->iLegColors[$j % $nlc]
+                );
                 $rri += $legr;
             }
         }
@@ -1128,8 +1156,14 @@ class WindrosePlot
         $ri *= $scaling;
         $rr = round(($r - $ri) / $n);
         for ($i = 1; $i <= $n; ++$i) {
-            $this->_ThickCircle($dblImg, $xc, $yc, $rr * $i + $ri,
-                $this->iCircGridWeight, $this->iGridColor1);
+            $this->_ThickCircle(
+                $dblImg,
+                $xc,
+                $yc,
+                $rr * $i + $ri,
+                $this->iCircGridWeight,
+                $this->iGridColor1
+            );
         }
 
         $num = 0;

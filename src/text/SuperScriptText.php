@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Text;
 
 //===================================================
@@ -33,14 +38,14 @@ class SuperScriptText extends Text
         }
 
         $l = floor(log10($aVal));
-        $a = sprintf("%0." . $aPrecision . "f", round($aVal / pow(10, $l), $aPrecision));
+        $a = sprintf('%0.'.$aPrecision.'f', round($aVal / pow(10, $l), $aPrecision));
         $a *= $neg;
         if ($this->iSimple && ($a == 1 || $a == -1)) {
             $a = '';
         }
 
         if ($a != '') {
-            $this->t = $a . ' * 10';
+            $this->t = $a.' * 10';
         } else {
             if ($neg == 1) {
                 $this->t = '10';
@@ -72,6 +77,7 @@ class SuperScriptText extends Text
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $w += $aImg->GetTextWidth($this->iSuper);
         $w += $this->iSuperMargin;
+
         return $w;
     }
 
@@ -82,6 +88,7 @@ class SuperScriptText extends Text
         $h = $aImg->GetFontHeight();
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $h += $aImg->GetFontHeight();
+
         return $h;
     }
 
@@ -92,12 +99,12 @@ class SuperScriptText extends Text
         $h = $aImg->GetTextHeight($this->t);
         $aImg->SetFont($this->sfont_family, $this->sfont_style, $this->sfont_size);
         $h += $aImg->GetTextHeight($this->iSuper);
+
         return $h;
     }
 
     public function Stroke($aImg, $ax = -1, $ay = -1)
     {
-
         // To position the super script correctly we need different
         // cases to handle the alignmewnt specified since that will
         // determine how we can interpret the x,y coordinates
@@ -107,12 +114,15 @@ class SuperScriptText extends Text
         switch ($this->valign) {
             case 'top':
                 $sy = $this->y;
+
                 break;
             case 'center':
                 $sy = $this->y - $h / 2;
+
                 break;
             case 'bottom':
                 $sy = $this->y - $h;
+
                 break;
             default:
                 JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
@@ -122,12 +132,15 @@ class SuperScriptText extends Text
         switch ($this->halign) {
             case 'left':
                 $sx = $this->x + $w;
+
                 break;
             case 'center':
                 $sx = $this->x + $w / 2;
+
                 break;
             case 'right':
                 $sx = $this->x;
+
                 break;
             default:
                 JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');

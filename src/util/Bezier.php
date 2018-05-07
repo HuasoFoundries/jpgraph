@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 //------------------------------------------------------------------------
@@ -14,8 +19,8 @@ class Bezier
      * computed from control points data sets, based on Paul Bourke algorithm :
      * http://local.wasp.uwa.edu.au/~pbourke/geometry/bezier/index2.html
      */
-    private $datax = array();
-    private $datay = array();
+    private $datax = [];
+    private $datay = [];
     private $n     = 0;
 
     public function __construct($datax, $datay, $attraction_factor = 1)
@@ -28,13 +33,13 @@ class Bezier
         }
         $idx = 0;
         foreach ($datax as $datumx) {
-            for ($i = 0; $i < $attraction_factor; $i++) {
+            for ($i = 0; $i < $attraction_factor; ++$i) {
                 $this->datax[$idx++] = $datumx;
             }
         }
         $idx = 0;
         foreach ($datay as $datumy) {
-            for ($i = 0; $i < $attraction_factor; $i++) {
+            for ($i = 0; $i < $attraction_factor; ++$i) {
                 $this->datay[$idx++] = $datumy;
             }
         }
@@ -42,16 +47,18 @@ class Bezier
     }
 
     /**
-     * Return a set of data points that specifies the bezier curve with $steps points
+     * Return a set of data points that specifies the bezier curve with $steps points.
+     *
      * @param $steps Number of new points to return
+     *
      * @return array($datax, $datay)
      */
     public function Get($steps)
     {
-        $datax = array();
-        $datay = array();
-        for ($i = 0; $i < $steps; $i++) {
-            list($datumx, $datumy) = $this->GetPoint((double) $i / (double) $steps);
+        $datax = [];
+        $datay = [];
+        for ($i = 0; $i < $steps; ++$i) {
+            list($datumx, $datumy) = $this->GetPoint((float) $i / (float) $steps);
             $datax[$i]             = $datumx;
             $datay[$i]             = $datumy;
         }
@@ -59,15 +66,16 @@ class Bezier
         $datax[] = end($this->datax);
         $datay[] = end($this->datay);
 
-        return array($datax, $datay);
+        return [$datax, $datay];
     }
 
     /**
      * Return one point on the bezier curve. $mu is the position on the curve where $mu is in the
      * range 0 $mu < 1 where 0 is tha start point and 1 is the end point. Note that every newly computed
-     * point depends on all the existing points
+     * point depends on all the existing points.
      *
      * @param $mu Position on the bezier curve
+     *
      * @return array($x, $y)
      */
     public function GetPoint($mu)
@@ -82,9 +90,9 @@ class Bezier
         $newy  = 0.0;
 
         $muk  = 1.0;
-        $munk = (double) pow(1 - $mu, (double) $n);
+        $munk = (float) pow(1 - $mu, (float) $n);
 
-        for ($k = 0; $k <= $n; $k++) {
+        for ($k = 0; $k <= $n; ++$k) {
             $nn    = $n;
             $kn    = $k;
             $nkn   = $n - $k;
@@ -93,20 +101,20 @@ class Bezier
             $munk /= (1 - $mu);
             while ($nn >= 1) {
                 $blend *= $nn;
-                $nn--;
+                --$nn;
                 if ($kn > 1) {
-                    $blend /= (double) $kn;
-                    $kn--;
+                    $blend /= (float) $kn;
+                    --$kn;
                 }
                 if ($nkn > 1) {
-                    $blend /= (double) $nkn;
-                    $nkn--;
+                    $blend /= (float) $nkn;
+                    --$nkn;
                 }
             }
             $newx += $this->datax[$k] * $blend;
             $newy += $this->datay[$k] * $blend;
         }
 
-        return array($newx, $newy);
+        return [$newx, $newy];
     }
 }

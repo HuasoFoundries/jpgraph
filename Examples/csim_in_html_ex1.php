@@ -11,7 +11,7 @@ $_wrapperfilename = basename(__FILE__);
 $_mapname = '__mapname'.rand(0, 1000000).'__';
 
 // This is the first graph script
-require_once($_graphfilename);
+require_once $_graphfilename;
 
 // This line gets the image map and inserts it on the page
 $imgmap = $graph->GetHTMLImageMap($_mapname);
@@ -36,7 +36,7 @@ echo '<p />';
 <?php
 
 // The we display the image map as well
-echo '<pre><b>'.htmlentities($imgmap).'</b></pre>';?>
+echo '<pre><b>'.htmlentities($imgmap).'</b></pre>'; ?>
 
 <?php
 // Construct the <img> tag and rebuild the

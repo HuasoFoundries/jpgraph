@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -13,10 +18,10 @@ class GanttPlotObject
     public $csimtarget               = '';
     public $csimwintarget            = '';
     public $csimalt                  = '';
-    public $constraints              = array();
+    public $constraints              = [];
     public $iCaptionMargin           = 5;
-    public $iConstrainPos            = array();
-    protected $iStart                = ""; // Start date
+    public $iConstrainPos            = [];
+    protected $iStart                = ''; // Start date
     public $iVPos                    = 0; // Vertical position
     protected $iLabelLeftMargin      = 2; // Title margin
 
@@ -67,7 +72,7 @@ class GanttPlotObject
 
     public function SetConstrainPos($xt, $yt, $xb, $yb)
     {
-        $this->iConstrainPos = array($xt, $yt, $xb, $yb);
+        $this->iConstrainPos = [$xt, $yt, $xb, $yb];
     }
 
     public function GetMinDate()
@@ -102,7 +107,7 @@ class GanttPlotObject
 
     public function StrokeActInfo($aImg, $aScale, $aYPos)
     {
-        $cols = array();
+        $cols = [];
         $aScale->actinfo->GetColStart($aImg, $cols, true);
         $this->title->Stroke($aImg, $cols, $aYPos);
     }

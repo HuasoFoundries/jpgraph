@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 define('__LR_EPSILON', 1.0e-8);
@@ -7,8 +12,8 @@ define('__LR_EPSILON', 1.0e-8);
 //=============================================================================
 class LinearRegression
 {
-    private $ix             = array();
-    private $iy             = array();
+    private $ix             = [];
+    private $iy             = [];
     private $ib             = 0;
     private $ia             = 0;
     private $icalculated    = false;
@@ -71,7 +76,7 @@ class LinearRegression
             $this->Calc();
         }
 
-        return array($this->ia, $this->ib);
+        return [$this->ia, $this->ib];
     }
 
     public function GetStat()
@@ -80,7 +85,7 @@ class LinearRegression
             $this->Calc();
         }
 
-        return array($this->iStdErr, $this->iCorr, $this->iDet);
+        return [$this->iStdErr, $this->iCorr, $this->iDet];
     }
 
     public function GetY($aMinX, $aMaxX, $aStep = 1)
@@ -89,13 +94,13 @@ class LinearRegression
             $this->Calc();
         }
 
-        $yy = array();
+        $yy = [];
         $i  = 0;
         for ($x = $aMinX; $x <= $aMaxX; $x += $aStep) {
             $xx[$i]   = $x;
             $yy[$i++] = $this->ia + $this->ib * $x;
         }
 
-        return array($xx, $yy);
+        return [$xx, $yy];
     }
 }

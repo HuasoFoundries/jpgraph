@@ -1,7 +1,11 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('../jpgraph.php');
-require_once('../jpgraph_canvas.php');
-require_once('../jpgraph_colormap.inc.php');
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+require_once '../jpgraph.php';
+require_once '../jpgraph_canvas.php';
+require_once '../jpgraph_colormap.inc.php';
 
 class ColorMapDriver
 {
@@ -14,7 +18,6 @@ class ColorMapDriver
 
     public function Draw($aTitle, $aStart, $aEnd, $n=64, $aReverse=false, $addColorNames = false)
     {
-
         // Setup to draw colormap with names platoe colors
         $lmarg = ColorMapDriver::LMARG; // left margin
         $rmarg = ColorMapDriver::RMARG; // right margin
@@ -111,11 +114,10 @@ class ColorMapDriver
 
 $driver = new ColorMapDriver();
 
-$title     = "Standard maps";
+$title     = 'Standard maps';
 $reverse   = false;
 $n         = 64; $s        =0; $e        =9;
 $showNames = false;
-
 
 /*
 $title = "Center maps";

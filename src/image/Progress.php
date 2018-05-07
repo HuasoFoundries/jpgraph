@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
@@ -12,7 +17,7 @@ class Progress
 {
     public $iProgress     = -1;
     public $iPattern      = GANTT_SOLID;
-    public $iColor        = "black";
+    public $iColor        = 'black';
     public $iFillColor    = 'black';
     public $iDensity      = 98;
     public $iHeight       = 0.65;
@@ -26,7 +31,7 @@ class Progress
         $this->iProgress = $aProg;
     }
 
-    public function SetPattern($aPattern, $aColor = "blue", $aDensity = 98)
+    public function SetPattern($aPattern, $aColor = 'blue', $aDensity = 98)
     {
         $this->iPattern = $aPattern;
         $this->iColor   = $aColor;

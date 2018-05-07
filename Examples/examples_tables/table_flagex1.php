@@ -9,16 +9,16 @@ include '../jpgraph_flags.php';
 $graph = new CanvasGraph(500, 200);
 
 // Setup the basic table
-$data = array(
-    array('Areas'),
-    array(''),
-    array('','USA','UK','France','Denmark','Iceland','Canada'),
-    array('Feb',13,17,15,8,3,9),
-    array('Mar',34,35,26,20,22,16),
-    array('Apr',41,43,49,45,51,47),
-    array('Sum:',88,95,90,73,76,72));
+$data = [
+    ['Areas'],
+    [''],
+    ['', 'USA', 'UK', 'France', 'Denmark', 'Iceland', 'Canada'],
+    ['Feb', 13, 17, 15, 8, 3, 9],
+    ['Mar', 34, 35, 26, 20, 22, 16],
+    ['Apr', 41, 43, 49, 45, 51, 47],
+    ['Sum:', 88, 95, 90, 73, 76, 72], ];
 
-$countries = array('united states','united kingdom','french republic','denmark','iceland','canada');
+$countries = ['united states', 'united kingdom', 'french republic', 'denmark', 'iceland', 'canada'];
 
 // Create a basic table and default fonr
 $table = new GTextTable();

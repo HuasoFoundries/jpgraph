@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 //=====================================================================
@@ -12,7 +17,7 @@ class RectPattern3DPlane extends RectPattern
     // top of the band. Specifies how fast the lines
     // converge.
 
-    public function __construct($aColor = "black", $aWeight = 1)
+    public function __construct($aColor = 'black', $aWeight = 1)
     {
         parent::__construct($aColor, $aWeight);
         $this->SetDensity(10); // Slightly larger default

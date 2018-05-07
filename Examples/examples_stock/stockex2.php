@@ -1,18 +1,23 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_stock.php';
 
-$datay = array(
+$datay = [
     34, 42, 27, 45,
     55, 25, 12, 59,
     38, 49, 32, 64,
     34, 40, 29, 42,
-    40, 29, 22, 45);
+    40, 29, 22, 45, ];
 
 // Setup basic graph
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 $graph->SetFrame(false);
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');

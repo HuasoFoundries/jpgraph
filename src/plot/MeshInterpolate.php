@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 /*=======================================================================
@@ -12,7 +17,8 @@ namespace Amenadiel\JpGraph\Plot;
  */
 
 /**
- * Utility function to do linear mesh interpolation
+ * Utility function to do linear mesh interpolation.
+ *
  * @param $aDat Matrix to interpolate
  * @param $aFactor Interpolation factor
  */
@@ -23,21 +29,23 @@ function doMeshInterpolate(&$aData, $aFactor)
 }
 
 /**
- * Utility class to interpolate a given data matrix
- *
+ * Utility class to interpolate a given data matrix.
  */
 class MeshInterpolate
 {
-    private $data = array();
+    private $data = [];
 
     /**
      * Calculate the mid points of the given rectangle which has its top left
      * corner at $row,$col. The $aFactordecides how many spliots should be done.
-     * i.e. how many more divisions should be done recursively
+     * i.e. how many more divisions should be done recursively.
      *
      * @param $row Top left corner of square to work with
      * @param $col Top left corner of square to work with
      * $param $aFactor In how many subsquare should we split this square. A value of 1 indicates that no action
+     * @param mixed $aRow
+     * @param mixed $aCol
+     * @param mixed $aFactor
      */
     public function IntSquare($aRow, $aCol, $aFactor)
     {
@@ -73,6 +81,8 @@ class MeshInterpolate
      *
      * @param  $ &$aData The original data matricde
      * @param  $aInNbr Interpolation factor
+     * @param mixed $aIntFactor
+     *
      * @return the interpolated matrice
      */
     public function Linear(&$aData, $aIntFactor)
@@ -89,8 +99,8 @@ class MeshInterpolate
 
         $this->data = array_fill(0, $new_rows, array_fill(0, $new_cols, 0));
         // Initialize the new matrix with the values that we know
-        for ($i = 0; $i < $new_rows; $i++) {
-            for ($j = 0; $j < $new_cols; $j++) {
+        for ($i = 0; $i < $new_rows; ++$i) {
+            for ($j = 0; $j < $new_cols; ++$j) {
                 $v = 0;
                 if (($i % $step == 0) && ($j % $step == 0)) {
                     $v = $aData[$i / $step][$j / $step];

@@ -1,4 +1,8 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -11,11 +15,11 @@ function separator1000($aVal)
 
 function separator1000_usd($aVal)
 {
-    return '$' . number_format($aVal);
+    return '$'.number_format($aVal);
 }
 
 // Some data
-$datay = array(120567, 134013, 192000, 87000);
+$datay = [120567, 134013, 192000, 87000];
 
 // Create the graph and setup the basic parameters
 $graph = new Graph\Graph(500, 300, 'auto');

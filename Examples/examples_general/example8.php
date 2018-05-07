@@ -1,15 +1,19 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_log.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata  = array(11, 3, 8, 12, 5, 1, 9, 13, 5, 7);
-$y2data = array(354, 200, 265, 99, 111, 91, 198, 225, 293, 251);
+$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(350, 200);
-$graph->SetScale("textlog");
+$graph->SetScale('textlog');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 110, 20, 40);
 
@@ -24,25 +28,25 @@ $lineplot2 = new Plot\LinePlot($y2data);
 // Add the plot to the graph
 $graph->Add($lineplot);
 
-$graph->title->Set("Example 8");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->title->Set('Example 8');
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 
-$lineplot->SetColor("blue");
+$lineplot->SetColor('blue');
 $lineplot->SetWeight(2);
 
 // Adjust the color of the Y axis
-$graph->yaxis->SetColor("blue");
+$graph->yaxis->SetColor('blue');
 
 // Specifya a legend
-$lineplot->SetLegend("Plot 1");
+$lineplot->SetLegend('Plot 1');
 
 // Adjust the position of the grid box
-$graph->legend->Pos(0.05, 0.5, "right", "center");
+$graph->legend->Pos(0.05, 0.5, 'right', 'center');
 
 // Display the graph
 $graph->Stroke();

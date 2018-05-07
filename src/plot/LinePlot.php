@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
@@ -14,10 +19,10 @@ use Amenadiel\JpGraph\Util;
  */
 
 // constants for the (filled) area
-DEFINE("LP_AREA_FILLED", true);
-DEFINE("LP_AREA_NOT_FILLED", false);
-DEFINE("LP_AREA_BORDER", false);
-DEFINE("LP_AREA_NO_BORDER", true);
+define('LP_AREA_FILLED', true);
+define('LP_AREA_NOT_FILLED', false);
+define('LP_AREA_BORDER', false);
+define('LP_AREA_NO_BORDER', true);
 
 //===================================================
 // CLASS LinePlot
@@ -25,13 +30,13 @@ DEFINE("LP_AREA_NO_BORDER", true);
 //===================================================
 class LinePlot extends Plot
 {
-    public $mark                     = null;
+    public $mark;
     protected $filled                = false;
     protected $fill_color            = 'blue';
     protected $step_style            = false;
     protected $center                = false;
     protected $line_style            = 1; // Default to solid
-    protected $filledAreas           = array(); // array of arrays(with min,max,col,filled in them)
+    protected $filledAreas           = []; // array of arrays(with min,max,col,filled in them)
     public $barcenter                = false; // When we mix line and bar. Should we center the line in the bar.
     protected $fillFromMin           = false;
     protected $fillFromMax           = false;
@@ -107,25 +112,44 @@ class LinePlot extends Plot
 
     public function Legend($graph)
     {
-        if ($this->legend != "") {
+        if ($this->legend != '') {
             if ($this->filled && !$this->fillgrad) {
-                $graph->legend->Add($this->legend,
-                    $this->fill_color, $this->mark, 0,
-                    $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+                $graph->legend->Add(
+                    $this->legend,
+                    $this->fill_color,
+                    $this->mark,
+                    0,
+                    $this->legendcsimtarget,
+                    $this->legendcsimalt,
+                    $this->legendcsimwintarget
+                );
             } elseif ($this->fillgrad) {
-                $color = array($this->fillgrad_fromcolor, $this->fillgrad_tocolor);
+                $color = [$this->fillgrad_fromcolor, $this->fillgrad_tocolor];
                 // In order to differentiate between gradients and cooors specified as an RGB triple
-                $graph->legend->Add($this->legend, $color, "", -2/* -GRAD_HOR */,
-                    $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+                $graph->legend->Add(
+                    $this->legend,
+                    $color,
+                    '',
+                    -2/* -GRAD_HOR */,
+                    $this->legendcsimtarget,
+                    $this->legendcsimalt,
+                    $this->legendcsimwintarget
+                );
             } else {
-                $graph->legend->Add($this->legend,
-                    $this->color, $this->mark, $this->line_style,
-                    $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+                $graph->legend->Add(
+                    $this->legend,
+                    $this->color,
+                    $this->mark,
+                    $this->line_style,
+                    $this->legendcsimtarget,
+                    $this->legendcsimalt,
+                    $this->legendcsimwintarget
+                );
             }
         }
     }
 
-    public function AddArea($aMin = 0, $aMax = 0, $aFilled = LP_AREA_NOT_FILLED, $aColor = "gray9", $aBorder = LP_AREA_BORDER)
+    public function AddArea($aMin = 0, $aMax = 0, $aFilled = LP_AREA_NOT_FILLED, $aColor = 'gray9', $aBorder = LP_AREA_BORDER)
     {
         if ($aMin > $aMax) {
             // swap
@@ -133,13 +157,12 @@ class LinePlot extends Plot
             $aMin = $aMax;
             $aMax = $tmp;
         }
-        $this->filledAreas[] = array($aMin, $aMax, $aColor, $aFilled, $aBorder);
+        $this->filledAreas[] = [$aMin, $aMax, $aColor, $aFilled, $aBorder];
     }
 
     // Gets called before any axis are stroked
     public function PreStrokeAdjust($graph)
     {
-
         // If another plot type have already adjusted the
         // offset we don't touch it.
         // (We check for empty in case the scale is  a log scale
@@ -236,6 +259,7 @@ class LinePlot extends Plot
 
         if ($this->iFastStroke) {
             $this->FastStroke($img, $xscale, $yscale, $startpoint, $exist_x);
+
             return;
         }
 
@@ -245,8 +269,10 @@ class LinePlot extends Plot
             $xs = $textadj + $startpoint;
         }
 
-        $img->SetStartPoint($xscale->Translate($xs),
-            $yscale->Translate($this->coords[0][$startpoint]));
+        $img->SetStartPoint(
+            $xscale->Translate($xs),
+            $yscale->Translate($this->coords[0][$startpoint])
+        );
 
         if ($this->filled) {
             if ($this->fillFromMax) {
@@ -405,10 +431,14 @@ class LinePlot extends Plot
                 $areaCoords[] = $minY;
 
                 $areaCoords =
-                array_merge($areaCoords,
-                    array_slice($cord,
+                array_merge(
+                    $areaCoords,
+                    array_slice(
+                        $cord,
                         $this->filledAreas[$i][0] * $factor,
-                        ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor));
+                        ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
+                    )
+                );
                 $areaCoords[] = $areaCoords[sizeof($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y
 
@@ -427,7 +457,7 @@ class LinePlot extends Plot
                     $img->Polygon($cord);
                 }
 
-                $areaCoords = array();
+                $areaCoords = [];
             }
         }
 

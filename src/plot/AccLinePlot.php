@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -7,9 +12,10 @@ namespace Amenadiel\JpGraph\Plot;
 //===================================================
 class AccLinePlot extends Plot
 {
-    protected $plots          = null;
+    protected $plots;
     protected $nbrplots       = 0;
     private $iStartEndZero    = true;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($plots)
@@ -48,22 +54,23 @@ class AccLinePlot extends Plot
             $nc      = count($this->plots[$i]->coords[0]);
             $nmax    = max($nmax, $nc);
             list($x) = $this->plots[$i]->Max();
-            $xmax    = Max($xmax, $x);
+            $xmax    = max($xmax, $x);
         }
-        for ($i = 0; $i < $nmax; $i++) {
+        for ($i = 0; $i < $nmax; ++$i) {
             // Get y-value for line $i by adding the
             // individual bars from all the plots added.
             // It would be wrong to just add the
             // individual plots max y-value since that
             // would in most cases give to large y-value.
             $y = $this->plots[0]->coords[0][$i];
-            for ($j = 1; $j < $this->nbrplots; $j++) {
+            for ($j = 1; $j < $this->nbrplots; ++$j) {
                 $y += $this->plots[$j]->coords[0][$i];
             }
             $ymax[$i] = $y;
         }
         $ymax = max($ymax);
-        return array($xmax, $ymax);
+
+        return [$xmax, $ymax];
     }
 
     public function Min()
@@ -75,29 +82,29 @@ class AccLinePlot extends Plot
             $nc          = count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $nc);
             list($x, $y) = $this->plots[$i]->Min();
-            $xmin        = Min($xmin, $x);
-            $ysetmin     = Min($y, $ysetmin);
+            $xmin        = min($xmin, $x);
+            $ysetmin     = min($y, $ysetmin);
         }
-        for ($i = 0; $i < $nmax; $i++) {
+        for ($i = 0; $i < $nmax; ++$i) {
             // Get y-value for line $i by adding the
             // individual bars from all the plots added.
             // It would be wrong to just add the
             // individual plots min y-value since that
             // would in most cases give to small y-value.
             $y = $this->plots[0]->coords[0][$i];
-            for ($j = 1; $j < $this->nbrplots; $j++) {
+            for ($j = 1; $j < $this->nbrplots; ++$j) {
                 $y += $this->plots[$j]->coords[0][$i];
             }
             $ymin[$i] = $y;
         }
-        $ymin = Min($ysetmin, Min($ymin));
-        return array($xmin, $ymin);
+        $ymin = min($ysetmin, min($ymin));
+
+        return [$xmin, $ymin];
     }
 
     // Gets called before any axis are stroked
     public function PreStrokeAdjust($graph)
     {
-
         // If another plot type have already adjusted the
         // offset we don't touch it.
         // (We check for empty in case the scale is  a log scale
@@ -186,6 +193,7 @@ class AccLinePlot extends Plot
                 }
             }
         }
+
         return true;
     }
 
@@ -201,7 +209,7 @@ class AccLinePlot extends Plot
         $this->numpoints = count($this->plots[0]->coords[0]);
         // Allocate array
         $coords[$this->nbrplots][$this->numpoints] = 0;
-        for ($i = 0; $i < $this->numpoints; $i++) {
+        for ($i = 0; $i < $this->numpoints; ++$i) {
             $coords[0][$i] = $this->plots[0]->coords[0][$i];
             $accy          = $coords[0][$i];
             for ($j = 1; $j < $this->nbrplots; ++$j) {

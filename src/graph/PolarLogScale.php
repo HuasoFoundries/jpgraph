@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 class PolarLogScale extends LogScale
@@ -44,6 +49,7 @@ class PolarLogScale extends LogScale
         } else {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight) - $y;
         }
+
         return [$x, $y];
     }
 }

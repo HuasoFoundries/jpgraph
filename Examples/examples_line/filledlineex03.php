@@ -1,8 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_line.php';
 
-$datay = array(11, 30, 20, 13, 10, 'x', 16, 12, 'x', 15, 4, 9);
+$datay = [11, 30, 20, 13, 10, 'x', 16, 12, 'x', 15, 4, 9];
 
 // Setup the graph
 $graph = new Graph\Graph(400, 250);

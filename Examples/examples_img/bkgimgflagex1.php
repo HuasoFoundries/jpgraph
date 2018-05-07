@@ -1,13 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
+/**
+ * JPGraph v3.6.15
+ */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_bar.php';
 require_once 'jpgraph/jpgraph_flags.php';
 
 // Some data
-$datay1 = array(140, 110, 50);
-$datay2 = array(35, 90, 190);
-$datay3 = array(20, 60, 70);
+$datay1 = [140, 110, 50];
+$datay2 = [35, 90, 190];
+$datay3 = [20, 60, 70];
 
 // Create the basic graph
 $graph = new Graph\Graph(300, 200);
@@ -70,7 +73,7 @@ $bplot1->SetShadow('black@0.4');
 $bplot2->SetShadow('black@0.4');
 $bplot3->SetShadow('black@0.4');
 
-$gbarplot = new Plot\GroupBarPlot(array($bplot1, $bplot2, $bplot3));
+$gbarplot = new Plot\GroupBarPlot([$bplot1, $bplot2, $bplot3]);
 $gbarplot->SetWidth(0.6);
 $graph->Add($gbarplot);
 

@@ -1,8 +1,13 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\ImgTrans;
 use Amenadiel\JpGraph\Util;
-use \Amenadiel\JpGraph\ImgTrans;
 
 //===================================================
 // CLASS GanttGraph
@@ -11,7 +16,7 @@ use \Amenadiel\JpGraph\ImgTrans;
 class GanttGraph extends Graph
 {
     public $scale; // Public accessible
-    public $hgrid                        = null;
+    public $hgrid;
     private $iObj                        = []; // Gantt objects
     private $iLabelHMarginFactor         = 0.2; // 10% margin on each side of the labels
     private $iLabelVMarginFactor         = 0.4; // 40% margin on top and bottom of label
@@ -25,12 +30,12 @@ class GanttGraph extends Graph
     private $iSimpleProgressColor        = 'darkgreen';
     private $iSimpleProgressStyle        = GANTT_SOLID;
     private $iZoomFactor                 = 1.0;
+
     //---------------
     // CONSTRUCTOR
     // Create a new gantt graph
-    public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = "", $aTimeOut = 0, $aInline = true)
+    public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
-
         // Backward compatibility
         if ($aWidth == -1) {
             $aWidth = 0;
@@ -58,8 +63,6 @@ class GanttGraph extends Graph
 
     //---------------
     // PUBLIC METHODS
-
-    //
 
     public function SetSimpleFont($aFont, $aSize)
     {
@@ -99,8 +102,8 @@ class GanttGraph extends Graph
 
                     $a->SetPattern(BAND_SOLID, 'black');
                     $csimpos = 6;
-                    break;
 
+                    break;
                 case ACTYPE_NORMAL:
                     $a = new GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 10);
                     $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
@@ -127,24 +130,28 @@ class GanttGraph extends Graph
                         }
                         if ($progress[$j][0] == $data[$i][0]) {
                             $a->progress->Set($progress[$j][1]);
-                            $a->progress->SetPattern($this->iSimpleProgressStyle,
-                                $this->iSimpleProgressColor);
+                            $a->progress->SetPattern(
+                                $this->iSimpleProgressStyle,
+                                $this->iSimpleProgressColor
+                            );
                             $a->progress->SetFillColor($this->iSimpleProgressBkgColor);
                             //$a->progress->SetPattern($progress[$j][2],$progress[$j][3]);
                             break;
                         }
                     }
                     $csimpos = 6;
-                    break;
 
+                    break;
                 case ACTYPE_MILESTONE:
                     $a = new MileStone($data[$i][0], $data[$i][2], $data[$i][3]);
                     $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
                     $a->caption->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
                     $csimpos = 5;
+
                     break;
                 default:
                     die('Unknown activity type');
+
                     break;
             }
 
@@ -279,6 +286,7 @@ class GanttGraph extends Graph
                 }
             }
         }
+
         return $m;
     }
 
@@ -296,6 +304,7 @@ class GanttGraph extends Graph
                 }
             }
         }
+
         return $m;
     }
 
@@ -309,6 +318,7 @@ class GanttGraph extends Graph
                 $m = max($m, $this->iObj[$i]->GetAbsHeight($this->img));
             }
         }
+
         return $m;
     }
 
@@ -323,6 +333,7 @@ class GanttGraph extends Graph
                 $m = max($m, $this->iObj[$i]->GetLineNbr());
             }
         }
+
         return $m;
     }
 
@@ -346,18 +357,19 @@ class GanttGraph extends Graph
         for ($i = $start + 1; $i < $n; ++$i) {
             $rmax = $this->scale->NormalizeDate($this->iObj[$i]->GetMaxDate());
             if ($rmax != false) {
-                $max = Max($max, $rmax);
+                $max = max($max, $rmax);
             }
 
             $rmin = $this->scale->NormalizeDate($this->iObj[$i]->GetMinDate());
             if ($rmin != false) {
-                $min = Min($min, $rmin);
+                $min = min($min, $rmin);
             }
         }
-        $minDate = date("Y-m-d", $min);
+        $minDate = date('Y-m-d', $min);
         $min     = strtotime($minDate);
-        $maxDate = date("Y-m-d 23:59", $max);
+        $maxDate = date('Y-m-d 23:59', $max);
         $max     = strtotime($maxDate);
+
         return [$min, $max];
     }
 
@@ -403,10 +415,10 @@ class GanttGraph extends Graph
             $height += $h;
 
             // Calculate the top margin needed for title and subtitle
-            if ($this->title->t != "") {
+            if ($this->title->t != '') {
                 $tm += $this->title->GetFontHeight($this->img);
             }
-            if ($this->subtitle->t != "") {
+            if ($this->subtitle->t != '') {
                 $tm += $this->subtitle->GetFontHeight($this->img);
             }
 
@@ -436,44 +448,57 @@ class GanttGraph extends Graph
                 // how much space each day's title will require.
                 switch ($this->scale->day->iStyle) {
                     case DAYSTYLE_LONG:
-                        $txt = "Monday";
+                        $txt = 'Monday';
+
                         break;
                     case DAYSTYLE_LONGDAYDATE1:
-                        $txt = "Monday 23 Jun";
+                        $txt = 'Monday 23 Jun';
+
                         break;
                     case DAYSTYLE_LONGDAYDATE2:
-                        $txt = "Monday 23 Jun 2003";
+                        $txt = 'Monday 23 Jun 2003';
+
                         break;
                     case DAYSTYLE_SHORT:
-                        $txt = "Mon";
+                        $txt = 'Mon';
+
                         break;
                     case DAYSTYLE_SHORTDAYDATE1:
-                        $txt = "Mon 23/6";
+                        $txt = 'Mon 23/6';
+
                         break;
                     case DAYSTYLE_SHORTDAYDATE2:
-                        $txt = "Mon 23 Jun";
+                        $txt = 'Mon 23 Jun';
+
                         break;
                     case DAYSTYLE_SHORTDAYDATE3:
-                        $txt = "Mon 23";
+                        $txt = 'Mon 23';
+
                         break;
                     case DAYSTYLE_SHORTDATE1:
-                        $txt = "23/6";
+                        $txt = '23/6';
+
                         break;
                     case DAYSTYLE_SHORTDATE2:
-                        $txt = "23 Jun";
+                        $txt = '23 Jun';
+
                         break;
                     case DAYSTYLE_SHORTDATE3:
-                        $txt = "Mon 23";
+                        $txt = 'Mon 23';
+
                         break;
                     case DAYSTYLE_SHORTDATE4:
-                        $txt = "88";
+                        $txt = '88';
+
                         break;
                     case DAYSTYLE_CUSTOM:
                         $txt = date($this->scale->day->iLabelFormStr, strtotime('2003-12-20 18:00'));
+
                         break;
                     case DAYSTYLE_ONELETTER:
                     default:
-                        $txt = "M";
+                        $txt = 'M';
+
                         break;
                 }
                 $fw = $this->scale->day->GetStrWidth($this->img, $txt) + 6;
@@ -488,20 +513,25 @@ class GanttGraph extends Graph
                 switch ($this->scale->hour->iStyle) {
                     case HOURSTYLE_HMAMPM:
                         $txt = '12:00pm';
+
                         break;
                     case HOURSTYLE_H24:
                         // 13
                         $txt = '24';
+
                         break;
                     case HOURSTYLE_HAMPM:
                         $txt = '12pm';
+
                         break;
                     case HOURSTYLE_CUSTOM:
                         $txt = date($this->scale->hour->iLabelFormStr, strtotime('2003-12-20 18:00'));
+
                         break;
                     case HOURSTYLE_HM24:
                     default:
                         $txt = '24:00';
+
                         break;
                 }
 
@@ -514,10 +544,12 @@ class GanttGraph extends Graph
                     switch ($this->scale->minute->iStyle) {
                         case HOURSTYLE_CUSTOM:
                             $txt2 = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
+
                             break;
                         case MINUTESTYLE_MM:
                         default:
                             $txt2 = '15';
+
                             break;
                     }
 
@@ -543,10 +575,12 @@ class GanttGraph extends Graph
                 switch ($this->scale->minute->iStyle) {
                     case HOURSTYLE_CUSTOM:
                         $txt = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
+
                         break;
                     case MINUTESTYLE_MM:
                     default:
                         $txt = '15';
+
                         break;
                 }
 
@@ -597,9 +631,13 @@ class GanttGraph extends Graph
                 // Now determine the width for the activity titles column
 
                 // Firdst find out the maximum width of each object column
-                $titlewidth = max(max($this->GetMaxLabelWidth(),
-                    $this->scale->tableTitle->GetWidth($this->img)),
-                    $this->scale->actinfo->GetWidth($this->img));
+                $titlewidth = max(
+                    max(
+                    $this->GetMaxLabelWidth(),
+                    $this->scale->tableTitle->GetWidth($this->img)
+                ),
+                    $this->scale->actinfo->GetWidth($this->img)
+                );
 
                 // Add the width of the vertivcal divider line
                 $titlewidth += $this->scale->divider->iWeight * 2;
@@ -652,13 +690,13 @@ class GanttGraph extends Graph
                 }
             }
         }
+
         return $w;
     }
 
     // Stroke the gantt chart
-    public function Stroke($aStrokeFileName = "")
+    public function Stroke($aStrokeFileName = '')
     {
-
         // If the filename is the predefined value = '_csim_special_'
         // we assume that the call to stroke only needs to do enough
         // to correctly generate the CSIM maps.
@@ -692,9 +730,13 @@ class GanttGraph extends Graph
             $this->scale->iVertLines = $this->GetBarMaxLineNumber() + 1;
         }
 
-        $maxwidth = max($this->scale->actinfo->GetWidth($this->img),
-            max($this->GetMaxLabelWidth(),
-                $this->scale->tableTitle->GetWidth($this->img)));
+        $maxwidth = max(
+            $this->scale->actinfo->GetWidth($this->img),
+            max(
+                $this->GetMaxLabelWidth(),
+                $this->scale->tableTitle->GetWidth($this->img)
+            )
+        );
 
         $this->scale->SetLabelWidth($maxwidth + $this->scale->divider->iWeight); //*(1+$this->iLabelHMarginFactor));
 
@@ -709,9 +751,9 @@ class GanttGraph extends Graph
 
         if (!$_csim) {
             // Due to a minor off by 1 bug we need to temporarily adjust the margin
-            $this->img->right_margin--;
+            --$this->img->right_margin;
             $this->StrokePlotBox();
-            $this->img->right_margin++;
+            ++$this->img->right_margin;
         }
 
         // Stroke Grid line
@@ -739,10 +781,15 @@ class GanttGraph extends Graph
             // Should we do any final image transformation
             if ($this->iImgTrans) {
                 $tform          = new ImgTrans($this->img->img);
-                $this->img->img = $tform->Skew3D($this->iImgTransHorizon, $this->iImgTransSkewDist,
-                    $this->iImgTransDirection, $this->iImgTransHighQ,
-                    $this->iImgTransMinSize, $this->iImgTransFillColor,
-                    $this->iImgTransBorder);
+                $this->img->img = $tform->Skew3D(
+                    $this->iImgTransHorizon,
+                    $this->iImgTransSkewDist,
+                    $this->iImgTransDirection,
+                    $this->iImgTransHighQ,
+                    $this->iImgTransMinSize,
+                    $this->iImgTransFillColor,
+                    $this->iImgTransBorder
+                );
             }
 
             // If the filename is given as the special "__handle"
@@ -750,11 +797,14 @@ class GanttGraph extends Graph
             // streamed back
             if ($aStrokeFileName == _IMG_HANDLER) {
                 return $this->img->img;
-            } else {
-                // Finally stream the generated picture
-                $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline,
-                    $aStrokeFileName);
             }
+            // Finally stream the generated picture
+            $this->cache->PutAndStream(
+                    $this->img,
+                    $this->cache_name,
+                    $this->inline,
+                    $aStrokeFileName
+                );
         }
     }
 
@@ -764,7 +814,6 @@ class GanttGraph extends Graph
 
         // Stroke all constrains
         for ($i = 0; $i < $n; ++$i) {
-
             // Some gantt objects may not have constraints associated with them
             // for example we can add IconPlots which doesn't have this property.
             if (empty($this->iObj[$i]->constraints)) {
@@ -773,7 +822,7 @@ class GanttGraph extends Graph
 
             $numConstrains = count($this->iObj[$i]->constraints);
 
-            for ($k = 0; $k < $numConstrains; $k++) {
+            for ($k = 0; $k < $numConstrains; ++$k) {
                 $vpos = $this->iObj[$i]->constraints[$k]->iConstrainRow;
                 if ($vpos >= 0) {
                     $c1 = $this->iObj[$i]->iConstrainPos;
@@ -799,6 +848,7 @@ class GanttGraph extends Graph
                                     $link = new GanttLink($c1[2], $c1[1], $c2[0], $c2[3]);
                                 }
                                 $link->SetPath(3);
+
                                 break;
                             case CONSTRAIN_STARTEND:
                                 if ($c1[1] < $c2[1]) {
@@ -807,6 +857,7 @@ class GanttGraph extends Graph
                                     $link = new GanttLink($c1[0], $c1[1], $c2[2], $c2[3]);
                                 }
                                 $link->SetPath(0);
+
                                 break;
                             case CONSTRAIN_ENDEND:
                                 if ($c1[1] < $c2[1]) {
@@ -815,6 +866,7 @@ class GanttGraph extends Graph
                                     $link = new GanttLink($c1[2], $c1[1], $c2[2], $c2[3]);
                                 }
                                 $link->SetPath(1);
+
                                 break;
                             case CONSTRAIN_STARTSTART:
                                 if ($c1[1] < $c2[1]) {
@@ -823,6 +875,7 @@ class GanttGraph extends Graph
                                     $link = new GanttLink($c1[0], $c1[1], $c2[0], $c2[3]);
                                 }
                                 $link->SetPath(3);
+
                                 break;
                             default:
                                 Util\JpGraphError::RaiseL(6009, $this->iObj[$i]->iVPos, $vpos);
@@ -831,8 +884,10 @@ class GanttGraph extends Graph
                         }
 
                         $link->SetColor($this->iObj[$i]->constraints[$k]->iConstrainColor);
-                        $link->SetArrow($this->iObj[$i]->constraints[$k]->iConstrainArrowSize,
-                            $this->iObj[$i]->constraints[$k]->iConstrainArrowType);
+                        $link->SetArrow(
+                            $this->iObj[$i]->constraints[$k]->iConstrainArrowSize,
+                            $this->iObj[$i]->constraints[$k]->iConstrainArrowType
+                        );
 
                         $link->Stroke($this->img);
                     }

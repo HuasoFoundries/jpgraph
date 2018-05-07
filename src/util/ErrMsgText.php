@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Util;
 
 //=======================================================================
@@ -25,20 +30,21 @@ $__jpg_err_locale = DEFAULT_ERR_LOCALE;
 
 class ErrMsgText
 {
-    private $lt = null;
+    private $lt;
+
     public function __construct()
     {
         global $__jpg_err_locale;
-        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
+        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
 
         // If the chosen locale doesn't exist try english
         if (!file_exists($file)) {
             $__jpg_err_locale = 'en';
         }
 
-        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
+        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
         if (!file_exists($file)) {
-            die('Chosen locale file ("' . $file . '") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
+            die('Chosen locale file ("'.$file.'") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
         }
         require $file;
         $this->lt = $_jpg_messages;
@@ -48,7 +54,7 @@ class ErrMsgText
     {
         global $__jpg_err_locale;
         if (!isset($this->lt[$errnbr])) {
-            return 'Internal error: The specified error message (' . $errnbr . ') does not exist in the chosen locale (' . $__jpg_err_locale . ')';
+            return 'Internal error: The specified error message ('.$errnbr.') does not exist in the chosen locale ('.$__jpg_err_locale.')';
         }
         $ea = $this->lt[$errnbr];
         $j  = 0;
@@ -76,31 +82,38 @@ class ErrMsgText
         switch ($numargs) {
             case 1:
                 $msg = sprintf($ea[0], $argv[0]);
+
                 break;
             case 2:
                 $msg = sprintf($ea[0], $argv[0], $argv[1]);
+
                 break;
             case 3:
                 $msg = sprintf($ea[0], $argv[0], $argv[1], $argv[2]);
+
                 break;
             case 4:
                 $msg = sprintf($ea[0], $argv[0], $argv[1], $argv[2], $argv[3]);
+
                 break;
             case 5:
                 $msg = sprintf($ea[0], $argv[0], $argv[1], $argv[2], $argv[3], $argv[4]);
+
                 break;
             case 0:
             default:
                 $msg = sprintf($ea[0]);
+
                 break;
         }
+
         return $msg;
     }
 }
 
 // Setup the default handler
 global $__jpg_OldHandler;
-$__jpg_OldHandler = set_exception_handler(array('Amenadiel\JpGraph\Util\JpGraphException', 'defaultHandler'));
+$__jpg_OldHandler = set_exception_handler(['Amenadiel\JpGraph\Util\JpGraphException', 'defaultHandler']);
 
 if (!USE_IMAGE_ERROR_HANDLER) {
     JpGraphError::SetImageFlag(false);

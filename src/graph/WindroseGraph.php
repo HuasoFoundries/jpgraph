@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
@@ -12,7 +17,7 @@ class WindroseGraph extends Graph
     private $posy;
     public $plots = [];
 
-    public function __construct($width = 300, $height = 200, $cachedName = "", $timeout = 0, $inline = 1)
+    public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($width, $height, $cachedName, $timeout, $inline);
         $this->posx = $width / 2;
@@ -79,9 +84,8 @@ class WindroseGraph extends Graph
     }
 
     // Method description
-    public function Stroke($aStrokeFileName = "")
+    public function Stroke($aStrokeFileName = '')
     {
-
         // If the filename is the predefined value = '_csim_special_'
         // we assume that the call to stroke only needs to do enough
         // to correctly generate the CSIM maps.
@@ -97,7 +101,7 @@ class WindroseGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        if ($this->background_image != "" || $this->background_cflag != "") {
+        if ($this->background_image != '' || $this->background_cflag != '') {
             $this->StrokeFrameBackground();
         } else {
             $this->StrokeFrame();
@@ -119,10 +123,13 @@ class WindroseGraph extends Graph
         // streamed back
         if ($aStrokeFileName == _IMG_HANDLER) {
             return $this->img->img;
-        } else {
-            // Finally stream the generated picture
-            $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline,
-                $aStrokeFileName);
         }
+        // Finally stream the generated picture
+        $this->cache->PutAndStream(
+                $this->img,
+                $this->cache_name,
+                $this->inline,
+                $aStrokeFileName
+            );
     }
 } // Class

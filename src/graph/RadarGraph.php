@@ -1,8 +1,13 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\ImgTrans;
 use Amenadiel\JpGraph\Util;
-use \Amenadiel\JpGraph\ImgTrans;
 
 //===================================================
 // CLASS RadarGraph
@@ -11,13 +16,13 @@ use \Amenadiel\JpGraph\ImgTrans;
 class RadarGraph extends Graph
 {
     public $grid;
-    public $axis = null;
+    public $axis;
     private $posx;
     private $posy;
     private $len;
-    private $axis_title = null;
+    private $axis_title;
 
-    public function __construct($width = 300, $height = 200, $cachedName = "", $timeout = 0, $inline = 1)
+    public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($width, $height, $cachedName, $timeout, $inline);
         $this->posx = $width / 2;
@@ -78,15 +83,19 @@ class RadarGraph extends Graph
         switch ($densy) {
             case TICKD_DENSE:
                 $this->ytick_factor = 12;
+
                 break;
             case TICKD_NORMAL:
                 $this->ytick_factor = 25;
+
                 break;
             case TICKD_SPARSE:
                 $this->ytick_factor = 40;
+
                 break;
             case TICKD_VERYSPARSE:
                 $this->ytick_factor = 70;
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(18005, $densy);
@@ -155,6 +164,7 @@ class RadarGraph extends Graph
             Util\JpGraphError::RaiseL(18006, $min);
             //("Minimum data $min (Radar plots should only be used when all data points > 0)");
         }
+
         return [$min, $max];
     }
 
@@ -181,7 +191,6 @@ class RadarGraph extends Graph
     // Stroke the Radar graph
     public function Stroke($aStrokeFileName = '')
     {
-
         // If the filename is the predefined value = '_csim_special_'
         // we assume that the call to stroke only needs to do enough
         // to correctly generate the CSIM maps.
@@ -205,7 +214,6 @@ class RadarGraph extends Graph
             $this->yscale->AutoScale($this->img, 0, $max, $this->len / $this->ytick_factor);
         } elseif ($this->yscale->IsSpecified() &&
             ($this->yscale->auto_ticks || !$this->yscale->ticks->IsSpecified())) {
-
             // The tick calculation will use the user suplied min/max values to determine
             // the ticks. If auto_ticks is false the exact user specifed min and max
             // values will be used for the scale.
@@ -213,9 +221,13 @@ class RadarGraph extends Graph
             // so that the min and max values falls on an even major step.
             $min = $this->yscale->scale[0];
             $max = $this->yscale->scale[1];
-            $this->yscale->AutoScale($this->img, $min, $max,
+            $this->yscale->AutoScale(
+                $this->img,
+                $min,
+                $max,
                 $this->len / $this->ytick_factor,
-                $this->yscale->auto_ticks);
+                $this->yscale->auto_ticks
+            );
         }
 
         // Set start position end length of scale (in absolute pixels)
@@ -301,10 +313,15 @@ class RadarGraph extends Graph
         // Should we do any final image transformation
         if ($this->iImgTrans && !$_csim) {
             $tform          = new ImgTrans($this->img->img);
-            $this->img->img = $tform->Skew3D($this->iImgTransHorizon, $this->iImgTransSkewDist,
-                $this->iImgTransDirection, $this->iImgTransHighQ,
-                $this->iImgTransMinSize, $this->iImgTransFillColor,
-                $this->iImgTransBorder);
+            $this->img->img = $tform->Skew3D(
+                $this->iImgTransHorizon,
+                $this->iImgTransSkewDist,
+                $this->iImgTransDirection,
+                $this->iImgTransHighQ,
+                $this->iImgTransMinSize,
+                $this->iImgTransFillColor,
+                $this->iImgTransBorder
+            );
         }
 
         if (!$_csim) {
@@ -313,10 +330,9 @@ class RadarGraph extends Graph
             // streamed back
             if ($aStrokeFileName == _IMG_HANDLER) {
                 return $this->img->img;
-            } else {
-                // Finally stream the generated picture
-                $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
             }
+            // Finally stream the generated picture
+            $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
         }
     }
 } // Class

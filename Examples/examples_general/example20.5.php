@@ -1,12 +1,16 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_bar.php';
 
-$datay = array(12, 8, 19, 3, 10, 5);
+$datay = [12, 8, 19, 3, 10, 5];
 
 // Create the graph. These two calls are always required
 $graph = new Graph\Graph(300, 200);
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 
 // Add a drop shadow
 $graph->SetShadow();
@@ -34,9 +38,9 @@ $bplot->SetWidth(0.7);
 $graph->Add($bplot);
 
 // Setup the titles
-$graph->title->Set("Centered values for bars");
-$graph->xaxis->title->Set("X-title");
-$graph->yaxis->title->Set("Y-title");
+$graph->title->Set('Centered values for bars');
+$graph->xaxis->title->Set('X-title');
+$graph->yaxis->title->Set('Y-title');
 
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);

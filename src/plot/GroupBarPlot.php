@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Plot;
 
 //===================================================
@@ -9,6 +14,7 @@ class GroupBarPlot extends BarPlot
 {
     public $plots;
     private $nbrplots = 0;
+
     //---------------
     // CONSTRUCTOR
     public function __construct($plots)
@@ -52,7 +58,8 @@ class GroupBarPlot extends BarPlot
             $xmin          = max($xmin, $xm);
             $ymin          = min($ymin, $ym);
         }
-        return array($xmin, $ymin);
+
+        return [$xmin, $ymin];
     }
 
     public function Max()
@@ -64,7 +71,8 @@ class GroupBarPlot extends BarPlot
             $xmax          = max($xmax, $xm);
             $ymax          = max($ymax, $ym);
         }
-        return array($xmax, $ymax);
+
+        return [$xmax, $ymax];
     }
 
     public function GetCSIMareas()
@@ -74,6 +82,7 @@ class GroupBarPlot extends BarPlot
         for ($i = 0; $i < $n; ++$i) {
             $csimareas .= $this->plots[$i]->csimareas;
         }
+
         return $csimareas;
     }
 

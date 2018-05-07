@@ -1,13 +1,13 @@
 <?php
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_canvas.php');
-require_once('jpgraph/jpgraph_table.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_canvas.php';
+require_once 'jpgraph/jpgraph_table.php';
 
 // Setup graph context
 $graph = new CanvasGraph(165, 90);
 
 // Setup the basic table
-$data  = array( array(1,2,3,4),array(5,6,7,8), array(6,8,10,12));
+$data  = [[1, 2, 3, 4], [5, 6, 7, 8], [6, 8, 10, 12]];
 $table = new GTextTable();
 $table->Set($data);
 
@@ -34,7 +34,7 @@ $table->setGrid(0, 'black');
 $table->SetRowGrid(2, 1, 'black', TGRID_DOUBLE2);
 
 // Setup overall number format in all cells
-$table->SetNumberFormat("%0.1f");
+$table->SetNumberFormat('%0.1f');
 
 // Add table to the graph
 $graph->Add($table);

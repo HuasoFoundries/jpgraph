@@ -1,15 +1,20 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // $Id: groupbarex1.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay1 = array(35, 160, 0, 0, 0, 0);
-$datay2 = array(35, 190, 190, 190, 190, 190);
-$datay3 = array(20, 70, 70, 140, 230, 260);
+$datay1 = [35, 160, 0, 0, 0, 0];
+$datay2 = [35, 190, 190, 190, 190, 190];
+$datay3 = [20, 70, 70, 140, 230, 260];
 
 $graph = new Graph\Graph(450, 200, 'auto');
-$graph->SetScale("textlin");
+$graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 40, 40);
 $graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
@@ -24,9 +29,9 @@ $bplot1 = new Plot\BarPlot($datay1);
 $bplot2 = new Plot\BarPlot($datay2);
 $bplot3 = new Plot\BarPlot($datay3);
 
-$bplot1->SetFillColor("orange");
-$bplot2->SetFillColor("brown");
-$bplot3->SetFillColor("darkgreen");
+$bplot1->SetFillColor('orange');
+$bplot2->SetFillColor('brown');
+$bplot3->SetFillColor('darkgreen');
 
 $bplot1->SetShadow();
 $bplot2->SetShadow();
@@ -36,7 +41,7 @@ $bplot1->SetShadow();
 $bplot2->SetShadow();
 $bplot3->SetShadow();
 
-$gbarplot = new Plot\GroupBarPlot(array($bplot1, $bplot2, $bplot3));
+$gbarplot = new Plot\GroupBarPlot([$bplot1, $bplot2, $bplot3]);
 $gbarplot->SetWidth(0.6);
 $graph->Add($gbarplot);
 

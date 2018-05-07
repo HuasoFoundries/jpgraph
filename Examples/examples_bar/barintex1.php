@@ -1,16 +1,21 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data
-$datay = array(1, 1, 0.5);
+$datay = [1, 1, 0.5];
 
 // Create the graph and setup the basic parameters
 $graph = new Graph\Graph(460, 200, 'auto');
 $graph->img->SetMargin(40, 30, 30, 40);
-$graph->SetScale("textint");
+$graph->SetScale('textint');
 $graph->SetShadow();
 $graph->SetFrame(false); // No border around the graph
 
@@ -24,14 +29,14 @@ $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT2);
 
 // Setup graph title ands fonts
-$graph->title->Set("Example of integer Y-scale");
+$graph->title->Set('Example of integer Y-scale');
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
-$graph->xaxis->title->Set("Year 2002");
+$graph->xaxis->title->Set('Year 2002');
 $graph->xaxis->title->SetFont(FF_FONT2, FS_BOLD);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
-$bplot->SetFillColor("orange");
+$bplot->SetFillColor('orange');
 $bplot->SetWidth(0.5);
 $bplot->SetShadow();
 
@@ -41,7 +46,7 @@ $bplot->value->Show();
 $bplot->value->SetFont(FF_ARIAL, FS_BOLD);
 $bplot->value->SetAngle(45);
 // Black color for positive values and darkred for negative values
-$bplot->value->SetColor("black", "darkred");
+$bplot->value->SetColor('black', 'darkred');
 $graph->Add($bplot);
 
 // Finally stroke the graph

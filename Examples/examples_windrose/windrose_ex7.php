@@ -1,14 +1,18 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
 require_once '../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$data = array(
-    2 => array(1, 15, 7.5, 2),
-    5 => array(1, 1, 1.5, 2),
-    7 => array(1, 2, 10, 3, 2),
-    9 => array(2, 3, 1, 3, 1, 2),
-);
+$data = [
+    2 => [1, 15, 7.5, 2],
+    5 => [1, 1, 1.5, 2],
+    7 => [1, 2, 10, 3, 2],
+    9 => [2, 3, 1, 3, 1, 2],
+];
 
 // First create a new windrose graph with a title
 $graph = new Graph\WindroseGraph(400, 450);
@@ -26,8 +30,8 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Localize the compass direction labels into Swedish
 // Note: The labels for data must now also match the exact
 // string for the compass directions.
-$se_CompassLbl = array('O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV',
-    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO');
+$se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV',
+    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO', ];
 $wp->SetCompassLabels($se_CompassLbl);
 
 // Localize the "Calm" text into Swedish and make the circle
@@ -37,7 +41,7 @@ $wp->legend->SetCircleText($se_calmtext);
 $wp->legend->SetCircleRadius(20);
 
 // Adjust the displayed ranges
-$ranges = array(1, 3, 5, 8, 12, 19, 29);
+$ranges = [1, 3, 5, 8, 12, 19, 29];
 $wp->SetRanges($ranges);
 //$wp->SetAntiAlias(true);
 

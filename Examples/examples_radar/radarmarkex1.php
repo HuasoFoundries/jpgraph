@@ -1,9 +1,13 @@
-<?php // content="text/plain; charset=utf-8"
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_radar.php');
+<?php
 
-$titles=array('Planning','Quality','Time','RR','CR','DR');
-$data  =array(18, 40, 70, 90, 42,66);
+/**
+ * JPGraph v3.6.15
+ */
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_radar.php';
+
+$titles=['Planning', 'Quality', 'Time', 'RR', 'CR', 'DR'];
+$data  =[18, 40, 70, 90, 42, 66];
 
 $graph = new RadarGraph(300, 280);
 

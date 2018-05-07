@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph v3.6.15
+ */
+
 namespace Amenadiel\JpGraph\Graph;
 
 //===================================================
@@ -38,25 +43,28 @@ class CanvasScale
 
     public function Get()
     {
-        return array($this->ixmin, $this->ixmax, $this->iymin, $this->iymax);
+        return [$this->ixmin, $this->ixmax, $this->iymin, $this->iymax];
     }
 
     public function Translate($x, $y)
     {
         $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
         $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
-        return array($xp, $yp);
+
+        return [$xp, $yp];
     }
 
     public function TranslateX($x)
     {
         $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
+
         return $xp;
     }
 
     public function TranslateY($y)
     {
         $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
+
         return $yp;
     }
 }

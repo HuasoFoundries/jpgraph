@@ -1,5 +1,9 @@
 <?php
-//=============================================================================
+
+/**
+ * JPGraph v3.6.15
+ */
+
 // File:	ODOEX00.PHP
 // Description: Example 0 for odometer graphs
 // Created:	2002-02-22
@@ -11,8 +15,8 @@
 //
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
-require_once('jpgraph/jpgraph.php');
-require_once('jpgraph/jpgraph_odo.php');
+require_once 'jpgraph/jpgraph.php';
+require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=250, height=200 pixels)

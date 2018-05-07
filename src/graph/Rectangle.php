@@ -1,6 +1,8 @@
 <?php
 
-// Utility class to hold coordinates for a rectangle
+/**
+ * JPGraph v3.6.15
+ */
 class Rectangle
 {
     public $x;
@@ -9,6 +11,7 @@ class Rectangle
     public $h;
     public $xe;
     public $ye;
+
     public function __construct($aX, $aY, $aWidth, $aHeight)
     {
         $this->x  = $aX;
