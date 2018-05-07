@@ -2,7 +2,7 @@
 
 /**
  * JPGraph v3.6.15
- */    
+ */
 
     // Include the library
     require_once 'jpgraph/QR/qrencoder.inc.php';
