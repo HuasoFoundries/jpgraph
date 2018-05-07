@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 
 // Gantt column font array example
 
@@ -33,7 +33,7 @@ $data = [
 
 // Format and add the Gantt bars to the chart
 $n = count($data);
-for ($i=0; $i < $n; ++$i) {
+for ($i = 0; $i < $n; ++$i) {
     if ($i === 0 || $i === 3) {
         // Format the group bars
         $bar = new GanttBar($data[$i][0], [$data[$i][1], $data[$i][2], $data[$i][3]], $data[$i][2], $data[$i][3], '', 0.35);
@@ -61,6 +61,3 @@ for ($i=0; $i < $n; ++$i) {
 
 // Send back the graph to the client
 $graph->Stroke();
-?>
-
-

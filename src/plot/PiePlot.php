@@ -46,7 +46,7 @@ class PiePlot
     protected $legends;
     protected $csimtargets;
     protected $csimwintargets; // Array of targets for CSIM
-    protected $csimareas                = ''; // Generated CSIM text
+    protected $csimareas = ''; // Generated CSIM text
     protected $csimalts; // ALT tags for corresponding target
     protected $data;
     public $title;

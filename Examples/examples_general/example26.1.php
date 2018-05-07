@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_pie.php';
 
@@ -16,7 +16,3 @@ $p1->SetCenter(0.4);
 
 $graph->Add($p1);
 $graph->Stroke();
-
-?>
-
-

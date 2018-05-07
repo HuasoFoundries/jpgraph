@@ -45,7 +45,7 @@ class Graph
     public $xaxis; // X-axis (instane of Axis class)
     public $yaxis;
     public $y2axis;
-    public $ynaxis        = []; // Y axis (instance of Axis class)
+    public $ynaxis = []; // Y axis (instance of Axis class)
     public $margin_color; // Margin color of graph
     public $plotarea_color = [255, 255, 255]; // Plot area color
     public $title;

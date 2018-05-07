@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Antispam example using a random string
 require_once 'jpgraph/jpgraph_antispam.php';
 
@@ -13,6 +13,3 @@ $chars = $spam->Rand(5);
 if ($spam->Stroke() === false) {
     die('Illegal or no data to plot');
 }
-
-?>
-

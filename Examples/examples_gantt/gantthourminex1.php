@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt hour + minute example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -67,7 +67,7 @@ $graph->title->Set('Example of hours & mins scale');
 $graph->title->SetColor('darkgray');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3]);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -86,7 +86,3 @@ $vline->title->SetFont(FF_FONT1, FS_BOLD, 10);
 $graph->Add($vline);
 
 $graph->Stroke();
-
-?>
-
-

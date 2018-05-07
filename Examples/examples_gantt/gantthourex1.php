@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // Gantt hour example
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_gantt.php';
@@ -32,7 +32,7 @@ $data = [
     [2, '  Label 3', '2001-01-26', '2001-01-27 10:00'],
 ];
 
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[5%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -43,7 +43,3 @@ for ($i=0; $i < count($data); ++$i) {
 }
 
 $graph->Stroke();
-
-?>
-
-

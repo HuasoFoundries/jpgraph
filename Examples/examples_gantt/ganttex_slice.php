@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // $Id: ganttex_slice.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
 // Gantt example with sunday week start and only shows a partial graph
 require_once 'jpgraph/jpgraph.php';
@@ -31,10 +31,10 @@ $data = [
     [5, '  Label 4', '2001-11-30', '2001-12-1'],
     [6, '  Label 5', '2001-12-6', '2001-12-8'],
     [8, '    Label 8', '2001-11-30', '2002-01-02'],
-    ];
+];
 
 // make up some fictionary activity bars
-for ($i=0; $i < count($data); ++$i) {
+for ($i = 0; $i < count($data); ++$i) {
     $bar = new GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[5%]', 10);
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
@@ -69,7 +69,3 @@ $ms->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->Add($ms);
 
 $graph->Stroke();
-
-?>
-
-

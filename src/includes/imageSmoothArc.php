@@ -347,7 +347,7 @@ function imageSmoothArc(&$img, $cx, $cy, $w, $h, $color, $start, $stop)
     $a -= 0.5; // looks better...
     $b -= 0.5;
 
-    for ($i=0; $i < 4; ++$i) {
+    for ($i = 0; $i < 4; ++$i) {
         if ($start < ($i + 1) * M_PI / 2) {
             if ($start > $i * M_PI / 2) {
                 if ($stop > ($i + 1) * M_PI / 2) {

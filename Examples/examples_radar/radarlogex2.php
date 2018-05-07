@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_log.php';
 require_once 'jpgraph/jpgraph_radar.php';
@@ -43,5 +43,3 @@ $plot->SetColor('forestgreen');
 // Add the plot and display the graph
 $graph->Add($plot);
 $graph->Stroke();
-?>
-

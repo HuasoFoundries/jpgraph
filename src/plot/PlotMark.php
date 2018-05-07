@@ -25,24 +25,24 @@ use Amenadiel\JpGraph\Text;
 class PlotMark
 {
     public $title;
-    public $show      = true;
+    public $show = true;
     public $type;
-    public $weight             = 1;
-    public $iFormatCallback    = '';
-    public $iFormatCallback2   = '';
-    public $fill_color         = 'blue';
-    public $color              = 'black';
-    public $width              = 4;
+    public $weight           = 1;
+    public $iFormatCallback  = '';
+    public $iFormatCallback2 = '';
+    public $fill_color       = 'blue';
+    public $color            = 'black';
+    public $width            = 4;
     private $yvalue;
-    private $xvalue  = '';
+    private $xvalue = '';
     private $csimtarget;
-    private $csimwintarget  = '';
+    private $csimwintarget = '';
     private $csimalt;
     private $csimareas;
-    private $markimg          = '';
-    private $iScale           = 1.0;
-    private $oldfilename      = '';
-    private $iFileName        = '';
+    private $markimg     = '';
+    private $iScale      = 1.0;
+    private $oldfilename = '';
+    private $iFileName   = '';
     private $imgdata_balls;
     private $imgdata_diamonds;
     private $imgdata_squares;
@@ -172,7 +172,8 @@ class PlotMark
         }
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".htmlentities($this->csimtarget).'"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" ";
+            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
 
             if (!empty($this->csimwintarget)) {
                 $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
@@ -193,7 +194,8 @@ class PlotMark
         $r               = round($r);
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" href=\"".htmlentities($this->csimtarget).'"';
+            $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" ";
+            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
 
             if (!empty($this->csimwintarget)) {
                 $this->csimareas .= ' target="'.$this->csimwintarget.'" ';

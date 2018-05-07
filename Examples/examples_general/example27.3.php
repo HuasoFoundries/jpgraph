@@ -1,4 +1,4 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_pie.php';
 require_once 'jpgraph/jpgraph_pie3d.php';
@@ -18,7 +18,3 @@ $p1->SetLegends($gDateLocale->GetShortMonth());
 
 $graph->Add($p1);
 $graph->Stroke();
-
-?>
-
-

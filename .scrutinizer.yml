@@ -1,13 +1,16 @@
 filter:
     excluded_paths:
         - './Examples/*'
-
 build:
     environment:
           php: '7.1'
-
     tests: true
-
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+        tests: true
 checks:
     php:
         code_rating: true
@@ -20,7 +23,6 @@ checks:
         avoid_superglobals: false
         security_vulnerabilities: true
         no_exit: true
-        
 filter: {  }
 coding_style:
     php:

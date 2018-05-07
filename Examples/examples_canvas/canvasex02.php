@@ -1,10 +1,12 @@
-<?php // content="text/plain; charset=utf-8"
+<?php
 // $Id: canvasex02.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_canvas.php';
+
+require_once '../../vendor/autoload.php';
+
+use Amenadiel\JpGraph\Graph;
 
 // Setup a basic canvas we can work
-$g = new CanvasGraph(400, 200, 'auto');
+$g = new Graph\CanvasGraph(400, 200, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');
@@ -37,6 +39,3 @@ $g->img->RoundedRectangle(300, 30, 350, 80, 10);
 
 // Stroke the graph
 $g->Stroke();
-
-?>
-

@@ -35,6 +35,9 @@ class TestDriver
             die("PANIC: Can't access directory : ${aDir}");
         }
         $this->iDir = $aDir;
+
+        echo '$aType: ' . $aType . '<br>';
+        echo '$aDir: ' . $aDir . '<br>';
     }
 
     public function GetFiles()
@@ -43,11 +46,11 @@ class TestDriver
         $a = [];
         while ($entry = $d->Read()) {
             //echo $entry . ':' . (is_dir($entry) ? 'folder' : 'file') . '<br>';
-            if (is_dir($entry) && ($entry == 'examples_pie')) {
+            if (is_dir($entry) && ($entry == 'examples_axis')) {
                 $examplefolder = @dir($entry);
                 while ($file = $examplefolder->Read()) {
                     if (strstr($file, '.php') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
-                        $a[] = $entry.'/'.$file;
+                        $a[] = $entry . '/' . $file;
                     }
                 }
             }
@@ -97,15 +100,15 @@ class TestDriver
         }
         $n = count($files);
         echo '<h2>Visual test suit for JpGraph</h2>';
-        echo 'Testtype: '.($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
+        echo 'Testtype: ' . ($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
         echo "<br>Number of tests: ${n}<p>";
         echo '<ol>';
 
         for ($i = 0; $i < $n; ++$i) {
             if ($this->iType == 1) {
-                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target='.urlencode($files[$i]).'"><img src="'.$files[$i].'" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="'.$files[$i].'">'.basename($files[$i])."</a></i>\n";
+                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target=' . urlencode($files[$i]) . '"><img src="' . $files[$i] . '" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . "</a></i>\n";
             } else {
-                echo '<li><a href="show-example.php?target='.urlencode($files[$i]).'">'.$files[$i]."</a>\n";
+                echo '<li><a href="show-example.php?target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
             }
         }
         echo '</ol>';

@@ -67,7 +67,7 @@ class TestDriver
                 $examplefolder = @dir($entry);
                 while ($file = $examplefolder->Read()) {
                     if (strstr($file, '.php') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
-                        $a[] = $entry.'/'.$file;
+                        $a[] = $entry . '/' . $file;
                     }
                 }
             }
@@ -119,7 +119,7 @@ class TestDriver
 
         $n = count($files);
         echo '<h2>Visual test suit for JpGraph</h2>';
-        echo 'Testtype: '.($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
+        echo 'Testtype: ' . ($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
         echo "<br>Number of tests: ${n}<p>";
         echo '<ol>';
 
@@ -130,30 +130,30 @@ class TestDriver
                 echo '<table>';
                 echo '<tr>';
                 echo '<td>';
-                echo '<a href="show-example.php?target='.urlencode($files[$i]).'">';
-                echo '<img src="'.$files[$i].'" border=0 align=top>';
+                echo '<a href="show-example.php?target=' . urlencode($files[$i]) . '">';
+                echo '<img src="' . $files[$i] . '" border=0 align=top>';
                 echo '</a>';
                 echo '</td>';
                 echo '<td>';
-                echo '<a href="show-example.php?target='.urlencode($files2[$i]).'">';
-                echo '<img src="'.$files2[$i].'" border=0 align=top>';
+                echo '<a href="show-example.php?target=' . urlencode($files2[$i]) . '">';
+                echo '<img src="' . $files2[$i] . '" border=0 align=top>';
                 echo '</a>';
                 echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
                 echo '<td>';
-                echo '<strong>Filename:</strong> <i><a href="'.$files[$i].'">'.basename($files[$i]).'</a>';
+                echo '<strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . '</a>';
                 echo '</td>';
                 echo '<td>';
-                echo '<strong>Filename:</strong> <i><a href="'.$files2[$i].'">'.basename($files2[$i]).'</a>';
+                echo '<strong>Filename:</strong> <i><a href="' . $files2[$i] . '">' . basename($files2[$i]) . '</a>';
                 echo '</td>';
                 echo '</tr>';
                 echo '</table>';
 
                 echo "</i>\n";
             } else {
-                echo '<li><a href="show-example.php?target='.urlencode($files[$i]).'">'.$files[$i]."</a>\n";
+                echo '<li><a href="show-example.php?target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
             }
         }
         echo '</ol>';
@@ -169,7 +169,7 @@ if (empty($type)) {
 
 echo '<div style="float:left">';
 
-$driver = new TestDriver($type, ['examples_pie', 'examples_pie_jpgraph']);
+$driver = new TestDriver($type, ['examples_pie', 'examples_jpgraph_pie']);
 $driver->Run();
 echo '</div>';
 
