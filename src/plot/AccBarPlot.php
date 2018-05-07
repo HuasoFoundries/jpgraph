@@ -15,7 +15,7 @@ class AccBarPlot extends BarPlot
     public $plots;
     private $nbrplots = 0;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($plots)
     {
@@ -46,7 +46,7 @@ class AccBarPlot extends BarPlot
         $this->value     = new DisplayValue();
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Legend($graph)
     {
@@ -340,16 +340,16 @@ class AccBarPlot extends BarPlot
                 if ($i < count($this->plots[$j]->csimtargets)) {
                     // Create the client side image map
                     $rpts      = $img->ArrRotate($pts);
-                    $csimcoord = round($rpts[0]).', '.round($rpts[1]);
+                    $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);
                     for ($k = 1; $k < 4; ++$k) {
-                        $csimcoord .= ', '.round($rpts[2 * $k]).', '.round($rpts[2 * $k + 1]);
+                        $csimcoord .= ', ' . round($rpts[2 * $k]) . ', ' . round($rpts[2 * $k + 1]);
                     }
                     if (!empty($this->plots[$j]->csimtargets[$i])) {
-                        $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
-                        $this->csimareas .= ' href="'.$this->plots[$j]->csimtargets[$i].'" ';
+                        $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
+                        $this->csimareas .= ' href="' . $this->plots[$j]->csimtargets[$i] . '" ';
 
                         if (!empty($this->plots[$j]->csimwintargets[$i])) {
-                            $this->csimareas .= ' target="'.$this->plots[$j]->csimwintargets[$i].'" ';
+                            $this->csimareas .= ' target="' . $this->plots[$j]->csimwintargets[$i] . '" ';
                         }
 
                         $sval = '';

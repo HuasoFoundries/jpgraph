@@ -19,14 +19,14 @@ class ImgStreamCache
     private $timeout = 0;
 
     // Infinite timeout
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aCacheDir = CACHE_DIR)
     {
         $this->cache_dir = $aCacheDir;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     // Specify a timeout (in minutes) for the file. If the file is older then the
@@ -43,7 +43,7 @@ class ImgStreamCache
     {
         // Check if we should always stroke the image to a file
         if (_FORCE_IMGTOFILE) {
-            $aStrokeFileName = _FORCE_IMGDIR.GenImgName();
+            $aStrokeFileName = _FORCE_IMGDIR . GenImgName();
         }
 
         if ($aStrokeFileName != '') {
@@ -74,7 +74,7 @@ class ImgStreamCache
         }
 
         if ($aCacheFileName != '' && USE_CACHE) {
-            $aCacheFileName = $this->cache_dir.$aCacheFileName;
+            $aCacheFileName = $this->cache_dir . $aCacheFileName;
             if (file_exists($aCacheFileName)) {
                 if (!$aInline) {
                     // If we are generating image off-line (just writing to the cache)
@@ -144,7 +144,7 @@ class ImgStreamCache
 
     public function IsValid($aCacheFileName)
     {
-        $aCacheFileName = $this->cache_dir.$aCacheFileName;
+        $aCacheFileName = $this->cache_dir . $aCacheFileName;
         if (USE_CACHE && file_exists($aCacheFileName)) {
             $diff = time() - filemtime($aCacheFileName);
             if ($this->timeout > 0 && ($diff > $this->timeout * 60)) {
@@ -159,7 +159,7 @@ class ImgStreamCache
 
     public function StreamImgFile($aImage, $aCacheFileName)
     {
-        $aCacheFileName = $this->cache_dir.$aCacheFileName;
+        $aCacheFileName = $this->cache_dir . $aCacheFileName;
         if ($fh = @fopen($aCacheFileName, 'rb')) {
             $lock = flock($fh, LOCK_SH);
             $aImage->Headers();
@@ -184,7 +184,7 @@ class ImgStreamCache
         }
     }
 
-    //---------------
+    //==================================
     // PRIVATE METHODS
     // Create all necessary directories in a path
     public function MakeDirs($aFile)
@@ -193,7 +193,7 @@ class ImgStreamCache
         // In order to better work when open_basedir is enabled
         // we do not create directories in the root path
         while ($aFile != '/' && !(file_exists($aFile))) {
-            $dirs[] = $aFile.'/';
+            $dirs[] = $aFile . '/';
             $aFile  = dirname($aFile);
         }
         for ($i = sizeof($dirs) - 1; $i >= 0; --$i) {

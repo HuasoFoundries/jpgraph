@@ -127,7 +127,7 @@ class Axis extends AxisPrototype
         }
     }
 
-    //---------------
+    //==================================
     // PRIVATE METHODS
     // Draw all the tick labels on major tick marks
     public function StrokeLabels($aPos, $aMinor = false, $aAbsLabel = false)

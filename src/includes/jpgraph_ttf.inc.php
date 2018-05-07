@@ -83,9 +83,9 @@ define('FF_FONT0', 1);
 define('FF_FONT1', 2);
 define('FF_FONT2', 4);
 
-//------------------------------------------------------------------------
+//==================================
 // Defines for font setup
-//------------------------------------------------------------------------
+//==================================
 
 // Actual name of the TTF file used together with FF_CHINESE aka FF_BIG5
 // This is the TTF file being used when the font family is specified as

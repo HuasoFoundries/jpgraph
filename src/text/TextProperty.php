@@ -12,27 +12,27 @@ namespace Amenadiel\JpGraph\Text;
 //===================================================
 class TextProperty
 {
-    public $iShow          = true;
-    public $csimtarget     = '';
-    public $csimwintarget  = '';
-    public $csimalt        = '';
-    private $iFFamily      = FF_FONT1;
-    private $iFStyle       = FS_NORMAL;
-    private $iFSize        = 10;
-    private $iFontArray    = [];
-    private $iColor        = 'black';
-    private $iText         = '';
-    private $iHAlign       = 'left';
-    private $iVAlign       = 'bottom';
+    public $iShow         = true;
+    public $csimtarget    = '';
+    public $csimwintarget = '';
+    public $csimalt       = '';
+    private $iFFamily     = FF_FONT1;
+    private $iFStyle      = FS_NORMAL;
+    private $iFSize       = 10;
+    private $iFontArray   = [];
+    private $iColor       = 'black';
+    private $iText        = '';
+    private $iHAlign      = 'left';
+    private $iVAlign      = 'bottom';
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aTxt = '')
     {
         $this->iText = $aTxt;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Set($aTxt)
     {

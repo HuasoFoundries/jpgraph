@@ -6,15 +6,14 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_ERROR.PHP
 // Description: Error plot extension for JpGraph
 // Created:     2001-01-08
 // Ver:         $Id: jpgraph_error.php 1106 2009-02-22 20:16:35Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 //===================================================
 // CLASS ErrorPlot
@@ -25,7 +24,7 @@ class ErrorPlot extends Plot
 {
     private $errwidth = 2;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
     {
@@ -33,7 +32,7 @@ class ErrorPlot extends Plot
         $this->numpoints /= 2;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     // Gets called before any axis are stroked

@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_CONTOUR.PHP
 // Description: Contour plot
 // Created:     2009-03-08
 // Ver:         $Id: jpgraph_contour.php 1870 2009-09-29 04:24:18Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 define('HORIZ_EDGE', 0);
 define('VERT_EDGE', 1);
@@ -29,12 +28,12 @@ define('VERT_EDGE', 1);
  */
 class Contour
 {
-    private $dataPoints     = [];
-    private $nbrCols        = 0;
-    private $nbrRows        = 0;
-    private $horizEdges     = [];
-    private $vertEdges      = [];
-    private $isobarValues   = [];
+    private $dataPoints   = [];
+    private $nbrCols      = 0;
+    private $nbrRows      = 0;
+    private $horizEdges   = [];
+    private $vertEdges    = [];
+    private $isobarValues = [];
     private $stack;
     private $isobarCoord    = [];
     private $nbrIsobars     = 10;
@@ -367,7 +366,7 @@ class Contour
                         $n2                                    = 1;
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib)];
                     } elseif ($n == 4) {
                         // We must determine how to connect the edges either northwest->southeast or
                         // northeast->southwest. We do that by calculating the imaginary middle value of
@@ -397,11 +396,11 @@ class Contour
 
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib)];
 
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n3][0], $neigh[$n3][1], $neigh[$n3][2], $ib),
-                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib)];
                     }
                 }
             }

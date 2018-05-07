@@ -48,28 +48,28 @@ class Image
     private $_top_margin    = 20;
     private $_bottom_margin = 30;
     //private $_plotwidth=0,$_plotheight=0;
-    private $_width        = 0;
-    private $_height       = 0;
-    private $_line_weight  = 1;
+    private $_width       = 0;
+    private $_height      = 0;
+    private $_line_weight = 1;
 
-    protected $expired              = true;
-    protected $lastx                = 0;
-    protected $lasty                = 0;
-    protected $obs_list             = [];
-    protected $font_size            = 12;
-    protected $font_family          = FF_DEFAULT;
-    protected $font_style           = FS_NORMAL;
-    protected $font_file            = '';
-    protected $text_halign          = 'left';
-    protected $text_valign          = 'bottom';
-    protected $use_anti_aliasing    = false;
+    protected $expired           = true;
+    protected $lastx             = 0;
+    protected $lasty             = 0;
+    protected $obs_list          = [];
+    protected $font_size         = 12;
+    protected $font_family       = FF_DEFAULT;
+    protected $font_style        = FS_NORMAL;
+    protected $font_file         = '';
+    protected $text_halign       = 'left';
+    protected $text_valign       = 'bottom';
+    protected $use_anti_aliasing = false;
     protected $quality;
-    protected $colorstack           = [];
-    protected $colorstackidx        = 0;
-    protected $canvascolor          = 'white';
+    protected $colorstack    = [];
+    protected $colorstackidx = 0;
+    protected $canvascolor   = 'white';
     protected $langconv;
-    protected $iInterlace           = false;
-    protected $bbox_cache           = []; // STore the last found tetx bounding box
+    protected $iInterlace = false;
+    protected $bbox_cache = []; // STore the last found tetx bounding box
     protected $ff_font0;
     protected $ff_font0_bold;
     protected $ff_font1;
@@ -77,7 +77,7 @@ class Image
     protected $ff_font2;
     protected $ff_font2_bold;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aWidth = 0, $aHeight = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
@@ -95,11 +95,11 @@ class Image
         $this->ttf      = new TTF();
         $this->langconv = new LanguageConv();
 
-        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT0.gdf');
-        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT1.gdf');
-        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT2.gdf');
-        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT1-Bold.gdf');
-        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)).'/fonts/FF_FONT2-Bold.gdf');
+        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf');
+        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf');
+        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf');
+        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf');
+        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf');
     }
 
     // Enable interlacing in images
@@ -305,7 +305,7 @@ class Image
         $this->SetMargin($lm, $rm, $tm, $bm);
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     public function SetFont($family, $style = FS_NORMAL, $size = 10)
@@ -324,7 +324,7 @@ class Image
             if (!function_exists('imagettfbbox')) {
                 // use internal font when php is configured without '--with-ttf'
                 $this->font_family = FF_FONT1;
-            //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+                //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
             } else {
                 $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
             }
@@ -530,7 +530,7 @@ class Image
         $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
 
         $bb = [$x - $xmarg, $y + $height - $ymarg, $x + $width, $y + $height - $ymarg,
-            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg, ];
+            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg];
         $this->SetTextAlign($h, $v);
 
         $this->SetAngle($olda);
@@ -696,7 +696,7 @@ class Image
         $bb = [$x - $xmarg, $y + $height - $ymarg,
             $x + $width, $y + $height - $ymarg,
             $x + $width, $y - $ymarg,
-            $x - $xmarg, $y - $ymarg, ];
+            $x - $xmarg, $y - $ymarg];
 
         $this->SetTextAlign($h, $v);
         $this->SetAngle($olda);
@@ -929,35 +929,35 @@ class Image
             if ($aAngle <= 90) {
                 //<=0
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
             } elseif ($aAngle <= 180) {
                 //<= 2
                 $bbox = [$bbox[4], $bbox[7], $bbox[0], $bbox[7],
-                    $bbox[0], $bbox[3], $bbox[4], $bbox[3], ];
+                    $bbox[0], $bbox[3], $bbox[4], $bbox[3]];
             } elseif ($aAngle <= 270) {
                 //<= 3
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             }
         } elseif ($aAngle < 0) {
             if ($aAngle <= -270) {
                 // <= -3
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
             } elseif ($aAngle <= -180) {
                 // <= -2
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             } elseif ($aAngle <= -90) {
                 // <= -1
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             }
         }
 
@@ -1824,7 +1824,7 @@ class Image
 
         if ($this->expired) {
             header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-            header('Last-Modified: '.gmdate('D, d M Y H:i:s').'GMT');
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . 'GMT');
             header('Cache-Control: no-cache, must-revalidate');
             header('Pragma: no-cache');
         }
@@ -1842,7 +1842,7 @@ class Image
     {
         $this->DoSupersampling();
 
-        $func = 'image'.$this->img_format;
+        $func = 'image' . $this->img_format;
         if ($this->img_format == 'jpeg' && $this->quality != null) {
             $res = @$func($this->img, $aFile, $this->quality);
         } else {
@@ -2112,12 +2112,12 @@ class Image
     {
         if (strpos($name, 'raw_') !== false) {
             // if $name == 'raw_left_margin' , return $this->_left_margin;
-            $variable_name = '_'.str_replace('raw_', '', $name);
+            $variable_name = '_' . str_replace('raw_', '', $name);
 
             return $this->{$variable_name};
         }
 
-        $variable_name = '_'.$name;
+        $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -2127,6 +2127,6 @@ class Image
 
     public function __set($name, $value)
     {
-        $this->{'_'.$name} = $value;
+        $this->{'_' . $name} = $value;
     }
 } // CLASS

@@ -17,13 +17,11 @@ class LogTicks extends Ticks
     private $label_logtype  = LOGLABELS_MAGNITUDE;
     private $ticklabels_pos = [];
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
-    public function LogTicks()
-    {
-    }
+    public function LogTicks() {}
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function IsSpecified()
     {
@@ -85,7 +83,7 @@ class LogTicks extends Ticks
                 } elseif ($this->label_logtype == LOGLABELS_PLAIN) {
                     $this->maj_ticks_label[0] = $start;
                 } else {
-                    $this->maj_ticks_label[0] = '10^'.round(log10($start));
+                    $this->maj_ticks_label[0] = '10^' . round(log10($start));
                 }
             }
             $i = 1;
@@ -113,7 +111,7 @@ class LogTicks extends Ticks
                     } elseif ($this->label_logtype == 0) {
                         $this->maj_ticks_label[$i] = $nextMajor;
                     } else {
-                        $this->maj_ticks_label[$i] = '10^'.round(log10($nextMajor));
+                        $this->maj_ticks_label[$i] = '10^' . round(log10($nextMajor));
                     }
                     ++$i;
                     $nextMajor *= 10;
@@ -146,7 +144,7 @@ class LogTicks extends Ticks
                 } elseif ($this->label_logtype == 0) {
                     $this->maj_ticks_label[0] = $start;
                 } else {
-                    $this->maj_ticks_label[0] = '10^'.round(log10($start));
+                    $this->maj_ticks_label[0] = '10^' . round(log10($start));
                 }
             }
             $i = 1;
@@ -167,7 +165,7 @@ class LogTicks extends Ticks
                     } elseif ($this->label_logtype == 0) {
                         $this->maj_ticks_label[$i] = $nextMajor;
                     } else {
-                        $this->maj_ticks_label[$i] = '10^'.round(log10($nextMajor));
+                        $this->maj_ticks_label[$i] = '10^' . round(log10($nextMajor));
                     }
                     ++$i;
                     $nextMajor *= 10;

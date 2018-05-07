@@ -6,15 +6,14 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_POLAR.PHP
 // Description: Polar plot extension for JpGraph
 // Created:     2003-02-02
 // Ver:         $Id: jpgraph_polar.php 1796 2009-09-07 09:37:19Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 require_once 'jpgraph_plotmark.inc.php';
 require_once 'jpgraph_log.php';
@@ -34,24 +33,24 @@ define('POLAR_180', 2);
 // We choose 2: here in order to save some time.
 //
 
-//--------------------------------------------------------------------------
+//==================================
 // class PolarPlot
-//--------------------------------------------------------------------------
+//==================================
 class PolarPlot
 {
     public $line_style = 'solid';
     public $mark;
-    public $legendcsimtarget     = '';
-    public $legendcsimalt        = '';
-    public $legend               = '';
-    public $csimtargets          = []; // Array of targets for CSIM
-    public $csimareas            = ''; // Resultant CSIM area tags
+    public $legendcsimtarget = '';
+    public $legendcsimalt    = '';
+    public $legend           = '';
+    public $csimtargets      = []; // Array of targets for CSIM
+    public $csimareas        = ''; // Resultant CSIM area tags
     public $csimalts; // ALT:s for corresponding target
     public $scale;
-    private $numpoints           = 0;
-    private $iColor              = 'navy';
-    private $iFillColor          = '';
-    private $iLineWeight         = 1;
+    private $numpoints   = 0;
+    private $iColor      = 'navy';
+    private $iFillColor  = '';
+    private $iLineWeight = 1;
     private $coord;
 
     public function __construct($aData)

@@ -18,7 +18,7 @@ class ScatterPlot extends Plot
     public $link;
     private $impuls = false;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
     {
@@ -35,7 +35,7 @@ class ScatterPlot extends Plot
         $this->link->iShow = false;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function SetImpuls($f = true)
     {

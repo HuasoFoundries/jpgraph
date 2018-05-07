@@ -18,7 +18,7 @@ class RectPatternVert extends RectPattern
         $this->linespacing = $aLineSpacing;
     }
 
-    //--------------------
+    //==================================
     // Private methods
     //
     public function DoPattern($aImg)

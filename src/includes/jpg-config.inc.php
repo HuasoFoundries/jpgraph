@@ -12,7 +12,7 @@
 // Copyright (c) Asial Corporation. All rights reserved.
 //========================================================================
 
-//------------------------------------------------------------------------
+//==================================
 // Directories for cache and font directory.
 //
 // CACHE_DIR:
@@ -37,12 +37,12 @@
 //   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
 //   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
 //
-//------------------------------------------------------------------------
+//==================================
 // define('CACHE_DIR','/tmp/jpgraph_cache/');
 // define('TTF_DIR','/usr/share/fonts/TrueType/');
 // define('MBTTF_DIR','/usr/share/fonts/TrueType/');
 
-//-------------------------------------------------------------------------
+//==================================
 // Cache directory specification for use with CSIM graphs that are
 // using the cache.
 // The directory must be the filesysystem name as seen by PHP
@@ -56,11 +56,11 @@
 define('CSIMCACHE_DIR', 'csimcache/');
 define('CSIMCACHE_HTTP_DIR', 'csimcache/');
 
-//------------------------------------------------------------------------
+//==================================
 // Various JpGraph Settings. Adjust accordingly to your
 // preferences. Note that cache functionality is turned off by
 // default (Enable by setting USE_CACHE to true)
-//------------------------------------------------------------------------
+//==================================
 
 // Deafult locale for error messages.
 // This defaults to English = 'en'
@@ -117,9 +117,9 @@ define('ERR_DEPRECATED', true);
 // GD function thinks.
 define('USE_LIBRARY_IMAGETTFBBOX', true);
 
-//------------------------------------------------------------------------
+//==================================
 // The following constants should rarely have to be changed !
-//------------------------------------------------------------------------
+//==================================
 
 // What group should the cached file belong to
 // (Set to '' will give the default group for the 'PHP-user')

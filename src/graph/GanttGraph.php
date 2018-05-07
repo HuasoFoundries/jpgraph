@@ -17,21 +17,21 @@ class GanttGraph extends Graph
 {
     public $scale; // Public accessible
     public $hgrid;
-    private $iObj                        = []; // Gantt objects
-    private $iLabelHMarginFactor         = 0.2; // 10% margin on each side of the labels
-    private $iLabelVMarginFactor         = 0.4; // 40% margin on top and bottom of label
-    private $iLayout                     = GANTT_FROMTOP; // Could also be GANTT_EVEN
-    private $iSimpleFont                 = FF_FONT1;
-    private $iSimpleFontSize             = 11;
-    private $iSimpleStyle                = GANTT_RDIAG;
-    private $iSimpleColor                = 'yellow';
-    private $iSimpleBkgColor             = 'red';
-    private $iSimpleProgressBkgColor     = 'gray';
-    private $iSimpleProgressColor        = 'darkgreen';
-    private $iSimpleProgressStyle        = GANTT_SOLID;
-    private $iZoomFactor                 = 1.0;
+    private $iObj                    = []; // Gantt objects
+    private $iLabelHMarginFactor     = 0.2; // 10% margin on each side of the labels
+    private $iLabelVMarginFactor     = 0.4; // 40% margin on top and bottom of label
+    private $iLayout                 = GANTT_FROMTOP; // Could also be GANTT_EVEN
+    private $iSimpleFont             = FF_FONT1;
+    private $iSimpleFontSize         = 11;
+    private $iSimpleStyle            = GANTT_RDIAG;
+    private $iSimpleColor            = 'yellow';
+    private $iSimpleBkgColor         = 'red';
+    private $iSimpleProgressBkgColor = 'gray';
+    private $iSimpleProgressColor    = 'darkgreen';
+    private $iSimpleProgressStyle    = GANTT_SOLID;
+    private $iZoomFactor             = 1.0;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     // Create a new gantt graph
     public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
@@ -61,7 +61,7 @@ class GanttGraph extends Graph
         $this->SetBox();
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     public function SetSimpleFont($aFont, $aSize)
@@ -633,9 +633,9 @@ class GanttGraph extends Graph
                 // Firdst find out the maximum width of each object column
                 $titlewidth = max(
                     max(
-                    $this->GetMaxLabelWidth(),
-                    $this->scale->tableTitle->GetWidth($this->img)
-                ),
+                        $this->GetMaxLabelWidth(),
+                        $this->scale->tableTitle->GetWidth($this->img)
+                    ),
                     $this->scale->actinfo->GetWidth($this->img)
                 );
 
@@ -800,11 +800,11 @@ class GanttGraph extends Graph
             }
             // Finally stream the generated picture
             $this->cache->PutAndStream(
-                    $this->img,
-                    $this->cache_name,
-                    $this->inline,
-                    $aStrokeFileName
-                );
+                $this->img,
+                $this->cache_name,
+                $this->inline,
+                $aStrokeFileName
+            );
         }
     }
 

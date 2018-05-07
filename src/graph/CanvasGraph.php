@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\ImgTrans;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_CANVAS.PHP
 // Description: Canvas drawing extension for JpGraph
 // Created:     2001-01-08
 // Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//===============================
 
 //===================================================
 // CLASS CanvasGraph
@@ -28,14 +27,14 @@ use Amenadiel\JpGraph\ImgTrans;
 //===================================================
 class CanvasGraph extends Graph
 {
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $timeout, $inline);
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     public function InitFrame()

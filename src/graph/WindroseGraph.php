@@ -53,7 +53,7 @@ class WindroseGraph extends Graph
         }
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Add($aObj)
     {
@@ -126,10 +126,10 @@ class WindroseGraph extends Graph
         }
         // Finally stream the generated picture
         $this->cache->PutAndStream(
-                $this->img,
-                $this->cache_name,
-                $this->inline,
-                $aStrokeFileName
-            );
+            $this->img,
+            $this->cache_name,
+            $this->inline,
+            $aStrokeFileName
+        );
     }
 } // Class

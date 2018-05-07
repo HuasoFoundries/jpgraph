@@ -16,16 +16,16 @@ class Grid
 {
     protected $img;
     protected $scale;
-    protected $majorcolor        = '#CCCCCC';
-    protected $minorcolor        = '#DDDDDD';
-    protected $majortype         = 'solid';
-    protected $minortype         = 'solid';
-    protected $show              = false;
-    protected $showMinor         = false;
-    protected $majorweight       = 1;
-    protected $minorweight       = 1;
-    protected $fill              = false;
-    protected $fillcolor         = ['#EFEFEF', '#BBCCFF'];
+    protected $majorcolor  = '#CCCCCC';
+    protected $minorcolor  = '#DDDDDD';
+    protected $majortype   = 'solid';
+    protected $minortype   = 'solid';
+    protected $show        = false;
+    protected $showMinor   = false;
+    protected $majorweight = 1;
+    protected $minorweight = 1;
+    protected $fill        = false;
+    protected $fillcolor   = ['#EFEFEF', '#BBCCFF'];
 
     public function __construct($aAxis)
     {
@@ -84,7 +84,7 @@ class Grid
         }
     }
 
-    //--------------
+    //==================================
     // Private methods
     // Draw the grid
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)

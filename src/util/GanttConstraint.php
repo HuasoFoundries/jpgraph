@@ -18,7 +18,7 @@ class GanttConstraint
     public $iConstrainArrowSize;
     public $iConstrainArrowType;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aRow, $aType, $aColor, $aArrowSize, $aArrowType)
     {

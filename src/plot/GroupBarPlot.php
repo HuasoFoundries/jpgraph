@@ -15,7 +15,7 @@ class GroupBarPlot extends BarPlot
     public $plots;
     private $nbrplots = 0;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($plots)
     {
@@ -34,7 +34,7 @@ class GroupBarPlot extends BarPlot
         $this->width     = 0.7;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Legend($graph)
     {

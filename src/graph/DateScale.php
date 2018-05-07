@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_DATE.PHP
 // Description: Classes to handle Date scaling
 // Created:     2005-05-02
 // Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//===============================
 
 define('HOURADJ_1', 0 + 30);
 define('HOURADJ_2', 1 + 30);
@@ -61,7 +60,7 @@ class DateScale extends LinearScale
     private $iStartTimeAlign = false;
     private $iEndTimeAlign   = false;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aMin = 0, $aMax = 0, $aType = 'x')
     {
@@ -75,11 +74,11 @@ class DateScale extends LinearScale
         $this->intscale   = true;
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Utility Function AdjDate()
     // Description: Will round a given time stamp to an even year, month or day
     // argument.
-    //------------------------------------------------------------------------------------------
+    //==================================
 
     public function AdjDate($aTime, $aRound = 0, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
@@ -142,29 +141,29 @@ class DateScale extends LinearScale
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Wrapper for AdjDate that will round a timestamp to an even date rounding
     // it downwards.
-    //------------------------------------------------------------------------------------------
+    //==================================
     public function AdjStartDate($aTime, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
         return $this->AdjDate($aTime, 0, $aYearType, $aMonthType, $aDayType);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Wrapper for AdjDate that will round a timestamp to an even date rounding
     // it upwards
-    //------------------------------------------------------------------------------------------
+    //==================================
     public function AdjEndDate($aTime, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
         return $this->AdjDate($aTime, 1, $aYearType, $aMonthType, $aDayType);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Utility Function AdjTime()
     // Description: Will round a given time stamp to an even time according to
     // argument.
-    //------------------------------------------------------------------------------------------
+    //==================================
 
     public function AdjTime($aTime, $aRound = 0, $aHourType = false, $aMinType = false, $aSecType = false)
     {
@@ -236,31 +235,31 @@ class DateScale extends LinearScale
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Wrapper for AdjTime that will round a timestamp to an even time rounding
     // it downwards.
     // Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20
-    //------------------------------------------------------------------------------------------
+    //==================================
     public function AdjStartTime($aTime, $aHourType = false, $aMinType = false, $aSecType = false)
     {
         return $this->AdjTime($aTime, 0, $aHourType, $aMinType, $aSecType);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // Wrapper for AdjTime that will round a timestamp to an even time rounding
     // it upwards
     // Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30
-    //------------------------------------------------------------------------------------------
+    //==================================
     public function AdjEndTime($aTime, $aHourType = false, $aMinType = false, $aSecType = false)
     {
         return $this->AdjTime($aTime, 1, $aHourType, $aMinType, $aSecType);
     }
 
-    //------------------------------------------------------------------------------------------
+    //==================================
     // DateAutoScale
     // Autoscale a date axis given start and end time
     // Returns an array ($start,$end,$major,$minor,$format)
-    //------------------------------------------------------------------------------------------
+    //==================================
     public function DoDateAutoScale($aStartTime, $aEndTime, $aDensity = 0, $aAdjust = true)
     {
         // Format of array
@@ -269,69 +268,69 @@ class DateScale extends LinearScale
         //       array( 0=date-adjust, 1=time-adjust, adjustment-alignment) )
         //
         $scalePoints =
-        [
+            [
             /* Intervall larger than 10 years */
             SECPERYEAR * 10, [[SECPERYEAR * 5, SECPERYEAR * 2],
                 [SECPERYEAR],
-                [0, YEARADJ_1, 0, YEARADJ_1], ],
+                [0, YEARADJ_1, 0, YEARADJ_1]],
 
             /* Intervall larger than 2 years */
             SECPERYEAR * 2, [[SECPERYEAR], [SECPERYEAR],
-                [0, YEARADJ_1], ],
+                [0, YEARADJ_1]],
 
             /* Intervall larger than 90 days (approx 3 month) */
             SECPERDAY * 90, [[SECPERDAY * 30, SECPERDAY * 14, SECPERDAY * 7, SECPERDAY],
                 [SECPERDAY * 5, SECPERDAY * 7, SECPERDAY, SECPERDAY],
-                [0, MONTHADJ_1, 0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1], ],
+                [0, MONTHADJ_1, 0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1]],
 
             /* Intervall larger than 30 days (approx 1 month) */
             SECPERDAY * 30, [[SECPERDAY * 14, SECPERDAY * 7, SECPERDAY * 2, SECPERDAY],
                 [SECPERDAY, SECPERDAY, SECPERDAY, SECPERDAY],
-                [0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1, 0, DAYADJ_1], ],
+                [0, DAYADJ_WEEK, 0, DAYADJ_1, 0, DAYADJ_1, 0, DAYADJ_1]],
 
             /* Intervall larger than 7 days */
             SECPERDAY * 7, [[SECPERDAY, SECPERHOUR * 12, SECPERHOUR * 6, SECPERHOUR * 2],
                 [SECPERHOUR * 6, SECPERHOUR * 3, SECPERHOUR, SECPERHOUR],
-                [0, DAYADJ_1, 1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1], ],
+                [0, DAYADJ_1, 1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1]],
 
             /* Intervall larger than 1 day */
             SECPERDAY, [[SECPERDAY, SECPERHOUR * 12, SECPERHOUR * 6, SECPERHOUR * 2, SECPERHOUR],
                 [SECPERHOUR * 6, SECPERHOUR * 2, SECPERHOUR, SECPERHOUR, SECPERHOUR],
-                [1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1, 1, HOURADJ_1], ],
+                [1, HOURADJ_12, 1, HOURADJ_6, 1, HOURADJ_1, 1, HOURADJ_1]],
 
             /* Intervall larger than 12 hours */
             SECPERHOUR * 12, [[SECPERHOUR * 2, SECPERHOUR, SECPERMIN * 30, 900, 600],
                 [1800, 1800, 900, 300, 300],
-                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
+                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
 
             /* Intervall larger than 2 hours */
             SECPERHOUR * 2, [[SECPERHOUR, SECPERMIN * 30, 900, 600, 300],
                 [1800, 900, 300, 120, 60],
-                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
+                [1, HOURADJ_1, 1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
 
             /* Intervall larger than 1 hours */
             SECPERHOUR, [[SECPERMIN * 30, 900, 600, 300], [900, 300, 120, 60],
-                [1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5], ],
+                [1, MINADJ_30, 1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5]],
 
             /* Intervall larger than 30 min */
             SECPERMIN * 30, [[SECPERMIN * 15, SECPERMIN * 10, SECPERMIN * 5, SECPERMIN],
                 [300, 300, 60, 10],
-                [1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5, 1, MINADJ_1], ],
+                [1, MINADJ_15, 1, MINADJ_10, 1, MINADJ_5, 1, MINADJ_1]],
 
             /* Intervall larger than 1 min */
             SECPERMIN, [[SECPERMIN, 15, 10, 5],
                 [15, 5, 2, 1],
-                [1, MINADJ_1, 1, SECADJ_15, 1, SECADJ_10, 1, SECADJ_5], ],
+                [1, MINADJ_1, 1, SECADJ_15, 1, SECADJ_10, 1, SECADJ_5]],
 
             /* Intervall larger than 10 sec */
             10, [[5, 2],
                 [1, 1],
-                [1, SECADJ_5, 1, SECADJ_1], ],
+                [1, SECADJ_5, 1, SECADJ_1]],
 
             /* Intervall larger than 1 sec */
             1, [[1],
                 [1],
-                [1, SECADJ_1], ],
+                [1, SECADJ_1]],
         ];
 
         $ns = count($scalePoints);

@@ -11,12 +11,12 @@ use Amenadiel\JpGraph\Graph;
 class GanttVLine extends GanttPlotObject
 {
     private $iLine;
-    private $title_margin         = 3;
-    private $iDayOffset           = 0.5;
-    private $iStartRow            = -1;
-    private $iEndRow              = -1;
+    private $title_margin = 3;
+    private $iDayOffset   = 0.5;
+    private $iStartRow    = -1;
+    private $iEndRow      = -1;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
@@ -30,7 +30,7 @@ class GanttVLine extends GanttPlotObject
         $this->title->Set($aTitle);
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     // Set start and end rows for the VLine. By default the entire heigh of the

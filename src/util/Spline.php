@@ -6,21 +6,20 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_REGSTAT.PHP
 // Description: Regression and statistical analysis helper classes
 // Created:     2002-12-01
 // Ver:         $Id: jpgraph_regstat.php 1131 2009-03-11 20:08:24Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
-//------------------------------------------------------------------------
+//==================================
 // CLASS Spline
 // Create a new data array from an existing data array but with more points.
 // The new points are interpolated using a cubic spline algorithm
-//------------------------------------------------------------------------
+//==================================
 class Spline
 {
     // 3:rd degree polynom approximation
@@ -59,7 +58,7 @@ class Spline
             $p            = $s * $this->y2[$i - 1] + 2.0;
             $this->y2[$i] = ($s - 1.0) / $p;
             $delta[$i]    = ($ydata[$i + 1] - $ydata[$i]) / ($xdata[$i + 1] - $xdata[$i]) -
-            ($ydata[$i] - $ydata[$i - 1]) / ($xdata[$i] - $xdata[$i - 1]);
+                ($ydata[$i] - $ydata[$i - 1]) / ($xdata[$i] - $xdata[$i - 1]);
             $delta[$i] = (6.0 * $delta[$i] / ($xdata[$i + 1] - $xdata[$i - 1]) - $s * $delta[$i - 1]) / $p;
         }
 
@@ -114,7 +113,7 @@ class Spline
         $b = ($xpoint - $this->xdata[$min]) / $h;
 
         return $a * $this->ydata[$min] + $b * $this->ydata[$max] +
-        (($a * $a * $a - $a) * $this->y2[$min] + ($b * $b * $b - $b) * $this->y2[$max]) * ($h * $h) / 6.0;
+            (($a * $a * $a - $a) * $this->y2[$min] + ($b * $b * $b - $b) * $this->y2[$max]) * ($h * $h) / 6.0;
     }
 }
 

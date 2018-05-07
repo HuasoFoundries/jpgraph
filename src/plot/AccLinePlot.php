@@ -13,10 +13,10 @@ namespace Amenadiel\JpGraph\Plot;
 class AccLinePlot extends Plot
 {
     protected $plots;
-    protected $nbrplots       = 0;
-    private $iStartEndZero    = true;
+    protected $nbrplots    = 0;
+    private $iStartEndZero = true;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($plots)
     {
@@ -36,7 +36,7 @@ class AccLinePlot extends Plot
         }
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Legend($graph)
     {

@@ -14,21 +14,21 @@ define('WINDROSE_TYPE8', 2);
 define('WINDROSE_TYPE16', 3);
 define('WINDROSE_TYPEFREE', 4);
 
-//------------------------------------------------------------------------
+//==================================
 // How should the labels for the circular grids be aligned
-//------------------------------------------------------------------------
+//==================================
 define('LBLALIGN_CENTER', 1);
 define('LBLALIGN_TOP', 2);
 
-//------------------------------------------------------------------------
+//==================================
 // How should the labels around the plot be align
-//------------------------------------------------------------------------
+//==================================
 define('LBLPOSITION_CENTER', 1);
 define('LBLPOSITION_EDGE', 2);
 
-//------------------------------------------------------------------------
+//==================================
 // Interpretation of ordinal values in the data
-//------------------------------------------------------------------------
+//==================================
 define('KEYENCODING_CLOCKWISE', 1);
 define('KEYENCODING_ANTICLOCKWISE', 2);
 
@@ -42,41 +42,41 @@ define('RANGE_DISCRETE', 1);
 //===================================================
 class WindrosePlot
 {
-    private $iAntiAlias            = true;
-    private $iData                 = [];
-    public $iX                     = 0.5;
-    public $iY                     = 0.5;
-    public $iSize                  = 0.55;
-    private $iGridColor1           = 'gray';
-    private $iGridColor2           = 'darkgreen';
-    private $iRadialColorArray     = [];
-    private $iRadialWeightArray    = [];
-    private $iRadialStyleArray     = [];
-    private $iRanges               = [1, 2, 3, 5, 6, 10, 13.5, 99.0];
-    private $iRangeStyle           = RANGE_OVERLAPPING;
-    public $iCenterSize            = 60;
-    private $iType                 = WINDROSE_TYPE16;
-    public $iFontFamily            = FF_VERDANA;
-    public $iFontStyle             = FS_NORMAL;
-    public $iFontSize              = 10;
-    public $iFontColor             = 'darkgray';
-    private $iRadialGridStyle      = 'longdashed';
-    private $iAllDirectionLabels   = ['E', 'ENE', 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW', 'W', 'WSW', 'SW', 'SSW', 'S', 'SSE', 'SE', 'ESE'];
-    private $iStandardDirections   = [];
-    private $iCircGridWeight       = 3;
-    private $iRadialGridWeight     = 1;
-    private $iLabelMargin          = 12;
-    private $iLegweights           = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
-    private $iLegColors            = ['orange', 'black', 'blue', 'red', 'green', 'purple', 'navy', 'yellow', 'brown'];
-    private $iLabelFormatString    = '';
-    private $iLabels               = [];
-    private $iLabelPositioning     = LBLPOSITION_EDGE;
-    private $iColor                = 'white';
-    private $iShowBox              = false;
-    private $iBoxColor             = 'black';
-    private $iBoxWeight            = 1;
-    private $iBoxStyle             = 'solid';
-    private $iOrdinalEncoding      = KEYENCODING_ANTICLOCKWISE;
+    private $iAntiAlias          = true;
+    private $iData               = [];
+    public $iX                   = 0.5;
+    public $iY                   = 0.5;
+    public $iSize                = 0.55;
+    private $iGridColor1         = 'gray';
+    private $iGridColor2         = 'darkgreen';
+    private $iRadialColorArray   = [];
+    private $iRadialWeightArray  = [];
+    private $iRadialStyleArray   = [];
+    private $iRanges             = [1, 2, 3, 5, 6, 10, 13.5, 99.0];
+    private $iRangeStyle         = RANGE_OVERLAPPING;
+    public $iCenterSize          = 60;
+    private $iType               = WINDROSE_TYPE16;
+    public $iFontFamily          = FF_VERDANA;
+    public $iFontStyle           = FS_NORMAL;
+    public $iFontSize            = 10;
+    public $iFontColor           = 'darkgray';
+    private $iRadialGridStyle    = 'longdashed';
+    private $iAllDirectionLabels = ['E', 'ENE', 'NE', 'NNE', 'N', 'NNW', 'NW', 'WNW', 'W', 'WSW', 'SW', 'SSW', 'S', 'SSE', 'SE', 'ESE'];
+    private $iStandardDirections = [];
+    private $iCircGridWeight     = 3;
+    private $iRadialGridWeight   = 1;
+    private $iLabelMargin        = 12;
+    private $iLegweights         = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+    private $iLegColors          = ['orange', 'black', 'blue', 'red', 'green', 'purple', 'navy', 'yellow', 'brown'];
+    private $iLabelFormatString  = '';
+    private $iLabels             = [];
+    private $iLabelPositioning   = LBLPOSITION_EDGE;
+    private $iColor              = 'white';
+    private $iShowBox            = false;
+    private $iBoxColor           = 'black';
+    private $iBoxWeight          = 1;
+    private $iBoxStyle           = 'solid';
+    private $iOrdinalEncoding    = KEYENCODING_ANTICLOCKWISE;
     public $legend;
 
     public function __construct($aData)
@@ -88,7 +88,7 @@ class WindrosePlot
         $this->scale = new Graph\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
-        $this->iLabelFormatString = '%.1f'.Graph\SymChar::Get('degree');
+        $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
 
         $delta = 2 * M_PI / 16;
         for ($i = 0, $a = 0; $i < 16; ++$i, $a += $delta) {
@@ -333,7 +333,7 @@ class WindrosePlot
         $xcenter = $x;
 
         // Construct format string
-        $fmt = $this->legend->iFormatString.'-'.$this->legend->iFormatString;
+        $fmt = $this->legend->iFormatString . '-' . $this->legend->iFormatString;
 
         // Make sure that the length of each range is enough to cover the
         // size of the labels

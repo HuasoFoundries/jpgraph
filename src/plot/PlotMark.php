@@ -50,7 +50,7 @@ class PlotMark
     private $imgdata_stars;
     private $imgdata_pushpins;
 
-    //--------------
+    //==================================
     // CONSTRUCTOR
     public function __construct()
     {
@@ -60,7 +60,7 @@ class PlotMark
         $this->type      = -1;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
@@ -165,18 +165,18 @@ class PlotMark
 
     public function AddCSIMPoly($aPts)
     {
-        $coords = round($aPts[0]).', '.round($aPts[1]);
+        $coords = round($aPts[0]) . ', ' . round($aPts[1]);
         $n      = count($aPts) / 2;
         for ($i = 1; $i < $n; ++$i) {
-            $coords .= ', '.round($aPts[2 * $i]).', '.round($aPts[2 * $i + 1]);
+            $coords .= ', ' . round($aPts[2 * $i]) . ', ' . round($aPts[2 * $i + 1]);
         }
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
             $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" ";
-            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
+            $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -195,10 +195,10 @@ class PlotMark
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
             $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" ";
-            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
+            $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -348,12 +348,12 @@ class PlotMark
 
             $img->Copy($this->markimg, $dx, $dy, 0, 0, $dw, $dh, $w, $h);
             if (!empty($this->csimtarget)) {
-                $this->csimareas = '<area shape="rect" coords="'.
-                $dx.','.$dy.','.round($dx + $dw).','.round($dy + $dh).'" '.
-                'href="'.htmlentities($this->csimtarget).'"';
+                $this->csimareas = '<area shape="rect" coords="' .
+                $dx . ',' . $dy . ',' . round($dx + $dw) . ',' . round($dy + $dh) . '" ' .
+                'href="' . htmlentities($this->csimtarget) . '"';
 
                 if (!empty($this->csimwintarget)) {
-                    $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                    $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
                 }
 
                 if (!empty($this->csimalt)) {

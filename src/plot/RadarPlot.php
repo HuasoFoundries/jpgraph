@@ -13,20 +13,20 @@ namespace Amenadiel\JpGraph\Plot;
 class RadarPlot
 {
     public $mark;
-    public $legend                 = '';
-    public $legendcsimtarget       = '';
-    public $legendcsimalt          = '';
-    public $csimtargets            = []; // Array of targets for CSIM
-    public $csimareas              = ''; // Resultant CSIM area tags
+    public $legend           = '';
+    public $legendcsimtarget = '';
+    public $legendcsimalt    = '';
+    public $csimtargets      = []; // Array of targets for CSIM
+    public $csimareas        = ''; // Resultant CSIM area tags
     public $csimalts; // ALT:s for corresponding target
-    private $data                  = [];
-    private $fill                  = false;
-    private $fill_color            = [200, 170, 180];
-    private $color                 = [0, 0, 0];
-    private $weight                = 1;
-    private $linestyle             = 'solid';
+    private $data       = [];
+    private $fill       = false;
+    private $fill_color = [200, 170, 180];
+    private $color      = [0, 0, 0];
+    private $weight     = 1;
+    private $linestyle  = 'solid';
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($data)
     {

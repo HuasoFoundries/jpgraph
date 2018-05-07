@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_BAR.PHP
 // Description: Bar plot extension for JpGraph
 // Created:     2001-01-08
 // Ver:         $Id: jpgraph_bar.php 1905 2009-10-06 18:00:21Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 // Pattern for Bars
 define('PATTERN_DIAG1', 1);
@@ -36,30 +35,30 @@ define('PATTERN_STRIPE2', 10);
 //===================================================
 class BarPlot extends Plot
 {
-    public $fill                       = false;
-    public $fill_color                 = 'lightblue'; // Default is to fill with light blue
-    public $iPattern                   = -1;
-    public $iPatternDensity            = 80;
-    public $iPatternColor              = 'black';
-    public $valuepos                   = 'top';
-    public $grad                       = false;
-    public $grad_style                 = 1;
-    public $grad_fromcolor             = [50, 50, 200];
-    public $grad_tocolor               = [255, 255, 255];
-    public $ymin                       = 0;
-    protected $width                   = 0.4; // in percent of major ticks
-    protected $abswidth                = -1; // Width in absolute pixels
-    protected $ybase                   = 0; // Bars start at 0
-    protected $align                   = 'center';
-    protected $bar_shadow              = false;
-    protected $bar_shadow_color        = 'black';
-    protected $bar_shadow_hsize        = 3;
-    protected $bar_shadow_vsize        = 3;
-    protected $bar_3d                  = false;
-    protected $bar_3d_hsize            = 3;
-    protected $bar_3d_vsize            = 3;
+    public $fill                = false;
+    public $fill_color          = 'lightblue'; // Default is to fill with light blue
+    public $iPattern            = -1;
+    public $iPatternDensity     = 80;
+    public $iPatternColor       = 'black';
+    public $valuepos            = 'top';
+    public $grad                = false;
+    public $grad_style          = 1;
+    public $grad_fromcolor      = [50, 50, 200];
+    public $grad_tocolor        = [255, 255, 255];
+    public $ymin                = 0;
+    protected $width            = 0.4; // in percent of major ticks
+    protected $abswidth         = -1; // Width in absolute pixels
+    protected $ybase            = 0; // Bars start at 0
+    protected $align            = 'center';
+    protected $bar_shadow       = false;
+    protected $bar_shadow_color = 'black';
+    protected $bar_shadow_hsize = 3;
+    protected $bar_shadow_vsize = 3;
+    protected $bar_3d           = false;
+    protected $bar_3d_hsize     = 3;
+    protected $bar_3d_vsize     = 3;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($datay, $datax = false)
     {
@@ -67,7 +66,7 @@ class BarPlot extends Plot
         ++$this->numpoints;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     // Set a drop shadow for the bar (or rather an "up-right" shadow)
@@ -387,7 +386,7 @@ class BarPlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-            //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
+                //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -435,19 +434,19 @@ class BarPlot extends Plot
             // Comment Note: This confuses the positioning when using acc together with
             // grouped bars. Workaround for fixing #191
             /*
-                if( !$xscale->textscale ) {
-                if($this->align=="center")
-                $x -= $abswidth/2;
-                elseif($this->align=="right")
-                $x -= $abswidth;
-                }
-*/
+            if( !$xscale->textscale ) {
+            if($this->align=="center")
+            $x -= $abswidth/2;
+            elseif($this->align=="right")
+            $x -= $abswidth;
+            }
+             */
             // Stroke fill color and fill gradient
             $pts = [
                 $x, $zp,
                 $x, $yscale->Translate($this->coords[0][$i]),
                 $x + $abswidth, $yscale->Translate($this->coords[0][$i]),
-                $x + $abswidth, $zp, ];
+                $x + $abswidth, $zp];
             if ($this->grad) {
                 if ($grad === null) {
                     $grad = new Gradient($img);
@@ -605,11 +604,11 @@ class BarPlot extends Plot
 
                 $base_color = $this->fill_color;
 
-                $img->PushColor($base_color.':0.7');
+                $img->PushColor($base_color . ':0.7');
                 $img->FilledPolygon($sp1);
                 $img->PopColor();
 
-                $img->PushColor($base_color.':1.1');
+                $img->PushColor($base_color . ':1.1');
                 $img->FilledPolygon($sp2);
                 $img->PopColor();
             }
@@ -731,16 +730,16 @@ class BarPlot extends Plot
             }
             // Create the client side image map
             $rpts      = $img->ArrRotate($pts);
-            $csimcoord = round($rpts[0]).', '.round($rpts[1]);
+            $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);
             for ($j = 1; $j < 4; ++$j) {
-                $csimcoord .= ', '.round($rpts[2 * $j]).', '.round($rpts[2 * $j + 1]);
+                $csimcoord .= ', ' . round($rpts[2 * $j]) . ', ' . round($rpts[2 * $j + 1]);
             }
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
-                $this->csimareas .= ' href="'.htmlentities($this->csimtargets[$i]).'"';
+                $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
+                $this->csimareas .= ' href="' . htmlentities($this->csimtargets[$i]) . '"';
 
                 if (!empty($this->csimwintargets[$i])) {
-                    $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
+                    $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
                 }
 
                 $sval = '';

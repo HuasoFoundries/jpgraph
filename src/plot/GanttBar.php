@@ -16,21 +16,21 @@ class GanttBar extends GanttPlotObject
     public $leftMark;
     public $rightMark;
     private $iEnd;
-    private $iHeightFactor        = 0.5;
-    private $iFillColor           = 'white';
-    private $iFrameColor          = 'black';
-    private $iShadow              = false;
-    private $iShadowColor         = 'darkgray';
-    private $iShadowWidth         = 1;
-    private $iShadowFrame         = 'black';
-    private $iPattern             = GANTT_RDIAG;
-    private $iPatternColor        = 'blue';
-    private $iPatternDensity      = 95;
-    private $iBreakStyle          = false;
-    private $iBreakLineStyle      = 'dotted';
-    private $iBreakLineWeight     = 1;
+    private $iHeightFactor    = 0.5;
+    private $iFillColor       = 'white';
+    private $iFrameColor      = 'black';
+    private $iShadow          = false;
+    private $iShadowColor     = 'darkgray';
+    private $iShadowWidth     = 1;
+    private $iShadowFrame     = 'black';
+    private $iPattern         = GANTT_RDIAG;
+    private $iPatternColor    = 'blue';
+    private $iPatternDensity  = 95;
+    private $iBreakStyle      = false;
+    private $iBreakLineStyle  = 'dotted';
+    private $iBreakLineWeight = 1;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = '', $aHeightFactor = 0.6)
     {
@@ -60,7 +60,7 @@ class GanttBar extends GanttPlotObject
         $this->progress = new Progress();
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function SetShadow($aShadow = true, $aColor = 'gray')
     {
@@ -168,10 +168,10 @@ class GanttBar extends GanttPlotObject
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'" ';
+                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {
@@ -217,10 +217,10 @@ class GanttBar extends GanttPlotObject
         // CSIM for bar
         if (!empty($this->csimtarget)) {
             $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtarget.'"';
+            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtarget . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimarea .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimarea .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if ($this->csimalt != '') {

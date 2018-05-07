@@ -6,15 +6,15 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_GRADIENT.PHP
 // Description: Create a color gradient
 // Created:     2003-02-01
 // Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
+
 use Amenadiel\JpGraph\Util;
 
 //===================================================
@@ -27,7 +27,7 @@ class Gradient
     private $img;
     private $numcolors = 100;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct(&$img)
     {
@@ -39,7 +39,7 @@ class Gradient
         $this->numcolors = $aNum;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     // Produce a gradient filled rectangle with a smooth transition between
     // two colors.
@@ -173,7 +173,7 @@ class Gradient
                 $adj         = 1.4;
                 $m           = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color2 = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
 
                 $this->GetColArray($from_color2, $to_color, $steps1, $colors, $this->numcolors);
                 $n = count($colors);
@@ -220,7 +220,7 @@ class Gradient
                 $adj        = 1.4;
                 $m          = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
 
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
@@ -396,7 +396,7 @@ class Gradient
         }
     }
 
-    //---------------
+    //==================================
     // PRIVATE METHODS
     // Add to the image color map the necessary colors to do the transition
     // between the two colors using $numcolors intermediate colors

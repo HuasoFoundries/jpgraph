@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_GANTT.PHP
 // Description: JpGraph Gantt plot extension
 // Created:     2001-11-12
 // Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//===============================
 
 require_once 'jpgraph_plotband.php';
 require_once 'jpgraph_iconplot.php';
@@ -149,24 +148,24 @@ if (!function_exists('array_fill')) {
 //===================================================
 class GanttActivityInfo
 {
-    public $iShow               = true;
-    public $iLeftColMargin      = 4;
-    public $iRightColMargin     = 1;
-    public $iTopColMargin       = 1;
-    public $iBottomColMargin    = 3;
+    public $iShow            = true;
+    public $iLeftColMargin   = 4;
+    public $iRightColMargin  = 1;
+    public $iTopColMargin    = 1;
+    public $iBottomColMargin = 3;
     public $vgrid;
-    private $iColor             = 'black';
-    private $iBackgroundColor   = 'lightgray';
-    private $iFFamily           = FF_FONT1;
-    private $iFStyle            = FS_NORMAL;
-    private $iFSize             = 10;
-    private $iFontColor         = 'black';
-    private $iTitles            = [];
-    private $iWidth             = [];
-    private $iHeight            = -1;
-    private $iTopHeaderMargin   = 4;
-    private $iStyle             = 1;
-    private $iHeaderAlign       = 'center';
+    private $iColor           = 'black';
+    private $iBackgroundColor = 'lightgray';
+    private $iFFamily         = FF_FONT1;
+    private $iFStyle          = FS_NORMAL;
+    private $iFSize           = 10;
+    private $iFontColor       = 'black';
+    private $iTitles          = [];
+    private $iWidth           = [];
+    private $iHeight          = -1;
+    private $iTopHeaderMargin = 4;
+    private $iStyle           = 1;
+    private $iHeaderAlign     = 'center';
 
     public function __construct()
     {

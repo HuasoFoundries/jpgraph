@@ -14,7 +14,7 @@ class LineErrorPlot extends ErrorPlot
 {
     public $line;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     // Data is (val, errdeltamin, errdeltamax)
     public function __construct($datay, $datax = false)
@@ -35,7 +35,7 @@ class LineErrorPlot extends ErrorPlot
         $this->line = new LinePlot($ly, $datax);
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Legend($graph)
     {

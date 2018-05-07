@@ -14,7 +14,7 @@ class MileStone extends GanttPlotObject
 {
     public $mark;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($aVPos, $aLabel, $aDate, $aCaption = '')
     {
@@ -33,7 +33,7 @@ class MileStone extends GanttPlotObject
         $this->iStart = $aDate;
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
 
     public function GetAbsHeight($aImg)
@@ -65,10 +65,10 @@ class MileStone extends GanttPlotObject
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'"';
+                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '"';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {

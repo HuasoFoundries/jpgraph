@@ -10,15 +10,14 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
+//===============================
 // File:        JPGRAPH_PIE.PHP
 // Description: Pie plot extension for JpGraph
 // Created:     2001-02-14
 // Ver:         $Id: jpgraph_pie.php 1926 2010-01-11 16:33:07Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 // Defines for PiePlot::SetLabelType()
 define('PIE_VALUE_ABS', 1);
@@ -33,15 +32,15 @@ define('PIE_VALUE_ADJPER', 2);
 //===================================================
 class PiePlot
 {
-    public $posx                        = 0.5;
-    public $posy                        = 0.5;
-    public $is_using_plot_theme         = false;
-    public $theme                       = 'earth';
-    protected $use_plot_theme_colors    = false;
-    protected $radius                   = 0.3;
-    protected $explode_radius           = [];
-    protected $explode_all              = false;
-    protected $explode_r                = 20;
+    public $posx                     = 0.5;
+    public $posy                     = 0.5;
+    public $is_using_plot_theme      = false;
+    public $theme                    = 'earth';
+    protected $use_plot_theme_colors = false;
+    protected $radius                = 0.3;
+    protected $explode_radius        = [];
+    protected $explode_all           = false;
+    protected $explode_r             = 20;
     protected $labels;
     protected $legends;
     protected $csimtargets;
@@ -59,28 +58,28 @@ class PiePlot
         'earth'  => [136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430],
         'pastel' => [27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38],
         'water'  => [8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388],
-        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393], ];
-    protected $setslicecolors          = [];
-    protected $labeltype               = 0; // Default to percentage
-    protected $pie_border              = true;
-    protected $pie_interior_border     = true;
+        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393]];
+    protected $setslicecolors      = [];
+    protected $labeltype           = 0; // Default to percentage
+    protected $pie_border          = true;
+    protected $pie_interior_border = true;
     public $value;
-    protected $ishadowcolor              = '';
-    protected $ishadowdrop               = 4;
-    protected $ilabelposadj              = 1;
-    protected $legendcsimtargets         = [];
-    protected $legendcsimwintargets      = [];
-    protected $legendcsimalts            = [];
-    protected $adjusted_data             = [];
+    protected $ishadowcolor         = '';
+    protected $ishadowdrop          = 4;
+    protected $ilabelposadj         = 1;
+    protected $legendcsimtargets    = [];
+    protected $legendcsimwintargets = [];
+    protected $legendcsimalts       = [];
+    protected $adjusted_data        = [];
     public $guideline;
-    protected $guidelinemargin           = 10;
-    protected $iShowGuideLineForSingle   = false;
-    protected $iGuideLineCurve           = false;
-    protected $iGuideVFactor             = 1.4;
-    protected $iGuideLineRFactor         = 0.8;
-    protected $la                        = []; // Holds the exact angle for each label
+    protected $guidelinemargin         = 10;
+    protected $iShowGuideLineForSingle = false;
+    protected $iGuideLineCurve         = false;
+    protected $iGuideVFactor           = 1.4;
+    protected $iGuideLineRFactor       = 0.8;
+    protected $la                      = []; // Holds the exact angle for each label
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($data)
     {
@@ -93,7 +92,7 @@ class PiePlot
         $this->guideline = new Graph\LineProperty();
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function SetCenter($x, $y = 0.5)
     {
@@ -207,10 +206,10 @@ class PiePlot
         $yp = floor($yc - $radius * sin($sa));
         $coords .= ", ${xp}, ${yp}";
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtargets[$i].'"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtargets[$i] . '"';
             $tmp = '';
             if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= ' target="'.$this->csimwintargets[$i].'" ';
+                $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
@@ -575,9 +574,9 @@ class PiePlot
             }
         }
 
-        //--------------------------------------------------------------------------------
+        //==================================
         // This is the main loop to draw each cake slice
-        //--------------------------------------------------------------------------------
+        //==================================
 
         // Set up the accumulated sum, start angle for first slice and border color
         $accsum = 0;
@@ -715,7 +714,7 @@ class PiePlot
         }
     }
 
-    //---------------
+    //==================================
     // PRIVATE METHODS
 
     public function NormAngle($a)
@@ -755,11 +754,11 @@ class PiePlot
     {
         $n = count($this->labels);
 
-        //-----------------------------------------------------------------------
+        //==================================
         // Step 1 of the algorithm is to construct a number of clusters
         // a cluster is defined as all slices within the same quadrant (almost)
         // that has an angular distance less than the treshold
-        //-----------------------------------------------------------------------
+        //==================================
         $tresh_hold = 25 * M_PI / 180; // 25 degrees difference to be in a cluster
         $incluster  = false; // flag if we are currently in a cluster or not
         $clusters   = []; // array of clusters
@@ -874,10 +873,10 @@ class PiePlot
         }
          */
 
-        //-----------------------------------------------------------------------
+        //==================================
         // Step 2 of the algorithm is use the clusters and draw the labels
         // and guidelines
-        //-----------------------------------------------------------------------
+        //==================================
 
         // We use the font height as the base factor for how far we need to
         // spread the labels in the Y-direction.

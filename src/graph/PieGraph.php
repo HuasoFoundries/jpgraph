@@ -21,7 +21,7 @@ class PieGraph extends Graph
     public $plots    = [];
     public $pieaa    = false;
 
-    //---------------
+    //==================================
     // CONSTRUCTOR
     public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
@@ -35,7 +35,7 @@ class PieGraph extends Graph
         }
     }
 
-    //---------------
+    //==================================
     // PUBLIC METHODS
     public function Add($aObj)
     {
@@ -276,11 +276,11 @@ class PieGraph extends Graph
             }
             // Finally stream the generated picture
             $this->cache->PutAndStream(
-                    $this->img,
-                    $this->cache_name,
-                    $this->inline,
-                    $aStrokeFileName
-                );
+                $this->img,
+                $this->cache_name,
+                $this->inline,
+                $aStrokeFileName
+            );
         }
     }
 } // Class

@@ -6,7 +6,7 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
+//===============================
 // File:           JPGRAPH_PLOTLINE.PHP
 // Description: PlotLine extension for JpGraph
 // Created:       2009-03-24
@@ -18,22 +18,21 @@ namespace Amenadiel\JpGraph\Plot;
 // Useful to add static borders inside a plot to show for example set-values
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
- */
+//==================================
 
 class PlotLine
 {
     public $scaleposition;
-    public $direction                              = -1;
-    protected $weight                              = 1;
-    protected $color                               = 'black';
-    private $legend                                = '';
-    private $hidelegend                            = false;
-    private $legendcsimtarget                      = '';
-    private $legendcsimalt                         = '';
-    private $legendcsimwintarget                   = '';
-    private $iLineStyle                            = 'solid';
-    public $numpoints                              = 0; // Needed since the framework expects this property
+    public $direction            = -1;
+    protected $weight            = 1;
+    protected $color             = 'black';
+    private $legend              = '';
+    private $hidelegend          = false;
+    private $legendcsimtarget    = '';
+    private $legendcsimalt       = '';
+    private $legendcsimwintarget = '';
+    private $iLineStyle          = 'solid';
+    public $numpoints            = 0; // Needed since the framework expects this property
 
     public function __construct($aDir = HORIZONTAL, $aPos = 0, $aColor = 'black', $aWeight = 1)
     {
@@ -86,7 +85,7 @@ class PlotLine
         return '';
     }
 
-    //---------------
+    //==================================
     // PRIVATE METHODS
 
     public function DoLegend($graph)
