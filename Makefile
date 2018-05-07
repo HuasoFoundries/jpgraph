@@ -3,7 +3,7 @@ VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
 SHELL = /usr/bin/env bash
 
 default: clean
-.PHONY: version install test tag
+.PHONY: version install test tag start
 
 version:
 	@echo $(VERSION)
@@ -34,3 +34,6 @@ tag: update_version tag_and_push
 delete_tag:
 	git tag -d $(v)
 	git push origin :refs/tags/$(v)
+
+start:
+	php -S localhost:8000
