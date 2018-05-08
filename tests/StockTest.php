@@ -16,4 +16,8 @@ class StockTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['boxstockex1.php', 'boxstockex2.php', 'stockex1.php', 'stockex2.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

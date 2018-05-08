@@ -16,4 +16,8 @@ class ThemeTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['aqua_example.php', 'fusion_example.php', 'green_example.php', 'ocean_example.php', 'orange_example.php', 'pastel_example.php', 'rose_example.php', 'softy_example.php', 'theme_example.php', 'universal_example.php', 'vivid_example.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

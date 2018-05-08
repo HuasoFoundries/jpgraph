@@ -16,4 +16,8 @@ class DateTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['dateaxisex1.php', 'dateaxisex2.php', 'dateaxisex3.php', 'dateaxisex4.php', 'datescaleticksex01.php', 'dateutilex01.php', 'dateutilex02.php', 'prepaccdata_example.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

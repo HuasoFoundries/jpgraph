@@ -16,4 +16,8 @@ class MatrixTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['matrix_edgeex01.php', 'matrix_edgeex02.php', 'matrix_ex0.php', 'matrix_ex01.php', 'matrix_ex02.php', 'matrix_ex03.php', 'matrix_ex04.1.php', 'matrix_ex04.2.php', 'matrix_ex04.php', 'matrix_ex05.php', 'matrix_ex06.php', 'matrix_introex.php', 'matrix_layout_ex1.php', 'matrixex00.php'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

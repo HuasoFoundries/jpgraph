@@ -16,4 +16,8 @@ class TickTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['manualtickex1.php', 'manualtickex1a.php', 'manualtickex2.php', 'manualtickex3.php', 'manualtickex4.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

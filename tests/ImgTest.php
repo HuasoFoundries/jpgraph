@@ -16,4 +16,8 @@ class ImgTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['bkgimgflagex1.php', 'bkgimgflagex2.php', 'bkgimgflagex3.php', 'bkgimgflagex4.php', 'bkgimgflagex5.php', 'imgmarkerex1.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

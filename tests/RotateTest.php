@@ -16,4 +16,8 @@ class RotateTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['rotateex1.php', 'rotex0.php', 'rotex1.php', 'rotex2.php', 'rotex3.php', 'rotex4.php', 'rotex5.php'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }

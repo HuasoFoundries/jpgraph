@@ -16,4 +16,8 @@ class MultigraphTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature() {}
 
+    public function testFileIterator()
+    {
+        $files = ['comb90dategraphex01.php', 'comb90dategraphex02.php', 'comb90dategraphex03.php', 'combgraphex1.php', 'combgraphex2.php'];foreach ($files as $file) {$this->_fileCheck($file);}
+    }
 }
