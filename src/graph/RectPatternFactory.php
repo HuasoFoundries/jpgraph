@@ -20,7 +20,7 @@ define('BAND_DIAGCROSS', 8); // Diagonal crosses
 
 /**
  * @class RectPatternFactory
-// Factory class for rectangular pattern
+ * // Factory class for rectangular pattern
  */
 class RectPatternFactory
 {

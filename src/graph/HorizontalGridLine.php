@@ -11,7 +11,7 @@ define('GANTT_HGRID2', 1);
 
 /**
  * @class HorizontalGridLine
-// Responsible for drawinf horizontal gridlines and filled alternatibg rows
+ * // Responsible for drawinf horizontal gridlines and filled alternatibg rows
  */
 class HorizontalGridLine
 {

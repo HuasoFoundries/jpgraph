@@ -5,6 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_radar.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 

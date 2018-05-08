@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPatternLDiag
-// Implements left diagonal pattern
+ * // Implements left diagonal pattern
  */
 class RectPatternLDiag extends RectPattern
 {

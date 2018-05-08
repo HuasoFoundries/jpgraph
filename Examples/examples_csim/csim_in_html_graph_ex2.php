@@ -10,6 +10,7 @@ if (DEBUGMODE) {
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 // Some data
 $data = [50, 28, 25, 27, 31, 20];
 

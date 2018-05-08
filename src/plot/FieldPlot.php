@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class FieldPlot
-// Description: Render a field plot
+ * // Description: Render a field plot
  */
 class FieldPlot extends Plot
 {

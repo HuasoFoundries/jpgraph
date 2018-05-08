@@ -7,6 +7,7 @@
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_scatter.php';
 
 // Some data

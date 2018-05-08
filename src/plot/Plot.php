@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Plot
-// Description: Abstract base class for all concrete plot classes
+ * // Description: Abstract base class for all concrete plot classes
  */
 class Plot
 {

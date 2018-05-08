@@ -7,6 +7,7 @@
 // Gantt example
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_gantt.php';
 
 // Create the basic graph

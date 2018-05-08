@@ -5,6 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_polar.php';
 
 //$data = array(22,12,27,40,80,48,120,40,142,27,170,12);

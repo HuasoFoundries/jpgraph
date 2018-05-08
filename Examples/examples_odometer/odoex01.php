@@ -17,6 +17,7 @@
 //=============================================================================
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------

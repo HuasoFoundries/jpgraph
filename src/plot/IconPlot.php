@@ -8,17 +8,17 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * File:        JPGRAPH_ICONPLOT.PHP
-// Description: Extension module to add icons to plots
-// Created:     2004-02-18
-// Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Extension module to add icons to plots
+ * // Created:     2004-02-18
+ * // Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class IconPlot
-// Description: Make it possible to add a (small) image
-// to the graph
+ * // Description: Make it possible to add a (small) image
+ * // to the graph
  */
 class IconPlot
 {

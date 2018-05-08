@@ -7,6 +7,7 @@
 // Example of a stock chart
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_stock.php';
 
 // Data must be in the format : open,close,min,max
