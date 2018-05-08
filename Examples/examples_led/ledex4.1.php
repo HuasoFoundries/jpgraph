@@ -5,6 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_led.php';
 
 // By default each "LED" circle has a radius of 3 pixels. Change to 5 and slghtly smaller margin

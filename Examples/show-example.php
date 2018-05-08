@@ -31,7 +31,6 @@ if (!strstr($target, 'csim')) {
 } else {
     echo '<frameset rows="*" onLoad="resize()">';
     echo '<frame src="' . basename($folder) . '/' . basename($target) . '" name="image">';
-
 }
 ?>
 

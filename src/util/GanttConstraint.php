@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttConstraint
-// Just a structure to store all the values for a constraint
+ * // Just a structure to store all the values for a constraint
  */
 class GanttConstraint
 {

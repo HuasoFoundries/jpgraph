@@ -8,18 +8,18 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * File:        JPGRAPH_GRADIENT.PHP
-// Description: Create a color gradient
-// Created:     2003-02-01
-// Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Create a color gradient
+ * // Created:     2003-02-01
+ * // Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 use Amenadiel\JpGraph\Util;
 
 /**
  * @class Gradient
-// Description: Handles gradient fills. This is to be
-// considered a "friend" class of Class Image.
+ * // Description: Handles gradient fills. This is to be
+ * // considered a "friend" class of Class Image.
  */
 class Gradient
 {

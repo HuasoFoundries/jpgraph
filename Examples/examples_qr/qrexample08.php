@@ -7,6 +7,7 @@
 // Include the library
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
 $readFromFilename = 'qr-input.txt';

@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttGraph
-// Description: Main class to handle gantt graphs
+ * // Description: Main class to handle gantt graphs
  */
 class GanttGraph extends Graph
 {
@@ -33,7 +33,7 @@ class GanttGraph extends Graph
 
     /**
      * CONSTRUCTOR
-    // Create a new gantt graph
+     * // Create a new gantt graph
      */
     public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {

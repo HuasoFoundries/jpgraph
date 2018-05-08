@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttBar
-// Responsible for formatting individual gantt bars
+ * // Responsible for formatting individual gantt bars
  */
 class GanttBar extends GanttPlotObject
 {
