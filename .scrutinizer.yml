@@ -4,16 +4,18 @@ filter:
 build:
     environment:
           php: '7.1'
-    tests: true
+    tests:
+        override:
+            -
+                command: make test_coverage
+                coverage:
+                    file: 'tests/_output/coverage.xml'
+                    format: 'clover'
     nodes:
         analysis:
             tests:
                 override:
-                        - php-scrutinizer-run
-                        - make test_coverage
-                coverage:
-                    file: 'tests/_output/coverage.xml'
-                    format: 'clover'
+                    - 'php-scrutinizer-run'
         tests: true
         
 checks:
