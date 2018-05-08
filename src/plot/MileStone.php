@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class MileStone
-// Responsible for formatting individual milestones
+ * // Responsible for formatting individual milestones
  */
 class MileStone extends GanttPlotObject
 {
