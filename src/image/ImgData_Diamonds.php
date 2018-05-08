@@ -5,12 +5,12 @@
  */
 
 /**
-// File:        IMGDATA_DIAMONDS.INC
-// Description: Base64 encoded images for diamonds
-// Created:     2003-03-20
-// Ver:         $Id: imgdata_diamonds.inc.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // File:        IMGDATA_DIAMONDS.INC
+ * // Description: Base64 encoded images for diamonds
+ * // Created:     2003-03-20
+ * // Ver:         $Id: imgdata_diamonds.inc.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 namespace Amenadiel\JpGraph\Image;
 
@@ -20,7 +20,7 @@ class ImgData_Diamonds extends ImgData
     protected $an     = [MARK_IMG_DIAMOND => 'imgdata'];
     protected $colors = ['lightblue', 'darkblue', 'gray',
         'blue', 'pink', 'purple', 'red', 'yellow'];
-    protected $index = ['lightblue' => 7, 'darkblue' => 2, 'gray'   => 6,
+    protected $index = ['lightblue'     => 7, 'darkblue' => 2, 'gray'   => 6,
         'blue'                          => 4, 'pink'     => 1, 'purple' => 5, 'red' => 0, 'yellow' => 3];
 
     protected $maxidx = 7;

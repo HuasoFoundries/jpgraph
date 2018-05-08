@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LinearTicks
-// Description: Draw linear ticks on axis
+ * // Description: Draw linear ticks on axis
  */
 class LinearTicks extends Ticks
 {
