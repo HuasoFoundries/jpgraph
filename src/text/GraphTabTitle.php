@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class GraphTabTitle
-// Description: Draw "tab" titles on top of graphs
+ * // Description: Draw "tab" titles on top of graphs
  */
 class GraphTabTitle extends Text
 {
