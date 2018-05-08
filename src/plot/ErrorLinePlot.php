@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class ErrorLinePlot
- * // Description: Combine a line and error plot
- * // THIS IS A DEPRECATED PLOT TYPE JUST KEPT FOR
- * // BACKWARD COMPATIBILITY
+// Description: Combine a line and error plot
+// THIS IS A DEPRECATED PLOT TYPE JUST KEPT FOR
+// BACKWARD COMPATIBILITY
  */
 class ErrorLinePlot extends ErrorPlot
 {

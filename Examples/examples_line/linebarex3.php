@@ -7,11 +7,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-require_once 'jpgraph/jpgraph_bar.php';
-
 // Some data
 
-$steps         = 100; for ($i = 0; $i < $steps; ++$i) {
+$steps = 100;for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
     $datax[]   = $i;
     if ($i % 10 == 0) {
@@ -25,7 +23,7 @@ $__width  = 450;
 $__height = 300;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 180, 40, 40);
-$graph->SetBackgroundImage('tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
 
 //$graph->img->SetAntiAliasing();
 

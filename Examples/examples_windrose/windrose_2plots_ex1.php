@@ -21,7 +21,9 @@ $data2 = [
 ];
 
 // Create a new small windrose graph
-$graph = new Graph\WindroseGraph(660, 400);
+$__width  = 660;
+$__height = 400;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
 
 $graph->title->Set('Two windrose plots in one graph');

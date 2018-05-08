@@ -6,7 +6,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 
 // Setup a basic canvas we can work
-$g = new Graph\CanvasGraph(400, 300, 'auto');
+$__width  = 400;
+$__height = 300;
+$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');

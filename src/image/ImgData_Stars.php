@@ -8,11 +8,11 @@ namespace Amenadiel\JpGraph\Image;
 
 /**
  * File:        IMGDATA_STARS.INC
- * // Description: Base64 encoded images for stars
- * // Created:     2003-03-20
- * // Ver:         $Id: imgdata_stars.inc.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Base64 encoded images for stars
+// Created:     2003-03-20
+// Ver:         $Id: imgdata_stars.inc.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 class ImgData_Stars extends ImgData
 {
@@ -20,7 +20,7 @@ class ImgData_Stars extends ImgData
     protected $an   = [MARK_IMG_STAR => 'imgdata'];
 
     protected $colors = ['bluegreen', 'lightblue', 'purple', 'blue', 'green', 'pink', 'red', 'yellow'];
-    protected $index  = ['bluegreen'     => 3, 'lightblue' => 4, 'purple' => 1,
+    protected $index  = ['bluegreen' => 3, 'lightblue' => 4, 'purple' => 1,
         'blue'                           => 5, 'green'     => 0, 'pink'   => 7, 'red' => 2, 'yellow' => 6];
     protected $maxidx = 7;
     protected $imgdata;

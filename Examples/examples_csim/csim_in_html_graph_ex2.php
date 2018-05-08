@@ -15,7 +15,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
-$piegraph = new Graph\PieGraph(400, 320);
+$__width  = 400;
+$__height = 320;
+$piegraph = new Graph\PieGraph($__width, $__height);
 
 $n = count($data); // Number of slices
 

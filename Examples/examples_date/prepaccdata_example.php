@@ -52,7 +52,7 @@ $p1 = new Plot\LinePlot($ydata[1]);
 $p1->SetFillColor('lightblue');
 $p2 = new Plot\LinePlot($ydata[2]);
 $p2->SetFillColor('red');
-$ap = new AccLinePlot([$p0, $p1, $p2]);
+$ap = new Plot\AccLinePlot([$p0, $p1, $p2]);
 
 $graph->xaxis->SetTickLabels($xdata);
 $graph->xaxis->SetTextLabelInterval(4);

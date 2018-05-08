@@ -4,7 +4,7 @@
  * JPGraph v3.6.15
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_log.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

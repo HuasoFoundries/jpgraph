@@ -17,7 +17,9 @@ $data = [
 ];
 
 // First create a new windrose graph with a title
-$graph = new Graph\WindroseGraph(590, 580);
+$__width  = 590;
+$__height = 580;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->title->Set('Japanese locale');
 #$graph->title->SetFont(FF_VERDANA,FS_BOLD,14);
 $graph->title->SetColor('navy');

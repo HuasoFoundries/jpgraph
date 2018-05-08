@@ -20,16 +20,16 @@ class TickTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        if ($__width != $size[0] || $__height != $size[1]) {
+            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+        }
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()
     {
-        $files = ['manualtickex1.php',
-            'manualtickex1a.php',
-            'manualtickex2.php',
-            'manualtickex3.php',
-            'manualtickex4.php'];
+        $files = GetFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

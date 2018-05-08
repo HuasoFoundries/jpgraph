@@ -20,22 +20,16 @@ class ThemeTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        if ($__width != $size[0] || $__height != $size[1]) {
+            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+        }
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()
     {
-        $files = ['aqua_example.php',
-            'fusion_example.php',
-            'green_example.php',
-            'ocean_example.php',
-            'orange_example.php',
-            'pastel_example.php',
-            'rose_example.php',
-            'softy_example.php',
-            'theme_example.php',
-            'universal_example.php',
-            'vivid_example.php'];
+        $files = GetFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

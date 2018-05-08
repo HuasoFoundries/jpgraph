@@ -8,11 +8,11 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * File:        JPGRAPH_TABLE.PHP
- * // Description: Classes to create basic tables of data
- * // Created:     2006-01-25
- * // Ver:         $Id: jpgraph_table.php 1514 2009-07-07 11:15:58Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Classes to create basic tables of data
+// Created:     2006-01-25
+// Ver:         $Id: jpgraph_table.php 1514 2009-07-07 11:15:58Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 // Style of grid lines in table
 define('TGRID_SINGLE', 1);
@@ -25,8 +25,8 @@ define('TIMG_HEIGHT', 2);
 
 /**
  * @class GTextTableCell
- * // Description:
- * // Internal class that represents each cell in the table
+// Description:
+// Internal class that represents each cell in the table
  */
 class GTextTableCell
 {

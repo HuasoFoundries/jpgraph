@@ -20,34 +20,16 @@ class ScatterTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        if ($__width != $size[0] || $__height != $size[1]) {
+            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+        }
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()
     {
-        $files = ['balloonex1.php',
-            'balloonex2.php',
-            'bezierex1.php',
-            'ccbp_ex1.php',
-            'ccbp_ex2.php',
-            'ccbpgraph.class.php',
-            'fieldscatterex1.php',
-            'footerex1.php',
-            'impulsex1.php',
-            'impulsex2.php',
-            'impulsex3.php',
-            'impulsex4.php',
-            'loglogex1.php',
-            'markflagex1.php',
-            'pushpinex1.php',
-            'pushpinex2.php',
-            'scatterex1.php',
-            'scatterex2.php',
-            'scatterlinkex1.php',
-            'scatterlinkex2.php',
-            'scatterlinkex3.php',
-            'scatterlinkex4.php',
-            'scatterrotex1.php'];
+        $files = GetFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

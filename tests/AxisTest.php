@@ -30,19 +30,7 @@ class AxisTest extends \Codeception\Test\Unit
 
     public function testFileIterator()
     {
-        $files = ['axislabelbkgex01.php',
-            'axislabelbkgex02.php',
-            'axislabelbkgex03.php',
-            'axislabelbkgex04.php',
-            'axislabelbkgex05.php',
-            'axislabelbkgex06.php',
-            'axislabelbkgex07.php',
-            'dupyaxisex1.php',
-            'inyaxisex1.php',
-            'inyaxisex2.php',
-            'inyaxisex3.php',
-            'mulyaxisex1.php',
-            'topxaxisex1.php'];
+        $files = GetFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

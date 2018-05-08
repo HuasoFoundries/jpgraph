@@ -15,7 +15,7 @@ function numberToRoman($aNum)
     $result = '';
 
     // Declare a lookup array that we will use to traverse the number:
-    $lookup = ['M'     => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+    $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
         'C'            => 100, 'XC'  => 90, 'L'  => 50, 'XL'  => 40,
         'X'            => 10, 'IX'   => 9, 'V'   => 5, 'IV'   => 4, 'I' => 1];
 
@@ -43,12 +43,12 @@ function formatCallback($aVal)
 $ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
 // Size of the overall graph
-$width  = 350;
-$height = 250;
+$__width  = 350;
+$__height = 250;
 
 // Create the graph and set a scale.
 // These two calls are always required
-$graph = new Graph\Graph($width, $height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 

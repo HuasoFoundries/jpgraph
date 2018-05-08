@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class LineErrorPlot
- * // Description: Combine a line and error plot
+// Description: Combine a line and error plot
  */
 class LineErrorPlot extends ErrorPlot
 {

@@ -8,7 +8,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the Pie Graph.
-$graph = new Graph\PieGraph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->title->Set('A Simple Pie Plot');
 $graph->SetBox(true);
 

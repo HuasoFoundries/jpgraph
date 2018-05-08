@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -63,11 +65,11 @@ class WindroseGraph extends Graph
         } else {
             $cl = $aObj;
         }
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aObj);
-        } elseif ($cl instanceof IconPlot) {
+        } elseif ($cl instanceof Plot\IconPlot) {
             $this->AddIcon($aObj);
-        } elseif (($cl instanceof WindrosePlot) || ($cl instanceof LayoutRect) || ($cl instanceof LayoutHor)) {
+        } elseif (($cl instanceof Plot\WindrosePlot)) {
             $this->plots[] = $aObj;
         } else {
             Util\JpGraphError::RaiseL(22021);

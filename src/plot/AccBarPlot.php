@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class AccBarPlot
- * // Description: Produce accumulated bar plots
+// Description: Produce accumulated bar plots
  */
 class AccBarPlot extends BarPlot
 {

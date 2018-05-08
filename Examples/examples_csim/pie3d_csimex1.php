@@ -13,7 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 21, 17, 27, 23];
 
 // Create the Pie Graph.
-$graph = new Graph\PieGraph(400, 200, 'auto');
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 
 // Set A title for the plot

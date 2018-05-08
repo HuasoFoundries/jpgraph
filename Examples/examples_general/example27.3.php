@@ -5,7 +5,9 @@ use Amenadiel\JpGraph\Plot;
 
 $data = [40, 60, 21, 33];
 
-$graph = new Graph\PieGraph(330, 200);
+$__width  = 330;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 $graph->title->Set('A simple 3D Pie plot');

@@ -10,16 +10,16 @@ use Amenadiel\JpGraph\Plot;
 
 /**
  * File:        JPGRAPH_SCATTER.PHP
- * // Description: Scatter (and impuls) plot extension for JpGraph
- * // Created:     2001-02-11
- * // Ver:         $Id: jpgraph_scatter.php 1397 2009-06-27 21:34:14Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Scatter (and impuls) plot extension for JpGraph
+// Created:     2001-02-11
+// Ver:         $Id: jpgraph_scatter.php 1397 2009-06-27 21:34:14Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class FieldArrow
- * // Description: Draw an arrow at (x,y) with angle a
+// Description: Draw an arrow at (x,y) with angle a
  */
 class FieldArrow
 {

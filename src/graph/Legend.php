@@ -12,20 +12,20 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_LEGEND.INC.PHP
- * // Description: Class to handle the legend box in the graph that gives
- * //              names on the data series. The number of rows and columns
- * //              in the legend are user specifyable.
- * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
- * // Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Class to handle the legend box in the graph that gives
+//              names on the data series. The number of rows and columns
+//              in the legend are user specifyable.
+// Created:     2001-01-08 (Refactored to separate file 2008-08-01)
+// Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 /**
  * @class Legend
- * // Description: Responsible for drawing the box containing
- * // all the legend text for the graph
+// Description: Responsible for drawing the box containing
+// all the legend text for the graph
  */
 class Legend
 {

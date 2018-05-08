@@ -5,9 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_plotline.php';
+use Amenadiel\JpGraph\Plot;
 
 $datay = [12, 0, -19, -7, 17, -6];
 

@@ -9,8 +9,7 @@ use Amenadiel\JpGraph\Plot;
 
 define('WORLDMAP', __DIR__ . '/../assets/worldmap1.jpg');
 
-function markCallback($y, $x)
-{
+$markCallback = function ($y, $x) {
     // Return array width
     // width,color,fill color, marker filename, imgscale
     // any value can be false, in that case the default value will
@@ -21,7 +20,7 @@ function markCallback($y, $x)
     }
 
     return [false, false, false, 'green', 0.8];
-}
+};
 
 // Data arrays
 $datax = [10, 20, 30, 40, 54, 60, 70, 80];
@@ -58,7 +57,7 @@ $sp = new Plot\ScatterPlot($datay, $datax);
 $sp->mark->SetType(MARK_IMG_PUSHPIN, 'blue', 0.6);
 
 // Install the Y-X callback for the markers
-$sp->mark->SetCallbackYX('markCallback');
+$sp->mark->SetCallbackYX($markCallback);
 
 // ...  and add it to the graph
 $graph->Add($sp);

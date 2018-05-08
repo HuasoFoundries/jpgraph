@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttLink
- * // Handles the drawing of a link line between 2 points
+// Handles the drawing of a link line between 2 points
  */
 class GanttLink
 {

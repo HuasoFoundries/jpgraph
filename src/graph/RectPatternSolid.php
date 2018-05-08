@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPatternSolid
- * // Implements a solid band
+// Implements a solid band
  */
 class RectPatternSolid extends RectPattern
 {

@@ -10,8 +10,8 @@ use Amenadiel\JpGraph\Text;
 
 /**
  * @class PiePlotC
- * // Description: Same as a normal pie plot but with a
- * // filled circle in the center
+// Description: Same as a normal pie plot but with a
+// filled circle in the center
  */
 class PiePlotC extends PiePlot
 {

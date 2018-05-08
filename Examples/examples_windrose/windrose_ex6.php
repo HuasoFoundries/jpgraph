@@ -18,14 +18,16 @@ $data = [
 ];
 
 // Specify text for direction labels
-$labels = ['120.5'     => "Plant\n#1275",
+$labels = ['120.5' => "Plant\n#1275",
     '285.7'            => "Reference\n#13 Ver:2"];
 
 // Range colors to be used
 $rangeColors = ['khaki', 'yellow', 'orange', 'orange:0.7', 'brown', 'darkred', 'black'];
 
 // First create a new windrose graph with a title
-$graph = new Graph\WindroseGraph(400, 450);
+$__width  = 400;
+$__height = 450;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 
 // Setup titles
 $graph->title->Set('Windrose example 6');

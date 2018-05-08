@@ -15,7 +15,7 @@ require_once __DIR__ . '/../config.inc.php';
 
 /**
  * @class Graph
- * // Description: Main class to handle graphs
+// Description: Main class to handle graphs
  */
 class Graph
 {
@@ -1266,6 +1266,7 @@ class Graph
 
     public function doAutoscaleXAxis()
     {
+
         $aPlots = array_filter($this->plots, function ($plot) {
             //\Kint::dump($plot, $plot instanceof Plot\Plot);
             return $plot instanceof Plot\Plot;
@@ -1293,6 +1294,7 @@ class Graph
                     } else {
                         $max = max($max, $p->numpoints);
                     }
+
                 }
                 $min = 0;
                 if ($this->y2axis != null) {
@@ -1635,6 +1637,7 @@ class Graph
                 $this->plots[$i]->PreScaleSetup($this);
             }
             //\Kint::dump($this->plots[$i]);
+
         }
 
         // Init scale constants that are used to calculate the transformation from
@@ -2194,10 +2197,7 @@ class Graph
         if ($this->background_image != '') {
             $bkgimg = $this->LoadBkgImage($this->background_image_format, $this->background_image);
         } elseif ($this->background_cflag != '') {
-            if (!class_exists('FlagImages', false)) {
-                Util\JpGraphError::RaiseL(25041); //('In order to use Country flags as backgrounds you must include the "jpgraph_flags.php" file.');
-            }
-            $fobj                        = new Images\FlagImages(FLAGSIZE4);
+            $fobj                        = new Image\FlagImages(FLAGSIZE4);
             $dummy                       = '';
             $bkgimg                      = $fobj->GetImgByName($this->background_cflag, $dummy);
             $this->background_image_mix  = $this->background_cflag_mix;
@@ -2801,6 +2801,7 @@ class Graph
     // Get min and max values for all included plots
     public function GetPlotsYMinMax($bPlots)
     {
+
         $aPlots = array_filter($bPlots, function ($plot) {
             //\Kint::dump($plot, $plot instanceof Plot\Plot);
             return $plot instanceof Plot\Plot;
@@ -2824,14 +2825,9 @@ class Graph
         }
 
         for ($i = 0; $i < $n; ++$i) {
-<<<<<<< HEAD
 
             list($xmax, $ymax) = isset($aPlots[$i]) ? $aPlots[$i]->Max() : [null, null];
             list($xmin, $ymin) = isset($aPlots[$i]) ? $aPlots[$i]->Min() : [null, null];
-=======
-            list($xmax, $ymax) = $aPlots[$i]->Max();
-            list($xmin, $ymin) = $aPlots[$i]->Min();
->>>>>>> 716c95c8792f2cbecd304011306fb3c6d71d9628
             if (is_numeric($ymax)) {
                 $max = max($max, $ymax);
             }
@@ -2926,7 +2922,7 @@ class Graph
     {
         if ($do) {
             define('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             define('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

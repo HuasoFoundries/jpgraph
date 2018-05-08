@@ -9,7 +9,12 @@ build:
         analysis:
             tests:
                 override:
-                    - php-scrutinizer-run
+                    command:
+                        - php-scrutinizer-run
+                        - make test_coverage
+                    coverage:
+                        file: 'tests/_output/coverage.xml'
+                        format: 'clover'
         tests: true
 checks:
     php:

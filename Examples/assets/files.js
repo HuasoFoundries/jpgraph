@@ -500,7 +500,6 @@ var files_arr = [
     'examples_scatter/bezierex1.php',
     'examples_scatter/ccbp_ex1.php',
     'examples_scatter/ccbp_ex2.php',
-    'examples_scatter/ccbpgraph.class.php',
     'examples_scatter/fieldscatterex1.php',
     'examples_scatter/footerex1.php',
     'examples_scatter/impulsex1.php',

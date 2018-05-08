@@ -10,7 +10,9 @@ $ymax = 24;
 $xmax = 20;
 
 // Setup the basic canvas
-$g = new Graph\CanvasGraph(700, 650, 'auto');
+$__width  = 700;
+$__height = 650;
+$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(2, 3, 2, 3);
 $g->SetMarginColor('teal');
 $g->InitFrame();

@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class GanttPlotObject
- * // The common signature for a Gantt object
+// The common signature for a Gantt object
  */
 class GanttPlotObject
 {

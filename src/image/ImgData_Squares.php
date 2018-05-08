@@ -5,12 +5,12 @@
  */
 
 /**
- * // File:        IMGDATA_SQUARES.INC
- * // Description: Base64 encoded images for squares
- * // Created:     2003-03-20
- * // Ver:         $Id: imgdata_squares.inc.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// File:        IMGDATA_SQUARES.INC
+// Description: Base64 encoded images for squares
+// Created:     2003-03-20
+// Ver:         $Id: imgdata_squares.inc.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 namespace Amenadiel\JpGraph\Image;
 
@@ -21,7 +21,7 @@ class ImgData_Squares extends ImgData
 
     protected $colors = ['bluegreen', 'blue', 'green',
         'lightblue', 'orange', 'purple', 'red', 'yellow'];
-    protected $index = ['bluegreen'     => 2, 'blue'   => 5, 'green'  => 6,
+    protected $index = ['bluegreen' => 2, 'blue'   => 5, 'green'  => 6,
         'lightblue'                     => 0, 'orange' => 7, 'purple' => 4, 'red' => 3, 'yellow' => 1];
     protected $maxidx = 7;
     protected $imgdata;

@@ -11,18 +11,18 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_PLOTBAND.PHP
- * // Description: PHP4 Graph Plotting library. Extension module.
- * // Created:     2004-02-18
- * // Ver:         $Id: jpgraph_plotband.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: PHP4 Graph Plotting library. Extension module.
+// Created:     2004-02-18
+// Ver:         $Id: jpgraph_plotband.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class PlotBand
- * // Factory class which is used by the client.
- * // It is responsible for factoring the corresponding pattern
- * // concrete class.
+// Factory class which is used by the client.
+// It is responsible for factoring the corresponding pattern
+// concrete class.
  */
 class PlotBand
 {

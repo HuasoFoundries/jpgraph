@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 
 define('WINDROSE_TYPE4', 1);
@@ -1105,7 +1106,7 @@ class WindrosePlot
 
         // Create the double buffer
         if ($this->iAntiAlias) {
-            $dblImg = new RotImage($w, $h);
+            $dblImg = new Image\RotImage($w, $h);
             // Set the background color
             $dblImg->SetColor($this->iColor);
             $dblImg->FilledRectangle(0, 0, $w, $h);

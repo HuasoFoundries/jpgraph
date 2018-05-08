@@ -12,12 +12,12 @@ $ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $ydata2 = [1, 19, 15, 7, 22, 14, 5, 9, 21, 13];
 
 // Size of the overall graph
-$width  = 350;
-$height = 250;
+$__width  = 350;
+$__height = 250;
 
 // Create the graph and set a scale.
 // These two calls are always required
-$graph = new Graph\Graph($width, $height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 

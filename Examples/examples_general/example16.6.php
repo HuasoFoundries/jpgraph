@@ -7,6 +7,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util;
 
 // Create some "fake" regression data
 $datay = [];
@@ -18,16 +19,15 @@ for ($x = 0; $x < 20; ++$x) {
     $datay[$x] = $a + $b * $x + rand(-20, 20);
 }
 
-$lr                  = new LinearRegression($datax, $datay);
-list($stderr, $corr) = $lr->GetStat();
-list($xd, $yd)       = $lr->GetY(0, 19);
-
 // Create the graph
 $__width  = 300;
 $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 
+$lr                  = new Util\LinearRegression($datax, $datay);
+list($stderr, $corr) = $lr->GetStat();
+list($xd, $yd)       = $lr->GetY(0, 19);
 // Setup title
 $graph->title->Set('Linear regression');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);

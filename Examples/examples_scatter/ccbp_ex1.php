@@ -7,7 +7,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$graph = new Graph\CCBPGraph(600, 400);
+$__width  = 600;
+$__height = 400;
+$graph    = new Graph\CCBPGraph($__width, $__height);
 $graph->SetTitle('Buffer penetration', '(history added)');
 $graph->SetColorMap(0);
 

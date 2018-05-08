@@ -29,7 +29,7 @@ $dplot[1]->SetFillColor('blue');
 $dplot[2]->SetFillColor('green');
 
 // Create the accumulated graph
-$accplot = new AccLinePlot($dplot);
+$accplot = new Plot\AccLinePlot($dplot);
 
 // Add the plot to the graph
 $graph->Add($accplot);

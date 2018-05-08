@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 require_once __DIR__ . '/../config.inc.php';
 /**
  * @class Plot
- * // Description: Abstract base class for all concrete plot classes
+// Description: Abstract base class for all concrete plot classes
  */
 class Plot
 {

@@ -11,7 +11,9 @@ $xmax = 20;
 $ymax = 20;
 
 // Setup a basic canvas we can work
-$g = new Graph\CanvasGraph(400, 200, 'auto');
+$__width  = 400;
+$__height = 200;
+$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');

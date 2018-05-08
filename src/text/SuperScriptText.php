@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class SuperScriptText
- * // Description: Format a superscript text
+// Description: Format a superscript text
  */
 class SuperScriptText extends Text
 {

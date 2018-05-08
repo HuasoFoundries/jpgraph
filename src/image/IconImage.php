@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class IconImage
- * // Description: Holds properties for an icon image
+// Description: Holds properties for an icon image
  */
 class IconImage
 {

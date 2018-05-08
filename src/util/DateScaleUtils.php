@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Util;
 
 /**
  * @class DateScaleUtils
- * // Description: Help to create a manual date scale
+// Description: Help to create a manual date scale
  */
 define('DSUTILS_MONTH', 1); // Major and minor ticks on a monthly basis
 define('DSUTILS_MONTH1', 1); // Major and minor ticks on a monthly basis

@@ -8,17 +8,17 @@ namespace Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_REGSTAT.PHP
- * // Description: Regression and statistical analysis helper classes
- * // Created:     2002-12-01
- * // Ver:         $Id: jpgraph_regstat.php 1131 2009-03-11 20:08:24Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Regression and statistical analysis helper classes
+// Created:     2002-12-01
+// Ver:         $Id: jpgraph_regstat.php 1131 2009-03-11 20:08:24Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class Spline
- * // Create a new data array from an existing data array but with more points.
- * // The new points are interpolated using a cubic spline algorithm
+// Create a new data array from an existing data array but with more points.
+// The new points are interpolated using a cubic spline algorithm
  */
 class Spline
 {

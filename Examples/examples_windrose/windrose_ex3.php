@@ -31,7 +31,9 @@ $layout = [
 $legendtxt = ['(m/s) Station 7', '(m/s) Station 12'];
 
 // First create a new windrose graph with a dropshadow
-$graph = new Graph\WindroseGraph(600, 350);
+$__width  = 600;
+$__height = 350;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow('darkgray');
 
 // Setup titles

@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class TextProperty
- * // Description: Holds properties for a text
+// Description: Holds properties for a text
  */
 class TextProperty
 {

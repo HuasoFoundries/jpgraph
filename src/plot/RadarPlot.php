@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class RadarPlot
- * // Description: Plot a radarplot
+// Description: Plot a radarplot
  */
 class RadarPlot
 {

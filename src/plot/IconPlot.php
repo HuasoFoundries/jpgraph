@@ -6,19 +6,21 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Image;
+
 /**
  * File:        JPGRAPH_ICONPLOT.PHP
- * // Description: Extension module to add icons to plots
- * // Created:     2004-02-18
- * // Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Extension module to add icons to plots
+// Created:     2004-02-18
+// Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class IconPlot
- * // Description: Make it possible to add a (small) image
- * // to the graph
+// Description: Make it possible to add a (small) image
+// to the graph
  */
 class IconPlot
 {
@@ -185,10 +187,8 @@ class IconPlot
         } elseif ($this->iImgString != '') {
             $gdimg = Image::CreateFromString($this->iImgString);
         } else {
-            if (!class_exists('FlagImages', false)) {
-                Util\JpGraphError::RaiseL(8004); //('In order to use Country flags as icons you must include the "jpgraph_flags.php" file.');
-            }
-            $fobj  = new FlagImages($this->iCountryStdSize);
+
+            $fobj  = new Image\FlagImages($this->iCountryStdSize);
             $dummy = '';
             $gdimg = $fobj->GetImgByName($this->iCountryFlag, $dummy);
         }

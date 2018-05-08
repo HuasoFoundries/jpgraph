@@ -16,7 +16,9 @@ $data = [
     5 => [2, 7, 1, 2]];
 
 // First create a new windrose graph with a title
-$graph = new Graph\WindroseGraph(400, 400);
+$__width  = 400;
+$__height = 400;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title
 $graph->title->Set('Windrose example 2');

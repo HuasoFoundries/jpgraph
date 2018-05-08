@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPattern3DPlane
- * // Implements "3D" plane pattern
+// Implements "3D" plane pattern
  */
 class RectPattern3DPlane extends RectPattern
 {

@@ -7,17 +7,14 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-require_once 'jpgraph/jpgraph_bar.php';
-
 $l1datay = [11, 9, 2, 4, 3, 13, 17];
 $l2datay = [23, 12, 5, 19, 17, 10, 15];
-
-$datax = $graph->gDateLocale->GetShortMonth();
 
 // Create the graph.
 $__width  = 400;
 $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
+$datax    = $graph->gDateLocale->GetShortMonth();
 $graph->SetScale('textlin');
 $graph->SetMargin(40, 130, 20, 40);
 $graph->SetShadow();

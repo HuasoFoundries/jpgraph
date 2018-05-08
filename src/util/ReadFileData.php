@@ -13,15 +13,15 @@ class ReadFileData
 {
     /**
      * Desciption:
-     * // Read numeric data from a file.
-     * // Each value should be separated by either a new line or by a specified
-     * // separator character (default is ',').
-     * // Before returning the data each value is converted to a proper float
-     * // value. The routine is robust in the sense that non numeric data in the
-     * // file will be discarded.
-     * //
-     * // Returns:
-     * // The number of data values read on success, FALSE on failure
+    // Read numeric data from a file.
+    // Each value should be separated by either a new line or by a specified
+    // separator character (default is ',').
+    // Before returning the data each value is converted to a proper float
+    // value. The routine is robust in the sense that non numeric data in the
+    // file will be discarded.
+    //
+    // Returns:
+    // The number of data values read on success, FALSE on failure
      */
     public static function FromCSV($aFile, &$aData, $aSepChar = ',', $aMaxLineLength = 1024)
     {
@@ -53,23 +53,23 @@ class ReadFileData
 
     /**
      * Desciption:
-     * // Read numeric data from a file.
-     * // Each value should be separated by either a new line or by a specified
-     * // separator character (default is ',').
-     * // Before returning the data each value is converted to a proper float
-     * // value. The routine is robust in the sense that non numeric data in the
-     * // file will be discarded.
-     * //
-     * // Options:
-     * // 'separator'     => ',',
-     * // 'enclosure'     => '"',
-     * // 'readlength'    => 1024,
-     * // 'ignore_first'  => false,
-     * // 'first_as_key'  => false
-     * // 'escape'        => '\',   # PHP >= 5.3 only
-     * //
-     * // Returns:
-     * // The number of lines read on success, FALSE on failure
+    // Read numeric data from a file.
+    // Each value should be separated by either a new line or by a specified
+    // separator character (default is ',').
+    // Before returning the data each value is converted to a proper float
+    // value. The routine is robust in the sense that non numeric data in the
+    // file will be discarded.
+    //
+    // Options:
+    // 'separator'     => ',',
+    // 'enclosure'     => '"',
+    // 'readlength'    => 1024,
+    // 'ignore_first'  => false,
+    // 'first_as_key'  => false
+    // 'escape'        => '\',   # PHP >= 5.3 only
+    //
+    // Returns:
+    // The number of lines read on success, FALSE on failure
      */
     public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {

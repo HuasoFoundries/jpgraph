@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Text\Text;
 
 /**
  * @class Footer
- * // Description: Encapsulates the footer line in the Graph
+// Description: Encapsulates the footer line in the Graph
  */
 class Footer
 {

@@ -8,17 +8,17 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * File:        JPGRAPH_ERROR.PHP
- * // Description: Error plot extension for JpGraph
- * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_error.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Error plot extension for JpGraph
+// Created:     2001-01-08
+// Ver:         $Id: jpgraph_error.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class ErrorPlot
- * // Description: Error plot with min/max value for
- * // each datapoint
+// Description: Error plot with min/max value for
+// each datapoint
  */
 class ErrorPlot extends Plot
 {

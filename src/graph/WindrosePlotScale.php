@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -215,7 +216,7 @@ class WindrosePlotScale
         $d = $this->iDelta;
 
         // Setup the font and font color
-        $val = new Text();
+        $val = new Text\Text();
         $val->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize);
         $val->SetColor($this->iFontColor);
 

@@ -8,8 +8,7 @@
 // $Id: smallstaticbandsex3.php,v 1.1 2002/09/01 21:51:08 aditus Exp $
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
+use Amenadiel\JpGraph\Plot;
 
 $datay = [10, 29, 3, 6];
 

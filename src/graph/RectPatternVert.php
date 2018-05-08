@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPatternVert
- * // Implements vertical line pattern
+// Implements vertical line pattern
  */
 class RectPatternVert extends RectPattern
 {

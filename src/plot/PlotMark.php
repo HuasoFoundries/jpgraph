@@ -9,19 +9,20 @@ namespace Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_PLOTMARK.PHP
- * // Description: Class file. Handles plotmarks
- * // Created:     2003-03-21
- * // Ver:         $Id: jpgraph_plotmark.inc.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Class file. Handles plotmarks
+// Created:     2003-03-21
+// Ver:         $Id: jpgraph_plotmark.inc.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class PlotMark
- * // Description: Handles the plot marks in graphs
+// Description: Handles the plot marks in graphs
  */
 class PlotMark
 {
@@ -267,7 +268,7 @@ class PlotMark
                 case MARK_FLAG2:
                 case MARK_FLAG3:
                 case MARK_FLAG4:
-                    $this->markimg = FlagCache::GetFlagImgByName($this->type - MARK_FLAG1 + 1, $filename);
+                    $this->markimg = Util\FlagCache::GetFlagImgByName($this->type - MARK_FLAG1 + 1, $filename);
 
                     break;
                 case MARK_IMG:

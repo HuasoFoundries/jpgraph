@@ -17,7 +17,9 @@ $data2 = [
 $se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV', 'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO'];
 
 // Create a new small windrose graph
-$graph = new Graph\WindroseGraph(400, 400);
+$__width  = 400;
+$__height = 400;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetMargin(25, 25, 25, 25);
 $graph->SetFrame();
 

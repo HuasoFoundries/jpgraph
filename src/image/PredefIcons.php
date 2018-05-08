@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class PredefIcons
- * // Description: Predefined icons for use with Gantt charts
+// Description: Predefined icons for use with Gantt charts
  */
 define('GICON_WARNINGRED', 0);
 define('GICON_TEXT', 1);

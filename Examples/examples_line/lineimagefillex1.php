@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../jpgraph.php';
-require_once '../jpgraph_line.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 

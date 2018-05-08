@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -43,8 +43,7 @@ for ($i = 0; $i < 4; ++$i) {
 }
 //$acc1 = new Plot\AccBarPlot(array($plot[0], $plot[1]));
 //$acc1->value->Show();
-Kint::enabled(true);
-ddd($plot);
+
 $gbplot = new Plot\GroupBarPlot([$plot[2], $plot[1]]);
 
 for ($i = 4; $i < 8; ++$i) {

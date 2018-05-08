@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Util;
 
 /**
  * @class JpgTimer
- * // Description: General timing utility class to handle
- * // time measurement of generating graphs. Multiple
- * // timers can be started.
+// Description: General timing utility class to handle
+// time measurement of generating graphs. Multiple
+// timers can be started.
  */
 class JpgTimer
 {

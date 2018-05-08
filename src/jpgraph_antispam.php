@@ -5,12 +5,12 @@
  */
 
 /**
- * // File:        JPGRAPH_ANTISPAM.PHP
- * // Description: Genarate anti-spam challenge
- * // Created:     2004-10-07
- * // Ver:         $Id: jpgraph_antispam.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// File:        JPGRAPH_ANTISPAM.PHP
+// Description: Genarate anti-spam challenge
+// Created:     2004-10-07
+// Ver:         $Id: jpgraph_antispam.php 1106 2009-02-22 20:16:35Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 class HandDigits
 {

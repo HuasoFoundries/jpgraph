@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class RadarGraph
- * // Description: Main container for a radar graph
+// Description: Main container for a radar graph
  */
 class RadarGraph extends Graph
 {

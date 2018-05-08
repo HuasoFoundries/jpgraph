@@ -12,11 +12,11 @@ use Amenadiel\JpGraph\Plot;
 $datay = [1992, 1993, 1995, 1996, 1997, 1998, 2001];
 
 // Size of graph
-$width  = 400;
-$height = 500;
+$__width  = 400;
+$__height = 500;
 
 // Set the basic parameters of the graph
-$graph = new Graph\Graph($width, $height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $top    = 60;

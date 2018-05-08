@@ -20,29 +20,16 @@ class StaticbandTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        if ($__width != $size[0] || $__height != $size[1]) {
+            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+        }
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()
     {
-        $files = ['smallstaticbandsex1.php',
-            'smallstaticbandsex10.php',
-            'smallstaticbandsex11.php',
-            'smallstaticbandsex2.php',
-            'smallstaticbandsex3.php',
-            'smallstaticbandsex4.php',
-            'smallstaticbandsex5.php',
-            'smallstaticbandsex6.php',
-            'smallstaticbandsex7.php',
-            'smallstaticbandsex8.php',
-            'smallstaticbandsex9.php',
-            'staticbandbarex1.php',
-            'staticbandbarex2.php',
-            'staticbandbarex3.php',
-            'staticbandbarex4.php',
-            'staticbandbarex5.php',
-            'staticbandbarex6.php',
-            'staticbandbarex7.php'];
+        $files = GetFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

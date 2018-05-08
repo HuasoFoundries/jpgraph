@@ -12,16 +12,16 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_MGRAPH.PHP
- * // Description: Class to handle multiple graphs in the same image
- * // Created:     2006-01-15
- * // Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Class to handle multiple graphs in the same image
+// Created:     2006-01-15
+// Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class MGraph
- * // Description: Create a container image that can hold several graph
+// Description: Create a container image that can hold several graph
  */
 class MGraph
 {

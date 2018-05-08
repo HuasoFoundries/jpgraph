@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Axis
- * // Description: Defines X and Y axis. Notes that at the
- * // moment the code is not really good since the axis on
- * // several occasion must know wheter it's an X or Y axis.
- * // This was a design decision to make the code easier to
- * // follow.
+// Description: Defines X and Y axis. Notes that at the
+// moment the code is not really good since the axis on
+// several occasion must know wheter it's an X or Y axis.
+// This was a design decision to make the code easier to
+// follow.
  */
 class Axis extends AxisPrototype
 {
@@ -129,7 +129,7 @@ class Axis extends AxisPrototype
 
     /**
      * PRIVATE METHODS
-     * // Draw all the tick labels on major tick marks
+    // Draw all the tick labels on major tick marks
      */
     public function StrokeLabels($aPos, $aMinor = false, $aAbsLabel = false)
     {

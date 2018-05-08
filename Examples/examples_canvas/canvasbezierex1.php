@@ -6,9 +6,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 
 // Setup canvas graph
-$g     = new Graph\CanvasGraph(400, 300);
-$scale = new Graph\CanvasScale($g);
-$shape = new Graph\Shape($g, $scale);
+$__width  = 400;
+$__height = 300;
+$g        = new Graph\CanvasGraph($__width, $__height);
+$scale    = new Graph\CanvasScale($g);
+$shape    = new Graph\Shape($g, $scale);
 
 $g->title->Set('Bezier line with control points');
 

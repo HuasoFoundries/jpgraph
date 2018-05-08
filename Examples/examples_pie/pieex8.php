@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 60, 31, 35];
 
 // A new pie graph
-$graph = new Graph\PieGraph(250, 200);
+$__width  = 250;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Title setup

@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class LineProperty
- * // Description: Holds properties for a line
+// Description: Holds properties for a line
  */
 class LineProperty
 {

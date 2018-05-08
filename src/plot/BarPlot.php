@@ -12,11 +12,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_BAR.PHP
- * // Description: Bar plot extension for JpGraph
- * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_bar.php 1905 2009-10-06 18:00:21Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Bar plot extension for JpGraph
+// Created:     2001-01-08
+// Ver:         $Id: jpgraph_bar.php 1905 2009-10-06 18:00:21Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 // Pattern for Bars
 define('PATTERN_DIAG1', 1);
@@ -32,7 +32,7 @@ define('PATTERN_STRIPE2', 10);
 
 /**
  * @class BarPlot
- * // Description: Main code to produce a bar plot
+// Description: Main code to produce a bar plot
  */
 class BarPlot extends Plot
 {
@@ -388,7 +388,7 @@ class BarPlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-            //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
+                //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }

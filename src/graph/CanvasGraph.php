@@ -10,20 +10,20 @@ use Amenadiel\JpGraph\ImgTrans;
 
 /**
  * File:        JPGRAPH_CANVAS.PHP
- * // Description: Canvas drawing extension for JpGraph
- * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+// Description: Canvas drawing extension for JpGraph
+// Created:     2001-01-08
+// Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $
+//
+// Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class CanvasGraph
- * // Description: Creates a simple canvas graph which
- * // might be used together with the basic Image drawing
- * // primitives. Useful to auickoly produce some arbitrary
- * // graphic which benefits from all the functionality in the
- * // graph liek caching for example.
+// Description: Creates a simple canvas graph which
+// might be used together with the basic Image drawing
+// primitives. Useful to auickoly produce some arbitrary
+// graphic which benefits from all the functionality in the
+// graph liek caching for example.
  */
 class CanvasGraph extends Graph
 {

@@ -15,7 +15,9 @@ $labels = ["First\n(%.1f%%)",
     "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)"];
 
 // Create the Pie Graph.
-$graph = new Graph\PieGraph(300, 300);
+$__width  = 300;
+$__height = 300;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot

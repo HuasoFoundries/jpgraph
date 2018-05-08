@@ -15,7 +15,9 @@ $data = [
 ];
 
 // First create a new windrose graph with a title
-$graph = new Graph\WindroseGraph(400, 450);
+$__width  = 400;
+$__height = 450;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->title->Set('Windrose example 7');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 $graph->title->SetColor('navy');
