@@ -1,17 +1,17 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
 $rows = 3;
 $data = [['2007'],
-               ['', 'Q1', '', '', 'Q2'],
-           ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-           ['Min', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
-           ['Max', '23.9', '14.2', '18.6', '71.3', '66.8', '42.6'], ];
+    ['', 'Q1', '', '', 'Q2'],
+    ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    ['Min', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
+    ['Max', '23.9', '14.2', '18.6', '71.3', '66.8', '42.6']];
 
-$q=1;
+$q = 1;
 
 $graph = new CanvasGraph(350, 200);
 
@@ -53,6 +53,3 @@ $table->SetCellFillColor(4, 3, 'yellow');
 
 $graph->Add($table);
 $graph->Stroke();
-
-?>
-

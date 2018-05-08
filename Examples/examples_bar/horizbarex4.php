@@ -5,7 +5,7 @@
  */
 
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -30,7 +30,7 @@ $graph->SetShadow();
 
 // Setup labels
 $lbl = ["Andrew\nTait", "Thomas\nAnderssen", "Kevin\nSpacey", "Nick\nDavidsson",
-    "David\nLindquist", "Jason\nTait", "Lorin\nPersson", ];
+    "David\nLindquist", "Jason\nTait", "Lorin\nPersson"];
 $graph->xaxis->SetTickLabels($lbl);
 
 // Label align for X-axis

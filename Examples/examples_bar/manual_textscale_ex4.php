@@ -3,8 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Plot;
 
 define('DATAPERMONTH', 40);
 

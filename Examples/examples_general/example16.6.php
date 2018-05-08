@@ -3,12 +3,10 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_scatter.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-
-require_once 'jpgraph/jpgraph_utils.inc.php';
 
 // Create some "fake" regression data
 $datay = [];
@@ -32,7 +30,7 @@ $graph->SetScale('linlin');
 $graph->title->Set('Linear regression');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
-$graph->subtitle->Set('(stderr='.sprintf('%.2f', $stderr).', corr='.sprintf('%.2f', $corr).')');
+$graph->subtitle->Set('(stderr=' . sprintf('%.2f', $stderr) . ', corr=' . sprintf('%.2f', $corr) . ')');
 $graph->subtitle->SetFont(FF_ARIAL, FS_NORMAL, 12);
 
 // make sure that the X-axis is always at the

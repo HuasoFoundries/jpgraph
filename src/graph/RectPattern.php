@@ -8,13 +8,13 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//=====================================================================
-// Class RectPattern
+/**
+ * @class RectPattern
 // Base class for pattern hierarchi that is used to display patterned
 // bands on the graph. Any subclass that doesn't override Stroke()
 // must at least implement method DoPattern($aImg) which is responsible
 // for drawing the pattern onto the graph.
-//=====================================================================
+ */
 class RectPattern
 {
     protected $color;

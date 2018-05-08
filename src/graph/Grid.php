@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Grid
+/**
+ * @class Grid
 // Description: responsible for drawing grid lines in graph
-//===================================================
+ */
 class Grid
 {
     protected $img;
@@ -84,9 +84,10 @@ class Grid
         }
     }
 
-    //==================================
-    // Private methods
+    /**
+     * Private methods
     // Draw the grid
+     */
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {
         if (!$this->show) {
@@ -183,4 +184,4 @@ class Grid
 
         return true;
     }
-} // Class
+} // @class

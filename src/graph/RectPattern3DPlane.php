@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPattern3DPlane
+/**
+ * @class RectPattern3DPlane
 // Implements "3D" plane pattern
-//=====================================================================
+ */
 class RectPattern3DPlane extends RectPattern
 {
     private $alpha = 50; // Parameter that specifies the distance

@@ -8,21 +8,23 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS LogTicks
+/**
+ * @class LogTicks
 // Description:
-//===================================================
+ */
 class LogTicks extends Ticks
 {
     private $label_logtype  = LOGLABELS_MAGNITUDE;
     private $ticklabels_pos = [];
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function LogTicks() {}
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function IsSpecified()
     {
         return true;
@@ -181,5 +183,5 @@ class LogTicks extends Ticks
 
         return true;
     }
-} // Class
+} // @class
 /* EOF */

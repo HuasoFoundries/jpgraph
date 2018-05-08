@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -15,7 +15,7 @@ function separator1000($aVal)
 
 function separator1000_usd($aVal)
 {
-    return '$'.number_format($aVal);
+    return '$' . number_format($aVal);
 }
 
 // Some data

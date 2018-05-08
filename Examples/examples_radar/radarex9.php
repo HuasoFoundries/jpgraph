@@ -3,11 +3,12 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_radar.php';
 
-$titles=['N', '', 'NW', '', 'W', '', 'SW', '', 'S', '', 'SE', '', 'E', '', 'NE', ''];
-$data  =[0, 0, 8, 10, 70, 90, 42, 0, 70, 60, 50, 40, 30, 40, 37.8, 72];
+$titles = ['N', '', 'NW', '', 'W', '', 'SW', '', 'S', '', 'SE', '', 'E', '', 'NE', ''];
+$data   = [0, 0, 8, 10, 70, 90, 42, 0, 70, 60, 50, 40, 30, 40, 37.8, 72];
 
 $graph = new RadarGraph(250, 270);
 

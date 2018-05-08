@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 require_once 'jpgraph/jpgraph_scatter.php';
 
 $datay1 = [4, 26, 15, 44];

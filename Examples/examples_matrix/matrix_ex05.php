@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 
 $data = [
@@ -17,8 +18,9 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
 ];
 
-$width =400; $height =350;
-$graph = new MatrixGraph($width, $height);
+$width  = 400;
+$height = 350;
+$graph  = new MatrixGraph($width, $height);
 $graph->title->Set('Using a circular module type');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 

@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS FieldPlot
+/**
+ * @class FieldPlot
 // Description: Render a field plot
-//===================================================
+ */
 class FieldPlot extends Plot
 {
     public $arrow      = '';

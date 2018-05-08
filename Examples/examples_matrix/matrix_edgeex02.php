@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
@@ -18,10 +19,12 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
 ];
 
-$nrow = count($data); $ncol = count($data[0]);
+$nrow = count($data);
+$ncol = count($data[0]);
 
-$width =350; $height =300;
-$graph = new MatrixGraph($width, $height);
+$width  = 350;
+$height = 300;
+$graph  = new MatrixGraph($width, $height);
 $graph->title->Set('Add ine row/col labels');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
@@ -30,11 +33,11 @@ $mp->SetSize(0.55);
 $mp->SetCenterPos(0.45, 0.45);
 
 $rowtitles = [];
-for ($i=0; $i < $nrow; ++$i) {
+for ($i = 0; $i < $nrow; ++$i) {
     $rowtitles[$i] = sprintf('Row: %02d', $i);
 }
 $coltitles = [];
-for ($i=0; $i < $ncol; ++$i) {
+for ($i = 0; $i < $ncol; ++$i) {
     $coltitles[$i] = sprintf('Col: %02d', $i);
 }
 

@@ -1,16 +1,16 @@
 <?php // content="text/plain; charset=utf-8"
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 \JpGraph\JpGraph::load();
 \JpGraph\JpGraph::module('pie');
 // Some data
-$data = array(
-    array(80, 18, 15, 17),
-    array(35, 28, 6, 34),
-    array(10, 28, 10, 5),
-    array(22, 22, 10, 17));
+$data = [
+    [80, 18, 15, 17],
+    [35, 28, 6, 34],
+    [10, 28, 10, 5],
+    [22, 22, 10, 17]];
 
-$piepos = array(0.2, 0.4, 0.65, 0.28, 0.25, 0.75, 0.8, 0.75);
-$titles = array('USA', 'Sweden', 'South America', 'Australia');
+$piepos = [0.2, 0.4, 0.65, 0.28, 0.25, 0.75, 0.8, 0.75];
+$titles = ['USA', 'Sweden', 'South America', 'Australia'];
 
 $n = count($piepos) / 2;
 
@@ -26,11 +26,11 @@ $graph->SetShadow(false);
 $graph->SetBackgroundImage('worldmap1.jpg', BGIMG_FILLPLOT);
 
 // Setup title
-$graph->title->Set("Pie plots with background image");
+$graph->title->Set('Pie plots with background image');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 20);
 $graph->title->SetColor('white');
 
-$p = array();
+$p = [];
 // Create the plots
 for ($i = 0; $i < $n; ++$i) {
     $d   = "data$i";
@@ -62,7 +62,7 @@ for ($i = 0; $i < $n; ++$i) {
 
 // Label format
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->value->SetFormat("%01.1f%%");
+    $p[$i]->value->SetFormat('%01.1f%%');
 }
 
 // Size of pie in fraction of the width of the graph
@@ -78,7 +78,7 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Use one legend for the whole graph
-$p[0]->SetLegends(array("May", "June", "July", "Aug"));
+$p[0]->SetLegends(['May', 'June', 'July', 'Aug']);
 $graph->legend->Pos(0.05, 0.35);
 $graph->legend->SetShadow(false);
 

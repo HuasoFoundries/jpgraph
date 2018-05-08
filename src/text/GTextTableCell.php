@@ -6,15 +6,14 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//===============================
-// File:        JPGRAPH_TABLE.PHP
+/**
+ * File:        JPGRAPH_TABLE.PHP
 // Description: Classes to create basic tables of data
 // Created:     2006-01-25
 // Ver:         $Id: jpgraph_table.php 1514 2009-07-07 11:15:58Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 // Style of grid lines in table
 define('TGRID_SINGLE', 1);
 define('TGRID_DOUBLE', 2);
@@ -24,11 +23,11 @@ define('TGRID_DOUBLE2', 3);
 define('TIMG_WIDTH', 1);
 define('TIMG_HEIGHT', 2);
 
-//==================================
-// CLASS GTextTableCell
+/**
+ * @class GTextTableCell
 // Description:
 // Internal class that represents each cell in the table
-//==================================
+ */
 class GTextTableCell
 {
     public $iColSpan      = 1;

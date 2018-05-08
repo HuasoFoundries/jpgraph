@@ -14,21 +14,21 @@ define('WINDROSE_TYPE8', 2);
 define('WINDROSE_TYPE16', 3);
 define('WINDROSE_TYPEFREE', 4);
 
-//==================================
-// How should the labels for the circular grids be aligned
-//==================================
+/**
+ * How should the labels for the circular grids be aligned
+ */
 define('LBLALIGN_CENTER', 1);
 define('LBLALIGN_TOP', 2);
 
-//==================================
-// How should the labels around the plot be align
-//==================================
+/**
+ * How should the labels around the plot be align
+ */
 define('LBLPOSITION_CENTER', 1);
 define('LBLPOSITION_EDGE', 2);
 
-//==================================
-// Interpretation of ordinal values in the data
-//==================================
+/**
+ * Interpretation of ordinal values in the data
+ */
 define('KEYENCODING_CLOCKWISE', 1);
 define('KEYENCODING_ANTICLOCKWISE', 2);
 
@@ -37,9 +37,9 @@ define('__DEBUG', false);
 define('RANGE_OVERLAPPING', 0);
 define('RANGE_DISCRETE', 1);
 
-//===================================================
-// CLASS WindrosePlot
-//===================================================
+/**
+ * @class WindrosePlot
+ */
 class WindrosePlot
 {
     private $iAntiAlias          = true;

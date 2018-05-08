@@ -8,16 +8,16 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS LinkArrow
+/**
+ * @class LinkArrow
 // Handles the drawing of a an arrow
-//===================================================
+ */
 class LinkArrow
 {
     private $ix;
     private $iy;
     private $isizespec = [
-        [2, 3], [3, 5], [3, 8], [6, 15], [8, 22], ];
+        [2, 3], [3, 5], [3, 8], [6, 15], [8, 22]];
     private $iDirection = ARROW_DOWN;
     private $iType      = ARROWT_SOLID;
     private $iSize      = ARROW_S2;

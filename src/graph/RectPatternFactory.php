@@ -18,10 +18,10 @@ define('BAND_3DPLANE', 6); // "3D" Plane
 define('BAND_HVCROSS', 7); // Vertical/Hor crosses
 define('BAND_DIAGCROSS', 8); // Diagonal crosses
 
-//=====================================================================
-// Class RectPatternFactory
+/**
+ * @class RectPatternFactory
 // Factory class for rectangular pattern
-//=====================================================================
+ */
 class RectPatternFactory
 {
     public function __construct()

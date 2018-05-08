@@ -10,15 +10,14 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-//===============================
-// File:        JPGRAPH_PIE.PHP
+/**
+ * File:        JPGRAPH_PIE.PHP
 // Description: Pie plot extension for JpGraph
 // Created:     2001-02-14
 // Ver:         $Id: jpgraph_pie.php 1926 2010-01-11 16:33:07Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 // Defines for PiePlot::SetLabelType()
 define('PIE_VALUE_ABS', 1);
 define('PIE_VALUE_PER', 0);
@@ -26,10 +25,10 @@ define('PIE_VALUE_PERCENTAGE', 0);
 define('PIE_VALUE_ADJPERCENTAGE', 2);
 define('PIE_VALUE_ADJPER', 2);
 
-//===================================================
-// CLASS PiePlot
+/**
+ * @class PiePlot
 // Description: Draws a pie plot
-//===================================================
+ */
 class PiePlot
 {
     public $posx                     = 0.5;
@@ -79,8 +78,9 @@ class PiePlot
     protected $iGuideLineRFactor       = 0.8;
     protected $la                      = []; // Holds the exact angle for each label
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($data)
     {
         $this->data  = array_reverse($data);
@@ -92,8 +92,9 @@ class PiePlot
         $this->guideline = new Graph\LineProperty();
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetCenter($x, $y = 0.5)
     {
         $this->posx = $x;
@@ -574,10 +575,9 @@ class PiePlot
             }
         }
 
-        //==================================
-        // This is the main loop to draw each cake slice
-        //==================================
-
+        /**
+         * This is the main loop to draw each cake slice
+         */
         // Set up the accumulated sum, start angle for first slice and border color
         $accsum = 0;
         $angle2 = $this->startangle;
@@ -714,9 +714,9 @@ class PiePlot
         }
     }
 
-    //==================================
-    // PRIVATE METHODS
-
+    /**
+     * PRIVATE METHODS
+     */
     public function NormAngle($a)
     {
         while ($a < 0) {
@@ -754,11 +754,12 @@ class PiePlot
     {
         $n = count($this->labels);
 
-        //==================================
-        // Step 1 of the algorithm is to construct a number of clusters
+        /**
+         * Step 1 of the algorithm is to construct a number of clusters
         // a cluster is defined as all slices within the same quadrant (almost)
         // that has an angular distance less than the treshold
-        //==================================
+         */
+
         $tresh_hold = 25 * M_PI / 180; // 25 degrees difference to be in a cluster
         $incluster  = false; // flag if we are currently in a cluster or not
         $clusters   = []; // array of clusters
@@ -873,11 +874,10 @@ class PiePlot
         }
          */
 
-        //==================================
-        // Step 2 of the algorithm is use the clusters and draw the labels
+        /**
+         * Step 2 of the algorithm is use the clusters and draw the labels
         // and guidelines
-        //==================================
-
+         */
         // We use the font height as the base factor for how far we need to
         // spread the labels in the Y-direction.
         $this->value->ApplyFont($img);
@@ -1149,6 +1149,6 @@ class PiePlot
     {
         $this->use_plot_theme_colors = $flag;
     }
-} // Class
+} // @class
 
 /* EOF */

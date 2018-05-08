@@ -4,16 +4,17 @@
  * JPGraph v3.6.15
  */
 
+/**
 // File:        JPG-CONFIG.INC
 // Description: Configuration file for JpGraph library
 // Created:     2004-03-27
 // Ver:         $Id: jpg-config.inc.php 1871 2009-09-29 05:56:39Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+ */
 
-//==================================
-// Directories for cache and font directory.
+/**
+ * Directories for cache and font directory.
 //
 // CACHE_DIR:
 // The full absolute name of the directory to be used to store the
@@ -37,13 +38,13 @@
 //   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
 //   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
 //
-//==================================
+ */
 // define('CACHE_DIR','/tmp/jpgraph_cache/');
 // define('TTF_DIR','/usr/share/fonts/TrueType/');
 // define('MBTTF_DIR','/usr/share/fonts/TrueType/');
 
-//==================================
-// Cache directory specification for use with CSIM graphs that are
+/**
+ * Cache directory specification for use with CSIM graphs that are
 // using the cache.
 // The directory must be the filesysystem name as seen by PHP
 // and the 'http' version must be the same directory but as
@@ -56,12 +57,11 @@
 define('CSIMCACHE_DIR', 'csimcache/');
 define('CSIMCACHE_HTTP_DIR', 'csimcache/');
 
-//==================================
-// Various JpGraph Settings. Adjust accordingly to your
+/**
+ * Various JpGraph Settings. Adjust accordingly to your
 // preferences. Note that cache functionality is turned off by
 // default (Enable by setting USE_CACHE to true)
-//==================================
-
+ */
 // Deafult locale for error messages.
 // This defaults to English = 'en'
 define('DEFAULT_ERR_LOCALE', 'en');
@@ -117,10 +117,9 @@ define('ERR_DEPRECATED', true);
 // GD function thinks.
 define('USE_LIBRARY_IMAGETTFBBOX', true);
 
-//==================================
-// The following constants should rarely have to be changed !
-//==================================
-
+/**
+ * The following constants should rarely have to be changed !
+ */
 // What group should the cached file belong to
 // (Set to '' will give the default group for the 'PHP-user')
 // Please note that the Apache user must be a member of the

@@ -1,7 +1,7 @@
 <?php
 // $Id: canvasex06.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 

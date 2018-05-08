@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//=============================================================================
-// CLASS DateScaleUtils
+/**
+ * @class DateScaleUtils
 // Description: Help to create a manual date scale
-//=============================================================================
+ */
 define('DSUTILS_MONTH', 1); // Major and minor ticks on a monthly basis
 define('DSUTILS_MONTH1', 1); // Major and minor ticks on a monthly basis
 define('DSUTILS_MONTH2', 2); // Major ticks on a bi-monthly basis
@@ -335,7 +335,7 @@ class DateScaleUtils
             [$spw, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', -1, DSUTILS_DAY4, 'd M']],
             [$spm, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, -1, DSUTILS_WEEK2, $w]],
             [$spy, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, 14, DSUTILS_WEEK2, $w, 30, DSUTILS_MONTH1, 'M', 60, DSUTILS_MONTH2, 'M', -1, DSUTILS_MONTH3, 'M']],
-            [-1, [30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y']], ];
+            [-1, [30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y']]];
 
         $ntt = count($tt);
         $nd  = floor($diff / $spd);

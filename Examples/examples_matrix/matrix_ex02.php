@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 
 $data = [
@@ -19,7 +20,8 @@ $data = [
 
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
-$r=count($data); $c=count($data[0]);
+$r = count($data);
+$c = count($data[0]);
 
 $graph = new MatrixGraph(250, 220);
 $graph->title->Set('Meshinterpolation=3');

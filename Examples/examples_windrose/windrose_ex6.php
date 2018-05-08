@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -18,8 +18,8 @@ $data = [
 ];
 
 // Specify text for direction labels
-$labels = ['120.5'      => "Plant\n#1275",
-    '285.7'             => "Reference\n#13 Ver:2", ];
+$labels = ['120.5' => "Plant\n#1275",
+    '285.7'            => "Reference\n#13 Ver:2"];
 
 // Range colors to be used
 $rangeColors = ['khaki', 'yellow', 'orange', 'orange:0.7', 'brown', 'darkred', 'black'];

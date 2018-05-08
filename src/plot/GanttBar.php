@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS GanttBar
+/**
+ * @class GanttBar
 // Responsible for formatting individual gantt bars
-//===================================================
+ */
 class GanttBar extends GanttPlotObject
 {
     public $progress;
@@ -30,8 +30,9 @@ class GanttBar extends GanttPlotObject
     private $iBreakLineStyle  = 'dotted';
     private $iBreakLineWeight = 1;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = '', $aHeightFactor = 0.6)
     {
         parent::__construct();
@@ -60,8 +61,9 @@ class GanttBar extends GanttPlotObject
         $this->progress = new Progress();
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetShadow($aShadow = true, $aColor = 'gray')
     {
         $this->iShadow      = $aShadow;

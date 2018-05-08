@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
 
-//===============================
-// File:        JPGRAPH_BAR.PHP
+/**
+ * File:        JPGRAPH_BAR.PHP
 // Description: Bar plot extension for JpGraph
 // Created:     2001-01-08
 // Ver:         $Id: jpgraph_bar.php 1905 2009-10-06 18:00:21Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 // Pattern for Bars
 define('PATTERN_DIAG1', 1);
 define('PATTERN_DIAG2', 2);
@@ -29,10 +28,10 @@ define('PATTERN_CROSS4', 8);
 define('PATTERN_STRIPE1', 9);
 define('PATTERN_STRIPE2', 10);
 
-//===================================================
-// CLASS BarPlot
+/**
+ * @class BarPlot
 // Description: Main code to produce a bar plot
-//===================================================
+ */
 class BarPlot extends Plot
 {
     public $fill                = false;
@@ -58,17 +57,18 @@ class BarPlot extends Plot
     protected $bar_3d_hsize     = 3;
     protected $bar_3d_vsize     = 3;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
         ++$this->numpoints;
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     // Set a drop shadow for the bar (or rather an "up-right" shadow)
     public function SetShadow($aColor = 'black', $aHSize = 3, $aVSize = 3, $aShow = true)
     {
@@ -753,6 +753,6 @@ class BarPlot extends Plot
 
         return true;
     }
-} // Class
+} // @class
 
 /* EOF */

@@ -1,5 +1,5 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';
 
@@ -16,6 +16,3 @@ $graph->Add($table);
 
 // ... and send back the table to the client
 $graph->Stroke();
-
-?>
-

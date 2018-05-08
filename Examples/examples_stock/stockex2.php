@@ -5,7 +5,8 @@
  */
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_stock.php';
 
 $datay = [
@@ -13,7 +14,7 @@ $datay = [
     55, 25, 12, 59,
     38, 49, 32, 64,
     34, 40, 29, 42,
-    40, 29, 22, 45, ];
+    40, 29, 22, 45];
 
 // Setup basic graph
 $graph = new Graph\Graph(300, 200);

@@ -8,20 +8,20 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
 
-//===============================
-// File:        JPGRAPH_PIE3D.PHP
+/**
+ * File:        JPGRAPH_PIE3D.PHP
 // Description: 3D Pie plot extension for JpGraph
 // Created:     2001-03-24
 // Ver:         $Id: jpgraph_pie3d.php 1329 2009-06-20 19:23:30Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
+ */
 
-//===================================================
-// CLASS PiePlot3D
+/**
+ * @class PiePlot3D
 // Description: Plots a 3D pie with a specified projection
 // angle between 20 and 70 degrees.
-//===================================================
+ */
 class PiePlot3D extends PiePlot
 {
     private $labelhintcolor = 'red';
@@ -31,8 +31,9 @@ class PiePlot3D extends PiePlot
     private $edgeweight     = 1;
     private $iThickness     = false;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($data)
     {
         $this->radius = 0.5;
@@ -44,9 +45,9 @@ class PiePlot3D extends PiePlot
         $this->value->SetFormat('%.0f%%');
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     // Set label arrays
     public function SetLegends($aLegend)
     {
@@ -431,8 +432,8 @@ class PiePlot3D extends PiePlot
         $edgecolor = '',
         $edgeweight = 1
     ) {
-        //==================================
-        // As usual the algorithm get more complicated than I originally
+        /**
+         * As usual the algorithm get more complicated than I originally
         // envisioned. I believe that this is as simple as it is possible
         // to do it with the features I want. It's a good exercise to start
         // thinking on how to do this to convince your self that all this
@@ -465,8 +466,7 @@ class PiePlot3D extends PiePlot
         //   get printed first and might get slightly nagged by a larger
         //   slice on the right side just before the right part of the small
         //   slice. Not a major problem though.
-        //==================================
-
+         */
         // Determine the height of the ellippse which gives an
         // indication of the inclination angle
         $h   = ($angle / 90.0) * $d;
@@ -977,8 +977,9 @@ class PiePlot3D extends PiePlot
         }
     }
 
-    //==================================
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
 
     // Position the labels of each slice
     public function StrokeLabels($label, $img, $a, $xp, $yp, $z)
@@ -1060,6 +1061,6 @@ class PiePlot3D extends PiePlot
         $this->value->Stroke($img, $label, $x, $y);
         $this->value->margin = $oldmargin;
     }
-} // Class
+} // @class
 
 /* EOF */

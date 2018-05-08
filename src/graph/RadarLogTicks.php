@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS RadarLogTicks
+/**
+ * @class RadarLogTicks
 // Description: Logarithmic ticks
-//===================================================
+ */
 class RadarLogTicks extends Ticks
 {
     public function __construct()

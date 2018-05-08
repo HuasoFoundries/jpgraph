@@ -5,7 +5,8 @@
  */
 
 // Example of a stock chart
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_stock.php';
 
 // Data must be in the format : open,close,min,max
@@ -14,7 +15,7 @@ $datay = [
     55, 25, 14, 59,
     15, 40, 12, 47,
     62, 38, 25, 65,
-    38, 49, 32, 64, ];
+    38, 49, 32, 64];
 
 // Setup a simple graph
 $graph = new Graph\Graph(300, 200);

@@ -1,5 +1,5 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';
 
@@ -13,7 +13,7 @@ $data = [
     ['High (sum)', 34, 35, 26, 20, 22, 16],
     ['Low (sum)', 41, 43, 49, 45, 51, 47],
     ['Sum', 88, 95, 90, 73, 76, 72],
-    ];
+];
 
 // Setup the basic table and font
 $table = new GTextTable();
@@ -50,6 +50,3 @@ $graph->Add($table);
 
 // Send it back to the client
 $graph->Stroke();
-
-?>
-

@@ -6,20 +6,19 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===============================
-// File:           JPGRAPH_PLOTLINE.PHP
+/**
+ * File:           JPGRAPH_PLOTLINE.PHP
 // Description: PlotLine extension for JpGraph
 // Created:       2009-03-24
 // Ver:           $Id: jpgraph_plotline.php 1931 2010-03-22 15:05:48Z ljp $
 //
-// CLASS PlotLine
+// @class PlotLine
 // Data container class to hold properties for a static
 // line that is drawn directly in the plot area.
 // Useful to add static borders inside a plot to show for example set-values
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 class PlotLine
 {
     public $scaleposition;
@@ -85,9 +84,9 @@ class PlotLine
         return '';
     }
 
-    //==================================
-    // PRIVATE METHODS
-
+    /**
+     * PRIVATE METHODS
+     */
     public function DoLegend($graph)
     {
         if (!$this->hidelegend) {

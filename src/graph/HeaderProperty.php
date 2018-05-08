@@ -6,11 +6,11 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS HeaderProperty
+/**
+ * @class HeaderProperty
 // Description: Data encapsulating class to hold property
 // for each type of the scale headers
-//===================================================
+ */
 class HeaderProperty
 {
     public $grid;
@@ -30,15 +30,17 @@ class HeaderProperty
     public $iLabelFormStr           = '%d';
     public $iIntervall              = 1;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct()
     {
         $this->grid = new LineProperty();
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Show($aShow = true)
     {
         $this->iShowLabels = $aShow;

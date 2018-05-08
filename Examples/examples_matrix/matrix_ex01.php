@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 
 $data = [
@@ -27,8 +28,8 @@ $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $mp  = [];
 $n   = 4;
 $pos = [0.3, 0.33, 0.8, 0.68,
-             0.3, 0.68, 0.8, 0.33, ];
-for ($i=0; $i < $n; ++$i) {
+    0.3, 0.68, 0.8, 0.33];
+for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);
     $mp[$i]->colormap->SetMap($i);
     $mp[$i]->SetModuleSize(4, 5);

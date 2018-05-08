@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
@@ -73,7 +74,7 @@ $graph->Add($hor1);
 $txts = [
     ['Temperature gradient', $width / 2, 80],
     ['Heat color map', 200, 110],
-    ['High contrast map', 560, 110], ];
+    ['High contrast map', 560, 110]];
 
 $n = count($txts);
 $t = [];

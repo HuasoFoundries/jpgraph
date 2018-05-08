@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPatternVert
+/**
+ * @class RectPatternVert
 // Implements vertical line pattern
-//=====================================================================
+ */
 class RectPatternVert extends RectPattern
 {
     public function __construct($aColor = 'black', $aWeight = 1, $aLineSpacing = 7)
@@ -18,9 +18,9 @@ class RectPatternVert extends RectPattern
         $this->linespacing = $aLineSpacing;
     }
 
-    //==================================
-    // Private methods
-    //
+    /**
+     * Private methods
+     */
     public function DoPattern($aImg)
     {
         $x  = $this->rect->x;

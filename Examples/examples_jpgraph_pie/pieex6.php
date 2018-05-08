@@ -1,17 +1,17 @@
 <?php // content="text/plain; charset=utf-8"
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 \JpGraph\JpGraph::load();
 \JpGraph\JpGraph::module('pie');
 
 // Some data
-$data = array(27, 23, 47, 17);
+$data = [27, 23, 47, 17];
 
 // A new Graph\Graph
 $graph = new \PieGraph(350, 200);
 $graph->SetShadow();
 
 // Setup title
-$graph->title->Set("Example of pie plot with absolute labels");
+$graph->title->Set('Example of pie plot with absolute labels');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // The pie plot
@@ -26,20 +26,20 @@ $p1->ShowBorder(false);
 
 // Label font and color setup
 $p1->value->SetFont(FF_FONT1, FS_BOLD);
-$p1->value->SetColor("darkred");
+$p1->value->SetColor('darkred');
 
 // Use absolute values (type==1)
 $p1->SetLabelType(PIE_VALUE_ABS);
 
 // Label format
-$p1->value->SetFormat("$%d");
+$p1->value->SetFormat('$%d');
 $p1->value->Show();
 
 // Size of pie in fraction of the width of the graph
 $p1->SetSize(0.3);
 
 // Legends
-$p1->SetLegends(array("May ($%d)", "June ($%d)", "July ($%d)", "Aug ($%d)"));
+$p1->SetLegends(['May ($%d)', 'June ($%d)', 'July ($%d)', 'Aug ($%d)']);
 $graph->legend->Pos(0.05, 0.15);
 
 $graph->Add($p1);

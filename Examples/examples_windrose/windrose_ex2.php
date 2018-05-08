@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,7 +13,7 @@ $data = [
     0 => [1, 1, 2.5, 4],
     1 => [3, 4, 1, 4],
     3 => [2, 7, 4, 4, 3],
-    5 => [2, 7, 1, 2], ];
+    5 => [2, 7, 1, 2]];
 
 // First create a new windrose graph with a title
 $graph = new Graph\WindroseGraph(400, 400);

@@ -8,15 +8,14 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===============================
-// File:        JPGRAPH_DATE.PHP
+/**
+ * File:        JPGRAPH_DATE.PHP
 // Description: Classes to handle Date scaling
 // Created:     2005-05-02
 // Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//===============================
-
+ */
 define('HOURADJ_1', 0 + 30);
 define('HOURADJ_2', 1 + 30);
 define('HOURADJ_3', 2 + 30);
@@ -60,8 +59,9 @@ class DateScale extends LinearScale
     private $iStartTimeAlign = false;
     private $iEndTimeAlign   = false;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aMin = 0, $aMax = 0, $aType = 'x')
     {
         assert($aType == 'x');
@@ -74,12 +74,11 @@ class DateScale extends LinearScale
         $this->intscale   = true;
     }
 
-    //==================================
-    // Utility Function AdjDate()
+    /**
+     * Utility Function AdjDate()
     // Description: Will round a given time stamp to an even year, month or day
     // argument.
-    //==================================
-
+     */
     public function AdjDate($aTime, $aRound = 0, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
         $y = (int) date('Y', $aTime);
@@ -141,30 +140,31 @@ class DateScale extends LinearScale
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
-    //==================================
-    // Wrapper for AdjDate that will round a timestamp to an even date rounding
+    /**
+     * Wrapper for AdjDate that will round a timestamp to an even date rounding
     // it downwards.
-    //==================================
+     */
+
     public function AdjStartDate($aTime, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
         return $this->AdjDate($aTime, 0, $aYearType, $aMonthType, $aDayType);
     }
 
-    //==================================
-    // Wrapper for AdjDate that will round a timestamp to an even date rounding
+    /**
+     * Wrapper for AdjDate that will round a timestamp to an even date rounding
     // it upwards
-    //==================================
+     */
+
     public function AdjEndDate($aTime, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
         return $this->AdjDate($aTime, 1, $aYearType, $aMonthType, $aDayType);
     }
 
-    //==================================
-    // Utility Function AdjTime()
+    /**
+     * Utility Function AdjTime()
     // Description: Will round a given time stamp to an even time according to
     // argument.
-    //==================================
-
+     */
     public function AdjTime($aTime, $aRound = 0, $aHourType = false, $aMinType = false, $aSecType = false)
     {
         $y = (int) date('Y', $aTime);
@@ -235,31 +235,31 @@ class DateScale extends LinearScale
         return mktime($h, $i, $s, $m, $d, $y);
     }
 
-    //==================================
-    // Wrapper for AdjTime that will round a timestamp to an even time rounding
+    /**
+     * Wrapper for AdjTime that will round a timestamp to an even time rounding
     // it downwards.
     // Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20
-    //==================================
+     */
     public function AdjStartTime($aTime, $aHourType = false, $aMinType = false, $aSecType = false)
     {
         return $this->AdjTime($aTime, 0, $aHourType, $aMinType, $aSecType);
     }
 
-    //==================================
-    // Wrapper for AdjTime that will round a timestamp to an even time rounding
+    /**
+     * Wrapper for AdjTime that will round a timestamp to an even time rounding
     // it upwards
     // Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30
-    //==================================
+     */
     public function AdjEndTime($aTime, $aHourType = false, $aMinType = false, $aSecType = false)
     {
         return $this->AdjTime($aTime, 1, $aHourType, $aMinType, $aSecType);
     }
 
-    //==================================
-    // DateAutoScale
+    /**
+     * DateAutoScale
     // Autoscale a date axis given start and end time
     // Returns an array ($start,$end,$major,$minor,$format)
-    //==================================
+     */
     public function DoDateAutoScale($aStartTime, $aEndTime, $aDensity = 0, $aAdjust = true)
     {
         // Format of array

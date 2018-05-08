@@ -1,5 +1,5 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 
 // We accept a URI argument to adjust the angle at what we display the text

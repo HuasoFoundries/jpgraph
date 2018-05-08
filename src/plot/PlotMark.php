@@ -8,20 +8,19 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
 
-//=======================================================================
-// File:        JPGRAPH_PLOTMARK.PHP
+/**
+ * File:        JPGRAPH_PLOTMARK.PHP
 // Description: Class file. Handles plotmarks
 // Created:     2003-03-21
 // Ver:         $Id: jpgraph_plotmark.inc.php 1106 2009-02-22 20:16:35Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+ */
 
-//===================================================
-// CLASS PlotMark
+/**
+ * @class PlotMark
 // Description: Handles the plot marks in graphs
-//===================================================
-
+ */
 class PlotMark
 {
     public $title;
@@ -50,8 +49,9 @@ class PlotMark
     private $imgdata_stars;
     private $imgdata_pushpins;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct()
     {
         $this->title = new Text\Text();
@@ -60,8 +60,9 @@ class PlotMark
         $this->type      = -1;
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
         $this->type = $aType;
@@ -519,4 +520,4 @@ class PlotMark
         $this->title->Align('center', 'center');
         $this->title->Stroke($img, $x, $y);
     }
-} // Class
+} // @class

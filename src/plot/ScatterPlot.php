@@ -8,18 +8,19 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS ScatterPlot
+/**
+ * @class ScatterPlot
 // Description: Render X and Y plots
-//===================================================
+ */
 class ScatterPlot extends Plot
 {
     public $mark;
     public $link;
     private $impuls = false;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         if ((count($datax) != count($datay)) && is_array($datax)) {
@@ -35,8 +36,9 @@ class ScatterPlot extends Plot
         $this->link->iShow = false;
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetImpuls($f = true)
     {
         $this->impuls = $f;
@@ -134,5 +136,5 @@ class ScatterPlot extends Plot
             );
         }
     }
-} // Class
+} // @class
 /* EOF */

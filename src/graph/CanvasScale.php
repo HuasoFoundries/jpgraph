@@ -6,12 +6,11 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS CanvasScale
+/**
+ * @class CanvasScale
 // Description: Define a scale for canvas so we
 // can abstract away with absolute pixels
-//===================================================
-
+ */
 class CanvasScale
 {
     private $g;

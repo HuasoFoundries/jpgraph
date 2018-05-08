@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_matrix.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
@@ -20,10 +21,12 @@ $data = [
 
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
-$r=count($data); $c=count($data[0]);
+$r = count($data);
+$c = count($data[0]);
 
-$width =400; $height =400;
-$graph = new MatrixGraph($width, $height);
+$width  = 400;
+$height = 400;
+$graph  = new MatrixGraph($width, $height);
 $graph->title->Set('Adding an icon to the background');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 

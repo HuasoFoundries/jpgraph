@@ -6,16 +6,17 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS LineErrorPlot
+/**
+ * @class LineErrorPlot
 // Description: Combine a line and error plot
-//===================================================
+ */
 class LineErrorPlot extends ErrorPlot
 {
     public $line;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     // Data is (val, errdeltamin, errdeltamax)
     public function __construct($datay, $datax = false)
     {
@@ -35,8 +36,9 @@ class LineErrorPlot extends ErrorPlot
         $this->line = new LinePlot($ly, $datax);
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         if ($this->legend != '') {
@@ -51,6 +53,6 @@ class LineErrorPlot extends ErrorPlot
         parent::Stroke($img, $xscale, $yscale);
         $this->line->Stroke($img, $xscale, $yscale);
     }
-} // Class
+} // @class
 
 /* EOF */

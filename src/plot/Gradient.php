@@ -6,29 +6,29 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===============================
-// File:        JPGRAPH_GRADIENT.PHP
+/**
+ * File:        JPGRAPH_GRADIENT.PHP
 // Description: Create a color gradient
 // Created:     2003-02-01
 // Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Gradient
+/**
+ * @class Gradient
 // Description: Handles gradient fills. This is to be
 // considered a "friend" class of Class Image.
-//===================================================
+ */
 class Gradient
 {
     private $img;
     private $numcolors = 100;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct(&$img)
     {
         $this->img = $img;
@@ -39,8 +39,9 @@ class Gradient
         $this->numcolors = $aNum;
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     // Produce a gradient filled rectangle with a smooth transition between
     // two colors.
     // ($xl,$yt)  Top left corner
@@ -396,8 +397,9 @@ class Gradient
         }
     }
 
-    //==================================
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
     // Add to the image color map the necessary colors to do the transition
     // between the two colors using $numcolors intermediate colors
     public function GetColArray($from_color, $to_color, $arr_size, &$colors, $numcols = 100)
@@ -433,4 +435,4 @@ class Gradient
             $prevcolnum = $colnum;
         }
     }
-} // Class
+} // @class

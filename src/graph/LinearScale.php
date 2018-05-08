@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS LinearScale
+/**
+ * @class LinearScale
 // Description: Handle linear scaling between screen and world
-//===================================================
+ */
 class LinearScale
 {
     public $textscale = false; // Just a flag to let the Plot class find out if
@@ -374,8 +374,9 @@ class LinearScale
         }
     }
 
-    //==================================
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
 
     // This method recalculates all constants that are depending on the
     // margins in the image. If the margins in the image are changed
@@ -608,4 +609,4 @@ class LinearScale
     {
         $this->{'_' . $name} = $value;
     }
-} // Class
+} // @class

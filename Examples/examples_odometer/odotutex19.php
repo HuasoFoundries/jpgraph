@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 require_once 'jpgraph/jpgraph_iconplot.php';
 
@@ -13,7 +14,7 @@ $graph = new OdoGraph(500, 180);
 $odo = [];
 
 // Now we need to create an odometer to add to the graph.
-for ($i=0; $i < 5; ++$i) {
+for ($i = 0; $i < 5; ++$i) {
     $odo[$i] = new Odometer();
     $odo[$i]->SetColor('lightgray:1.9');
     $odo[$i]->needle->Set(10 + $i * 17);

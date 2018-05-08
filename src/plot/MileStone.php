@@ -6,16 +6,17 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS MileStone
+/**
+ * @class MileStone
 // Responsible for formatting individual milestones
-//===================================================
+ */
 class MileStone extends GanttPlotObject
 {
     public $mark;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aVPos, $aLabel, $aDate, $aCaption = '')
     {
         GanttPlotObject::__construct();
@@ -33,9 +34,9 @@ class MileStone extends GanttPlotObject
         $this->iStart = $aDate;
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function GetAbsHeight($aImg)
     {
         return max($this->title->GetHeight($aImg), $this->mark->GetWidth());

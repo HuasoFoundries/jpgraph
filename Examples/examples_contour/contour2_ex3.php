@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 
@@ -13,7 +13,7 @@ $data = [
     [10, 10, 8, 14],
     [7, 7, 13, 17],
     [4, 5, 8, 12],
-    [10, 8, 7, 8], ];
+    [10, 8, 7, 8]];
 
 // create a basic graph as a container
 $graph = new Graph\Graph(300, 300);

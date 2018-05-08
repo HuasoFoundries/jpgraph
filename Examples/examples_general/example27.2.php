@@ -1,5 +1,5 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_pie.php';
 require_once 'jpgraph/jpgraph_pie3d.php';
 

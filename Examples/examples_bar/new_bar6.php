@@ -3,11 +3,11 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-require_once 'jpgraph/jpgraph_line.php';
+use Amenadiel\JpGraph\Plot;
 
 //bar1
 $data1y = [115, 130, 135, 130, 110, 130, 130, 150, 130, 130, 150, 120];

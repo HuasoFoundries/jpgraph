@@ -1,7 +1,7 @@
 <?php
 // $Id: ganttex_slice.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
 // Gantt example with sunday week start and only shows a partial graph
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_gantt.php';
 
 // Setup Gantt graph

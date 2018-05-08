@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\ImgTrans;
 
-//===================================================
-// CLASS PieGraph
+/**
+ * @class PieGraph
 // Description:
-//===================================================
+ */
 class PieGraph extends Graph
 {
     private $posx;
@@ -21,8 +21,9 @@ class PieGraph extends Graph
     public $plots    = [];
     public $pieaa    = false;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
         parent::__construct($width, $height, $cachedName, $timeout, $inline);
@@ -35,8 +36,9 @@ class PieGraph extends Graph
         }
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Add($aObj)
     {
         if (is_array($aObj) && count($aObj) > 0) {
@@ -283,4 +285,4 @@ class PieGraph extends Graph
             );
         }
     }
-} // Class
+} // @class

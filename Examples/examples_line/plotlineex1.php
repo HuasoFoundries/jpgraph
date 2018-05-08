@@ -3,9 +3,10 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_line.php';
+use Amenadiel\JpGraph\Plot;
 require_once 'jpgraph/jpgraph_plotline.php';
 
 $datay = [2, 3, 5, 8.5, 11.5, 6, 3];

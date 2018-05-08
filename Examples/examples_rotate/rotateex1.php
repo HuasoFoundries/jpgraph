@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];

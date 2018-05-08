@@ -4,14 +4,14 @@
  * JPGraph v3.6.15
  */
 
+/*
 // File:        jpgraph_ttf.inc.php
 // Description: Handling of TTF fonts
 // Created:     2006-11-19
 // Ver:         $Id: jpgraph_ttf.inc.php 1858 2009-09-28 14:39:51Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
+ */
 // TTF Font families
 define('FF_COURIER', 10);
 define('FF_VERDANA', 11);
@@ -83,10 +83,9 @@ define('FF_FONT0', 1);
 define('FF_FONT1', 2);
 define('FF_FONT2', 4);
 
-//==================================
-// Defines for font setup
-//==================================
-
+/**
+ * Defines for font setup
+ */
 // Actual name of the TTF file used together with FF_CHINESE aka FF_BIG5
 // This is the TTF file being used when the font family is specified as
 // either FF_CHINESE or FF_BIG5

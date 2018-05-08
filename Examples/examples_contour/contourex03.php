@@ -6,7 +6,7 @@
 
 // Contour plot example
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -20,7 +20,7 @@ $data = [
     [0.6, 1.1, 1.5, 1, 4.0, 3.5, 3, 2, 3, 4],
     [1.0, 1.5, 3.0, 5, 6.0, 2, 1, 1.2, 2.7, 4],
     [0.8, 2.0, 3.0, 3, 5.5, 6, 3, 2, 1, 1.4],
-    [1.0, 1.5, 3.0, 4, 6.0, 5, 2, 1, 0.5, 0.2], ];
+    [1.0, 1.5, 3.0, 4, 6.0, 5, 2, 1, 0.5, 0.2]];
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend

@@ -8,27 +8,28 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// CLASS ImgStreamCache
+/**
+ * @class ImgStreamCache
 // Description: Handle caching of graphs to files. All image output goes
 //              through this class
-//=======================================================================
+ */
 class ImgStreamCache
 {
     private $cache_dir;
     private $timeout = 0;
 
     // Infinite timeout
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aCacheDir = CACHE_DIR)
     {
         $this->cache_dir = $aCacheDir;
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     // Specify a timeout (in minutes) for the file. If the file is older then the
     // timeout value it will be overwritten with a newer version.
     // If timeout is set to 0 this is the same as infinite large timeout and if
@@ -184,8 +185,10 @@ class ImgStreamCache
         }
     }
 
-    //==================================
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
+
     // Create all necessary directories in a path
     public function MakeDirs($aFile)
     {
@@ -216,4 +219,4 @@ class ImgStreamCache
 
         return true;
     }
-} // CLASS Cache
+} // @class Cache

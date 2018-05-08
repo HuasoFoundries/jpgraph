@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -42,7 +42,7 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Ｓ　　　南
 // SＥ　　南東
 $jp_CompassLbl = ['東', '', '北東', '', '北', '', '北西', '',
-    '西', '', '南西', '', '南', '', '南東', '', ];
+    '西', '', '南西', '', '南', '', '南東', ''];
 $wp->SetCompassLabels($jp_CompassLbl);
 #$wp->SetFont(FF_MINCHO,FS_NORMAL,15);
 

@@ -6,7 +6,8 @@
 
 // Gantt example 30
 // $Id: ganttex30.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_gantt.php';
 
 // Standard calls to create a new Graph\Graph
@@ -66,7 +67,7 @@ for ($i = 0; $i < count($data); ++$i) {
     $bar->rightMark->SetWidth(10);
 
     // Title for the mark
-    $bar->rightMark->title->Set(''.$i + 1);
+    $bar->rightMark->title->Set('' . $i + 1);
     $bar->rightMark->title->SetColor('white');
     $bar->rightMark->title->SetFont(FF_ARIAL, FS_BOLD, 10);
     $bar->rightMark->Show();

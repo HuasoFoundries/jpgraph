@@ -6,13 +6,13 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//=============================================================================
-// Class ReadFileData
-//=============================================================================
+/**
+ * @class ReadFileData
+ */
 class ReadFileData
 {
-    //==================================
-    // Desciption:
+    /**
+     * Desciption:
     // Read numeric data from a file.
     // Each value should be separated by either a new line or by a specified
     // separator character (default is ',').
@@ -22,7 +22,7 @@ class ReadFileData
     //
     // Returns:
     // The number of data values read on success, FALSE on failure
-    //==================================
+     */
     public static function FromCSV($aFile, &$aData, $aSepChar = ',', $aMaxLineLength = 1024)
     {
         $rh = @fopen($aFile, 'r');
@@ -51,8 +51,8 @@ class ReadFileData
         return $cnt;
     }
 
-    //==================================
-    // Desciption:
+    /**
+     * Desciption:
     // Read numeric data from a file.
     // Each value should be separated by either a new line or by a specified
     // separator character (default is ',').
@@ -70,7 +70,7 @@ class ReadFileData
     //
     // Returns:
     // The number of lines read on success, FALSE on failure
-    //==================================
+     */
     public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {
         $aDefaults = [

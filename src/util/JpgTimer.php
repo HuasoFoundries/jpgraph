@@ -6,12 +6,12 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS JpgTimer
+/**
+ * @class JpgTimer
 // Description: General timing utility class to handle
 // time measurement of generating graphs. Multiple
 // timers can be started.
-//===================================================
+ */
 class JpgTimer
 {
     private $start;
@@ -40,4 +40,4 @@ class JpgTimer
 
         return $etime - $this->start[$this->idx];
     }
-} // Class
+} // @class

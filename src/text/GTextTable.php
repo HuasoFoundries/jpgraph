@@ -6,11 +6,11 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//==================================
-// CLASS GTextTable
+/**
+ * @class GTextTable
 // Description:
 // Graphic text table
-//==================================
+ */
 class GTextTable
 {
     public $iCells   = [];

@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS LineProperty
+/**
+ * @class LineProperty
 // Description: Holds properties for a line
-//===================================================
+ */
 class LineProperty
 {
     public $iWeight = 1;

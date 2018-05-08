@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
@@ -34,7 +35,7 @@ $odo->scale->label->SetColor('brown');
 $odo->scale->label->SetFont(FF_ARIAL, FS_NORMAL, 10);
 
 // Setup a label with a degree mark
-$odo->scale->SetLabelFormat('%dC'.SymChar::Get('degree'));
+$odo->scale->SetLabelFormat('%dC' . SymChar::Get('degree'));
 
 // Set display value for the odometer
 $odo->needle->Set(280);

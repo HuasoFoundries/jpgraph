@@ -11,23 +11,23 @@ use Amenadiel\JpGraph\Text\TTF;
 use Amenadiel\JpGraph\Util;
 use Amenadiel\JpGraph\Util\ErrMsgText;
 
-//=======================================================================
-// File:        GD_IMAGE.INC.PHP
+/**
+ * File:        GD_IMAGE.INC.PHP
 // Description: PHP Graph Plotting library. Low level image drawing routines
 // Created:     2001-01-08, refactored 2008-03-29
 // Ver:         $Id: gd_image.inc.php 1922 2010-01-11 11:42:50Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+ */
 
-//========================================================================
-// CLASS Image
+/**
+ * @class Image
 // Description: The very coor image drawing class that encapsulates all
 //              calls to the GD library
 //              Note: The class used by the library is the decendant
 //              class RotImage which extends the Image class with transparent
 //              rotation.
-//=========================================================================
+ */
 class Image
 {
     public $img;
@@ -77,8 +77,9 @@ class Image
     protected $ff_font2;
     protected $ff_font2_bold;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aWidth = 0, $aHeight = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         $this->original_width  = $aWidth;
@@ -305,9 +306,9 @@ class Image
         $this->SetMargin($lm, $rm, $tm, $bm);
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function SetFont($family, $style = FS_NORMAL, $size = 10)
     {
         $this->font_family = $family;
@@ -2129,4 +2130,4 @@ class Image
     {
         $this->{'_' . $name} = $value;
     }
-} // CLASS
+} // @class

@@ -8,8 +8,8 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Plot;
 
-//=======================================================================
-// File:        JPGRAPH_LEGEND.INC.PHP
+/**
+ * File:        JPGRAPH_LEGEND.INC.PHP
 // Description: Class to handle the legend box in the graph that gives
 //              names on the data series. The number of rows and columns
 //              in the legend are user specifyable.
@@ -17,16 +17,14 @@ use Amenadiel\JpGraph\Plot;
 // Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
+ */
 defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
-//===================================================
-// CLASS Legend
+/**
+ * @class Legend
 // Description: Responsible for drawing the box containing
 // all the legend text for the graph
-//===================================================
-
+ */
 class Legend
 {
     public $txtcol          = [];
@@ -65,15 +63,17 @@ class Legend
     private $bkg_gradfrom = 'lightgray';
     private $bkg_gradto   = 'gray';
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct()
     {
         // Empty
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Hide($aHide = true)
     {
         $this->hide = $aHide;
@@ -556,4 +556,4 @@ class Legend
             }
         }
     }
-} // Class
+} // @class

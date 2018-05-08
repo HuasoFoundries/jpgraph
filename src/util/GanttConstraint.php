@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS GanttConstraint
+/**
+ * @class GanttConstraint
 // Just a structure to store all the values for a constraint
-//===================================================
+ */
 class GanttConstraint
 {
     public $iConstrainRow;
@@ -18,8 +18,9 @@ class GanttConstraint
     public $iConstrainArrowSize;
     public $iConstrainArrowType;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aRow, $aType, $aColor, $aArrowSize, $aArrowType)
     {
         $this->iConstrainType      = $aType;

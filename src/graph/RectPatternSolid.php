@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPatternSolid
+/**
+ * @class RectPatternSolid
 // Implements a solid band
-//=====================================================================
+ */
 class RectPatternSolid extends RectPattern
 {
     public function __construct($aColor = 'black', $aWeight = 1)

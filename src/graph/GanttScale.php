@@ -8,13 +8,13 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS GanttScale
+/**
+ * @class GanttScale
 // Description: Responsible for calculating and showing
 // the scale in a gantt chart. This includes providing methods for
 // converting dates to position in the chart as well as stroking the
 // date headers (days, week, etc).
-//===================================================
+ */
 class GanttScale
 {
     public $minute;
@@ -50,8 +50,9 @@ class GanttScale
     private $iUsePlotWeekendBackground = true;
     private $iWeekStart                = 1; // Default to have weekends start on Monday
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aImg)
     {
         $this->iImg        = $aImg;
@@ -96,9 +97,10 @@ class GanttScale
         $this->actinfo = new GanttActivityInfo();
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
     // Specify what headers should be visible
+     */
     public function ShowHeaders($aFlg)
     {
         $this->day->Show($aFlg & GANTT_HDAY);

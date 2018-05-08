@@ -6,22 +6,23 @@
 
 // A simple Polar graph,
 
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_polar.php';
 
 $data = [5, 1, 20, 5, 30, 25, 40, 60,
-          50, 110, 60, 160, 70, 210, 75, 230, 80, 260, 85, 370,
-          90, 480,
-          95, 370, 100, 260, 105, 230,
-          110, 210, 120, 160, 130, 110, 140, 60,
-          150, 25, 160, 5, 175, 1, ];
+    50, 110, 60, 160, 70, 210, 75, 230, 80, 260, 85, 370,
+    90, 480,
+    95, 370, 100, 260, 105, 230,
+    110, 210, 120, 160, 130, 110, 140, 60,
+    150, 25, 160, 5, 175, 1];
 $n = count($data);
 /*
 for($i=0; $i < $n; $i+=2 ) {
-    $data[$n+$i] = 360-$data[$i];
-    $data[$n+$i+1] = $data[$i+1];
+$data[$n+$i] = 360-$data[$i];
+$data[$n+$i+1] = $data[$i+1];
 }
-*/
+ */
 $graph = new PolarGraph(350, 480);
 $graph->SetScale('log', 100);
 $graph->SetType(POLAR_360);

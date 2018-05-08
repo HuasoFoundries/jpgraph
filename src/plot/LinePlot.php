@@ -8,25 +8,24 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
-//===============================
-// File:           JPGRAPH_LINE.PHP
+/**
+ * File:           JPGRAPH_LINE.PHP
 // Description: Line plot extension for JpGraph
 // Created:       2001-01-08
 // Ver:           $Id: jpgraph_line.php 1921 2009-12-11 11:46:39Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//==================================
-
+ */
 // constants for the (filled) area
 define('LP_AREA_FILLED', true);
 define('LP_AREA_NOT_FILLED', false);
 define('LP_AREA_BORDER', false);
 define('LP_AREA_NO_BORDER', true);
 
-//===================================================
-// CLASS LinePlot
+/**
+ * @class LinePlot
 // Description:
-//===================================================
+ */
 class LinePlot extends Plot
 {
     public $mark;
@@ -45,8 +44,9 @@ class LinePlot extends Plot
     protected $fillgrad_numcolors = 100;
     protected $iFastStroke        = false;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
@@ -55,9 +55,9 @@ class LinePlot extends Plot
         $this->fill_color = $this->color;
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function SetFilled($aFlg = true)
     {
         $this->filled = $aFlg;
@@ -493,4 +493,4 @@ class LinePlot extends Plot
             }
         }
     }
-} // Class
+} // @class

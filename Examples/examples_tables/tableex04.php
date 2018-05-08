@@ -1,20 +1,20 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';
 
 $data = [['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-           ['Team 1', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
-           ['Team 2', '23.9', '14.2', '18.6', '71.3', '66.8', '42.6'],
-           ['Sum:'],
+    ['Team 1', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
+    ['Team 2', '23.9', '14.2', '18.6', '71.3', '66.8', '42.6'],
+    ['Sum:'],
 ];
 
 $r = count($data);
 $c = 7;
 
-for ($i=1; $i < $c; ++$i) {
-    $tmp=0;
-    for ($j=1; $j < $r - 1; ++$j) {
+for ($i = 1; $i < $c; ++$i) {
+    $tmp = 0;
+    for ($j = 1; $j < $r - 1; ++$j) {
         $tmp += $data[$j][$i];
     }
     $data[3][$i] = sprintf('%2.1f', $tmp);
@@ -44,6 +44,3 @@ $table->SetRowGrid($r - 1, 1, 'black', TGRID_DOUBLE);
 
 $graph->Add($table);
 $graph->Stroke();
-
-?>
-

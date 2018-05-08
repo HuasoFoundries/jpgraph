@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS IconImage
+/**
+ * @class IconImage
 // Description: Holds properties for an icon image
-//===================================================
+ */
 class IconImage
 {
     private $iGDImage;

@@ -6,24 +6,24 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS GanttPlotObject
+/**
+ * @class GanttPlotObject
 // The common signature for a Gantt object
-//===================================================
+ */
 class GanttPlotObject
 {
     public $title;
     public $caption;
-    public $csimarea                 = '';
-    public $csimtarget               = '';
-    public $csimwintarget            = '';
-    public $csimalt                  = '';
-    public $constraints              = [];
-    public $iCaptionMargin           = 5;
-    public $iConstrainPos            = [];
-    protected $iStart                = ''; // Start date
-    public $iVPos                    = 0; // Vertical position
-    protected $iLabelLeftMargin      = 2; // Title margin
+    public $csimarea            = '';
+    public $csimtarget          = '';
+    public $csimwintarget       = '';
+    public $csimalt             = '';
+    public $constraints         = [];
+    public $iCaptionMargin      = 5;
+    public $iConstrainPos       = [];
+    protected $iStart           = ''; // Start date
+    public $iVPos               = 0; // Vertical position
+    protected $iLabelLeftMargin = 2; // Title margin
 
     public function __construct()
     {

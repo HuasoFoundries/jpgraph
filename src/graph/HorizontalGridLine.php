@@ -9,10 +9,10 @@ namespace Amenadiel\JpGraph\Graph;
 define('GANTT_HGRID1', 0);
 define('GANTT_HGRID2', 1);
 
-//===================================================
-// CLASS HorizontalGridLine
+/**
+ * @class HorizontalGridLine
 // Responsible for drawinf horizontal gridlines and filled alternatibg rows
-//===================================================
+ */
 class HorizontalGridLine
 {
     private $iGraph;
@@ -20,7 +20,7 @@ class HorizontalGridLine
     private $iRowColor2 = '';
     private $iShow      = false;
     private $line;
-    private $iStart     = 0; // 0=from left margin, 1=just along header
+    private $iStart = 0; // 0=from left margin, 1=just along header
 
     public function __construct()
     {

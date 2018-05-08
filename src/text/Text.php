@@ -6,21 +6,25 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//=======================================================================
-// File:        JPGRAPH_TEXT.INC.PHP
+//use Amenadiel\JpGraph\Graph\Graph;
+use Amenadiel\JpGraph\Util;
+
+/**
+ * File:        JPGRAPH_TEXT.INC.PHP
 // Description: Class to handle text as object in the graph.
 //              The low level text layout engine is handled by the GD class
 // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
 // Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+ */
 
-//===================================================
-// CLASS Text
+/**
+ * @class Text
 // Description: Arbitrary text object that can be added to the graph
-//===================================================
-class Text
+ */
+class Text//extends Graph
+
 {
     public $t;
     public $x      = 0;
@@ -35,7 +39,7 @@ class Text
     public $iWordwrap          = 0;
     public $font_family        = FF_DEFAULT;
     public $font_style         = FS_NORMAL; // old. FF_FONT1
-    protected $boxed           = false; // Should the text be boxed
+    public $boxed              = false; // Should the text be boxed
     protected $paragraph_align = 'left';
     protected $icornerradius   = 0;
     protected $ishadowwidth    = 3;
@@ -52,14 +56,14 @@ class Text
     private $_margin;
     private $_font_size = 8; // old. 12
 
-    //==================================
-    // CONSTRUCTOR
-
+    /**
+     * CONSTRUCTOR
+     */
     // Create new text at absolute pixel coordinates
     public function __construct($aTxt = '', $aXAbsPos = 0, $aYAbsPos = 0)
     {
         if (!is_string($aTxt)) {
-            JpGraphError::RaiseL(25050); //('First argument to Text::Text() must be s atring.');
+            Util\JpGraphError::RaiseL(25050); //('First argument to Text::Text() must be s atring.');
         }
         $this->t      = $aTxt;
         $this->x      = round($aXAbsPos);
@@ -67,8 +71,9 @@ class Text
         $this->margin = 0;
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     // Set the string in the text object
     public function Set($aTxt)
     {
@@ -211,7 +216,7 @@ class Text
         } elseif ($aDirection == 'v') {
             $this->dir = 90;
         } else {
-            JpGraphError::RaiseL(25051);
+            Util\JpGraphError::RaiseL(25051);
         }
         //(" Invalid direction specified for text.");
     }
@@ -290,11 +295,11 @@ class Text
     // Display text in image
     public function Stroke($aImg, $x = null, $y = null)
     {
-        if ($x !== null) {
+        if (is_numeric($x)) {
             $this->x = round($x);
         }
 
-        if ($y !== null) {
+        if (is_numeric($y)) {
             $this->y = round($y);
         }
 
@@ -394,11 +399,11 @@ class Text
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
         }
-        JpGraphError::RaiseL('25132', $name);
+        Util\JpGraphError::RaiseL('25132', $name);
     }
 
     public function __set($name, $value)
     {
         $this->{'_' . $name} = $value;
     }
-} // Class
+} // @class

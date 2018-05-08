@@ -3,7 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_scatter.php';
 
 // Each ballon is specificed by four values.
@@ -36,7 +37,7 @@ function FCallback($aYVal, $aXVal)
     global $format;
 
     return [$format[(string) $aXVal][(string) $aYVal][0], '',
-        $format[(string) $aXVal][(string) $aYVal][1], '', '', ];
+        $format[(string) $aXVal][(string) $aYVal][1], '', ''];
 }
 
 // Setup a basic graph

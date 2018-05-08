@@ -8,11 +8,11 @@ namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Util;
 
-//=============================================================
-// CLASS TTF
+/**
+ * @class TTF
 // Description: Handle TTF font names and mapping and loading of
 //              font files
-//=============================================================
+ */
 class TTF
 {
     private $font_files;
@@ -214,9 +214,10 @@ class TTF
         ];
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
     // Create the TTF file from the font specification
+     */
     public function File($family, $style = FS_NORMAL)
     {
         $fam = @$this->font_files[$family];
@@ -306,4 +307,4 @@ class TTF
             FS_ITALIC     => $aItalic,
             FS_BOLDITALIC => $aBoldIt];
     }
-} // Class
+} // @class

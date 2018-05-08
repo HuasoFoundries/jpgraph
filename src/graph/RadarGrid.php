@@ -6,21 +6,20 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===============================
-// File:        JPGRAPH_RADAR.PHP
+/**
+ * File:        JPGRAPH_RADAR.PHP
 // Description: Radar plot extension for JpGraph
 // Created:     2001-02-04
 // Ver:         $Id: jpgraph_radar.php 1783 2009-08-25 11:41:01Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//===============================
-
+ */
 require_once 'jpgraph_plotmark.inc.php';
 
-//===================================================
-// CLASS RadarGrid
+/**
+ * @class RadarGrid
 // Description: Draws grid for the radar graph
-//===================================================
+ */
 class RadarGrid
 {
     //extends Grid {
@@ -87,12 +86,12 @@ class RadarGrid
             $pnts = [];
         }
     }
-} // Class
+} // @class
 
-//===================================================
-// CLASS RadarPlot
+/**
+ * @class RadarPlot
 // Description: Plot a radarplot
-//===================================================
+ */
 class RadarPlot
 {
     public $mark;
@@ -109,8 +108,9 @@ class RadarPlot
     private $weight     = 1;
     private $linestyle  = 'solid';
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($data)
     {
         $this->data = $data;
@@ -254,6 +254,6 @@ class RadarPlot
             $graph->legend->Add($this->legend, $this->color, $this->mark);
         }
     }
-} // Class
+} // @class
 
 /* EOF */

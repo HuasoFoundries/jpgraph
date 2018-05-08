@@ -1,7 +1,7 @@
 <?php
 // $Id: canvasbezierex1.php,v 1.1 2002/10/05 21:04:28 aditus Exp $
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 

@@ -6,8 +6,8 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_ERRHANDLER.PHP
+/**
+ * File:        JPGRAPH_ERRHANDLER.PHP
 // Description: Error handler class together with handling of localized
 //              error messages. All localized error messages are stored
 //              in a separate file under the "lang/" subdirectory.
@@ -15,8 +15,7 @@ namespace Amenadiel\JpGraph\Util;
 // Ver:         $Id: jpgraph_errhandler.inc.php 1920 2009-12-08 10:02:26Z ljp $
 //
 // Copyright 2006 (c) Aditus Consulting. All rights reserved.
-//========================================================================
-
+ */
 if (!defined('DEFAULT_ERR_LOCALE')) {
     define('DEFAULT_ERR_LOCALE', 'en');
 }
@@ -35,16 +34,16 @@ class ErrMsgText
     public function __construct()
     {
         global $__jpg_err_locale;
-        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
 
         // If the chosen locale doesn't exist try english
         if (!file_exists($file)) {
             $__jpg_err_locale = 'en';
         }
 
-        $file = dirname(dirname(__FILE__)).'/lang/'.$__jpg_err_locale.'.inc.php';
+        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
         if (!file_exists($file)) {
-            die('Chosen locale file ("'.$file.'") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
+            die('Chosen locale file ("' . $file . '") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
         }
         require $file;
         $this->lt = $_jpg_messages;
@@ -54,7 +53,7 @@ class ErrMsgText
     {
         global $__jpg_err_locale;
         if (!isset($this->lt[$errnbr])) {
-            return 'Internal error: The specified error message ('.$errnbr.') does not exist in the chosen locale ('.$__jpg_err_locale.')';
+            return 'Internal error: The specified error message (' . $errnbr . ') does not exist in the chosen locale (' . $__jpg_err_locale . ')';
         }
         $ea = $this->lt[$errnbr];
         $j  = 0;

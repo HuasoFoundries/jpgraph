@@ -9,10 +9,10 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\ImgTrans;
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS GanttGraph
+/**
+ * @class GanttGraph
 // Description: Main class to handle gantt graphs
-//===================================================
+ */
 class GanttGraph extends Graph
 {
     public $scale; // Public accessible
@@ -31,9 +31,10 @@ class GanttGraph extends Graph
     private $iSimpleProgressStyle    = GANTT_SOLID;
     private $iZoomFactor             = 1.0;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
     // Create a new gantt graph
+     */
     public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         // Backward compatibility
@@ -61,9 +62,9 @@ class GanttGraph extends Graph
         $this->SetBox();
     }
 
-    //==================================
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function SetSimpleFont($aFont, $aSize)
     {
         $this->iSimpleFont     = $aFont;

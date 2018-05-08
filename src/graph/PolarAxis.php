@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//==================================
-// class PolarAxis
-//==================================
+/**
+ * @class PolarAxis
+ */
 class PolarAxis extends Axis
 {
     private $angle_step        = 15;

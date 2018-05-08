@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS RadarPlot
+/**
+ * @class RadarPlot
 // Description: Plot a radarplot
-//===================================================
+ */
 class RadarPlot
 {
     public $mark;
@@ -26,8 +26,9 @@ class RadarPlot
     private $weight     = 1;
     private $linestyle  = 'solid';
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($data)
     {
         $this->data = $data;
@@ -171,4 +172,4 @@ class RadarPlot
             $graph->legend->Add($this->legend, $this->color, $this->mark);
         }
     }
-} // Class
+} // @class

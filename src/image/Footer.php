@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Text\Text;
 
-//=======================================================
-// CLASS Footer
+/**
+ * @class Footer
 // Description: Encapsulates the footer line in the Graph
-//=======================================================
+ */
 class Footer
 {
     public $iLeftMargin   = 3;
@@ -61,8 +61,8 @@ class Footer
         $this->right->Align('right', 'bottom');
         if ($this->iTimer != null) {
             $this->right->Set(
-                $this->right->t.
-                sprintf('%.3f', $this->iTimer->Pop() / 1000.0).
+                $this->right->t .
+                sprintf('%.3f', $this->iTimer->Pop() / 1000.0) .
                 $this->itimerpoststring
             );
         }

@@ -6,7 +6,8 @@
 
 // Illustration of the different patterns for bands
 // $Id: smallstaticbandsex1.php,v 1.1 2002/09/01 21:51:08 aditus Exp $
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_bar.php';
 
 $datay = [10, 29, 3, 6];

@@ -4,14 +4,14 @@
  * JPGraph v3.6.15
  */
 
+/*
 // File:        JPGRAPH.PHP
 // Description: PHP Graph Plotting library. Base module.
 // Created:     2001-01-08
 // Ver:         $Id: jpgraph.php 1924 2010-01-11 14:03:26Z ljp $
 //
 // Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
+ */
 require_once 'jpg-config.inc.php';
 //require_once('jpgraph_gradient.php'); *
 //require_once('jpgraph_errhandler.inc.php');*
@@ -206,7 +206,7 @@ if (USE_CACHE) {
                 $msg = $t->Get(11, $file, $lineno);
                 die($msg);
             }
-            define('CACHE_DIR', $_SERVER['TEMP'].'/');
+            define('CACHE_DIR', $_SERVER['TEMP'] . '/');
         } else {
             define('CACHE_DIR', '/tmp/jpgraph_cache/');
         }
@@ -226,7 +226,7 @@ if (!defined('TTF_DIR')) {
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('TTF_DIR', $sroot.'/fonts/');
+        define('TTF_DIR', $sroot . '/fonts/');
     } else {
         define('TTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -243,7 +243,7 @@ if (!defined('MBTTF_DIR')) {
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('MBTTF_DIR', $sroot.'/fonts/');
+        define('MBTTF_DIR', $sroot . '/fonts/');
     } else {
         define('MBTTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -332,9 +332,9 @@ function GenImgName()
     $fname = basename($_SERVER['PHP_SELF']);
     if (!empty($_SERVER['QUERY_STRING'])) {
         $q = @$_SERVER['QUERY_STRING'];
-        $fname .= '_'.preg_replace('/\\W/', '_', $q).'.'.$img_format;
+        $fname .= '_' . preg_replace('/\\W/', '_', $q) . '.' . $img_format;
     } else {
-        $fname = substr($fname, 0, strlen($fname) - 4).'.'.$img_format;
+        $fname = substr($fname, 0, strlen($fname) - 4) . '.' . $img_format;
     }
 
     return $fname;

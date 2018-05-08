@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // The callback that converts timestamp to minutes and seconds
 function TimeCallback($aVal)
@@ -27,7 +28,7 @@ for ($i = 0; $i < $n; ++$i) {
 // Setup the basic graph
 $graph = new Graph\Graph(324, 250);
 $graph->SetMargin(40, 40, 30, 70);
-$graph->title->Set('Date: '.date('Y-m-d', $now));
+$graph->title->Set('Date: ' . date('Y-m-d', $now));
 $graph->SetAlphaBlending();
 
 // Setup a manual x-scale (We leave the sentinels for the

@@ -4,10 +4,10 @@
  * JPGraph v3.6.15
  */
 
-// File:	ODOEX011.PHP
+// File:    ODOEX011.PHP
 // Description: Example 0 for odometer graphs
-// Created:	2002-02-22
-// Version:	$Id$
+// Created:    2002-02-22
+// Version:    $Id$
 //
 // Comment:
 // Example file for odometer graph. Extends odoex10.php with graph titles
@@ -16,7 +16,8 @@
 //
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------

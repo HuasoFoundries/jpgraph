@@ -8,31 +8,31 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS WindrosePlotScale
-//===================================================
+/**
+ * @class WindrosePlotScale
+ */
 class WindrosePlotScale
 {
     private $iMax;
-    private $iDelta           = 5;
-    private $iNumCirc         = 3;
-    public $iMaxNum           = 0;
-    private $iLblFmt          = '%.0f%%';
-    public $iFontFamily       = FF_VERDANA;
-    public $iFontStyle        = FS_NORMAL;
-    public $iFontSize         = 10;
-    public $iZFontFamily      = FF_ARIAL;
-    public $iZFontStyle       = FS_NORMAL;
-    public $iZFontSize        = 10;
-    public $iFontColor        = 'black';
-    public $iZFontColor       = 'black';
-    private $iFontFrameColor  = false;
-    private $iFontBkgColor    = false;
+    private $iDelta          = 5;
+    private $iNumCirc        = 3;
+    public $iMaxNum          = 0;
+    private $iLblFmt         = '%.0f%%';
+    public $iFontFamily      = FF_VERDANA;
+    public $iFontStyle       = FS_NORMAL;
+    public $iFontSize        = 10;
+    public $iZFontFamily     = FF_ARIAL;
+    public $iZFontStyle      = FS_NORMAL;
+    public $iZFontSize       = 10;
+    public $iFontColor       = 'black';
+    public $iZFontColor      = 'black';
+    private $iFontFrameColor = false;
+    private $iFontBkgColor   = false;
     private $iLblZeroTxt;
-    private $iLblAlign        = LBLALIGN_CENTER;
-    public $iAngle            = 'auto';
-    private $iManualScale     = false;
-    private $iHideLabels      = false;
+    private $iLblAlign    = LBLALIGN_CENTER;
+    public $iAngle        = 'auto';
+    private $iManualScale = false;
+    private $iHideLabels  = false;
 
     public function __construct($aData)
     {

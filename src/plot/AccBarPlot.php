@@ -6,17 +6,18 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS AccBarPlot
+/**
+ * @class AccBarPlot
 // Description: Produce accumulated bar plots
-//===================================================
+ */
 class AccBarPlot extends BarPlot
 {
     public $plots;
     private $nbrplots = 0;
 
-    //==================================
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($plots)
     {
         $this->plots    = $plots;
@@ -46,8 +47,9 @@ class AccBarPlot extends BarPlot
         $this->value     = new DisplayValue();
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         $n = count($this->plots);
@@ -451,4 +453,4 @@ class AccBarPlot extends BarPlot
 
         return true;
     }
-} // Class
+} // @class

@@ -3,13 +3,13 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $datay = [2, 3, 5, 8, 12, 6, 3];
 $datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
-    '1600x1200(32)', ];
+    '1600x1200(32)'];
 
 // Size of graph
 $width  = 300;

@@ -3,9 +3,10 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_line.php';
+use Amenadiel\JpGraph\Plot;
 
 $theme = isset($_GET['theme']) ? $_GET['theme'] : null;
 
@@ -35,7 +36,7 @@ $plot = [];
 // Create the bar plots
 for ($i = 0; $i < 4; ++$i) {
     $plot[$i] = new Plot\BarPlot($data[$i]);
-    $plot[$i]->SetLegend('plot'.($i + 1));
+    $plot[$i]->SetLegend('plot' . ($i + 1));
 }
 //$acc1 = new Plot\AccBarPlot(array($plot[0], $plot[1]));
 //$acc1->value->Show();
@@ -43,7 +44,7 @@ $gbplot = new Plot\GroupBarPlot([$plot[2], $plot[1]]);
 
 for ($i = 4; $i < 8; ++$i) {
     $plot[$i] = new Plot\LinePlot($data[$i]);
-    $plot[$i]->SetLegend('plot'.$i);
+    $plot[$i]->SetLegend('plot' . $i);
     $plot[$i]->value->Show();
 }
 

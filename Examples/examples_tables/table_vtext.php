@@ -1,5 +1,5 @@
 <?php
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';
 
@@ -8,12 +8,12 @@ $graph = new CanvasGraph(630, 600);
 
 // Setup the basic table
 $data = [
-    ['GROUP 1O',        'w631', 'w632', 'w633', 'w634', 'w635', 'w636'],
+    ['GROUP 1O', 'w631', 'w632', 'w633', 'w634', 'w635', 'w636'],
     ['Critical (sum)', 13, 17, 15, 8, 3, 9],
     ['High (sum)', 34, 35, 26, 20, 22, 16],
     ['Low (sum)', 41, 43, 49, 45, 51, 47],
     ['Sum:', 88, 95, 90, 73, 76, 72],
-    ];
+];
 
 // Setup a basic table
 $table = new GTextTable();
@@ -37,6 +37,3 @@ $graph->Add($table);
 
 // and send it back to the client
 $graph->Stroke();
-
-?>
-

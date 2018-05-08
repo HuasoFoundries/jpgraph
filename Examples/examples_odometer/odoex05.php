@@ -4,10 +4,10 @@
  * JPGraph v3.6.15
  */
 
-// File:	ODOEX05.PHP
+// File:    ODOEX05.PHP
 // Description: Example 1 for odometer graphs
-// Created:	2002-02-22
-// Version:	$Id$
+// Created:    2002-02-22
+// Version:    $Id$
 //
 // Comment:
 // Example file for odometer graph. This examples extends odoex04
@@ -17,7 +17,8 @@
 //
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------
@@ -67,7 +68,7 @@ $odo->AddIndication(80, 100, 'red');
 //---------------------------------------------------------------------
 // Set the center area that will not be affected by the color bands
 //---------------------------------------------------------------------
-$odo->SetCenterAreaWidth(0.4);  // Fraction of radius
+$odo->SetCenterAreaWidth(0.4); // Fraction of radius
 
 //---------------------------------------------------------------------
 // Adjust scale ticks to be shown at 10 steps interval and scale
@@ -100,7 +101,7 @@ $odo->label->Set('% Passed');
 // Set a new style for the needle
 //---------------------------------------------------------------------
 $odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
-$odo->needle->SetLength(0.7);  // Length as 70% of the radius
+$odo->needle->SetLength(0.7); // Length as 70% of the radius
 $odo->needle->SetFillColor('orange');
 
 //---------------------------------------------------------------------
@@ -108,7 +109,7 @@ $odo->needle->SetFillColor('orange');
 //---------------------------------------------------------------------
 $odo->needle2->Set(24);
 $odo->needle2->SetStyle(NEEDLE_STYLE_SMALL_TRIANGLE);
-$odo->needle2->SetLength(0.55);  // Length as 70% of the radius
+$odo->needle2->SetLength(0.55); // Length as 70% of the radius
 $odo->needle2->SetFillColor('lightgray');
 $odo->needle2->Show();
 

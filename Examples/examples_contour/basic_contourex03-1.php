@@ -6,7 +6,7 @@
 
 // Basic contour plot example
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -16,7 +16,7 @@ $data = [
     [18, 5, 1, 9],
     [13, 9, 5, 12],
     [5, 3, 8, 9],
-    [1, 8, 5, 7], ];
+    [1, 8, 5, 7]];
 
 // Basic contour graph
 $graph = new Graph\Graph(350, 250);

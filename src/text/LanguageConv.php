@@ -6,13 +6,13 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//=================================================================
-// CLASS LanguageConv
+/**
+ * @class LanguageConv
 // Description:
 // Converts various character encoding into proper
 // UTF-8 depending on how the library have been configured and
 // what font family is being used
-//=================================================================
+ */
 class LanguageConv
 {
     private $g2312;
@@ -80,7 +80,7 @@ class LanguageConv
         for ($i = 0; $i < strlen($isoline); ++$i) {
             $thischar = substr($isoline, $i, 1);
             $charcode = ord($thischar);
-            $uniline .= ($charcode > 175) ? '&#'.(1040 + ($charcode - 176)).';' : $thischar;
+            $uniline .= ($charcode > 175) ? '&#' . (1040 + ($charcode - 176)) . ';' : $thischar;
         }
 
         return $uniline;
@@ -93,7 +93,7 @@ class LanguageConv
         for ($i = 0; $i < strlen($isoline); ++$i) {
             $thischar = substr($isoline, $i, 1);
             $charcode = ord($thischar);
-            $uniline .= ($charcode > 179 && $charcode != 183 && $charcode != 187 && $charcode != 189) ? '&#'.(900 + ($charcode - 180)).';' : $thischar;
+            $uniline .= ($charcode > 179 && $charcode != 183 && $charcode != 187 && $charcode != 189) ? '&#' . (900 + ($charcode - 180)) . ';' : $thischar;
         }
 
         return $uniline;
@@ -107,9 +107,9 @@ class LanguageConv
             $thischar = substr($winline, $i, 1);
             $charcode = ord($thischar);
             if ($charcode == 161 || $charcode == 162) {
-                $uniline .= '&#'.(740 + $charcode).';';
+                $uniline .= '&#' . (740 + $charcode) . ';';
             } else {
-                $uniline .= (($charcode > 183 && $charcode != 187 && $charcode != 189) || $charcode == 180) ? '&#'.(900 + ($charcode - 180)).';' : $thischar;
+                $uniline .= (($charcode > 183 && $charcode != 187 && $charcode != 189) || $charcode == 180) ? '&#' . (900 + ($charcode - 180)) . ';' : $thischar;
             }
         }
 
@@ -124,7 +124,7 @@ class LanguageConv
         $n = strlen($isoline);
         for ($i = 0; $i < $n; ++$i) {
             $c = ord(substr($isoline, $i, 1));
-            $o .= ($c > 223) && ($c < 251) ? '&#'.(1264 + $c).';' : chr($c);
+            $o .= ($c > 223) && ($c < 251) ? '&#' . (1264 + $c) . ';' : chr($c);
         }
 
         return utf8_encode($o);

@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//============================================================
-// CLASS WindroseGraph
-//============================================================
+/**
+ * @class WindroseGraph
+ */
 class WindroseGraph extends Graph
 {
     private $posx;
@@ -53,8 +53,9 @@ class WindroseGraph extends Graph
         }
     }
 
-    //==================================
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Add($aObj)
     {
         if (is_array($aObj) && count($aObj) > 0) {
@@ -132,4 +133,4 @@ class WindroseGraph extends Graph
             $aStrokeFileName
         );
     }
-} // Class
+} // @class

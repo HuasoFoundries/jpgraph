@@ -5,13 +5,15 @@
  */
 
 //=======================================================================
-// File:	    MKGRAD.PHP
-// Description:	Simple tool to create a gradient background
-// Ver: 	    $Id$
+// File:        MKGRAD.PHP
+// Description:    Simple tool to create a gradient background
+// Ver:         $Id$
 //=======================================================================
 
 // Basic library classes
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_bar.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 
@@ -34,22 +36,22 @@ class Form
         usort($this->iColors, '_cmp');
 
         $this->iGradstyles = [
-        'Vertical', 2,
-        'Horizontal', 1,
-        'Vertical from middle', 3,
-        'Horizontal from middle', 4,
-        'Horizontal wider middle', 6,
-        'Vertical wider middle', 7,
-        'Rectangle', 5, ];
+            'Vertical', 2,
+            'Horizontal', 1,
+            'Vertical from middle', 3,
+            'Horizontal from middle', 4,
+            'Horizontal wider middle', 6,
+            'Vertical wider middle', 7,
+            'Rectangle', 5];
     }
 
     public function Run()
     {
         echo '<h3>Generate gradient background</h3>';
         echo '<form METHOD=POST action=""><table style="border:blue solid 1;">';
-        echo '<tr><td>Width:<br>'.$this->GenHTMLInput('w', 8, 4, 300).'</td>';
+        echo '<tr><td>Width:<br>' . $this->GenHTMLInput('w', 8, 4, 300) . '</td>';
         echo "\n";
-        echo '<td>Height:<br>'.$this->GenHTMLInput('h', 8, 4, 300).'</td></tr>';
+        echo '<td>Height:<br>' . $this->GenHTMLInput('h', 8, 4, 300) . '</td></tr>';
         echo "\n";
         echo '<tr><td>From Color:<br>';
         echo $this->GenHTMLSelect('fc', $this->iColors);
@@ -62,7 +64,7 @@ class Form
         echo '<tr><td colspan=2>Filename: (empty to stream)<br>';
         echo $this->GenHTMLInput('fn', 55, 100);
         echo '</td></tr>';
-        echo '<tr><td colspan=2 align=right>'.$this->GenHTMLSubmit('submit').'</td></tr>';
+        echo '<tr><td colspan=2 align=right>' . $this->GenHTMLSubmit('submit') . '</td></tr>';
         echo '</table>';
         echo '</form>';
     }
@@ -72,47 +74,47 @@ class Form
         return '<INPUT TYPE=submit name="ok"  value=" Ok " >';
     }
 
-    public function GenHTMLInput($name, $len, $maxlen=100, $val='')
+    public function GenHTMLInput($name, $len, $maxlen = 100, $val = '')
     {
-        return '<INPUT TYPE=TEXT NAME='.$name.' VALUE="'.$val.'" SIZE='.$len.' MAXLENGTH='.$maxlen.'>';
+        return '<INPUT TYPE=TEXT NAME=' . $name . ' VALUE="' . $val . '" SIZE=' . $len . ' MAXLENGTH=' . $maxlen . '>';
     }
 
-    public function GenHTMLSelect($name, $option, $selected='', $size=0)
+    public function GenHTMLSelect($name, $option, $selected = '', $size = 0)
     {
-        $txt="<select name=${name}";
+        $txt = "<select name=${name}";
         if ($size > 0) {
             $txt .= " size=${size} >";
         } else {
             $txt .= '>';
         }
-        for ($i=0; $i < count($option); ++$i) {
+        for ($i = 0; $i < count($option); ++$i) {
             if ($selected == $option[$i]) {
-                $txt=$txt."<option selected value=\"{$option[$i]}\">{$option[$i]}</option>\n";
+                $txt = $txt . "<option selected value=\"{$option[$i]}\">{$option[$i]}</option>\n";
             } else {
-                $txt=$txt.'<option value="'.$option[$i]."\">{$option[$i]}</option>\n";
+                $txt = $txt . '<option value="' . $option[$i] . "\">{$option[$i]}</option>\n";
             }
         }
 
-        return $txt."</select>\n";
+        return $txt . "</select>\n";
     }
 
-    public function GenHTMLSelectCode($name, $option, $selected='', $size=0)
+    public function GenHTMLSelectCode($name, $option, $selected = '', $size = 0)
     {
-        $txt="<select name=${name}";
+        $txt = "<select name=${name}";
         if ($size > 0) {
             $txt .= " size=${size} >";
         } else {
             $txt .= '>';
         }
-        for ($i=0; $i < count($option); $i += 2) {
+        for ($i = 0; $i < count($option); $i += 2) {
             if ($selected == $option[($i + 1)]) {
-                $txt=$txt.'<option selected value='.$option[($i + 1)].">{$option[$i]}</option>\n";
+                $txt = $txt . '<option selected value=' . $option[($i + 1)] . ">{$option[$i]}</option>\n";
             } else {
-                $txt=$txt.'<option value="'.$option[($i + 1)]."\">{$option[$i]}</option>\n";
+                $txt = $txt . '<option value="' . $option[($i + 1)] . "\">{$option[$i]}</option>\n";
             }
         }
 
-        return $txt."</select>\n";
+        return $txt . "</select>\n";
     }
 }
 
@@ -136,12 +138,12 @@ class Driver
 
     public function GenGradImage()
     {
-        $aWidth     = (int) @$_POST['w'];
-        $aHeight    = (int) @$_POST['h'];
-        $aFrom      = @$_POST['fc'];
-        $aTo        = @$_POST['tc'];
-        $aStyle     = @$_POST['s'];
-        $aFileName  = @$_POST['fn'];
+        $aWidth    = (int) @$_POST['w'];
+        $aHeight   = (int) @$_POST['h'];
+        $aFrom     = @$_POST['fc'];
+        $aTo       = @$_POST['tc'];
+        $aStyle    = @$_POST['s'];
+        $aFileName = @$_POST['fn'];
 
         $this->iWidth     = $aWidth;
         $this->iHeight    = $aHeight;
@@ -154,11 +156,11 @@ class Driver
         $this->grad->FilledRectangle(
             0,
             0,
-                     $this->iWidth,
+            $this->iWidth,
             $this->iHeight,
-                     $this->iFromColor,
-                     $this->iToColor,
-                     $this->iStyle
+            $this->iFromColor,
+            $this->iToColor,
+            $this->iStyle
         );
 
         if ($aFileName != '') {
