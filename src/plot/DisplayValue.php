@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Text;
 
 /**
  * @class DisplayValue
-// Description: Used to print data values at data points
+ * // Description: Used to print data values at data points
  */
 class DisplayValue
 {

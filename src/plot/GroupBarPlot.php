@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class GroupBarPlot
-// Description: Produce grouped bar plots
+ * // Description: Produce grouped bar plots
  */
 class GroupBarPlot extends BarPlot
 {

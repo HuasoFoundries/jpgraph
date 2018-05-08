@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LogTicks
-// Description:
+ * // Description:
  */
 class LogTicks extends Ticks
 {
@@ -20,7 +20,9 @@ class LogTicks extends Ticks
     /**
      * CONSTRUCTOR
      */
-    public function LogTicks() {}
+    public function LogTicks()
+    {
+    }
 
     /**
      * PUBLIC METHODS

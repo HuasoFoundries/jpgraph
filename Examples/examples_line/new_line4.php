@@ -6,6 +6,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 require_once 'jpgraph/jpgraph_scatter.php';
 
 $datay1 = [33, 20, 24, 5, 38, 24, 22];

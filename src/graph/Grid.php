@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Grid
-// Description: responsible for drawing grid lines in graph
+ * // Description: responsible for drawing grid lines in graph
  */
 class Grid
 {
@@ -86,7 +86,7 @@ class Grid
 
     /**
      * Private methods
-    // Draw the grid
+     * // Draw the grid
      */
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {

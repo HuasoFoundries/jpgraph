@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_FLAGS.PHP
-// Description: Class Jpfile. Handles plotmarks
-// Created:     2003-06-28
-// Ver:         $Id: jpgraph_flags.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Class Jpfile. Handles plotmarks
+ * // Created:     2003-06-28
+ * // Ver:         $Id: jpgraph_flags.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**

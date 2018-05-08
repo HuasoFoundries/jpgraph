@@ -6,11 +6,12 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 require_once 'jpgraph/jpgraph_bar.php';
 
 // Some data
 
-$steps = 100;for ($i = 0; $i < $steps; ++$i) {
+$steps         = 100; for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
     $datax[]   = $i;
     if ($i % 10 == 0) {

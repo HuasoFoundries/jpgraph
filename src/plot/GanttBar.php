@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class GanttBar
-// Responsible for formatting individual gantt bars
+ * // Responsible for formatting individual gantt bars
  */
 class GanttBar extends GanttPlotObject
 {

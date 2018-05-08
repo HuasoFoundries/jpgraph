@@ -5,8 +5,10 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_log.php';
 use Amenadiel\JpGraph\Plot;
+
 require_once 'jpgraph/jpgraph_scatter.php';
 
 $ab2 = [1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0,
