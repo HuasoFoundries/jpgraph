@@ -8,8 +8,8 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class HeaderProperty
-// Description: Data encapsulating class to hold property
-// for each type of the scale headers
+ * // Description: Data encapsulating class to hold property
+ * // for each type of the scale headers
  */
 class HeaderProperty
 {

@@ -8,8 +8,8 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class GTextTable
-// Description:
-// Graphic text table
+ * // Description:
+ * // Graphic text table
  */
 class GTextTable
 {
