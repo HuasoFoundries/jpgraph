@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Graph;
 
 /**
  * @class ScatterPlot
-// Description: Render X and Y plots
+ * // Description: Render X and Y plots
  */
 class ScatterPlot extends Plot
 {

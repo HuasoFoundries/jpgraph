@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Util;
 
 /**
  * @class DateLocale
-// Description: Hold localized text used in dates
+ * // Description: Hold localized text used in dates
  */
 class DateLocale
 {
