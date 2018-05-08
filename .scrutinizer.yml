@@ -11,10 +11,11 @@ build:
                 override:
                         - php-scrutinizer-run
                         - make test_coverage
+                coverage:
+                    file: 'tests/_output/coverage.xml'
+                    format: 'clover'
         tests: true
-        coverage:
-            file: 'tests/_output/coverage.xml'
-            format: 'clover'
+        
 checks:
     php:
         code_rating: true
