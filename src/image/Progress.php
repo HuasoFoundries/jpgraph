@@ -10,8 +10,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Progress
-// Holds parameters for the progress indicator
-// displyed within a bar
+ * // Holds parameters for the progress indicator
+ * // displyed within a bar
  */
 class Progress
 {

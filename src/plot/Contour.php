@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Image;
 
 /**
  * File:        JPGRAPH_CONTOUR.PHP
-// Description: Contour plot
-// Created:     2009-03-08
-// Ver:         $Id: jpgraph_contour.php 1870 2009-09-29 04:24:18Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Contour plot
+ * // Created:     2009-03-08
+ * // Ver:         $Id: jpgraph_contour.php 1870 2009-09-29 04:24:18Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 define('HORIZ_EDGE', 0);
 define('VERT_EDGE', 1);

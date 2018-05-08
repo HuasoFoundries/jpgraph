@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 $data = [40, 60, 21, 33];
 
 $__width  = 300;

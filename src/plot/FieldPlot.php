@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Image;
 
 /**
  * @class FieldPlot
-// Description: Render a field plot
+ * // Description: Render a field plot
  */
 class FieldPlot extends Plot
 {
