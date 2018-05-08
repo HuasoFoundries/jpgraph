@@ -10,8 +10,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class TTF
-// Description: Handle TTF font names and mapping and loading of
-//              font files
+ * // Description: Handle TTF font names and mapping and loading of
+ * //              font files
  */
 class TTF
 {
@@ -29,27 +29,27 @@ class TTF
 
         // File names for available fonts
         $this->font_files = [
-            FF_COURIER          => [FS_NORMAL => 'cour.ttf',
+            FF_COURIER          => [FS_NORMAL     => 'cour.ttf',
                 FS_BOLD                           => 'courbd.ttf',
                 FS_ITALIC                         => 'couri.ttf',
                 FS_BOLDITALIC                     => 'courbi.ttf'],
-            FF_GEORGIA          => [FS_NORMAL => 'georgia.ttf',
+            FF_GEORGIA          => [FS_NORMAL     => 'georgia.ttf',
                 FS_BOLD                           => 'georgiab.ttf',
                 FS_ITALIC                         => 'georgiai.ttf',
                 FS_BOLDITALIC                     => ''],
-            FF_TREBUCHE         => [FS_NORMAL => 'trebuc.ttf',
+            FF_TREBUCHE         => [FS_NORMAL     => 'trebuc.ttf',
                 FS_BOLD                           => 'trebucbd.ttf',
                 FS_ITALIC                         => 'trebucit.ttf',
                 FS_BOLDITALIC                     => 'trebucbi.ttf'],
-            FF_VERDANA          => [FS_NORMAL => 'verdana.ttf',
+            FF_VERDANA          => [FS_NORMAL     => 'verdana.ttf',
                 FS_BOLD                           => 'verdanab.ttf',
                 FS_ITALIC                         => 'verdanai.ttf',
                 FS_BOLDITALIC                     => ''],
-            FF_TIMES            => [FS_NORMAL => 'times.ttf',
+            FF_TIMES            => [FS_NORMAL     => 'times.ttf',
                 FS_BOLD                           => 'timesbd.ttf',
                 FS_ITALIC                         => 'timesi.ttf',
                 FS_BOLDITALIC                     => 'timesbi.ttf'],
-            FF_COMIC            => [FS_NORMAL => 'comic.ttf',
+            FF_COMIC            => [FS_NORMAL     => 'comic.ttf',
                 FS_BOLD                           => 'comicbd.ttf',
                 FS_ITALIC                         => '',
                 FS_BOLDITALIC                     => ''],
@@ -57,19 +57,19 @@ class TTF
             FS_BOLD => 'arialbd.ttf',
             FS_ITALIC => 'ariali.ttf',
             FS_BOLDITALIC => 'arialbi.ttf'),*/
-            FF_ARIAL            => [FS_NORMAL => 'arial.ttf',
+            FF_ARIAL            => [FS_NORMAL     => 'arial.ttf',
                 FS_BOLD                           => 'msttcorefonts/Arial_Black.ttf',
                 FS_ITALIC                         => 'ariali.ttf',
                 FS_BOLDITALIC                     => 'arialbi.ttf'],
-            FF_VERA             => [FS_NORMAL => 'Vera.ttf',
+            FF_VERA             => [FS_NORMAL     => 'Vera.ttf',
                 FS_BOLD                           => 'VeraBd.ttf',
                 FS_ITALIC                         => 'VeraIt.ttf',
                 FS_BOLDITALIC                     => 'VeraBI.ttf'],
-            FF_VERAMONO         => [FS_NORMAL => 'VeraMono.ttf',
+            FF_VERAMONO         => [FS_NORMAL     => 'VeraMono.ttf',
                 FS_BOLD                           => 'VeraMoBd.ttf',
                 FS_ITALIC                         => 'VeraMoIt.ttf',
                 FS_BOLDITALIC                     => 'VeraMoBI.ttf'],
-            FF_VERASERIF        => [FS_NORMAL => 'VeraSe.ttf',
+            FF_VERASERIF        => [FS_NORMAL     => 'VeraSe.ttf',
                 FS_BOLD                           => 'VeraSeBd.ttf',
                 FS_ITALIC                         => '',
                 FS_BOLDITALIC                     => ''],
@@ -216,7 +216,7 @@ class TTF
 
     /**
      * PUBLIC METHODS
-    // Create the TTF file from the font specification
+     * // Create the TTF file from the font specification
      */
     public function File($family, $style = FS_NORMAL)
     {
