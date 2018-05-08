@@ -77,14 +77,18 @@ define('DEFAULT_GFORMAT', 'auto');
 // false will still create the image in the cache directory
 // just not use it. By setting USE_CACHE=false no files will even
 // be generated in the cache directory.
-define('USE_CACHE', false);
+if (!defined('USE_CACHE')) {
+	define('USE_CACHE', false);
+}
 
 // Should we try to find an image in the cache before generating it?
 // Set this define to false to bypass the reading of the cache and always
 // regenerate the image. Note that even if reading the cache is
 // disabled the cached will still be updated with the newly generated
 // image. Set also 'USE_CACHE' below.
-define('READ_CACHE', true);
+if (!defined('READ_CACHE')) {
+	define('READ_CACHE', true);
+}
 
 // Determine if the error handler should be image based or purely
 // text based. Image based makes it easier since the script will
