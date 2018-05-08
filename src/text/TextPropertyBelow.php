@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class GanttVLine
-// Responsible for formatting individual milestones
+ * // Responsible for formatting individual milestones
  */
 class TextPropertyBelow extends TextProperty
 {
