@@ -44,12 +44,12 @@ class ImgStreamCache
     {
         // Check if we should always stroke the image to a file
         if (_FORCE_IMGTOFILE) {
-            $aStrokeFileName = _FORCE_IMGDIR . GenImgName();
+            $aStrokeFileName = _FORCE_IMGDIR . Util\Helper::GenImgName();
         }
 
         if ($aStrokeFileName != '') {
             if ($aStrokeFileName == 'auto') {
-                $aStrokeFileName = GenImgName();
+                $aStrokeFileName = Util\Helper::GenImgName();
             }
 
             if (file_exists($aStrokeFileName)) {

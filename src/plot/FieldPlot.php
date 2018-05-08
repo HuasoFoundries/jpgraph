@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Image;
+
 /**
  * @class FieldPlot
 // Description: Render a field plot
@@ -33,7 +35,7 @@ class FieldPlot extends Plot
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(15);
 
-        $this->arrow = new FieldArrow();
+        $this->arrow = new Image\FieldArrow();
     }
 
     public function SetCallback($aFunc)

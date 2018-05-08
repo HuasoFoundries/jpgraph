@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $errdatay = [11, 9, 2, 4, 19, 26, 13, 19, 7, 12];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $graph->img->SetMargin(40, 30, 20, 40);

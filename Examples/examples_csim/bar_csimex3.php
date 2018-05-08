@@ -14,7 +14,9 @@ $data1y = [5, 8, 19, 3, 10, 5];
 $data2y = [12, 2, 12, 7, 14, 4];
 
 // Setup the basic parameters for the graph
-$graph = new Graph\Graph(400, 700);
+$__width  = 400;
+$__height = 700;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetAngle(90);
 $graph->SetScale('textlin');
 

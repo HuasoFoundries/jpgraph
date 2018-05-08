@@ -9,7 +9,9 @@ use Amenadiel\JpGraph\Plot;
 
 $ydata = [12, 17, 22, 19, 5, 15];
 
-$graph = new Graph\Graph(270, 170);
+$__width  = 270;
+$__height = 170;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 90, 30, 30);
 $graph->SetScale('textlin');
 

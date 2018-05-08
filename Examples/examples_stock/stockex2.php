@@ -17,7 +17,9 @@ $datay = [
     40, 29, 22, 45];
 
 // Setup basic graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 $graph->SetFrame(false);

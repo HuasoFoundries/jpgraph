@@ -38,8 +38,8 @@ $graph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
 $graph->title->SetColor('white');
 
 // Create two lines to add as markers
-$l1 = new PlotLine(VERTICAL, 5, 'lightgray:1.5', 4);
-$l2 = new PlotLine(HORIZONTAL, 3, 'lightgray:1.5', 4);
+$l1 = new Plot\PlotLine(VERTICAL, 5, 'lightgray:1.5', 4);
+$l2 = new Plot\PlotLine(HORIZONTAL, 3, 'lightgray:1.5', 4);
 
 // Create one matrix plot
 $mp = new MatrixPlot($data, 1);

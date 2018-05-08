@@ -17,7 +17,9 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Setup the graph
-$graph = new Graph\Graph(450, 250);
+$__width  = 450;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 150, 40, 30);
 $graph->SetMarginColor('white');
 

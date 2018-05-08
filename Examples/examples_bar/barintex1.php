@@ -13,7 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [1, 1, 0.5];
 
 // Create the graph and setup the basic parameters
-$graph = new Graph\Graph(460, 200, 'auto');
+$__width  = 460;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 30, 40);
 $graph->SetScale('textint');
 $graph->SetShadow();

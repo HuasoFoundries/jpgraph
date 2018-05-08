@@ -33,7 +33,9 @@ $data_freq    = [22, 20, 12, 10, 5, 4, 2];
 $data_accfreq = accfreq($data_freq);
 
 // Create the graph.
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 
 // Setup some basic graph parameters
 $graph->SetScale('textlin');

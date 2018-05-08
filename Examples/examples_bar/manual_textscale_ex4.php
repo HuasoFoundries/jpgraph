@@ -9,7 +9,9 @@ use Amenadiel\JpGraph\Plot;
 
 define('DATAPERMONTH', 40);
 // new Graph\Graph with a drop shadow
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 //$graph->SetShadow();
 
 // Some data

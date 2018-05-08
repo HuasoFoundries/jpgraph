@@ -22,7 +22,9 @@ $data  = [
 ];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 
 $graph->SetScale('textlin');
 if ($theme) {

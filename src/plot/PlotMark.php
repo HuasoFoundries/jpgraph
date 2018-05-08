@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 
@@ -274,7 +275,7 @@ class PlotMark
                     // Small optimization, if we have already read an image don't
                     // waste time reading it again.
                     if ($this->markimg == '' || !($this->oldfilename === $filename)) {
-                        $this->markimg     = Graph::LoadBkgImage('', $filename);
+                        $this->markimg     = Graph\Graph::LoadBkgImage('', $filename);
                         $this->oldfilename = $filename;
                     }
 

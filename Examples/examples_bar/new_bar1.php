@@ -12,7 +12,9 @@ $data2y = [61, 30, 82, 105];
 $data3y = [115, 50, 70, 93];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(350, 200, 'auto');
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
 $theme_class = new UniversalTheme();

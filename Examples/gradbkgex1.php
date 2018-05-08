@@ -11,7 +11,9 @@ $datay1 = [4, 26, 12, 18, 8, 22];
 $datay2 = [12, 9, 42, 8, 20, 19];
 
 // Setup the graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin', 0, 50);
 $graph->SetMargin(30, 50, 30, 30);

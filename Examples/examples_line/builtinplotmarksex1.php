@@ -6,13 +6,14 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-require_once 'jpgraph/jpgraph_plotline.php';
 
 $datay1 = [2, 6, 7, 12, 13, 18];
 $datay2 = [5, 12, 12, 19, 25, 20];
 
 // Setup the graph
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 20, 60, 20);
 $graph->SetMarginColor('white');
 $graph->SetScale('linlin');
@@ -60,7 +61,7 @@ $p2->mark->SetType(MARK_IMG_MBALL, 'red');
 $graph->Add($p2);
 
 // Add a vertical line at the end scale position '7'
-$l1 = new PlotLine(VERTICAL, 7);
+$l1 = new Plot\PlotLine(VERTICAL, 7);
 $graph->Add($l1);
 
 // Output the graph

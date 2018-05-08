@@ -22,12 +22,29 @@ class AxisTest extends \Codeception\Test\Unit
 
         $size = getimagesizefromstring($img);
 
-        \Codeception\Util\Debug::debug($size);
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
+        //\Codeception\Util\Debug::debug($size);
 
     }
 
     public function testFileIterator()
     {
-        $files = ['axislabelbkgex01.php', 'axislabelbkgex02.php', 'axislabelbkgex03.php', 'axislabelbkgex04.php', 'axislabelbkgex05.php', 'axislabelbkgex06.php', 'axislabelbkgex07.php', 'dupyaxisex1.php', 'inyaxisex1.php', 'inyaxisex2.php', 'inyaxisex3.php', 'mulyaxisex1.php', 'topxaxisex1.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['axislabelbkgex01.php',
+            'axislabelbkgex02.php',
+            'axislabelbkgex03.php',
+            'axislabelbkgex04.php',
+            'axislabelbkgex05.php',
+            'axislabelbkgex06.php',
+            'axislabelbkgex07.php',
+            'dupyaxisex1.php',
+            'inyaxisex1.php',
+            'inyaxisex2.php',
+            'inyaxisex3.php',
+            'mulyaxisex1.php',
+            'topxaxisex1.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

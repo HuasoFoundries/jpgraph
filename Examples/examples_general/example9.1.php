@@ -12,7 +12,9 @@ $ydata = [11, 3, 8, 42, 5, 1, 9, 13, 5, 7];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'aug', 'Sep', 'Oct'];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlog');
 
 $graph->img->SetMargin(40, 110, 20, 40);

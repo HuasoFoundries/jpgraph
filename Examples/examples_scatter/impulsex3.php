@@ -5,7 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 $numpoints = 50;
 $k         = 0.05;
@@ -22,7 +22,9 @@ function mycallback($l)
 }
 
 // Setup the basic parameters for the graph
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 $graph->SetBox();
@@ -44,7 +46,7 @@ $graph->yaxis->SetTickSide(SIDE_LEFT);
 $graph->xaxis->SetTickSide(SIDE_DOWN);
 
 // Create a new impuls type scatter plot
-$sp1 = new ScatterPlot($datay);
+$sp1 = new Plot\ScatterPlot($datay);
 $sp1->mark->SetType(MARK_SQUARE);
 $sp1->mark->SetFillColor('red');
 $sp1->SetImpuls();

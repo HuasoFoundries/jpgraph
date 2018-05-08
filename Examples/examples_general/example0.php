@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 // Create the linear plot

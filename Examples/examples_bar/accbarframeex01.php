@@ -12,7 +12,9 @@ $datay1 = [13, 8, 19, 7, 17, 6];
 $datay2 = [4, 5, 2, 7, 5, 25];
 
 // Create the graph.
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 

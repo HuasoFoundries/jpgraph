@@ -8,7 +8,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // create the graph
-$graph = new Graph\Graph(400, 250);
+$__width  = 400;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 
 $ydata = [5, 10, 15, 20, 15, 10];
 

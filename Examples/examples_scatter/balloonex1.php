@@ -7,7 +7,7 @@
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 // Some data
 $datax = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -32,7 +32,9 @@ function FCallback($aVal)
 }
 
 // Setup a basic graph
-$graph = new Graph\Graph(400, 300, 'auto');
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('linlin');
 $graph->img->SetMargin(40, 100, 40, 40);
 $graph->SetShadow();
@@ -44,7 +46,7 @@ $graph->yaxis->scale->SetGrace(50, 10);
 $graph->xaxis->SetPos('min');
 
 // Create the scatter plot
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_FILLEDCIRCLE);
 
 // Uncomment the following two lines to display the values

@@ -9,7 +9,9 @@ use Amenadiel\JpGraph\Plot;
 
 $datay = [5, 3, 11, 6, 3];
 
-$graph = new Graph\Graph(400, 300, 'auto');
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
 $graph->title->Set('Images on top of bars');

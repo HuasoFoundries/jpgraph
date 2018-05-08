@@ -18,14 +18,16 @@
   },
   "require": {
     "php": ">=5.4.0",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "symfony/dotenv": "^4.0"
   },
   "require-dev": {
     "ext-xdebug": "*",
     "friendsofphp/php-cs-fixer": "^2.4",
     "codeception/codeception": "*",
     "monolog/monolog": "^1.23",
-    "kint-php/kint": "^2.2"
+    "kint-php/kint": "^2.2",
+    "php-console/php-console": "^3.1"
   },
   "autoload": {
     "psr-4": {

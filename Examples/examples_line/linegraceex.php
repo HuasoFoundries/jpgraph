@@ -9,7 +9,9 @@ use Amenadiel\JpGraph\Plot;
 
 $datay = [0.2980, 0.3039, 0.3020, 0.3027, 0.3015];
 
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 40, 40, 40);
 
 $graph->img->SetAntiAliasing();

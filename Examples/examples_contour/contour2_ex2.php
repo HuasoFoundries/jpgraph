@@ -16,7 +16,9 @@ $data = [
     [10, 8, 7, 8]];
 
 // create a basic graph as a container
-$graph = new Graph\Graph(300, 300);
+$__width  = 300;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 30, 40, 30);
 $graph->SetScale('intint');
 $graph->SetMarginColor('white');

@@ -5,7 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 // Make a circle with a scatterplot
 $steps = 16;
@@ -15,7 +15,9 @@ for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = sin($a);
 }
 
-$graph = new Graph\Graph(350, 230);
+$__width  = 350;
+$__height = 230;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetShadow();
 $graph->SetAxisStyle(AXSTYLE_BOXOUT);
@@ -31,7 +33,7 @@ $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
 $graph->yscale->SetGrace(5, 5);
 $graph->xscale->SetGrace(1, 1);
 
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_FILLEDCIRCLE);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');

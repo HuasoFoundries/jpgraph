@@ -13,7 +13,9 @@ $datay1 = [35, 160, 0, 0, 0, 0];
 $datay2 = [35, 190, 190, 190, 190, 190];
 $datay3 = [20, 70, 70, 140, 230, 260];
 
-$graph = new Graph\Graph(450, 200, 'auto');
+$__width  = 450;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 40, 40);

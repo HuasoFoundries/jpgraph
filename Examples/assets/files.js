@@ -628,9 +628,9 @@ var filesmenu = _.reduce(files_arr, function(accum, file) {
 }, {});
 
 
-_.each(filesObj, function(files, test) {
+/*_.each(filesObj, function(files, test) {
     console.log("echo public function testFileIterator() {'" + JSON.stringify(files) + "'; foreach($files as $file) { $this->_fileCheck($file);}}} ' >> " + test);
-})
+})*/
 jQuery(document).ready(function() {
 
     var createCard = function(index, title) {

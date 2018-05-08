@@ -18,7 +18,9 @@ function cbFmtPercentage($aVal)
 }
 
 // Create the graph.
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 // Create a bar plots

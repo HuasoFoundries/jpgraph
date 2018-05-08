@@ -1,3 +1,0 @@
-public function testFileIterator() { $files =["bar_csimex1.php","bar_csimex2.php","bar_csimex3.php","barcsim_details_omit.php","barcsim_popup.php","barline_csimex1.php","barlinefreq_csimex1.php","boxstockcsimex1.php","csim_in_html_ex1.php","csim_in_html_ex2.php","csim_in_html_graph_ex1.php","csim_in_html_graph_ex2.php","ganttcsimex01.php","ganttcsimex02.php","imgmarkercsimex1.php","matrix_csimex01.php","mulyaxiscsimex1.php","pie3d_csimex1.php","pie_csimex1.php","piec_csimex1.php","polar_csimex1.php","radar_csimex1.php","scatter_csimex1.php","tablebarex1_csim.php","tableex01_csim.php","titlecsimex01.pp"]; foreach($files as $file) { $this->_fileCheck($file);}
-}
-}

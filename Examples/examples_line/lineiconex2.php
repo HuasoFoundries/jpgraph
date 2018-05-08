@@ -12,7 +12,9 @@ require_once 'jpgraph/jpgraph_iconplot.php';
 $datay = [30, 25, 33, 25, 27, 45, 32];
 
 // Setup the graph
-$graph = new Graph\Graph(400, 250);
+$__width  = 400;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
 

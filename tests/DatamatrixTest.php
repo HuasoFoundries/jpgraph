@@ -14,10 +14,28 @@ class DatamatrixTest extends \Codeception\Test\Unit
     protected function _after() {}
 
     // tests
-    public function testSomeFeature() {}
+    public function _fileCheck($filename)
+    {
+        ob_start();
+        include $this->exampleRoot . $filename;
+        $img  = (ob_get_clean());
+        $size = getimagesizefromstring($img);
+        \Codeception\Util\Debug::debug($size);
+    }
 
     public function testFileIterator()
     {
-        $files = ['datamatrix_ex0.php', 'datamatrix_ex00.php', 'datamatrix_ex1.php', 'datamatrix_ex2.php', 'datamatrix_ex3.php', 'datamatrix_ex4.php', 'datamatrix_ex5.php', 'datamatrix_ex6.php', 'datamatrix_ex7.php'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['datamatrix_ex0.php',
+            'datamatrix_ex00.php',
+            'datamatrix_ex1.php',
+            'datamatrix_ex2.php',
+            'datamatrix_ex3.php',
+            'datamatrix_ex4.php',
+            'datamatrix_ex5.php',
+            'datamatrix_ex6.php',
+            'datamatrix_ex7.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

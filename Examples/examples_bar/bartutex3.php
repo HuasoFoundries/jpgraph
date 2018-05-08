@@ -8,7 +8,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // new Graph\Graph with a drop shadow
-$graph = new Graph\Graph(300, 200, 'auto');
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetShadow();
 
 $databary = [];

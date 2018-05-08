@@ -22,7 +22,9 @@ foreach ($data6y as &$y) {
 }
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(750, 320, 'auto');
+$__width  = 750;
+$__height = 320;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetY2Scale('lin', 0, 90);
 $graph->SetY2OrderBack(false);

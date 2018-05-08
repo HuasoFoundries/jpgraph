@@ -14,10 +14,30 @@ class ThemeTest extends \Codeception\Test\Unit
     protected function _after() {}
 
     // tests
-    public function testSomeFeature() {}
+    public function _fileCheck($filename)
+    {
+        ob_start();
+        include $this->exampleRoot . $filename;
+        $img  = (ob_get_clean());
+        $size = getimagesizefromstring($img);
+        \Codeception\Util\Debug::debug($size);
+    }
 
     public function testFileIterator()
     {
-        $files = ['aqua_example.php', 'fusion_example.php', 'green_example.php', 'ocean_example.php', 'orange_example.php', 'pastel_example.php', 'rose_example.php', 'softy_example.php', 'theme_example.php', 'universal_example.php', 'vivid_example.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['aqua_example.php',
+            'fusion_example.php',
+            'green_example.php',
+            'ocean_example.php',
+            'orange_example.php',
+            'pastel_example.php',
+            'rose_example.php',
+            'softy_example.php',
+            'theme_example.php',
+            'universal_example.php',
+            'vivid_example.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

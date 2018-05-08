@@ -13,7 +13,9 @@ require_once 'jpgraph/jpgraph_bar.php';
 $datay = [10, 29, 3, 6];
 
 // Create the graph.
-$graph = new Graph\Graph(200, 150);
+$__width  = 200;
+$__height = 150;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 20, 20);
 

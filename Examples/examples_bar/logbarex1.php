@@ -13,7 +13,9 @@ $datay = [4, 13, 30, 28, 12, 45, 30, 12, 55, 3, 0.5];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 
 // Create the graph.
-$graph = new Graph\Graph(400, 220, 'auto');
+$__width  = 400;
+$__height = 220;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 //$graph->img->SetMargin(50,30,50,50);
 $graph->SetScale('textlog');
 //$graph->SetShadow();

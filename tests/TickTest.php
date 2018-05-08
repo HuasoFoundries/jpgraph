@@ -14,10 +14,24 @@ class TickTest extends \Codeception\Test\Unit
     protected function _after() {}
 
     // tests
-    public function testSomeFeature() {}
+    public function _fileCheck($filename)
+    {
+        ob_start();
+        include $this->exampleRoot . $filename;
+        $img  = (ob_get_clean());
+        $size = getimagesizefromstring($img);
+        \Codeception\Util\Debug::debug($size);
+    }
 
     public function testFileIterator()
     {
-        $files = ['manualtickex1.php', 'manualtickex1a.php', 'manualtickex2.php', 'manualtickex3.php', 'manualtickex4.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['manualtickex1.php',
+            'manualtickex1a.php',
+            'manualtickex2.php',
+            'manualtickex3.php',
+            'manualtickex4.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

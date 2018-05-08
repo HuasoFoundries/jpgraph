@@ -18,7 +18,9 @@ $datay = [
     38, 49, 32, 64];
 
 // Setup a simple graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
 $graph->title->Set('Stockchart example');

@@ -9,7 +9,9 @@ require_once '../jpgraph_line.php';
 $datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 
 // Setup the graph
-$graph = new Graph\Graph(320, 200);
+$__width  = 320;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->title->Set('Education growth');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->SetScale('intlin');

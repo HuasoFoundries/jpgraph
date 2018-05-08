@@ -5,7 +5,7 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 // Each ballon is specificed by four values.
 // (X,Y,Size,Color)
@@ -41,7 +41,9 @@ function FCallback($aYVal, $aXVal)
 }
 
 // Setup a basic graph
-$graph = new Graph\Graph(450, 300, 'auto');
+$__width  = 450;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('intlin');
 $graph->SetMargin(40, 40, 40, 40);
 $graph->SetMarginColor('wheat');
@@ -62,7 +64,7 @@ $graph->xaxis->SetPos('min');
 $graph->xscale->SetAutoMin(0);
 
 // Create the scatter plot
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_FILLEDCIRCLE);
 
 // Uncomment the following two lines to display the values

@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 // Some data
 $datay = [25, 29, 29, 39, 55];
 
-$graph = new Graph\Graph(400, 200, 'auto');
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 40, 40, 20);
 
 $graph->SetScale('linlin');

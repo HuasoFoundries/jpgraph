@@ -11,9 +11,7 @@ use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-require_once __DIR__ . '/../includes/config.inc.php';
-
-\Kint::$enabled_mode = DEBUGMODE;
+require_once __DIR__ . '/../config.inc.php';
 
 /**
  * @class Graph
@@ -164,7 +162,7 @@ class Graph
         // Automatically generate the image file name based on the name of the script that
         // generates the graph
         if ($aCachedName == 'auto') {
-            $aCachedName = GenImgName();
+            $aCachedName = Util\Helper::GenImgName();
         }
 
         // Should the image be streamed back to the browser or only to the cache?
@@ -2811,17 +2809,18 @@ class Graph
             //\Kint::dump($plot, $plot instanceof Plot\Plot);
             return $plot instanceof Plot\Plot;
         });
-
+        reset($aPlots);
         $n = count($aPlots);
         $i = 0;
-
+        //\Kint::dump($n, $aPlots);
         do {
-            list($xmax, $max) = $aPlots[$i]->Max();
+            //\Kint::dump($i, $aPlots[$i]);
+            list($xmax, $max) = isset($aPlots[$i]) ? $aPlots[$i]->Max() : [null, null];
         } while (++$i < $n && !is_numeric($max));
 
         $i = 0;
         do {
-            list($xmin, $min) = $aPlots[$i]->Min();
+            list($xmin, $min) = isset($aPlots[$i]) ? $aPlots[$i]->Min() : [null, null];
         } while (++$i < $n && !is_numeric($min));
 
         if (!is_numeric($min) || !is_numeric($max)) {
@@ -2830,8 +2829,8 @@ class Graph
 
         for ($i = 0; $i < $n; ++$i) {
 
-            list($xmax, $ymax) = $aPlots[$i]->Max();
-            list($xmin, $ymin) = $aPlots[$i]->Min();
+            list($xmax, $ymax) = isset($aPlots[$i]) ? $aPlots[$i]->Max() : [null, null];
+            list($xmin, $ymin) = isset($aPlots[$i]) ? $aPlots[$i]->Min() : [null, null];
             if (is_numeric($ymax)) {
                 $max = max($max, $ymax);
             }

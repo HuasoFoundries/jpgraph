@@ -31,7 +31,9 @@ $data = [
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$graph = new Graph\Graph(480, 390);
+$__width  = 480;
+$__height = 390;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 120, 60, 50);
 
 $graph->title->Set('Contour plot, high contrast color');

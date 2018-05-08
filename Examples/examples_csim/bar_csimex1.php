@@ -12,7 +12,9 @@ $datay = [12, 26, 9, 17, 31];
 // Create the graph.
 // One minute timeout for the cached image
 // INLINE_NO means don't stream it back to the browser.
-$graph = new Graph\Graph(310, 250, 'auto');
+$__width  = 310;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->img->SetMargin(60, 30, 20, 40);
 $graph->yaxis->SetTitleMargin(45);

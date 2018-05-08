@@ -4,7 +4,7 @@
  * JPGraph v3.6.15
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_scatter.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -23,7 +23,9 @@ list($stderr, $corr) = $lr->GetStat();
 list($xd, $yd)       = $lr->GetY(0, 19);
 
 // Create the graph
-$graph = new Graph\Graph(300, 250);
+$__width  = 300;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 
 // Setup title
@@ -39,7 +41,7 @@ $graph->subtitle->SetFont(FF_ARIAL, FS_NORMAL, 12);
 $graph->xaxis->SetPos('min');
 
 // Create the scatter plot with some nice colors
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_FILLEDCIRCLE);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');

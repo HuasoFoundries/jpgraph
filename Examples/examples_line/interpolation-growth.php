@@ -19,7 +19,9 @@ for ($i = 1; $i <= $f; ++$i) {
     $ydata[] = pow($r * pow(2, ($i - 1)) - (pow(2, $i) - 1), 2);
 }
 
-$graph = new Graph\Graph(400, 240);
+$__width  = 400;
+$__height = 240;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intint');
 $graph->SetMargin(50, 50, 20, 30);
 $graph->SetFrame(false);

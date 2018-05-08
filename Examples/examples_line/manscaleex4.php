@@ -9,7 +9,9 @@ use Amenadiel\JpGraph\Plot;
 
 $ydata = [12, 17, 22, 19, 5, 15];
 
-$graph = new Graph\Graph(220, 200);
+$__width  = 220;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin', 3, 35);
 $graph->yscale->SetAutoTicks();
 

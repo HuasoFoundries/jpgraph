@@ -14,7 +14,7 @@ install:
 	composer install --no-dev
 
 test:
-	php vendor/bin/codecept run unit --coverage --coverage-xml
+	php vendor/bin/codecept run unit $(test) --coverage --coverage-xml --debug
 
 update_version:
 	@echo "Current version is " ${VERSION}

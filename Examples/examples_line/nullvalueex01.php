@@ -13,7 +13,9 @@ $datay  = [28, 13, 24, '', 90, 11];
 $data2y = [11, 41, '-', 33, '-', 63];
 
 // Setup graph
-$graph = new Graph\Graph(400, 250);
+$__width  = 400;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 150, 40, 80);
 $graph->SetScale('textlin');
 $graph->SetShadow();

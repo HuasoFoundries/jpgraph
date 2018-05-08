@@ -6,14 +6,15 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-require_once 'jpgraph/jpgraph_scatter.php';
 
 $datay = [
     [4, 26, 15, 44],
     [20, 51, 32, 20]];
 
 // Setup the graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);

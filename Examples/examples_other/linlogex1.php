@@ -48,7 +48,9 @@ $ydata = [270., 280., // 2 m
     8., 10., // 2500 m
 ];
 
-$graph = new Graph\Graph(500, 300);
+$__width  = 500;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlog');
 $graph->img->SetMargin(40, 20, 20, 40);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);

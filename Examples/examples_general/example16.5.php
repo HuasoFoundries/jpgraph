@@ -13,7 +13,9 @@ $l2datay = [23, 12, 5, 19, 17, 10, 15];
 $datax   = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
 
 // Create the graph.
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 70, 20, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();

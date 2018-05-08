@@ -23,7 +23,9 @@ $data = [
     [1.0, 1.5, 3.0, 4, 6.0, 5, 2, 1, 0.5, 0.2]];
 
 // Basic contour graph
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intint');
 
 // Show axis on all sides

@@ -35,7 +35,9 @@ for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
 $xdata[$i] = $start + $i * SAMPLERATE;
 
 // Setup the Wind direction graph
-$graph = new Graph\Graph(300, 800);
+$__width  = 300;
+$__height = 800;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('lightgray:1.7');
 $graph->SetScale('datlin', 0, 360);
 $graph->Set90AndMargin(50, 30, 60, 30);
@@ -62,7 +64,9 @@ $line->SetColor('blue');
 $graph->Add($line);
 
 // Setup the wind speed graph
-$graph2 = new Graph\Graph(300, 800);
+$__width  = 300;
+$__height = 800;
+$graph2   = new Graph\Graph($__width, $__height);
 $graph2->SetScale('datlin');
 $graph2->Set90AndMargin(50, 30, 60, 30);
 $graph2->SetMarginColor('lightgray:1.7');

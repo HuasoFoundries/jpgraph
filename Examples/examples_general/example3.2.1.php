@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $ydata = [11, 3, 8, 12, 5, 1, 9, 15, 5, 7];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->yaxis->scale->SetGrace(10, 10);
 

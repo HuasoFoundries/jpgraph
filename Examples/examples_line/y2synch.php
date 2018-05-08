@@ -21,7 +21,9 @@ function toCelcius($aVal)
 $datay = [2, 3, 8, 19, 7, 17, 6, 22];
 
 // Create the graph.
-$graph = new Graph\Graph(400, 280);
+$__width  = 400;
+$__height = 280;
+$graph    = new Graph\Graph($__width, $__height);
 
 // Slightly bigger margins than default to make room for titles
 $graph->SetMargin(50, 60, 40, 45);

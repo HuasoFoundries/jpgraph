@@ -22,7 +22,9 @@ function separator1000_usd($aVal)
 $datay = [120567, 134013, 192000, 87000];
 
 // Create the graph and setup the basic parameters
-$graph = new Graph\Graph(500, 300, 'auto');
+$__width  = 500;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(80, 30, 30, 40);
 $graph->SetScale('textint');
 $graph->SetShadow();

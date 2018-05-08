@@ -38,7 +38,9 @@ $xmax  = $datax[$n - 1] + $grace;
 //
 // The code to setup a very basic graph
 //
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 
 //
 // We use an integer scale on the X-axis since the positions on the X axis

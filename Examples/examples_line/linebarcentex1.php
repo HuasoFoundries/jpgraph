@@ -14,7 +14,9 @@ $l2datay = [23, 12, 5, 19, 17, 10, 15];
 $datax = $graph->gDateLocale->GetShortMonth();
 
 // Create the graph.
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(40, 130, 20, 40);
 $graph->SetShadow();

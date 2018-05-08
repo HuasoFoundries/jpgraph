@@ -12,7 +12,9 @@ require_once 'jpgraph/jpgraph_plotline.php';
 $datay = [2, 3, 5, 8.5, 11.5, 6, 3];
 
 // Create the graph.
-$graph = new Graph\Graph(460, 400, 'auto');
+$__width  = 460;
+$__height = 400;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetMargin(40, 20, 50, 70);
 
@@ -32,7 +34,7 @@ $bplot->SetValuePos('top');
 $bplot->SetLegend('Bar Legend');
 $graph->Add($bplot);
 
-$pline = new PlotLine(HORIZONTAL, 8, 'red', 2);
+$pline = new Plot\PlotLine(HORIZONTAL, 8, 'red', 2);
 $pline->SetLegend('Line Legend');
 $graph->legend->SetColumns(10);
 $graph->Add($pline);

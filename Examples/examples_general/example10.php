@@ -13,7 +13,9 @@ $y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 $datax  = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep'];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 110, 20, 40);
 $graph->SetScale('textlog');
 $graph->SetY2Scale('log');

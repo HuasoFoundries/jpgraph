@@ -15,7 +15,9 @@ $f                     = new Util\FuncGenerator('$x*$x');
 list($x2data, $y2data) = $f->E(-2, 2);
 
 // Setup the basic graph
-$graph = new Graph\Graph(450, 350);
+$__width  = 450;
+$__height = 350;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 //$graph->SetShadow();
 $graph->img->SetMargin(5, 10, 60, 9);

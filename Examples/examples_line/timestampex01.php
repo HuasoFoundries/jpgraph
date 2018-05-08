@@ -44,7 +44,9 @@ for ($i = 1; $i < NDATAPOINTS; ++$i) {
 // length to end on an even label tick.
 $adjend = $adjstart + (NDATAPOINTS + 10) * 10;
 
-$graph = new Graph\Graph(500, 250);
+$__width  = 500;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 20, 30, 50);
 
 // Now specify the X-scale explicit but let the Y-scale be auto-scaled

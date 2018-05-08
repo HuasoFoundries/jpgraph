@@ -11,7 +11,9 @@ $datay1 = [20, 7, 16, 46];
 $datay2 = [6, 20, 10, 22];
 
 // Setup the graph
-$graph = new Graph\Graph(350, 230);
+$__width  = 350;
+$__height = 230;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $theme_class = new UniversalTheme();

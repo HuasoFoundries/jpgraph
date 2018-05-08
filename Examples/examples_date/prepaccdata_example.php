@@ -30,7 +30,9 @@ function formatDate(&$aVal)
 array_walk($xdata, 'formatDate');
 
 // Create the graph.
-$graph = new Graph\Graph(600, 350);
+$__width  = 600;
+$__height = 350;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->title->Set('Accumulated values with specified X-axis scale');
 $graph->SetScale('textlin');
 

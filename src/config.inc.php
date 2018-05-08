@@ -12,43 +12,71 @@
 //
 // Copyright (c) Asial Corporation. All rights reserved.
  */
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-define('ROOT_PATH', dirname(dirname(__DIR__)));
+defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
 
-// Sets DEBUGMODE for the app. Set this to true to enable debugging outputs
-if (!defined('DEBUGMODE')) {
-    define('DEBUGMODE', true);
+if (is_readable(ROOT_PATH . '/.env')) {
+    $dotenv = new \Symfony\Component\Dotenv\Dotenv();
+    $dotenv->load(ROOT_PATH . '/.env');
 }
 
+if (getenv('JPGRAPH_DEBUGMODE') && !defined('DEBUGMODE')) {
+    define('DEBUGMODE', getenv('JPGRAPH_DEBUGMODE'));
+}
+// Sets DEBUGMODE for the app. Set this to true to enable debugging outputs
+if (!defined('DEBUGMODE')) {
+    define('DEBUGMODE', false);
+}
+
+ini_set('display_errors', intval(DEBUGMODE));
+ini_set('display_startup_errors', intval(DEBUGMODE));
+if (DEBUGMODE) {
+    error_reporting(E_ALL);
+}
 /**
  * Directories for cache and font directory.
-//
-// CACHE_DIR:
-// The full absolute name of the directory to be used to store the
-// cached image files. This directory will not be used if the USE_CACHE
-// define (further down) is false. If you enable the cache please note that
-// this directory MUST be readable and writable for the process running PHP.
-// Must end with '/'
-//
-// TTF_DIR:
-// Directory where TTF fonts can be found. Must end with '/'
-//
-// The default values used if these defines are left commented out are:
-//
-// UNIX:
-//   CACHE_DIR /tmp/jpgraph_cache/
-//   TTF_DIR   /usr/share/fonts/truetype/
-//   MBTTF_DIR /usr/share/fonts/truetype/
-//
-// WINDOWS:
-//   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
-//   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
-//   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
-//
+ * Define these constants explicitly or read them from environment vars
+ *
+ * CACHE_DIR:
+ * The full absolute name of the directory to be used to store the
+ * cached image files. This directory will not be used if the USE_CACHE
+ * define (further down) is false. If you enable the cache please note that
+ * this directory MUST be readable and writable for the process running PHP.
+ * Must end with '/'
+ *
+ * TTF_DIR:
+ * Directory where TTF fonts can be found. Must end with '/'
+ *
+ * The default values used if these defines are left commented out are:
+ *
+ * UNIX:
+ *   CACHE_DIR /tmp/jpgraph_cache/
+ *   TTF_DIR   /usr/share/fonts/truetype/
+ *   MBTTF_DIR /usr/share/fonts/truetype/
+ *
+ * WINDOWS:
+ *   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
+ *   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
+ *   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
+ *
  */
+
+// Define these constants explicitly
 // define('CACHE_DIR','/tmp/jpgraph_cache/');
 // define('TTF_DIR','/usr/share/fonts/TrueType/');
 // define('MBTTF_DIR','/usr/share/fonts/TrueType/');
+//
+// Or read them from environment variables
+if (getenv('JPGRAPH_CACHE_DIR')) {
+    define('CACHE_DIR', getenv('JPGRAPH_CACHE_DIR'));
+}
+if (getenv('JPGRAPH_TTF_DIR')) {
+    define('TTF_DIR', getenv('JPGRAPH_TTF_DIR'));
+}
+if (getenv('JPGRAPH_MBTTF_DIR')) {
+    define('MBTTF_DIR', getenv('JPGRAPH_MBTTF_DIR'));
+}
 
 /**
  * Cache directory specification for use with CSIM graphs that are
@@ -86,7 +114,8 @@ define('DEFAULT_GFORMAT', 'auto');
 // just not use it. By setting USE_CACHE=false no files will even
 // be generated in the cache directory.
 if (!defined('USE_CACHE')) {
-    define('USE_CACHE', false);
+
+    define('USE_CACHE', getenv('JPGRAPH_USE_CACHE') ? getenv('JPGRAPH_USE_CACHE') : false);
 }
 
 // Should we try to find an image in the cache before generating it?
@@ -528,19 +557,8 @@ if (!function_exists('imagetypes') || !function_exists('imagecreatefromstring'))
     //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
 }
 
-//
-// Setup PHP error handler
-//
-function _phpErrorHandler($errno, $errmsg, $filename, $linenum, $vars)
-{
-    // Respect current error level
-    if ($errno & error_reporting()) {
-        Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
-    }
-}
-
 if (INSTALL_PHP_ERR_HANDLER) {
-    set_error_handler('_phpErrorHandler');
+    set_error_handler('\Amenadiel\JpGraph\Util\Helper::phpErrorHandler');
 }
 
 //
@@ -550,49 +568,6 @@ if (INSTALL_PHP_ERR_HANDLER) {
 //
 if (isset($GLOBALS['php_errormsg']) && CATCH_PHPERRMSG && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
     Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
-}
-
-// Useful mathematical function
-function sign($a)
-{
-    return $a >= 0 ? 1 : -1;
-}
-
-//
-// Utility function to generate an image name based on the filename we
-// are running from and assuming we use auto detection of graphic format
-// (top level), i.e it is safe to call this function
-// from a script that uses JpGraph
-//
-function GenImgName()
-{
-    // Determine what format we should use when we save the images
-    $supported = imagetypes();
-    if ($supported & IMG_PNG) {
-        $img_format = 'png';
-    } elseif ($supported & IMG_GIF) {
-        $img_format = 'gif';
-    } elseif ($supported & IMG_JPG) {
-        $img_format = 'jpeg';
-    } elseif ($supported & IMG_WBMP) {
-        $img_format = 'wbmp';
-    } elseif ($supported & IMG_XPM) {
-        $img_format = 'xpm';
-    }
-
-    if (!isset($_SERVER['PHP_SELF'])) {
-        Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25005);
-        //(" Can't access PHP_SELF, PHP global variable. You can't run PHP from command line if you want to use the 'auto' naming of cache or image files.");
-    }
-    $fname = basename($_SERVER['PHP_SELF']);
-    if (!empty($_SERVER['QUERY_STRING'])) {
-        $q = @$_SERVER['QUERY_STRING'];
-        $fname .= '_' . preg_replace('/\\W/', '_', $q) . '.' . $img_format;
-    } else {
-        $fname = substr($fname, 0, strlen($fname) - 4) . '.' . $img_format;
-    }
-
-    return $fname;
 }
 
 // Constants for types of static bands in plot area
@@ -713,19 +688,6 @@ define('ACTYPE_MILESTONE', 2);
 define('ACTINFO_3D', 1);
 define('ACTINFO_2D', 0);
 
-// Check if array_fill() exists
-if (!function_exists('array_fill')) {
-    function array_fill($iStart, $iLen, $vValue)
-    {
-        $aResult = [];
-        for ($iCount = $iStart; $iCount < $iLen + $iStart; ++$iCount) {
-            $aResult[$iCount] = $vValue;
-        }
-
-        return $aResult;
-    }
-}
-
 if (!class_exists('\Kint')) {
     /**
      * Class that mocks Kint
@@ -739,5 +701,23 @@ if (!class_exists('\Kint')) {
         public static function dump() {}
     }
 }
+\Kint::$enabled_mode = DEBUGMODE;
 
-// <EOF>
+if (
+    class_exists('\PhpConsole\Handler') &&
+    getenv('USE_PHPCONSOLE') &&
+    isset($_SERVER['HTTP_USER_AGENT']) &&
+    strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false
+) {
+    $handler = \PhpConsole\Handler::getInstance();
+    \PhpConsole\Helper::register();
+    $handler->start();
+} else {
+    /**
+     * Class that mocks PHP-Console debug feature
+     */
+    class PC
+    {
+        public static function debug() {}
+    }
+}

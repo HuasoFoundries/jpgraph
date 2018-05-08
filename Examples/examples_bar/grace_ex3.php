@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [7, 19, 11, 4, 20];
 
 // Create the graph and setup the basic parameters
-$graph = new Graph\Graph(300, 200, 'auto');
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 40, 50);
 $graph->SetScale('textint');
 $graph->SetFrame(true, 'blue', 1);

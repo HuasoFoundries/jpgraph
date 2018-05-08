@@ -8,6 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
+require_once __DIR__ . '/../config.inc.php';
 /**
  * @class Plot
 // Description: Abstract base class for all concrete plot classes

@@ -12,7 +12,9 @@ $data3y = [3, 9, 2, 7, 5, 8];
 $data4y = [1, 5, 11, 2, 14, 4];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(310, 200);
+$__width  = 310;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $graph->SetShadow();

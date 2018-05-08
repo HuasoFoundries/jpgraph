@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Plot;
+
 /**
  * File:        JPGRAPH_SCATTER.PHP
 // Description: Scatter (and impuls) plot extension for JpGraph
@@ -14,7 +16,6 @@ namespace Amenadiel\JpGraph\Image;
 //
 // Copyright (c) Asial Corporation. All rights reserved.
  */
-require_once 'jpgraph_plotmark.inc.php';
 
 /**
  * @class FieldArrow

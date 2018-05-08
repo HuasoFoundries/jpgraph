@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Util;
 $f                   = new Util\FuncGenerator('cos($i)', '$i*$i*$i');
 list($xdata, $ydata) = $f->E(-M_PI, M_PI, 25);
 
-$graph = new Graph\Graph(350, 430);
+$__width  = 350;
+$__height = 430;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetShadow();
 $graph->img->SetMargin(50, 50, 60, 40);

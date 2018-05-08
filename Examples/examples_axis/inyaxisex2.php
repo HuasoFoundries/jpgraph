@@ -23,7 +23,9 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Basic graph setup
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');

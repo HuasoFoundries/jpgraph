@@ -6,11 +6,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-require_once 'jpgraph/jpgraph_plotmark.inc.php';
-require_once 'jpgraph/jpgraph_scatter.php';
-require_once 'ccbpgraph.class.php';
 
-$graph = new CCBPGraph(600, 400);
+$graph = new Graph\CCBPGraph(600, 400);
 $graph->SetTitle('Buffer penetration', '(history added)');
 $graph->SetColorMap(0);
 
@@ -22,7 +19,7 @@ $datay1 = [86, 76, 80, 64];
 $datax2 = [18, 47, 58, 75];
 $datay2 = [80, 97, 105, 110];
 
-$sp = new ScatterPlot($datay, $datax);
+$sp = new Plot\ScatterPlot($datay, $datax);
 $sp->mark->SetType(MARK_DIAMOND);
 $sp->mark->SetFillColor('white');
 $sp->mark->SetSize(12);

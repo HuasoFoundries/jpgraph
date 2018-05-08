@@ -13,7 +13,9 @@ JpgraphError::SetImageFlag(false);
 JpGraphError::SetLogFile('syslog');
 
 // Create the graph.
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 
 $graph->img->SetMargin(40, 130, 20, 40);

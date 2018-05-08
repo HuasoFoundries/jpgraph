@@ -14,7 +14,9 @@ $datay2 = [3, 25, 10, 15, 50, 5, 18];
 $datay3 = [10, 5, 10, 15, 5, 2, 1];
 
 // Setup the graph
-$graph = new Graph\Graph(400, 250);
+$__width  = 400;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
 

@@ -20,7 +20,9 @@ $data = [
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$graph = new Graph\Graph(500, 380);
+$__width  = 500;
+$__height = 380;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 140, 60, 40);
 
 $graph->title->Set('Example of contour plot');

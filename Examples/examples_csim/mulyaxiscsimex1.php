@@ -25,7 +25,9 @@ $datay2 = [25, 22, 18, 24, 20];
 $datay3 = [89, 70, 92, 77, 96];
 
 // Create a basic graph with some suitable margins
-$graph = new Graph\Graph(500, 250);
+$__width  = 500;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(60, 180, 50, 40);
 $graph->SetMarginColor('white');
 $graph->title->Set('Multi Y-axes with Image Map');

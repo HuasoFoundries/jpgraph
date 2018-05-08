@@ -14,10 +14,26 @@ class RotateTest extends \Codeception\Test\Unit
     protected function _after() {}
 
     // tests
-    public function testSomeFeature() {}
+    public function _fileCheck($filename)
+    {
+        ob_start();
+        include $this->exampleRoot . $filename;
+        $img  = (ob_get_clean());
+        $size = getimagesizefromstring($img);
+        \Codeception\Util\Debug::debug($size);
+    }
 
     public function testFileIterator()
     {
-        $files = ['rotateex1.php', 'rotex0.php', 'rotex1.php', 'rotex2.php', 'rotex3.php', 'rotex4.php', 'rotex5.php'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['rotateex1.php',
+            'rotex0.php',
+            'rotex1.php',
+            'rotex2.php',
+            'rotex3.php',
+            'rotex4.php',
+            'rotex5.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

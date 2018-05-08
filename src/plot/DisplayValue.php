@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 /**
  * @class DisplayValue
@@ -125,7 +126,7 @@ class DisplayValue
                 $sval = $aVal;
             }
 
-            $y = $y - sign($aVal) * $this->margin;
+            $y = $y - Util\Helper::sign($aVal) * $this->margin;
 
             $this->txt->Set($sval);
             $this->txt->SetPos($x, $y);

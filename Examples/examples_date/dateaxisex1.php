@@ -26,7 +26,9 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Setup the basic graph
-$graph = new Graph\Graph(324, 250);
+$__width  = 324;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 30, 70);
 $graph->title->Set('Date: ' . date('Y-m-d', $now));
 $graph->SetAlphaBlending();

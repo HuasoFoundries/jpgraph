@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 
-$graph = new Graph\Graph(350, 300);
+$__width  = 350;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetAngle(40);
 $graph->img->SetMargin(80, 80, 80, 80);
 $graph->SetScale('textlin');

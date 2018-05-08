@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [12, 0, -19, -7, 17, -6];
 
 // Create the graph.
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 30, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();

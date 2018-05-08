@@ -10,7 +10,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [0, 25, 12, 47, 27, 27, 0];
 
 // Setup the graph
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, $aYMax = 50);
 
 $theme_class = new UniversalTheme();

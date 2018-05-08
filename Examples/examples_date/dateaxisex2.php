@@ -21,7 +21,9 @@ for ($i = 0; $i < NDATAPOINTS; ++$i) {
 }
 
 // Create the new Graph\Graph
-$graph = new Graph\Graph(540, 300);
+$__width  = 540;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 
 // Slightly larger than normal margins at the bottom to have room for
 // the x-axis labels

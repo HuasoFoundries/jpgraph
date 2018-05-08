@@ -14,10 +14,27 @@ class DateTest extends \Codeception\Test\Unit
     protected function _after() {}
 
     // tests
-    public function testSomeFeature() {}
+    public function _fileCheck($filename)
+    {
+        ob_start();
+        include $this->exampleRoot . $filename;
+        $img  = (ob_get_clean());
+        $size = getimagesizefromstring($img);
+        \Codeception\Util\Debug::debug($size);
+    }
 
     public function testFileIterator()
     {
-        $files = ['dateaxisex1.php', 'dateaxisex2.php', 'dateaxisex3.php', 'dateaxisex4.php', 'datescaleticksex01.php', 'dateutilex01.php', 'dateutilex02.php', 'prepaccdata_example.pp'];foreach ($files as $file) {$this->_fileCheck($file);}
+        $files = ['dateaxisex1.php',
+            'dateaxisex2.php',
+            'dateaxisex3.php',
+            'dateaxisex4.php',
+            'datescaleticksex01.php',
+            'dateutilex01.php',
+            'dateutilex02.php',
+            'prepaccdata_example.php'];
+        foreach ($files as $file) {
+            $this->_fileCheck($file);
+        }
     }
 }

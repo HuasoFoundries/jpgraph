@@ -28,7 +28,9 @@ $datax = [10, 20, 30, 40, 54, 60, 70, 80];
 $datay = [12, 23, 65, 18, 84, 28, 86, 44];
 
 // Setup the graph
-$graph = new Graph\Graph(400, 270);
+$__width  = 400;
+$__height = 270;
+$graph    = new Graph\Graph($__width, $__height);
 
 // We add a small 1pixel left,right,bottom margin so the plot area
 // doesn't cover the frame around the graph.

@@ -5,14 +5,16 @@
  */
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
-require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 // Some data for the points
 $datax = [3.5, 13.7, 3, 4, 6.2, 6, 3.5, 8, 14, 8, 11.1, 13.7];
 $datay = [10, 22, 12, 13, 17, 20, 16, 19, 30, 31, 40, 43];
 
 // A new scatter graph
-$graph = new Graph\Graph(300, 200, 'auto');
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetShadow();
 $graph->SetScale('linlin');
 
@@ -30,7 +32,7 @@ $targ = ['pie_csimex1.php#1', 'pie_csimex1.php#2', 'pie_csimex1.php#3',
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 
 // Create a new scatter plot
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 
 // Use diamonds as markerss
 $sp1->mark->SetType(MARK_DIAMOND);

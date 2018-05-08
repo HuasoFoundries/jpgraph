@@ -21,7 +21,9 @@ for ($i = 0; $i < $steps; ++$i) {
 }
 
 // new Graph\Graph with a background image and drop shadow
-$graph = new Graph\Graph(450, 300);
+$__width  = 450;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetBackgroundImage('tiger_bkg.png', BGIMG_FILLFRAME);
 $graph->SetShadow();
 
