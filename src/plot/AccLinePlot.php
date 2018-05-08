@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 /**
  * @class AccLinePlot
-// Description:
+ * // Description:
  */
 class AccLinePlot extends Plot
 {
