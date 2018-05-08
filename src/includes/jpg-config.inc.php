@@ -78,7 +78,7 @@ define('DEFAULT_GFORMAT', 'auto');
 // just not use it. By setting USE_CACHE=false no files will even
 // be generated in the cache directory.
 if (!defined('USE_CACHE')) {
-	define('USE_CACHE', false);
+    define('USE_CACHE', false);
 }
 
 // Should we try to find an image in the cache before generating it?
@@ -87,7 +87,7 @@ if (!defined('USE_CACHE')) {
 // disabled the cached will still be updated with the newly generated
 // image. Set also 'USE_CACHE' below.
 if (!defined('READ_CACHE')) {
-	define('READ_CACHE', true);
+    define('READ_CACHE', true);
 }
 
 // Determine if the error handler should be image based or purely
