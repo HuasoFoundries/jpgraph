@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class LanguageConv
-// Description:
-// Converts various character encoding into proper
-// UTF-8 depending on how the library have been configured and
-// what font family is being used
+ * // Description:
+ * // Converts various character encoding into proper
+ * // UTF-8 depending on how the library have been configured and
+ * // what font family is being used
  */
 class LanguageConv
 {
