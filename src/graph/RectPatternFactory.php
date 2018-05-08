@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class RectPatternFactory
-// Factory class for rectangular pattern
+ * // Factory class for rectangular pattern
  */
 class RectPatternFactory
 {

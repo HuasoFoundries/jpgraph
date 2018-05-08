@@ -12,11 +12,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_PIE.PHP
-// Description: Pie plot extension for JpGraph
-// Created:     2001-02-14
-// Ver:         $Id: jpgraph_pie.php 1926 2010-01-11 16:33:07Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Pie plot extension for JpGraph
+ * // Created:     2001-02-14
+ * // Ver:         $Id: jpgraph_pie.php 1926 2010-01-11 16:33:07Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 // Defines for PiePlot::SetLabelType()
 define('PIE_VALUE_ABS', 1);
@@ -27,7 +27,7 @@ define('PIE_VALUE_ADJPER', 2);
 
 /**
  * @class PiePlot
-// Description: Draws a pie plot
+ * // Description: Draws a pie plot
  */
 class PiePlot
 {
@@ -756,8 +756,8 @@ class PiePlot
 
         /**
          * Step 1 of the algorithm is to construct a number of clusters
-        // a cluster is defined as all slices within the same quadrant (almost)
-        // that has an angular distance less than the treshold
+         * // a cluster is defined as all slices within the same quadrant (almost)
+         * // that has an angular distance less than the treshold
          */
 
         $tresh_hold = 25 * M_PI / 180; // 25 degrees difference to be in a cluster
@@ -876,7 +876,7 @@ class PiePlot
 
         /**
          * Step 2 of the algorithm is use the clusters and draw the labels
-        // and guidelines
+         * // and guidelines
          */
         // We use the font height as the base factor for how far we need to
         // spread the labels in the Y-direction.
