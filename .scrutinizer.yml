@@ -39,3 +39,12 @@ coding_style:
         spaces:
             around_operators:
                 concatenation: true
+
+tools:
+    php_code_coverage: true
+    php_analyzer: true
+    php_pdepend:
+        excluded_dirs:
+            - vendor
+            - tests
+            - Examples
