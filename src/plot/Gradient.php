@@ -420,19 +420,23 @@ class Gradient
         $from_alpha    = $from_color[3];
         $to_alpha      = $to_color[3];
         $adelta        = ($to_alpha - $from_alpha) / $numcols;
+
         for ($i = 0; $i < $arr_size; ++$i) {
             $colnum = floor($colorsperstep * $i);
             if ($colnum == $prevcolnum) {
                 $colors[$i] = $colidx;
             } else {
-                $r          = floor($from_color[0] + $colnum * $rdelta);
-                $g          = floor($from_color[1] + $colnum * $gdelta);
-                $b          = floor($from_color[2] + $colnum * $bdelta);
-                $alpha      = $from_alpha + $colnum * $adelta;
+
+                $r     = floor($from_color[0] + $colnum * $rdelta);
+                $g     = floor($from_color[1] + $colnum * $gdelta);
+                $b     = floor($from_color[2] + $colnum * $bdelta);
+                $alpha = $from_alpha + $colnum * $adelta;
+
                 $colidx     = $this->img->rgb->Allocate(sprintf('#%02x%02x%02x', $r, $g, $b), $alpha);
                 $colors[$i] = $colidx;
             }
             $prevcolnum = $colnum;
         }
+
     }
 } // @class

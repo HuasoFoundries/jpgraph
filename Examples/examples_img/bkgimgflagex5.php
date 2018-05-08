@@ -33,7 +33,7 @@ $graph->legend->SetFillColor('lightblue@0.1');
 $graph->legend->Hide();
 
 // Get localised version of the month names
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->SetBackgroundCountryFlag('mais', BGIMG_COPY, 50);
 

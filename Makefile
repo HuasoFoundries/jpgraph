@@ -37,7 +37,7 @@ delete_tag:
 	git push origin :refs/tags/$(v)
 
 start:
-	php -S localhost:8000
+	php -S localhost:8000 -t Examples
 
 csfixer:
 	./vendor/bin/php-cs-fixer --verbose fix	

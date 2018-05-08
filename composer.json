@@ -24,7 +24,8 @@
     "ext-xdebug": "*",
     "friendsofphp/php-cs-fixer": "^2.4",
     "codeception/codeception": "*",
-    "monolog/monolog": "^1.23"
+    "monolog/monolog": "^1.23",
+    "kint-php/kint": "^2.2"
   },
   "autoload": {
     "psr-4": {

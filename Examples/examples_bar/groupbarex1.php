@@ -17,7 +17,7 @@ $graph = new Graph\Graph(450, 200, 'auto');
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 40, 40);
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->xaxis->title->Set('Year 2002');
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);

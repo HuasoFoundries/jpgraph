@@ -2,6 +2,9 @@
 
 require_once '../vendor/autoload.php';
 
+if (!class_exists('\Kint')) {
+    die('No kint');
+}
 /**
  * JPGraph v3.6.15
  */
@@ -134,7 +137,7 @@ class TestDriver
 
         for ($i = 0; $i < $n; ++$i) {
             if ($this->iType == 1) {
-                echo '<li style="float:left;border:1px solid #CCC;padding:10px;">';
+                echo '<li style="border:1px solid #CCC;">';
                 list($folder, $target) = explode('/', $files[$i]);
                 //\Kint::dump($files[$i]);
                 echo '<a href="show-example.php?folder=' . urlencode($folder) . '&target=' . urlencode($target) . '">';

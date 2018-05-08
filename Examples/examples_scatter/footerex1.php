@@ -26,7 +26,7 @@ $graph->tabtitle->SetColor('darkred', '#E1E1FF');
 $graph->xgrid->Show();
 
 // Use months as X-labels
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->footer->left->Set('L. footer');
 $graph->footer->left->SetFont(FF_ARIAL, FS_NORMAL, 12);

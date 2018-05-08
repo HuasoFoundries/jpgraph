@@ -9,10 +9,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Callback to negate the argument
-function _cb_negate($aVal)
-{
+$_cb_negate = function ($aVal) {
     return round(-$aVal);
-}
+};
 
 // A fake depth curve
 $ydata = [0, 1, 4, 5, 8, 9, 10, 14, 16, 16, 16, 18, 20, 20, 20, 22, 22.5, 22, 19, 19, 15, 15, 15, 15, 10, 10, 10, 6, 5, 5, 5, 4, 4, 2, 1, 0];
@@ -30,7 +29,7 @@ $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');
 $graph->SetColor('darkblue');
 $graph->SetAxisStyle(AXSTYLE_BOXOUT);
-$graph->SetBackgroundImage('../assets/blueblack400x300grad.png', 1);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/blueblack400x300grad.png', 1);
 //$graph->SetBackgroundImage("../assets/lightbluedarkblue400x300grad.png",1);
 
 $graph->title->Set('Depth curve. Dive #2');
@@ -42,7 +41,7 @@ $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
 $graph->subtitle->SetColor('white');
 
 // Setup axis
-$graph->yaxis->SetLabelFormatCallback('_cb_negate');
+$graph->yaxis->SetLabelFormatCallback($_cb_negate);
 $graph->xaxis->SetColor('lightblue', 'white');
 $graph->yaxis->SetColor('lightblue', 'white');
 $graph->ygrid->SetColor('blue');

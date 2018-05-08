@@ -28,7 +28,7 @@ $graph->tabtitle->Set(' Week 34 ');
 $graph->tabtitle->SetFont(FF_ARIAL, FS_NORMAL, 12);
 
 // Get week days in curent locale
-$days = $gDateLocale->GetShortDay();
+$days = $graph->gDateLocale->GetShortDay();
 array_shift($days); // Start on monday
 $graph->xaxis->SetTickLabels($days);
 

@@ -6,6 +6,9 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class AccBarPlot
 // Description: Produce accumulated bar plots
@@ -319,7 +322,7 @@ class AccBarPlot extends BarPlot
                 // Stroke the pattern
                 if ($this->plots[$j]->iPattern > -1) {
                     if ($pattern === null) {
-                        $pattern = new RectPatternFactory();
+                        $pattern = new Graph\RectPatternFactory();
                     }
 
                     $prect = $pattern->Create($this->plots[$j]->iPattern, $this->plots[$j]->iPatternColor, 1);

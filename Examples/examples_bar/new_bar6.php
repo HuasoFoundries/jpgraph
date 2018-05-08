@@ -7,8 +7,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Plot;
-
 //bar1
 $data1y = [115, 130, 135, 130, 110, 130, 130, 150, 130, 130, 150, 120];
 //bar2
@@ -37,7 +35,7 @@ $graph->SetTheme($theme_class);
 $graph->yaxis->SetTickPositions([0, 50, 100, 150, 200, 250, 300, 350], [25, 75, 125, 175, 275, 325]);
 $graph->y2axis->SetTickPositions([30, 40, 50, 60, 70, 80, 90]);
 
-$months = $gDateLocale->GetShortMonth();
+$months = $graph->gDateLocale->GetShortMonth();
 $months = array_merge(array_slice($months, 3, 9), array_slice($months, 0, 3));
 $graph->SetBox(false);
 

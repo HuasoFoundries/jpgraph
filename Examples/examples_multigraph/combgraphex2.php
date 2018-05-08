@@ -85,7 +85,7 @@ $mgraph = new MGraph();
 $mgraph->SetImgFormat('jpeg', 60);
 $mgraph->SetMargin(2, 2, 2, 2);
 $mgraph->SetFrame(true, 'darkgray', 2);
-$mgraph->SetBackgroundImage('../assets/tiger1.jpg');
+$mgraph->SetBackgroundImage(__DIR__ . '/../assets/tiger1.jpg');
 $mgraph->AddMix($graph, 0, 0, 85);
 $mgraph->AddMix($graph2, 0, 250, 85);
 $mgraph->Stroke();

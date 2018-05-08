@@ -6,6 +6,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 
 $datay = [2, 3, 5, 8, 12, 6, 3];
 $datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
@@ -78,7 +79,7 @@ $bplot->SetValuePos('max');
 $graph->Add($bplot);
 
 // Add some explanation text
-$txt = new Text('Note: Higher value is better.');
+$txt = new Text\Text('Note: Higher value is better.');
 $txt->SetPos(190, 399, 'center', 'bottom');
 $txt->SetFont(FF_ARIAL, FS_NORMAL, 8);
 $graph->Add($txt);

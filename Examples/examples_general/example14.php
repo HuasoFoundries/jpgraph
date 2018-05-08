@@ -33,7 +33,7 @@ $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
 
-$datax = $gDateLocale->GetShortMonth();
+$datax = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($datax);
 
 // Display the graph

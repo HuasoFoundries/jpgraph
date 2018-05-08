@@ -11,7 +11,7 @@ $graph->title->Set('A simple Pie plot');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $p1 = new PiePlot($data);
-$p1->SetLegends($gDateLocale->GetShortMonth());
+$p1->SetLegends($graph->gDateLocale->GetShortMonth());
 $p1->SetCenter(0.4);
 
 $graph->Add($p1);

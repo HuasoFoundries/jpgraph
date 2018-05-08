@@ -7,19 +7,17 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Plot;
-
 // Some "random" data
 $ydata  = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
 $ydata2 = [10, 70, 40, 120, 200, 60, 80, 40, 20, 5];
-
-// Get a list of month using the current locale
-$months = $gDateLocale->GetShortMonth();
 
 // Create the graph.
 $graph = new Graph\Graph(300, 200);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
+
+// Get a list of month using the current locale
+$months = $graph->gDateLocale->GetShortMonth();
 
 // Adjust the margin slightly so that we use the
 // entire area (since we don't use a frame)

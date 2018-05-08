@@ -14,7 +14,7 @@ $data = [55, 80, 46, 71, 95];
 $graph = new RadarGraph(250, 200);
 
 // Create the titles for the axis
-$titles = $gDateLocale->GetShortMonth();
+$titles = $graph->gDateLocale->GetShortMonth();
 $graph->SetTitles($titles);
 
 $plot = new RadarPlot($data);

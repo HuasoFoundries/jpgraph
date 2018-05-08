@@ -11,8 +11,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Plot;
-
 // Utility function to calculate the accumulated frequence
 // for a set of values and ocurrences
 function accfreq($data)

@@ -6,7 +6,6 @@
 
 // $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_log.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

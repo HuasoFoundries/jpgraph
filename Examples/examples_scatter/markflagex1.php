@@ -23,7 +23,7 @@ $graph->SetMargin(30, 5, 25, 20);
 $graph->xgrid->Show();
 
 // Use months as X-labels
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 //------------------------
 // Create the plots

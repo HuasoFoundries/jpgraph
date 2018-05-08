@@ -6,7 +6,6 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-require_once 'jpgraph/jpgraph_scatter.php';
 
 $datay1 = [4, 26, 15, 44];
 
@@ -26,7 +25,7 @@ $graph->tabtitle->SetColor('darkred', '#E1E1FF');
 $graph->xgrid->Show();
 
 // Use months as X-labels
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 // Create the plot
 $p1 = new Plot\LinePlot($datay1);

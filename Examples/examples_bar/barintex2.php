@@ -23,7 +23,7 @@ $graph->SetMarginColor('lightblue');
 //$graph->yaxis->scale->SetGrace(20);
 
 // Setup X-axis labels
-$a = $gDateLocale->GetShortMonth();
+$a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT1);
 $graph->xaxis->SetColor('darkblue', 'black');

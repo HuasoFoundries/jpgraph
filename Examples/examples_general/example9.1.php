@@ -22,7 +22,7 @@ $graph->ygrid->Show(true, true);
 $graph->xgrid->Show(true, false);
 
 // Specify the tick labels
-$a = $gDateLocale->GetShortMonth();
+$a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetTextLabelInterval(2);
 

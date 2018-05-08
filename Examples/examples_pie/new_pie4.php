@@ -22,7 +22,7 @@ $theme_class = 'PastelTheme';
 $graph->SetTheme(new $theme_class());
 
 // Setup background
-$graph->SetBackgroundImage('../assets/worldmap1.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLFRAME);
 
 // Setup title
 $graph->title->Set('Pie plots with background image');

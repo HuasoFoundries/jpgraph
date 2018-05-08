@@ -30,7 +30,7 @@ $graph->HideTickMarks();
 // Setup graph titles
 $graph->title->Set('Quality result');
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->SetTitles($gDateLocale->GetShortMonth());
+$graph->SetTitles($graph->gDateLocale->GetShortMonth());
 
 // Create the first radar plot
 $plot = new RadarPlot([70, 80, 60, 90, 71, 81, 47]);

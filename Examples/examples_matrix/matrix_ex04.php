@@ -31,7 +31,7 @@ $graph->title->Set('Adding a background image');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Add a stretched background image
-$graph->SetBackgroundImage('../assets/ironrod.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/ironrod.jpg', BGIMG_FILLFRAME);
 $graph->SetBackgroundImageMix(50);
 
 $mp = new MatrixPlot($data, 1);

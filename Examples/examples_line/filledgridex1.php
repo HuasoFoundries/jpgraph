@@ -24,7 +24,7 @@ $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');
 $graph->xgrid->Show();
 
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay1);

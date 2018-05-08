@@ -7,16 +7,16 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-// Some data
-for ($i = 0; $i < 12; ++$i) {
-    $databary[$i] = rand(1, 20);
-}
-$months = $gDateLocale->GetShortMonth();
-
 // new Graph\Graph with a drop shadow
 $graph = new Graph\Graph(300, 200);
 $graph->SetShadow();
 
+// Some data
+$databary = [];
+for ($i = 0; $i < 12; ++$i) {
+    $databary[$i] = rand(1, 20);
+}
+$months = $graph->gDateLocale->GetShortMonth();
 // Use a "text" X-scale
 $graph->SetScale('textlin');
 

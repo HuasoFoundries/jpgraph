@@ -39,7 +39,7 @@ $graph->title->Set('Intro matrix graph');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Setup the background image
-$graph->SetBackgroundImage('../assets/fireplace.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', BGIMG_FILLPLOT);
 $graph->SetBackgroundImageMix(50);
 
 // Setup the timer in the right footer

@@ -90,11 +90,10 @@ class Grid
      */
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {
-        if (!$this->show) {
+        $nbrgrids = count($aTicksPos);
+        if (!$this->show || $nbrgrids === 0) {
             return;
         }
-
-        $nbrgrids = count($aTicksPos);
 
         if ($this->scale->type == 'y') {
             $xl = $this->img->left_margin;

@@ -17,7 +17,7 @@ $graph = new RadarGraph(250, 200);
 $graph->SetShadow();
 
 // Create the titles for the axis
-$titles = $gDateLocale->GetShortMonth();
+$titles = $graph->gDateLocale->GetShortMonth();
 $graph->SetTitles($titles);
 $graph->SetColor('lightyellow');
 

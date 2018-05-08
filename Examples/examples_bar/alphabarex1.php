@@ -26,10 +26,10 @@ $graph->legend->SetShadow('darkgray@0.5');
 $graph->legend->SetFillColor('lightblue@0.3');
 
 // Get localised version of the month names
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 // Set a nice summer (in Stockholm) image
-$graph->SetBackgroundImage('../assets/stship.jpg', BGIMG_COPY);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/stship.jpg', BGIMG_COPY);
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');

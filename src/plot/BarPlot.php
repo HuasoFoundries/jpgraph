@@ -6,7 +6,9 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_BAR.PHP
@@ -615,7 +617,7 @@ class BarPlot extends Plot
 
             // Stroke the pattern
             if (is_array($this->iPattern)) {
-                $f = new RectPatternFactory();
+                $f = new Graph\RectPatternFactory();
                 if (is_array($this->iPatternColor)) {
                     $pcolor = $this->iPatternColor[$i % $np];
                 } else {
@@ -637,7 +639,7 @@ class BarPlot extends Plot
                 $prect->Stroke($img);
             } else {
                 if ($this->iPattern > -1) {
-                    $f     = new RectPatternFactory();
+                    $f     = new Graph\RectPatternFactory();
                     $prect = $f->Create($this->iPattern, $this->iPatternColor, 1);
                     $prect->SetDensity($this->iPatternDensity);
                     if ($val < 0) {

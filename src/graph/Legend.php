@@ -6,7 +6,9 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_LEGEND.INC.PHP
@@ -470,7 +472,7 @@ class Legend
                 if ($p[3] < -100) {
                     // p[1][0] == iPattern, p[1][1] == iPatternColor, p[1][2] == iPatternDensity
                     if ($patternFactory == null) {
-                        $patternFactory = new RectPatternFactory();
+                        $patternFactory = new Graph\RectPatternFactory();
                     }
                     $prect = $patternFactory->Create($p[1][0], $p[1][1], 1);
                     $prect->SetBackground($p[1][3]);

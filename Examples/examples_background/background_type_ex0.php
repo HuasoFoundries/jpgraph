@@ -29,7 +29,7 @@ $graph->subtitle->Set('"BGIMG_COPY"');
 $graph->subtitle->SetColor('darkred');
 
 // Add background with 25% mix
-$graph->SetBackgroundImage('../assets/heat1.jpg', BGIMG_COPY);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/heat1.jpg', BGIMG_COPY);
 $graph->SetBackgroundImageMix(25);
 
 // Create the linear plot

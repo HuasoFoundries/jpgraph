@@ -24,7 +24,7 @@ $graph->SetFrame();
 $graph->title->Set('Example with background flag');
 #$graph->title->SetFont(FF_VERA,FS_BOLD,14);
 
-//$graph->SetBackgroundImage('../assets/bkgimg.jpg',BGIMG_FILLFRAME);
+//$graph->SetBackgroundImage(__DIR__.'/../assets/bkgimg.jpg',BGIMG_FILLFRAME);
 //$graph->SetBackgroundImageMix(90);
 $graph->SetBackgroundCFlag(28, BGIMG_FILLFRAME, 15);
 

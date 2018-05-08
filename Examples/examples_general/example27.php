@@ -14,7 +14,7 @@ $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $p1 = new PiePlot3D($data);
 $p1->SetSize(0.5);
 $p1->SetCenter(0.45);
-$p1->SetLegends($gDateLocale->GetShortMonth());
+$p1->SetLegends($graph->gDateLocale->GetShortMonth());
 
 $graph->Add($p1);
 $graph->Stroke();

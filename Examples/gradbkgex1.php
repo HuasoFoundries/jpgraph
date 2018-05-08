@@ -31,7 +31,7 @@ $graph->tabtitle->SetFont(FF_ARIAL, FS_BOLD, 13);
 // Setup x,Y grid
 $graph->xgrid->Show();
 $graph->xgrid->SetColor('gray@0.5');
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 $graph->ygrid->SetColor('gray@0.5');
 
 // Setup color for axis and labels on axis

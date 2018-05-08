@@ -11,8 +11,9 @@ use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-\Kint::$enabled_mode = true;
-require_once dirname(__FILE__) . '/../includes/jpgraph.php';
+require_once __DIR__ . '/../includes/config.inc.php';
+
+\Kint::$enabled_mode = DEBUGMODE;
 
 /**
  * @class Graph
@@ -20,6 +21,8 @@ require_once dirname(__FILE__) . '/../includes/jpgraph.php';
  */
 class Graph
 {
+    public $gDateLocale;
+    public $gJpgDateLocale;
     public $cache; // Cache object (singleton)
     public $img; // Img object (singleton)
     public $plots   = []; // Array of all plot object in the graph (for Y 1 axis)
@@ -149,6 +152,8 @@ class Graph
     //   If false the image is just created in the cache
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeout = 0, $aInline = true)
     {
+        $this->gDateLocale    = new Util\DateLocale();
+        $this->gJpgDateLocale = new Util\DateLocale();
         if (!is_numeric($aWidth) || !is_numeric($aHeight)) {
             Util\JpGraphError::RaiseL(25008); //('Image width/height argument in Graph::Graph() must be numeric');
         }

@@ -37,7 +37,7 @@ $graph->yaxis->scale->SetGrace(50);
 $graph->yaxis->SetLabelFormatCallback('separator1000');
 
 // Setup X-axis labels
-$a = $gDateLocale->GetShortMonth();
+$a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT2);
 

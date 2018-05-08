@@ -6,6 +6,9 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class GanttBar
 // Responsible for formatting individual gantt bars
@@ -128,7 +131,7 @@ class GanttBar extends GanttPlotObject
 
     public function Stroke($aImg, $aScale)
     {
-        $factory = new RectPatternFactory();
+        $factory = new Graph\RectPatternFactory();
         $prect   = $factory->Create($this->iPattern, $this->iPatternColor);
         $prect->SetDensity($this->iPatternDensity);
 

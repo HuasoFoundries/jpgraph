@@ -522,6 +522,10 @@ class RGB
             $alpha = isset($matches[7]) ? str_replace(',', '.', $matches[7]) : 0;
             $adj   = isset($matches[9]) ? str_replace(',', '.', $matches[9]) : 1.0;
 
+            if ($alpha === '') {
+                $alpha = 0;
+            }
+
             if ($adj < 0) {
                 Util\JpGraphError::RaiseL(25077); //('Adjustment factor for color must be > 0');
             }

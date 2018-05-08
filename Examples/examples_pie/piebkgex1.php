@@ -29,7 +29,7 @@ $graph->SetMarginColor('navy');
 $graph->SetShadow(false);
 
 // Setup background
-$graph->SetBackgroundImage('../assets/worldmap1.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLPLOT);
 
 // Setup title
 $graph->title->Set('Pie plots with background image');

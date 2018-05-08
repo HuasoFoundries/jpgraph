@@ -6,7 +6,7 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Graph\RectPatternFactory;
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -34,7 +34,7 @@ class PlotBand
 
     public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = DEPTH_BACK)
     {
-        $f           = new RectPatternFactory();
+        $f           = new Graph\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
         if (is_numeric($aMin) && is_numeric($aMax) && ($aMin > $aMax)) {
             Util\JpGraphError::RaiseL(16004);

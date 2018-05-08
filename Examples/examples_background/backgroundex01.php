@@ -15,7 +15,7 @@ $data2y = [14, 18, 33, 29, 39, 55];
 // A nice graph with anti-aliasing
 $graph = new Graph\Graph(400, 200);
 $graph->img->SetMargin(40, 180, 40, 40);
-$graph->SetBackgroundImage('../assets/tiger_bkg.png', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLPLOT);
 
 $graph->img->SetAntiAliasing('white');
 $graph->SetScale('textlin');

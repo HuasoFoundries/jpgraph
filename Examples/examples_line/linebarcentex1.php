@@ -11,7 +11,7 @@ require_once 'jpgraph/jpgraph_bar.php';
 $l1datay = [11, 9, 2, 4, 3, 13, 17];
 $l2datay = [23, 12, 5, 19, 17, 10, 15];
 
-$datax = $gDateLocale->GetShortMonth();
+$datax = $graph->gDateLocale->GetShortMonth();
 
 // Create the graph.
 $graph = new Graph\Graph(400, 200);
