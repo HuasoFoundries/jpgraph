@@ -13,7 +13,11 @@ extensions:
     enabled:
         - Codeception\Extension\RunFailed
         - Codeception\Extension\Logger
-
+coverage:
+    enabled: true
+    include:
+        - src/*
+    
 settings:
 
     # name of bootstrap that will be used
