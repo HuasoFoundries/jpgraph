@@ -6,7 +6,7 @@ build:
           php: '7.1'
     dependencies:
         before:
-            - apt-get install php7.1-xdebug
+            - pecl install xdebug
     tests:
         override:
             -
