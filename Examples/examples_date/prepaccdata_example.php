@@ -3,9 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../jpgraph.php';
-require_once '../jpgraph_line.php';
-require_once '../jpgraph_date.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 //Create some test data
 $xdata = [];
@@ -21,13 +21,12 @@ for ($i = 0; $i < $n; ++$i) {
     $ydata[2][$i] = rand(20, 30);
 }
 
-function formatDate(&$aVal)
-{
+$formatDate = function (&$aVal) {
     $aVal = date('Y-m-d H:i', $aVal);
-}
+};
 
 // Apply this format to all time values in the data to prepare it to be display
-array_walk($xdata, 'formatDate');
+array_walk($xdata, $formatDate);
 
 // Create the graph.
 $__width  = 600;

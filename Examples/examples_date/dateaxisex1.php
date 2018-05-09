@@ -8,10 +8,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // The callback that converts timestamp to minutes and seconds
-function TimeCallback($aVal)
-{
+$TimeCallback = function ($aVal) {
     return date('H:i:s', $aVal);
-}
+};
 
 // Fake some suitable random data
 $now   = time();
@@ -43,7 +42,7 @@ $graph->SetScale('intlin', 0, 200, $now, $datax[$n - 1]);
 
 // Setup the x-axis with a format callback to convert the timestamp
 // to a user readable time
-$graph->xaxis->SetLabelFormatCallback('TimeCallback');
+$graph->xaxis->SetLabelFormatCallback($TimeCallback);
 $graph->xaxis->SetLabelAngle(90);
 
 // Create the line

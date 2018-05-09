@@ -3,11 +3,11 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../jpgraph.php';
-require_once '../jpgraph_line.php';
-require_once '../jpgraph_date.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
-define('INTERVAL', 5 * 60);
+$INTERVAL = 5 * 60;
 
 // First create some "dummy" data
 $m        = 5; // Number of data sets
@@ -21,11 +21,11 @@ for ($i = 0; $i < $m; ++$i) {
     }
 }
 
-$start = floor(time() / INTERVAL) * INTERVAL;
+$start = floor(time() / $INTERVAL) * $INTERVAL;
 $times = [$start];
 for ($i = 1; $i < $n; ++$i) {
     // Create a timestamp for every 5 minutes
-    $times[$i] = $times[$i - 1] + INTERVAL;
+    $times[$i] = $times[$i - 1] + $INTERVAL;
 }
 
 // Setup the bid graph
@@ -51,7 +51,7 @@ $graph->yaxis->SetLabelFormat('$%s');
 $graph->xaxis->scale->SetDateFormat('H:i');
 
 // Force labels to only be displayed every 5 minutes
-$graph->xaxis->scale->ticks->Set(INTERVAL);
+$graph->xaxis->scale->ticks->Set($INTERVAL);
 
 // Adjust the start time for an "even" 5 minute, i.e. 5,10,15,20,25, ...
 $graph->xaxis->scale->SetTimeAlign(MINADJ_5);

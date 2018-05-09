@@ -334,7 +334,7 @@ class PiePlot
 
         if ($this->setslicecolors == null) {
             $numcolors = count($ta);
-            if (class_exists('PiePlot3D', false) && ($this instanceof PiePlot3D)) {
+            if (($this instanceof PiePlot3D)) {
                 $ta = array_reverse(array_slice($ta, 0, $n));
             }
         } else {

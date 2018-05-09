@@ -146,7 +146,7 @@ class RadarGraph extends Graph
 
         if ($cl instanceof Text) {
             $this->AddText($aPlot);
-        } elseif (class_exists('IconPlot', false) && ($cl instanceof Plot\IconPlot)) {
+        } elseif (($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aPlot);
         } else {
             $this->plots[] = $aPlot;

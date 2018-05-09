@@ -6,12 +6,12 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+require_once __DIR__ . '/../config.inc.php';
+
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-
-require_once __DIR__ . '/../config.inc.php';
 
 /**
  * @class Graph
@@ -363,13 +363,13 @@ class Graph
 
         if ($cl instanceof Text) {
             $this->AddText($aPlot);
-        } elseif (class_exists('PlotLine', false) && ($cl instanceof PlotLine)) {
+        } elseif (($cl instanceof Plot\PlotLine)) {
             $this->AddLine($aPlot);
-        } elseif (class_exists('PlotBand', false) && ($cl instanceof PlotBand)) {
+        } elseif (($cl instanceof Plot\PlotBand)) {
             $this->AddBand($aPlot);
-        } elseif (class_exists('IconPlot', false) && ($cl instanceof Plot\IconPlot)) {
+        } elseif (($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aPlot);
-        } elseif (class_exists('GTextTable', false) && ($cl instanceof GTextTable)) {
+        } elseif (($cl instanceof Text\GTextTable)) {
             $this->AddTable($aPlot);
         } else {
             if (is_array($aPlot)) {
@@ -421,9 +421,9 @@ class Graph
 
         if ($cl instanceof Text) {
             $this->AddText($aPlot, true);
-        } elseif (class_exists('PlotLine', false) && ($cl instanceof PlotLine)) {
+        } elseif (($cl instanceof Plot\PlotLine)) {
             $this->AddLine($aPlot, true);
-        } elseif (class_exists('PlotBand', false) && ($cl instanceof PlotBand)) {
+        } elseif (($cl instanceof Plot\PlotBand)) {
             $this->AddBand($aPlot, true);
         } else {
             $this->y2plots[] = $aPlot;
@@ -447,9 +447,9 @@ class Graph
             $cl = $aPlot;
         }
 
-        if (($cl instanceof Text) ||
-            (class_exists('PlotLine', false) && ($cl instanceof PlotLine)) ||
-            (class_exists('PlotBand', false) && ($cl instanceof PlotBand))) {
+        if (($cl instanceof Text\Text) ||
+            ($cl instanceof Plot\PlotLine) ||
+            ($cl instanceof Plot\PlotBand)) {
             JpGraph::RaiseL(25013); //('You can only add standard plots to multiple Y-axis');
         } else {
             $this->ynplots[$aN][] = $aPlot;
@@ -2917,7 +2917,7 @@ class Graph
     {
         if ($do) {
             define('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             define('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

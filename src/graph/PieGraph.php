@@ -50,7 +50,7 @@ class PieGraph extends Graph
 
         if ($cl instanceof Text) {
             $this->AddText($aObj);
-        } elseif (class_exists('IconPlot', false) && ($cl instanceof Plot\IconPlot)) {
+        } elseif (($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aObj);
         } else {
             if (is_array($aObj)) {

@@ -7,18 +7,16 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-require_once 'jpgraph/jpgraph_date.php';
-
 // Create a data set in range (50,70) and X-positions
-define('NDATAPOINTS', 360);
-define('SAMPLERATE', 240);
-$start = time();
-$end   = $start + NDATAPOINTS * SAMPLERATE;
-$data  = [];
-$xdata = [];
-for ($i = 0; $i < NDATAPOINTS; ++$i) {
+$NDATAPOINTS = 360;
+$SAMPLERATE  = 240;
+$start       = time();
+$end         = $start + $NDATAPOINTS * $SAMPLERATE;
+$data        = [];
+$xdata       = [];
+for ($i = 0; $i < $NDATAPOINTS; ++$i) {
     $data[$i]  = rand(50, 70);
-    $xdata[$i] = $start + $i * SAMPLERATE;
+    $xdata[$i] = $start + $i * $SAMPLERATE;
 }
 
 // Create the new Graph\Graph

@@ -15,13 +15,9 @@ class ImgTest extends \Codeception\Test\Unit
         \Codeception\Util\Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
     }
 
-    protected function _before()
-    {
-    }
+    protected function _before() {}
 
-    protected function _after()
-    {
-    }
+    protected function _after() {}
 
     public function testFile0()
     {
@@ -44,11 +40,14 @@ class ImgTest extends \Codeception\Test\Unit
         $size = getimagesizefromstring($img);
 
         $size['filename'] = $filename;
-        if ($__width != $size[0] || $__height != $size[1]) {
+        if (!isset($__width) || !isset($__height)) {
+            $this->assertEquals('image/jpeg', $size['mime'], 'image should have mime image/jpeg for ' . $filename);
+        } else if ($__width != $size[0] || $__height != $size[1]) {
             rename(self::$exampleRoot . $filename, self::$exampleRoot . 'no_dim_' . $filename);
+        } else {
+            $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+            $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
         }
-        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
-        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()

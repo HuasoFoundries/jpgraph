@@ -608,7 +608,40 @@ define('GANTT_HVCROSS', BAND_HVCROSS); // Vertical/Hor crosses
 define('GANTT_DIAGCROSS', BAND_DIAGCROSS); // Diagonal crosses
 
 // Conversion constant
-define('SECPERDAY', 3600 * 24);
+define('HOURADJ_1', 0 + 30);
+define('HOURADJ_2', 1 + 30);
+define('HOURADJ_3', 2 + 30);
+define('HOURADJ_4', 3 + 30);
+define('HOURADJ_6', 4 + 30);
+define('HOURADJ_12', 5 + 30);
+
+define('MINADJ_1', 0 + 20);
+define('MINADJ_5', 1 + 20);
+define('MINADJ_10', 2 + 20);
+define('MINADJ_15', 3 + 20);
+define('MINADJ_30', 4 + 20);
+
+define('SECADJ_1', 0);
+define('SECADJ_5', 1);
+define('SECADJ_10', 2);
+define('SECADJ_15', 3);
+define('SECADJ_30', 4);
+
+define('YEARADJ_1', 0 + 30);
+define('YEARADJ_2', 1 + 30);
+define('YEARADJ_5', 2 + 30);
+
+define('MONTHADJ_1', 0 + 20);
+define('MONTHADJ_6', 1 + 20);
+
+define('DAYADJ_1', 0);
+define('DAYADJ_WEEK', 1);
+define('DAYADJ_7', 1);
+
+define('SECPERYEAR', 31536000);
+define('SECPERDAY', 86400);
+define('SECPERHOUR', 3600);
+define('SECPERMIN', 60);
 
 // Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
 // You should use the proper locale strings directly
@@ -716,9 +749,7 @@ if (!class_exists('\Kint')) {
     {
         public static $enabled_mode = true;
 
-        public static function dump()
-        {
-        }
+        public static function dump() {}
     }
 }
 \Kint::$enabled_mode = DEBUGMODE;
@@ -738,8 +769,6 @@ if (
      */
     class PC
     {
-        public static function debug()
-        {
-        }
+        public static function debug() {}
     }
 }
