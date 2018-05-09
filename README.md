@@ -57,23 +57,25 @@ The examples work the same way you should use this library:
       $graph->Stroke();
    ```
 
+   - **important** always instance your graph (of any kind) before creating its contents. This will in turn load all needed constants to the global scope.
+
 See the examples working by performing the following steps:
 
- - `composer install`
- - `php -S localhost:8000`
- - Open your browser at http://localhost:8000/Examples/index.html
+ - run `composer install`
+ - run `make start` **or** `php -S localhost:8000 -t Examples`
+ - Open your browser at http://localhost:8000
 
 
+### Change the config
 
-
+You can override some configs set on [config.inc.php](src/config.inc.php) by creating a `.env` file in your project root. 
+See [.env.example](.env.example) as a reference.
 
 
 ### Wishlist
 
-- Get all the examples working
-- If the project gains traction I can move the repo to an organization so there can be more mantainers and contributions
-- Add tests
-- Add CI tools
+- Get all the examples working (half of them have yet to be transformed from the old code to the new PSR-4 format)
+- Add more tests (We need to test more classes and methods besides the ones in the examples, as well as perform more assetions on the current tests)
 - Add alternative use of [imagick](http://php.net/manual/en/imagick.setup.php) 
 
 

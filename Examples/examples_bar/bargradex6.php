@@ -6,7 +6,7 @@
 
 // Example for use of JpGraph,
 // ljp, 01/03/01 20:32
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

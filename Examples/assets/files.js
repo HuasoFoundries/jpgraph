@@ -610,14 +610,11 @@ var files_arr = [
     'examples_windrose/windrose_layout_ex0.php',
     'examples_windrose/windrose_layout_ex1.php'
 ];
-var filesObj = {};
 var filesmenu = _.reduce(files_arr, function(accum, file) {
     var foldername = file.split('/')[0].split('_').join(' '),
         folder = file.split('/')[0],
         testName = folder.split('_')[1],
         testName = 'tests/' + testName[0].toUpperCase() + testName.substring(1) + 'Test.php';
-    filesObj[testName] = filesObj[testName] || [];
-    filesObj[testName].push(file.split('/')[1]);
     accum[folder] = accum[folder] || {
         foldername: foldername,
         examples: []
@@ -627,9 +624,7 @@ var filesmenu = _.reduce(files_arr, function(accum, file) {
 }, {});
 
 
-/*_.each(filesObj, function(files, test) {
-    console.log("echo public function testFileIterator() {'" + JSON.stringify(files) + "'; foreach($files as $file) { $this->_fileCheck($file);}}} ' >> " + test);
-})*/
+
 jQuery(document).ready(function() {
 
     var createCard = function(index, title) {

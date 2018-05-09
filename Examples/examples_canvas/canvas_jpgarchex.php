@@ -1,6 +1,6 @@
 <?php
 // $Id: canvas_jpgarchex.php,v 1.3 2002/08/29 10:14:19 aditus Exp $
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;

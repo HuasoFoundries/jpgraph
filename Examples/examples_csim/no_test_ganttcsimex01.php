@@ -1,7 +1,7 @@
 <?php
 // Gantt example to create CSIM
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 require_once 'jpgraph/jpgraph_gantt.php';
 
 $bar1 = new GanttBar(0, 'Activity 1', '2001-12-21', '2002-01-20');

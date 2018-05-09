@@ -1,10 +1,5 @@
 <?php
 
-require_once '../vendor/autoload.php';
-
-if (!class_exists('\Kint')) {
-    die('No kint');
-}
 /**
  * JPGraph v3.6.15
  */

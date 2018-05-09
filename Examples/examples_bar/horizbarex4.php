@@ -5,7 +5,7 @@
  */
 
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

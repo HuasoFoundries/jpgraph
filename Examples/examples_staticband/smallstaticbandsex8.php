@@ -6,7 +6,7 @@
 
 // Illustration of the different patterns for bands
 // $Id: smallstaticbandsex8.php,v 1.1 2002/09/01 21:51:08 aditus Exp $
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

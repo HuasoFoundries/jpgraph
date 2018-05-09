@@ -6,7 +6,7 @@
 
 // $Id: piecex2.php,v 1.3.2.1 2003/08/19 20:40:12 aditus Exp $
 // Example of pie with center circle
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 require_once 'jpgraph/jpgraph_log.php';
 require_once 'jpgraph/jpgraph_radar.php';
 

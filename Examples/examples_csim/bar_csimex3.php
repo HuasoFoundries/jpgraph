@@ -6,7 +6,7 @@
 
 // $Id: bar_csimex3.php,v 1.3 2002/08/31 20:03:46 aditus Exp $
 // Horiontal bar graph with image maps
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

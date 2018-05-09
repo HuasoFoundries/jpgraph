@@ -6,7 +6,7 @@
 
 // A simple Polar graph, example 1
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_polar.php';

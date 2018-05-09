@@ -9,7 +9,7 @@
 // willing to go with the defaults. This is an illustrative example of
 // some of the capabilities of JpGraph.
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 

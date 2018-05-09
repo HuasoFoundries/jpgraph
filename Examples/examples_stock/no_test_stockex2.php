@@ -5,7 +5,7 @@
  */
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_stock.php';

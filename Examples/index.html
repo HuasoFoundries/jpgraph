@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html xml:lang="en-US" lang="en-US">
+<html xml:lang="en" lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>JPGraph 3.6</title>
-    <link href="favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="favicon.png" rel="apple-touch-icon">
+    <link href="/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="/favicon.png" rel="apple-touch-icon">
+    <link href="/favicon.png" rel="icon" type="image/png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.min.js" integrity="sha256-Q+4FYyw42bZJQS9v3+BXNtPLNxKqDLKIEPt50Z4fiYw=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/files.js"></script>
+    <script type="text/javascript" src="/example_list.php"></script>
     <style>
     #accordion {
         max-height: 100vh;
@@ -31,10 +32,18 @@
         margin: 20px auto;
     }
 
+    #graph_image {
+        border: 1px solid #BBB;
+    }
+
     #graph_iframe {
         height: 80vh;
         width: 95%;
         border: 1px solid #BBB;
+    }
+
+    .invisible {
+        display: none;
     }
     </style>
 </head>
@@ -48,7 +57,8 @@
             </div>
             <div class="col-6 col-md-8  col-xl-10" id="iframe_container">
                 <div id="filepath" style="margin:5px;"></div>
-                <iframe src="/intro.html" name="graph_iframe" id="graph_iframe" frameborder="0" />
+                <img src="examples_axis/axislabelbkgex01.php" id="graph_image" class="graph_image">
+                <iframe src="/intro.html" name="graph_iframe" id="graph_iframe" class="invisible" frameborder="0" />
                 <p>Your browser does not support iframes.</p>
                 </iframe>
             </div>

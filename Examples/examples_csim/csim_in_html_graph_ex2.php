@@ -1,6 +1,6 @@
 <?php
 // Example of pie with center circle
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 define('DEBUGMODE', true);
 ini_set('display_errors', intval(DEBUGMODE));
 ini_set('display_startup_errors', intval(DEBUGMODE));

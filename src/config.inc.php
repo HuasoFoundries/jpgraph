@@ -12,11 +12,17 @@
 //
 // Copyright (c) Asial Corporation. All rights reserved.
  */
-require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
+// check if jpgraph is the root folder
+if (file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
+    defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
+} else if (file_exists(dirname(dirname(dirname(__DIR__))) . '/vendor/autoload.php')) {
+    // otherwise, jpgraph was required as a composer dependency
+    defined('ROOT_PATH') || define('ROOT_PATH', dirname(dirname(dirname(__DIR__))));
+}
+require_once ROOT_PATH . '/vendor/autoload.php';
 
-if (is_readable(ROOT_PATH . '/.env')) {
+if (is_readable(ROOT_PATH . '/.env') && class_exists('\Symfony\Component\Dotenv\Dotenv')) {
     $dotenv = new \Symfony\Component\Dotenv\Dotenv();
     $dotenv->load(ROOT_PATH . '/.env');
 }
@@ -25,9 +31,7 @@ if (getenv('JPGRAPH_DEBUGMODE') && !defined('DEBUGMODE')) {
     define('DEBUGMODE', getenv('JPGRAPH_DEBUGMODE'));
 }
 // Sets DEBUGMODE for the app. Set this to true to enable debugging outputs
-if (!defined('DEBUGMODE')) {
-    define('DEBUGMODE', false);
-}
+defined('DEBUGMODE') || define('DEBUGMODE', false);
 
 ini_set('display_errors', intval(DEBUGMODE));
 ini_set('display_startup_errors', intval(DEBUGMODE));
@@ -705,7 +709,7 @@ if (!class_exists('\Kint')) {
 
 if (
     class_exists('\PhpConsole\Handler') &&
-    getenv('USE_PHPCONSOLE') &&
+    getenv('JPGRAPH_USE_PHPCONSOLE') &&
     isset($_SERVER['HTTP_USER_AGENT']) &&
     strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false
 ) {
