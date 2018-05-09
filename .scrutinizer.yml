@@ -7,19 +7,18 @@ build:
             ini:
                 'zend_extension': 'xdebug.so'
     nodes:
-        tests:
-            override:
-                -
-                    command: make test_coverage
-                    coverage:
-                        file: 'tests/_output/coverage.xml'
-                        format: 'clover'
+        tests: true
         analysis:
             tests:
                 override:
                     -
                         command: phpcs-run
                         use_website_config: true
+                    -
+                        command: make test_coverage
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
                     - php-scrutinizer-run
 
 
