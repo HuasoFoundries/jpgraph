@@ -10,8 +10,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class ImgStreamCache
-// Description: Handle caching of graphs to files. All image output goes
-//              through this class
+ * // Description: Handle caching of graphs to files. All image output goes
+ * //              through this class
  */
 class ImgStreamCache
 {

@@ -11,20 +11,19 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_TEXT.INC.PHP
-// Description: Class to handle text as object in the graph.
-//              The low level text layout engine is handled by the GD class
-// Created:     2001-01-08 (Refactored to separate file 2008-08-01)
-// Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Class to handle text as object in the graph.
+ * //              The low level text layout engine is handled by the GD class
+ * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
+ * // Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class Text
-// Description: Arbitrary text object that can be added to the graph
+ * // Description: Arbitrary text object that can be added to the graph
  */
-class Text//extends Graph
-
+class Text //extends Graph
 {
     public $t;
     public $x      = 0;
