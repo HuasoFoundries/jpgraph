@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:           JPGRAPH_LINE.PHP
-// Description: Line plot extension for JpGraph
-// Created:       2001-01-08
-// Ver:           $Id: jpgraph_line.php 1921 2009-12-11 11:46:39Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Line plot extension for JpGraph
+ * // Created:       2001-01-08
+ * // Ver:           $Id: jpgraph_line.php 1921 2009-12-11 11:46:39Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 // constants for the (filled) area
 define('LP_AREA_FILLED', true);
@@ -24,7 +24,7 @@ define('LP_AREA_NO_BORDER', true);
 
 /**
  * @class LinePlot
-// Description:
+ * // Description:
  */
 class LinePlot extends Plot
 {
@@ -231,7 +231,7 @@ class LinePlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-                //("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
+            //("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }

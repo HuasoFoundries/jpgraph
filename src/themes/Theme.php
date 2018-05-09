@@ -5,12 +5,12 @@
  */
 
 /**
-// File:        JPGRAPH_THEME.INC.PHP
-// Description: Class to define graph theme
-// Created:     2010-09-29
-// Ver:         $Id: jpgraph_theme.inc.php 83 2010-10-01 11:24:19Z atsushi $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // File:        JPGRAPH_THEME.INC.PHP
+ * // Description: Class to define graph theme
+ * // Created:     2010-09-29
+ * // Ver:         $Id: jpgraph_theme.inc.php 83 2010-10-01 11:24:19Z atsushi $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 namespace Amenadiel\JpGraph\Themes;
 
@@ -19,7 +19,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class
-// Description:
+ * // Description:
  */
 abstract class Theme
 {
@@ -65,7 +65,9 @@ abstract class Theme
         }
     }
 
-    public function PreStrokeApply($graph) {}
+    public function PreStrokeApply($graph)
+    {
+    }
 
     public function GetThemeColors($num = 30)
     {
