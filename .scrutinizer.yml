@@ -1,23 +1,28 @@
 filter:
     excluded_paths:
-        - './Examples/*'
+        - 'Examples/'
+        - 'tests/'
+    dependency_paths:
+        - 'vendor/'
+
 build:
     environment:
           php:
             version: '7.1'
             ini:
                 'zend_extension': 'xdebug.so'
+    tests:
+        override:
+            -
+                command: make test_coverage
+                coverage:
+                    file: 'tests/_output/coverage.xml'
+                    format: 'clover'
     nodes:
         analysis:
             tests:
                 override:
-                    - 'php-scrutinizer-run'
-                    -
-                        command: make test_coverage
-                        coverage:
-                            file: 'tests/_output/coverage.xml'
-                            format: 'clover'
-        tests: true
+                    - php-scrutinizer-run
         
 checks:
     php:
@@ -40,9 +45,3 @@ coding_style:
 
 tools:
     php_code_coverage: true
-    php_analyzer: true
-    php_pdepend:
-        excluded_dirs:
-            - vendor
-            - tests
-            - Examples
