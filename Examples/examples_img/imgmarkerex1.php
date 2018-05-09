@@ -34,7 +34,7 @@ $p1 = new Plot\LinePlot($datay1);
 $p1->SetColor('navy');
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(MARK_IMG, 'saab_95.jpg', 0.5);
+$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/saab_95.jpg', 0.5);
 
 // Displayes value on top of marker image
 $p1->value->SetFormat('%d mil');

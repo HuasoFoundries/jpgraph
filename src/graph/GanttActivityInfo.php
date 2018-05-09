@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -16,9 +17,6 @@ use Amenadiel\JpGraph\Util;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
-require_once 'jpgraph_plotband.php';
-require_once 'jpgraph_iconplot.php';
-require_once 'jpgraph_plotmark.inc.php';
 
 /**
  * @class GanttActivityInfo
@@ -116,7 +114,7 @@ class GanttActivityInfo
 
     public function GetWidth($aImg)
     {
-        $txt = new TextProperty();
+        $txt = new Text\TextProperty();
         $txt->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         $n  = count($this->iTitles);
         $rm = $this->iRightColMargin;
@@ -161,7 +159,7 @@ class GanttActivityInfo
             return;
         }
 
-        $txt = new TextProperty();
+        $txt = new Text\TextProperty();
         $txt->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         $txt->SetColor($this->iFontColor);
         $txt->SetAlign($this->iHeaderAlign, 'top');
@@ -234,10 +232,3 @@ class GanttActivityInfo
         }
     }
 }
-
-/**
- * Global cache for builtin images
- */
-$_gPredefIcons = new PredefIcons();
-
-// <EOF>

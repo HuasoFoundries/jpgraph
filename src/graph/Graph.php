@@ -367,7 +367,7 @@ class Graph
             $this->AddLine($aPlot);
         } elseif (class_exists('PlotBand', false) && ($cl instanceof PlotBand)) {
             $this->AddBand($aPlot);
-        } elseif (class_exists('IconPlot', false) && ($cl instanceof IconPlot)) {
+        } elseif (class_exists('IconPlot', false) && ($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aPlot);
         } elseif (class_exists('GTextTable', false) && ($cl instanceof GTextTable)) {
             $this->AddTable($aPlot);
@@ -2917,7 +2917,7 @@ class Graph
     {
         if ($do) {
             define('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             define('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

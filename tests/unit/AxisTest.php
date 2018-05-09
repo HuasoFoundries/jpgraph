@@ -9,22 +9,16 @@ class AxisTest extends \Codeception\Test\Unit
 
     public static function setUpBeforeClass()
     {
-        function getRoot($class)
-        {
-            return UNIT_TEST_FOLDER . '/Examples/examples_' . $class . '/';
-        }
         $className         = str_replace('test', '', strtolower(__CLASS__));
         self::$exampleRoot = getRoot($className);
         self::$files       = GetFiles(self::$exampleRoot);
+        \Codeception\Util\Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
+
     }
 
-    protected function _before()
-    {
-    }
+    protected function _before() {}
 
-    protected function _after()
-    {
-    }
+    protected function _after() {}
 
     private function _fileCheck($filename)
     {
@@ -38,7 +32,7 @@ class AxisTest extends \Codeception\Test\Unit
 
         $size['filename'] = $filename;
         if ($__width != $size[0] || $__height != $size[1]) {
-            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+            rename(self::$exampleRoot . $filename, self::$exampleRoot . 'no_dim_' . $filename);
         }
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);

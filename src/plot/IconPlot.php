@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 
 /**
@@ -183,9 +184,9 @@ class IconPlot
             Util\JpGraphError::RaiseL(8003); //('It is not possible to specify both an image file and a country flag for the same icon.');
         }
         if ($this->iFile != '') {
-            $gdimg = Graph::LoadBkgImage('', $this->iFile);
+            $gdimg = Graph\Graph::LoadBkgImage('', $this->iFile);
         } elseif ($this->iImgString != '') {
-            $gdimg = Image::CreateFromString($this->iImgString);
+            $gdimg = Image\Image::CreateFromString($this->iImgString);
         } else {
             $fobj  = new Image\FlagImages($this->iCountryStdSize);
             $dummy = '';

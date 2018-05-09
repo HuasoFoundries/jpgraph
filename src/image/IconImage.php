@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -23,9 +24,11 @@ class IconImage
 
     public function __construct($aIcon, $aScale = 1)
     {
-        global $_gPredefIcons;
+
+        $_gPredefIcons = new PredefIcons();
+
         if (is_string($aIcon)) {
-            $this->iGDImage = Graph::LoadBkgImage('', $aIcon);
+            $this->iGDImage = Graph\Graph::LoadBkgImage('', $aIcon);
         } elseif (is_integer($aIcon)) {
             // Builtin image
             $this->iGDImage = $_gPredefIcons->GetImg($aIcon);

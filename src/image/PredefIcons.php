@@ -12,19 +12,6 @@ use Amenadiel\JpGraph\Util;
  * @class PredefIcons
  * // Description: Predefined icons for use with Gantt charts
  */
-define('GICON_WARNINGRED', 0);
-define('GICON_TEXT', 1);
-define('GICON_ENDCONS', 2);
-define('GICON_MAIL', 3);
-define('GICON_STARTCONS', 4);
-define('GICON_CALC', 5);
-define('GICON_MAGNIFIER', 6);
-define('GICON_LOCK', 7);
-define('GICON_STOP', 8);
-define('GICON_WARNINGYELLOW', 9);
-define('GICON_FOLDEROPEN', 10);
-define('GICON_FOLDER', 11);
-define('GICON_TEXTIMPORTANT', 12);
 
 class PredefIcons
 {

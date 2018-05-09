@@ -5,10 +5,7 @@
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_flags.php';
-
+use Amenadiel\JpGraph\Plot;
 // Some data
 $datay1 = [140, 110, 50];
 $datay2 = [35, 90, 190];

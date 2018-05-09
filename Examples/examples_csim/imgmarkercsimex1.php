@@ -36,7 +36,7 @@ $p1->SetColor('navy');
 $p1->SetCSIMTargets(['#1', '#2', '#3', '#4', '#5']);
 
 // Use an image of favourite car as
-$p1->mark->SetType(MARK_IMG, 'saab_95.jpg', 0.5);
+$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/saab_95.jpg', 0.5);
 //$p1->mark->SetType(MARK_SQUARE);
 
 // Displayes value on top of marker image

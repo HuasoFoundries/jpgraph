@@ -5,10 +5,9 @@
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
-require_once 'jpgraph/jpgraph_gantt.php';
-
-$graph = new GanttGraph();
+$graph = new Graph\GanttGraph();
 $graph->SetBox();
 $graph->SetShadow();
 
@@ -46,7 +45,7 @@ $graph->SetLabelVMarginFactor(1);
 
 // Format the bar for the first activity
 // ($row,$title,$startdate,$enddate)
-$activity = new GanttBar(0, 'Project', '2001-12-21', '2002-01-07', '[50%]');
+$activity = new Plot\GanttBar(0, 'Project', '2001-12-21', '2002-01-07', '[50%]');
 
 // Yellow diagonal line pattern on a red background
 $activity->SetPattern(BAND_RDIAG, 'yellow');
@@ -61,7 +60,7 @@ $activity->progress->SetPattern(BAND_HVCROSS, 'blue');
 
 // Format the bar for the second activity
 // ($row,$title,$startdate,$enddate)
-$activity2 = new GanttBar(1, 'Project', '2001-12-21', '2002-01-02', '[30%]');
+$activity2 = new Plot\GanttBar(1, 'Project', '2001-12-21', '2002-01-02', '[30%]');
 
 // Yellow diagonal line pattern on a red background
 $activity2->SetPattern(BAND_RDIAG, 'yellow');
@@ -79,7 +78,7 @@ $graph->Add($activity);
 $graph->Add($activity2);
 
 // Add a vertical line
-$vline = new GanttVLine('2001-12-24', 'Phase 1');
+$vline = new Plot\GanttVLine('2001-12-24', 'Phase 1');
 $vline->SetDayOffset(0.5);
 //$graph->Add($vline);
 

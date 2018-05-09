@@ -6,9 +6,8 @@ ini_set('display_startup_errors', 1);
 
 error_reporting(E_ALL);
 
-define('CACHE_DIR', __DIR__ . '/_output/');
-
-define('USE_CACHE', true);
+//define('CACHE_DIR', __DIR__ . '/_output/');
+//define('USE_CACHE', true);
 
 function GetFiles($folder)
 {
@@ -30,6 +29,11 @@ function GetFiles($folder)
     sort($a);
 
     return $a;
+}
+
+function getRoot($class)
+{
+    return UNIT_TEST_FOLDER . '/Examples/examples_' . $class . '/';
 }
 
 define('UNIT_TEST_FOLDER', dirname(dirname(__DIR__)));

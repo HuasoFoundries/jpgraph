@@ -6,7 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\ImgTrans;
+use Amenadiel\JpGraph\Image;
 
 /**
  * File:        JPGRAPH_CANVAS.PHP
@@ -76,7 +76,7 @@ class CanvasGraph extends Graph
         if (!$_csim) {
             // Should we do any final image transformation
             if ($this->iImgTrans) {
-                $tform          = new ImgTrans($this->img->img);
+                $tform          = new Image\ImgTrans($this->img->img);
                 $this->img->img = $tform->Skew3D(
                     $this->iImgTransHorizon,
                     $this->iImgTransSkewDist,

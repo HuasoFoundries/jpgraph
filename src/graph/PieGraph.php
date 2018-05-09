@@ -6,7 +6,8 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\ImgTrans;
+use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Plot;
 
 /**
  * @class PieGraph
@@ -49,7 +50,7 @@ class PieGraph extends Graph
 
         if ($cl instanceof Text) {
             $this->AddText($aObj);
-        } elseif (class_exists('IconPlot', false) && ($cl instanceof IconPlot)) {
+        } elseif (class_exists('IconPlot', false) && ($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aObj);
         } else {
             if (is_array($aObj)) {
@@ -258,7 +259,7 @@ class PieGraph extends Graph
 
             // Should we do any final image transformation
             if ($this->iImgTrans) {
-                $tform          = new ImgTrans($this->img->img);
+                $tform          = new Image\ImgTrans($this->img->img);
                 $this->img->img = $tform->Skew3D(
                     $this->iImgTransHorizon,
                     $this->iImgTransSkewDist,

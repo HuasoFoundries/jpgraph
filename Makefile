@@ -2,6 +2,10 @@ VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
 
 SHELL = /usr/bin/env bash
 
+ifneq ($(g),)	
+	groups=-g
+endif
+
 default: clean
 .PHONY: version install test tag start csfixer
 
@@ -14,10 +18,11 @@ install:
 	composer install --no-dev
 
 test:
-	php vendor/bin/codecept run unit $(test) -g ready --debug
+
+	php vendor/bin/codecept run unit $(test) $(groups) $(g) --debug
 
 test_coverage:
-	php vendor/bin/codecept run unit $(test) -g ready --coverage --coverage-xml --debug	
+	php vendor/bin/codecept run unit $(test)  $(groups) $(g) --coverage --coverage-xml --debug
 
 update_version:
 	@echo "Current version is " ${VERSION}

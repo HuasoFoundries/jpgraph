@@ -118,14 +118,14 @@ class DateScale extends LinearScale
             } else {
                 // Adjust to an even week boundary.
                 $w = (int) date('w', $aTime); // Day of week 0=Sun, 6=Sat
-                if (true) {
-                    // Adjust to start on Mon
-                    if ($w == 0) {
-                        $w = 6;
-                    } else {
-                        --$w;
-                    }
+
+                // Adjust to start on Mon
+                if ($w == 0) {
+                    $w = 6;
+                } else {
+                    --$w;
                 }
+
                 if ($aRound == 0) {
                     $d -= $w;
                 } else {

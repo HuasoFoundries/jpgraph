@@ -1,10 +1,5 @@
-filter:
-    excluded_paths:
-        - 'Examples/'
-        - 'tests/'
-    dependency_paths:
-        - 'vendor/'
-
+checks:
+    php: true
 build:
     environment:
           php:
@@ -12,34 +7,28 @@ build:
             ini:
                 'zend_extension': 'xdebug.so'
     nodes:
+        tests: true
         analysis:
             tests:
                 override:
                     -
-                        command: make test_coverage
+                        command: phpcs-run
+                        use_website_config: true
+                    -
+                        command: make test_coverage  g=ready
                         coverage:
                             file: 'tests/_output/coverage.xml'
                             format: 'clover'
                     - php-scrutinizer-run
-        
-checks:
-    php:
-        code_rating: true
-        duplication: true
-        fix_php_opening_tag: true
-        remove_php_closing_tag: true
-        no_mixed_inline_html: true
-        require_braces_around_control_structures: true
-        psr2_control_structure_declaration: true
-        avoid_superglobals: false
-        security_vulnerabilities: true
-        no_exit: true
 
-coding_style:
-    php:
-        spaces:
-            around_operators:
-                concatenation: true
+
 
 tools:
     php_code_coverage: true
+
+filter:
+    excluded_paths:
+        - 'Examples/'
+        - 'tests/'
+    dependency_paths:
+        - 'vendor/'

@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Text;
 
 class GanttVLine extends GanttPlotObject
 {
@@ -27,7 +28,7 @@ class GanttVLine extends GanttPlotObject
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);
         $this->iStart = $aDate;
-        $this->title  = new TextPropertyBelow();
+        $this->title  = new Text\TextPropertyBelow();
         $this->title->Set($aTitle);
     }
 

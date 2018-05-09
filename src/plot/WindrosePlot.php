@@ -9,6 +9,7 @@ namespace Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 define('WINDROSE_TYPE4', 1);
 define('WINDROSE_TYPE8', 2);

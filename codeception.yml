@@ -1,13 +1,9 @@
-suites:
-    unit:
-        path: ./unit
-
 paths:
     tests: tests
     output: tests/_output
+    data: tests/_data
     support: tests/_support
-    data: tests
-
+    envs: tests/_envs
 actor_suffix: Tester
 extensions:
     enabled:
@@ -31,7 +27,7 @@ settings:
     lint: true
 
     # randomize test order
-    shuffle: true
+    shuffle: false
 
     # by default it's false on Windows
     # use [ANSICON](https://github.com/adoxa/ansicon) to colorize output.
@@ -52,7 +48,7 @@ settings:
     
     # PHPUnit can be strict about tests that do not test anything
     # See https://phpunit.de/manual/current/en/risky-tests.html#risky-tests.useless-tests
-    report_useless_tests: true
+    report_useless_tests: false
     
     # PHPUnit can be strict about output during tests.
     # See https://phpunit.de/manual/current/en/risky-tests.html#risky-tests.output-during-test-execution

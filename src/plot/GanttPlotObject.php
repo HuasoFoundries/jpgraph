@@ -6,6 +6,9 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class GanttPlotObject
  * // The common signature for a Gantt object
@@ -27,9 +30,9 @@ class GanttPlotObject
 
     public function __construct()
     {
-        $this->title = new TextProperty();
+        $this->title = new Text\TextProperty();
         $this->title->Align('left', 'center');
-        $this->caption = new TextProperty();
+        $this->caption = new Text\TextProperty();
     }
 
     public function GetCSIMArea()
@@ -67,7 +70,7 @@ class GanttPlotObject
 
     public function SetConstrain($aRow, $aType, $aColor = 'black', $aArrowSize = ARROW_S2, $aArrowType = ARROWT_SOLID)
     {
-        $this->constraints[] = new GanttConstraint($aRow, $aType, $aColor, $aArrowSize, $aArrowType);
+        $this->constraints[] = new Util\GanttConstraint($aRow, $aType, $aColor, $aArrowSize, $aArrowType);
     }
 
     public function SetConstrainPos($xt, $yt, $xb, $yb)

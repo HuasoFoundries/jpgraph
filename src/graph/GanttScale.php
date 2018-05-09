@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -56,7 +57,7 @@ class GanttScale
     public function __construct($aImg)
     {
         $this->iImg        = $aImg;
-        $this->iDateLocale = new DateLocale();
+        $this->iDateLocale = new Util\DateLocale();
 
         $this->minute = new HeaderProperty();
         $this->minute->SetIntervall(15);
@@ -92,7 +93,7 @@ class GanttScale
         $this->divider->SetColor('gray');
         $this->divider->SetStyle('fancy');
 
-        $this->tableTitle = new TextProperty();
+        $this->tableTitle = new Text\TextProperty();
         $this->tableTitle->Show(false);
         $this->actinfo = new GanttActivityInfo();
     }

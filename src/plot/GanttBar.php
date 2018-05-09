@@ -7,6 +7,8 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -55,13 +57,13 @@ class GanttBar extends GanttPlotObject
         $this->iVPos         = $aPos;
         $this->iHeightFactor = $aHeightFactor;
         $this->title->Set($aLabel);
-        $this->caption = new TextProperty($aCaption);
+        $this->caption = new Text\TextProperty($aCaption);
         $this->caption->Align('left', 'center');
         $this->leftMark = new PlotMark();
         $this->leftMark->Hide();
         $this->rightMark = new PlotMark();
         $this->rightMark->Hide();
-        $this->progress = new Progress();
+        $this->progress = new Image\Progress();
     }
 
     /**

@@ -4,32 +4,34 @@
  */
 class BarTest extends \Codeception\Test\Unit
 {
-    public $filename = '';
+    public static $files       = null;
+    public static $exampleRoot = null;
 
-    protected function _before()
+    public static function setUpBeforeClass()
     {
-        $className = strtolower(str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this))));
-
-        $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
+        $className         = str_replace('test', '', strtolower(__CLASS__));
+        self::$exampleRoot = getRoot($className);
+        self::$files       = GetFiles(self::$exampleRoot);
+        \Codeception\Util\Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
     }
 
-    protected function _after()
-    {
-    }
+    protected function _before() {}
 
-    // tests
+    protected function _after() {}
+
     private function _fileCheck($filename)
     {
         ob_start();
 
-        include $this->exampleRoot . $filename;
+        include self::$exampleRoot . $filename;
 
         $img = (ob_get_clean());
 
-        $size             = getimagesizefromstring($img);
+        $size = getimagesizefromstring($img);
+
         $size['filename'] = $filename;
         if ($__width != $size[0] || $__height != $size[1]) {
-            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+            rename(self::$exampleRoot . $filename, self::$exampleRoot . 'no_dim_' . $filename);
         }
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
@@ -37,8 +39,7 @@ class BarTest extends \Codeception\Test\Unit
 
     public function testFileIterator()
     {
-        $files = GetFiles($this->exampleRoot);
-        foreach ($files as $file) {
+        foreach (self::$files as $file) {
             $this->_fileCheck($file);
         }
     }

@@ -6,7 +6,9 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\ImgTrans;
+use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -87,7 +89,7 @@ class GanttGraph extends Graph
                 case ACTYPE_GROUP:
                     // Create a slightly smaller height bar since the
                     // "wings" at the end will make it look taller
-                    $a = new GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 8);
+                    $a = new Plot\GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 8);
                     $a->title->SetFont($this->iSimpleFont, FS_BOLD, $this->iSimpleFontSize);
                     $a->rightMark->Show();
                     $a->rightMark->SetType(MARK_RIGHTTRIANGLE);
@@ -106,7 +108,7 @@ class GanttGraph extends Graph
 
                     break;
                 case ACTYPE_NORMAL:
-                    $a = new GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 10);
+                    $a = new Plot\GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 10);
                     $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
                     $a->SetPattern($this->iSimpleStyle, $this->iSimpleColor);
                     $a->SetFillColor($this->iSimpleBkgColor);
@@ -144,7 +146,7 @@ class GanttGraph extends Graph
 
                     break;
                 case ACTYPE_MILESTONE:
-                    $a = new MileStone($data[$i][0], $data[$i][2], $data[$i][3]);
+                    $a = new Plot\MileStone($data[$i][0], $data[$i][2], $data[$i][3]);
                     $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
                     $a->caption->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
                     $csimpos = 5;
@@ -203,9 +205,9 @@ class GanttGraph extends Graph
     {
         if (is_array($aObject) && count($aObject) > 0) {
             $cl = $aObject[0];
-            if (class_exists('IconPlot', false) && ($cl instanceof IconPlot)) {
+            if (($cl instanceof Plot\IconPlot)) {
                 $this->AddIcon($aObject);
-            } elseif (class_exists('Text', false) && ($cl instanceof Text)) {
+            } elseif (($cl instanceof Text\Text)) {
                 $this->AddText($aObject);
             } else {
                 $n = count($aObject);
@@ -214,9 +216,9 @@ class GanttGraph extends Graph
                 }
             }
         } else {
-            if (class_exists('IconPlot', false) && ($aObject instanceof IconPlot)) {
+            if (($aObject instanceof Plot\IconPlot)) {
                 $this->AddIcon($aObject);
-            } elseif (class_exists('Text', false) && ($aObject instanceof Text)) {
+            } elseif (($aObject instanceof Text\Text)) {
                 $this->AddText($aObject);
             } else {
                 $this->iObj[] = $aObject;
@@ -300,7 +302,7 @@ class GanttGraph extends Graph
             // We can not include the title of GnttVLine since that title is stroked at the bottom
             // of the Gantt bar and not in the activity title columns
             for ($i = 0; $i < $n; ++$i) {
-                if (!empty($this->iObj[$i]->title) && !($this->iObj[$i] instanceof GanttVLine)) {
+                if (!empty($this->iObj[$i]->title) && !($this->iObj[$i] instanceof Plot\GanttVLine)) {
                     $m = max($m, $this->iObj[$i]->title->GetHeight($this->img));
                 }
             }
@@ -397,11 +399,11 @@ class GanttGraph extends Graph
             $bm = $this->img->bottom_margin + $vadj;
             $bm += 2;
 
-            // If there are any added GanttVLine we must make sure that the
+            // If there are any added Plot\GanttVLine we must make sure that the
             // bottom margin is wide enough to hold a title.
             $n = count($this->iObj);
             for ($i = 0; $i < $n; ++$i) {
-                if ($this->iObj[$i] instanceof GanttVLine) {
+                if ($this->iObj[$i] instanceof Plot\GanttVLine) {
                     $bm = max($bm, $this->iObj[$i]->title->GetHeight($this->img) + 10);
                 }
             }
@@ -781,7 +783,7 @@ class GanttGraph extends Graph
 
             // Should we do any final image transformation
             if ($this->iImgTrans) {
-                $tform          = new ImgTrans($this->img->img);
+                $tform          = new Imae\ImgTrans($this->img->img);
                 $this->img->img = $tform->Skew3D(
                     $this->iImgTransHorizon,
                     $this->iImgTransSkewDist,
@@ -816,7 +818,7 @@ class GanttGraph extends Graph
         // Stroke all constrains
         for ($i = 0; $i < $n; ++$i) {
             // Some gantt objects may not have constraints associated with them
-            // for example we can add IconPlots which doesn't have this property.
+            // for example we can add Plot\IconPlots which doesn't have this property.
             if (empty($this->iObj[$i]->constraints)) {
                 continue;
             }
@@ -844,36 +846,36 @@ class GanttGraph extends Graph
                         switch ($this->iObj[$i]->constraints[$k]->iConstrainType) {
                             case CONSTRAIN_ENDSTART:
                                 if ($c1[1] < $c2[1]) {
-                                    $link = new GanttLink($c1[2], $c1[3], $c2[0], $c2[1]);
+                                    $link = new Image\GanttLink($c1[2], $c1[3], $c2[0], $c2[1]);
                                 } else {
-                                    $link = new GanttLink($c1[2], $c1[1], $c2[0], $c2[3]);
+                                    $link = new Image\GanttLink($c1[2], $c1[1], $c2[0], $c2[3]);
                                 }
                                 $link->SetPath(3);
 
                                 break;
                             case CONSTRAIN_STARTEND:
                                 if ($c1[1] < $c2[1]) {
-                                    $link = new GanttLink($c1[0], $c1[3], $c2[2], $c2[1]);
+                                    $link = new Image\GanttLink($c1[0], $c1[3], $c2[2], $c2[1]);
                                 } else {
-                                    $link = new GanttLink($c1[0], $c1[1], $c2[2], $c2[3]);
+                                    $link = new Image\GanttLink($c1[0], $c1[1], $c2[2], $c2[3]);
                                 }
                                 $link->SetPath(0);
 
                                 break;
                             case CONSTRAIN_ENDEND:
                                 if ($c1[1] < $c2[1]) {
-                                    $link = new GanttLink($c1[2], $c1[3], $c2[2], $c2[1]);
+                                    $link = new Image\GanttLink($c1[2], $c1[3], $c2[2], $c2[1]);
                                 } else {
-                                    $link = new GanttLink($c1[2], $c1[1], $c2[2], $c2[3]);
+                                    $link = new Image\GanttLink($c1[2], $c1[1], $c2[2], $c2[3]);
                                 }
                                 $link->SetPath(1);
 
                                 break;
                             case CONSTRAIN_STARTSTART:
                                 if ($c1[1] < $c2[1]) {
-                                    $link = new GanttLink($c1[0], $c1[3], $c2[0], $c2[1]);
+                                    $link = new Image\GanttLink($c1[0], $c1[3], $c2[0], $c2[1]);
                                 } else {
-                                    $link = new GanttLink($c1[0], $c1[1], $c2[0], $c2[3]);
+                                    $link = new Image\GanttLink($c1[0], $c1[1], $c2[0], $c2[3]);
                                 }
                                 $link->SetPath(3);
 
