@@ -15,9 +15,13 @@ class ImgTest extends \Codeception\Test\Unit
         \Codeception\Util\Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testFile0()
     {

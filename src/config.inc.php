@@ -716,7 +716,9 @@ if (!class_exists('\Kint')) {
     {
         public static $enabled_mode = true;
 
-        public static function dump() {}
+        public static function dump()
+        {
+        }
     }
 }
 \Kint::$enabled_mode = DEBUGMODE;
@@ -736,6 +738,8 @@ if (
      */
     class PC
     {
-        public static function debug() {}
+        public static function debug()
+        {
+        }
     }
 }
