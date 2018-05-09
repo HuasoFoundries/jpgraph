@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LinkArrow
-// Handles the drawing of a an arrow
+ * // Handles the drawing of a an arrow
  */
 class LinkArrow
 {
