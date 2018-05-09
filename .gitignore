@@ -7,3 +7,6 @@ vendor
 fabfile*
 .php.tools.ini
 .env
+jpgraph.phprj
+.codelite
+jpgraph.workspace
