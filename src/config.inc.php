@@ -5,12 +5,12 @@
  */
 
 /**
-// File:        config.inc.php
-// Description: Configuration constants and settings for JpGraph library
-// Created:     2004-03-27
-// Ver:         $Id: jpg-config.inc.php 1871 2009-09-29 05:56:39Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // File:        config.inc.php
+ * // Description: Configuration constants and settings for JpGraph library
+ * // Created:     2004-03-27
+ * // Ver:         $Id: jpg-config.inc.php 1871 2009-09-29 05:56:39Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -80,23 +80,23 @@ if (getenv('JPGRAPH_MBTTF_DIR')) {
 
 /**
  * Cache directory specification for use with CSIM graphs that are
-// using the cache.
-// The directory must be the filesysystem name as seen by PHP
-// and the 'http' version must be the same directory but as
-// seen by the HTTP server relative to the 'htdocs' ddirectory.
-// If a relative path is specified it is taken to be relative from where
-// the image script is executed.
-// Note: The default setting is to create a subdirectory in the
-// directory from where the image script is executed and store all files
-// there. As ususal this directory must be writeable by the PHP process.
+ * // using the cache.
+ * // The directory must be the filesysystem name as seen by PHP
+ * // and the 'http' version must be the same directory but as
+ * // seen by the HTTP server relative to the 'htdocs' ddirectory.
+ * // If a relative path is specified it is taken to be relative from where
+ * // the image script is executed.
+ * // Note: The default setting is to create a subdirectory in the
+ * // directory from where the image script is executed and store all files
+ * // there. As ususal this directory must be writeable by the PHP process.
  */
 define('CSIMCACHE_DIR', 'csimcache/');
 define('CSIMCACHE_HTTP_DIR', 'csimcache/');
 
 /**
  * Various JpGraph Settings. Adjust accordingly to your
-// preferences. Note that cache functionality is turned off by
-// default (Enable by setting USE_CACHE to true)
+ * // preferences. Note that cache functionality is turned off by
+ * // default (Enable by setting USE_CACHE to true)
  */
 // Deafult locale for error messages.
 // This defaults to English = 'en'
@@ -114,7 +114,6 @@ define('DEFAULT_GFORMAT', 'auto');
 // just not use it. By setting USE_CACHE=false no files will even
 // be generated in the cache directory.
 if (!defined('USE_CACHE')) {
-
     define('USE_CACHE', getenv('JPGRAPH_USE_CACHE') ? getenv('JPGRAPH_USE_CACHE') : false);
 }
 
@@ -695,10 +694,11 @@ if (!class_exists('\Kint')) {
      */
     class Kint
     {
-
         public static $enabled_mode = true;
 
-        public static function dump() {}
+        public static function dump()
+        {
+        }
     }
 }
 \Kint::$enabled_mode = DEBUGMODE;
@@ -718,6 +718,8 @@ if (
      */
     class PC
     {
-        public static function debug() {}
+        public static function debug()
+        {
+        }
     }
 }

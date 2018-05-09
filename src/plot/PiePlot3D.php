@@ -10,17 +10,17 @@ use Amenadiel\JpGraph\Text;
 
 /**
  * File:        JPGRAPH_PIE3D.PHP
-// Description: 3D Pie plot extension for JpGraph
-// Created:     2001-03-24
-// Ver:         $Id: jpgraph_pie3d.php 1329 2009-06-20 19:23:30Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: 3D Pie plot extension for JpGraph
+ * // Created:     2001-03-24
+ * // Ver:         $Id: jpgraph_pie3d.php 1329 2009-06-20 19:23:30Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class PiePlot3D
-// Description: Plots a 3D pie with a specified projection
-// angle between 20 and 70 degrees.
+ * // Description: Plots a 3D pie with a specified projection
+ * // angle between 20 and 70 degrees.
  */
 class PiePlot3D extends PiePlot
 {
@@ -86,7 +86,7 @@ class PiePlot3D extends PiePlot
     {
         if ($a < 5 || $a > 90) {
             Util\JpGraphError::RaiseL(14002);
-            //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
+        //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
         } else {
             $this->angle = $a;
         }
@@ -434,38 +434,38 @@ class PiePlot3D extends PiePlot
     ) {
         /**
          * As usual the algorithm get more complicated than I originally
-        // envisioned. I believe that this is as simple as it is possible
-        // to do it with the features I want. It's a good exercise to start
-        // thinking on how to do this to convince your self that all this
-        // is really needed for the general case.
-        //
-        // The algorithm two draw 3D pies without "real 3D" is done in
-        // two steps.
-        // First imagine the pie cut in half through a thought line between
-        // 12'a clock and 6'a clock. It now easy to imagine that we can plot
-        // the individual slices for each half by starting with the topmost
-        // pie slice and continue down to 6'a clock.
-        //
-        // In the algortithm this is done in three principal steps
-        // Step 1. Do the knife cut to ensure by splitting slices that extends
-        // over the cut line. This is done by splitting the original slices into
-        // upto 3 subslices.
-        // Step 2. Find the top slice for each half
-        // Step 3. Draw the slices from top to bottom
-        //
-        // The thing that slightly complicates this scheme with all the
-        // angle comparisons below is that we can have an arbitrary start
-        // angle so we must take into account the different equivalence classes.
-        // For the same reason we must walk through the angle array in a
-        // modulo fashion.
-        //
-        // Limitations of algorithm:
-        // * A small exploded slice which crosses the 270 degree point
-        //   will get slightly nagged close to the center due to the fact that
-        //   we print the slices in Z-order and that the slice left part
-        //   get printed first and might get slightly nagged by a larger
-        //   slice on the right side just before the right part of the small
-        //   slice. Not a major problem though.
+         * // envisioned. I believe that this is as simple as it is possible
+         * // to do it with the features I want. It's a good exercise to start
+         * // thinking on how to do this to convince your self that all this
+         * // is really needed for the general case.
+         * //
+         * // The algorithm two draw 3D pies without "real 3D" is done in
+         * // two steps.
+         * // First imagine the pie cut in half through a thought line between
+         * // 12'a clock and 6'a clock. It now easy to imagine that we can plot
+         * // the individual slices for each half by starting with the topmost
+         * // pie slice and continue down to 6'a clock.
+         * //
+         * // In the algortithm this is done in three principal steps
+         * // Step 1. Do the knife cut to ensure by splitting slices that extends
+         * // over the cut line. This is done by splitting the original slices into
+         * // upto 3 subslices.
+         * // Step 2. Find the top slice for each half
+         * // Step 3. Draw the slices from top to bottom
+         * //
+         * // The thing that slightly complicates this scheme with all the
+         * // angle comparisons below is that we can have an arbitrary start
+         * // angle so we must take into account the different equivalence classes.
+         * // For the same reason we must walk through the angle array in a
+         * // modulo fashion.
+         * //
+         * // Limitations of algorithm:
+         * // * A small exploded slice which crosses the 270 degree point
+         * //   will get slightly nagged close to the center due to the fact that
+         * //   we print the slices in Z-order and that the slice left part
+         * //   get printed first and might get slightly nagged by a larger
+         * //   slice on the right side just before the right part of the small
+         * //   slice. Not a major problem though.
          */
         // Determine the height of the ellippse which gives an
         // indication of the inclination angle
