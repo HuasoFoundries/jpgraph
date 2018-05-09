@@ -20,10 +20,13 @@ class CCBPGraph
     const XTitle     = '% CC Completed';
     const NColorMaps = 2;
     private $graph   = null;
-    private $iWidth, $iHeight;
+    private $iWidth;
+    private $iHeight;
     private $iPlots    = [];
-    private $iXMin     = -50, $iXMax     = 100;
-    private $iYMin     = -50, $iYMax     = 150;
+    private $iXMin     = -50;
+    private $iXMax     = 100;
+    private $iYMin     = -50;
+    private $iYMax     = 150;
     private $iColorInd = [
         [5, 75], /* Green */
         [25, 85], /* Yellow */
@@ -33,7 +36,8 @@ class CCBPGraph
         ['darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'],
         ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787']];
     private $iMarginColor = ['darkgreen@0.7', 'darkgreen@0.9'];
-    private $iSubTitle    = '', $iTitle    = 'CC Buffer penetration';
+    private $iSubTitle    = '';
+    private $iTitle       = 'CC Buffer penetration';
     /**
      * Construct a new instance of CCBPGraph
      *

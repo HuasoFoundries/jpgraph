@@ -8,8 +8,8 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class Ticks
-// Description: Abstract base class for drawing linear and logarithmic
-// tick marks on axis
+ * // Description: Abstract base class for drawing linear and logarithmic
+ * // tick marks on axis
  */
 class Ticks
 {

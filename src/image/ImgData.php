@@ -10,8 +10,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class ImgData
-// Description: Base class for all image data classes that contains the
-// real image data.
+ * // Description: Base class for all image data classes that contains the
+ * // real image data.
  */
 class ImgData
 {
