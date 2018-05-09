@@ -24,7 +24,6 @@ class IconImage
 
     public function __construct($aIcon, $aScale = 1)
     {
-
         $_gPredefIcons = new PredefIcons();
 
         if (is_string($aIcon)) {

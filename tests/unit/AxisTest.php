@@ -13,12 +13,15 @@ class AxisTest extends \Codeception\Test\Unit
         self::$exampleRoot = getRoot($className);
         self::$files       = GetFiles(self::$exampleRoot);
         \Codeception\Util\Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     private function _fileCheck($filename)
     {
