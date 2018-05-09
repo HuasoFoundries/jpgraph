@@ -15,12 +15,12 @@ build:
         analysis:
             tests:
                 override:
-                    - php-scrutinizer-run
                     -
                         command: make test_coverage
                         coverage:
                             file: 'tests/_output/coverage.xml'
                             format: 'clover'
+                    - php-scrutinizer-run
         
 checks:
     php:
