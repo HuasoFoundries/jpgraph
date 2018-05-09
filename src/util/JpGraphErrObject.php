@@ -10,9 +10,9 @@ namespace Amenadiel\JpGraph\Util;
 // First of all set up a default error handler
 //
 
-//=============================================================
-// The default trivial text error handler.
-//=============================================================
+/**
+ * The default trivial text error handler.
+ */
 class JpGraphErrObject
 {
     protected $iTitle = 'JpGraph error: ';
@@ -38,9 +38,9 @@ class JpGraphErrObject
     {
         if ($this->iDest != '') {
             if ($this->iDest == 'syslog') {
-                error_log($this->iTitle.$aMsg);
+                error_log($this->iTitle . $aMsg);
             } else {
-                $str = '['.date('r').'] '.$this->iTitle.$aMsg."\n";
+                $str = '[' . date('r') . '] ' . $this->iTitle . $aMsg . "\n";
                 $f   = @fopen($this->iDest, 'a');
                 if ($f) {
                     @fwrite($f, $str);
@@ -48,7 +48,7 @@ class JpGraphErrObject
                 }
             }
         } else {
-            $aMsg = $this->iTitle.$aMsg;
+            $aMsg = $this->iTitle . $aMsg;
             // Check SAPI and if we are called from the command line
             // send the error to STDERR instead
             if (PHP_SAPI == 'cli') {

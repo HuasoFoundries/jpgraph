@@ -3,13 +3,13 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_plotmark.inc.php';
-require_once 'jpgraph/jpgraph_scatter.php';
-require_once 'ccbpgraph.class.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
-$graph = new CCBPGraph(600, 400);
+$__width  = 600;
+$__height = 400;
+$graph    = new Graph\CCBPGraph($__width, $__height);
 $graph->SetTitle('Buffer penetration', '(history added)');
 $graph->SetColorMap(0);
 
@@ -21,7 +21,7 @@ $datay1 = [86, 76, 80, 64];
 $datax2 = [18, 47, 58, 75];
 $datay2 = [80, 97, 105, 110];
 
-$sp = new ScatterPlot($datay, $datax);
+$sp = new Plot\ScatterPlot($datay, $datax);
 $sp->mark->SetType(MARK_DIAMOND);
 $sp->mark->SetFillColor('white');
 $sp->mark->SetSize(12);

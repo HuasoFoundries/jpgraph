@@ -3,14 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_scatter.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay1 = [4, 26, 15, 44];
 
 // Setup the graph
-$graph = new Graph\Graph(300, 250);
+$__width  = 300;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);
@@ -25,7 +27,7 @@ $graph->tabtitle->SetColor('darkred', '#E1E1FF');
 $graph->xgrid->Show();
 
 // Use months as X-labels
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->footer->left->Set('L. footer');
 $graph->footer->left->SetFont(FF_ARIAL, FS_NORMAL, 12);
@@ -42,7 +44,7 @@ $p1 = new Plot\LinePlot($datay1);
 $p1->SetColor('navy');
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(MARK_IMG, 'saab_95.jpg', 0.5);
+$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/saab_95.jpg', 0.5);
 
 // Displayes value on top of marker image
 $p1->value->SetFormat('%d mil');

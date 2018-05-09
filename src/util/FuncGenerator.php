@@ -6,21 +6,20 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-/*=======================================================================
-// File:        JPGRAPH_UTILS.INC
-// Description: Collection of non-essential "nice to have" utilities
-// Created:     2005-11-20
-// Ver:         $Id: jpgraph_utils.inc.php 1777 2009-08-23 17:34:36Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_UTILS.INC
+ * // Description: Collection of non-essential "nice to have" utilities
+ * // Created:     2005-11-20
+ * // Ver:         $Id: jpgraph_utils.inc.php 1777 2009-08-23 17:34:36Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-//===================================================
-// CLASS FuncGenerator
-// Description: Utility class to help generate data for function plots.
-// The class supports both parametric and regular functions.
-//===================================================
+/**
+ * @class FuncGenerator
+ * // Description: Utility class to help generate data for function plots.
+ * // The class supports both parametric and regular functions.
+ */
 class FuncGenerator
 {
     private $iFunc  = '';
@@ -42,9 +41,9 @@ class FuncGenerator
         $this->iStepSize = ($aXMax - $aXMin) / $aSteps;
 
         if ($this->iXFunc != '') {
-            $t = 'for($i='.$aXMin.'; $i<='.$aXMax.'; $i += '.$this->iStepSize.') {$ya[]='.$this->iFunc.';$xa[]='.$this->iXFunc.';}';
+            $t = 'for($i=' . $aXMin . '; $i<=' . $aXMax . '; $i += ' . $this->iStepSize . ') {$ya[]=' . $this->iFunc . ';$xa[]=' . $this->iXFunc . ';}';
         } elseif ($this->iFunc != '') {
-            $t = 'for($x='.$aXMin.'; $x<='.$aXMax.'; $x += '.$this->iStepSize.') {$ya[]='.$this->iFunc.';$xa[]=$x;} $x='.$aXMax.';$ya[]='.$this->iFunc.';$xa[]=$x;';
+            $t = 'for($x=' . $aXMin . '; $x<=' . $aXMax . '; $x += ' . $this->iStepSize . ') {$ya[]=' . $this->iFunc . ';$xa[]=$x;} $x=' . $aXMax . ';$ya[]=' . $this->iFunc . ';$xa[]=$x;';
         } else {
             JpGraphError::RaiseL(24001);
         }

@@ -3,16 +3,15 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Callback to negate the argument
-function _cb_negate($aVal)
-{
+$_cb_negate = function ($aVal) {
     return round(-$aVal);
-}
+};
 
 // A fake depth curve
 $ydata = [0, 1, 4, 5, 8, 9, 10, 14, 16, 16, 16, 18, 20, 20, 20, 22, 22.5, 22, 19, 19, 15, 15, 15, 15, 10, 10, 10, 6, 5, 5, 5, 4, 4, 2, 1, 0];
@@ -31,7 +30,9 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Basic graph setup
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetY2Scale('lin');
 $graph->SetMargin(50, 50, 60, 40);
@@ -48,13 +49,13 @@ $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
 $graph->subtitle->SetColor('white');
 
 // Setup axis
-$graph->yaxis->SetLabelFormatCallback('_cb_negate');
+$graph->yaxis->SetLabelFormatCallback($_cb_negate);
 $graph->xaxis->SetColor('lightblue', 'white');
 $graph->yaxis->SetColor('lightblue', 'white');
 $graph->ygrid->SetColor('blue');
 
 // Setup Y2 axis
-$graph->y2axis->SetLabelFormatCallback('_cb_negate');
+$graph->y2axis->SetLabelFormatCallback($_cb_negate);
 $graph->y2axis->SetColor('darkred', 'white');
 $graph->y2scale->SetAutoMax(0); // To make sure it starts with 0
 

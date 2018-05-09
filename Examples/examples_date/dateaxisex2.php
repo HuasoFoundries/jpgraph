@@ -3,8 +3,10 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
+
 require_once 'jpgraph/jpgraph_date.php';
 
 // Create a data set in range (50,70) and X-positions
@@ -20,7 +22,9 @@ for ($i = 0; $i < NDATAPOINTS; ++$i) {
 }
 
 // Create the new Graph\Graph
-$graph = new Graph\Graph(540, 300);
+$__width  = 540;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 
 // Slightly larger than normal margins at the bottom to have room for
 // the x-axis labels

@@ -6,35 +6,37 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//=======================================================================
-// File:        JPGRAPH_ICONPLOT.PHP
-// Description: Extension module to add icons to plots
-// Created:     2004-02-18
-// Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+use Amenadiel\JpGraph\Image;
 
-//===================================================
-// CLASS IconPlot
-// Description: Make it possible to add a (small) image
-// to the graph
-//===================================================
+/**
+ * File:        JPGRAPH_ICONPLOT.PHP
+ * // Description: Extension module to add icons to plots
+ * // Created:     2004-02-18
+ * // Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
+
+/**
+ * @class IconPlot
+ * // Description: Make it possible to add a (small) image
+ * // to the graph
+ */
 class IconPlot
 {
-    public $iX                = 0;
-    public $iY                = 0;
-    public $iScale            = 1.0;
-    public $iMix              = 100;
-    private $iHorAnchor       = 'left';
-    private $iVertAnchor      = 'top';
-    private $iFile            = '';
-    private $iAnchors         = ['left', 'right', 'top', 'bottom', 'center'];
-    private $iCountryFlag     = '';
-    private $iCountryStdSize  = 3;
+    public $iX               = 0;
+    public $iY               = 0;
+    public $iScale           = 1.0;
+    public $iMix             = 100;
+    private $iHorAnchor      = 'left';
+    private $iVertAnchor     = 'top';
+    private $iFile           = '';
+    private $iAnchors        = ['left', 'right', 'top', 'bottom', 'center'];
+    private $iCountryFlag    = '';
+    private $iCountryStdSize = 3;
     private $iScalePosY;
     private $iScalePosX;
-    private $iImgString       = '';
+    private $iImgString = '';
 
     public function __construct($aFile = '', $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
     {
@@ -185,10 +187,7 @@ class IconPlot
         } elseif ($this->iImgString != '') {
             $gdimg = Image::CreateFromString($this->iImgString);
         } else {
-            if (!class_exists('FlagImages', false)) {
-                Util\JpGraphError::RaiseL(8004); //('In order to use Country flags as icons you must include the "jpgraph_flags.php" file.');
-            }
-            $fobj  = new FlagImages($this->iCountryStdSize);
+            $fobj  = new Image\FlagImages($this->iCountryStdSize);
             $dummy = '';
             $gdimg = $fobj->GetImgByName($this->iCountryFlag, $dummy);
         }

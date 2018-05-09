@@ -6,21 +6,24 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//=======================================================================
-// File:        JPGRAPH_TEXT.INC.PHP
-// Description: Class to handle text as object in the graph.
-//              The low level text layout engine is handled by the GD class
-// Created:     2001-01-08 (Refactored to separate file 2008-08-01)
-// Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+//use Amenadiel\JpGraph\Graph\Graph;
+use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Text
-// Description: Arbitrary text object that can be added to the graph
-//===================================================
-class Text
+/**
+ * File:        JPGRAPH_TEXT.INC.PHP
+ * // Description: Class to handle text as object in the graph.
+ * //              The low level text layout engine is handled by the GD class
+ * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
+ * // Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
+
+/**
+ * @class Text
+ * // Description: Arbitrary text object that can be added to the graph
+ */
+class Text //extends Graph
 {
     public $t;
     public $x      = 0;
@@ -35,7 +38,7 @@ class Text
     public $iWordwrap          = 0;
     public $font_family        = FF_DEFAULT;
     public $font_style         = FS_NORMAL; // old. FF_FONT1
-    protected $boxed           = false; // Should the text be boxed
+    public $boxed              = false; // Should the text be boxed
     protected $paragraph_align = 'left';
     protected $icornerradius   = 0;
     protected $ishadowwidth    = 3;
@@ -52,14 +55,14 @@ class Text
     private $_margin;
     private $_font_size = 8; // old. 12
 
-    //---------------
-    // CONSTRUCTOR
-
+    /**
+     * CONSTRUCTOR
+     */
     // Create new text at absolute pixel coordinates
     public function __construct($aTxt = '', $aXAbsPos = 0, $aYAbsPos = 0)
     {
         if (!is_string($aTxt)) {
-            JpGraphError::RaiseL(25050); //('First argument to Text::Text() must be s atring.');
+            Util\JpGraphError::RaiseL(25050); //('First argument to Text::Text() must be s atring.');
         }
         $this->t      = $aTxt;
         $this->x      = round($aXAbsPos);
@@ -67,8 +70,9 @@ class Text
         $this->margin = 0;
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     // Set the string in the text object
     public function Set($aTxt)
     {
@@ -211,7 +215,7 @@ class Text
         } elseif ($aDirection == 'v') {
             $this->dir = 90;
         } else {
-            JpGraphError::RaiseL(25051);
+            Util\JpGraphError::RaiseL(25051);
         }
         //(" Invalid direction specified for text.");
     }
@@ -290,11 +294,11 @@ class Text
     // Display text in image
     public function Stroke($aImg, $x = null, $y = null)
     {
-        if ($x !== null) {
+        if (is_numeric($x)) {
             $this->x = round($x);
         }
 
-        if ($y !== null) {
+        if (is_numeric($y)) {
             $this->y = round($y);
         }
 
@@ -367,13 +371,13 @@ class Text
             $bbox[0], $bbox[1], $bbox[2], $bbox[3], $bbox[4], $bbox[5], $bbox[6], $bbox[7],
         ]);
         $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
-        $this->iCSIMarea .= htmlentities($this->iCSIMtarget).'" ';
+        $this->iCSIMarea .= htmlentities($this->iCSIMtarget) . '" ';
         if (trim($this->iCSIMalt) != '') {
-            $this->iCSIMarea .= ' alt="'.$this->iCSIMalt.'" ';
-            $this->iCSIMarea .= ' title="'.$this->iCSIMalt.'" ';
+            $this->iCSIMarea .= ' alt="' . $this->iCSIMalt . '" ';
+            $this->iCSIMarea .= ' title="' . $this->iCSIMalt . '" ';
         }
         if (trim($this->iCSIMWinTarget) != '') {
-            $this->iCSIMarea .= ' target="'.$this->iCSIMWinTarget.'" ';
+            $this->iCSIMarea .= ' target="' . $this->iCSIMWinTarget . '" ';
         }
         $this->iCSIMarea .= " />\n";
 
@@ -384,21 +388,21 @@ class Text
     {
         if (strpos($name, 'raw_') !== false) {
             // if $name == 'raw_left_margin' , return $this->_left_margin;
-            $variable_name = '_'.str_replace('raw_', '', $name);
+            $variable_name = '_' . str_replace('raw_', '', $name);
 
             return $this->{$variable_name};
         }
 
-        $variable_name = '_'.$name;
+        $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
         }
-        JpGraphError::RaiseL('25132', $name);
+        Util\JpGraphError::RaiseL('25132', $name);
     }
 
     public function __set($name, $value)
     {
-        $this->{'_'.$name} = $value;
+        $this->{'_' . $name} = $value;
     }
-} // Class
+} // @class

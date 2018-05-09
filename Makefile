@@ -14,7 +14,10 @@ install:
 	composer install --no-dev
 
 test:
-	php vendor/bin/codecept run unit --coverage --coverage-xml
+	php vendor/bin/codecept run unit $(test) -g ready --debug
+
+test_coverage:
+	php vendor/bin/codecept run unit $(test) -g ready --coverage --coverage-xml --debug	
 
 update_version:
 	@echo "Current version is " ${VERSION}
@@ -37,7 +40,7 @@ delete_tag:
 	git push origin :refs/tags/$(v)
 
 start:
-	php -S localhost:8000
+	php -S localhost:8000 -t Examples
 
 csfixer:
 	./vendor/bin/php-cs-fixer --verbose fix	

@@ -6,19 +6,18 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
-// File:        JPGRAPH_STOCK.PHP
-// Description: Stock plot extension for JpGraph
-// Created:     2003-01-27
-// Ver:         $Id: jpgraph_stock.php 1364 2009-06-24 07:07:44Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_STOCK.PHP
+ * // Description: Stock plot extension for JpGraph
+ * // Created:     2003-01-27
+ * // Ver:         $Id: jpgraph_stock.php 1364 2009-06-24 07:07:44Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-//===================================================
-// CLASS StockPlot
-//===================================================
+/**
+ * @class StockPlot
+ */
 class StockPlot extends Plot
 {
     protected $iTupleSize = 4;
@@ -28,8 +27,9 @@ class StockPlot extends Plot
     private $iStockColor2 = 'darkred';
     private $iStockColor3 = 'darkred';
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         if (count($datay) % $this->iTupleSize) {
@@ -40,9 +40,9 @@ class StockPlot extends Plot
         $this->numpoints /= $this->iTupleSize;
     }
 
-    //---------------
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function SetColor($aColor, $aColor1 = 'white', $aColor2 = 'darkred', $aColor3 = 'darkred')
     {
         $this->color        = $aColor;
@@ -167,10 +167,10 @@ class StockPlot extends Plot
 
             // Setup image maps
             if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="rect" coords="'.
-                round($xl).','.round($ytop).','.
-                round($xr).','.round($ybottom).'" ';
-                $this->csimareas .= ' href="'.$this->csimtargets[$i].'"';
+                $this->csimareas .= '<area shape="rect" coords="' .
+                round($xl) . ',' . round($ytop) . ',' .
+                round($xr) . ',' . round($ybottom) . '" ';
+                $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
                 if (!empty($this->csimalts[$i])) {
                     $sval = $this->csimalts[$i];
                     $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
@@ -186,4 +186,4 @@ class StockPlot extends Plot
     public function ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg)
     {
     }
-} // Class
+} // @class

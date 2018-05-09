@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS RadarLinear
-// Description: Linear ticks
-//===================================================
+/**
+ * @class RadarLinear
+ * // Description: Linear ticks
+ */
 class RadarLinearTicks extends Ticks
 {
     private $minor_step    = 1;

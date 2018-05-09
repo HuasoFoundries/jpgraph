@@ -6,74 +6,76 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_LEGEND.INC.PHP
-// Description: Class to handle the legend box in the graph that gives
-//              names on the data series. The number of rows and columns
-//              in the legend are user specifyable.
-// Created:     2001-01-08 (Refactored to separate file 2008-08-01)
-// Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
+/**
+ * File:        JPGRAPH_LEGEND.INC.PHP
+ * // Description: Class to handle the legend box in the graph that gives
+ * //              names on the data series. The number of rows and columns
+ * //              in the legend are user specifyable.
+ * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
+ * // Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
-//===================================================
-// CLASS Legend
-// Description: Responsible for drawing the box containing
-// all the legend text for the graph
-//===================================================
-
+/**
+ * @class Legend
+ * // Description: Responsible for drawing the box containing
+ * // all the legend text for the graph
+ */
 class Legend
 {
-    public $txtcol               = [];
-    public $font_family          = FF_DEFAULT;
-    public $font_style           = FS_NORMAL;
-    public $font_size            = 8; // old. 12
-    private $color               = [120, 120, 120]; // Default frame color
-    private $fill_color          = [245, 245, 245]; // Default fill color
-    private $shadow              = false; // Shadow around legend "box"
-    private $shadow_color        = 'darkgray';
-    private $mark_abs_hsize      = _DEFAULT_LPM_SIZE;
-    private $mark_abs_vsize      = _DEFAULT_LPM_SIZE;
-    private $xmargin             = 10;
-    private $ymargin             = 0;
-    private $shadow_width        = 2;
-    private $xlmargin            = 4;
-    private $ylinespacing        = 5;
+    public $txtcol          = [];
+    public $font_family     = FF_DEFAULT;
+    public $font_style      = FS_NORMAL;
+    public $font_size       = 8; // old. 12
+    private $color          = [120, 120, 120]; // Default frame color
+    private $fill_color     = [245, 245, 245]; // Default fill color
+    private $shadow         = false; // Shadow around legend "box"
+    private $shadow_color   = 'darkgray';
+    private $mark_abs_hsize = _DEFAULT_LPM_SIZE;
+    private $mark_abs_vsize = _DEFAULT_LPM_SIZE;
+    private $xmargin        = 10;
+    private $ymargin        = 0;
+    private $shadow_width   = 2;
+    private $xlmargin       = 4;
+    private $ylinespacing   = 5;
 
     // We need a separate margin since the baseline of the last text would coincide with the bottom otherwise
     private $ybottom_margin = 8;
 
-    private $xpos              = 0.05;
-    private $ypos              = 0.15;
-    private $xabspos           = -1;
-    private $yabspos           = -1;
-    private $halign            = 'right';
-    private $valign            = 'top';
-    private $font_color        = 'black';
-    private $hide              = false;
-    private $layout_n          = 1;
-    private $weight            = 1;
-    private $frameweight       = 1;
-    private $csimareas         = '';
-    private $reverse           = false;
-    private $bkg_gradtype      = -1;
-    private $bkg_gradfrom      = 'lightgray';
-    private $bkg_gradto        = 'gray';
+    private $xpos         = 0.05;
+    private $ypos         = 0.15;
+    private $xabspos      = -1;
+    private $yabspos      = -1;
+    private $halign       = 'right';
+    private $valign       = 'top';
+    private $font_color   = 'black';
+    private $hide         = false;
+    private $layout_n     = 1;
+    private $weight       = 1;
+    private $frameweight  = 1;
+    private $csimareas    = '';
+    private $reverse      = false;
+    private $bkg_gradtype = -1;
+    private $bkg_gradfrom = 'lightgray';
+    private $bkg_gradto   = 'gray';
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct()
     {
         // Empty
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Hide($aHide = true)
     {
         $this->hide = $aHide;
@@ -470,7 +472,7 @@ class Legend
                 if ($p[3] < -100) {
                     // p[1][0] == iPattern, p[1][1] == iPatternColor, p[1][2] == iPatternDensity
                     if ($patternFactory == null) {
-                        $patternFactory = new RectPatternFactory();
+                        $patternFactory = new Graph\RectPatternFactory();
                     }
                     $prect = $patternFactory->Create($p[1][0], $p[1][1], 1);
                     $prect->SetBackground($p[1][3]);
@@ -528,10 +530,10 @@ class Legend
                 $ye     = $y1 - $rowheight[$row] + 1;
                 $coords = "${xs},${ys},${xe},${y1},${xe},${ye},${xs},${ye}";
                 if (!empty($p[4])) {
-                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".htmlentities($p[4]).'"';
+                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($p[4]) . '"';
 
                     if (!empty($p[6])) {
-                        $this->csimareas .= ' target="'.$p[6].'"';
+                        $this->csimareas .= ' target="' . $p[6] . '"';
                     }
 
                     if (!empty($p[5])) {
@@ -556,4 +558,4 @@ class Legend
             }
         }
     }
-} // Class
+} // @class

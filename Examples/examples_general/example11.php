@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -15,7 +15,9 @@ $timer = new Util\JpgTimer();
 $timer->Push();
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $graph->SetMargin(40, 20, 20, 60);

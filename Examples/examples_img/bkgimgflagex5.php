@@ -3,7 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_bar.php';
 require_once 'jpgraph/jpgraph_flags.php';
 
@@ -13,7 +15,9 @@ $datay2 = [35, 90, 190];
 $datay3 = [20, 60, 70];
 
 // Create the basic graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(40, 20, 20, 40);
 $graph->SetMarginColor('white:0.9');
@@ -32,7 +36,7 @@ $graph->legend->SetFillColor('lightblue@0.1');
 $graph->legend->Hide();
 
 // Get localised version of the month names
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->SetBackgroundCountryFlag('mais', BGIMG_COPY, 50);
 

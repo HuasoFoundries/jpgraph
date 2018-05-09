@@ -6,32 +6,36 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS GanttBar
-// Responsible for formatting individual gantt bars
-//===================================================
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
+
+/**
+ * @class GanttBar
+ * // Responsible for formatting individual gantt bars
+ */
 class GanttBar extends GanttPlotObject
 {
     public $progress;
     public $leftMark;
     public $rightMark;
     private $iEnd;
-    private $iHeightFactor        = 0.5;
-    private $iFillColor           = 'white';
-    private $iFrameColor          = 'black';
-    private $iShadow              = false;
-    private $iShadowColor         = 'darkgray';
-    private $iShadowWidth         = 1;
-    private $iShadowFrame         = 'black';
-    private $iPattern             = GANTT_RDIAG;
-    private $iPatternColor        = 'blue';
-    private $iPatternDensity      = 95;
-    private $iBreakStyle          = false;
-    private $iBreakLineStyle      = 'dotted';
-    private $iBreakLineWeight     = 1;
+    private $iHeightFactor    = 0.5;
+    private $iFillColor       = 'white';
+    private $iFrameColor      = 'black';
+    private $iShadow          = false;
+    private $iShadowColor     = 'darkgray';
+    private $iShadowWidth     = 1;
+    private $iShadowFrame     = 'black';
+    private $iPattern         = GANTT_RDIAG;
+    private $iPatternColor    = 'blue';
+    private $iPatternDensity  = 95;
+    private $iBreakStyle      = false;
+    private $iBreakLineStyle  = 'dotted';
+    private $iBreakLineWeight = 1;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = '', $aHeightFactor = 0.6)
     {
         parent::__construct();
@@ -60,8 +64,9 @@ class GanttBar extends GanttPlotObject
         $this->progress = new Progress();
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetShadow($aShadow = true, $aColor = 'gray')
     {
         $this->iShadow      = $aShadow;
@@ -126,7 +131,7 @@ class GanttBar extends GanttPlotObject
 
     public function Stroke($aImg, $aScale)
     {
-        $factory = new RectPatternFactory();
+        $factory = new Graph\RectPatternFactory();
         $prect   = $factory->Create($this->iPattern, $this->iPatternColor);
         $prect->SetDensity($this->iPatternDensity);
 
@@ -168,10 +173,10 @@ class GanttBar extends GanttPlotObject
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->title->csimtarget[$i].'"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="'.$this->title->csimwintarget[$i].'" ';
+                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
                     }
 
                     if (!empty($this->title->csimalt[$i])) {
@@ -217,10 +222,10 @@ class GanttBar extends GanttPlotObject
         // CSIM for bar
         if (!empty($this->csimtarget)) {
             $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"".$this->csimtarget.'"';
+            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtarget . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimarea .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimarea .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if ($this->csimalt != '') {

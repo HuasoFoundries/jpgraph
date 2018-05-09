@@ -6,9 +6,9 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS BoxPlot
-//===================================================
+/**
+ * @class BoxPlot
+ */
 class BoxPlot extends StockPlot
 {
     private $iPColor = 'black';

@@ -3,13 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../jpgraph.php';
-require_once '../jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 
 // Setup the graph
-$graph = new Graph\Graph(320, 200);
+$__width  = 320;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->title->Set('Education growth');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->SetScale('intlin');
@@ -19,7 +22,7 @@ $graph->SetBox();
 
 $graph->SetGridDepth(DEPTH_FRONT);
 $graph->ygrid->SetColor('gray@0.7');
-$graph->SetBackgroundImage('../assets/classroom.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/classroom.jpg', BGIMG_FILLPLOT);
 
 // Masking graph
 $p1 = new Plot\LinePlot($datay);

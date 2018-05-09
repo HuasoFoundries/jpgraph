@@ -1,7 +1,7 @@
 <?php
 // $Id: canvasex06.php,v 1.1 2002/08/27 20:08:57 aditus Exp $
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 
@@ -10,7 +10,9 @@ $xmax = 40;
 $ymax = 40;
 
 // Setup a basic canvas we can work
-$g = new Graph\CanvasGraph(400, 200, 'auto');
+$__width  = 400;
+$__height = 200;
+$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');

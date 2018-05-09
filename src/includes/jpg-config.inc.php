@@ -4,64 +4,64 @@
  * JPGraph v3.6.15
  */
 
-// File:        JPG-CONFIG.INC
-// Description: Configuration file for JpGraph library
-// Created:     2004-03-27
-// Ver:         $Id: jpg-config.inc.php 1871 2009-09-29 05:56:39Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * // File:        JPG-CONFIG.INC
+ * // Description: Configuration file for JpGraph library
+ * // Created:     2004-03-27
+ * // Ver:         $Id: jpg-config.inc.php 1871 2009-09-29 05:56:39Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 
-//------------------------------------------------------------------------
-// Directories for cache and font directory.
-//
-// CACHE_DIR:
-// The full absolute name of the directory to be used to store the
-// cached image files. This directory will not be used if the USE_CACHE
-// define (further down) is false. If you enable the cache please note that
-// this directory MUST be readable and writable for the process running PHP.
-// Must end with '/'
-//
-// TTF_DIR:
-// Directory where TTF fonts can be found. Must end with '/'
-//
-// The default values used if these defines are left commented out are:
-//
-// UNIX:
-//   CACHE_DIR /tmp/jpgraph_cache/
-//   TTF_DIR   /usr/share/fonts/truetype/
-//   MBTTF_DIR /usr/share/fonts/truetype/
-//
-// WINDOWS:
-//   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
-//   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
-//   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
-//
-//------------------------------------------------------------------------
+/**
+ * Directories for cache and font directory.
+ * //
+ * // CACHE_DIR:
+ * // The full absolute name of the directory to be used to store the
+ * // cached image files. This directory will not be used if the USE_CACHE
+ * // define (further down) is false. If you enable the cache please note that
+ * // this directory MUST be readable and writable for the process running PHP.
+ * // Must end with '/'
+ * //
+ * // TTF_DIR:
+ * // Directory where TTF fonts can be found. Must end with '/'
+ * //
+ * // The default values used if these defines are left commented out are:
+ * //
+ * // UNIX:
+ * //   CACHE_DIR /tmp/jpgraph_cache/
+ * //   TTF_DIR   /usr/share/fonts/truetype/
+ * //   MBTTF_DIR /usr/share/fonts/truetype/
+ * //
+ * // WINDOWS:
+ * //   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
+ * //   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
+ * //   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
+ * //
+ */
 // define('CACHE_DIR','/tmp/jpgraph_cache/');
 // define('TTF_DIR','/usr/share/fonts/TrueType/');
 // define('MBTTF_DIR','/usr/share/fonts/TrueType/');
 
-//-------------------------------------------------------------------------
-// Cache directory specification for use with CSIM graphs that are
-// using the cache.
-// The directory must be the filesysystem name as seen by PHP
-// and the 'http' version must be the same directory but as
-// seen by the HTTP server relative to the 'htdocs' ddirectory.
-// If a relative path is specified it is taken to be relative from where
-// the image script is executed.
-// Note: The default setting is to create a subdirectory in the
-// directory from where the image script is executed and store all files
-// there. As ususal this directory must be writeable by the PHP process.
-define('CSIMCACHE_DIR', 'csimcache/');
-define('CSIMCACHE_HTTP_DIR', 'csimcache/');
-
-//------------------------------------------------------------------------
-// Various JpGraph Settings. Adjust accordingly to your
-// preferences. Note that cache functionality is turned off by
-// default (Enable by setting USE_CACHE to true)
-//------------------------------------------------------------------------
-
+/**
+ * Cache directory specification for use with CSIM graphs that are
+ * // using the cache.
+ * // The directory must be the filesysystem name as seen by PHP
+ * // and the 'http' version must be the same directory but as
+ * // seen by the HTTP server relative to the 'htdocs' ddirectory.
+ * // If a relative path is specified it is taken to be relative from where
+ * // the image script is executed.
+ * // Note: The default setting is to create a subdirectory in the
+ * // directory from where the image script is executed and store all files
+ * // there. As ususal this directory must be writeable by the PHP process.
+ * define('CSIMCACHE_DIR', 'csimcache/');
+ * define('CSIMCACHE_HTTP_DIR', 'csimcache/');
+ *
+ * /**
+ * Various JpGraph Settings. Adjust accordingly to your
+ * // preferences. Note that cache functionality is turned off by
+ * // default (Enable by setting USE_CACHE to true)
+ */
 // Deafult locale for error messages.
 // This defaults to English = 'en'
 define('DEFAULT_ERR_LOCALE', 'en');
@@ -77,18 +77,14 @@ define('DEFAULT_GFORMAT', 'auto');
 // false will still create the image in the cache directory
 // just not use it. By setting USE_CACHE=false no files will even
 // be generated in the cache directory.
-if (!defined('USE_CACHE')) {
-    define('USE_CACHE', false);
-}
+define('USE_CACHE', false);
 
 // Should we try to find an image in the cache before generating it?
 // Set this define to false to bypass the reading of the cache and always
 // regenerate the image. Note that even if reading the cache is
 // disabled the cached will still be updated with the newly generated
 // image. Set also 'USE_CACHE' below.
-if (!defined('READ_CACHE')) {
-    define('READ_CACHE', true);
-}
+define('READ_CACHE', true);
 
 // Determine if the error handler should be image based or purely
 // text based. Image based makes it easier since the script will
@@ -121,10 +117,9 @@ define('ERR_DEPRECATED', true);
 // GD function thinks.
 define('USE_LIBRARY_IMAGETTFBBOX', true);
 
-//------------------------------------------------------------------------
-// The following constants should rarely have to be changed !
-//------------------------------------------------------------------------
-
+/**
+ * The following constants should rarely have to be changed !
+ */
 // What group should the cached file belong to
 // (Set to '' will give the default group for the 'PHP-user')
 // Please note that the Apache user must be a member of the

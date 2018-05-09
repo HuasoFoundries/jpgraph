@@ -6,22 +6,22 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//---------------------------------------------------------------------
-// CLASS GTextTable
-// Description:
-// Graphic text table
-//---------------------------------------------------------------------
+/**
+ * @class GTextTable
+ * // Description:
+ * // Graphic text table
+ */
 class GTextTable
 {
-    public $iCells         = [];
-    public $iSize          = [0, 0]; // Need to be public since they are used by the cell
-    private $iWidth        = 0;
-    private $iHeight       = 0;
+    public $iCells   = [];
+    public $iSize    = [0, 0]; // Need to be public since they are used by the cell
+    private $iWidth  = 0;
+    private $iHeight = 0;
     private $iColWidth;
     private $iRowHeight;
     private $iImg;
-    private $iXPos         = 0;
-    private $iYPos         = 0;
+    private $iXPos = 0;
+    private $iYPos = 0;
     private $iScaleXPos;
     private $iScaleYPos;
     private $iBGColor      = '';
@@ -31,7 +31,7 @@ class GTextTable
     private $iYAnchor      = 'top';
     private $iXAnchor      = 'left';
 
-    /*-----------------------------------------------------------------
+    /**
      * First and second phase constructors
      *-----------------------------------------------------------------
      */
@@ -53,7 +53,7 @@ class GTextTable
         $this->iInit = true;
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Outer border of table
      *-----------------------------------------------------------------
      */
@@ -63,7 +63,7 @@ class GTextTable
         $this->iBorderWeight = $aWeight;
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Position in graph of table
      *-----------------------------------------------------------------
      */
@@ -85,7 +85,7 @@ class GTextTable
         $this->iYAnchor = $aYAnchor;
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Setup country flag in a cell
      *-----------------------------------------------------------------
      */
@@ -96,7 +96,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetCountryFlag($aFlag, $aScale, $aMix, $aStdSize);
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Setup image in a cell
      *-----------------------------------------------------------------
      */
@@ -159,7 +159,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetImageConstrain($aType, $aVal);
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Generate a HTML version of the table
      *-----------------------------------------------------------------
      */
@@ -174,9 +174,9 @@ class GTextTable
                     $t .= 'M ';
                 }
 
-                $t .= 'val='.$this->iCells[$i][$j]->iVal->t;
-                $t .= ' (cs='.$this->iCells[$i][$j]->iColSpan.
-                ', rs='.$this->iCells[$i][$j]->iRowSpan.')';
+                $t .= 'val=' . $this->iCells[$i][$j]->iVal->t;
+                $t .= ' (cs=' . $this->iCells[$i][$j]->iColSpan .
+                ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
                 $t .= '</td>';
             }
             $t .= '</tr>';
@@ -186,7 +186,7 @@ class GTextTable
         return $t;
     }
 
-    /*-----------------------------------------------------------------
+    /**
      * Specify data for table
      *-----------------------------------------------------------------
      */
@@ -230,7 +230,7 @@ class GTextTable
         }
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Cell margin setting
      *---------------------------------------------------------------------
      */
@@ -278,7 +278,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetMargin($aPad, $aPad, $aPad, $aPad);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Cell text orientation setting
      *---------------------------------------------------------------------
      */
@@ -326,7 +326,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->iVal->SetOrientation($aO);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Font color setting
      *---------------------------------------------------------------------
      */
@@ -375,7 +375,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetFontColor($aColor);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Fill color settings
      *---------------------------------------------------------------------
      */
@@ -420,7 +420,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetFillColor($aColor);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Font family setting
      *---------------------------------------------------------------------
      */
@@ -490,7 +490,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetFont($aFF, $aFS, $aFSize);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Cell align settings
      *---------------------------------------------------------------------
      */
@@ -546,7 +546,7 @@ class GTextTable
         }
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Cell number format
      *---------------------------------------------------------------------
      */
@@ -607,7 +607,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetNumberFormat($aF);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Set row and column min size
      *---------------------------------------------------------------------
      */
@@ -640,7 +640,7 @@ class GTextTable
         }
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Grid line settings
      *---------------------------------------------------------------------
      */
@@ -678,7 +678,7 @@ class GTextTable
         }
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Merge cells
      *---------------------------------------------------------------------
      */
@@ -727,7 +727,7 @@ class GTextTable
         }
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * CSIM methods
      *---------------------------------------------------------------------
      */
@@ -740,7 +740,7 @@ class GTextTable
         for ($i = 0; $i < $m; ++$i) {
             for ($j = 0; $j < $n; ++$j) {
                 if ($aAutoTarget) {
-                    $t = $aTarget."?row=${i}&col=${j}";
+                    $t = $aTarget . "?row=${i}&col=${j}";
                 } else {
                     $t = $aTarget;
                 }
@@ -757,7 +757,7 @@ class GTextTable
         $this->iCells[$aRow][$aCol]->SetCSIMTarget($aTarget, $aAlt);
     }
 
-    /*---------------------------------------------------------------------
+    /**
      * Private methods
      *---------------------------------------------------------------------
      */

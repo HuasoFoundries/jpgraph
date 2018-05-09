@@ -8,13 +8,13 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS GanttScale
-// Description: Responsible for calculating and showing
-// the scale in a gantt chart. This includes providing methods for
-// converting dates to position in the chart as well as stroking the
-// date headers (days, week, etc).
-//===================================================
+/**
+ * @class GanttScale
+ * // Description: Responsible for calculating and showing
+ * // the scale in a gantt chart. This includes providing methods for
+ * // converting dates to position in the chart as well as stroking the
+ * // date headers (days, week, etc).
+ */
 class GanttScale
 {
     public $minute;
@@ -32,10 +32,10 @@ class GanttScale
     // we could have on bar in position 1, and one bar in position 5 then there are two
     // bars but the number of bar positions is 5
     public $actinfo;
-    public $iTopPlotMargin     = 10;
-    public $iBottomPlotMargin  = 15;
-    public $iVertLines         = -1;
-    public $iVertHeaderSize    = -1;
+    public $iTopPlotMargin    = 10;
+    public $iBottomPlotMargin = 15;
+    public $iVertLines        = -1;
+    public $iVertHeaderSize   = -1;
     // The width of the labels (defaults to the widest of all labels)
     private $iLabelWidth;
     // Out image to stroke the scale to
@@ -50,8 +50,9 @@ class GanttScale
     private $iUsePlotWeekendBackground = true;
     private $iWeekStart                = 1; // Default to have weekends start on Monday
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aImg)
     {
         $this->iImg        = $aImg;
@@ -96,9 +97,10 @@ class GanttScale
         $this->actinfo = new GanttActivityInfo();
     }
 
-    //---------------
-    // PUBLIC METHODS
-    // Specify what headers should be visible
+    /**
+     * PUBLIC METHODS
+     * // Specify what headers should be visible
+     */
     public function ShowHeaders($aFlg)
     {
         $this->day->Show($aFlg & GANTT_HDAY);
@@ -248,7 +250,7 @@ class GanttScale
             $d = $this->iStartDate;
         }
 
-        $adjdate          = strtotime(($this->iWeekStart - $ds).' day', $d/*$this->iStartDate*/);
+        $adjdate          = strtotime(($this->iWeekStart - $ds) . ' day', $d/*$this->iStartDate*/);
         $this->iStartDate = $adjdate;
 
         // We want to end on the last day of the week
@@ -348,20 +350,20 @@ class GanttScale
             $day += 60 * 60 * 24;
         }
 
-        /*-------------------------------------------------------------------------
-        According to ISO-8601 :
-        "Week 01 of a year is per definition the first week that has the Thursday in this year,
-        which is equivalent to the week that contains the fourth day of January.
-        In other words, the first week of a new year is the week that has the majority of its
-        days in the new year."
-
-        Be carefull, with PHP, -3 % 7 = -3, instead of 4 !!!
-
-        day of year             = date("z", $day) + 1
-        offset to thursday      = 3 - (date("w", $day) + 6) % 7
-        first thursday of year  = 1 + (11 - date("w", mktime(0, 0, 0, 1, 1, date("Y", $day)))) % 7
-        week number             = (thursday's day of year - first thursday's day of year) / 7 + 1
-        ---------------------------------------------------------------------------*/
+        /**
+         * According to ISO-8601 :
+         * "Week 01 of a year is per definition the first week that has the Thursday in this year,
+         * which is equivalent to the week that contains the fourth day of January.
+         * In other words, the first week of a new year is the week that has the majority of its
+         * days in the new year."
+         *
+         * Be carefull, with PHP, -3 % 7 = -3, instead of 4 !!!
+         *
+         * day of year             = date("z", $day) + 1
+         * offset to thursday      = 3 - (date("w", $day) + 6) % 7
+         * first thursday of year  = 1 + (11 - date("w", mktime(0, 0, 0, 1, 1, date("Y", $day)))) % 7
+         * week number             = (thursday's day of year - first thursday's day of year) / 7 + 1
+         * ---------------------------------------------------------------------------*/
 
         $thursday = $day + 60 * 60 * 24 * (3 - (date('w', $day) + 6) % 7); // take week's thursday
         $week     = 1 + (date('z', $thursday) - (11 - date('w', mktime(0, 0, 0, 1, 1, date('Y', $thursday)))) % 7) / 7;
@@ -786,7 +788,7 @@ class GanttScale
                         break;
                     case DAYSTYLE_SHORTDAYDATE1:
                         // "Mon 23/6"
-                        $txt = strftime('%a %d/'.$mn, $datestamp);
+                        $txt = strftime('%a %d/' . $mn, $datestamp);
 
                         break;
                     case DAYSTYLE_SHORTDAYDATE2:
@@ -811,7 +813,7 @@ class GanttScale
                         break;
                     case DAYSTYLE_SHORTDATE1:
                         // "23/6"
-                        $txt = strftime('%d/'.$mn, $datestamp);
+                        $txt = strftime('%d/' . $mn, $datestamp);
 
                         break;
                     case DAYSTYLE_SHORTDATE2:
@@ -920,13 +922,13 @@ class GanttScale
                     $this->week->iStyle == WEEKSTYLE_FIRSTDAY2WNBR) {
                     $monthnbr   = date('n', $week) - 1;
                     $shortmonth = $this->iDateLocale->GetShortMonthName($monthnbr);
-                    $txt        = date('j', $week).' '.$shortmonth;
+                    $txt        = date('j', $week) . ' ' . $shortmonth;
                 }
 
                 if ($this->week->iStyle == WEEKSTYLE_FIRSTDAYWNBR ||
                     $this->week->iStyle == WEEKSTYLE_FIRSTDAY2WNBR) {
                     $w = sprintf($this->week->iLabelFormStr, $weeknbr);
-                    $txt .= ' '.$w;
+                    $txt .= ' ' . $w;
                 }
 
                 $img->StrokeText(
@@ -967,19 +969,19 @@ class GanttScale
 
                 break;
             case MONTHSTYLE_SHORTNAMEYEAR2:
-                $m = $sn." '".substr(''.$year, 2);
+                $m = $sn . " '" . substr('' . $year, 2);
 
                 break;
             case MONTHSTYLE_SHORTNAMEYEAR4:
-                $m = $sn.' '.$year;
+                $m = $sn . ' ' . $year;
 
                 break;
             case MONTHSTYLE_LONGNAMEYEAR2:
-                $m = $ln." '".substr(''.$year, 2);
+                $m = $ln . " '" . substr('' . $year, 2);
 
                 break;
             case MONTHSTYLE_LONGNAMEYEAR4:
-                $m = $ln.' '.$year;
+                $m = $ln . ' ' . $year;
 
                 break;
             case MONTHSTYLE_FIRSTLETTER:
@@ -1095,7 +1097,7 @@ class GanttScale
 
             // The space for a year must be at least 20% bigger than the actual text
             // so we allow 10% margin on each side
-            if ($yearwidth >= 1.20 * $img->GetTextWidth(''.$year)) {
+            if ($yearwidth >= 1.20 * $img->GetTextWidth('' . $year)) {
                 $img->SetColor($this->year->iTextColor);
                 $img->StrokeText(
                     round($xt + $yearwidth / 2 + 1),
@@ -1116,7 +1118,7 @@ class GanttScale
                     $w = $xb - $x;
                 }
 
-                if ($w >= 1.2 * $img->GetTextWidth(''.$year)) {
+                if ($w >= 1.2 * $img->GetTextWidth('' . $year)) {
                     $img->SetColor($this->year->iTextColor);
                     $img->StrokeText(
                         round($x + $w / 2 + 1),

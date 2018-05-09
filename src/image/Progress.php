@@ -8,19 +8,19 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Progress
-// Holds parameters for the progress indicator
-// displyed within a bar
-//===================================================
+/**
+ * @class Progress
+ * // Holds parameters for the progress indicator
+ * // displyed within a bar
+ */
 class Progress
 {
-    public $iProgress     = -1;
-    public $iPattern      = GANTT_SOLID;
-    public $iColor        = 'black';
-    public $iFillColor    = 'black';
-    public $iDensity      = 98;
-    public $iHeight       = 0.65;
+    public $iProgress  = -1;
+    public $iPattern   = GANTT_SOLID;
+    public $iColor     = 'black';
+    public $iFillColor = 'black';
+    public $iDensity   = 98;
+    public $iHeight    = 0.65;
 
     public function Set($aProg)
     {

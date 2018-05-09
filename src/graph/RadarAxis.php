@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS RadarAxis
-// Description: Implements axis for the radar graph
-//===================================================
+/**
+ * @class RadarAxis
+ * // Description: Implements axis for the radar graph
+ */
 class RadarAxis extends AxisPrototype
 {
     public $title;
@@ -149,4 +149,4 @@ class RadarAxis extends AxisPrototype
             $this->title->Stroke($this->img, $xt - $dx * $w, $yt - $dy * $h, $title);
         }
     }
-} // Class
+} // @class

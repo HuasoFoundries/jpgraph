@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -24,7 +24,9 @@ $data = [
 ];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 
 $graph->SetScale('textlin');
 if ($theme) {
@@ -37,17 +39,16 @@ $plot = [];
 // Create the bar plots
 for ($i = 0; $i < 4; ++$i) {
     $plot[$i] = new Plot\BarPlot($data[$i]);
-    $plot[$i]->SetLegend('plot'.($i + 1));
+    $plot[$i]->SetLegend('plot' . ($i + 1));
 }
 //$acc1 = new Plot\AccBarPlot(array($plot[0], $plot[1]));
 //$acc1->value->Show();
-Kint::enabled(true);
-ddd($plot);
+
 $gbplot = new Plot\GroupBarPlot([$plot[2], $plot[1]]);
 
 for ($i = 4; $i < 8; ++$i) {
     $plot[$i] = new Plot\LinePlot($data[$i]);
-    $plot[$i]->SetLegend('plot'.$i);
+    $plot[$i]->SetLegend('plot' . $i);
     $plot[$i]->value->Show();
 }
 

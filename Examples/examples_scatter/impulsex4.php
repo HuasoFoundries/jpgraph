@@ -3,10 +3,10 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_scatter.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_plotline.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+//require_once 'jpgraph/jpgraph_scatter.php';
+use Amenadiel\JpGraph\Plot;
 
 $numpoints = 50;
 $k         = 0.05;
@@ -25,7 +25,9 @@ for ($i = 0; $i < $numpoints; ++$i) {
 }
 
 // Setup the basic parameters for the graph
-$graph = new Graph\Graph(500, 250);
+$__width  = 500;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 
 $graph->SetShadow();
@@ -52,11 +54,11 @@ $graph->yaxis->SetTickSide(SIDE_LEFT);
 $graph->xaxis->SetTickSide(SIDE_DOWN);
 
 // Add mark graph with static lines
-$line = new PlotLine(HORIZONTAL, 0, 'black', 2);
+$line = new Plot\PlotLine(HORIZONTAL, 0, 'black', 2);
 $graph->AddLine($line);
 
 // Create a new impuls type scatter plot
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_SQUARE);
 $sp1->mark->SetFillColor('red');
 $sp1->mark->SetWidth(3);

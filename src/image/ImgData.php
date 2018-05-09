@@ -8,12 +8,11 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//========================================================================
-// CLASS ImgData
-// Description: Base class for all image data classes that contains the
-// real image data.
-//========================================================================
-
+/**
+ * @class ImgData
+ * // Description: Base class for all image data classes that contains the
+ * // real image data.
+ */
 class ImgData
 {
     protected $name     = ''; // Each subclass gives a name

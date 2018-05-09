@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -18,7 +18,9 @@ function cbFmtPercentage($aVal)
 }
 
 // Create the graph.
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 // Create a bar plots

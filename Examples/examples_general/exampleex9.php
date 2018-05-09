@@ -3,8 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_log.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -14,7 +14,9 @@ $datax  = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'aug', 'Sep', 'Oct']
 
 // Create the graph. These two calls are always required
 // We also specify a 2 min timeout for the cached image
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlog');
 
 $graph->img->SetMargin(40, 110, 20, 40);

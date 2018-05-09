@@ -3,14 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_plotline.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay = [12, 5, 19, 22, 17, 6];
 
 // Create the graph.
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 30, 50, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
@@ -53,7 +55,7 @@ $band[1] = new Plot\PlotBand(HORIZONTAL, BAND_SOLID, 0, 'max', 'steelblue');
 $band[1]->ShowFrame(false);
 $graph->Add($band);
 
-$graph->Add(new PlotLine(HORIZONTAL, 0, 'black', 2));
+$graph->Add(new Plot\PlotLine(HORIZONTAL, 0, 'black', 2));
 
 //$graph->title->Set("Test of bar gradient fill");
 $graph->xaxis->title->Set('X-title');

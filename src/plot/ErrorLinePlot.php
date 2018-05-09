@@ -6,18 +6,19 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS ErrorLinePlot
-// Description: Combine a line and error plot
-// THIS IS A DEPRECATED PLOT TYPE JUST KEPT FOR
-// BACKWARD COMPATIBILITY
-//===================================================
+/**
+ * @class ErrorLinePlot
+ * // Description: Combine a line and error plot
+ * // THIS IS A DEPRECATED PLOT TYPE JUST KEPT FOR
+ * // BACKWARD COMPATIBILITY
+ */
 class ErrorLinePlot extends ErrorPlot
 {
     public $line;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
@@ -29,8 +30,9 @@ class ErrorLinePlot extends ErrorPlot
         $this->line = new LinePlot($ly, $datax);
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         if ($this->legend != '') {
@@ -45,4 +47,4 @@ class ErrorLinePlot extends ErrorPlot
         parent::Stroke($img, $xscale, $yscale);
         $this->line->Stroke($img, $xscale, $yscale);
     }
-} // Class
+} // @class

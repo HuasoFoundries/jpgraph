@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS DateLocale
-// Description: Hold localized text used in dates
-//===================================================
+/**
+ * @class DateLocale
+ * // Description: Hold localized text used in dates
+ */
 class DateLocale
 {
     public $iLocale = 'C'; // environmental locale be used by default

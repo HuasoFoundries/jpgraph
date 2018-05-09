@@ -3,14 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $datay = [10, 29, 3, 6];
 
 // Create the graph.
-$graph = new Graph\Graph(200, 200);
+$__width  = 200;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 20, 25);
 $graph->SetBox(true);

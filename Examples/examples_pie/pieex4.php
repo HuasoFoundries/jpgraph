@@ -3,13 +3,15 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $data = [40, 60, 21, 33];
 
-$graph = new Graph\PieGraph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 $graph->title->Set('Example 4 of pie plot');

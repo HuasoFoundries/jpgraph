@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPatternRDiag
-// Implements right diagonal pattern
-//=====================================================================
+/**
+ * @class RectPatternRDiag
+ * // Implements right diagonal pattern
+ */
 class RectPatternRDiag extends RectPattern
 {
     public function __construct($aColor = 'black', $aWeight = 1, $aLineSpacing = 12)

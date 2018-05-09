@@ -6,17 +6,21 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS AccBarPlot
-// Description: Produce accumulated bar plots
-//===================================================
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
+
+/**
+ * @class AccBarPlot
+ * // Description: Produce accumulated bar plots
+ */
 class AccBarPlot extends BarPlot
 {
     public $plots;
     private $nbrplots = 0;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($plots)
     {
         $this->plots    = $plots;
@@ -46,8 +50,9 @@ class AccBarPlot extends BarPlot
         $this->value     = new DisplayValue();
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         $n = count($this->plots);
@@ -317,7 +322,7 @@ class AccBarPlot extends BarPlot
                 // Stroke the pattern
                 if ($this->plots[$j]->iPattern > -1) {
                     if ($pattern === null) {
-                        $pattern = new RectPatternFactory();
+                        $pattern = new Graph\RectPatternFactory();
                     }
 
                     $prect = $pattern->Create($this->plots[$j]->iPattern, $this->plots[$j]->iPatternColor, 1);
@@ -340,16 +345,16 @@ class AccBarPlot extends BarPlot
                 if ($i < count($this->plots[$j]->csimtargets)) {
                     // Create the client side image map
                     $rpts      = $img->ArrRotate($pts);
-                    $csimcoord = round($rpts[0]).', '.round($rpts[1]);
+                    $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);
                     for ($k = 1; $k < 4; ++$k) {
-                        $csimcoord .= ', '.round($rpts[2 * $k]).', '.round($rpts[2 * $k + 1]);
+                        $csimcoord .= ', ' . round($rpts[2 * $k]) . ', ' . round($rpts[2 * $k + 1]);
                     }
                     if (!empty($this->plots[$j]->csimtargets[$i])) {
-                        $this->csimareas .= '<area shape="poly" coords="'.$csimcoord.'" ';
-                        $this->csimareas .= ' href="'.$this->plots[$j]->csimtargets[$i].'" ';
+                        $this->csimareas .= '<area shape="poly" coords="' . $csimcoord . '" ';
+                        $this->csimareas .= ' href="' . $this->plots[$j]->csimtargets[$i] . '" ';
 
                         if (!empty($this->plots[$j]->csimwintargets[$i])) {
-                            $this->csimareas .= ' target="'.$this->plots[$j]->csimwintargets[$i].'" ';
+                            $this->csimareas .= ' target="' . $this->plots[$j]->csimwintargets[$i] . '" ';
                         }
 
                         $sval = '';
@@ -451,4 +456,4 @@ class AccBarPlot extends BarPlot
 
         return true;
     }
-} // Class
+} // @class

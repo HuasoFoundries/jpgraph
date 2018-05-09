@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_scatter.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $polex = 6;
 $poley = 40;
@@ -85,7 +86,9 @@ for ($x = 1; $x < 10; ++$x) {
 }
 
 // Setup the graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, 100, 0, 10);
 $graph->SetMarginColor('lightblue');
 
@@ -93,7 +96,7 @@ $graph->SetMarginColor('lightblue');
 $graph->title->Set('Field plot');
 
 // Setup the field plot
-$fp = new FieldPlot($datay, $datax, $angle);
+$fp = new Plot\FieldPlot($datay, $datax, $angle);
 
 // Setup formatting callback
 $fp->SetCallback('FldCallback');

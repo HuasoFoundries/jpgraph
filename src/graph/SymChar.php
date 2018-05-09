@@ -6,12 +6,12 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=============================================================================
-// CLASS SymChar
-// Description: Code values for some commonly used characters that
-//              normally isn't available directly on the keyboard, for example
-//              mathematical and greek symbols.
-//=============================================================================
+/**
+ * @class SymChar
+ * // Description: Code values for some commonly used characters that
+ * //              normally isn't available directly on the keyboard, for example
+ * //              mathematical and greek symbols.
+ */
 class SymChar
 {
     public static function Get($aSymb, $aCapital = false)

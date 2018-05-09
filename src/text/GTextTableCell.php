@@ -6,16 +6,14 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-/*=======================================================================
-// File:        JPGRAPH_TABLE.PHP
-// Description: Classes to create basic tables of data
-// Created:     2006-01-25
-// Ver:         $Id: jpgraph_table.php 1514 2009-07-07 11:15:58Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_TABLE.PHP
+ * // Description: Classes to create basic tables of data
+ * // Created:     2006-01-25
+ * // Ver:         $Id: jpgraph_table.php 1514 2009-07-07 11:15:58Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
-
 // Style of grid lines in table
 define('TGRID_SINGLE', 1);
 define('TGRID_DOUBLE', 2);
@@ -25,43 +23,43 @@ define('TGRID_DOUBLE2', 3);
 define('TIMG_WIDTH', 1);
 define('TIMG_HEIGHT', 2);
 
-//---------------------------------------------------------------------
-// CLASS GTextTableCell
-// Description:
-// Internal class that represents each cell in the table
-//---------------------------------------------------------------------
+/**
+ * @class GTextTableCell
+ * // Description:
+ * // Internal class that represents each cell in the table
+ */
 class GTextTableCell
 {
-    public $iColSpan                = 1;
-    public $iRowSpan                = 1;
-    public $iMarginLeft             = 5;
-    public $iMarginRight            = 5;
-    public $iMarginTop              = 5;
-    public $iMarginBottom           = 5;
+    public $iColSpan      = 1;
+    public $iRowSpan      = 1;
+    public $iMarginLeft   = 5;
+    public $iMarginRight  = 5;
+    public $iMarginTop    = 5;
+    public $iMarginBottom = 5;
     public $iVal;
-    private $iBGColor               = '';
-    private $iFontColor             = 'black';
-    private $iFF                    = FF_FONT1;
-    private $iFS                    = FS_NORMAL;
-    private $iFSize                 = 10;
-    private $iRow                   = 0;
-    private $iCol                   = 0;
-    private $iVertAlign             = 'bottom';
-    private $iHorAlign              = 'left';
-    private $iMerged                = false;
+    private $iBGColor   = '';
+    private $iFontColor = 'black';
+    private $iFF        = FF_FONT1;
+    private $iFS        = FS_NORMAL;
+    private $iFSize     = 10;
+    private $iRow       = 0;
+    private $iCol       = 0;
+    private $iVertAlign = 'bottom';
+    private $iHorAlign  = 'left';
+    private $iMerged    = false;
     private $iPRow;
     private $iPCol;
     private $iTable;
-    private $iGridColor             = ['darkgray', 'darkgray', 'darkgray', 'darkgray'];
-    private $iGridWeight            = [1, 1, 0, 0]; // left,top,bottom,right;
-    private $iGridStyle             = [TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE]; // left,top,bottom,right;
+    private $iGridColor  = ['darkgray', 'darkgray', 'darkgray', 'darkgray'];
+    private $iGridWeight = [1, 1, 0, 0]; // left,top,bottom,right;
+    private $iGridStyle  = [TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE]; // left,top,bottom,right;
     private $iNumberFormat;
     private $iIcon;
-    private $iIconConstrain         = [];
-    private $iCSIMtarget            = '';
-    private $iCSIMwintarget         = '';
-    private $iCSIMalt               = '';
-    private $iCSIMArea              = '';
+    private $iIconConstrain = [];
+    private $iCSIMtarget    = '';
+    private $iCSIMwintarget = '';
+    private $iCSIMalt       = '';
+    private $iCSIMArea      = '';
 
     public function __construct($aVal = '', $aRow = 0, $aCol = 0)
     {
@@ -467,14 +465,14 @@ class GTextTableCell
             $aImg->FilledRectangle($aX, $aY, $aX + $aWidth - 1, $aY + $aHeight - 1);
         }
 
-        $coords = $aX.','.$aY.','.($aX + $aWidth - 1).','.$aY.','.($aX + $aWidth - 1).','.($aY + $aHeight - 1).','.$aX.','.($aY + $aHeight - 1);
+        $coords = $aX . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . $aY . ',' . ($aX + $aWidth - 1) . ',' . ($aY + $aHeight - 1) . ',' . $aX . ',' . ($aY + $aHeight - 1);
         if (!empty($this->iCSIMtarget)) {
-            $this->iCSIMArea = '<area shape="poly" coords="'.$coords.'" href="'.$this->iCSIMtarget.'"';
+            $this->iCSIMArea = '<area shape="poly" coords="' . $coords . '" href="' . $this->iCSIMtarget . '"';
             if (!empty($this->iCSIMwintarget)) {
-                $this->iCSIMArea .= ' target="'.$this->iCSIMwintarget.'"';
+                $this->iCSIMArea .= ' target="' . $this->iCSIMwintarget . '"';
             }
             if (!empty($this->iCSIMalt)) {
-                $this->iCSIMArea .= ' alt="'.$this->iCSIMalt.'" title="'.$this->iCSIMalt.'" ';
+                $this->iCSIMArea .= ' alt="' . $this->iCSIMalt . '" title="' . $this->iCSIMalt . '" ';
             }
             $this->iCSIMArea .= " />\n";
         }

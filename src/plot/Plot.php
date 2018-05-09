@@ -8,22 +8,23 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Plot
-// Description: Abstract base class for all concrete plot classes
-//===================================================
+require_once __DIR__ . '/../config.inc.php';
+/**
+ * @class Plot
+ * // Description: Abstract base class for all concrete plot classes
+ */
 class Plot
 {
     public $numpoints = 0;
     public $value;
-    public $legend              = '';
-    public $coords              = [];
-    public $color               = 'black';
-    public $hidelegend          = false;
-    public $line_weight         = 1;
-    public $csimtargets         = [];
-    public $csimwintargets      = []; // Array of targets for CSIM
-    public $csimareas           = ''; // Resultant CSIM area tags
+    public $legend         = '';
+    public $coords         = [];
+    public $color          = 'black';
+    public $hidelegend     = false;
+    public $line_weight    = 1;
+    public $csimtargets    = [];
+    public $csimwintargets = []; // Array of targets for CSIM
+    public $csimareas      = ''; // Resultant CSIM area tags
     public $csimalts; // ALT:s for corresponding target
     public $legendcsimtarget    = '';
     public $legendcsimwintarget = '';
@@ -233,4 +234,4 @@ class Plot
         $this->__construct($this->inputValues['aDatay'], $this->inputValues['aDatax']);
         $this->isRunningClear = false;
     }
-} // Class
+} // @class

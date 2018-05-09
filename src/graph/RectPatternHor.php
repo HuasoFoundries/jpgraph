@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPatternHor
-// Implements horizontal line pattern
-//=====================================================================
+/**
+ * @class RectPatternHor
+ * // Implements horizontal line pattern
+ */
 class RectPatternHor extends RectPattern
 {
     public function __construct($aColor = 'black', $aWeight = 1, $aLineSpacing = 7)

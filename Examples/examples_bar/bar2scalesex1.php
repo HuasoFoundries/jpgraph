@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,7 +12,9 @@ $datay2   = [430, 645, 223, 690];
 $datazero = [0, 0, 0, 0];
 
 // Create the graph.
-$graph = new Graph\Graph(450, 200);
+$__width  = 450;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->title->Set('Example with 2 scale bars');
 
 // Setup Y and Y2 scales with some "grace"

@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS LinearScale
-// Description: Handle linear scaling between screen and world
-//===================================================
+/**
+ * @class LinearScale
+ * // Description: Handle linear scaling between screen and world
+ */
 class LinearScale
 {
     public $textscale = false; // Just a flag to let the Plot class find out if
@@ -30,11 +30,11 @@ class LinearScale
     public $name       = 'lin';
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
     public $world_abs_size; // Plot area size in pixels (Needed public in jpgraph_radar.php)
-    public $intscale            = false; // Restrict autoscale to integers
-    protected $autoscale_min    = false; // Forced minimum value, auto determine max
-    protected $autoscale_max    = false; // Forced maximum value, auto determine min
-    private $gracetop           = 0;
-    private $gracebottom        = 0;
+    public $intscale         = false; // Restrict autoscale to integers
+    protected $autoscale_min = false; // Forced minimum value, auto determine max
+    protected $autoscale_max = false; // Forced maximum value, auto determine min
+    private $gracetop        = 0;
+    private $gracebottom     = 0;
 
     private $_world_size; // Plot area size in world coordinates
 
@@ -374,8 +374,9 @@ class LinearScale
         }
     }
 
-    //---------------
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
 
     // This method recalculates all constants that are depending on the
     // margins in the image. If the margins in the image are changed
@@ -596,7 +597,7 @@ class LinearScale
 
     public function __get($name)
     {
-        $variable_name = '_'.$name;
+        $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * SUPERSAMPLING_SCALE;
@@ -606,6 +607,6 @@ class LinearScale
 
     public function __set($name, $value)
     {
-        $this->{'_'.$name} = $value;
+        $this->{'_' . $name} = $value;
     }
-} // Class
+} // @class

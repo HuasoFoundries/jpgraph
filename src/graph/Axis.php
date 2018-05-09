@@ -8,14 +8,14 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Axis
-// Description: Defines X and Y axis. Notes that at the
-// moment the code is not really good since the axis on
-// several occasion must know wheter it's an X or Y axis.
-// This was a design decision to make the code easier to
-// follow.
-//===================================================
+/**
+ * @class Axis
+ * // Description: Defines X and Y axis. Notes that at the
+ * // moment the code is not really good since the axis on
+ * // several occasion must know wheter it's an X or Y axis.
+ * // This was a design decision to make the code easier to
+ * // follow.
+ */
 class Axis extends AxisPrototype
 {
     public function __construct($img, $aScale, $color = 'black')
@@ -127,9 +127,10 @@ class Axis extends AxisPrototype
         }
     }
 
-    //---------------
-    // PRIVATE METHODS
-    // Draw all the tick labels on major tick marks
+    /**
+     * PRIVATE METHODS
+     * // Draw all the tick labels on major tick marks
+     */
     public function StrokeLabels($aPos, $aMinor = false, $aAbsLabel = false)
     {
         if (is_array($this->label_color) && count($this->label_color) > 3) {

@@ -6,17 +6,18 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS GroupBarPlot
-// Description: Produce grouped bar plots
-//===================================================
+/**
+ * @class GroupBarPlot
+ * // Description: Produce grouped bar plots
+ */
 class GroupBarPlot extends BarPlot
 {
     public $plots;
     private $nbrplots = 0;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($plots)
     {
         $this->width    = 0.7;
@@ -34,8 +35,9 @@ class GroupBarPlot extends BarPlot
         $this->width     = 0.7;
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         $n = count($this->plots);
@@ -107,4 +109,4 @@ class GroupBarPlot extends BarPlot
         }
         $xscale->off = $tmp;
     }
-} // Class
+} // @class

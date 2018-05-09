@@ -5,7 +5,7 @@
  */
 
 // Example for use of JpGraph,
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -14,7 +14,9 @@ $datay = [0.13, 0.25, 0.21, 0.35, 0.31, 0.06];
 $datax = ['January', 'February', 'March', 'April', 'May', 'June'];
 
 // Setup the graph.
-$graph = new Graph\Graph(400, 240);
+$__width  = 400;
+$__height = 240;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 20, 35, 75);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue:1.1');

@@ -6,24 +6,24 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//===================================================
-// CLASS Ticks
-// Description: Abstract base class for drawing linear and logarithmic
-// tick marks on axis
-//===================================================
+/**
+ * @class Ticks
+ * // Description: Abstract base class for drawing linear and logarithmic
+ * // tick marks on axis
+ */
 class Ticks
 {
-    public $label_formatstr                  = ''; // C-style format string to use for labels
-    public $label_formfunc                   = '';
-    public $label_dateformatstr              = '';
-    public $direction                        = 1; // Should ticks be in(=1) the plot area or outside (=-1)
-    public $supress_last                     = false;
-    public $supress_tickmarks                = false;
-    public $supress_minor_tickmarks          = false;
-    public $maj_ticks_pos                    = [];
-    public $maj_ticklabels_pos               = [];
-    public $ticks_pos                        = [];
-    public $maj_ticks_label                  = [];
+    public $label_formatstr         = ''; // C-style format string to use for labels
+    public $label_formfunc          = '';
+    public $label_dateformatstr     = '';
+    public $direction               = 1; // Should ticks be in(=1) the plot area or outside (=-1)
+    public $supress_last            = false;
+    public $supress_tickmarks       = false;
+    public $supress_minor_tickmarks = false;
+    public $maj_ticks_pos           = [];
+    public $maj_ticklabels_pos      = [];
+    public $ticks_pos               = [];
+    public $maj_ticks_label         = [];
     public $precision;
 
     protected $minor_abs_size = 3;
@@ -147,4 +147,4 @@ class Ticks
     {
         $this->weight = $aWeight;
     }
-} // Class
+} // @class

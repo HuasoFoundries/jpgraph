@@ -8,28 +8,26 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
-// File:        JPGRAPH_LOG.PHP
-// Description: Log scale plot extension for JpGraph
-// Created:     2001-01-08
-// Ver:         $Id: jpgraph_log.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_LOG.PHP
+ * // Description: Log scale plot extension for JpGraph
+ * // Created:     2001-01-08
+ * // Ver:         $Id: jpgraph_log.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
-
 define('LOGLABELS_PLAIN', 0);
 define('LOGLABELS_MAGNITUDE', 1);
 
-//===================================================
-// CLASS LogScale
-// Description: Logarithmic scale between world and screen
-//===================================================
+/**
+ * @class LogScale
+ * // Description: Logarithmic scale between world and screen
+ */
 class LogScale extends LinearScale
 {
-    //---------------
-    // CONSTRUCTOR
-
+    /**
+     * CONSTRUCTOR
+     */
     // Log scale is specified using the log of min and max
     public function __construct($min, $max, $type = 'y')
     {
@@ -38,9 +36,9 @@ class LogScale extends LinearScale
         $this->name  = 'log';
     }
 
-    //----------------
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     // Translate between world and screen
     public function Translate($a)
     {
@@ -141,6 +139,7 @@ class LogScale extends LinearScale
         $this->Update($img, $smin, $smax);
     }
 
-    //---------------
-    // PRIVATE METHODS
-} // Class
+    /**
+     * PRIVATE METHODS
+     */
+} // @class

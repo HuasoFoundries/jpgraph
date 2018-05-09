@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -17,7 +17,9 @@ $data = [
 ];
 
 // First create a new windrose graph with a title
-$graph = new Graph\WindroseGraph(590, 580);
+$__width  = 590;
+$__height = 580;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->title->Set('Japanese locale');
 #$graph->title->SetFont(FF_VERDANA,FS_BOLD,14);
 $graph->title->SetColor('navy');
@@ -42,7 +44,7 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Ｓ　　　南
 // SＥ　　南東
 $jp_CompassLbl = ['東', '', '北東', '', '北', '', '北西', '',
-    '西', '', '南西', '', '南', '', '南東', '', ];
+    '西', '', '南西', '', '南', '', '南東', ''];
 $wp->SetCompassLabels($jp_CompassLbl);
 #$wp->SetFont(FF_MINCHO,FS_NORMAL,15);
 

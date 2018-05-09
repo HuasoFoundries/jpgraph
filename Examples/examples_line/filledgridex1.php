@@ -3,15 +3,18 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay1 = [20, 15, 23, 15];
 $datay2 = [12, 9, 42, 8];
 $datay3 = [5, 17, 32, 24];
 
 // Setup the graph
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);
@@ -23,7 +26,7 @@ $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');
 $graph->xgrid->Show();
 
-$graph->xaxis->SetTickLabels($gDateLocale->GetShortMonth());
+$graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay1);

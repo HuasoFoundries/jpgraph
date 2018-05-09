@@ -3,11 +3,14 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // create the graph
-$graph = new Graph\Graph(400, 250);
+$__width  = 400;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 
 $ydata = [5, 10, 15, 20, 15, 10];
 

@@ -6,22 +6,20 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_RGB.INC.PHP
-// Description: Class to handle RGb color space specification and
-//              named colors
-// Created:     2001-01-08 (Refactored to separate file 2008-08-01)
-// Ver:         $Id: jpgraph_rgb.inc.php 1893 2009-10-02 23:15:25Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
-/*===================================================
-// CLASS RGB
-// Description: Color definitions as RGB triples
-//===================================================
+/**
+ * File:        JPGRAPH_RGB.INC.PHP
+ * // Description: Class to handle RGb color space specification and
+ * //              named colors
+ * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
+ * // Ver:         $Id: jpgraph_rgb.inc.php 1893 2009-10-02 23:15:25Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
+/**
+ * @class RGB
+ * // Description: Color definitions as RGB triples
+ */
 class RGB
 {
     public $rgb_table;
@@ -473,10 +471,10 @@ class RGB
             'darkred'              => [139, 0, 0],
             'silver'               => [192, 192, 192],
             'eggplant'             => [144, 176, 168],
-            'lightgreen'           => [144, 238, 144], ];
+            'lightgreen'           => [144, 238, 144]];
     }
 
-    //----------------
+    //==================================
     // PUBLIC METHODS
     // Colors can be specified as either
     // 1. #xxxxxx   HTML style
@@ -503,9 +501,9 @@ class RGB
                 JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
             }
             if (empty($matches[5])) {
-                $r = strlen($matches[2]) == 1 ? $matches[2].$matches[2] : $matches[2];
-                $g = strlen($matches[3]) == 1 ? $matches[3].$matches[3] : $matches[3];
-                $b = strlen($matches[4]) == 1 ? $matches[4].$matches[4] : $matches[4];
+                $r = strlen($matches[2]) == 1 ? $matches[2] . $matches[2] : $matches[2];
+                $g = strlen($matches[3]) == 1 ? $matches[3] . $matches[3] : $matches[3];
+                $b = strlen($matches[4]) == 1 ? $matches[4] . $matches[4] : $matches[4];
                 $r = hexdec($r);
                 $g = hexdec($g);
                 $b = hexdec($b);
@@ -627,4 +625,4 @@ class RGB
 
         return [$sat, round($sat - $sat * ($aVal - 0.75) / $a), 0];
     }
-} // Class
+} // @class

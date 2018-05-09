@@ -10,20 +10,19 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
-// File:        JPGRAPH_MGRAPH.PHP
-// Description: Class to handle multiple graphs in the same image
-// Created:     2006-01-15
-// Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_MGRAPH.PHP
+ * // Description: Class to handle multiple graphs in the same image
+ * // Created:     2006-01-15
+ * // Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-//=============================================================================
-// CLASS MGraph
-// Description: Create a container image that can hold several graph
-//=============================================================================
+/**
+ * @class MGraph
+ * // Description: Create a container image that can hold several graph
+ */
 class MGraph
 {
     public $title;
@@ -31,35 +30,35 @@ class MGraph
     public $subsubtitle;
 
     protected $img;
-    protected $iCnt                       = 0;
-    protected $iGraphs                    = []; // image_handle, x, y, fx, fy, sizex, sizey
-    protected $iFillColor                 = 'white';
-    protected $iCurrentColor              = 0;
-    protected $lm                         = 4;
-    protected $rm                         = 4;
-    protected $tm                         = 4;
-    protected $bm                         = 4;
-    protected $iDoFrame                   = false;
-    protected $iFrameColor                = 'black';
-    protected $iFrameWeight               = 1;
-    protected $iLineWeight                = 1;
-    protected $expired                    = false;
+    protected $iCnt          = 0;
+    protected $iGraphs       = []; // image_handle, x, y, fx, fy, sizex, sizey
+    protected $iFillColor    = 'white';
+    protected $iCurrentColor = 0;
+    protected $lm            = 4;
+    protected $rm            = 4;
+    protected $tm            = 4;
+    protected $bm            = 4;
+    protected $iDoFrame      = false;
+    protected $iFrameColor   = 'black';
+    protected $iFrameWeight  = 1;
+    protected $iLineWeight   = 1;
+    protected $expired       = false;
     protected $cache;
-    protected $cache_name                 = '';
-    protected $inline                     = true;
-    protected $image_format               = 'png';
-    protected $image_quality              = 75;
+    protected $cache_name    = '';
+    protected $inline        = true;
+    protected $image_format  = 'png';
+    protected $image_quality = 75;
     protected $iWidth;
     protected $iHeight;
-    protected $background_image           = '';
-    protected $background_image_center    = true;
-    protected $backround_image_format     = '';
-    protected $background_image_mix       = 100;
+    protected $background_image        = '';
+    protected $background_image_center = true;
+    protected $backround_image_format  = '';
+    protected $background_image_mix    = 100;
     protected $background_image_y;
     protected $background_image_x;
-    private $doshadow                     = false;
-    private $shadow_width                 = 4;
-    private $shadow_color                 = 'gray@0.5';
+    private $doshadow     = false;
+    private $shadow_width = 4;
+    private $shadow_color = 'gray@0.5';
     public $footer;
 
     // Create a new instane of the combined graph

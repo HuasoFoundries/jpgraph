@@ -3,9 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_bar.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // Some data
 
@@ -20,8 +20,10 @@ for ($i = 0; $i < $steps; ++$i) {
 }
 
 // new Graph\Graph with a background image and drop shadow
-$graph = new Graph\Graph(450, 300);
-$graph->SetBackgroundImage('tiger_bkg.png', BGIMG_FILLFRAME);
+$__width  = 450;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
 $graph->SetShadow();
 
 // Use an integer X-scale

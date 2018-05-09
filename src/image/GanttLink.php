@@ -8,23 +8,22 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS GanttLink
-// Handles the drawing of a link line between 2 points
-//===================================================
-
+/**
+ * @class GanttLink
+ * // Handles the drawing of a link line between 2 points
+ */
 class GanttLink
 {
     private $ix1;
     private $ix2;
     private $iy1;
     private $iy2;
-    private $iPathType    = 2;
-    private $iPathExtend  = 15;
-    private $iColor       = 'black';
-    private $iWeight      = 1;
-    private $iArrowSize   = ARROW_S2;
-    private $iArrowType   = ARROWT_SOLID;
+    private $iPathType   = 2;
+    private $iPathExtend = 15;
+    private $iColor      = 'black';
+    private $iWeight     = 1;
+    private $iArrowSize  = ARROW_S2;
+    private $iArrowType  = ARROWT_SOLID;
 
     public function __construct($x1 = 0, $y1 = 0, $x2 = 0, $y2 = 0)
     {
@@ -122,7 +121,7 @@ class GanttLink
                         // the left on the activity
                         $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2, ];
+                            $x2, $midy, $x2, $y2];
 
                         break;
                     case 3:
@@ -130,7 +129,7 @@ class GanttLink
                             $c = [$x1, $y1, $x1, $midy,
                                 $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2, ];
+                                $x2, $y2];
                             $arrowtype = ARROW_RIGHT;
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
@@ -182,7 +181,7 @@ class GanttLink
                         // Always extend out horizontally a bit from the first point
                         $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2, ];
+                            $x2, $midy, $x2, $y2];
 
                         break;
                     case 3:
@@ -190,7 +189,7 @@ class GanttLink
                             $arrowtype = ARROW_RIGHT;
                             $c         = [$x1, $y1, $x1, $midy, $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2, ];
+                                $x2, $y2];
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }

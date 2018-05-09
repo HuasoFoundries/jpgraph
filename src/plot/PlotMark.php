@@ -6,22 +6,24 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_PLOTMARK.PHP
-// Description: Class file. Handles plotmarks
-// Created:     2003-03-21
-// Ver:         $Id: jpgraph_plotmark.inc.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_PLOTMARK.PHP
+ * // Description: Class file. Handles plotmarks
+ * // Created:     2003-03-21
+ * // Ver:         $Id: jpgraph_plotmark.inc.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 
-//===================================================
-// CLASS PlotMark
-// Description: Handles the plot marks in graphs
-//===================================================
-
+/**
+ * @class PlotMark
+ * // Description: Handles the plot marks in graphs
+ */
 class PlotMark
 {
     public $title;
@@ -50,8 +52,9 @@ class PlotMark
     private $imgdata_stars;
     private $imgdata_pushpins;
 
-    //--------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct()
     {
         $this->title = new Text\Text();
@@ -60,8 +63,9 @@ class PlotMark
         $this->type      = -1;
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
         $this->type = $aType;
@@ -165,18 +169,18 @@ class PlotMark
 
     public function AddCSIMPoly($aPts)
     {
-        $coords = round($aPts[0]).', '.round($aPts[1]);
+        $coords = round($aPts[0]) . ', ' . round($aPts[1]);
         $n      = count($aPts) / 2;
         for ($i = 1; $i < $n; ++$i) {
-            $coords .= ', '.round($aPts[2 * $i]).', '.round($aPts[2 * $i + 1]);
+            $coords .= ', ' . round($aPts[2 * $i]) . ', ' . round($aPts[2 * $i + 1]);
         }
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
             $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" ";
-            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
+            $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -195,10 +199,10 @@ class PlotMark
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
             $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" ";
-            $this->csimareas .= 'href="'.htmlentities($this->csimtarget).'"';
+            $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
-                $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
             }
 
             if (!empty($this->csimalt)) {
@@ -264,7 +268,7 @@ class PlotMark
                 case MARK_FLAG2:
                 case MARK_FLAG3:
                 case MARK_FLAG4:
-                    $this->markimg = FlagCache::GetFlagImgByName($this->type - MARK_FLAG1 + 1, $filename);
+                    $this->markimg = Util\FlagCache::GetFlagImgByName($this->type - MARK_FLAG1 + 1, $filename);
 
                     break;
                 case MARK_IMG:
@@ -272,7 +276,7 @@ class PlotMark
                     // Small optimization, if we have already read an image don't
                     // waste time reading it again.
                     if ($this->markimg == '' || !($this->oldfilename === $filename)) {
-                        $this->markimg     = Graph::LoadBkgImage('', $filename);
+                        $this->markimg     = Graph\Graph::LoadBkgImage('', $filename);
                         $this->oldfilename = $filename;
                     }
 
@@ -348,12 +352,12 @@ class PlotMark
 
             $img->Copy($this->markimg, $dx, $dy, 0, 0, $dw, $dh, $w, $h);
             if (!empty($this->csimtarget)) {
-                $this->csimareas = '<area shape="rect" coords="'.
-                $dx.','.$dy.','.round($dx + $dw).','.round($dy + $dh).'" '.
-                'href="'.htmlentities($this->csimtarget).'"';
+                $this->csimareas = '<area shape="rect" coords="' .
+                $dx . ',' . $dy . ',' . round($dx + $dw) . ',' . round($dy + $dh) . '" ' .
+                'href="' . htmlentities($this->csimtarget) . '"';
 
                 if (!empty($this->csimwintarget)) {
-                    $this->csimareas .= ' target="'.$this->csimwintarget.'" ';
+                    $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
                 }
 
                 if (!empty($this->csimalt)) {
@@ -519,4 +523,4 @@ class PlotMark
         $this->title->Align('center', 'center');
         $this->title->Stroke($img, $x, $y);
     }
-} // Class
+} // @class

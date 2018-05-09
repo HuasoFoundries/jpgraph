@@ -6,29 +6,29 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
-// File:        JPGRAPH_GRADIENT.PHP
-// Description: Create a color gradient
-// Created:     2003-02-01
-// Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_GRADIENT.PHP
+ * // Description: Create a color gradient
+ * // Created:     2003-02-01
+ * // Ver:         $Id: jpgraph_gradient.php 1761 2009-08-01 08:31:28Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Gradient
-// Description: Handles gradient fills. This is to be
-// considered a "friend" class of Class Image.
-//===================================================
+/**
+ * @class Gradient
+ * // Description: Handles gradient fills. This is to be
+ * // considered a "friend" class of Class Image.
+ */
 class Gradient
 {
     private $img;
     private $numcolors = 100;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct(&$img)
     {
         $this->img = $img;
@@ -39,8 +39,9 @@ class Gradient
         $this->numcolors = $aNum;
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     // Produce a gradient filled rectangle with a smooth transition between
     // two colors.
     // ($xl,$yt)  Top left corner
@@ -173,7 +174,7 @@ class Gradient
                 $adj         = 1.4;
                 $m           = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color2 = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
 
                 $this->GetColArray($from_color2, $to_color, $steps1, $colors, $this->numcolors);
                 $n = count($colors);
@@ -220,7 +221,7 @@ class Gradient
                 $adj        = 1.4;
                 $m          = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
 
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
@@ -396,8 +397,9 @@ class Gradient
         }
     }
 
-    //---------------
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
     // Add to the image color map the necessary colors to do the transition
     // between the two colors using $numcolors intermediate colors
     public function GetColArray($from_color, $to_color, $arr_size, &$colors, $numcols = 100)
@@ -418,19 +420,21 @@ class Gradient
         $from_alpha    = $from_color[3];
         $to_alpha      = $to_color[3];
         $adelta        = ($to_alpha - $from_alpha) / $numcols;
+
         for ($i = 0; $i < $arr_size; ++$i) {
             $colnum = floor($colorsperstep * $i);
             if ($colnum == $prevcolnum) {
                 $colors[$i] = $colidx;
             } else {
-                $r          = floor($from_color[0] + $colnum * $rdelta);
-                $g          = floor($from_color[1] + $colnum * $gdelta);
-                $b          = floor($from_color[2] + $colnum * $bdelta);
-                $alpha      = $from_alpha + $colnum * $adelta;
+                $r     = floor($from_color[0] + $colnum * $rdelta);
+                $g     = floor($from_color[1] + $colnum * $gdelta);
+                $b     = floor($from_color[2] + $colnum * $bdelta);
+                $alpha = $from_alpha + $colnum * $adelta;
+
                 $colidx     = $this->img->rgb->Allocate(sprintf('#%02x%02x%02x', $r, $g, $b), $alpha);
                 $colors[$i] = $colidx;
             }
             $prevcolnum = $colnum;
         }
     }
-} // Class
+} // @class

@@ -8,46 +8,45 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
-// File:           JPGRAPH_LINE.PHP
-// Description: Line plot extension for JpGraph
-// Created:       2001-01-08
-// Ver:           $Id: jpgraph_line.php 1921 2009-12-11 11:46:39Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:           JPGRAPH_LINE.PHP
+ * // Description: Line plot extension for JpGraph
+ * // Created:       2001-01-08
+ * // Ver:           $Id: jpgraph_line.php 1921 2009-12-11 11:46:39Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
-
 // constants for the (filled) area
 define('LP_AREA_FILLED', true);
 define('LP_AREA_NOT_FILLED', false);
 define('LP_AREA_BORDER', false);
 define('LP_AREA_NO_BORDER', true);
 
-//===================================================
-// CLASS LinePlot
-// Description:
-//===================================================
+/**
+ * @class LinePlot
+ * // Description:
+ */
 class LinePlot extends Plot
 {
     public $mark;
-    protected $filled                = false;
-    protected $fill_color            = 'blue';
-    protected $step_style            = false;
-    protected $center                = false;
-    protected $line_style            = 1; // Default to solid
-    protected $filledAreas           = []; // array of arrays(with min,max,col,filled in them)
-    public $barcenter                = false; // When we mix line and bar. Should we center the line in the bar.
-    protected $fillFromMin           = false;
-    protected $fillFromMax           = false;
-    protected $fillgrad              = false;
-    protected $fillgrad_fromcolor    = 'navy';
-    protected $fillgrad_tocolor      = 'silver';
-    protected $fillgrad_numcolors    = 100;
-    protected $iFastStroke           = false;
+    protected $filled             = false;
+    protected $fill_color         = 'blue';
+    protected $step_style         = false;
+    protected $center             = false;
+    protected $line_style         = 1; // Default to solid
+    protected $filledAreas        = []; // array of arrays(with min,max,col,filled in them)
+    public $barcenter             = false; // When we mix line and bar. Should we center the line in the bar.
+    protected $fillFromMin        = false;
+    protected $fillFromMax        = false;
+    protected $fillgrad           = false;
+    protected $fillgrad_fromcolor = 'navy';
+    protected $fillgrad_tocolor   = 'silver';
+    protected $fillgrad_numcolors = 100;
+    protected $iFastStroke        = false;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
@@ -56,9 +55,9 @@ class LinePlot extends Plot
         $this->fill_color = $this->color;
     }
 
-    //---------------
-    // PUBLIC METHODS
-
+    /**
+     * PUBLIC METHODS
+     */
     public function SetFilled($aFlg = true)
     {
         $this->filled = $aFlg;
@@ -431,7 +430,7 @@ class LinePlot extends Plot
                 $areaCoords[] = $minY;
 
                 $areaCoords =
-                array_merge(
+                    array_merge(
                     $areaCoords,
                     array_slice(
                         $cord,
@@ -494,4 +493,4 @@ class LinePlot extends Plot
             }
         }
     }
-} // Class
+} // @class

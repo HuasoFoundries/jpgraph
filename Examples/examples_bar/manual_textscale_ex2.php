@@ -3,20 +3,22 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
+// new Graph\Graph with a drop shadow
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
+$graph->SetShadow();
+
 // Some data
+$databary = [];
 for ($i = 0; $i < 12; ++$i) {
     $databary[$i] = rand(1, 20);
 }
-$months = $gDateLocale->GetShortMonth();
-
-// new Graph\Graph with a drop shadow
-$graph = new Graph\Graph(300, 200);
-$graph->SetShadow();
-
+$months = $graph->gDateLocale->GetShortMonth();
 // Use a "text" X-scale
 $graph->SetScale('textlin');
 

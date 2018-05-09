@@ -7,19 +7,19 @@
 namespace Amenadiel\JpGraph\Util;
 
 define('__LR_EPSILON', 1.0e-8);
-//=============================================================================
-// Class LinearRegression
-//=============================================================================
+/**
+ * @class LinearRegression
+ */
 class LinearRegression
 {
-    private $ix             = [];
-    private $iy             = [];
-    private $ib             = 0;
-    private $ia             = 0;
-    private $icalculated    = false;
-    public $iDet            = 0;
-    public $iCorr           = 0;
-    public $iStdErr         = 0;
+    private $ix          = [];
+    private $iy          = [];
+    private $ib          = 0;
+    private $ia          = 0;
+    private $icalculated = false;
+    public $iDet         = 0;
+    public $iCorr        = 0;
+    public $iStdErr      = 0;
 
     public function __construct($aDataX, $aDataY)
     {

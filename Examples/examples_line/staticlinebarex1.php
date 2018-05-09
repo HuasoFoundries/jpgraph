@@ -3,14 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_plotline.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay = [12, 0, -19, -7, 17, -6];
 
 // Create the graph.
-$graph = new Graph\Graph(400, 300);
+$__width  = 400;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 30, 50, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
@@ -45,8 +47,8 @@ $graph->xaxis->SetPos('min');
 $graph->Add($bplot);
 
 // Add mark graph with static lines
-$graph->AddLine(new PlotLine(HORIZONTAL, 0, 'black', 2));
-$graph->AddLine(new PlotLine(VERTICAL, 3, 'black', 2));
+$graph->AddLine(new Plot\PlotLine(HORIZONTAL, 0, 'black', 2));
+$graph->AddLine(new Plot\PlotLine(VERTICAL, 3, 'black', 2));
 
 //$graph->title->Set("Test of bar gradient fill");
 $graph->xaxis->title->Set('X-title');

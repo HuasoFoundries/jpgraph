@@ -6,48 +6,47 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-/*=======================================================================
-// File:        JPGRAPH_WINDROSE.PHP
-// Description: Windrose extension for JpGraph
-// Created:     2003-09-17
-// Ver:         $Id: jpgraph_windrose.php 1928 2010-01-11 19:56:51Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_WINDROSE.PHP
+ * // Description: Windrose extension for JpGraph
+ * // Created:     2003-09-17
+ * // Ver:         $Id: jpgraph_windrose.php 1928 2010-01-11 19:56:51Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-//------------------------------------------------------------------------
-// Determine how many compass directions to show
-//------------------------------------------------------------------------
+/**
+ * Determine how many compass directions to show
+ */
 
-//===================================================
-// CLASS LegendStyle
-//===================================================
+/**
+ * @class LegendStyle
+ */
 class LegendStyle
 {
-    public $iLength                 = 40;
-    public $iMargin                 = 20;
-    public $iBottomMargin           = 5;
-    public $iCircleWeight           = 2;
-    public $iCircleRadius           = 18;
-    public $iCircleColor            = 'black';
-    public $iTxtFontFamily          = FF_VERDANA;
-    public $iTxtFontStyle           = FS_NORMAL;
-    public $iTxtFontSize            = 8;
-    public $iLblFontFamily          = FF_VERDANA;
-    public $iLblFontStyle           = FS_NORMAL;
-    public $iLblFontSize            = 8;
-    public $iCircleFontFamily       = FF_VERDANA;
-    public $iCircleFontStyle        = FS_NORMAL;
-    public $iCircleFontSize         = 8;
-    public $iLblFontColor           = 'black';
-    public $iTxtFontColor           = 'black';
-    public $iCircleFontColor        = 'black';
-    public $iShow                   = true;
-    public $iFormatString           = '%.1f';
-    public $iTxtMargin              = 6;
-    public $iTxt                    = '';
-    public $iZCircleTxt             = 'Calm';
+    public $iLength           = 40;
+    public $iMargin           = 20;
+    public $iBottomMargin     = 5;
+    public $iCircleWeight     = 2;
+    public $iCircleRadius     = 18;
+    public $iCircleColor      = 'black';
+    public $iTxtFontFamily    = FF_VERDANA;
+    public $iTxtFontStyle     = FS_NORMAL;
+    public $iTxtFontSize      = 8;
+    public $iLblFontFamily    = FF_VERDANA;
+    public $iLblFontStyle     = FS_NORMAL;
+    public $iLblFontSize      = 8;
+    public $iCircleFontFamily = FF_VERDANA;
+    public $iCircleFontStyle  = FS_NORMAL;
+    public $iCircleFontSize   = 8;
+    public $iLblFontColor     = 'black';
+    public $iTxtFontColor     = 'black';
+    public $iCircleFontColor  = 'black';
+    public $iShow             = true;
+    public $iFormatString     = '%.1f';
+    public $iTxtMargin        = 6;
+    public $iTxt              = '';
+    public $iZCircleTxt       = 'Calm';
 
     public function SetFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
     {

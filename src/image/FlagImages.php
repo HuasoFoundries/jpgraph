@@ -8,18 +8,18 @@ namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_FLAGS.PHP
-// Description: Class Jpfile. Handles plotmarks
-// Created:     2003-06-28
-// Ver:         $Id: jpgraph_flags.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_FLAGS.PHP
+ * // Description: Class Jpfile. Handles plotmarks
+ * // Created:     2003-06-28
+ * // Ver:         $Id: jpgraph_flags.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 
-//------------------------------------------------------------
-// Defines for the different basic sizes of flags
-//------------------------------------------------------------
+/**
+ * Defines for the different basic sizes of flags
+ */
 define('FLAGSIZE1', 1);
 define('FLAGSIZE2', 2);
 define('FLAGSIZE3', 3);
@@ -262,7 +262,7 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe', ];
+        'Republic of Zimbabwe'                                    => 'zbwe'];
 
     private $iFlagCount  = -1;
     private $iFlagSetMap = [
@@ -275,14 +275,14 @@ class FlagImages
     private $iFlagData;
     private $iOrdIdx = [];
 
-    public function FlagImages($aSize = FLAGSIZE1)
+    public function __construct($aSize = FLAGSIZE1)
     {
         switch ($aSize) {
             case FLAGSIZE1:
             case FLAGSIZE2:
             case FLAGSIZE3:
             case FLAGSIZE4:
-                $file            = dirname(__FILE__).'/flags/'.$this->iFlagSetMap[$aSize].'.dat';
+                $file            = __DIR__ . '/../flags/' . $this->iFlagSetMap[$aSize] . '.dat';
                 $fp              = fopen($file, 'rb');
                 $rawdata         = fread($fp, filesize($file));
                 $this->iFlagData = unserialize($rawdata);

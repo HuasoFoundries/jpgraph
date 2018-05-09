@@ -29,7 +29,9 @@ for ($i = 1; $i < $n; ++$i) {
 }
 
 // Setup the bid graph
-$graph = new Graph\Graph(600, 250);
+$__width  = 600;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(80, 30, 50, 40);
 $graph->SetMarginColor('white');
 $graph->SetScale('dateint');

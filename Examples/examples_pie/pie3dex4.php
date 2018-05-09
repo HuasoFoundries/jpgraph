@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [20, 27, 45, 75, 90];
 
 // Create the Pie Graph.
-$graph = new Graph\PieGraph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot

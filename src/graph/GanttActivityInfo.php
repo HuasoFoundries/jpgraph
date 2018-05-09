@@ -8,165 +8,42 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-/*=======================================================================
-// File:        JPGRAPH_GANTT.PHP
-// Description: JpGraph Gantt plot extension
-// Created:     2001-11-12
-// Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_GANTT.PHP
+ * // Description: JpGraph Gantt plot extension
+ * // Created:     2001-11-12
+ * // Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
-
 require_once 'jpgraph_plotband.php';
 require_once 'jpgraph_iconplot.php';
 require_once 'jpgraph_plotmark.inc.php';
 
-// Maximum size for Automatic Gantt chart
-define('MAX_GANTTIMG_SIZE_W', 8000);
-define('MAX_GANTTIMG_SIZE_H', 5000);
-
-// Scale Header types
-define('GANTT_HDAY', 1);
-define('GANTT_HWEEK', 2);
-define('GANTT_HMONTH', 4);
-define('GANTT_HYEAR', 8);
-define('GANTT_HHOUR', 16);
-define('GANTT_HMIN', 32);
-
-// Bar patterns
-define('GANTT_RDIAG', BAND_RDIAG); // Right diagonal lines
-define('GANTT_LDIAG', BAND_LDIAG); // Left diagonal lines
-define('GANTT_SOLID', BAND_SOLID); // Solid one color
-define('GANTT_VLINE', BAND_VLINE); // Vertical lines
-define('GANTT_HLINE', BAND_HLINE); // Horizontal lines
-define('GANTT_3DPLANE', BAND_3DPLANE); // "3D" Plane
-define('GANTT_HVCROSS', BAND_HVCROSS); // Vertical/Hor crosses
-define('GANTT_DIAGCROSS', BAND_DIAGCROSS); // Diagonal crosses
-
-// Conversion constant
-define('SECPERDAY', 3600 * 24);
-
-// Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
-// You should use the proper locale strings directly
-// from now on.
-define('LOCALE_EN', 'en_UK');
-define('LOCALE_SV', 'sv_SE');
-
-// Layout of bars
-define('GANTT_EVEN', 1);
-define('GANTT_FROMTOP', 2);
-
-// Style for minute header
-define('MINUTESTYLE_MM', 0); // 15
-define('MINUTESTYLE_CUSTOM', 2); // Custom format
-
-// Style for hour header
-define('HOURSTYLE_HM24', 0); // 13:10
-define('HOURSTYLE_HMAMPM', 1); // 1:10pm
-define('HOURSTYLE_H24', 2); // 13
-define('HOURSTYLE_HAMPM', 3); // 1pm
-define('HOURSTYLE_CUSTOM', 4); // User defined
-
-// Style for day header
-define('DAYSTYLE_ONELETTER', 0); // "M"
-define('DAYSTYLE_LONG', 1); // "Monday"
-define('DAYSTYLE_LONGDAYDATE1', 2); // "Monday 23 Jun"
-define('DAYSTYLE_LONGDAYDATE2', 3); // "Monday 23 Jun 2003"
-define('DAYSTYLE_SHORT', 4); // "Mon"
-define('DAYSTYLE_SHORTDAYDATE1', 5); // "Mon 23/6"
-define('DAYSTYLE_SHORTDAYDATE2', 6); // "Mon 23 Jun"
-define('DAYSTYLE_SHORTDAYDATE3', 7); // "Mon 23"
-define('DAYSTYLE_SHORTDATE1', 8); // "23/6"
-define('DAYSTYLE_SHORTDATE2', 9); // "23 Jun"
-define('DAYSTYLE_SHORTDATE3', 10); // "Mon 23"
-define('DAYSTYLE_SHORTDATE4', 11); // "23"
-define('DAYSTYLE_CUSTOM', 12); // "M"
-
-// Styles for week header
-define('WEEKSTYLE_WNBR', 0);
-define('WEEKSTYLE_FIRSTDAY', 1);
-define('WEEKSTYLE_FIRSTDAY2', 2);
-define('WEEKSTYLE_FIRSTDAYWNBR', 3);
-define('WEEKSTYLE_FIRSTDAY2WNBR', 4);
-
-// Styles for month header
-define('MONTHSTYLE_SHORTNAME', 0);
-define('MONTHSTYLE_LONGNAME', 1);
-define('MONTHSTYLE_LONGNAMEYEAR2', 2);
-define('MONTHSTYLE_SHORTNAMEYEAR2', 3);
-define('MONTHSTYLE_LONGNAMEYEAR4', 4);
-define('MONTHSTYLE_SHORTNAMEYEAR4', 5);
-define('MONTHSTYLE_FIRSTLETTER', 6);
-
-// Types of constrain links
-define('CONSTRAIN_STARTSTART', 0);
-define('CONSTRAIN_STARTEND', 1);
-define('CONSTRAIN_ENDSTART', 2);
-define('CONSTRAIN_ENDEND', 3);
-
-// Arrow direction for constrain links
-define('ARROW_DOWN', 0);
-define('ARROW_UP', 1);
-define('ARROW_LEFT', 2);
-define('ARROW_RIGHT', 3);
-
-// Arrow type for constrain type
-define('ARROWT_SOLID', 0);
-define('ARROWT_OPEN', 1);
-
-// Arrow size for constrain lines
-define('ARROW_S1', 0);
-define('ARROW_S2', 1);
-define('ARROW_S3', 2);
-define('ARROW_S4', 3);
-define('ARROW_S5', 4);
-
-// Activity types for use with utility method CreateSimple()
-define('ACTYPE_NORMAL', 0);
-define('ACTYPE_GROUP', 1);
-define('ACTYPE_MILESTONE', 2);
-
-define('ACTINFO_3D', 1);
-define('ACTINFO_2D', 0);
-
-// Check if array_fill() exists
-if (!function_exists('array_fill')) {
-    function array_fill($iStart, $iLen, $vValue)
-    {
-        $aResult = [];
-        for ($iCount = $iStart; $iCount < $iLen + $iStart; ++$iCount) {
-            $aResult[$iCount] = $vValue;
-        }
-
-        return $aResult;
-    }
-}
-
-//===================================================
-// CLASS GanttActivityInfo
-// Description:
-//===================================================
+/**
+ * @class GanttActivityInfo
+ * // Description:
+ */
 class GanttActivityInfo
 {
-    public $iShow               = true;
-    public $iLeftColMargin      = 4;
-    public $iRightColMargin     = 1;
-    public $iTopColMargin       = 1;
-    public $iBottomColMargin    = 3;
+    public $iShow            = true;
+    public $iLeftColMargin   = 4;
+    public $iRightColMargin  = 1;
+    public $iTopColMargin    = 1;
+    public $iBottomColMargin = 3;
     public $vgrid;
-    private $iColor             = 'black';
-    private $iBackgroundColor   = 'lightgray';
-    private $iFFamily           = FF_FONT1;
-    private $iFStyle            = FS_NORMAL;
-    private $iFSize             = 10;
-    private $iFontColor         = 'black';
-    private $iTitles            = [];
-    private $iWidth             = [];
-    private $iHeight            = -1;
-    private $iTopHeaderMargin   = 4;
-    private $iStyle             = 1;
-    private $iHeaderAlign       = 'center';
+    private $iColor           = 'black';
+    private $iBackgroundColor = 'lightgray';
+    private $iFFamily         = FF_FONT1;
+    private $iFStyle          = FS_NORMAL;
+    private $iFSize           = 10;
+    private $iFontColor       = 'black';
+    private $iTitles          = [];
+    private $iWidth           = [];
+    private $iHeight          = -1;
+    private $iTopHeaderMargin = 4;
+    private $iStyle           = 1;
+    private $iHeaderAlign     = 'center';
 
     public function __construct()
     {
@@ -358,9 +235,9 @@ class GanttActivityInfo
     }
 }
 
-//===================================================
-// Global cache for builtin images
-//===================================================
+/**
+ * Global cache for builtin images
+ */
 $_gPredefIcons = new PredefIcons();
 
 // <EOF>

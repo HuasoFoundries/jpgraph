@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Util;
 
-//------------------------------------------------------------------------
-// CLASS Bezier
-// Create a new data array from a number of control points
-//------------------------------------------------------------------------
+/**
+ * @class Bezier
+ * // Create a new data array from a number of control points
+ */
 class Bezier
 {
     /**

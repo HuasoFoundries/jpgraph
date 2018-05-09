@@ -6,11 +6,11 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//===================================================
-// CLASS RectangleText
-// Description: Draws a text paragraph inside a
-// rounded, possible filled, rectangle.
-//===================================================
+/**
+ * @class RectangleText
+ * // Description: Draws a text paragraph inside a
+ * // rounded, possible filled, rectangle.
+ */
 class CanvasRectangleText
 {
     private $ix;
@@ -19,13 +19,13 @@ class CanvasRectangleText
     private $ih;
     private $ir = 4;
     private $iTxt;
-    private $iColor                 = 'black';
-    private $iFillColor             = '';
-    private $iFontColor             = 'black';
-    private $iParaAlign             = 'center';
-    private $iAutoBoxMargin         = 5;
-    private $iShadowWidth           = 3;
-    private $iShadowColor           = '';
+    private $iColor         = 'black';
+    private $iFillColor     = '';
+    private $iFontColor     = 'black';
+    private $iParaAlign     = 'center';
+    private $iAutoBoxMargin = 5;
+    private $iShadowWidth   = 3;
+    private $iShadowColor   = '';
 
     public function __construct($aTxt = '', $xl = 0, $yt = 0, $w = 0, $h = 0)
     {

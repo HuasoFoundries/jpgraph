@@ -6,10 +6,10 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-//=====================================================================
-// Class RectPatternCross
-// Vert/Hor crosses
-//=====================================================================
+/**
+ * @class RectPatternCross
+ * // Vert/Hor crosses
+ */
 class RectPatternCross extends RectPattern
 {
     private $vert;

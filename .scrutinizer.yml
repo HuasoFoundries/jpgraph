@@ -1,16 +1,27 @@
 filter:
     excluded_paths:
-        - './Examples/*'
+        - 'Examples/'
+        - 'tests/'
+    dependency_paths:
+        - 'vendor/'
+
 build:
     environment:
-          php: '7.1'
-    tests: true
+          php:
+            version: '7.1'
+            ini:
+                'zend_extension': 'xdebug.so'
     nodes:
         analysis:
             tests:
                 override:
+                    -
+                        command: make test_coverage
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
                     - php-scrutinizer-run
-        tests: true
+        
 checks:
     php:
         code_rating: true
@@ -23,9 +34,12 @@ checks:
         avoid_superglobals: false
         security_vulnerabilities: true
         no_exit: true
-filter: {  }
+
 coding_style:
     php:
         spaces:
             around_operators:
                 concatenation: true
+
+tools:
+    php_code_coverage: true

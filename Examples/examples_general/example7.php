@@ -3,8 +3,8 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_log.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,7 +12,9 @@ $ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 70, 265, 29, 111, 91, 198, 225, 593, 251];
 
 // Create the graph.
-$graph = new Graph\Graph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetY2Scale('log');
 $graph->SetShadow();

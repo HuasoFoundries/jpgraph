@@ -5,7 +5,7 @@
  */
 
 //$Id: pieex7.php,v 1.1 2002/06/17 13:53:43 aditus Exp $
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,7 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [27, 23, 0, 17];
 
 // A new Graph\Graph
-$graph = new Graph\PieGraph(350, 200);
+$__width  = 350;
+$__height = 200;
+$graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Setup title

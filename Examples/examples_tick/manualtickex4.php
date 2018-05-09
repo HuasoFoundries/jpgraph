@@ -8,15 +8,16 @@
 // Basic example on how to use custom tickmark feature to have a label
 // at the start of each month.
 //
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_utils.inc.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util;
 
 //
 // Create some random data for the plot. We use the current time for the
 // first X-position
 //
-$f                   = new FuncGenerator('cos($x)+1.5*cos(2*$x)');
+$f                   = new Util\FuncGenerator('cos($x)+1.5*cos(2*$x)');
 list($datax, $datay) = $f->E(0, 10);
 
 // Now get labels at 1/2 PI intervall
@@ -27,9 +28,9 @@ $tickLabels[0]    = '0';
 for ($i = 1; $i / 2 * M_PI < 11; ++$i) {
     $tickPositions[$i] = $i / 2 * M_PI;
     if ($i % 2) {
-        $tickLabels[$i] = $i.'/2'.SymChar::Get('pi');
+        $tickLabels[$i] = $i . '/2' . Graph\SymChar::Get('pi');
     } else {
-        $tickLabels[$i] = ($i / 2).SymChar::Get('pi');
+        $tickLabels[$i] = ($i / 2) . Graph\SymChar::Get('pi');
     }
 }
 
@@ -40,7 +41,9 @@ $xmax = $datax[$n - 1];
 //
 // The code to setup a very basic graph
 //
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 
 // We use an integer scale on the X-axis since the positions on the X axis
 // are assumed to be UNI timestamps

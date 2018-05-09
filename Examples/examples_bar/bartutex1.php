@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $databary = [12, 7, 16, 5, 7, 14, 9, 3];
 
 // new Graph\Graph with a drop shadow
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetShadow();
 
 // Use a "text" X-scale

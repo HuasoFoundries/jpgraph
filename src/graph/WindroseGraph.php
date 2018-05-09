@@ -6,11 +6,13 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
-//============================================================
-// CLASS WindroseGraph
-//============================================================
+/**
+ * @class WindroseGraph
+ */
 class WindroseGraph extends Graph
 {
     private $posx;
@@ -53,8 +55,9 @@ class WindroseGraph extends Graph
         }
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Add($aObj)
     {
         if (is_array($aObj) && count($aObj) > 0) {
@@ -62,11 +65,11 @@ class WindroseGraph extends Graph
         } else {
             $cl = $aObj;
         }
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aObj);
-        } elseif ($cl instanceof IconPlot) {
+        } elseif ($cl instanceof Plot\IconPlot) {
             $this->AddIcon($aObj);
-        } elseif (($cl instanceof WindrosePlot) || ($cl instanceof LayoutRect) || ($cl instanceof LayoutHor)) {
+        } elseif (($cl instanceof Plot\WindrosePlot)) {
             $this->plots[] = $aObj;
         } else {
             Util\JpGraphError::RaiseL(22021);
@@ -126,10 +129,10 @@ class WindroseGraph extends Graph
         }
         // Finally stream the generated picture
         $this->cache->PutAndStream(
-                $this->img,
-                $this->cache_name,
-                $this->inline,
-                $aStrokeFileName
-            );
+            $this->img,
+            $this->cache_name,
+            $this->inline,
+            $aStrokeFileName
+        );
     }
-} // Class
+} // @class

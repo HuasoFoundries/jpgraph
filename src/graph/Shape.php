@@ -6,25 +6,23 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-/*=======================================================================
-// File:        JPGRAPH_CANVTOOLS.PHP
-// Description: Some utilities for text and shape drawing on a canvas
-// Created:     2002-08-23
-// Ver:         $Id: jpgraph_canvtools.php 1857 2009-09-28 14:38:14Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_CANVTOOLS.PHP
+ * // Description: Some utilities for text and shape drawing on a canvas
+ * // Created:     2002-08-23
+ * // Ver:         $Id: jpgraph_canvtools.php 1857 2009-09-28 14:38:14Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
-
 define('CORNER_TOPLEFT', 0);
 define('CORNER_TOPRIGHT', 1);
 define('CORNER_BOTTOMRIGHT', 2);
 define('CORNER_BOTTOMLEFT', 3);
 
-//===================================================
-// CLASS Shape
-// Description: Methods to draw shapes on canvas
-//===================================================
+/**
+ * @class Shape
+ * // Description: Methods to draw shapes on canvas
+ */
 class Shape
 {
     private $img;

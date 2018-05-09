@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -11,12 +11,12 @@ use Amenadiel\JpGraph\Plot;
 $ydata = [17, 3, '-', 10, 7, '-', 3, 19, 9, 7];
 
 // Size of the overall graph
-$width  = 350;
-$height = 250;
+$__width  = 350;
+$__height = 250;
 
 // Create the graph and set a scale.
 // These two calls are always required
-$graph = new Graph\Graph($width, $height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 

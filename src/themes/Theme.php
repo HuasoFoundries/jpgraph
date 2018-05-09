@@ -4,23 +4,23 @@
  * JPGraph v3.6.15
  */
 
-// File:        JPGRAPH_THEME.INC.PHP
-// Description: Class to define graph theme
-// Created:     2010-09-29
-// Ver:         $Id: jpgraph_theme.inc.php 83 2010-10-01 11:24:19Z atsushi $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
-
+/**
+ * // File:        JPGRAPH_THEME.INC.PHP
+ * // Description: Class to define graph theme
+ * // Created:     2010-09-29
+ * // Ver:         $Id: jpgraph_theme.inc.php 83 2010-10-01 11:24:19Z atsushi $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 namespace Amenadiel\JpGraph\Themes;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS
-// Description:
-//===================================================
+/**
+ * @class
+ * // Description:
+ */
 abstract class Theme
 {
     protected $color_index;
@@ -55,7 +55,7 @@ abstract class Theme
         if ($classname == 'Graph') {
             $method_name = 'SetupGraph';
         } else {
-            $method_name = 'Setup'.$classname;
+            $method_name = 'Setup' . $classname;
         }
 
         if (method_exists($this, $method_name)) {
@@ -106,12 +106,12 @@ abstract class Theme
                 $color_tmp  = $color_list[$this->color_index % $color_count];
                 $brightness = 1.0 - (int) ($this->color_index / $color_count) * 0.2;
                 $rgb        = new RGB();
-                $color      = $color_tmp.':'.$brightness;
+                $color      = $color_tmp . ':' . $brightness;
                 $color      = $rgb->Color($color);
                 $alpha      = array_pop($color);
                 $color      = $rgb->tryHexConversion($color);
                 if ($alpha) {
-                    $color .= '@'.$alpha;
+                    $color .= '@' . $alpha;
                 }
             }
         }
@@ -120,4 +120,4 @@ abstract class Theme
 
         return $color;
     }
-} // Class
+} // @class

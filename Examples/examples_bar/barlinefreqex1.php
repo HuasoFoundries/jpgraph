@@ -7,11 +7,9 @@
 //
 // Example of frequence bar
 //
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-
-require_once 'jpgraph/jpgraph_line.php';
 
 // Utility function to calculate the accumulated frequence
 // for a set of values and ocurrences
@@ -35,7 +33,9 @@ $data_freq    = [22, 20, 12, 10, 5, 4, 2];
 $data_accfreq = accfreq($data_freq);
 
 // Create the graph.
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 
 // Setup some basic graph parameters
 $graph->SetScale('textlin');

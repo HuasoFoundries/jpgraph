@@ -3,13 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay = [20, 15, 33, 5, 17, 35, 22];
 
 // Setup the graph
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('intlin');
 $graph->SetMarginColor('darkgreen@0.8');

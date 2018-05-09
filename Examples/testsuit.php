@@ -24,8 +24,9 @@ class TestDriver
 {
     private $iType;
     private $iDir;
+    private $exampleDir;
 
-    public function __construct($aType = 1, $aDir = '')
+    public function __construct($aType = 1, $folder = 'examples_axis', $aDir = '')
     {
         $this->iType = $aType;
         if ($aDir == '') {
@@ -34,10 +35,35 @@ class TestDriver
         if (!chdir($aDir)) {
             die("PANIC: Can't access directory : ${aDir}");
         }
-        $this->iDir = $aDir;
+        $this->iDir       = $aDir;
+        $this->exampleDir = $folder;
 
-        echo '$aType: ' . $aType . '<br>';
-        echo '$aDir: ' . $aDir . '<br>';
+        //echo '$aType: ' . $aType . '<br>';
+        //echo '$aDir: ' . $aDir . '<br>';
+    }
+
+    public function GetFolders()
+    {
+        $d = @dir($this->iDir);
+        $a = [];
+        while ($entry = $d->Read()) {
+            //echo $entry . ':' . (is_dir($entry) ? 'folder' : 'file') . '<br>';
+            if (is_dir($entry) && ($entry != 'assets') && $entry != '.' && $entry != '..' && $entry != 'examples_csim') {
+                $a[] = $entry;
+            }
+        }
+        $d->Close();
+        if (count($a) == 0) {
+            die("PANIC: Apache/PHP does not have enough permission to read the scripts in directory: {$this->iDir}");
+        }
+        sort($a);
+
+        foreach ($a as $folder) {
+            echo '<span style="display:inline-block;padding:5px;border:1px solid #ccc;"><a href="testsuit.php?folder=' . $folder . '">' . $folder . '</a></span>';
+        }
+        echo '<span style="display:inline-block;padding:5px;border:1px solid #ccc;"><a href="testsuit.php?type=2">examples_csim</a></span>';
+
+        return $a;
     }
 
     public function GetFiles()
@@ -46,7 +72,7 @@ class TestDriver
         $a = [];
         while ($entry = $d->Read()) {
             //echo $entry . ':' . (is_dir($entry) ? 'folder' : 'file') . '<br>';
-            if (is_dir($entry) && ($entry == 'examples_axis')) {
+            if (is_dir($entry) && ($entry != 'assets') && ($entry == $this->exampleDir)) {
                 $examplefolder = @dir($entry);
                 while ($file = $examplefolder->Read()) {
                     if (strstr($file, '.php') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
@@ -66,10 +92,10 @@ class TestDriver
 
     public function GetCSIMFiles()
     {
-        $d = @dir($this->iDir);
+        $d = @dir($this->iDir . '/examples_csim');
         $a = [];
         while ($entry = $d->Read()) {
-            if (strstr($entry, '.php') && strstr($entry, 'csim')) {
+            if (strstr($entry, '.php') && strstr($entry, 'csim') && !strstr($entry, 'graph')) {
                 $a[] = $entry;
             }
         }
@@ -102,13 +128,18 @@ class TestDriver
         echo '<h2>Visual test suit for JpGraph</h2>';
         echo 'Testtype: ' . ($this->iType == 1 ? ' Standard images ' : ' Image map tests ');
         echo "<br>Number of tests: ${n}<p>";
-        echo '<ol>';
+        echo '<ul>';
 
         for ($i = 0; $i < $n; ++$i) {
             if ($this->iType == 1) {
-                echo '<li style="border:1px solid #CCC;padding:10px;"><a href="show-example.php?target=' . urlencode($files[$i]) . '"><img src="' . $files[$i] . '" border=0 align=top></a><br><strong>Filename:</strong> <i><a href="' . $files[$i] . '">' . basename($files[$i]) . "</a></i>\n";
+                echo '<li style="border:1px solid #CCC;">';
+                list($folder, $target) = explode('/', $files[$i]);
+                //\Kint::dump($files[$i]);
+                echo '<a href="show-example.php?folder=' . urlencode($folder) . '&target=' . urlencode($target) . '">';
+                echo '<img src="' . $files[$i] . '" border=0 align=top></a><br><strong>Filename:</strong> <i>';
+                echo '<a href="' . $files[$i] . '">' . basename($folder) . '/' . basename($target) . "</a></i>\n";
             } else {
-                echo '<li><a href="show-example.php?target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
+                echo '<li><a href="show-example.php?folder=examples_csim&target=' . urlencode($files[$i]) . '">' . $files[$i] . "</a>\n";
             }
         }
         echo '</ol>';
@@ -117,10 +148,18 @@ class TestDriver
     }
 }
 
-$type = @$_GET['type'];
-if (empty($type)) {
+if (!isset($_GET['type'])) {
     $type = 1;
+} else {
+    $type = $_GET['type'];
 }
 
-$driver = new TestDriver($type);
+if (!isset($_GET['folder'])) {
+    $folder = 'examples_axis';
+} else {
+    $folder = $_GET['folder'];
+}
+
+$driver = new TestDriver($type, $folder);
+$driver->GetFolders();
 $driver->Run();

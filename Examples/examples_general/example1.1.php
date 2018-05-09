@@ -3,14 +3,16 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $ydata = [11, 11, 11];
 
 // Create the graph.
-$graph = new Graph\Graph(350, 250);
+$__width  = 350;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(30, 90, 40, 50);
 $graph->xaxis->SetFont(FF_FONT1, FS_BOLD);

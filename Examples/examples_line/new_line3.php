@@ -3,15 +3,17 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_line.php';
-require_once 'jpgraph/jpgraph_scatter.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $datay1 = [15, 21, 24, 10, 37, 29, 47];
 $datay2 = [8, 6, 11, 26, 10, 4, 2];
 
 // Setup the graph
-$graph = new Graph\Graph(300, 250);
+$__width  = 300;
+$__height = 250;
+$graph    = new Graph\Graph($__width, $__height);
 
 $graph->SetScale('textlin', 0, 50);
 

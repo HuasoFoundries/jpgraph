@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -17,14 +17,16 @@ $data2 = [
 $se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV', 'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO'];
 
 // Create a new small windrose graph
-$graph = new Graph\WindroseGraph(400, 400);
+$__width  = 400;
+$__height = 400;
+$graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetMargin(25, 25, 25, 25);
 $graph->SetFrame();
 
 $graph->title->Set('Example with background flag');
 #$graph->title->SetFont(FF_VERA,FS_BOLD,14);
 
-//$graph->SetBackgroundImage('../assets/bkgimg.jpg',BGIMG_FILLFRAME);
+//$graph->SetBackgroundImage(__DIR__.'/../assets/bkgimg.jpg',BGIMG_FILLFRAME);
 //$graph->SetBackgroundImageMix(90);
 $graph->SetBackgroundCFlag(28, BGIMG_FILLFRAME, 15);
 

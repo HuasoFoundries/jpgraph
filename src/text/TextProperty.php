@@ -6,34 +6,36 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//===================================================
-// CLASS TextProperty
-// Description: Holds properties for a text
-//===================================================
+/**
+ * @class TextProperty
+ * // Description: Holds properties for a text
+ */
 class TextProperty
 {
-    public $iShow          = true;
-    public $csimtarget     = '';
-    public $csimwintarget  = '';
-    public $csimalt        = '';
-    private $iFFamily      = FF_FONT1;
-    private $iFStyle       = FS_NORMAL;
-    private $iFSize        = 10;
-    private $iFontArray    = [];
-    private $iColor        = 'black';
-    private $iText         = '';
-    private $iHAlign       = 'left';
-    private $iVAlign       = 'bottom';
+    public $iShow         = true;
+    public $csimtarget    = '';
+    public $csimwintarget = '';
+    public $csimalt       = '';
+    private $iFFamily     = FF_FONT1;
+    private $iFStyle      = FS_NORMAL;
+    private $iFSize       = 10;
+    private $iFontArray   = [];
+    private $iColor       = 'black';
+    private $iText        = '';
+    private $iHAlign      = 'left';
+    private $iVAlign      = 'bottom';
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($aTxt = '')
     {
         $this->iText = $aTxt;
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Set($aTxt)
     {
         $this->iText = $aTxt;

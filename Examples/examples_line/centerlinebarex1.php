@@ -3,13 +3,15 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_bar.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $ydata = [12, 15, 22, 19, 5];
 
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 80, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();

@@ -3,7 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+
 require_once 'jpgraph/jpgraph_pie.php';
 
 // Some data
@@ -15,13 +17,15 @@ $titles = ['USA', 'Sweden', 'South America', 'Australia'];
 $n = count($piepos) / 2;
 
 // A new Graph\Graph
-$graph = new Graph\PieGraph(450, 300, 'auto');
+$__width  = 450;
+$__height = 300;
+$graph    = new Graph\PieGraph($__width, $__height, 'auto');
 
 $theme_class = 'PastelTheme';
 $graph->SetTheme(new $theme_class());
 
 // Setup background
-$graph->SetBackgroundImage('../assets/worldmap1.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLFRAME);
 
 // Setup title
 $graph->title->Set('Pie plots with background image');

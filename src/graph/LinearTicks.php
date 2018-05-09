@@ -8,10 +8,10 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS LinearTicks
-// Description: Draw linear ticks on axis
-//===================================================
+/**
+ * @class LinearTicks
+ * // Description: Draw linear ticks on axis
+ */
 class LinearTicks extends Ticks
 {
     public $minor_step    = 1;
@@ -259,7 +259,7 @@ class LinearTicks extends Ticks
                 if ($this->label_formatstr == 'W') {
                     // If we use week formatting then add a single 'w' in front of the
                     // week number to differentiate it from dates
-                    $l = 'w'.$l;
+                    $l = 'w' . $l;
                 }
             } else {
                 if ($this->label_dateformatstr !== '') {
@@ -273,7 +273,7 @@ class LinearTicks extends Ticks
                     if ($this->label_formatstr == 'W') {
                         // If we use week formatting then add a single 'w' in front of the
                         // week number to differentiate it from dates
-                        $l = 'w'.$l;
+                        $l = 'w' . $l;
                     }
                 } else {
                     $l = sprintf($this->label_formatstr, $aVal);
@@ -281,7 +281,7 @@ class LinearTicks extends Ticks
             }
         } else {
             //FIX: if negative precision  is returned "0f" , instead of formatted values
-            $format = $precision > 0 ? '%01.'.$precision.'f' : '%01.0f';
+            $format = $precision > 0 ? '%01.' . $precision . 'f' : '%01.0f';
             $l      = sprintf($format, round($aVal, $precision));
         }
 
@@ -363,8 +363,9 @@ class LinearTicks extends Ticks
         $this->_StrokeTicks($aImg, $aScale, $aPos, $aScale->type == 'x');
     }
 
-    //---------------
-    // PRIVATE METHODS
+    /**
+     * PRIVATE METHODS
+     */
     // Spoecify the offset of the displayed tick mark with the tick "space"
     // Legal values for $o is [0,1] used to adjust where the tick marks and label
     // should be positioned within the major tick-size
@@ -390,4 +391,4 @@ class LinearTicks extends Ticks
     {
         $this->text_label_start = $aTextLabelOff;
     }
-} // Class
+} // @class

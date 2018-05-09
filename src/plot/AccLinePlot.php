@@ -6,18 +6,19 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-//===================================================
-// CLASS AccLinePlot
-// Description:
-//===================================================
+/**
+ * @class AccLinePlot
+ * // Description:
+ */
 class AccLinePlot extends Plot
 {
     protected $plots;
-    protected $nbrplots       = 0;
-    private $iStartEndZero    = true;
+    protected $nbrplots    = 0;
+    private $iStartEndZero = true;
 
-    //---------------
-    // CONSTRUCTOR
+    /**
+     * CONSTRUCTOR
+     */
     public function __construct($plots)
     {
         $this->plots     = $plots;
@@ -36,8 +37,9 @@ class AccLinePlot extends Plot
         }
     }
 
-    //---------------
-    // PUBLIC METHODS
+    /**
+     * PUBLIC METHODS
+     */
     public function Legend($graph)
     {
         foreach ($this->plots as $p) {
@@ -230,4 +232,4 @@ class AccLinePlot extends Plot
             $p->coords[0][] = $tmp;
         }
     }
-} // Class
+} // @class

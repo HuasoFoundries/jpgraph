@@ -7,27 +7,28 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS DisplayValue
-// Description: Used to print data values at data points
-//===================================================
+/**
+ * @class DisplayValue
+ * // Description: Used to print data values at data points
+ */
 class DisplayValue
 {
-    public $margin            = 5;
-    public $show              = false;
-    public $valign            = '';
-    public $halign            = 'center';
-    public $format            = '%.1f';
-    public $negformat         = '';
-    private $ff               = FF_DEFAULT;
-    private $fs               = FS_NORMAL;
-    private $fsize            = 8;
-    private $iFormCallback    = '';
-    private $angle            = 0;
-    private $color            = 'navy';
-    private $negcolor         = '';
-    private $iHideZero        = false;
+    public $margin         = 5;
+    public $show           = false;
+    public $valign         = '';
+    public $halign         = 'center';
+    public $format         = '%.1f';
+    public $negformat      = '';
+    private $ff            = FF_DEFAULT;
+    private $fs            = FS_NORMAL;
+    private $fsize         = 8;
+    private $iFormCallback = '';
+    private $angle         = 0;
+    private $color         = 'navy';
+    private $negcolor      = '';
+    private $iHideZero     = false;
     public $txt;
 
     public function __construct()
@@ -125,7 +126,7 @@ class DisplayValue
                 $sval = $aVal;
             }
 
-            $y = $y - sign($aVal) * $this->margin;
+            $y = $y - Util\Helper::sign($aVal) * $this->margin;
 
             $this->txt->Set($sval);
             $this->txt->SetPos($x, $y);

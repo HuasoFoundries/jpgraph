@@ -3,16 +3,18 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
-use Amenadiel\JpGraph\Util\FuncGenerator;
+use Amenadiel\JpGraph\Util;
 
-$f                   = new FuncGenerator('cos($i)', '$i*$i*$i');
+$f                   = new Util\FuncGenerator('cos($i)', '$i*$i*$i');
 list($xdata, $ydata) = $f->E(-M_PI, M_PI, 25);
 
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetMargin(50, 50, 20, 30);
 $graph->SetFrame(false);

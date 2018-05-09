@@ -9,13 +9,12 @@
 // willing to go with the defaults. This is an illustrative example of
 // some of the capabilities of JpGraph.
 
-require_once '../../vendor/autoload.php';
-require_once 'jpgraph/jpgraph_line.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $month = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec', ];
+    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
 
 // Create some datapoints
 $steps = 100;
@@ -30,8 +29,10 @@ for ($i = 0; $i < $steps; ++$i) {
 }
 
 // new Graph\Graph with a background image and drop shadow
-$graph = new Graph\Graph(450, 300);
-$graph->SetBackgroundImage('tiger_bkg.png', BGIMG_FILLFRAME);
+$__width  = 450;
+$__height = 300;
+$graph    = new Graph\Graph($__width, $__height);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
 $graph->SetShadow();
 
 // Use text X-scale so we can text labels on the X-axis

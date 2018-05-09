@@ -6,24 +6,24 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-use Amenadiel\JpGraph\Graph\RectPatternFactory;
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
 
-//=======================================================================
-// File:        JPGRAPH_PLOTBAND.PHP
-// Description: PHP4 Graph Plotting library. Extension module.
-// Created:     2004-02-18
-// Ver:         $Id: jpgraph_plotband.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
-//========================================================================
+/**
+ * File:        JPGRAPH_PLOTBAND.PHP
+ * // Description: PHP4 Graph Plotting library. Extension module.
+ * // Created:     2004-02-18
+ * // Ver:         $Id: jpgraph_plotband.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
+ */
 
-//=====================================================================
-// Class PlotBand
-// Factory class which is used by the client.
-// It is responsible for factoring the corresponding pattern
-// concrete class.
-//=====================================================================
+/**
+ * @class PlotBand
+ * // Factory class which is used by the client.
+ * // It is responsible for factoring the corresponding pattern
+ * // concrete class.
+ */
 class PlotBand
 {
     public $depth; // Determine if band should be over or under the plots
@@ -34,7 +34,7 @@ class PlotBand
 
     public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = DEPTH_BACK)
     {
-        $f           = new RectPatternFactory();
+        $f           = new Graph\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
         if (is_numeric($aMin) && is_numeric($aMax) && ($aMin > $aMax)) {
             Util\JpGraphError::RaiseL(16004);

@@ -6,11 +6,11 @@
 
 namespace Amenadiel\JpGraph\Image;
 
-//===================================================
-// CLASS RotImage
-// Description: Exactly as Image but draws the image at
-// a specified angle around a specified rotation point.
-//===================================================
+/**
+ * @class RotImage
+ * // Description: Exactly as Image but draws the image at
+ * // a specified angle around a specified rotation point.
+ */
 class RotImage extends Image
 {
     public $a      = 0;

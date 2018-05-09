@@ -9,10 +9,10 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\ImgTrans;
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS RadarGraph
-// Description: Main container for a radar graph
-//===================================================
+/**
+ * @class RadarGraph
+ * // Description: Main container for a radar graph
+ */
 class RadarGraph extends Graph
 {
     public $grid;
@@ -335,4 +335,4 @@ class RadarGraph extends Graph
             $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
         }
     }
-} // Class
+} // @class

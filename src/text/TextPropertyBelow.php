@@ -6,11 +6,10 @@
 
 namespace Amenadiel\JpGraph\Text;
 
-//===================================================
-// CLASS GanttVLine
-// Responsible for formatting individual milestones
-//===================================================
-
+/**
+ * @class GanttVLine
+ * // Responsible for formatting individual milestones
+ */
 class TextPropertyBelow extends TextProperty
 {
     public function __construct($aTxt = '')

@@ -3,8 +3,9 @@
 /**
  * JPGraph v3.6.15
  */
-require_once 'jpgraph/jpgraph.php';
-require_once 'jpgraph/jpgraph_scatter.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // Make a circle with a scatterplot
 $steps = 16;
@@ -14,7 +15,9 @@ for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = sin($a);
 }
 
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 
 $graph->img->SetMargin(40, 40, 40, 40);
@@ -27,7 +30,7 @@ $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->yscale->SetGrace(5, 5);
 $graph->xscale->SetGrace(1, 1);
 
-$sp1 = new ScatterPlot($datay, $datax);
+$sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(MARK_FILLEDCIRCLE);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');

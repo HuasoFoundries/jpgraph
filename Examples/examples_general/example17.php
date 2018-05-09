@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,7 +12,9 @@ $datay2 = [4, 5, 4, 5, 6, 5, 7, 4, 7, 4, 4, 3, 2, 4, 1, 2, 2, 1];
 $datay3 = [4, 5, 7, 10, 13, 15, 15, 22, 26, 26, 30, 34, 40, 43, 47, 55, 60, 62];
 
 // Create the graph. These two calls are always required
-$graph = new Graph\Graph(300, 200);
+$__width  = 300;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 20, 40);
@@ -27,7 +29,7 @@ $dplot[1]->SetFillColor('blue');
 $dplot[2]->SetFillColor('green');
 
 // Create the accumulated graph
-$accplot = new AccLinePlot($dplot);
+$accplot = new Plot\AccLinePlot($dplot);
 
 // Add the plot to the graph
 $graph->Add($accplot);

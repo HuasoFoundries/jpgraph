@@ -3,7 +3,7 @@
 /**
  * JPGraph v3.6.15
  */
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -13,9 +13,11 @@ $datay  = [28, 19, 18, 23, 12, 11];
 $data2y = [14, 18, 33, 29, 39, 55];
 
 // A nice graph with anti-aliasing
-$graph = new Graph\Graph(400, 200);
+$__width  = 400;
+$__height = 200;
+$graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 180, 40, 40);
-$graph->SetBackgroundImage('../assets/tiger_bkg.png', BGIMG_COPY);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_COPY);
 
 $graph->img->SetAntiAliasing('white');
 $graph->SetScale('textlin');

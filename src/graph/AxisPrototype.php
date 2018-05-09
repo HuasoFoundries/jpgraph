@@ -9,47 +9,47 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text\Text;
 use Amenadiel\JpGraph\Util;
 
-//===================================================
-// CLASS Axis
-// Description: Defines X and Y axis. Notes that at the
-// moment the code is not really good since the axis on
-// several occasion must know wheter it's an X or Y axis.
-// This was a design decision to make the code easier to
-// follow.
-//===================================================
+/**
+ * @class Axis
+ * // Description: Defines X and Y axis. Notes that at the
+ * // moment the code is not really good since the axis on
+ * // several occasion must know wheter it's an X or Y axis.
+ * // This was a design decision to make the code easier to
+ * // follow.
+ */
 class AxisPrototype
 {
     public $scale;
     public $img;
-    public $hide               = false;
-    public $hide_labels        = false;
+    public $hide        = false;
+    public $hide_labels = false;
     public $title;
-    public $font_family        = FF_DEFAULT;
-    public $font_style         = FS_NORMAL;
-    public $font_size          = 8;
-    public $label_angle        = 0;
-    public $tick_step          = 1;
-    public $pos                = false;
-    public $ticks_label        = [];
+    public $font_family = FF_DEFAULT;
+    public $font_style  = FS_NORMAL;
+    public $font_size   = 8;
+    public $label_angle = 0;
+    public $tick_step   = 1;
+    public $pos         = false;
+    public $ticks_label = [];
 
-    protected $weight                   = 1;
-    protected $color                    = [0, 0, 0];
-    protected $label_color              = [0, 0, 0];
+    protected $weight      = 1;
+    protected $color       = [0, 0, 0];
+    protected $label_color = [0, 0, 0];
     protected $ticks_label_colors;
-    protected $show_first_label         = true;
-    protected $show_last_label          = true;
-    protected $label_step               = 1; // Used by a text axis to specify what multiple of major steps
+    protected $show_first_label = true;
+    protected $show_last_label  = true;
+    protected $label_step       = 1; // Used by a text axis to specify what multiple of major steps
     // should be labeled.
     protected $labelPos = 0; // Which side of the axis should the labels be?
     protected $title_adjust;
     protected $title_margin;
-    protected $title_side                                   = SIDE_LEFT;
-    protected $tick_label_margin                            = 5;
-    protected $label_halign                                 = '';
-    protected $label_valign                                 = '';
-    protected $label_para_align                             = 'left';
-    protected $hide_line                                    = false;
-    protected $iDeltaAbsPos                                 = 0;
+    protected $title_side        = SIDE_LEFT;
+    protected $tick_label_margin = 5;
+    protected $label_halign      = '';
+    protected $label_valign      = '';
+    protected $label_para_align  = 'left';
+    protected $hide_line         = false;
+    protected $iDeltaAbsPos      = 0;
 
     public function __construct($img, $aScale, $color = [0, 0, 0])
     {
@@ -269,4 +269,4 @@ class AxisPrototype
     {
         $this->label_angle = $aAngle;
     }
-} // Class
+} // @class
