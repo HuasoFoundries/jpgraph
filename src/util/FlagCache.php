@@ -22,7 +22,6 @@ class FlagCache
 
     public static function GetFlagImgByName($aSize, $aName)
     {
-
         if (self::$_gFlagCache[$aSize] === null) {
             self::$_gFlagCache[$aSize] = new Image\FlagImages($aSize);
         }
