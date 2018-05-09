@@ -18,7 +18,7 @@ $data = [
 ];
 
 // Specify text for direction labels
-$labels = ['120.5' => "Plant\n#1275",
+$labels = ['120.5'     => "Plant\n#1275",
     '285.7'            => "Reference\n#13 Ver:2"];
 
 // Range colors to be used

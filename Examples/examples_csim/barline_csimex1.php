@@ -14,9 +14,9 @@ $targ   = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'];
 $alt    = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // Create the graph.
-$__width=300;
+$__width =300;
 $__height=200;
-$graph = new Graph\Graph($__width, $__height);
+$graph   = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(40, 20, 30, 40);
 $graph->title->Set('CSIM example with bar and line');
