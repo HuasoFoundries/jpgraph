@@ -8,8 +8,8 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * @class RectangleText
-// Description: Draws a text paragraph inside a
-// rounded, possible filled, rectangle.
+ * // Description: Draws a text paragraph inside a
+ * // rounded, possible filled, rectangle.
  */
 class CanvasRectangleText
 {
