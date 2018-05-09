@@ -42,7 +42,7 @@ The examples work the same way you should use this library:
    - generate a graph with a snippet like the following
 
    ```php
-      require_once '.vendor/autoload.php';
+      require_once './vendor/autoload.php';
       use Amenadiel\JpGraph\Graph;
       use Amenadiel\JpGraph\Plot;
 
