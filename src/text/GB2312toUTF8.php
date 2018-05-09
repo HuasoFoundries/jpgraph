@@ -3,11 +3,11 @@ namespace Amenadiel\JpGraph\Text;
 
 /**
  * File:        JPGRAPH_GB2312.PHP
-// Description: Chinese font conversions
-// Created:     2003-05-30
-// Ver:         $Id: jpgraph_gb2312.php 1106 2009-02-22 20:16:35Z ljp $
-//
-// Copyright (c) Asial Corporation. All rights reserved.
+ * // Description: Chinese font conversions
+ * // Created:     2003-05-30
+ * // Ver:         $Id: jpgraph_gb2312.php 1106 2009-02-22 20:16:35Z ljp $
+ * //
+ * // Copyright (c) Asial Corporation. All rights reserved.
  */
 class GB2312toUTF8
 {

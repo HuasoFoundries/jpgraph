@@ -5,15 +5,14 @@ function GetFiles()
     $d = dir(__DIR__);
     $a = [];
     while ($entry = $d->Read()) {
-
         if (is_dir($entry) && ($entry != 'assets') && $entry !== '.' && $entry !== '..') {
             $examplefolder = dir($entry);
             while ($file = $examplefolder->Read()) {
                 if (is_dir($file) || !strstr($file, '.php')) {
                     continue;
-                } else if (!strstr($entry, 'csim') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
+                } elseif (!strstr($entry, 'csim') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
                     $a[] = $entry . '/' . $file;
-                } else if (strstr($entry, 'csim') && !strstr($entry, 'graph')) {
+                } elseif (strstr($entry, 'csim') && !strstr($entry, 'graph')) {
                     $a[] = $entry . '/' . $file;
                 }
             }

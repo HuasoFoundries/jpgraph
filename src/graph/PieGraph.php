@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\ImgTrans;
 
 /**
  * @class PieGraph
-// Description:
+ * // Description:
  */
 class PieGraph extends Graph
 {
