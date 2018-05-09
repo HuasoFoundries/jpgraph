@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @group ready
+ */
 class LineTest extends \Codeception\Test\Unit
 {
     public static $files       = null;
