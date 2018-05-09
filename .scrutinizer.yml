@@ -4,7 +4,7 @@ filter:
 build:
     environment:
           php:
-            version: '7.0'
+            version: '7.1'
             ini:
                 'zend_extension': 'xdebug.so'
     nodes:
