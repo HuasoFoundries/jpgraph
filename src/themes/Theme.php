@@ -66,7 +66,9 @@ abstract class Theme
         }
     }
 
-    public function PreStrokeApply($graph) {}
+    public function PreStrokeApply($graph)
+    {
+    }
 
     public function GetThemeColors($num = 30)
     {
