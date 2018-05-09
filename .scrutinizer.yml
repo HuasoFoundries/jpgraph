@@ -3,22 +3,20 @@ filter:
         - './Examples/*'
 build:
     environment:
-          php: '7.1'
-    dependencies:
-        before:
-            - pecl install xdebug
-    tests:
-        override:
-            -
-                command: make test_coverage
-                coverage:
-                    file: 'tests/_output/coverage.xml'
-                    format: 'clover'
+          php:
+            version: '7.0'
+            ini:
+                'zend_extension': 'xdebug.so'
     nodes:
         analysis:
             tests:
                 override:
                     - 'php-scrutinizer-run'
+                    -
+                        command: make test_coverage
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
         tests: true
         
 checks:
