@@ -18,9 +18,13 @@ class AxisTest extends \Codeception\Test\Unit
         self::$files       = GetFiles(self::$exampleRoot);
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     private function _fileCheck($filename)
     {
@@ -38,7 +42,6 @@ class AxisTest extends \Codeception\Test\Unit
         }
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
-
     }
 
     public function testFileIterator()

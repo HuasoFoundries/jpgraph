@@ -11,10 +11,11 @@ class BarTest extends \Codeception\Test\Unit
         $className = strtolower(str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this))));
 
         $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
-
     }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
     private function _fileCheck($filename)
@@ -32,7 +33,6 @@ class BarTest extends \Codeception\Test\Unit
         }
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
-
     }
 
     public function testFileIterator()
