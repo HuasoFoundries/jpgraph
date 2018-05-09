@@ -11,18 +11,16 @@ build:
             version: '7.1'
             ini:
                 'zend_extension': 'xdebug.so'
-    tests:
-        override:
-            -
-                command: make test_coverage
-                coverage:
-                    file: 'tests/_output/coverage.xml'
-                    format: 'clover'
     nodes:
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
+                    -
+                        command: make test_coverage
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
         
 checks:
     php:
@@ -36,7 +34,7 @@ checks:
         avoid_superglobals: false
         security_vulnerabilities: true
         no_exit: true
-filter: {  }
+
 coding_style:
     php:
         spaces:
