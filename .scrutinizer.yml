@@ -15,7 +15,7 @@ build:
                         command: phpcs-run
                         use_website_config: true
                     -
-                        command: make test_coverage  g=ready
+                        command: make test_coverage
                         coverage:
                             file: 'tests/_output/coverage.xml'
                             format: 'clover'

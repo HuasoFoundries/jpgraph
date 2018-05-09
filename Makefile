@@ -18,11 +18,10 @@ install:
 	composer install --no-dev
 
 test:
-
 	php vendor/bin/codecept run unit $(test) $(groups) $(g) --debug
 
 test_coverage:
-	php vendor/bin/codecept run unit $(test)  $(groups) $(g) --coverage --coverage-xml --debug
+	php vendor/bin/codecept run unit $(test)  -g ready --coverage --coverage-xml
 
 update_version:
 	@echo "Current version is " ${VERSION}
