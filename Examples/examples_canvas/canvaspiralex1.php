@@ -28,6 +28,8 @@ if ($w < 60) {
 if ($h < 60) {
     $h = 60;
 }
+$__width  = $w;
+$__height = $h;
 
 function SeaShell($img, $x, $y, $w, $h, $r, $n = 12, $color1 = 'navy', $color2 = 'red')
 {
@@ -70,7 +72,7 @@ function SeaShell($img, $x, $y, $w, $h, $r, $n = 12, $color1 = 'navy', $color2 =
     }
 }
 
-$g = new Graph\CanvasGraph($w, $h);
+$g = new Graph\CanvasGraph($__width, $__height);
 //$gr = 1.61803398874989484820;
 
 $p = SeaShell($g->img, 0, 20, $w - 1, $h - 21, $r, 19);

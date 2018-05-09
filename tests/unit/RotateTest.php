@@ -1,13 +1,15 @@
 <?php
-
-class PolarTest extends \Codeception\Test\Unit
+/**
+ * @group ready
+ */
+class RotateTest extends \Codeception\Test\Unit
 {
 
     protected function _before()
     {
         $className = strtolower(str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this))));
 
-        $this->exampleRoot = (dirname(__DIR__)) . '/Examples/examples_' . $className . '/';
+        $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
 
     }
 
@@ -20,7 +22,11 @@ class PolarTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        if ($__width != $size[0] || $__height != $size[1]) {
+            rename($this->exampleRoot . $filename, $this->exampleRoot . 'no_dim_' . $filename);
+        }
+        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
     }
 
     public function testFileIterator()

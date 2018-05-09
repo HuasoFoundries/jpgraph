@@ -1,6 +1,6 @@
 suites:
     unit:
-        path: .
+        path: ./unit
 
 paths:
     tests: tests

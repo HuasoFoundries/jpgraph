@@ -31,3 +31,5 @@ function GetFiles($folder)
 
     return $a;
 }
+
+define('UNIT_TEST_FOLDER', dirname(dirname(__DIR__)));
