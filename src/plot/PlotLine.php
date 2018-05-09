@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * File:           JPGRAPH_PLOTLINE.PHP
  * // Description: PlotLine extension for JpGraph

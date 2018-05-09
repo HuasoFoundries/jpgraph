@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Util;
 
 /**
  * @class ScatterPlot

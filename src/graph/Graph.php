@@ -361,7 +361,7 @@ class Graph
             $cl = $aPlot;
         }
 
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aPlot);
         } elseif (($cl instanceof Plot\PlotLine)) {
             $this->AddLine($aPlot);
@@ -419,7 +419,7 @@ class Graph
             $cl = $aPlot;
         }
 
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aPlot, true);
         } elseif (($cl instanceof Plot\PlotLine)) {
             $this->AddLine($aPlot, true);
@@ -450,7 +450,7 @@ class Graph
         if (($cl instanceof Text\Text) ||
             ($cl instanceof Plot\PlotLine) ||
             ($cl instanceof Plot\PlotBand)) {
-            JpGraph::RaiseL(25013); //('You can only add standard plots to multiple Y-axis');
+            Util\JpGraphError::RaiseL(25013); //('You can only add standard plots to multiple Y-axis');
         } else {
             $this->ynplots[$aN][] = $aPlot;
         }
@@ -578,7 +578,7 @@ class Graph
         // Get extension to determine image type
         if ($aImgFormat == 'auto') {
             $e = explode('.', $aFileName);
-            if (!$e) {
+            if (empty($e)) {
                 Util\JpGraphError::RaiseL(25018, $aFileName); //('Incorrect file name for Graph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
             }
 
@@ -996,7 +996,7 @@ class Graph
     {
         if ($aCSIMName == '') {
             // create a random map name
-            srand((float) microtime() * 1000000);
+            srand((integer) (microtime() * 1000000));
             $r         = rand(0, 100000);
             $aCSIMName = '__mapname' . $r . '__';
         }

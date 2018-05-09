@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * File:        JPGRAPH_STOCK.PHP
  * // Description: Stock plot extension for JpGraph
@@ -88,7 +90,7 @@ class StockPlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $n) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $n);
-            // ("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
+                // ("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -183,7 +185,5 @@ class StockPlot extends Plot
     }
 
     // A hook for subclasses to modify the plot
-    public function ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg)
-    {
-    }
+    public function ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg) {}
 } // @class

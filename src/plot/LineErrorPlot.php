@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class LineErrorPlot
  * // Description: Combine a line and error plot

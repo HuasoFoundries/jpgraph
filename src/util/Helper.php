@@ -22,7 +22,7 @@ class Helper
     {
         // Respect current error level
         if ($errno & error_reporting()) {
-            Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
+            JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
         }
     }
 

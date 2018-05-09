@@ -256,15 +256,15 @@ class AccBarPlot extends BarPlot
                     }
                     if (is_array($this->plots[$j]->grad_fromcolor)) {
                         // The first argument (grad_fromcolor) can be either an array or a single color. If it is an array
-                        // then we have two choices. It can either a) be a single color specified as an RGB triple or it can be
+                        // then we have two choices. It can either a) be a single color specified as an Image\RGB triple or it can be
                         // an array to specify both (from, to style) for each individual bar. The way to know the difference is
-                        // to investgate the first element. If this element is an integer [0,255] then we assume it is an RGB
+                        // to investgate the first element. If this element is an integer [0,255] then we assume it is an Image\RGB
                         // triple.
                         $ng = count($this->plots[$j]->grad_fromcolor);
                         if ($ng === 3) {
                             if (is_numeric($this->plots[$j]->grad_fromcolor[0]) && $this->plots[$j]->grad_fromcolor[0] > 0 &&
                                 $this->plots[$j]->grad_fromcolor[0] < 256) {
-                                // RGB Triple
+                                // Image\RGB Triple
                                 $fromcolor = $this->plots[$j]->grad_fromcolor;
                                 $tocolor   = $this->plots[$j]->grad_tocolor;
                                 $style     = $this->plots[$j]->grad_style;

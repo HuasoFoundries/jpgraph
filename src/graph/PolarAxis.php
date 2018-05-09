@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -208,7 +209,7 @@ class PolarAxis extends Axis
 
         $d = max($this->img->plotwidth, $this->img->plotheight) * 1.42;
         $a = $this->angle_step;
-        $t = new Text();
+        $t = new Text\Text();
         $t->SetColor($this->angle_fontcolor);
         $t->SetFont($this->angle_fontfam, $this->angle_fontstyle, $this->angle_fontsize);
         $xright  = $this->img->width - $this->img->right_margin;

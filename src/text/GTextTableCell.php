@@ -6,6 +6,9 @@
 
 namespace Amenadiel\JpGraph\Text;
 
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Util;
+
 /**
  * File:        JPGRAPH_TABLE.PHP
  * // Description: Classes to create basic tables of data
@@ -95,25 +98,25 @@ class GTextTableCell
     public function SetImageConstrain($aType, $aVal)
     {
         if (!in_array($aType, [TIMG_WIDTH, TIMG_HEIGHT], true)) {
-            JpGraphError::RaiseL(27015);
+            Util\JpGraphError::RaiseL(27015);
         }
         $this->iIconConstrain = [$aType, $aVal];
     }
 
     public function SetCountryFlag($aFlag, $aScale = 1.0, $aMix = 100, $aStdSize = 3)
     {
-        $this->iIcon = new IconPlot();
+        $this->iIcon = new Plot\IconPlot();
         $this->iIcon->SetCountryFlag($aFlag, 0, 0, $aScale, $aMix, $aStdSize);
     }
 
     public function SetImage($aFile, $aScale = 1.0, $aMix = 100)
     {
-        $this->iIcon = new IconPlot($aFile, 0, 0, $aScale, $aMix);
+        $this->iIcon = new Plot\IconPlot($aFile, 0, 0, $aScale, $aMix);
     }
 
     public function SetImageFromString($aStr, $aScale = 1.0, $aMix = 100)
     {
-        $this->iIcon = new IconPlot('', 0, 0, $aScale, $aMix);
+        $this->iIcon = new Plot\IconPlot('', 0, 0, $aScale, $aMix);
         $this->iIcon->CreateFromString($aStr);
     }
 
@@ -292,7 +295,7 @@ class GTextTableCell
         $aVertAlign = strtolower($aVertAlign);
         $chk        = ['left', 'right', 'center', 'bottom', 'top', 'middle'];
         if (!in_array($aHorAlign, $chk, true) || !in_array($aVertAlign, $chk, true)) {
-            JpGraphError::RaiseL(27011, $aHorAlign, $aVertAlign);
+            Util\JpGraphError::RaiseL(27011, $aHorAlign, $aVertAlign);
         }
         $this->iVertAlign = $aVertAlign;
         $this->iHorAlign  = $aHorAlign;
@@ -501,7 +504,7 @@ class GTextTableCell
 
                     break;
                 default:
-                    JpGraphError::RaiseL(27012, $this->iHorAlign);
+                    Util\JpGraphError::RaiseL(27012, $this->iHorAlign);
             }
 
             switch ($this->iVertAlign) {
@@ -522,7 +525,7 @@ class GTextTableCell
 
                     break;
                 default:
-                    JpGraphError::RaiseL(27012, $this->iVertAlign);
+                    Util\JpGraphError::RaiseL(27012, $this->iVertAlign);
             }
             $this->iIcon->SetAnchor($hanchor, $vanchor);
             $this->iIcon->_Stroke($aImg, $x, $y);
@@ -544,7 +547,7 @@ class GTextTableCell
 
                 break;
             default:
-                JpGraphError::RaiseL(27012, $this->iHorAlign);
+                Util\JpGraphError::RaiseL(27012, $this->iHorAlign);
         }
         // A workaround for the shortcomings in the TTF font handling in GD
         // The anchor position for rotated text (=90) is to "short" so we add
@@ -570,7 +573,7 @@ class GTextTableCell
 
                 break;
             default:
-                JpGraphError::RaiseL(27012, $this->iVertAlign);
+                Util\JpGraphError::RaiseL(27012, $this->iVertAlign);
         }
         $this->iVal->SetAlign($this->iHorAlign, 'top');
         if ($this->iNumberFormat !== null && is_numeric($this->iVal->t)) {

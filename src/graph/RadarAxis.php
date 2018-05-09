@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Text;
+
 /**
  * @class RadarAxis
  * // Description: Implements axis for the radar graph
@@ -20,7 +22,7 @@ class RadarAxis extends AxisPrototype
     {
         parent::__construct($img, $aScale, $color);
         $this->len   = $img->plotheight;
-        $this->title = new Text();
+        $this->title = new Text\Text();
         $this->title->SetFont(FF_FONT1, FS_BOLD);
         $this->color = [0, 0, 0];
     }

@@ -8,6 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 class GanttVLine extends GanttPlotObject
 {
@@ -22,7 +23,7 @@ class GanttVLine extends GanttPlotObject
      */
     public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
-        GanttPlotObject::__construct();
+        parent::__construct();
         $this->iLine = new Graph\LineProperty();
         $this->iLine->SetColor($aColor);
         $this->iLine->SetWeight($aWeight);

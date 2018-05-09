@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Text;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class LanguageConv
  * // Description:
@@ -52,7 +54,7 @@ class LanguageConv
         }
         if ($aFF === FF_BIG5) {
             if (!function_exists('iconv')) {
-                JpGraphError::RaiseL(25006);
+                Util\JpGraphError::RaiseL(25006);
                 //('Usage of FF_CHINESE (FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).');
             }
 
@@ -61,7 +63,7 @@ class LanguageConv
         if (ASSUME_EUCJP_ENCODING &&
             ($aFF == FF_MINCHO || $aFF == FF_GOTHIC || $aFF == FF_PMINCHO || $aFF == FF_PGOTHIC)) {
             if (!function_exists('mb_convert_encoding')) {
-                JpGraphError::RaiseL(25127);
+                Util\JpGraphError::RaiseL(25127);
             }
 
             return mb_convert_encoding($aTxt, 'UTF-8', 'EUC-JP');

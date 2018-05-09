@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
 
@@ -184,7 +183,7 @@ class Legend
     public function Pos($aX, $aY, $aHAlign = 'right', $aVAlign = 'top')
     {
         if (!($aX < 1 && $aY < 1)) {
-            JpGraphError::RaiseL(25120); //(" Position for legend must be given as percentage in range 0-1");
+            Util\JpGraphError::RaiseL(25120); //(" Position for legend must be given as percentage in range 0-1");
         }
         $this->xpos   = $aX;
         $this->ypos   = $aY;
@@ -472,7 +471,7 @@ class Legend
                 if ($p[3] < -100) {
                     // p[1][0] == iPattern, p[1][1] == iPatternColor, p[1][2] == iPatternDensity
                     if ($patternFactory == null) {
-                        $patternFactory = new Graph\RectPatternFactory();
+                        $patternFactory = new RectPatternFactory();
                     }
                     $prect = $patternFactory->Create($p[1][0], $p[1][1], 1);
                     $prect->SetBackground($p[1][3]);

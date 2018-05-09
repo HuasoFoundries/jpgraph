@@ -6,8 +6,9 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\ImgTrans;
+use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -144,7 +145,7 @@ class RadarGraph extends Graph
             $cl = $aPlot;
         }
 
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aPlot);
         } elseif (($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aPlot);
@@ -313,7 +314,7 @@ class RadarGraph extends Graph
 
         // Should we do any final image transformation
         if ($this->iImgTrans && !$_csim) {
-            $tform          = new ImgTrans($this->img->img);
+            $tform          = new Image\ImgTrans($this->img->img);
             $this->img->img = $tform->Skew3D(
                 $this->iImgTransHorizon,
                 $this->iImgTransSkewDist,

@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Text;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class GTextTable
  * // Description:
@@ -215,11 +217,11 @@ class GTextTable
                     $this->iSize[1] = $n;
                     $this->iInit    = true;
                 } else {
-                    JpGraphError::RaiseL(27001);
+                    Util\JpGraphError::RaiseL(27001);
                     //('Illegal argument to GTextTable::Set(). Array must be 2 dimensional');
                 }
             } else {
-                JpGraphError::RaiseL(27002);
+                Util\JpGraphError::RaiseL(27002);
                 //('Illegal argument to GTextTable::Set()');
             }
         } else {
@@ -453,7 +455,7 @@ class GTextTable
                 $aFSize = 10;
             }
         } else {
-            JpGraphError::RaiseL(27003);
+            Util\JpGraphError::RaiseL(27003);
             //('Wrong number of arguments to GTextTable::SetColor()');
         }
         $this->_chkR($aR1);
@@ -504,7 +506,7 @@ class GTextTable
             $this->_chkC($aC2);
         } else {
             if ($aR1HAlign === null) {
-                JpGraphError::RaiseL(27010);
+                Util\JpGraphError::RaiseL(27010);
             }
             if ($aC1VAlign === null) {
                 $aC1VAlign = 'center';
@@ -566,7 +568,7 @@ class GTextTable
             $aC1    = 0;
         }
         if (!is_string($aArg)) {
-            JpGraphError::RaiseL(27013); // argument must be a string
+            Util\JpGraphError::RaiseL(27013); // argument must be a string
         }
         for ($i = $aArgR1; $i <= $aR2; ++$i) {
             for ($j = $aC1; $j <= $aC2; ++$j) {
@@ -579,7 +581,7 @@ class GTextTable
     {
         $this->_chkR($aRow);
         if (!is_string($aF)) {
-            JpGraphError::RaiseL(27013); // argument must be a string
+            Util\JpGraphError::RaiseL(27013); // argument must be a string
         }
         for ($j = 0; $j < $this->iSize[1]; ++$j) {
             $this->iCells[$aRow][$j]->SetNumberFormat($aF);
@@ -590,7 +592,7 @@ class GTextTable
     {
         $this->_chkC($aCol);
         if (!is_string($aF)) {
-            JpGraphError::RaiseL(27013); // argument must be a string
+            Util\JpGraphError::RaiseL(27013); // argument must be a string
         }
         for ($i = 0; $i < $this->iSize[0]; ++$i) {
             $this->iCells[$i][$aCol]->SetNumberFormat($aF);
@@ -602,7 +604,7 @@ class GTextTable
         $this->_chkR($aRow);
         $this->_chkC($aCol);
         if (!is_string($aF)) {
-            JpGraphError::RaiseL(27013); // argument must be a string
+            Util\JpGraphError::RaiseL(27013); // argument must be a string
         }
         $this->iCells[$aRow][$aCol]->SetNumberFormat($aF);
     }
@@ -698,7 +700,7 @@ class GTextTable
     public function MergeCells($aR1, $aC1, $aR2, $aC2, $aHAlign = 'center', $aVAlign = 'center')
     {
         if ($aR1 > $aR2 || $aC1 > $aC2) {
-            JpGraphError::RaiseL(27004);
+            Util\JpGraphError::RaiseL(27004);
             //('GTextTable::MergeCells(). Specified cell range to be merged is not valid.');
         }
         $this->_chkR($aR1);
@@ -709,7 +711,7 @@ class GTextTable
         $cspan = $aC2 - $aC1 + 1;
         // Setup the parent cell for this merged group
         if ($this->iCells[$aR1][$aC1]->IsMerged()) {
-            JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
+            Util\JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
             //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
         }
         $this->iCells[$aR1][$aC1]->SetRowColSpan($rspan, $cspan);
@@ -718,7 +720,7 @@ class GTextTable
             for ($j = $aC1; $j <= $aC2; ++$j) {
                 if (!($i == $aR1 && $j == $aC1)) {
                     if ($this->iCells[$i][$j]->IsMerged()) {
-                        JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
+                        Util\JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
                         //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
                     }
                     $this->iCells[$i][$j]->SetMerged($aR1, $aC1, true);
@@ -779,10 +781,10 @@ class GTextTable
     public function _chkC($aCol)
     {
         if (!$this->iInit) {
-            JpGraphError::Raise(27014); // Table not initialized
+            Util\JpGraphError::Raise(27014); // Table not initialized
         }
         if ($aCol < 0 || $aCol >= $this->iSize[1]) {
-            JpGraphError::RaiseL(27006, $aCol);
+            Util\JpGraphError::RaiseL(27006, $aCol);
         }
 
         //("GTextTable:\nColumn argument ($aCol) is outside specified table size.");
@@ -791,10 +793,10 @@ class GTextTable
     public function _chkR($aRow)
     {
         if (!$this->iInit) {
-            JpGraphError::Raise(27014); // Table not initialized
+            Util\JpGraphError::Raise(27014); // Table not initialized
         }
         if ($aRow < 0 || $aRow >= $this->iSize[0]) {
-            JpGraphError::RaiseL(27007, $aRow);
+            Util\JpGraphError::RaiseL(27007, $aRow);
         }
 
         //("GTextTable:\nRow argument ($aRow) is outside specified table size.");
@@ -876,7 +878,7 @@ class GTextTable
         $cc = $this->iSize[1]; // column count
 
         if ($rc == 0 || $cc == 0) {
-            JpGraphError::RaiseL(27009);
+            Util\JpGraphError::RaiseL(27009);
         }
 
         // Adjust margins of each cell based on the weight of the grid. Each table grid line
@@ -897,7 +899,7 @@ class GTextTable
         $this->_autoSizeTable($aImg);
 
         if ($this->iSize[1] != count($this->iColWidth) || $this->iSize[0] != count($this->iRowHeight)) {
-            JpGraphError::RaiseL(27008);
+            Util\JpGraphError::RaiseL(27008);
             //('Column and row size arrays must match the dimesnions of the table');
         }
 

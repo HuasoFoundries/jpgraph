@@ -8,6 +8,7 @@ namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
+use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_ICONPLOT.PHP

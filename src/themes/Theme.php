@@ -15,6 +15,7 @@
 namespace Amenadiel\JpGraph\Themes;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -65,9 +66,7 @@ abstract class Theme
         }
     }
 
-    public function PreStrokeApply($graph)
-    {
-    }
+    public function PreStrokeApply($graph) {}
 
     public function GetThemeColors($num = 30)
     {
@@ -105,7 +104,7 @@ abstract class Theme
             if ($color_count <= $this->color_index) {
                 $color_tmp  = $color_list[$this->color_index % $color_count];
                 $brightness = 1.0 - (int) ($this->color_index / $color_count) * 0.2;
-                $rgb        = new RGB();
+                $rgb        = new Image\RGB();
                 $color      = $color_tmp . ':' . $brightness;
                 $color      = $rgb->Color($color);
                 $alpha      = array_pop($color);

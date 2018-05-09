@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * File:        JPGRAPH_POLAR.PHP
  * // Description: Polar plot extension for JpGraph
@@ -14,11 +16,9 @@ namespace Amenadiel\JpGraph\Plot;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
-require_once 'jpgraph_plotmark.inc.php';
-require_once 'jpgraph_log.php';
 
-define('POLAR_360', 1);
-define('POLAR_180', 2);
+defined('POLAR_360') || define('POLAR_360', 1);
+defined('POLAR_180') || define('POLAR_180', 2);
 
 //
 // Note. Don't attempt to make sense of this code.

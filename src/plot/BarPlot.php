@@ -123,7 +123,7 @@ class BarPlot extends Plot
     {
         if ($this->grad && $this->legend != '' && !$this->fill) {
             $color = [$this->grad_fromcolor, $this->grad_tocolor];
-            // In order to differentiate between gradients and cooors specified as an RGB triple
+            // In order to differentiate between gradients and cooors specified as an Image\RGB triple
             $graph->legend->Add(
                 $this->legend,
                 $color,
@@ -275,7 +275,7 @@ class BarPlot extends Plot
 
     public function SetFillColor($aColor)
     {
-        // Do an extra error check if the color is specified as an RGB array triple
+        // Do an extra error check if the color is specified as an Image\RGB array triple
         // In that case convert it to a hex string since it will otherwise be
         // interpretated as an array of colors for each individual bar.
 
@@ -388,7 +388,7 @@ class BarPlot extends Plot
         if (isset($this->coords[1])) {
             if (count($this->coords[1]) != $numpoints) {
                 Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-            //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
+                //"Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -455,14 +455,14 @@ class BarPlot extends Plot
                 }
                 if (is_array($this->grad_fromcolor)) {
                     // The first argument (grad_fromcolor) can be either an array or a single color. If it is an array
-                    // then we have two choices. It can either a) be a single color specified as an RGB triple or it can be
+                    // then we have two choices. It can either a) be a single color specified as an Image\RGB triple or it can be
                     // an array to specify both (from, to style) for each individual bar. The way to know the difference is
-                    // to investgate the first element. If this element is an integer [0,255] then we assume it is an RGB
+                    // to investgate the first element. If this element is an integer [0,255] then we assume it is an Image\RGB
                     // triple.
                     $ng = count($this->grad_fromcolor);
                     if ($ng === 3) {
                         if (is_numeric($this->grad_fromcolor[0]) && $this->grad_fromcolor[0] > 0 && $this->grad_fromcolor[0] < 256) {
-                            // RGB Triple
+                            // Image\RGB Triple
                             $fromcolor = $this->grad_fromcolor;
                             $tocolor   = $this->grad_tocolor;
                             $style     = $this->grad_style;

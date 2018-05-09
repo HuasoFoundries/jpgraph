@@ -14,7 +14,7 @@ namespace Amenadiel\JpGraph\Graph;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
-require_once 'jpgraph_plotmark.inc.php';
+use Amenadiel\JpGraph\Plot;
 
 /**
  * @class RadarGrid
@@ -114,7 +114,7 @@ class RadarPlot
     public function __construct($data)
     {
         $this->data = $data;
-        $this->mark = new PlotMark();
+        $this->mark = new Plot\PlotMark();
     }
 
     public function Min()

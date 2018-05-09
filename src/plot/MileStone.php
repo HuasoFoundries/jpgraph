@@ -19,7 +19,7 @@ class MileStone extends GanttPlotObject
      */
     public function __construct($aVPos, $aLabel, $aDate, $aCaption = '')
     {
-        GanttPlotObject::__construct();
+        parent::__construct();
         $this->caption->Set($aCaption);
         $this->caption->Align('left', 'center');
         $this->caption->SetFont(FF_FONT1, FS_BOLD);

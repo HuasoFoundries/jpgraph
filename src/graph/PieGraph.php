@@ -8,6 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 
 /**
  * @class PieGraph
@@ -48,7 +49,7 @@ class PieGraph extends Graph
             $cl = $aObj;
         }
 
-        if ($cl instanceof Text) {
+        if ($cl instanceof Text\Text) {
             $this->AddText($aObj);
         } elseif (($cl instanceof Plot\IconPlot)) {
             $this->AddIcon($aObj);

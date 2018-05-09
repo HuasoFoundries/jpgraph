@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
+use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_PIE3D.PHP
@@ -86,7 +87,7 @@ class PiePlot3D extends PiePlot
     {
         if ($a < 5 || $a > 90) {
             Util\JpGraphError::RaiseL(14002);
-        //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
+            //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
         } else {
             $this->angle = $a;
         }

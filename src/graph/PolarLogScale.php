@@ -15,7 +15,9 @@ class PolarLogScale extends LogScale
     {
         parent::__construct(0, $aMax, 'x');
         $this->graph = $graph;
-        $this->ticks->SetLabelLogType(LOGLABELS_MAGNITUDE);
+        if ($this->ticks instanceof LogTicks) {
+            $this->ticks->SetLabelLogType(LOGLABELS_MAGNITUDE);
+        }
         $this->clockwise = $aClockwise;
     }
 

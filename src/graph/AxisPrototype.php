@@ -6,7 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\Text\Text;
+use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -56,7 +56,7 @@ class AxisPrototype
         $this->img   = $img;
         $this->scale = $aScale;
         $this->color = $color;
-        $this->title = new Text('');
+        $this->title = new Text\Text('');
 
         if ($aScale->type == 'y') {
             $this->title_margin = 25;

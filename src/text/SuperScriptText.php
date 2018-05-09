@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Text;
 
+use Amenadiel\JpGraph\Util;
+
 /**
  * @class SuperScriptText
  * // Description: Format a superscript text
@@ -125,7 +127,7 @@ class SuperScriptText extends Text
 
                 break;
             default:
-                JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
+                Util\JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
                 break;
         }
 
@@ -143,7 +145,7 @@ class SuperScriptText extends Text
 
                 break;
             default:
-                JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
+                Util\JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
                 break;
         }
 
