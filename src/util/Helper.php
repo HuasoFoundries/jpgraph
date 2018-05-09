@@ -10,7 +10,7 @@ require_once __DIR__ . '/../config.inc.php';
 
 /**
  * @class Helper
-// Misc Helper functions
+ * // Misc Helper functions
  */
 class Helper
 {
@@ -86,5 +86,4 @@ class Helper
 
         \PC::debug(func_get_args(), $tag);
     }
-
 }
