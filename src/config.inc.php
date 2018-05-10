@@ -16,9 +16,9 @@
 // check if jpgraph is the root folder
 if (file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
     defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
-} elseif (file_exists(dirname(dirname(dirname(__DIR__))) . '/vendor/autoload.php')) {
+} elseif (file_exists(dirname(dirname(dirname(dirname(__DIR__)))) . '/vendor/autoload.php')) {
     // otherwise, jpgraph was required as a composer dependency
-    defined('ROOT_PATH') || define('ROOT_PATH', dirname(dirname(dirname(__DIR__))));
+    defined('ROOT_PATH') || define('ROOT_PATH', dirname(dirname(dirname(dirname(__DIR__)))));
 }
 require_once ROOT_PATH . '/vendor/autoload.php';
 
