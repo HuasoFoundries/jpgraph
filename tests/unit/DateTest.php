@@ -11,7 +11,9 @@ class DateTest extends \Codeception\Test\Unit
         $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
     }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
     public function _fileCheck($filename)
