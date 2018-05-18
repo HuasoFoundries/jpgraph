@@ -10,7 +10,7 @@
 
 This is an unnoficial refactor of [JpGraph](http://jpgraph.net/) with thefollowing differences:
 - the app was fully refactored adding namespaces, proper folder hierarchy, separating each class in its own file and stripping the use of `require` and `include` to the bare minimum
-- dropping support for PHP < 5.4. 
+- dropping support for PHP < 5.6. 
 - it provides full composer compatibility
 - it has PSR-4 autoloading
 - it makes requirement checks so you can't go wrong
