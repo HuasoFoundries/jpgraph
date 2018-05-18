@@ -4,32 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "258efdc4b264063a082032c6c5fb306e",
+    "content-hash": "e57ff3820d0d0af6618a9dd0d141d81d",
     "packages": [
         {
             "name": "symfony/dotenv",
-            "version": "v4.0.9",
+            "version": "v3.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "afb6923923e22874dac20bd042167ccb8df1d158"
+                "reference": "66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/afb6923923e22874dac20bd042167ccb8df1d158",
-                "reference": "afb6923923e22874dac20bd042167ccb8df1d158",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992",
+                "reference": "66265f80c0f585cd6aec3fbdfc4ffdf7a0d75992",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^5.5.9|>=7.0.8"
             },
             "require-dev": {
-                "symfony/process": "~3.4|~4.0"
+                "symfony/process": "~3.2|~4.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -61,7 +61,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-01-03T17:15:19+00:00"
+            "time": "2018-01-03T17:14:19+00:00"
         }
     ],
     "packages-dev": [

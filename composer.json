@@ -2,7 +2,7 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.17",
+    "version": "3.6.18",
     "keywords": [
         "graph",
         "chart",
@@ -21,7 +21,7 @@
     {
         "php": ">=5.4.0",
         "ext-gd": "*",
-        "symfony/dotenv": "^4.0"
+        "symfony/dotenv": "~3.4"
     },
     "require-dev":
     {
