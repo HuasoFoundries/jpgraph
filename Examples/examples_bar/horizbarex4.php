@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.1.20
+ * JPGraph v3.6.20
  */
 
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $

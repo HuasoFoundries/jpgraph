@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.1.20
+ * JPGraph v3.6.20
  */
 include '../jpgraph.php';
 include '../jpgraph_canvas.php';

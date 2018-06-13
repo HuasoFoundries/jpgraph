@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.1.20
+ * JPGraph v3.6.20
  */
 
 // File:    ODOEX010.PHP

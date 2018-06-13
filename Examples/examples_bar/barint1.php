@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.1.20
+ * JPGraph v3.6.20
  */
 
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
