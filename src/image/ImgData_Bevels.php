@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -27,7 +27,7 @@ class ImgData_Bevels extends ImgData
 
     public function __construct()
     {
-        /**
+        /*
          * File: bullets_balls_red_013.png
          */
         $this->imgdata[0][0] = 337;
@@ -43,7 +43,7 @@ class ImgData_Bevels extends ImgData
             'J1PkS5Xob/h7MNz8x6D3fz5DKQjpkZOBYAAAAABJRU5ErkJggg' .
             '==';
 
-        /**
+        /*
          * File: bullets_balls_green_013.png
          */
         $this->imgdata[1][0] = 344;
@@ -59,7 +59,7 @@ class ImgData_Bevels extends ImgData
             'IsuXiKffYB4NK4r/h6d4g9HPPwCR7i8+GscIiiaonUAAAAAASU' .
             'VORK5CYII=';
 
-        /**
+        /*
          * File: bullets_balls_oy_035.png
          */
         $this->imgdata[2][0] = 341;
@@ -75,7 +75,7 @@ class ImgData_Bevels extends ImgData
             '9Jnz/TKLB/ML6HUepn//QczazuwFO/0Ivpolhi4AAAAASUVORK' .
             '5CYII=';
 
-        /**
+        /*
          * File: bullets_balls_oy_036.png
          */
         $this->imgdata[3][0] = 340;
@@ -90,7 +90,7 @@ class ImgData_Bevels extends ImgData
             '7C7r7r3l09alYN3iA8Yn+ImdVrNoEeSRqJPAaHfhZzLYwXstdZ' .
             'rP3n2bvdAI4INwtihiwAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bullets_balls_pp_019.png
          */
         $this->imgdata[4][0] = 334;

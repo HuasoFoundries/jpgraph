@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -36,7 +36,14 @@ class GanttBar extends GanttPlotObject
     private $iBreakLineWeight = 1;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aPos
+     * @param mixed $aLabel
+     * @param mixed $aStart
+     * @param mixed $aEnd
+     * @param mixed $aCaption
+     * @param mixed $aHeightFactor
      */
     public function __construct($aPos, $aLabel, $aStart, $aEnd, $aCaption = '', $aHeightFactor = 0.6)
     {
@@ -67,7 +74,10 @@ class GanttBar extends GanttPlotObject
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aShadow
+     * @param mixed $aColor
      */
     public function SetShadow($aShadow = true, $aColor = 'gray')
     {
@@ -168,7 +178,7 @@ class GanttBar extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(count($colwidth), count($this->title->csimtarget));
+            $n = min(safe_count($colwidth), safe_count($this->title->csimtarget));
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];

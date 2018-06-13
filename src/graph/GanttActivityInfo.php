@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -100,7 +100,7 @@ class GanttActivityInfo
 
     public function SetMinColWidth($aWidths)
     {
-        $n = min(count($this->iTitles), count($aWidths));
+        $n = min(safe_count($this->iTitles), safe_count($aWidths));
         for ($i = 0; $i < $n; ++$i) {
             if (!empty($aWidths[$i])) {
                 if (empty($this->iWidth[$i])) {
@@ -116,7 +116,7 @@ class GanttActivityInfo
     {
         $txt = new Text\TextProperty();
         $txt->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-        $n  = count($this->iTitles);
+        $n  = safe_count($this->iTitles);
         $rm = $this->iRightColMargin;
         $w  = 0;
         for ($h = 0, $i = 0; $i < $n; ++$i) {
@@ -139,7 +139,7 @@ class GanttActivityInfo
 
     public function GetColStart($aImg, &$aStart, $aAddLeftMargin = false)
     {
-        $n      = count($this->iTitles);
+        $n      = safe_count($this->iTitles);
         $adj    = $aAddLeftMargin ? $this->iLeftColMargin : 0;
         $aStart = [$aImg->left_margin + $adj];
         for ($i = 1; $i < $n; ++$i) {
@@ -163,7 +163,7 @@ class GanttActivityInfo
         $txt->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         $txt->SetColor($this->iFontColor);
         $txt->SetAlign($this->iHeaderAlign, 'top');
-        $n = count($this->iTitles);
+        $n = safe_count($this->iTitles);
 
         if ($n == 0) {
             return;
@@ -220,7 +220,7 @@ class GanttActivityInfo
         // Stroke vertical column dividers
         $cols = [];
         $this->GetColStart($aImg, $cols);
-        $n = count($cols);
+        $n = safe_count($cols);
         for ($i = 1; $i < $n; ++$i) {
             $this->vgrid->Stroke(
                 $aImg,

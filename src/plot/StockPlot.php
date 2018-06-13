@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -30,11 +30,14 @@ class StockPlot extends Plot
     private $iStockColor3 = 'darkred';
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
-        if (count($datay) % $this->iTupleSize) {
+        if (safe_count($datay) % $this->iTupleSize) {
             Util\JpGraphError::RaiseL(21001, $this->iTupleSize);
             //('Data values for Stock charts must contain an even multiple of '.$this->iTupleSize.' data points.');
         }
@@ -43,7 +46,12 @@ class StockPlot extends Plot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aColor
+     * @param mixed $aColor1
+     * @param mixed $aColor2
+     * @param mixed $aColor3
      */
     public function SetColor($aColor, $aColor1 = 'white', $aColor2 = 'darkred', $aColor3 = 'darkred')
     {
@@ -88,9 +96,9 @@ class StockPlot extends Plot
         }
 
         if (isset($this->coords[1])) {
-            if (count($this->coords[1]) != $n) {
-                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $n);
-            // ("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
+            if (safe_count($this->coords[1]) != $n) {
+                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $n);
+            // ("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }

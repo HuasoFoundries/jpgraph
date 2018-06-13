@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -471,7 +471,7 @@ class RGB
             'darkred'              => [139, 0, 0],
             'silver'               => [192, 192, 192],
             'eggplant'             => [144, 176, 168],
-            'lightgreen'           => [144, 238, 144]];
+            'lightgreen'           => [144, 238, 144], ];
     }
 
     //==================================
@@ -545,7 +545,7 @@ class RGB
 
             return $aColor;
         } else {
-            JpGraphError::RaiseL(25079, $aColor, count($aColor)); //(" Unknown color specification: $aColor , size=".count($aColor));
+            JpGraphError::RaiseL(25079, $aColor, safe_count($aColor)); //(" Unknown color specification: $aColor , size=". safe_count($aColor));
         }
     }
 
@@ -584,7 +584,7 @@ class RGB
     public static function tryHexConversion($aColor)
     {
         if (is_array($aColor)) {
-            if (count($aColor) == 3) {
+            if (safe_count($aColor) == 3) {
                 if (is_numeric($aColor[0]) && is_numeric($aColor[1]) && is_numeric($aColor[2])) {
                     if (($aColor[0] >= 0 && $aColor[0] <= 255) &&
                         ($aColor[1] >= 0 && $aColor[1] <= 255) &&

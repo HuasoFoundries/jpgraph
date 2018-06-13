@@ -5,14 +5,8 @@ $version = $composerinfo->version;
 
 $header = "JPGraph v$version";
 
-$finder =  PhpCsFixer\Finder::create()
-            ->in(__DIR__.'/Examples')
-            ->in(__DIR__.'/src')
-            ->files()->name('*.php')
-            ->notName('GB2312toUTF8.php');
 
-      
-        
+
 $config = PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
@@ -23,7 +17,6 @@ $config = PhpCsFixer\Config::create()
         '@Symfony:risky' => false,
         '@PSR1'=>true,
         '@PSR2'=>true,
-        'comment_to_phpdoc'=>true,
         'align_multiline_comment' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_before_statement' => true,
@@ -34,7 +27,7 @@ $config = PhpCsFixer\Config::create()
         'explicit_indirect_variable' => true,
         'no_whitespace_in_blank_line'=> true,
         'no_unused_imports'=>true,
-        'concat_space'=> 'one',
+        'concat_space'=> ['spacing'=>'one'],
         'elseif'=>true,
         'explicit_string_variable' => true,
         'final_internal_class' => true,
@@ -80,7 +73,11 @@ $config = PhpCsFixer\Config::create()
 
     ])
     ->setFinder(
-       $finder
+         PhpCsFixer\Finder::create()
+            ->in(__DIR__.'/Examples')
+            ->in(__DIR__.'/src')
+            ->files()->name('*.php')
+            ->notName('GB2312toUTF8.php')
     );
 
 // special handling of fabbot.io service if it's using too old PHP CS Fixer version

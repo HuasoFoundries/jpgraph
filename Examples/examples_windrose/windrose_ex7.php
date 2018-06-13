@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -33,7 +33,7 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Note: The labels for data must now also match the exact
 // string for the compass directions.
 $se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV',
-    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO'];
+    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO', ];
 $wp->SetCompassLabels($se_CompassLbl);
 
 // Localize the "Calm" text into Swedish and make the circle

@@ -8,7 +8,7 @@ global $_wrapperfilename;
 $_wrapperfilename = basename(__FILE__);
 
 // Create a random mapname used to connect the image map with the image
-$_mapname = '__mapname'.rand(0, 1000000).'__';
+$_mapname = '__mapname' . rand(0, 1000000) . '__';
 
 // This is the first graph script
 require_once $_graphfilename;
@@ -25,7 +25,7 @@ echo $imgmap;
 if (empty($_GET['clickedon'])) {
     echo '<b style="color:darkred;">Clicked on bar: &lt;none></b>';
 } else {
-    echo '<b style="color:darkred;">Clicked on bar: '.$_GET['clickedon'].'</b>';
+    echo '<b style="color:darkred;">Clicked on bar: ' . $_GET['clickedon'] . '</b>';
 }
 echo '<p />';
 ?>
@@ -36,7 +36,7 @@ echo '<p />';
 <?php
 
 // The we display the image map as well
-echo '<pre><b>'.htmlentities($imgmap).'</b></pre>'; ?>
+echo '<pre><b>' . htmlentities($imgmap) . '</b></pre>'; ?>
 
 <?php
 // Construct the <img> tag and rebuild the

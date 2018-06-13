@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:           JPGRAPH_LINE.PHP
  * // Description: Line plot extension for JpGraph
  * // Created:       2001-01-08
@@ -45,7 +45,10 @@ class LinePlot extends Plot
     protected $iFastStroke        = false;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
@@ -56,7 +59,9 @@ class LinePlot extends Plot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aFlg
      */
     public function SetFilled($aFlg = true)
     {
@@ -191,7 +196,7 @@ class LinePlot extends Plot
         // An optimized stroke for many data points with no extra
         // features but 60% faster. You can't have values or line styles, or null
         // values in plots.
-        $numpoints = count($this->coords[0]);
+        $numpoints = safe_count($this->coords[0]);
         if ($this->barcenter) {
             $textadj = 0.5 - $xscale->text_scale_off;
         } else {
@@ -227,11 +232,11 @@ class LinePlot extends Plot
     public function Stroke($img, $xscale, $yscale)
     {
         $idx       = 0;
-        $numpoints = count($this->coords[0]);
+        $numpoints = safe_count($this->coords[0]);
         if (isset($this->coords[1])) {
-            if (count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
-            //("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
+            if (safe_count($this->coords[1]) != $numpoints) {
+                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $numpoints);
+            //("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -415,7 +420,7 @@ class LinePlot extends Plot
                 // Remove first and last coordinate before drawing the line
                 // sine we otherwise get the vertical start and end lines which
                 // doesn't look appropriate
-                $img->Polygon(array_slice($cord, 2, count($cord) - 4));
+                $img->Polygon(array_slice($cord, 2, safe_count($cord) - 4));
             }
         }
 
@@ -423,7 +428,7 @@ class LinePlot extends Plot
             $minY   = $yscale->Translate($yscale->GetMinVal());
             $factor = ($this->step_style ? 4 : 2);
 
-            for ($i = 0; $i < sizeof($this->filledAreas); ++$i) {
+            for ($i = 0; $i < safe_count($this->filledAreas); ++$i) {
                 // go through all filled area elements ordered by insertion
                 // fill polygon array
                 $areaCoords[] = $cord[$this->filledAreas[$i][0] * $factor];
@@ -438,7 +443,7 @@ class LinePlot extends Plot
                         ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
                     )
                 );
-                $areaCoords[] = $areaCoords[sizeof($areaCoords) - 2]; // last x
+                $areaCoords[] = $areaCoords[safe_count($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y
 
                 if ($this->filledAreas[$i][3]) {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -28,7 +28,13 @@ use Amenadiel\JpGraph\Image;
 class CanvasGraph extends Graph
 {
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aWidth
+     * @param mixed $aHeight
+     * @param mixed $aCachedName
+     * @param mixed $timeout
+     * @param mixed $inline
      */
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $timeout = 0, $inline = 1)
     {
@@ -36,7 +42,7 @@ class CanvasGraph extends Graph
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
      */
     public function InitFrame()
     {
@@ -47,12 +53,12 @@ class CanvasGraph extends Graph
     public function Stroke($aStrokeFileName = '')
     {
         if ($this->texts != null) {
-            for ($i = 0; $i < count($this->texts); ++$i) {
+            for ($i = 0; $i < safe_count($this->texts); ++$i) {
                 $this->texts[$i]->Stroke($this->img);
             }
         }
         if ($this->iTables !== null) {
-            for ($i = 0; $i < count($this->iTables); ++$i) {
+            for ($i = 0; $i < safe_count($this->iTables); ++$i) {
                 $this->iTables[$i]->Stroke($this->img);
             }
         }

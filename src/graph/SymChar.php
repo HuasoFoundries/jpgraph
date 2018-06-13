@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -65,7 +65,7 @@ class SymChar
             ['gte', '2265'], /* Greater than or equal */
         ];
 
-        $n     = count($iSymbols);
+        $n     = safe_count($iSymbols);
         $i     = 0;
         $found = false;
         $aSymb = strtolower($aSymb);
@@ -74,7 +74,7 @@ class SymChar
         }
         if ($found) {
             $ca = $iSymbols[--$i];
-            if ($aCapital && count($ca) == 3) {
+            if ($aCapital && safe_count($ca) == 3) {
                 $s = $ca[2];
             } else {
                 $s = $ca[1];

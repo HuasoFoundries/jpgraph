@@ -1,11 +1,11 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Plot;
 
 $ydata  = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

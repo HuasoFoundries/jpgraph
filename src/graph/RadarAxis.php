@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -50,7 +50,7 @@ class RadarAxis extends AxisPrototype
         $this->scale->ticks->Stroke($this->img, $grid, $pos, $aAxisAngle, $this->scale, $majpos, $majlabel);
         $ncolor = 0;
         if (isset($this->ticks_label_colors)) {
-            $ncolor = count($this->ticks_label_colors);
+            $ncolor = safe_count($this->ticks_label_colors);
         }
 
         // Draw labels
@@ -61,7 +61,7 @@ class RadarAxis extends AxisPrototype
 
             // majpos contains (x,y) coordinates for labels
             if (!$this->hide_labels) {
-                $n = floor(count($majpos) / 2);
+                $n = floor(safe_count($majpos) / 2);
                 for ($i = 0; $i < $n; ++$i) {
                     // Set specific label color if specified
                     if ($ncolor > 0) {

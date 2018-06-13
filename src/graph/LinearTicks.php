@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -71,8 +71,8 @@ class LinearTicks extends Ticks
             Util\JpGraphError::RaiseL(25065); //('Tick positions must be specifued as an array()');
             return;
         }
-        $n = count($aMajPos);
-        if (is_array($aLabels) && (count($aLabels) != $n)) {
+        $n = safe_count($aMajPos);
+        if (is_array($aLabels) && (safe_count($aLabels) != $n)) {
             Util\JpGraphError::RaiseL(25066); //('When manually specifying tick positions and labels the number of labels must be the same as the number of specified ticks.');
         }
         $this->iManualTickPos    = $aMajPos;
@@ -82,15 +82,15 @@ class LinearTicks extends Ticks
 
     public function HaveManualLabels()
     {
-        return count($this->iManualTickLabels) > 0;
+        return safe_count($this->iManualTickLabels) > 0;
     }
 
     // Specify all the tick positions manually and possible also the exact labels
     public function _doManualTickPos($aScale)
     {
-        $n     = count($this->iManualTickPos);
-        $m     = count($this->iManualMinTickPos);
-        $doLbl = count($this->iManualTickLabels) > 0;
+        $n     = safe_count($this->iManualTickPos);
+        $m     = safe_count($this->iManualMinTickPos);
+        $doLbl = safe_count($this->iManualTickLabels) > 0;
 
         $this->maj_ticks_pos      = [];
         $this->maj_ticklabels_pos = [];
@@ -123,7 +123,7 @@ class LinearTicks extends Ticks
         }
 
         // Some sanity check
-        if (count($this->maj_ticks_pos) < 2) {
+        if (safe_count($this->maj_ticks_pos) < 2) {
             Util\JpGraphError::RaiseL(25067); //('Your manually specified scale and ticks is not correct. The scale seems to be too small to hold any of the specified tickl marks.');
         }
 
@@ -308,7 +308,7 @@ class LinearTicks extends Ticks
             // Stroke minor ticks
             $yu = $aPos - $this->direction * $this->GetMinTickAbsSize();
             $xr = $aPos + $this->direction * $this->GetMinTickAbsSize();
-            $n  = count($this->ticks_pos);
+            $n  = safe_count($this->ticks_pos);
             for ($i = 0; $i < $n; ++$i) {
                 if (!$this->supress_tickmarks && !$this->supress_minor_tickmarks) {
                     if ($this->mincolor != '') {
@@ -332,7 +332,7 @@ class LinearTicks extends Ticks
         $yu          = $aPos - $this->direction * $this->GetMajTickAbsSize();
         $xr          = $aPos + $this->direction * $this->GetMajTickAbsSize();
         $nbrmajticks = round(($aScale->GetMaxVal() - $aScale->GetMinVal() - $this->text_label_start) / $this->major_step) + 1;
-        $n           = count($this->maj_ticks_pos);
+        $n           = safe_count($this->maj_ticks_pos);
         for ($i = 0; $i < $n; ++$i) {
             if (!($this->xtick_offset > 0 && $i == $nbrmajticks - 1) && !$this->supress_tickmarks) {
                 if ($this->majcolor != '') {
@@ -364,7 +364,10 @@ class LinearTicks extends Ticks
     }
 
     /**
-     * PRIVATE METHODS
+     * PRIVATE METHODS.
+     *
+     * @param mixed $aLabelOff
+     * @param mixed $aTickOff
      */
     // Spoecify the offset of the displayed tick mark with the tick "space"
     // Legal values for $o is [0,1] used to adjust where the tick marks and label

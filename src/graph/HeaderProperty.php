@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -31,7 +31,7 @@ class HeaderProperty
     public $iIntervall              = 1;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
      */
     public function __construct()
     {
@@ -39,7 +39,9 @@ class HeaderProperty
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aShow
      */
     public function Show($aShow = true)
     {

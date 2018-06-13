@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -16,19 +16,19 @@ define('WINDROSE_TYPE8', 2);
 define('WINDROSE_TYPE16', 3);
 define('WINDROSE_TYPEFREE', 4);
 
-/**
+/*
  * How should the labels for the circular grids be aligned
  */
 define('LBLALIGN_CENTER', 1);
 define('LBLALIGN_TOP', 2);
 
-/**
+/*
  * How should the labels around the plot be align
  */
 define('LBLPOSITION_CENTER', 1);
 define('LBLPOSITION_EDGE', 2);
 
-/**
+/*
  * Interpretation of ordinal values in the data
  */
 define('KEYENCODING_CLOCKWISE', 1);
@@ -160,7 +160,7 @@ class WindrosePlot
 
     public function SetCompassLabels($aLabels)
     {
-        if (count($aLabels) != 16) {
+        if (safe_count($aLabels) != 16) {
             Util\JpGraphError::RaiseL(22004); //('Label specification for windrose directions must have 16 values (one for each compass direction).');
         }
         $this->iAllDirectionLabels = $aLabels;
@@ -232,7 +232,7 @@ class WindrosePlot
 
     public function SetRangeWeights($aWeights)
     {
-        $n = count($aWeights);
+        $n = safe_count($aWeights);
         for ($i = 0; $i < $n; ++$i) {
             $aWeights[$i] = floor($aWeights[$i] / 2);
         }
@@ -318,8 +318,8 @@ class WindrosePlot
             return 0;
         }
 
-        $nlc = count($this->iLegColors);
-        $nlw = count($this->iLegweights);
+        $nlc = safe_count($this->iLegColors);
+        $nlw = safe_count($this->iLegweights);
 
         // Setup font for ranges
         $value = new Text\Text();
@@ -387,7 +387,7 @@ class WindrosePlot
         // Stroke all used ranges
         $txty = $y -
         round($this->iLegweights[($this->scale->iMaxNum - 1) % $nlw] * $scaling) - 4 * $scaling;
-        if ($this->scale->iMaxNum >= count($this->iRanges)) {
+        if ($this->scale->iMaxNum >= safe_count($this->iRanges)) {
             Util\JpGraphError::RaiseL(22007); //('To few values for the range legend.');
         }
         $i   = 0;
@@ -485,7 +485,7 @@ class WindrosePlot
             }
             $this->scale->iAngle = $found * 22.5;
         } else {
-            $n = count($this->iData);
+            $n = safe_count($this->iData);
             foreach ($this->iData as $dir => $leg) {
                 if (!is_numeric($dir)) {
                     $pos = array_search(strtoupper($dir), $this->iAllDirectionLabels, true);
@@ -500,7 +500,7 @@ class WindrosePlot
             $keys = array_keys($data);
             sort($keys, SORT_NUMERIC);
 
-            $n     = count($data);
+            $n     = safe_count($data);
             $found = false;
             $max   = 0;
             for ($i = 0; $i < 15; ++$i) {
@@ -608,13 +608,13 @@ class WindrosePlot
         // (or none) data.
         $this->SetAutoScaleAngle(false);
 
-        $nlc = count($this->iLegColors);
-        $nlw = count($this->iLegweights);
+        $nlc = safe_count($this->iLegColors);
+        $nlw = safe_count($this->iLegweights);
 
         // Stroke grid lines for directions and remember the
         // position for the labels
         $txtpos = [];
-        $num    = count($this->iData);
+        $num    = safe_count($this->iData);
 
         $keys = array_keys($this->iData);
 
@@ -749,7 +749,7 @@ class WindrosePlot
         $i = 0;
         foreach ($this->iData as $dir => $legdata) {
             $legdata = array_slice($legdata, 1);
-            $nn      = count($legdata);
+            $nn      = safe_count($legdata);
 
             $a   = $txtpos[$i][2];
             $rri = $ri / $scaling;
@@ -831,8 +831,8 @@ class WindrosePlot
         // (or none) data.
         $this->SetAutoScaleAngle(true);
 
-        $nlc = count($this->iLegColors);
-        $nlw = count($this->iLegweights);
+        $nlc = safe_count($this->iLegColors);
+        $nlw = safe_count($this->iLegweights);
 
         $this->iRadialColorArray  = $this->FixupIndexes($this->iRadialColorArray, $num);
         $this->iRadialWeightArray = $this->FixupIndexes($this->iRadialWeightArray, $num);
@@ -945,7 +945,7 @@ class WindrosePlot
         $keys = array_keys($this->iData);
         foreach ($this->iData as $idx => $legdata) {
             $legdata = array_slice($legdata, 1);
-            $nn      = count($legdata);
+            $nn      = safe_count($legdata);
             if (is_string($idx)) {
                 $idx = strtoupper($idx);
                 $idx = array_search($idx, $this->iAllDirectionLabels, true);
@@ -1000,7 +1000,7 @@ class WindrosePlot
         // The code below gives a possible a little to large margin. The
         // really, really proper way would be to account for what angle
         // the label are at
-        $n = count($this->iLabels);
+        $n = safe_count($this->iLabels);
         if ($n > 0) {
             $maxh = 0;
             $maxw = 0;
@@ -1040,7 +1040,7 @@ class WindrosePlot
         // The code below gives a possible a little to large margin. The
         // really, really proper way would be to account for what angle
         // the label are at
-        $n = count($this->iLabels);
+        $n = safe_count($this->iLabels);
         if ($n > 0) {
             $maxh = 0;
             $maxw = 0;
@@ -1190,7 +1190,7 @@ class WindrosePlot
                     $const2 = 4;
                 }
                 $tmp = [];
-                $n   = count($this->iData);
+                $n   = safe_count($this->iData);
                 foreach ($this->iData as $key => $val) {
                     if (is_numeric($key)) {
                         $key = ($const1 - $key) % $const2;

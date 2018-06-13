@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -14,7 +14,6 @@ require_once __DIR__ . '/../config.inc.php';
  */
 class Helper
 {
-
     //
     // Setup PHP error handler
     //
@@ -74,7 +73,6 @@ class Helper
         $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
         $btarray0 = ([
-
             'class2'    => $backtrace[1]['class'],
             'type2'     => $backtrace[1]['type'],
             'function2' => $backtrace[1]['function'],

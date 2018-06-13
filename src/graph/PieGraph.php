@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
+
+require_once __DIR__ . '/../config.inc.php';
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
@@ -24,7 +26,13 @@ class PieGraph extends Graph
     public $pieaa    = false;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $width
+     * @param mixed $height
+     * @param mixed $cachedName
+     * @param mixed $timeout
+     * @param mixed $inline
      */
     public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
@@ -39,11 +47,13 @@ class PieGraph extends Graph
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aObj
      */
     public function Add($aObj)
     {
-        if (is_array($aObj) && count($aObj) > 0) {
+        if (is_array($aObj) && safe_count($aObj) > 0) {
             $cl = $aObj[0];
         } else {
             $cl = $aObj;
@@ -55,7 +65,7 @@ class PieGraph extends Graph
             $this->AddIcon($aObj);
         } else {
             if (is_array($aObj)) {
-                $n = count($aObj);
+                $n = safe_count($aObj);
                 for ($i = 0; $i < $n; ++$i) {
                     //if ($aObj[$i]->theme) {
                     //    $this->ClearTheme();
@@ -98,12 +108,12 @@ class PieGraph extends Graph
         $csim .= $this->legend->GetCSIMareas();
         if (preg_match_all('/area shape="(\\w+)" coords="([0-9\\, ]+)"/', $csim, $coords)) {
             $this->img->SetColor($this->csimcolor);
-            $n = count($coords[0]);
+            $n = safe_count($coords[0]);
             for ($i = 0; $i < $n; ++$i) {
                 if ($coords[1][$i] == 'poly') {
                     preg_match_all('/\s*([0-9]+)\s*,\s*([0-9]+)\s*,*/', $coords[2][$i], $pts);
                     $this->img->SetStartPoint($pts[1][count($pts[0]) - 1], $pts[2][count($pts[0]) - 1]);
-                    $m = count($pts[0]);
+                    $m = safe_count($pts[0]);
                     for ($j = 0; $j < $m; ++$j) {
                         $this->img->LineTo($pts[1][$j], $pts[2][$j]);
                     }
@@ -143,7 +153,7 @@ class PieGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
 
         if ($this->pieaa) {
             if (!$_csim) {
@@ -166,7 +176,7 @@ class PieGraph extends Graph
 
             // Make all icons *2 i size since we will be scaling down the
             // imahe to do the anti aliasing
-            $ni = count($this->iIcons);
+            $ni = safe_count($this->iIcons);
             for ($i = 0; $i < $ni; ++$i) {
                 $this->iIcons[$i]->iScale *= 2;
                 if ($this->iIcons[$i]->iX > 1) {
@@ -248,7 +258,7 @@ class PieGraph extends Graph
         if (!$_csim) {
             // Stroke texts
             if ($this->texts != null) {
-                $n = count($this->texts);
+                $n = safe_count($this->texts);
                 for ($i = 0; $i < $n; ++$i) {
                     $this->texts[$i]->Stroke($this->img);
                 }

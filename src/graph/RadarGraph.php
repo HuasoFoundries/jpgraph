@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -139,7 +139,7 @@ class RadarGraph extends Graph
         if ($aPlot == null) {
             Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
-        if (is_array($aPlot) && count($aPlot) > 0) {
+        if (is_array($aPlot) && safe_count($aPlot) > 0) {
             $cl = $aPlot[0];
         } else {
             $cl = $aPlot;
@@ -173,7 +173,7 @@ class RadarGraph extends Graph
     public function StrokeIcons()
     {
         if ($this->iIcons != null) {
-            $n = count($this->iIcons);
+            $n = safe_count($this->iIcons);
             for ($i = 0; $i < $n; ++$i) {
                 $this->iIcons[$i]->Stroke($this->img);
             }
@@ -183,7 +183,7 @@ class RadarGraph extends Graph
     public function StrokeTexts()
     {
         if ($this->texts != null) {
-            $n = count($this->texts);
+            $n = safe_count($this->texts);
             for ($i = 0; $i < $n; ++$i) {
                 $this->texts[$i]->Stroke($this->img);
             }
@@ -208,10 +208,10 @@ class RadarGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
         // Set Y-scale
 
-        if (!$this->yscale->IsSpecified() && count($this->plots) > 0) {
+        if (!$this->yscale->IsSpecified() && safe_count($this->plots) > 0) {
             list($min, $max) = $this->GetPlotsYMinMax($this->plots);
             $this->yscale->AutoScale($this->img, 0, $max, $this->len / $this->ytick_factor);
         } elseif ($this->yscale->IsSpecified() &&
@@ -243,7 +243,7 @@ class RadarGraph extends Graph
             for ($i = 0; $i < $nbrpnts; ++$i) {
                 $this->axis_title[$i] = $i + 1;
             }
-        } elseif (count($this->axis_title) < $nbrpnts) {
+        } elseif (safe_count($this->axis_title) < $nbrpnts) {
             Util\JpGraphError::RaiseL(18007);
             // ("Number of titles does not match number of points in plot.");
         }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -36,7 +36,7 @@ $FCallback = function ($aYVal, $aXVal) {
     global $format;
 
     return [$format[(string) $aXVal][(string) $aYVal][0], '',
-        $format[(string) $aXVal][(string) $aYVal][1], '', ''];
+        $format[(string) $aXVal][(string) $aYVal][1], '', '', ];
 };
 
 // Setup a basic graph

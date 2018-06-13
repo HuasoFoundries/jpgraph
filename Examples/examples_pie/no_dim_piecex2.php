@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // $Id: piecex2.php,v 1.3.2.1 2003/08/19 20:40:12 aditus Exp $
@@ -55,7 +55,7 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
 $lbl = ["adam\n%.1f%%", "bertil\n%.1f%%", "johan\n%.1f%%",
-    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%"];
+    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%", ];
 $p1->SetLabels($lbl);
 
 // Uncomment this line to remove the borders around the slices

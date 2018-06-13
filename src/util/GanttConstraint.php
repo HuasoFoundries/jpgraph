@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -19,7 +19,13 @@ class GanttConstraint
     public $iConstrainArrowType;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aRow
+     * @param mixed $aType
+     * @param mixed $aColor
+     * @param mixed $aArrowSize
+     * @param mixed $aArrowType
      */
     public function __construct($aRow, $aType, $aColor, $aArrowSize, $aArrowType)
     {

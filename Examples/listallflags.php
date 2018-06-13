@@ -1,5 +1,9 @@
 <?php
-// List all current supported flags.
+
+/**
+ * JPGraph v3.1.20
+ */
+
 // $Id: listallflags.php,v 1.1.2.1 2003/06/29 15:28:12 aditus Exp $
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_flags.php';

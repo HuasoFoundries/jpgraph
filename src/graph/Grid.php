@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -86,11 +86,16 @@ class Grid
 
     /**
      * Private methods
-     * // Draw the grid
+     * // Draw the grid.
+     *
+     * @param mixed $aTicksPos
+     * @param mixed $aType
+     * @param mixed $aColor
+     * @param mixed $aWeight
      */
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {
-        $nbrgrids = count($aTicksPos);
+        $nbrgrids = safe_count($aTicksPos);
         if (!$this->show || $nbrgrids === 0) {
             return;
         }
@@ -164,7 +169,7 @@ class Grid
             // to many gridlines
             $i = 0;
             $x = $aTicksPos[$i];
-            while ($i < count($aTicksPos) && ($x = $aTicksPos[$i]) <= $limit) {
+            while ($i < safe_count($aTicksPos) && ($x = $aTicksPos[$i]) <= $limit) {
                 if ($aType == 'solid') {
                     $this->img->Line($x, $yl, $x, $yu);
                 } elseif ($aType == 'dotted') {

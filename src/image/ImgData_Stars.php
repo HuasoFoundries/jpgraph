@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -21,13 +21,13 @@ class ImgData_Stars extends ImgData
 
     protected $colors = ['bluegreen', 'lightblue', 'purple', 'blue', 'green', 'pink', 'red', 'yellow'];
     protected $index  = ['bluegreen'     => 3, 'lightblue' => 4, 'purple' => 1,
-        'blue'                           => 5, 'green'     => 0, 'pink'   => 7, 'red' => 2, 'yellow' => 6];
+        'blue'                           => 5, 'green'     => 0, 'pink'   => 7, 'red' => 2, 'yellow' => 6, ];
     protected $maxidx = 7;
     protected $imgdata;
 
     public function __construct()
     {
-        /**
+        /*
          * File: bstar_green_001.png
          */
         $this->imgdata[0][0] = 329;
@@ -41,7 +41,7 @@ class ImgData_Stars extends ImgData
             'ZzGLl8ko9Zumhr5iy66/GH0dp49llNPB5sTotDY5PVuLG6tnM9' .
             'CVKSIe1joSgPsAKSuANNaENFQvTAGzmheSkUpMBWeJZwqBT8wo' .
             'hmysD4bnnPsC/x8ItUdGPfAAAAAASUVORK5CYII=';
-        /**
+        /*
          * File: bstar_blred.png
          */
         $this->imgdata[1][0] = 325;
@@ -56,7 +56,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_red_001.png
          */
         $this->imgdata[2][0] = 325;
@@ -71,7 +71,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_blgr_001.png
          */
         $this->imgdata[3][0] = 325;
@@ -86,7 +86,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_blgr_002.png
          */
         $this->imgdata[4][0] = 325;
@@ -101,7 +101,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_blue_001.png
          */
         $this->imgdata[5][0] = 325;
@@ -116,7 +116,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_oy_007.png
          */
         $this->imgdata[6][0] = 325;
@@ -131,7 +131,7 @@ class ImgData_Stars extends ImgData
             'DFmESC+BwA5UCUxhqAhqrA4CGrLpCMVGK4sZe4B+/5RLdiyMb6' .
             'on/PuS9CdQNC7yBXEQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bstar_lred.png
          */
         $this->imgdata[7][0] = 325;

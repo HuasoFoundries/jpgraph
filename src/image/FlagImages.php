@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_FLAGS.PHP
  * // Description: Class Jpfile. Handles plotmarks
  * // Created:     2003-06-28
@@ -17,7 +17,7 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-/**
+/*
  * Defines for the different basic sizes of flags
  */
 define('FLAGSIZE1', 1);
@@ -262,7 +262,7 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe'];
+        'Republic of Zimbabwe'                                    => 'zbwe', ];
 
     private $iFlagCount  = -1;
     private $iFlagSetMap = [
@@ -292,7 +292,7 @@ class FlagImages
                 Util\JpGraphError::RaiseL(5001, $aSize);
                 //('Unknown flag size. ('.$aSize.')');
         }
-        $this->iFlagCount = count($this->iCountryNameMap);
+        $this->iFlagCount = safe_count($this->iCountryNameMap);
     }
 
     public function GetNum()
@@ -321,7 +321,7 @@ class FlagImages
     public function GetIdxByOrdinal($aOrd, &$outFullName)
     {
         --$aOrd;
-        $n = count($this->iOrdIdx);
+        $n = safe_count($this->iOrdIdx);
         if ($n == 0) {
             reset($this->iCountryNameMap);
             $this->iOrdIdx = [];

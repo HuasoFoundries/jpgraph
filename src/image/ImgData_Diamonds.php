@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 /**
@@ -12,6 +12,7 @@
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 namespace Amenadiel\JpGraph\Image;
 
 class ImgData_Diamonds extends ImgData
@@ -19,16 +20,16 @@ class ImgData_Diamonds extends ImgData
     protected $name   = 'Diamonds';
     protected $an     = [MARK_IMG_DIAMOND => 'imgdata'];
     protected $colors = ['lightblue', 'darkblue', 'gray',
-        'blue', 'pink', 'purple', 'red', 'yellow'];
+        'blue', 'pink', 'purple', 'red', 'yellow', ];
     protected $index = ['lightblue'     => 7, 'darkblue' => 2, 'gray'   => 6,
-        'blue'                          => 4, 'pink'     => 1, 'purple' => 5, 'red' => 0, 'yellow' => 3];
+        'blue'                          => 4, 'pink'     => 1, 'purple' => 5, 'red' => 0, 'yellow' => 3, ];
 
     protected $maxidx = 7;
     protected $imgdata;
 
     public function __construct()
     {
-        /**
+        /*
          * File: diam_red.png
          */
         $this->imgdata[0][0] = 668;
@@ -52,7 +53,7 @@ class ImgData_Diamonds extends ImgData
             'OFopmNWlP5uZd9uPWmUoxvK9ilO9NtBo6mS7KkZD0fOJYqgGBU' .
             'S/T7OKCAA9tfsFOicXcbxt29cAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: diam_pink.png
          */
         $this->imgdata[1][0] = 262;
@@ -66,7 +67,7 @@ class ImgData_Diamonds extends ImgData
             'OBmFk9HQGA2N0ZEIz5HX+h/jailYpfz4dAAAAABJRU5ErkJggg' .
             '==';
 
-        /**
+        /*
          * File: diam_blue.png
          */
         $this->imgdata[2][0] = 662;
@@ -90,7 +91,7 @@ class ImgData_Diamonds extends ImgData
             '5R97g+FKKyGKkTNKesXPJTZXOFIrUoKiypcTQVHjK4g8H2dWEQ' .
             'B8bvUDLSQXSr41rmEAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: diam_yellow.png
          */
         $this->imgdata[3][0] = 262;
@@ -104,7 +105,7 @@ class ImgData_Diamonds extends ImgData
             'OBmFk9HQGA2N0ZEIz5HX+h/jailYpfz4dAAAAABJRU5ErkJggg' .
             '==';
 
-        /**
+        /*
          * File: diam_lightblue.png
          */
         $this->imgdata[4][0] = 671;
@@ -128,7 +129,7 @@ class ImgData_Diamonds extends ImgData
             'KEAaR08qCeuSnx2a8zIPWqUowtKHSRK91rAw0elmVYQFVc8mhq' .
             '7p5RD7Ps3IIwA9sfsFxFUX6eZ4Zh4AAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: diam_purple.png
          */
         $this->imgdata[5][0] = 657;
@@ -152,7 +153,7 @@ class ImgData_Diamonds extends ImgData
             'WKUoeG3MoXRa/wjLHGLodwZcotPqjsYngnWslRBZH91hWTbpD2' .
             'EdF1ECWW1SAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: diam_gray.png
          */
         $this->imgdata[6][0] = 262;
@@ -166,7 +167,7 @@ class ImgData_Diamonds extends ImgData
             'OBmFk9HQGA2N0ZEIz5HX+h/jailYpfz4dAAAAABJRU5ErkJggg' .
             '==';
 
-        /**
+        /*
          * File: diam_blgr.png
          */
         $this->imgdata[7][0] = 262;

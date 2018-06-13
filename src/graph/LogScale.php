@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_LOG.PHP
  * // Description: Log scale plot extension for JpGraph
  * // Created:     2001-01-08
@@ -26,7 +26,11 @@ define('LOGLABELS_MAGNITUDE', 1);
 class LogScale extends LinearScale
 {
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $min
+     * @param mixed $max
+     * @param mixed $type
      */
     // Log scale is specified using the log of min and max
     public function __construct($min, $max, $type = 'y')
@@ -37,7 +41,9 @@ class LogScale extends LinearScale
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $a
      */
     // Translate between world and screen
     public function Translate($a)
@@ -139,7 +145,7 @@ class LogScale extends LinearScale
         $this->Update($img, $smin, $smax);
     }
 
-    /**
+    /*
      * PRIVATE METHODS
      */
 } // @class

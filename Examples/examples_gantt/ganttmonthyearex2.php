@@ -1,5 +1,8 @@
 <?php
-// Gantt example
+
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -42,9 +45,9 @@ $graph->scale->actinfo->vgrid->SetColor('gray');
 $data = [
     [0, ['Pre-study', '102 days', "23 Nov '01", "1 Mar '02"], '2001-11-23', '2002-03-1', FF_ARIAL, FS_NORMAL, 8],
     [1, ['Prototype', '21 days', "26 Oct '01", "16 Nov '01"],
-        '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8],
+        '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8, ],
     [2, ['Report', '12 days', "1 Mar '02", "13 Mar '02"],
-        '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8],
+        '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8, ],
 ];
 
 // Create the bars and add them to the gantt chart

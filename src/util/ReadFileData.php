@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -21,7 +21,11 @@ class ReadFileData
      * // file will be discarded.
      * //
      * // Returns:
-     * // The number of data values read on success, FALSE on failure
+     * // The number of data values read on success, FALSE on failure.
+     *
+     * @param mixed $aFile
+     * @param mixed $aSepChar
+     * @param mixed $aMaxLineLength
      */
     public static function FromCSV($aFile, &$aData, $aSepChar = ',', $aMaxLineLength = 1024)
     {
@@ -39,7 +43,7 @@ class ReadFileData
 
         // Now make sure that all data is numeric. By default
         // all data is read as strings
-        $n     = count($tmp);
+        $n     = safe_count($tmp);
         $aData = [];
         $cnt   = 0;
         for ($i = 0; $i < $n; ++$i) {
@@ -69,7 +73,10 @@ class ReadFileData
      * // 'escape'        => '\',   # PHP >= 5.3 only
      * //
      * // Returns:
-     * // The number of lines read on success, FALSE on failure
+     * // The number of lines read on success, FALSE on failure.
+     *
+     * @param mixed $aFile
+     * @param mixed $aOptions
      */
     public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {
@@ -114,10 +121,10 @@ class ReadFileData
         }
 
         $num_lines = 0;
-        $num_cols  = count($aLine);
+        $num_cols  = safe_count($aLine);
 
         while ($aLine !== false) {
-            if (is_array($aLine) && count($aLine) != $num_cols) {
+            if (is_array($aLine) && safe_count($aLine) != $num_cols) {
                 JpGraphError::RaiseL(24004);
                 // 'ReadCSV2: Column count mismatch in %s line %d'
             }
@@ -170,7 +177,7 @@ class ReadFileData
             $aCol2[] = (float) (trim($split[1]));
         }
 
-        return count($lines);
+        return safe_count($lines);
     }
 
     // Read data from one columns in a plain text file
@@ -184,7 +191,7 @@ class ReadFileData
             $aCol1[] = (float) (trim($datarow));
         }
 
-        return count($lines);
+        return safe_count($lines);
     }
 
     public static function FromMatrix($aFile, $aSepChar = ' ')

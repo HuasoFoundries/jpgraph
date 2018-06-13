@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -77,7 +77,7 @@ class PolarGraph extends Graph
     // Private methods
     public function GetPlotsMax()
     {
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
         $m = $this->plots[0]->Max();
         $i = 1;
         while ($i < $n) {
@@ -109,7 +109,7 @@ class PolarGraph extends Graph
         $this->iHasStroked = true;
 
         //Check if we should autoscale axis
-        if (!$this->scale->IsSpecified() && count($this->plots) > 0) {
+        if (!$this->scale->IsSpecified() && safe_count($this->plots) > 0) {
             $max = $this->GetPlotsMax();
             $t1  = $this->img->plotwidth;
             $this->img->plotwidth /= 2;
@@ -166,7 +166,7 @@ class PolarGraph extends Graph
         }
 
         // Stroke all plots for Y1 axis
-        for ($i = 0; $i < count($this->plots); ++$i) {
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
             $this->plots[$i]->Stroke($this->img, $this->scale);
         }
 
@@ -220,7 +220,7 @@ class PolarGraph extends Graph
             $this->StrokeTitles();
         }
 
-        for ($i = 0; $i < count($this->plots); ++$i) {
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
             $this->plots[$i]->Legend($this);
         }
 

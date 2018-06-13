@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -87,7 +87,9 @@ class PlotLine
     }
 
     /**
-     * PRIVATE METHODS
+     * PRIVATE METHODS.
+     *
+     * @param mixed $graph
      */
     public function DoLegend($graph)
     {

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_ERRHANDLER.PHP
  * // Description: Error handler class together with handling of localized
  * //              error messages. All localized error messages are stored

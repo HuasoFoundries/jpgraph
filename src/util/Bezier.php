@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -26,8 +26,8 @@ class Bezier
     public function __construct($datax, $datay, $attraction_factor = 1)
     {
         // Adding control point multiple time will raise their attraction power over the curve
-        $this->n = count($datax);
-        if ($this->n !== count($datay)) {
+        $this->n = safe_count($datax);
+        if ($this->n !== safe_count($datay)) {
             JpGraphError::RaiseL(19003);
             //('Bezier: Number of X and Y coordinates must be the same');
         }

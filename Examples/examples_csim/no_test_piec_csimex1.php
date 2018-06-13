@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // $Id: piec_csimex1.php,v 1.1.2.1 2003/10/09 21:05:39 aditus Exp $
@@ -56,7 +56,7 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
 $lbl = ["adam\n%.1f%%", "bertil\n%.1f%%", "johan\n%.1f%%",
-    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%"];
+    "peter\n%.1f%%", "daniel\n%.1f%%", "erik\n%.1f%%", ];
 $p1->SetLabels($lbl);
 
 // Uncomment this line to remove the borders around the slices
@@ -70,7 +70,7 @@ $p1->ExplodeAll(15);
 
 // Setup the CSIM targets
 $targ = ['piec_csimex1.php#1', 'piec_csimex1.php#2', 'piec_csimex1.php#3',
-    'piec_csimex1.php#4', 'piec_csimex1.php#5', 'piec_csimex1.php#6'];
+    'piec_csimex1.php#4', 'piec_csimex1.php#5', 'piec_csimex1.php#6', ];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $p1->SetCSIMTargets($targ, $alts);
 $p1->SetMidCSIM('piec_csimex1.php#7', 'Center');

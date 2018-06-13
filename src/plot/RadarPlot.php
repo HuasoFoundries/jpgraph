@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -27,7 +27,9 @@ class RadarPlot
     private $linestyle  = 'solid';
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $data
      */
     public function __construct($data)
     {
@@ -95,7 +97,7 @@ class RadarPlot
 
     public function Stroke($img, $pos, $scale, $startangle)
     {
-        $nbrpnts = count($this->data);
+        $nbrpnts = safe_count($this->data);
         $astep   = 2 * M_PI / $nbrpnts;
         $a       = $startangle;
 
@@ -158,7 +160,7 @@ class RadarPlot
 
     public function GetCount()
     {
-        return count($this->data);
+        return safe_count($this->data);
     }
 
     public function Legend($graph)

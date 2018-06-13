@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -9,7 +9,7 @@ namespace Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_TABLE.PHP
  * // Description: Classes to create basic tables of data
  * // Created:     2006-01-25

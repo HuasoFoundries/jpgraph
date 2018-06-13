@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -26,7 +26,7 @@ $graph->title->SetFont(FF_FONT1, FS_BOLD);
 // Client side image map targets
 $targ = ['pie_csimex1.php#1', 'pie_csimex1.php#2', 'pie_csimex1.php#3',
     'pie_csimex1.php#4', 'pie_csimex1.php#5', 'pie_csimex1.php#6',
-    'pie_csimex1.php#7', 'pie_csimex1.php#8', 'pie_csimex1.php#9'];
+    'pie_csimex1.php#7', 'pie_csimex1.php#8', 'pie_csimex1.php#9', ];
 
 // Strings to put as "alts" (and "title" value)
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];

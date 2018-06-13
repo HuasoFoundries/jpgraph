@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -19,7 +19,13 @@ class GanttVLine extends GanttPlotObject
     private $iEndRow      = -1;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aDate
+     * @param mixed $aTitle
+     * @param mixed $aColor
+     * @param mixed $aWeight
+     * @param mixed $aStyle
      */
     public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
@@ -34,7 +40,10 @@ class GanttVLine extends GanttPlotObject
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aStart
+     * @param mixed $aEnd
      */
     // Set start and end rows for the VLine. By default the entire heigh of the
     // Gantt chart is used

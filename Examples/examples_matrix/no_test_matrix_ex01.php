@@ -1,10 +1,9 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_matrix.php';
 
@@ -31,7 +30,7 @@ $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $mp  = [];
 $n   = 4;
 $pos = [0.3, 0.33, 0.8, 0.68,
-    0.3, 0.68, 0.8, 0.33];
+    0.3, 0.68, 0.8, 0.33, ];
 for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);
     $mp[$i]->colormap->SetMap($i);

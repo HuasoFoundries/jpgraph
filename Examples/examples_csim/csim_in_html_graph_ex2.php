@@ -1,9 +1,12 @@
 <?php
-// Example of pie with center circle
+
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 define('DEBUGMODE', true);
-ini_set('display_errors', intval(DEBUGMODE));
-ini_set('display_startup_errors', intval(DEBUGMODE));
+ini_set('display_errors', (int) DEBUGMODE);
+ini_set('display_startup_errors', (int) DEBUGMODE);
 if (DEBUGMODE) {
     error_reporting(E_ALL);
 }
@@ -53,7 +56,7 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
 $lbl = ["Jan\n%.1f%%", "Feb\n%.1f%%", "March\n%.1f%%",
-    "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%"];
+    "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%", ];
 $p1->SetLabels($lbl);
 
 // Add drop shadow to slices

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -17,13 +17,16 @@ class ErrorLinePlot extends ErrorPlot
     public $line;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
         // Calculate line coordinates as the average of the error limits
-        $n = count($datay);
+        $n = safe_count($datay);
         for ($i = 0; $i < $n; $i += 2) {
             $ly[] = ($datay[$i] + $datay[$i + 1]) / 2;
         }
@@ -31,7 +34,9 @@ class ErrorLinePlot extends ErrorPlot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $graph
      */
     public function Legend($graph)
     {

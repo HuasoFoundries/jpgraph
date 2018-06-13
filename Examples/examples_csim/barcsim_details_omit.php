@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 if (empty($_GET['id'])) {
-    echo 'Incorrect argument(s) to script <b>'.basename(__FILE__).'</b>.';
+    echo 'Incorrect argument(s) to script <b>' . basename(__FILE__) . '</b>.';
 } else {
-    echo 'Some details on bar with id='.$_GET['id'];
+    echo 'Some details on bar with id=' . $_GET['id'];
 }

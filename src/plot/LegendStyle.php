@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -16,7 +16,7 @@ namespace Amenadiel\JpGraph\Plot;
  */
 
 /**
- * Determine how many compass directions to show
+ * Determine how many compass directions to show.
  */
 
 /**

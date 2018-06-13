@@ -14,9 +14,9 @@ die();*/
 <!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title> Image <?php echo($target); ?></title>
+<title> Image <?php echo $target; ?></title>
 </head>
 <body>
-<img src="<?php echo($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo($target); ?>" align="left">
+<img src="<?php echo($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
 </body>
 </html>

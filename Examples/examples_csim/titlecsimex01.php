@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 define('DEBUGMODE', true);
-ini_set('display_errors', intval(DEBUGMODE));
-ini_set('display_startup_errors', intval(DEBUGMODE));
+ini_set('display_errors', (int) DEBUGMODE);
+ini_set('display_startup_errors', (int) DEBUGMODE);
 if (DEBUGMODE) {
     error_reporting(E_ALL);
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 /**
@@ -37,7 +37,7 @@
  * //   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
  * //   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
  * //   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
- * //
+ * //.
  */
 // define('CACHE_DIR','/tmp/jpgraph_cache/');
 // define('TTF_DIR','/usr/share/fonts/TrueType/');
@@ -55,7 +55,7 @@
  * // directory from where the image script is executed and store all files
  * // there. As ususal this directory must be writeable by the PHP process.
  * define('CSIMCACHE_DIR', 'csimcache/');
- * define('CSIMCACHE_HTTP_DIR', 'csimcache/');
+ * define('CSIMCACHE_HTTP_DIR', 'csimcache/');.
  *
  * /**
  * Various JpGraph Settings. Adjust accordingly to your
@@ -117,7 +117,7 @@ define('ERR_DEPRECATED', true);
 // GD function thinks.
 define('USE_LIBRARY_IMAGETTFBBOX', true);
 
-/**
+/*
  * The following constants should rarely have to be changed !
  */
 // What group should the cached file belong to

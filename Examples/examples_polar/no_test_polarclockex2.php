@@ -1,10 +1,9 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_polar.php';
 
@@ -15,7 +14,7 @@ $data = [
     50, 110, 60, 140, 70, 170, 80, 190,
     85, 195, 90, 200, 95, 195, 100, 190,
     110, 170, 120, 140, 130, 110, 140, 60,
-    150, 25, 170, 2, 180, 0];
+    150, 25, 170, 2, 180, 0, ];
 
 //$data2 = array(0,0,50,2,60,30,65,90,60,120,50,150,20,170,0,180);
 

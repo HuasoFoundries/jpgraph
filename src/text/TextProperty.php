@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -28,7 +28,9 @@ class TextProperty
     private $iVAlign      = 'bottom';
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aTxt
      */
     public function __construct($aTxt = '')
     {
@@ -36,7 +38,9 @@ class TextProperty
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aTxt
      */
     public function Set($aTxt)
     {
@@ -123,7 +127,7 @@ class TextProperty
 
     public function SetColumnFonts($aFontArray)
     {
-        if (!is_array($aFontArray) || count($aFontArray[0]) != 3) {
+        if (!is_array($aFontArray) || safe_count($aFontArray[0]) != 3) {
             Util\JpGraphError::RaiseL(6033);
             // 'Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)'
         }
@@ -148,13 +152,13 @@ class TextProperty
             }
 
             $tmp = preg_split('/\t/', $this->iText);
-            if (count($tmp) <= 1 || !$aUseTabs) {
+            if (safe_count($tmp) <= 1 || !$aUseTabs) {
                 $w = $aImg->GetTextWidth($this->iText);
 
                 return $w + 2 * $extra_margin;
             }
             $tot = 0;
-            $n   = count($tmp);
+            $n   = safe_count($tmp);
             for ($i = 0; $i < $n; ++$i) {
                 $res[$i] = $aImg->GetTextWidth($tmp[$i]);
                 $tot += $res[$i] * $aTabExtraMargin;
@@ -169,8 +173,8 @@ class TextProperty
         if (is_array($this->iText)) {
             // Must be an array of texts. In this case we return the sum of the
             // length + a fixed margin of 4 pixels on each text string
-            $n  = count($this->iText);
-            $nf = count($this->iFontArray);
+            $n  = safe_count($this->iText);
+            $nf = safe_count($this->iFontArray);
             for ($i = 0, $w = 0; $i < $n; ++$i) {
                 if ($i < $nf) {
                     $aImg->SetFont($this->iFontArray[$i][0], $this->iFontArray[$i][1], $this->iFontArray[$i][2]);
@@ -200,8 +204,8 @@ class TextProperty
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         if (is_array($this->iText)) {
-            $n  = count($this->iText);
-            $nf = count($this->iFontArray);
+            $n  = safe_count($this->iText);
+            $nf = safe_count($this->iFontArray);
             for ($i = 0, $w = []; $i < $n; ++$i) {
                 $tmp = $this->iText[$i];
                 if (is_string($tmp)) {
@@ -228,7 +232,7 @@ class TextProperty
     // Get total height of text
     public function GetHeight($aImg)
     {
-        $nf        = count($this->iFontArray);
+        $nf        = safe_count($this->iFontArray);
         $maxheight = -1;
 
         if ($nf > 0) {
@@ -274,7 +278,7 @@ class TextProperty
                     }
 
                     $aImg->StrokeText($aX, $aY, $this->iText);
-                } elseif (is_array($this->iText) && ($n = count($this->iText)) > 0) {
+                } elseif (is_array($this->iText) && ($n = safe_count($this->iText)) > 0) {
                     $ax = is_array($aX);
                     $ay = is_array($aY);
                     if ($ax && $ay) {
@@ -287,14 +291,14 @@ class TextProperty
                         $aX = array_fill(0, $n, $aX);
                         $aY = array_fill(0, $n, $aY);
                     }
-                    $n = min($n, count($aX));
-                    $n = min($n, count($aY));
+                    $n = min($n, safe_count($aX));
+                    $n = min($n, safe_count($aY));
                     for ($i = 0; $i < $n; ++$i) {
                         $tmp = $this->iText[$i];
                         if (is_object($tmp)) {
                             $tmp->Stroke($aImg, $aX[$i], $aY[$i]);
                         } else {
-                            if ($i < count($this->iFontArray)) {
+                            if ($i < safe_count($this->iFontArray)) {
                                 $font = $this->iFontArray[$i];
                                 $aImg->SetFont($font[0], $font[1], $font[2]);
                             } else {
@@ -306,9 +310,9 @@ class TextProperty
                 }
             } else {
                 $tmp = preg_split('/\t/', $this->iText);
-                $n   = min(count($tmp), count($aX));
+                $n   = min(safe_count($tmp), safe_count($aX));
                 for ($i = 0; $i < $n; ++$i) {
-                    if ($i < count($this->iFontArray)) {
+                    if ($i < safe_count($this->iFontArray)) {
                         $font = $this->iFontArray[$i];
                         $aImg->SetFont($font[0], $font[1], $font[2]);
                     } else {

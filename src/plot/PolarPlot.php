@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_POLAR.PHP
  * // Description: Polar plot extension for JpGraph
  * // Created:     2003-02-02
@@ -54,7 +54,7 @@ class PolarPlot
 
     public function __construct($aData)
     {
-        $n = count($aData);
+        $n = safe_count($aData);
         if ($n & 1) {
             Util\JpGraphError::RaiseL(17001);
             //('Polar plots must have an even number of data point. Each data point is a tuple (angle,radius).');

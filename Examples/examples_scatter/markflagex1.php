@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -9,7 +9,7 @@ use Amenadiel\JpGraph\Plot;
 
 $datay = [
     [4, 26, 15, 44],
-    [20, 51, 32, 20]];
+    [20, 51, 32, 20], ];
 
 // Setup the graph
 $__width  = 300;

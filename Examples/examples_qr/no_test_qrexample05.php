@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
-    // Include the library
+// Include the library
     require_once 'jpgraph/QR/qrencoder.inc.php';
 
     // Data to be encoded

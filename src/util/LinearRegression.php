@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -23,7 +23,7 @@ class LinearRegression
 
     public function __construct($aDataX, $aDataY)
     {
-        if (count($aDataX) !== count($aDataY)) {
+        if (safe_count($aDataX) !== safe_count($aDataY)) {
             JpGraph::Raise('LinearRegression: X and Y data array must be of equal length.');
         }
         $this->ix = $aDataX;
@@ -34,7 +34,7 @@ class LinearRegression
     {
         $this->icalculated = true;
 
-        $n   = count($this->ix);
+        $n   = safe_count($this->ix);
         $sx2 = 0;
         $sy2 = 0;
         $sxy = 0;

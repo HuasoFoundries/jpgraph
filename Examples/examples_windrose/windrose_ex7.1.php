@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -44,7 +44,7 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Ｓ　　　南
 // SＥ　　南東
 $jp_CompassLbl = ['東', '', '北東', '', '北', '', '北西', '',
-    '西', '', '南西', '', '南', '', '南東', ''];
+    '西', '', '南西', '', '南', '', '南東', '', ];
 $wp->SetCompassLabels($jp_CompassLbl);
 #$wp->SetFont(FF_MINCHO,FS_NORMAL,15);
 

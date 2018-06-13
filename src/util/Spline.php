@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -35,9 +35,9 @@ class Spline
         $this->xdata = $xdata;
         $this->ydata = $ydata;
 
-        $n       = count($ydata);
+        $n       = safe_count($ydata);
         $this->n = $n;
-        if ($this->n !== count($xdata)) {
+        if ($this->n !== safe_count($xdata)) {
             JpGraphError::RaiseL(19001);
             //('Spline: Number of X and Y coordinates must be the same');
         }

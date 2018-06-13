@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Text;
 
 $datay = [2, 3, 5, 8, 12, 6, 3];
 $datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
-    '1600x1200(32)'];
+    '1600x1200(32)', ];
 
 // Size of graph
 $__width  = 300;

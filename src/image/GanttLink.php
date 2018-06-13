@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -121,7 +121,7 @@ class GanttLink
                         // the left on the activity
                         $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2];
+                            $x2, $midy, $x2, $y2, ];
 
                         break;
                     case 3:
@@ -129,7 +129,7 @@ class GanttLink
                             $c = [$x1, $y1, $x1, $midy,
                                 $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2];
+                                $x2, $y2, ];
                             $arrowtype = ARROW_RIGHT;
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
@@ -181,7 +181,7 @@ class GanttLink
                         // Always extend out horizontally a bit from the first point
                         $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
                             $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2];
+                            $x2, $midy, $x2, $y2, ];
 
                         break;
                     case 3:
@@ -189,7 +189,7 @@ class GanttLink
                             $arrowtype = ARROW_RIGHT;
                             $c         = [$x1, $y1, $x1, $midy, $x2 - $this->iPathExtend, $midy,
                                 $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2];
+                                $x2, $y2, ];
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
@@ -29,5 +29,5 @@ if ($back == BACKEND_IMAGE) {
     $backend->Stroke($data);
 } else {
     $str = $backend->Stroke($data);
-    echo '<pre>'.$str.'</pre>';
+    echo '<pre>' . $str . '</pre>';
 }

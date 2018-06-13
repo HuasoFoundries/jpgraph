@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -17,7 +17,7 @@ class LinkArrow
     private $ix;
     private $iy;
     private $isizespec = [
-        [2, 3], [3, 5], [3, 8], [6, 15], [8, 22]];
+        [2, 3], [3, 5], [3, 8], [6, 15], [8, 22], ];
     private $iDirection = ARROW_DOWN;
     private $iType      = ARROWT_SOLID;
     private $iSize      = ARROW_S2;

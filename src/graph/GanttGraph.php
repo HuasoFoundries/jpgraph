@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -35,7 +35,13 @@ class GanttGraph extends Graph
 
     /**
      * CONSTRUCTOR
-     * // Create a new gantt graph
+     * // Create a new gantt graph.
+     *
+     * @param mixed $aWidth
+     * @param mixed $aHeight
+     * @param mixed $aCachedName
+     * @param mixed $aTimeOut
+     * @param mixed $aInline
      */
     public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
@@ -65,7 +71,10 @@ class GanttGraph extends Graph
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aFont
+     * @param mixed $aSize
      */
     public function SetSimpleFont($aFont, $aSize)
     {
@@ -83,7 +92,7 @@ class GanttGraph extends Graph
     // A utility function to help create basic Gantt charts
     public function CreateSimple($data, $constrains = [], $progress = [])
     {
-        $num = count($data);
+        $num = safe_count($data);
         for ($i = 0; $i < $num; ++$i) {
             switch ($data[$i][1]) {
                 case ACTYPE_GROUP:
@@ -113,9 +122,9 @@ class GanttGraph extends Graph
                     $a->SetPattern($this->iSimpleStyle, $this->iSimpleColor);
                     $a->SetFillColor($this->iSimpleBkgColor);
                     // Check if this activity should have a constrain line
-                    $n = count($constrains);
+                    $n = safe_count($constrains);
                     for ($j = 0; $j < $n; ++$j) {
-                        if (empty($constrains[$j]) || (count($constrains[$j]) != 3)) {
+                        if (empty($constrains[$j]) || (safe_count($constrains[$j]) != 3)) {
                             Util\JpGraphError::RaiseL(6003, $j);
                             //("Invalid format for Constrain parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)");
                         }
@@ -125,9 +134,9 @@ class GanttGraph extends Graph
                     }
 
                     // Check if this activity have a progress bar
-                    $n = count($progress);
+                    $n = safe_count($progress);
                     for ($j = 0; $j < $n; ++$j) {
-                        if (empty($progress[$j]) || (count($progress[$j]) != 2)) {
+                        if (empty($progress[$j]) || (safe_count($progress[$j]) != 2)) {
                             Util\JpGraphError::RaiseL(6004, $j);
                             //("Invalid format for Progress parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Progress)");
                         }
@@ -203,14 +212,14 @@ class GanttGraph extends Graph
     // Add a new Gantt object
     public function Add($aObject)
     {
-        if (is_array($aObject) && count($aObject) > 0) {
+        if (is_array($aObject) && safe_count($aObject) > 0) {
             $cl = $aObject[0];
             if (($cl instanceof Plot\IconPlot)) {
                 $this->AddIcon($aObject);
             } elseif (($cl instanceof Text\Text)) {
                 $this->AddText($aObject);
             } else {
-                $n = count($aObject);
+                $n = safe_count($aObject);
                 for ($i = 0; $i < $n; ++$i) {
                     $this->iObj[] = $aObject[$i];
                 }
@@ -230,7 +239,7 @@ class GanttGraph extends Graph
     {
         // Stroke any user added text objects
         if ($this->texts != null) {
-            $n = count($this->texts);
+            $n = safe_count($this->texts);
             for ($i = 0; $i < $n; ++$i) {
                 if ($this->texts[$i]->iScalePosX !== null && $this->texts[$i]->iScalePosY !== null) {
                     $x = $this->scale->TranslateDate($this->texts[$i]->iScalePosX);
@@ -277,7 +286,7 @@ class GanttGraph extends Graph
         $m = 10;
         if ($this->iObj != null) {
             $marg = $this->scale->actinfo->iLeftColMargin + $this->scale->actinfo->iRightColMargin;
-            $n    = count($this->iObj);
+            $n    = safe_count($this->iObj);
             for ($i = 0; $i < $n; ++$i) {
                 if (!empty($this->iObj[$i]->title)) {
                     if ($this->iObj[$i]->title->HasTabs()) {
@@ -298,7 +307,7 @@ class GanttGraph extends Graph
     {
         $m = 10;
         if ($this->iObj != null) {
-            $n = count($this->iObj);
+            $n = safe_count($this->iObj);
             // We can not include the title of GnttVLine since that title is stroked at the bottom
             // of the Gantt bar and not in the activity title columns
             for ($i = 0; $i < $n; ++$i) {
@@ -316,7 +325,7 @@ class GanttGraph extends Graph
         $m = 0;
         if ($this->iObj != null) {
             $m = $this->iObj[0]->GetAbsHeight($this->img);
-            $n = count($this->iObj);
+            $n = safe_count($this->iObj);
             for ($i = 1; $i < $n; ++$i) {
                 $m = max($m, $this->iObj[$i]->GetAbsHeight($this->img));
             }
@@ -331,7 +340,7 @@ class GanttGraph extends Graph
         $m = 1;
         if ($this->iObj != null) {
             $m = $this->iObj[0]->GetLineNbr();
-            $n = count($this->iObj);
+            $n = safe_count($this->iObj);
             for ($i = 1; $i < $n; ++$i) {
                 $m = max($m, $this->iObj[$i]->GetLineNbr());
             }
@@ -344,7 +353,7 @@ class GanttGraph extends Graph
     public function GetBarMinMax()
     {
         $start = 0;
-        $n     = count($this->iObj);
+        $n     = safe_count($this->iObj);
         while ($start < $n && $this->iObj[$start]->GetMaxDate() === false) {
             ++$start;
         }
@@ -401,7 +410,7 @@ class GanttGraph extends Graph
 
             // If there are any added Plot\GanttVLine we must make sure that the
             // bottom margin is wide enough to hold a title.
-            $n = count($this->iObj);
+            $n = safe_count($this->iObj);
             for ($i = 0; $i < $n; ++$i) {
                 if ($this->iObj[$i] instanceof Plot\GanttVLine) {
                     $bm = max($bm, $this->iObj[$i]->title->GetHeight($this->img) + 10);
@@ -674,7 +683,7 @@ class GanttGraph extends Graph
     // must walk through all the objects, sigh...
     public function GetMaxActInfoColWidth()
     {
-        $n = count($this->iObj);
+        $n = safe_count($this->iObj);
         if ($n == 0) {
             return;
         }
@@ -684,7 +693,7 @@ class GanttGraph extends Graph
 
         for ($i = 0; $i < $n; ++$i) {
             $tmp = $this->iObj[$i]->title->GetColWidth($this->img, $m);
-            $nn  = count($tmp);
+            $nn  = safe_count($tmp);
             for ($j = 0; $j < $nn; ++$j) {
                 if (empty($w[$j])) {
                     $w[$j] = $tmp[$j];
@@ -762,7 +771,7 @@ class GanttGraph extends Graph
         // Stroke Grid line
         $this->hgrid->Stroke($this->img, $this->scale);
 
-        $n = count($this->iObj);
+        $n = safe_count($this->iObj);
         for ($i = 0; $i < $n; ++$i) {
             //$this->iObj[$i]->SetLabelLeftMargin(round($maxwidth*$this->iLabelHMarginFactor/2));
             $this->iObj[$i]->Stroke($this->img, $this->scale);
@@ -813,7 +822,7 @@ class GanttGraph extends Graph
 
     public function StrokeConstrains()
     {
-        $n = count($this->iObj);
+        $n = safe_count($this->iObj);
 
         // Stroke all constrains
         for ($i = 0; $i < $n; ++$i) {
@@ -823,7 +832,7 @@ class GanttGraph extends Graph
                 continue;
             }
 
-            $numConstrains = count($this->iObj[$i]->constraints);
+            $numConstrains = safe_count($this->iObj[$i]->constraints);
 
             for ($k = 0; $k < $numConstrains; ++$k) {
                 $vpos = $this->iObj[$i]->constraints[$k]->iConstrainRow;
@@ -842,7 +851,7 @@ class GanttGraph extends Graph
                         //('You have specifed a constrain from row='.$this->iObj[$i]->iVPos.' to row='.$vpos.' which does not have any activity.');
                     }
                     $c2 = $this->iObj[$targetobj]->iConstrainPos;
-                    if (count($c1) == 4 && count($c2) == 4) {
+                    if (safe_count($c1) == 4 && safe_count($c2) == 4) {
                         switch ($this->iObj[$i]->constraints[$k]->iConstrainType) {
                             case CONSTRAIN_ENDSTART:
                                 if ($c1[1] < $c2[1]) {
@@ -909,7 +918,7 @@ class GanttGraph extends Graph
         $csim .= $this->subtitle->GetCSIMAreas();
         $csim .= $this->subsubtitle->GetCSIMAreas();
 
-        $n = count($this->iObj);
+        $n = safe_count($this->iObj);
         for ($i = $n - 1; $i >= 0; --$i) {
             $csim .= $this->iObj[$i]->GetCSIMArea();
         }

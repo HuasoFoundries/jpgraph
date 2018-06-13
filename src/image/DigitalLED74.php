@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_LED.PHP
  * // Description: Module to generate Dotted LED-like digits
  * // Created:     2006-11-26
@@ -261,7 +261,7 @@ class DigitalLED74
 
     public function StrokeNumber($aValStr, $aColor = 0, $aFileName = '')
     {
-        if ($aColor < 0 || $aColor >= sizeof($this->iColorSchema)) {
+        if ($aColor < 0 || $aColor >= safe_count($this->iColorSchema)) {
             $aColor = 0;
         }
 

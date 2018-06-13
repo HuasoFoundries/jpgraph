@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -17,14 +17,17 @@ class LineErrorPlot extends ErrorPlot
     public $line;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     // Data is (val, errdeltamin, errdeltamax)
     public function __construct($datay, $datax = false)
     {
         $ly = [];
         $ey = [];
-        $n  = count($datay);
+        $n  = safe_count($datay);
         if ($n % 3 != 0) {
             Util\JpGraphError::RaiseL(4002);
             //('Error in input data to LineErrorPlot. Number of data points must be a multiple of 3');
@@ -39,7 +42,9 @@ class LineErrorPlot extends ErrorPlot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $graph
      */
     public function Legend($graph)
     {

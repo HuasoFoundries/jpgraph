@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -27,7 +27,10 @@ class ErrorPlot extends Plot
     private $errwidth = 2;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
@@ -36,7 +39,9 @@ class ErrorPlot extends Plot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $graph
      */
     // Gets called before any axis are stroked
     public function PreStrokeAdjust($graph)
@@ -57,16 +62,16 @@ class ErrorPlot extends Plot
     // Method description
     public function Stroke($img, $xscale, $yscale)
     {
-        $numpoints = count($this->coords[0]) / 2;
+        $numpoints = safe_count($this->coords[0]) / 2;
         $img->SetColor($this->color);
         $img->SetLineWeight($this->weight);
 
         if (isset($this->coords[1])) {
-            if (count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, count($this->coords[1]), $numpoints);
+            if (safe_count($this->coords[1]) != $numpoints) {
+                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $numpoints);
             }
 
-            //("Number of X and Y points are not equal. Number of X-points:".count($this->coords[1])." Number of Y-points:$numpoints");
+            //("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
             else {
                 $exist_x = true;
             }

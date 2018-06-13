@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -355,7 +355,7 @@ class Graph
         if ($aPlot == null) {
             Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
-        if (is_array($aPlot) && count($aPlot) > 0) {
+        if (is_array($aPlot) && safe_count($aPlot) > 0) {
             $cl = $aPlot[0];
         } else {
             $cl = $aPlot;
@@ -387,7 +387,7 @@ class Graph
     public function AddTable($aTable)
     {
         if (is_array($aTable)) {
-            for ($i = 0; $i < count($aTable); ++$i) {
+            for ($i = 0; $i < safe_count($aTable); ++$i) {
                 $this->iTables[] = $aTable[$i];
             }
         } else {
@@ -398,7 +398,7 @@ class Graph
     public function AddIcon($aIcon)
     {
         if (is_array($aIcon)) {
-            for ($i = 0; $i < count($aIcon); ++$i) {
+            for ($i = 0; $i < safe_count($aIcon); ++$i) {
                 $this->iIcons[] = $aIcon[$i];
             }
         } else {
@@ -413,7 +413,7 @@ class Graph
             Util\JpGraphError::RaiseL(25011); //("Graph::AddY2() You tried to add a null plot to the graph.");
         }
 
-        if (is_array($aPlot) && count($aPlot) > 0) {
+        if (is_array($aPlot) && safe_count($aPlot) > 0) {
             $cl = $aPlot[0];
         } else {
             $cl = $aPlot;
@@ -441,7 +441,7 @@ class Graph
             Util\JpGraphError::RaiseL(25012); //("Graph::AddYN() You tried to add a null plot to the graph.");
         }
 
-        if (is_array($aPlot) && count($aPlot) > 0) {
+        if (is_array($aPlot) && safe_count($aPlot) > 0) {
             $cl = $aPlot[0];
         } else {
             $cl = $aPlot;
@@ -468,7 +468,7 @@ class Graph
         }
         if ($aToY2) {
             if (is_array($aTxt)) {
-                for ($i = 0; $i < count($aTxt); ++$i) {
+                for ($i = 0; $i < safe_count($aTxt); ++$i) {
                     $this->y2texts[] = $aTxt[$i];
                 }
             } else {
@@ -476,7 +476,7 @@ class Graph
             }
         } else {
             if (is_array($aTxt)) {
-                for ($i = 0; $i < count($aTxt); ++$i) {
+                for ($i = 0; $i < safe_count($aTxt); ++$i) {
                     $this->texts[] = $aTxt[$i];
                 }
             } else {
@@ -494,7 +494,7 @@ class Graph
 
         if ($aToY2) {
             if (is_array($aLine)) {
-                for ($i = 0; $i < count($aLine); ++$i) {
+                for ($i = 0; $i < safe_count($aLine); ++$i) {
                     //$this->y2lines[]=$aLine[$i];
                     $this->y2plots[] = $aLine[$i];
                 }
@@ -504,7 +504,7 @@ class Graph
             }
         } else {
             if (is_array($aLine)) {
-                for ($i = 0; $i < count($aLine); ++$i) {
+                for ($i = 0; $i < safe_count($aLine); ++$i) {
                     //$this->lines[]=$aLine[$i];
                     $this->plots[] = $aLine[$i];
                 }
@@ -524,7 +524,7 @@ class Graph
 
         if ($aToY2) {
             if (is_array($aBand)) {
-                for ($i = 0; $i < count($aBand); ++$i) {
+                for ($i = 0; $i < safe_count($aBand); ++$i) {
                     $this->y2bands[] = $aBand[$i];
                 }
             } else {
@@ -532,7 +532,7 @@ class Graph
             }
         } else {
             if (is_array($aBand)) {
-                for ($i = 0; $i < count($aBand); ++$i) {
+                for ($i = 0; $i < safe_count($aBand); ++$i) {
                     $this->bands[] = $aBand[$i];
                 }
             } else {
@@ -845,14 +845,14 @@ class Graph
         }
 
         if ($this->texts != null) {
-            $n = count($this->texts);
+            $n = safe_count($this->texts);
             for ($i = 0; $i < $n; ++$i) {
                 $csim .= $this->texts[$i]->GetCSIMAreas();
             }
         }
 
         if ($this->y2texts != null && $this->y2scale != null) {
-            $n = count($this->y2texts);
+            $n = safe_count($this->y2texts);
             for ($i = 0; $i < $n; ++$i) {
                 $csim .= $this->y2texts[$i]->GetCSIMAreas();
             }
@@ -863,25 +863,25 @@ class Graph
             $csim .= $this->xaxis->title->GetCSIMAreas();
         }
 
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
             $csim .= $this->plots[$i]->GetCSIMareas();
         }
 
-        $n = count($this->y2plots);
+        $n = safe_count($this->y2plots);
         for ($i = 0; $i < $n; ++$i) {
             $csim .= $this->y2plots[$i]->GetCSIMareas();
         }
 
-        $n = count($this->ynaxis);
+        $n = safe_count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
-            $m = count($this->ynplots[$i]);
+            $m = safe_count($this->ynplots[$i]);
             for ($j = 0; $j < $m; ++$j) {
                 $csim .= $this->ynplots[$i][$j]->GetCSIMareas();
             }
         }
 
-        $n = count($this->iTables);
+        $n = safe_count($this->iTables);
         for ($i = 0; $i < $n; ++$i) {
             $csim .= $this->iTables[$i]->GetCSIMareas();
         }
@@ -996,7 +996,7 @@ class Graph
     {
         if ($aCSIMName == '') {
             // create a random map name
-            srand((integer) (microtime() * 1000000));
+            srand((int) (microtime() * 1000000));
             $r         = rand(0, 100000);
             $aCSIMName = '__mapname' . $r . '__';
         }
@@ -1084,7 +1084,7 @@ class Graph
         } else {
             $txts = $this->texts;
         }
-        $n   = count($txts);
+        $n   = safe_count($txts);
         $min = null;
         $max = null;
         for ($i = 0; $i < $n; ++$i) {
@@ -1111,7 +1111,7 @@ class Graph
         } else {
             $txts = $this->texts;
         }
-        $n   = count($txts);
+        $n   = safe_count($txts);
         $min = null;
         $max = null;
         for ($i = 0; $i < $n; ++$i) {
@@ -1140,7 +1140,7 @@ class Graph
         // Some plots, e.g. PlotLine should not affect the scale
         // and will return (null,null). We should ignore those
         // values.
-        while (($min === null || $max === null) && ($i < count($this->plots) - 1)) {
+        while (($min === null || $max === null) && ($i < safe_count($this->plots) - 1)) {
             ++$i;
             list($min, $ymin) = $this->plots[$i]->Min();
             list($max, $ymax) = $this->plots[$i]->Max();
@@ -1165,7 +1165,7 @@ class Graph
             }
         }
 
-        $n = count($this->ynaxis);
+        $n = safe_count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynaxis[$i] != null) {
                 foreach ($this->ynplots[$i] as $p) {
@@ -1275,7 +1275,7 @@ class Graph
         if (!$this->xscale->IsSpecified()) {
             if (substr($this->axtype, 0, 4) == 'text') {
                 $max = 0;
-                $n   = count($aPlots);
+                $n   = safe_count($aPlots);
 
                 for ($i = 0; $i < $n; ++$i) {
                     $p = $aPlots[$i];
@@ -1300,7 +1300,7 @@ class Graph
                         $max = max($max, $p->numpoints - 1);
                     }
                 }
-                $n = count($this->ynaxis);
+                $n = safe_count($this->ynaxis);
                 for ($i = 0; $i < $n; ++$i) {
                     if ($this->ynaxis[$i] != null) {
                         foreach ($this->ynplots[$i] as $p) {
@@ -1381,7 +1381,7 @@ class Graph
             $this->y2axis->SetTitleSide(SIDE_RIGHT);
         }
 
-        $n      = count($this->ynaxis);
+        $n      = safe_count($this->ynaxis);
         $nY2adj = $this->y2axis != null ? $this->iYAxisDeltaPos : 0;
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynaxis[$i] != null) {
@@ -1397,7 +1397,7 @@ class Graph
     public function doAutoScaleYnAxis()
     {
         if ($this->y2scale != null) {
-            if (!$this->y2scale->IsSpecified() && count($this->y2plots) > 0) {
+            if (!$this->y2scale->IsSpecified() && safe_count($this->y2plots) > 0) {
                 list($min, $max) = $this->GetPlotsYMinMax($this->y2plots);
 
                 $lres = $this->GetLinesYMinMax($this->y2lines);
@@ -1445,10 +1445,10 @@ class Graph
         //
         // Autoscale the extra Y-axises
         //
-        $n = count($this->ynaxis);
+        $n = safe_count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynscale[$i] != null) {
-                if (!$this->ynscale[$i]->IsSpecified() && count($this->ynplots[$i]) > 0) {
+                if (!$this->ynscale[$i]->IsSpecified() && safe_count($this->ynplots[$i]) > 0) {
                     list($min, $max) = $this->GetPlotsYMinMax($this->ynplots[$i]);
                     $this->ynscale[$i]->AutoScale($this->img, $min, $max, $this->img->plotheight / $this->ytick_factor);
                 } elseif ($this->ynscale[$i]->IsSpecified() && ($this->ynscale[$i]->auto_ticks || !$this->ynscale[$i]->ticks->IsSpecified())) {
@@ -1485,7 +1485,7 @@ class Graph
     public function doAutoScaleYAxis()
     {
         //Check if we should autoscale y-axis
-        if (!$this->yscale->IsSpecified() && count($this->plots) > 0) {
+        if (!$this->yscale->IsSpecified() && safe_count($this->plots) > 0) {
             list($min, $max) = $this->GetPlotsYMinMax($this->plots);
             $lres            = $this->GetLinesYMinMax($this->lines);
             if (is_array($lres)) {
@@ -1549,7 +1549,7 @@ class Graph
             $this->y2scale->InitConstants($this->img);
         }
 
-        $n = count($this->ynscale);
+        $n = safe_count($this->ynscale);
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynscale[$i]) {
                 $this->ynscale[$i]->InitConstants($this->img);
@@ -1561,7 +1561,7 @@ class Graph
     {
         // Do any pre-stroke adjustment that is needed by the different plot types
         // (i.e bar plots want's to add an offset to the x-labels etc)
-        for ($i = 0; $i < count($this->plots); ++$i) {
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
             if ($this->plots[$i] instanceof Plot\Plot) {
                 $this->plots[$i]->PreStrokeAdjust($this);
                 $this->plots[$i]->DoLegend($this);
@@ -1570,7 +1570,7 @@ class Graph
 
         // Any plots on the second Y scale?
         if ($this->y2scale != null) {
-            for ($i = 0; $i < count($this->y2plots); ++$i) {
+            for ($i = 0; $i < safe_count($this->y2plots); ++$i) {
                 if ($this->plots[$i] instanceof Plot\Plot) {
                     $this->y2plots[$i]->PreStrokeAdjust($this);
                     $this->y2plots[$i]->DoLegend($this);
@@ -1579,12 +1579,12 @@ class Graph
         }
 
         // Any plots on the extra Y axises?
-        $n = count($this->ynaxis);
+        $n = safe_count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
             if ($this->ynplots == null || $this->ynplots[$i] == null) {
                 Util\JpGraphError::RaiseL(25032, $i); //("No plots for Y-axis nbr:$i");
             }
-            $m = count($this->ynplots[$i]);
+            $m = safe_count($this->ynplots[$i]);
             for ($j = 0; $j < $m; ++$j) {
                 $this->ynplots[$i][$j]->PreStrokeAdjust($this);
                 $this->ynplots[$i][$j]->DoLegend($this);
@@ -1596,7 +1596,7 @@ class Graph
     {
         // Stroke bands
         if ($this->bands != null && !$aCSIM) {
-            for ($i = 0; $i < count($this->bands); ++$i) {
+            for ($i = 0; $i < safe_count($this->bands); ++$i) {
                 // Stroke all bands that asks to be in the background
                 if ($this->bands[$i]->depth == $aDepth) {
                     $this->bands[$i]->Stroke($this->img, $this->xscale, $this->yscale);
@@ -1605,7 +1605,7 @@ class Graph
         }
 
         if ($this->y2bands != null && $this->y2scale != null && !$aCSIM) {
-            for ($i = 0; $i < count($this->y2bands); ++$i) {
+            for ($i = 0; $i < safe_count($this->y2bands); ++$i) {
                 // Stroke all bands that asks to be in the foreground
                 if ($this->y2bands[$i]->depth == $aDepth) {
                     $this->y2bands[$i]->Stroke($this->img, $this->xscale, $this->y2scale);
@@ -1630,7 +1630,7 @@ class Graph
         // Give the plot a chance to do any scale adjuments the individual plots
         // wants to do. Right now this is only used by the contour plot to set scale
         // limits
-        for ($i = 0; $i < count($this->plots); ++$i) {
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
             if ($this->plots[$i] instanceof Plot\Plot) {
                 $this->plots[$i]->PreScaleSetup($this);
             }
@@ -1673,9 +1673,9 @@ class Graph
         // has no plots. (This means it is impossible to do autoscaling and
         // no other scale was given so we can't possible draw anything). If you use manual
         // scaling you also have to supply the tick steps as well.
-        if ((!$this->yscale->IsSpecified() && count($this->plots) == 0) ||
-            ($this->y2scale != null && !$this->y2scale->IsSpecified() && count($this->y2plots) == 0)) {
-            //$e = "n=".count($this->y2plots)."\n";
+        if ((!$this->yscale->IsSpecified() && safe_count($this->plots) == 0) ||
+            ($this->y2scale != null && !$this->y2scale->IsSpecified() && safe_count($this->y2plots) == 0)) {
+            //$e = "n=". safe_count($this->y2plots)."\n";
             // $e = "Can't draw unspecified Y-scale.<br>\nYou have either:<br>\n";
             // $e .= "1. Specified an Y axis for autoscaling but have not supplied any plots<br>\n";
             // $e .= "2. Specified a scale manually but have forgot to specify the tick steps";
@@ -1683,7 +1683,7 @@ class Graph
         }
 
         // Bail out if no plots and no specified X-scale
-        if ((!$this->xscale->IsSpecified() && count($this->plots) == 0 && count($this->y2plots) == 0)) {
+        if ((!$this->xscale->IsSpecified() && safe_count($this->plots) == 0 && safe_count($this->y2plots) == 0)) {
             Util\JpGraphError::RaiseL(25034); //("<strong>JpGraph: Can't draw unspecified X-scale.</strong><br>No plots.<br>");
         }
 
@@ -1741,7 +1741,7 @@ class Graph
         }
 
         // Stroke yn-axis
-        $n = count($this->ynaxis);
+        $n = safe_count($this->ynaxis);
         for ($i = 0; $i < $n; ++$i) {
             $this->ynaxis[$i]->Stroke($this->xscale);
         }
@@ -1765,7 +1765,7 @@ class Graph
 
         if (!$this->y2orderback) {
             // Stroke all plots for Y1 axis
-            for ($i = 0; $i < count($this->plots); ++$i) {
+            for ($i = 0; $i < safe_count($this->plots); ++$i) {
                 $this->plots[$i]->Stroke($this->img, $this->xscale, $this->yscale);
                 if ($this->plots[$i] instanceof Plot\Plot) {
                     $this->plots[$i]->StrokeMargin($this->img);
@@ -1775,14 +1775,14 @@ class Graph
 
         // Stroke all plots for Y2 axis
         if ($this->y2scale != null) {
-            for ($i = 0; $i < count($this->y2plots); ++$i) {
+            for ($i = 0; $i < safe_count($this->y2plots); ++$i) {
                 $this->y2plots[$i]->Stroke($this->img, $this->xscale, $this->y2scale);
             }
         }
 
         if ($this->y2orderback) {
             // Stroke all plots for Y1 axis
-            for ($i = 0; $i < count($this->plots); ++$i) {
+            for ($i = 0; $i < safe_count($this->plots); ++$i) {
                 $this->plots[$i]->Stroke($this->img, $this->xscale, $this->yscale);
                 if ($this->plots[$i] instanceof Plot\Plot) {
                     $this->plots[$i]->StrokeMargin($this->img);
@@ -1790,10 +1790,10 @@ class Graph
             }
         }
 
-        $n = count($this->ynaxis);
-        for ($i = 0; $i < $n; $i++) {
-            $m = count($this->ynplots[$i]);
-            for ($j = 0; $j < $m; $j++) {
+        $n = safe_count($this->ynaxis);
+        for ($i = 0; $i < $n; ++$i) {
+            $m = safe_count($this->ynplots[$i]);
+            for ($j = 0; $j < $m; ++$j) {
                 $this->ynplots[$i][$j]->Stroke($this->img, $this->xscale, $this->ynscale[$i]);
                 if ($this->ynplots[$i][$j] instanceof Plot\Plot) {
                     $this->ynplots[$i][$j]->StrokeMargin($this->img);
@@ -2454,7 +2454,7 @@ class Graph
 
     public function StrokeIcons()
     {
-        $n = count($this->iIcons);
+        $n = safe_count($this->iIcons);
         for ($i = 0; $i < $n; ++$i) {
             $this->iIcons[$i]->StrokeWithScale($this->img, $this->xscale, $this->yscale);
         }
@@ -2669,13 +2669,13 @@ class Graph
     {
         // Stroke any user added text objects
         if ($this->texts != null) {
-            for ($i = 0; $i < count($this->texts); ++$i) {
+            for ($i = 0; $i < safe_count($this->texts); ++$i) {
                 $this->texts[$i]->StrokeWithScale($this->img, $this->xscale, $this->yscale);
             }
         }
 
         if ($this->y2texts != null && $this->y2scale != null) {
-            for ($i = 0; $i < count($this->y2texts); ++$i) {
+            for ($i = 0; $i < safe_count($this->y2texts); ++$i) {
                 $this->y2texts[$i]->StrokeWithScale($this->img, $this->xscale, $this->y2scale);
             }
         }
@@ -2684,7 +2684,7 @@ class Graph
     public function StrokeTables()
     {
         if ($this->iTables != null) {
-            $n = count($this->iTables);
+            $n = safe_count($this->iTables);
             for ($i = 0; $i < $n; ++$i) {
                 $this->iTables[$i]->StrokeWithScale($this->img, $this->xscale, $this->yscale);
             }
@@ -2701,12 +2701,12 @@ class Graph
         $csim .= $this->legend->GetCSIMareas();
         if (preg_match_all('/area shape="(\\w+)" coords="([0-9\\, ]+)"/', $csim, $coords)) {
             $this->img->SetColor($this->csimcolor);
-            $n = count($coords[0]);
+            $n = safe_count($coords[0]);
             for ($i = 0; $i < $n; ++$i) {
                 if ($coords[1][$i] == 'poly') {
                     preg_match_all('/\s*([0-9]+)\s*,\s*([0-9]+)\s*,*/', $coords[2][$i], $pts);
                     $this->img->SetStartPoint($pts[1][count($pts[0]) - 1], $pts[2][count($pts[0]) - 1]);
-                    $m = count($pts[0]);
+                    $m = safe_count($pts[0]);
                     for ($j = 0; $j < $m; ++$j) {
                         $this->img->LineTo($pts[1][$j], $pts[2][$j]);
                     }
@@ -2742,7 +2742,7 @@ class Graph
             return false;
         }
 
-        $n = count($aLines);
+        $n = safe_count($aLines);
         if ($n == 0) {
             return false;
         }
@@ -2770,7 +2770,7 @@ class Graph
     // Get X min and max values for added lines
     public function GetLinesXMinMax($aLines)
     {
-        $n = count($aLines);
+        $n = safe_count($aLines);
         if ($n == 0) {
             return false;
         }
@@ -2803,7 +2803,7 @@ class Graph
             return $plot instanceof Plot\Plot;
         });
         reset($aPlots);
-        $n = count($aPlots);
+        $n = safe_count($aPlots);
         $i = 0;
         //\Kint::dump($n, $aPlots);
         do {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -56,7 +56,11 @@ class Text //extends Graph
     private $_font_size = 8; // old. 12
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aTxt
+     * @param mixed $aXAbsPos
+     * @param mixed $aYAbsPos
      */
     // Create new text at absolute pixel coordinates
     public function __construct($aTxt = '', $aXAbsPos = 0, $aYAbsPos = 0)
@@ -71,7 +75,9 @@ class Text //extends Graph
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aTxt
      */
     // Set the string in the text object
     public function Set($aTxt)

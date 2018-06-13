@@ -1,5 +1,8 @@
 <?php
-// $Id: canvas_jpgarchex.php,v 1.3 2002/08/29 10:14:19 aditus Exp $
+
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;

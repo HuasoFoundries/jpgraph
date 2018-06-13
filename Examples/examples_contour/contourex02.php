@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // Contour plot example 02
@@ -16,7 +16,7 @@ $data = [
     [10, 10, 8, 14, 10, 3],
     [7, 7, 13, 17, 12, 8],
     [4, 5, 8, 12, 7, 6],
-    [10, 8, 7, 8, 10, 4]];
+    [10, 8, 7, 8, 10, 4], ];
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend

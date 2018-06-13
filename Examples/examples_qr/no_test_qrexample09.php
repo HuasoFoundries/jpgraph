@@ -1,12 +1,11 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // Include the library
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/QR/qrencoder.inc.php';
 

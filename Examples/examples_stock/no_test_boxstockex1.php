@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // Example of a stock chart
@@ -16,7 +16,7 @@ $datay = [
     55, 25, 14, 59, 40,
     15, 40, 12, 47, 23,
     62, 38, 25, 65, 57,
-    38, 49, 32, 64, 45];
+    38, 49, 32, 64, 45, ];
 
 // Setup a simple graph
 $__width  = 300;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -53,7 +53,7 @@ class PlotMark
     private $imgdata_pushpins;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
      */
     public function __construct()
     {
@@ -64,7 +64,11 @@ class PlotMark
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aType
+     * @param mixed $aFileName
+     * @param mixed $aScale
      */
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
@@ -170,7 +174,7 @@ class PlotMark
     public function AddCSIMPoly($aPts)
     {
         $coords = round($aPts[0]) . ', ' . round($aPts[1]);
-        $n      = count($aPts) / 2;
+        $n      = safe_count($aPts) / 2;
         for ($i = 1; $i < $n; ++$i) {
             $coords .= ', ' . round($aPts[2 * $i]) . ', ' . round($aPts[2 * $i + 1]);
         }

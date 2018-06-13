@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 /**
@@ -12,6 +12,7 @@
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 namespace Amenadiel\JpGraph\Image;
 
 class ImgData_Squares extends ImgData
@@ -20,15 +21,15 @@ class ImgData_Squares extends ImgData
     protected $an   = [MARK_IMG_SQUARE => 'imgdata'];
 
     protected $colors = ['bluegreen', 'blue', 'green',
-        'lightblue', 'orange', 'purple', 'red', 'yellow'];
+        'lightblue', 'orange', 'purple', 'red', 'yellow', ];
     protected $index = ['bluegreen'     => 2, 'blue'   => 5, 'green'  => 6,
-        'lightblue'                     => 0, 'orange' => 7, 'purple' => 4, 'red' => 3, 'yellow' => 1];
+        'lightblue'                     => 0, 'orange' => 7, 'purple' => 4, 'red' => 3, 'yellow' => 1, ];
     protected $maxidx = 7;
     protected $imgdata;
 
     public function ImgData_Squares()
     {
-        /**
+        /*
          *sq_lblue.png
          */
         $this->imgdata[0][0] = 362;
@@ -44,7 +45,7 @@ class ImgData_Squares extends ImgData
             'Opnw6MGjkwm/Hlw6mQjqwaqTiRg9mDoZv//4M2/+UYJ64EBWgj' .
             'cm2hwA8l24oNDl+DMAAAAASUVORK5CYII=';
 
-        /**
+        /*
          *sq_yellow.png
          */
         $this->imgdata[1][0] = 338;
@@ -60,7 +61,7 @@ class ImgData_Squares extends ImgData
             'pGMjrzPzauA/iXk1AtykmvgBC8UcWUdc9HkAAAAASUVORK5CYI' .
             'I=';
 
-        /**
+        /*
          *sq_blgr.png
          */
         $this->imgdata[2][0] = 347;
@@ -76,7 +77,7 @@ class ImgData_Squares extends ImgData
             '0SoH+6xEcovUlCfefeFSIwfTTQ3fB+pi4lV/bTIgvmaA7a0AAA' .
             'AASUVORK5CYII=';
 
-        /**
+        /*
          *sq_red.png
          */
         $this->imgdata[3][0] = 324;
@@ -91,7 +92,7 @@ class ImgData_Squares extends ImgData
             'b54nSZ8jHrMtOxvWZZZtpD4KP6xLkO9/AhzhaCOMhJh68cOjzV' .
             '/K/4Ac2cG+nBcaRuAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          *sq_pink.png
          */
         $this->imgdata[4][0] = 445;
@@ -109,7 +110,7 @@ class ImgData_Squares extends ImgData
             'VhZVI4d+B1QtfnV47ywCEaKeP/p7JdLejSYt0j6NIiOq1wJZIs' .
             'QTDA0ELHwhPBCwyR/Cni9cOmzJtwAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          *sq_blue.png
          */
         $this->imgdata[5][0] = 283;
@@ -123,7 +124,7 @@ class ImgData_Squares extends ImgData
             'PFzBT5qml9NzlOX259riWHlS4kOffviHD8PQYZx2EFMPRkw+9Q' .
             'FSnRPeWEDzKAAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          *sq_green.png
          */
         $this->imgdata[6][0] = 325;
@@ -138,7 +139,7 @@ class ImgData_Squares extends ImgData
             'ueOPlpKTLBaRmOZxQxaXlfb5ZWI9om4WntrXiDSJzp7SBkwMQa' .
             'FEy0VR/NAB2kNuj7rgAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          *sq_orange.png
          */
         $this->imgdata[7][0] = 321;

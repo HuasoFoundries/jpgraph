@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -128,7 +128,7 @@ class RotImage extends Image
 
     public function ArrRotate($pnts)
     {
-        $n = count($pnts) - 1;
+        $n = safe_count($pnts) - 1;
         for ($i = 0; $i < $n; $i += 2) {
             list($x, $y)  = $this->Rotate($pnts[$i], $pnts[$i + 1]);
             $pnts[$i]     = $x;

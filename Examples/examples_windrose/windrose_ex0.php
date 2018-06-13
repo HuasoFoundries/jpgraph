@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -14,7 +14,7 @@ $data = [
     1     => [3, 4, 1, 4],
     'WSW' => [1, 5, 5, 3],
     'N'   => [2, 3, 8, 1, 1],
-    15    => [2, 3, 5]];
+    15    => [2, 3, 5], ];
 
 // First create a new windrose graph with a title
 $__width  = 400;

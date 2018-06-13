@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
@@ -25,4 +25,4 @@ $backend->SetModuleWidth($modulewidth);
 // Store the barcode in the specifed file
 $ps_str = $backend->Stroke($data);
 
-echo '<pre>'.$ps_str.'</pre>';
+echo '<pre>' . $ps_str . '</pre>';

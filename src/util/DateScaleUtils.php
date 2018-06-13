@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
 
-/**
+/*
  * @class DateScaleUtils
  * // Description: Help to create a manual date scale
  */
@@ -309,7 +309,7 @@ class DateScaleUtils
 
     public static function GetTicks($aData, $aType = 1, $aMinor = false, $aEndPoints = false)
     {
-        $n = count($aData);
+        $n = safe_count($aData);
 
         return self::GetTicksFromMinMax($aData[0], $aData[$n - 1], $aType, $aMinor, $aEndPoints);
     }
@@ -335,14 +335,14 @@ class DateScaleUtils
             [$spw, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', -1, DSUTILS_DAY4, 'd M']],
             [$spm, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, -1, DSUTILS_WEEK2, $w]],
             [$spy, [1, DSUTILS_DAY1, 'd M', 2, DSUTILS_DAY2, 'd M', 4, DSUTILS_DAY4, 'd M', 7, DSUTILS_WEEK1, $w, 14, DSUTILS_WEEK2, $w, 30, DSUTILS_MONTH1, 'M', 60, DSUTILS_MONTH2, 'M', -1, DSUTILS_MONTH3, 'M']],
-            [-1, [30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y']]];
+            [-1, [30, DSUTILS_MONTH1, 'M-Y', 60, DSUTILS_MONTH2, 'M-Y', 90, DSUTILS_MONTH3, 'M-Y', 180, DSUTILS_MONTH6, 'M-Y', 352, DSUTILS_YEAR1, 'Y', 704, DSUTILS_YEAR2, 'Y', -1, DSUTILS_YEAR5, 'Y']], ];
 
-        $ntt = count($tt);
+        $ntt = safe_count($tt);
         $nd  = floor($diff / $spd);
         for ($i = 0; $i < $ntt; ++$i) {
             if ($diff <= $tt[$i][0] || $i == $ntt - 1) {
                 $t = $tt[$i][1];
-                $n = count($t) / 3;
+                $n = safe_count($t) / 3;
                 for ($j = 0; $j < $n; ++$j) {
                     if ($nd / $t[3 * $j] <= $aMaxTicks || $j == $n - 1) {
                         $type                                   = $t[3 * $j + 1];

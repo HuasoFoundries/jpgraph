@@ -6,7 +6,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) 
 [![Build Status](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/build.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/build-status/master) 
 [![StyleCI](https://styleci.io/repos/39590412/shield?branch=master)](https://styleci.io/repos/39590412) 
-[![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
 
 This is an unnoficial refactor of [JpGraph](http://jpgraph.net/) with thefollowing differences:
 - the app was fully refactored adding namespaces, proper folder hierarchy, separating each class in its own file and stripping the use of `require` and `include` to the bare minimum

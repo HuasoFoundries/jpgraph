@@ -2,6 +2,14 @@ VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
 
 SHELL = /usr/bin/env bash
 
+XDSWI := $(shell command -v xd_swi 2> /dev/null)
+HASPHPMD := $(shell command -v phpmd 2> /dev/null)
+
+YELLOW=\033[0;33m
+RED=\033[0;31m
+WHITE=\033[0m
+GREEN=\u001B[32m
+
 ifneq ($(g),)	
 	groups=-g
 endif
@@ -46,5 +54,19 @@ delete_tag:
 start:
 	php -S localhost:8000 -t Examples
 
+runcsfixer:
+	@if [ -f ./vendor/bin/php-cs-fixer ]; then \
+	    ./vendor/bin/php-cs-fixer --verbose fix ;\
+    else \
+        echo -e "$(GREEN)php-cs-fixer$(WHITE) is $(RED)NOT$(WHITE) installed. Install it with $(GREEN)composer require --dev friendsofphp/php-cs-fixer$(WHITE)" ;\
+    fi 
+
 csfixer:
-	./vendor/bin/php-cs-fixer --verbose fix	
+	@if [[ "$(XDSWI)" == "" ]]; then \
+	     ${MAKE} runcsfixer --no-print-directory ;\
+    else \
+        xd_swi off ;\
+		${MAKE} runcsfixer --no-print-directory ;\
+		xd_swi on	;\
+    fi
+	

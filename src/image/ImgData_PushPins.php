@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 /**
@@ -12,6 +12,7 @@
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 namespace Amenadiel\JpGraph\Image;
 
 class ImgData_PushPins extends ImgData
@@ -19,7 +20,7 @@ class ImgData_PushPins extends ImgData
     protected $name = 'Push pins';
     protected $an   = [MARK_IMG_PUSHPIN     => 'imgdata_small',
         MARK_IMG_SPUSHPIN                   => 'imgdata_small',
-        MARK_IMG_LPUSHPIN                   => 'imgdata_large'];
+        MARK_IMG_LPUSHPIN                   => 'imgdata_large', ];
 
     protected $colors = ['blue', 'green', 'orange', 'pink', 'red'];
     protected $index  = ['red' => 0, 'orange' => 1, 'pink' => 2, 'blue' => 3, 'green' => 4];
@@ -34,7 +35,7 @@ class ImgData_PushPins extends ImgData
         $this->anchor_x = 0;
         $this->anchor_y = 1;
 
-        /**
+        /*
          * File: ppl_red.png
          */
         $this->imgdata_large[0][0] = 2490;
@@ -107,7 +108,7 @@ class ImgData_PushPins extends ImgData
             '928KAfBhJAEgiJSLuzs7OSTqctoFkqlZRt26j/I+L/AGjPTN4d' .
             'Nqn4AAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: ppl_orange.png
          */
         $this->imgdata_large[1][0] = 2753;
@@ -187,7 +188,7 @@ class ImgData_PushPins extends ImgData
             'uty6desgfa1WC3iRyrNnz4pSSmezWUzTfGtYtNYcdvC/9sMlgP' .
             'n5N4cAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: ppl_pink.png
          */
         $this->imgdata_large[2][0] = 2779;
@@ -268,7 +269,7 @@ class ImgData_PushPins extends ImgData
             'BQKESO43S11p3BYBDt7u4y+CtB/i/q7jp1GMiw2AAAAABJRU5E' .
             'rkJggg==';
 
-        /**
+        /*
          * File: ppl_blue.png
          */
         $this->imgdata_large[3][0] = 2284;
@@ -335,7 +336,7 @@ class ImgData_PushPins extends ImgData
             'eB01LKt4HTrusKvGr8jB+hGn8MQAkYQMrfw4Nq/MFPtf+rdvDb' .
             'k8QL+/5Z4Uepxm7bfwHuTAVUWpWaqAAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: ppl_green.png
          */
         $this->imgdata_large[4][0] = 2854;
@@ -418,7 +419,7 @@ class ImgData_PushPins extends ImgData
             'QiwPd9P/Q8T6XTaQzDIAiCfzjP/wFVfszuFqdHXgAAAABJRU5E' .
             'rkJggg==';
 
-        /**
+        /*
          * File: pp_red.png
          */
         $this->imgdata_small[0][0] = 384;
@@ -435,7 +436,7 @@ class ImgData_PushPins extends ImgData
             's69+LvAZKdeZ/n89uLnd2g0S+gjd5g8zzjH5Y/eLLi+NPEAAAA' .
             'AElFTkSuQmCC';
 
-        /**
+        /*
          * File: pp_orange.png
          */
         $this->imgdata_small[1][0] = 403;
@@ -452,7 +453,7 @@ class ImgData_PushPins extends ImgData
             'HUy6D3XmvMAAhAay8kAJpBosX4vt0G4+4Jam6s6Rz1fgFG0ncA' .
             'f3XfOQcA+Acv5IUSdQw9hgAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: pp_pink.png
          */
         $this->imgdata_small[2][0] = 419;
@@ -470,7 +471,7 @@ class ImgData_PushPins extends ImgData
             'ikzGx+2Gc+4N+CoJW8n+5a2UKm2aBoBvGA6L7wfl8aoAAAAASU' .
             'VORK5CYII=';
 
-        /**
+        /*
          * File: pp_blue.png
          */
         $this->imgdata_small[3][0] = 883;
@@ -500,7 +501,7 @@ class ImgData_PushPins extends ImgData
             'ha5uFKEpDZulV8l52axhVzqaCdxQp32qVSSwC1wN3fYiw7b76w' .
             'bN4SMue4/KbwAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: pp_green.png
          */
         $this->imgdata_small[4][0] = 447;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -22,14 +22,14 @@ $graph->SetShadow();
 $b1plot = new Plot\BarPlot($data1y);
 $b1plot->SetFillColor('orange');
 $targ = ['bar_csimex2.php#1', 'bar_csimex2.php#2', 'bar_csimex2.php#3',
-    'bar_csimex2.php#4', 'bar_csimex2.php#5', 'bar_csimex2.php#6'];
+    'bar_csimex2.php#4', 'bar_csimex2.php#5', 'bar_csimex2.php#6', ];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $b1plot->SetCSIMTargets($targ, $alts);
 
 $b2plot = new Plot\BarPlot($data2y);
 $b2plot->SetFillColor('blue');
 $targ = ['bar_csimex2.php#7', 'bar_csimex2.php#8', 'bar_csimex2.php#9',
-    'bar_csimex2.php#10', 'bar_csimex2.php#11', 'bar_csimex2.php#12'];
+    'bar_csimex2.php#10', 'bar_csimex2.php#11', 'bar_csimex2.php#12', ];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $b2plot->SetCSIMTargets($targ, $alts);
 

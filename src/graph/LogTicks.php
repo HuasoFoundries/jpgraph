@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -18,14 +18,14 @@ class LogTicks extends Ticks
     private $ticklabels_pos = [];
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
      */
     public function LogTicks()
     {
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
      */
     public function IsSpecified()
     {

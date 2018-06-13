@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
@@ -20,6 +20,6 @@ try {
     $backend->Stroke($data);
 } catch (Exception $e) {
     $errstr = $e->GetMessage();
-    echo 'QR Code error: '.$e->GetMessage()."\n";
+    echo 'QR Code error: ' . $e->GetMessage() . "\n";
     exit(1);
 }

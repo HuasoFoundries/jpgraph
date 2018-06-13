@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -38,7 +38,7 @@ class Plot
 
     public function __construct($aDatay, $aDatax = false)
     {
-        $this->numpoints = count($aDatay);
+        $this->numpoints = safe_count($aDatay);
         if ($this->numpoints == 0) {
             Util\JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");
         }
@@ -52,7 +52,7 @@ class Plot
         $this->coords[0] = $aDatay;
         if (is_array($aDatax)) {
             $this->coords[1] = $aDatax;
-            $n               = count($aDatax);
+            $n               = safe_count($aDatax);
             for ($i = 0; $i < $n; ++$i) {
                 if (!is_numeric($aDatax[$i])) {
                     Util\JpGraphError::RaiseL(25070);
@@ -127,13 +127,13 @@ class Plot
         } else {
             $x = '';
         }
-        if ($x != '' && count($x) > 0) {
+        if ($x != '' && safe_count($x) > 0) {
             $xm = min($x);
         } else {
             $xm = 0;
         }
         $y   = $this->coords[0];
-        $cnt = count($y);
+        $cnt = safe_count($y);
         if ($cnt > 0) {
             $i = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
@@ -161,14 +161,14 @@ class Plot
             $x = '';
         }
 
-        if ($x != '' && count($x) > 0) {
+        if ($x != '' && safe_count($x) > 0) {
             $xm = max($x);
         } else {
             $xm = $this->numpoints - 1;
         }
         $y = $this->coords[0];
-        if (count($y) > 0) {
-            $cnt = count($y);
+        if (safe_count($y) > 0) {
+            $cnt = safe_count($y);
             $i   = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
                 ++$i;

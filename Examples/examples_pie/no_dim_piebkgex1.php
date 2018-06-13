@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -12,7 +12,7 @@ $data = [
     [80, 18, 15, 17],
     [35, 28, 6, 34],
     [10, 28, 10, 5],
-    [22, 22, 10, 17]];
+    [22, 22, 10, 17], ];
 
 $piepos = [0.2, 0.4, 0.65, 0.28, 0.25, 0.75, 0.8, 0.75];
 $titles = ['USA', 'Sweden', 'South America', 'Australia'];

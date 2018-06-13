@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -20,36 +20,36 @@ class ImgData_Balls extends ImgData
     protected $an   = [MARK_IMG_LBALL     => 'imgdata_large',
         MARK_IMG_MBALL                    => 'imgdata_small',
         MARK_IMG_SBALL                    => 'imgdata_xsmall',
-        MARK_IMG_BALL                     => 'imgdata_xsmall'];
+        MARK_IMG_BALL                     => 'imgdata_xsmall', ];
     protected $colors;
     protected $index;
     protected $maxidx;
     private $colors_1 = ['blue', 'lightblue', 'brown', 'darkgreen',
-        'green', 'purple', 'red', 'gray', 'yellow', 'silver', 'gray'];
+        'green', 'purple', 'red', 'gray', 'yellow', 'silver', 'gray', ];
     private $index_1 = ['blue'     => 9, 'lightblue' => 1, 'brown' => 6, 'darkgreen' => 7,
-        'green'                    => 8, 'purple'    => 4, 'red'   => 0, 'gray'      => 5, 'silver' => 3, 'yellow' => 2];
+        'green'                    => 8, 'purple'    => 4, 'red'   => 0, 'gray'      => 5, 'silver' => 3, 'yellow' => 2, ];
     private $maxidx_1 = 9;
 
     private $colors_2 = ['blue', 'bluegreen', 'brown', 'cyan',
         'darkgray', 'greengray', 'gray', 'green',
         'greenblue', 'lightblue', 'lightred',
-        'purple', 'red', 'white', 'yellow'];
+        'purple', 'red', 'white', 'yellow', ];
 
     private $index_2 = ['blue'     => 9, 'bluegreen' => 13, 'brown'   => 8, 'cyan'    => 12,
         'darkgray'                 => 5, 'greengray' => 6, 'gray'     => 2, 'green'   => 10,
         'greenblue'                => 3, 'lightblue' => 1, 'lightred' => 14,
-        'purple'                   => 7, 'red'       => 0, 'white'    => 11, 'yellow' => 4];
+        'purple'                   => 7, 'red'       => 0, 'white'    => 11, 'yellow' => 4, ];
 
     private $maxidx_2 = 14;
 
     private $colors_3 = ['bluegreen', 'cyan', 'darkgray', 'greengray',
         'gray', 'graypurple', 'green', 'greenblue', 'lightblue',
-        'lightred', 'navy', 'orange', 'purple', 'red', 'yellow'];
+        'lightred', 'navy', 'orange', 'purple', 'red', 'yellow', ];
 
     private $index_3 = ['bluegreen'     => 1, 'cyan'       => 11, 'darkgray' => 14, 'greengray' => 10,
         'gray'                          => 3, 'graypurple' => 4, 'green'     => 9, 'greenblue'  => 7,
         'lightblue'                     => 13, 'lightred'  => 0, 'navy'      => 2, 'orange'     => 12,
-        'purple'                        => 8, 'red'        => 5, 'yellow'    => 6];
+        'purple'                        => 8, 'red'        => 5, 'yellow'    => 6, ];
     private $maxidx_3 = 14;
 
     protected $imgdata_large;
@@ -85,7 +85,7 @@ class ImgData_Balls extends ImgData
 
     public function __construct()
     {
-        /**
+        /*
          * File: bl_red.png
          */
         $this->imgdata_large[0][0] = 1072;
@@ -120,7 +120,7 @@ class ImgData_Balls extends ImgData
             'wXOQW0TJsOEpwClmxBTTbZ7UDVIPkp7dkYaYqhuLa5trYYUxwL' .
             'AADzm6uekAAcXAAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bl_bluegreen.png
          */
         $this->imgdata_large[1][0] = 1368;
@@ -163,7 +163,7 @@ class ImgData_Balls extends ImgData
             'Due/hRPfP+OmfOrk7vrn7a48ihA3zh8CH+8Iuffiw/n4r9H1ZZ' .
             '0zz7G56hAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bl_yellow.png
          */
         $this->imgdata_large[2][0] = 1101;
@@ -199,7 +199,7 @@ class ImgData_Balls extends ImgData
             '+yIFhFtzuj+z2MI/MQn6Uez5pz4Ua41G7VumB/6RX4zMr1TKBr' .
             'SXAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bl_silver.png
          */
         $this->imgdata_large[3][0] = 1481;
@@ -245,7 +245,7 @@ class ImgData_Balls extends ImgData
             'NzZhY2UxMDAzOGFhZjdhZWIyNzliNTM2ZGFmZDlkM2RiNDU3Zm' .
             'NlNT9CliMAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bl_purple.png
          */
         $this->imgdata_large[4][0] = 1149;
@@ -282,7 +282,7 @@ class ImgData_Balls extends ImgData
             'lz7sqVK2ByK+cVMSCDxoUrwWDVysXt8WhJKqG4Y8bcuTP6qrGk' .
             'QwwAABiMu7T4HMi4AAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bl_gray.png
          */
         $this->imgdata_large[5][0] = 905;
@@ -313,7 +313,7 @@ class ImgData_Balls extends ImgData
             'EcJaYWar7QhztrO5Wr4Q4hDbAG/4hfTAF2iCiWrCEAAAAASUVO' .
             'RK5CYII=';
 
-        /**
+        /*
          * File: bl_brown.png
          */
         $this->imgdata_large[6][0] = 1053;
@@ -348,7 +348,7 @@ class ImgData_Balls extends ImgData
             'IdZCNH+3Xw779qbG63f//ZOzb6C4+ofdbzERrSAAAAAElFTkSu' .
             'QmCC';
 
-        /**
+        /*
          * File: bl_darkgreen.png
          */
         $this->imgdata_large[7][0] = 1113;
@@ -384,7 +384,7 @@ class ImgData_Balls extends ImgData
             'BbY/19yZ1XF1U0UNBa9T7rZsz80K0jWk6bpWGW55UzbvTHZ+3t' .
             'vbAv/IT+K1uCmhIrKJAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bl_green.png
          */
         $this->imgdata_large[8][0] = 1484;
@@ -430,7 +430,7 @@ class ImgData_Balls extends ImgData
             '/efkajt56kR1ydlEJBc5H46xzbrJ3dY9wrB7hGcff+6/+279L+' .
             '0fHxyiE8XMLl4AAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bl_blue.png
          */
         $this->imgdata_large[9][0] = 1169;
@@ -468,7 +468,7 @@ class ImgData_Balls extends ImgData
             'IAOt0vVQUGSIkabkDV3DwlzNVDAksAAAfUbNQRCwr88AAAAASU' .
             'VORK5CYII=';
 
-        /**
+        /*
          * File: bs_red.png
          */
         $this->imgdata_small[0][0] = 437;
@@ -486,7 +486,7 @@ class ImgData_Balls extends ImgData
             'jLGu56MB7f4JOOfDJAwoNwslk/jOUi+Jts6RVNrC1hkhPy50Ef' .
             'u79/ADQMQSGQ8bBywAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bs_lightblue.png
          */
         $this->imgdata_small[1][0] = 657;
@@ -510,7 +510,7 @@ class ImgData_Balls extends ImgData
             'QOxiEIuKTUzJKgQCaZibpdOzQfwCOZibGRi4dcJyw3S4iQ4HAL' .
             'qvIlIAMH7YAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_gray.png
          */
         $this->imgdata_small[2][0] = 550;
@@ -531,7 +531,7 @@ class ImgData_Balls extends ImgData
             'o1ANr40sn5a+x4biElrqHgrXMeac/c1nEpFHG0LSFoo/jO/BeF' .
             'lJnFbT58ayUf0BpA8wAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bs_greenblue.png
          */
         $this->imgdata_small[3][0] = 503;
@@ -551,7 +551,7 @@ class ImgData_Balls extends ImgData
             '97vFGwBY9QsZGBc/A4DWZNbeXIPWZEZI0c2lqSute/gCO9MXGY' .
             '4/IOkAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bs_yellow.png
          */
         $this->imgdata_small[4][0] = 507;
@@ -571,7 +571,7 @@ class ImgData_Balls extends ImgData
             'OWIky8qhXUBQ7gKGmsxpC+ah1TdriwByqG8GQNDNr6kLjf/wAx' .
             'KgEq+FpPbfAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_darkgray.png
          */
         $this->imgdata_small[5][0] = 611;
@@ -594,7 +594,7 @@ class ImgData_Balls extends ImgData
             'W30IK4T8vUJSAkNMhDiwPqYiktXWN9JZj7UQAAjWEfhlG+kScA' .
             'AAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bs_darkgreen.png
          */
         $this->imgdata_small[6][0] = 666;
@@ -618,7 +618,7 @@ class ImgData_Balls extends ImgData
             'BodHJ2UUlZTkQ+xikIlNSE7LLgECZagL2VQyc0H8YnV2uD94jS' .
             'ILIo14iQ4HALarJBNwbJVNAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_purple.png
          */
         $this->imgdata_small[7][0] = 447;
@@ -636,7 +636,7 @@ class ImgData_Balls extends ImgData
             'rNwYK8rKwKCnPxHnVS0aA3rag4UQslUGhrlk0Kpv1+sx3tLZ6w' .
             'dtYemMkOsnz8R3V9/hB87DEu2Wos5+AAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_brown.png
          */
         $this->imgdata_small[8][0] = 677;
@@ -661,7 +661,7 @@ class ImgData_Balls extends ImgData
             'aC+GX2MDczMBh7pZakehkTHQ4AA0Am/jsB5gkAAAAASUVORK5C' .
             'YII=';
 
-        /**
+        /*
          * File: bs_blue.png
          */
         $this->imgdata_small[9][0] = 436;
@@ -679,7 +679,7 @@ class ImgData_Balls extends ImgData
             '2uObjwvY8/oX50JItYDxSyZSTrO2mNhvGMbaWAevnbFIcpuTr7' .
             't+5AkyfBIKSJHdSQAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bs_green.png
          */
         $this->imgdata_small[10][0] = 452;
@@ -698,7 +698,7 @@ class ImgData_Balls extends ImgData
             'U/3+yPuq5gvhkhL0xlGnqL//AFf14UIh4mkEkAAAAASUVORK5C' .
             'YII=';
 
-        /**
+        /*
          * File: bs_white.png
          */
         $this->imgdata_small[11][0] = 480;
@@ -717,7 +717,7 @@ class ImgData_Balls extends ImgData
             'er9GuHLYoiG4YhSilOpxPr9Zrtdlti/JriU5MPjUYjq7UuEWaz' .
             '2d+P/b/qv/zi75oetJcv7QQXAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_cyan.png
          */
         $this->imgdata_small[12][0] = 633;
@@ -740,7 +740,7 @@ class ImgData_Balls extends ImgData
             'SYw6bjHxgaEZeckZmpD7GLQSAqJj4xNRMIBGFuFtRLA/ENhGBu' .
             'ZmDgkJBXl5fgIDocAAKcINaFePT4AAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bs_bluegreen.png
          */
         $this->imgdata_small[13][0] = 493;
@@ -760,7 +760,7 @@ class ImgData_Balls extends ImgData
             'sCnjkobNEm1+HknDZgAqR0GKU43+wxdu2hYzbsHU6AAAAABJRU' .
             '5ErkJggg==';
 
-        /**
+        /*
          * File: bs_lightred.png
          */
         $this->imgdata_small[14][0] = 532;
@@ -781,7 +781,7 @@ class ImgData_Balls extends ImgData
             'wwN/MYc4H4LK4wNzMwmGrzcvFqmxIdDgDiHRT6VVQkrAAAAABJ' .
             'RU5ErkJggg==';
 
-        /**
+        /*
          * File: bxs_lightred.png
          */
         $this->imgdata_xsmall[0][0] = 432;
@@ -799,7 +799,7 @@ class ImgData_Balls extends ImgData
             'zgdkiqs6WKnYcIGYJnK2HvzCwmCNgi42wsLCECNMeXlNUY0HAL' .
             'DaB7Du8MiEAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bxs_bluegreen.png
          */
         $this->imgdata_xsmall[1][0] = 397;
@@ -816,7 +816,7 @@ class ImgData_Balls extends ImgData
             'glLWvMaQ5kqujo6hnbKIKYXPr68gp2dmCNJiZAlh3ECGsREWtU' .
             '4wF1kwdpAHfnSwAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bxs_navy.png
          */
         $this->imgdata_xsmall[2][0] = 353;
@@ -832,7 +832,7 @@ class ImgData_Balls extends ImgData
             'LQ5kSigpqWro6oOYrOoaWroGBmCNWiCWAdQwUVFWVOMBOp4GCJ' .
             's5S60AAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bxs_gray.png
          */
         $this->imgdata_xsmall[3][0] = 492;
@@ -852,7 +852,7 @@ class ImgData_Balls extends ImgData
             'gTUFBIZBWAwMkZEx8bFQM2Lj0UwHANc/DV6yq/BiAAAAAElFTk' .
             'SuQmCC';
 
-        /**
+        /*
          * File: bxs_graypurple.png
          */
         $this->imgdata_xsmall[4][0] = 542;
@@ -873,7 +873,7 @@ class ImgData_Balls extends ImgData
             'k6FlYugXEZICaPr394Um4uSAFDRFRCbm4uxAihsDAhVOMBHT0L' .
             'hkeRpo8AAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bxs_red.png
          */
         $this->imgdata_xsmall[5][0] = 357;
@@ -889,7 +889,7 @@ class ImgData_Balls extends ImgData
             '0BYHMiUUlVQ1dPVBTDZ1dS1dAwOQAgYtbSDLAGIEq6goK6rxAD' .
             'yXBg73lwGUAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * File: bxs_yellow.png
          */
         $this->imgdata_xsmall[6][0] = 414;
@@ -907,7 +907,7 @@ class ImgData_Balls extends ImgData
             'QUGQAgYBYyBLEGIEq5gYK6rxAH4kBmHBaMQQAAAAAElFTkSuQm' .
             'CC';
 
-        /**
+        /*
          * File: bxs_greenblue.png
          */
         $this->imgdata_xsmall[7][0] = 410;
@@ -924,7 +924,7 @@ class ImgData_Balls extends ImgData
             'hO3sxCWwDIVNLTM9PXtpEGMhW12Cy0DR1ATEFLSxZ7BweQAgYd' .
             'HUMHBweIEQKiogKoxgMAo/4H5AfSehsAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bxs_purple.png
          */
         $this->imgdata_xsmall[8][0] = 364;
@@ -940,7 +940,7 @@ class ImgData_Balls extends ImgData
             'GyQuqSCnrK6tJwpkiquoamgbGIGYrFpaugbGxmCNunpAljHECB' .
             'ZBQRZU4wFSMAZsXeM71AAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bxs_green.png
          */
         $this->imgdata_xsmall[9][0] = 370;
@@ -956,7 +956,7 @@ class ImgData_Balls extends ImgData
             'I6CiqcMKZMopKqho6OhLA5kyqmqaOobGICartraeoYkJSAGDnj' .
             '6QZQIxgk1Skg3VeABlVgbItqEBUwAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * File: bxs_darkgreen.png
          */
         $this->imgdata_xsmall[10][0] = 563;
@@ -978,7 +978,7 @@ class ImgData_Balls extends ImgData
             'SAFDbEJaSUkJxAjeyEheVOMBQj4MOEkWew4AAAAASUVORK5CYI' .
             'I=';
 
-        /**
+        /*
          * File: bxs_cyan.png
          */
         $this->imgdata_xsmall[11][0] = 530;
@@ -999,7 +999,7 @@ class ImgData_Balls extends ImgData
             'jkzEyQAoaomMTMzEyIERzy8hyoxgMAN2MLVPW0f4gAAAAASUVO' .
             'RK5CYII=';
 
-        /**
+        /*
          * File: bxs_orange.png
          */
         $this->imgdata_xsmall[12][0] = 572;
@@ -1021,7 +1021,7 @@ class ImgData_Balls extends ImgData
             'IKZWSHhcTnk5SAFDfFJWeXk5xAjj1FRjVOMBeFwNcWYSLjsAAA' .
             'AASUVORK5CYII=';
 
-        /**
+        /*
          * File: bxs_lightblue.png
          */
         $this->imgdata_xsmall[13][0] = 554;
@@ -1042,7 +1042,7 @@ class ImgData_Balls extends ImgData
             'gFZMprKBnbB8e7AplaFlbOQUl5ICanX0BEWmEhSAFDVGxKYWEh' .
             'xAjusDBuVOMBJO8LrFHRAykAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * File: bxs_darkgray.png
          */
         $this->imgdata_xsmall[14][0] = 574;

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
-/**
+/*
  * File:        JPGRAPH_GRADIENT.PHP
  * // Description: Create a color gradient
  * // Created:     2003-02-01
@@ -27,7 +27,7 @@ class Gradient
     private $numcolors = 100;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
      */
     public function __construct(&$img)
     {
@@ -40,7 +40,15 @@ class Gradient
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $xl
+     * @param mixed $yt
+     * @param mixed $xr
+     * @param mixed $yb
+     * @param mixed $from_color
+     * @param mixed $to_color
+     * @param mixed $style
      */
     // Produce a gradient filled rectangle with a smooth transition between
     // two colors.
@@ -174,10 +182,10 @@ class Gradient
                 $adj         = 1.4;
                 $m           = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color2 = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
 
                 $this->GetColArray($from_color2, $to_color, $steps1, $colors, $this->numcolors);
-                $n = count($colors);
+                $n = safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -191,7 +199,7 @@ class Gradient
                 }
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
-                $n = count($colors);
+                $n = safe_count($colors);
                 for ($i = 0; $i < $steps && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -204,7 +212,7 @@ class Gradient
                 $delta  = $xr >= $xl ? 1 : -1;
 
                 $this->GetColArray($from_color, $to_color, $steps1, $colors, $this->numcolors);
-                $n = count($colors);
+                $n = safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -221,11 +229,11 @@ class Gradient
                 $adj        = 1.4;
                 $m          = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
                 $from_color = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m)];
+                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
 
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
-                $n = count($colors);
+                $n = safe_count($colors);
                 for ($i = 0; $i < $steps && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -242,7 +250,7 @@ class Gradient
                 $y  = $yt;
                 $x2 = $xr;
                 $y2 = $yb;
-                $n  = count($colors);
+                $n  = safe_count($colors);
                 for ($x = $xl, $i = 0; $x < $xl + $dx && $y < $yt + $dy && $i < $n; ++$x, ++$y, --$x2, --$y2, ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Rectangle($x, $y, $x2, $y2);
@@ -255,7 +263,7 @@ class Gradient
                 $steps1 = $xr - $xl;
                 $delta  = $xr >= $xl ? 1 : -1;
                 $this->GetColArray($to_color, $from_color, $steps1, $colors, $this->numcolors);
-                $n = count($colors);
+                $n = safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -285,7 +293,7 @@ class Gradient
                     $steps = $xr - $xl;
                     $delta = $xr >= $xl ? 1 : -1;
                     $this->GetColArray($from_color, $to_color, $steps * 2, $colors, $this->numcolors);
-                    $n = count($colors);
+                    $n = safe_count($colors);
 
                     for ($x = $xl, $i = 0; $i < $steps && $i < $n; ++$i) {
                         $this->img->current_color = $colors[$i];
@@ -305,7 +313,7 @@ class Gradient
                     $steps = $yb - $yt;
                     $delta = $yb >= $yt ? 1 : -1;
                     $this->GetColArray($from_color, $to_color, $steps * 2, $colors, $this->numcolors);
-                    $n = count($colors);
+                    $n = safe_count($colors);
 
                     for ($y = $yt, $i = 0; $i < $steps && $i < $n; ++$i) {
                         $this->img->current_color = $colors[$i];
@@ -337,13 +345,13 @@ class Gradient
     // of a mountain)
     public function FilledFlatPolygon($pts, $from_color, $to_color)
     {
-        if (count($pts) == 0) {
+        if (safe_count($pts) == 0) {
             return;
         }
 
         $maxy = $pts[1];
         $miny = $pts[1];
-        $n    = count($pts);
+        $n    = safe_count($pts);
         for ($i = 0, $idx = 0; $i < $n; $i += 2) {
             $x    = round($pts[$i]);
             $y    = round($pts[$i + 1]);
@@ -357,7 +365,7 @@ class Gradient
             $colmap[$i] = $colors[$idx++];
         }
 
-        $n   = count($pts) / 2;
+        $n   = safe_count($pts) / 2;
         $idx = 0;
         while ($idx < $n - 1) {
             $p1 = [round($pts[$idx * 2]), round($pts[$idx * 2 + 1])];
@@ -398,7 +406,12 @@ class Gradient
     }
 
     /**
-     * PRIVATE METHODS
+     * PRIVATE METHODS.
+     *
+     * @param mixed $from_color
+     * @param mixed $to_color
+     * @param mixed $arr_size
+     * @param mixed $numcols
      */
     // Add to the image color map the necessary colors to do the transition
     // between the two colors using $numcolors intermediate colors

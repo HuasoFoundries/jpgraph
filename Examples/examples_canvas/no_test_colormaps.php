@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once '../jpgraph.php';
 require_once '../jpgraph_canvas.php';
@@ -63,7 +63,7 @@ class ColorMapDriver
             $mw = round(($width - $lmarg - $rmarg) / $n);
 
             // Draw color map title (name)
-            $t->Set('Basic colors: '.$ncols.',   Total colors: '.$n);
+            $t->Set('Basic colors: ' . $ncols . ',   Total colors: ' . $n);
             $t->SetAlign('center', 'bottom');
             $t->SetAngle(0);
             $t->SetFont(FF_TIMES, FS_NORMAL, 14);
@@ -71,7 +71,7 @@ class ColorMapDriver
 
             // Add the name/number of the map to the left
             $t->SetAlign('right', 'center');
-            $t->Set('Map: '.$mapidx);
+            $t->Set('Map: ' . $mapidx);
             $t->SetFont(FF_ARIAL, FS_NORMAL, 14);
             $t->Stroke($graph->img, $xs - 20, round($ys + $mh / 2));
 

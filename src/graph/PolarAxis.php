@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -114,7 +114,7 @@ class PolarAxis extends Axis
         // Stroke the minor arcs
         $pmin = [];
         $p    = $this->scale->ticks->ticks_pos;
-        $n    = count($p);
+        $n    = safe_count($p);
         $i    = 0;
         $this->img->SetColor($this->gridminor_color);
         while ($i < $n) {
@@ -155,7 +155,7 @@ class PolarAxis extends Axis
             } else {
                 $step = 9;
             }
-            $n = round(count($pmin) / $step);
+            $n = round(safe_count($pmin) / $step);
             $i = 0;
             $this->img->SetColor($this->gridmajor_color);
             $limit = max($this->img->plotwidth, $this->img->plotheight) * 1.4;
@@ -419,7 +419,7 @@ class PolarAxis extends Axis
         // Mirror the positions for the left side of the scale
         //
         $mid = 2 * ($this->img->left_margin + $this->img->plotwidth / 2);
-        $n   = count($this->scale->ticks->ticks_pos);
+        $n   = safe_count($this->scale->ticks->ticks_pos);
         $i   = 0;
         while ($i < $n) {
             $this->scale->ticks->ticks_pos[$i] =
@@ -427,7 +427,7 @@ class PolarAxis extends Axis
             ++$i;
         }
 
-        $n = count($this->scale->ticks->maj_ticks_pos);
+        $n = safe_count($this->scale->ticks->maj_ticks_pos);
         $i = 0;
         while ($i < $n) {
             $this->scale->ticks->maj_ticks_pos[$i] =
@@ -435,7 +435,7 @@ class PolarAxis extends Axis
             ++$i;
         }
 
-        $n = count($this->scale->ticks->maj_ticklabels_pos);
+        $n = safe_count($this->scale->ticks->maj_ticklabels_pos);
         $i = 1;
         while ($i < $n) {
             $this->scale->ticks->maj_ticklabels_pos[$i] =
@@ -444,7 +444,7 @@ class PolarAxis extends Axis
         }
 
         // Draw the left side of the scale
-        $n  = count($this->scale->ticks->ticks_pos);
+        $n  = safe_count($this->scale->ticks->ticks_pos);
         $yu = $pos - $this->scale->ticks->direction * $this->scale->ticks->GetMinTickAbsSize();
 
         // Minor ticks
@@ -457,7 +457,7 @@ class PolarAxis extends Axis
             }
         }
 
-        $n  = count($this->scale->ticks->maj_ticks_pos);
+        $n  = safe_count($this->scale->ticks->maj_ticks_pos);
         $yu = $pos - $this->scale->ticks->direction * $this->scale->ticks->GetMajTickAbsSize();
 
         // Major ticks

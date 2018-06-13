@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -81,7 +81,7 @@ class GraphTabTitle extends Text
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y];
+                    $x + $w, $y, ];
             } elseif ($this->align == 'center') {
                 $x += round($aImg->plotwidth / 2) - round($w / 2);
                 $p = [$x, $y,
@@ -89,7 +89,7 @@ class GraphTabTitle extends Text
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y];
+                    $x + $w, $y, ];
             } else {
                 $x += $aImg->plotwidth - $w;
                 $p = [$x, $y,
@@ -97,7 +97,7 @@ class GraphTabTitle extends Text
                     $x + $this->corner, $y - $h,
                     $x + $w - $this->corner, $y - $h,
                     $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y];
+                    $x + $w, $y, ];
             }
         } else {
             if ($this->width === TABTITLE_WIDTHFULL) {
@@ -112,7 +112,7 @@ class GraphTabTitle extends Text
                 $x + $this->corner, $y - $h,
                 $x + $w - $this->corner, $y - $h,
                 $x + $w, $y - $h + $this->corner,
-                $x + $w, $y];
+                $x + $w, $y, ];
         }
         if ($this->halign == 'left') {
             $aImg->SetTextAlign('left', 'bottom');

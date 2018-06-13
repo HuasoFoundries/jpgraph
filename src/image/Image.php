@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -78,7 +78,12 @@ class Image
     protected $ff_font2_bold;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aWidth
+     * @param mixed $aHeight
+     * @param mixed $aFormat
+     * @param mixed $aSetAutoMargin
      */
     public function __construct($aWidth = 0, $aHeight = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
@@ -307,7 +312,11 @@ class Image
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $family
+     * @param mixed $style
+     * @param mixed $size
      */
     public function SetFont($family, $style = FS_NORMAL, $size = 10)
     {
@@ -336,7 +345,7 @@ class Image
     public function GetTextHeight($txt = '', $angle = 0)
     {
         $tmp = preg_split('/\n/', $txt);
-        $n   = count($tmp);
+        $n   = safe_count($tmp);
         $m   = 0;
         for ($i = 0; $i < $n; ++$i) {
             $m = max($m, strlen($tmp[$i]));
@@ -385,7 +394,7 @@ class Image
     public function GetTextWidth($txt, $angle = 0)
     {
         $tmp = preg_split('/\n/', $txt);
-        $n   = count($tmp);
+        $n   = safe_count($tmp);
         if ($this->font_family <= FF_FONT2 + 1) {
             $m = 0;
             for ($i = 0; $i < $n; ++$i) {
@@ -531,7 +540,7 @@ class Image
         $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
 
         $bb = [$x - $xmarg, $y + $height - $ymarg, $x + $width, $y + $height - $ymarg,
-            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg];
+            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg, ];
         $this->SetTextAlign($h, $v);
 
         $this->SetAngle($olda);
@@ -697,7 +706,7 @@ class Image
         $bb = [$x - $xmarg, $y + $height - $ymarg,
             $x + $width, $y + $height - $ymarg,
             $x + $width, $y - $ymarg,
-            $x - $xmarg, $y - $ymarg];
+            $x - $xmarg, $y - $ymarg, ];
 
         $this->SetTextAlign($h, $v);
         $this->SetAngle($olda);
@@ -753,7 +762,7 @@ class Image
         } else {
             if (preg_match('/\n/', $txt)) {
                 $tmp = preg_split('/\n/', $txt);
-                for ($i = 0; $i < count($tmp); ++$i) {
+                for ($i = 0; $i < safe_count($tmp); ++$i) {
                     $w1 = $this->GetTextWidth($tmp[$i]);
                     if ($paragraph_align == 'left') {
                         imagestring($this->img, $use_font, $x, $y - $h + 1 + $i * $fh, $tmp[$i], $this->current_color);
@@ -787,7 +796,7 @@ class Image
         // the width will be too muchy otherwise since when
         // we print we stroke the individually lines by hand.
         $e = explode("\n", $aTxt);
-        $n = count($e);
+        $n = safe_count($e);
         for ($i = 0; $i < $n; ++$i) {
             $e[$i] = str_replace("\r", '', $e[$i]);
         }
@@ -930,35 +939,35 @@ class Image
             if ($aAngle <= 90) {
                 //<=0
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
             } elseif ($aAngle <= 180) {
                 //<= 2
                 $bbox = [$bbox[4], $bbox[7], $bbox[0], $bbox[7],
-                    $bbox[0], $bbox[3], $bbox[4], $bbox[3]];
+                    $bbox[0], $bbox[3], $bbox[4], $bbox[3], ];
             } elseif ($aAngle <= 270) {
                 //<= 3
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
             }
         } elseif ($aAngle < 0) {
             if ($aAngle <= -270) {
                 // <= -3
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
             } elseif ($aAngle <= -180) {
                 // <= -2
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
             } elseif ($aAngle <= -90) {
                 // <= -1
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
             }
         }
 
@@ -1093,7 +1102,7 @@ class Image
 
             $y -= $linemargin / 2;
             $tmp = preg_split('/\n/', $txt);
-            $nl  = count($tmp);
+            $nl  = safe_count($tmp);
             $h   = $nl * $fh;
 
             if ($this->text_halign == 'right') {
@@ -1557,7 +1566,7 @@ class Image
             return;
         }
 
-        $n    = count($p);
+        $n    = safe_count($p);
         $oldx = $p[0];
         $oldy = $p[1];
         if ($fast) {
@@ -1583,7 +1592,7 @@ class Image
 
     public function FilledPolygon($pts)
     {
-        $n = count($pts);
+        $n = safe_count($pts);
         if ($n == 0) {
             Util\JpGraphError::RaiseL(25105); //('NULL data specified for a filled polygon. Check that your data is not NULL.');
         }
@@ -1592,7 +1601,7 @@ class Image
         }
         $old = $this->line_weight;
         imagesetthickness($this->img, 1);
-        imagefilledpolygon($this->img, $pts, count($pts) / 2, $this->current_color);
+        imagefilledpolygon($this->img, $pts, safe_count($pts) / 2, $this->current_color);
         $this->line_weight = $old;
         imagesetthickness($this->img, $old);
     }
@@ -1963,7 +1972,7 @@ class Image
         $p4y = ceil(($y1 - $dist_y));
 
         $array = [$p1x, $p1y, $p2x, $p2y, $p3x, $p3y, $p4x, $p4y];
-        imagefilledpolygon($im, $array, (count($array) / 2), $color);
+        imagefilledpolygon($im, $array, (safe_count($array) / 2), $color);
 
         // for antialias
         imageline($im, $p1x, $p1y, $p2x, $p2y, $color);
@@ -2020,12 +2029,12 @@ class Image
         }
 
         //print_r($pts);exit;
-        if (count($pts) / 2 < 3) {
+        if (safe_count($pts) / 2 < 3) {
             return;
         }
 
         imagesetthickness($im, 1);
-        imagefilledpolygon($im, $pts, count($pts) / 2, $color);
+        imagefilledpolygon($im, $pts, safe_count($pts) / 2, $color);
 
         $weight *= 2;
 
@@ -2133,7 +2142,7 @@ class Image
 
     /**
      * Originally written from scratch by Ulrich Mierendorff, 06/2006
-     * Rewritten and improved, 04/2007, 07/2007
+     * Rewritten and improved, 04/2007, 07/2007.
      *
      * @param mixed $cx
      * @param mixed $cy

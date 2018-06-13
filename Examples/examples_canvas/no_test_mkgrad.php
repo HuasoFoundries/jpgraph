@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 //=======================================================================
@@ -12,7 +12,6 @@
 
 // Basic library classes
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_bar.php';
 require_once 'jpgraph/jpgraph_canvas.php';
@@ -42,7 +41,7 @@ class Form
             'Horizontal from middle', 4,
             'Horizontal wider middle', 6,
             'Vertical wider middle', 7,
-            'Rectangle', 5];
+            'Rectangle', 5, ];
     }
 
     public function Run()

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -43,7 +43,7 @@ class WindrosePlotScale
         $this->iZeroSum = 0;
         foreach ($aData as $idx => $legdata) {
             $legsum = array_sum($legdata);
-            $maxnum = max($maxnum, count($legdata) - 1);
+            $maxnum = max($maxnum, safe_count($legdata) - 1);
             $max    = max($legsum - $legdata[0], $max);
             $totlegsum += $legsum;
             $this->iZeroSum += $legdata[0];

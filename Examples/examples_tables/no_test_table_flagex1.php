@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * JPGraph v3.1.20
+ */
 include '../jpgraph.php';
 include '../jpgraph_canvas.php';
 include '../jpgraph_table.php';
@@ -18,7 +22,7 @@ $data = [
     ['Feb', 13, 17, 15, 8, 3, 9],
     ['Mar', 34, 35, 26, 20, 22, 16],
     ['Apr', 41, 43, 49, 45, 51, 47],
-    ['Sum:', 88, 95, 90, 73, 76, 72]];
+    ['Sum:', 88, 95, 90, 73, 76, 72], ];
 
 $countries = ['united states', 'united kingdom', 'french republic', 'denmark', 'iceland', 'canada'];
 

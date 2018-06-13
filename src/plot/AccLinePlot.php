@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -19,12 +19,14 @@ class AccLinePlot extends Plot
     private $iStartEndZero = true;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $plots
      */
     public function __construct($plots)
     {
         $this->plots     = $plots;
-        $this->nbrplots  = count($plots);
+        $this->nbrplots  = safe_count($plots);
         $this->numpoints = $plots[0]->numpoints;
 
         // Verify that all plots have the same number of data points
@@ -40,7 +42,9 @@ class AccLinePlot extends Plot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $graph
      */
     public function Legend($graph)
     {
@@ -53,9 +57,9 @@ class AccLinePlot extends Plot
     {
         list($xmax) = $this->plots[0]->Max();
         $nmax       = 0;
-        $n          = count($this->plots);
+        $n          = safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
-            $nc      = count($this->plots[$i]->coords[0]);
+            $nc      = safe_count($this->plots[$i]->coords[0]);
             $nmax    = max($nmax, $nc);
             list($x) = $this->plots[$i]->Max();
             $xmax    = max($xmax, $x);
@@ -81,9 +85,9 @@ class AccLinePlot extends Plot
     {
         $nmax                 = 0;
         list($xmin, $ysetmin) = $this->plots[0]->Min();
-        $n                    = count($this->plots);
+        $n                    = safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
-            $nc          = count($this->plots[$i]->coords[0]);
+            $nc          = safe_count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $nc);
             list($x, $y) = $this->plots[$i]->Min();
             $xmin        = min($xmin, $x);
@@ -140,7 +144,7 @@ class AccLinePlot extends Plot
     // will be replaced by the the first valid data point
     public function LineInterpolate(&$aData)
     {
-        $n = count($aData);
+        $n = safe_count($aData);
         $i = 0;
 
         // If first point is undefined we will set it to the same as the first
@@ -210,7 +214,7 @@ class AccLinePlot extends Plot
     public function Stroke($img, $xscale, $yscale)
     {
         $img->SetLineWeight($this->weight);
-        $this->numpoints = count($this->plots[0]->coords[0]);
+        $this->numpoints = safe_count($this->plots[0]->coords[0]);
         // Allocate array
         $coords[$this->nbrplots][$this->numpoints] = 0;
         for ($i = 0; $i < $this->numpoints; ++$i) {

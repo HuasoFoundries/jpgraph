@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -19,12 +19,14 @@ class AccBarPlot extends BarPlot
     private $nbrplots = 0;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $plots
      */
     public function __construct($plots)
     {
         $this->plots    = $plots;
-        $this->nbrplots = count($plots);
+        $this->nbrplots = safe_count($plots);
         if ($this->nbrplots < 1) {
             Util\JpGraphError::RaiseL(2010); //('Cannot create AccBarPlot from empty plot array.');
         }
@@ -51,11 +53,13 @@ class AccBarPlot extends BarPlot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $graph
      */
     public function Legend($graph)
     {
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
         for ($i = $n - 1; $i >= 0; --$i) {
             $c = get_class($this->plots[$i]);
             if (!($this->plots[$i] instanceof BarPlot)) {
@@ -70,8 +74,8 @@ class AccBarPlot extends BarPlot
     {
         list($xmax) = $this->plots[0]->Max();
         $nmax       = 0;
-        for ($i = 0; $i < count($this->plots); ++$i) {
-            $n       = count($this->plots[$i]->coords[0]);
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
+            $n       = safe_count($this->plots[$i]->coords[0]);
             $nmax    = max($nmax, $n);
             list($x) = $this->plots[$i]->Max();
             $xmax    = max($xmax, $x);
@@ -114,8 +118,8 @@ class AccBarPlot extends BarPlot
     {
         $nmax                 = 0;
         list($xmin, $ysetmin) = $this->plots[0]->Min();
-        for ($i = 0; $i < count($this->plots); ++$i) {
-            $n           = count($this->plots[$i]->coords[0]);
+        for ($i = 0; $i < safe_count($this->plots); ++$i) {
+            $n           = safe_count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $n);
             list($x, $y) = $this->plots[$i]->Min();
             $xmin        = min($xmin, $x);
@@ -215,7 +219,7 @@ class AccBarPlot extends BarPlot
                         // the total value is larger than 0 then we
                         // add the shadow.
                         if (is_array($this->bar_shadow_color)) {
-                            $numcolors = count($this->bar_shadow_color);
+                            $numcolors = safe_count($this->bar_shadow_color);
                             if ($numcolors == 0) {
                                 Util\JpGraphError::RaiseL(2013); //('You have specified an empty array for shadow colors in the bar plot.');
                             }
@@ -260,7 +264,7 @@ class AccBarPlot extends BarPlot
                         // an array to specify both (from, to style) for each individual bar. The way to know the difference is
                         // to investgate the first element. If this element is an integer [0,255] then we assume it is an Image\RGB
                         // triple.
-                        $ng = count($this->plots[$j]->grad_fromcolor);
+                        $ng = safe_count($this->plots[$j]->grad_fromcolor);
                         if ($ng === 3) {
                             if (is_numeric($this->plots[$j]->grad_fromcolor[0]) && $this->plots[$j]->grad_fromcolor[0] > 0 &&
                                 $this->plots[$j]->grad_fromcolor[0] < 256) {
@@ -300,7 +304,7 @@ class AccBarPlot extends BarPlot
                     }
                 } else {
                     if (is_array($this->plots[$j]->fill_color)) {
-                        $numcolors = count($this->plots[$j]->fill_color);
+                        $numcolors = safe_count($this->plots[$j]->fill_color);
                         $fillcolor = $this->plots[$j]->fill_color[$i % $numcolors];
                         // If the bar is specified to be non filled then the fill color is false
                         if ($fillcolor !== false) {
@@ -342,7 +346,7 @@ class AccBarPlot extends BarPlot
 
                 // CSIM array
 
-                if ($i < count($this->plots[$j]->csimtargets)) {
+                if ($i < safe_count($this->plots[$j]->csimtargets)) {
                     // Create the client side image map
                     $rpts      = $img->ArrRotate($pts);
                     $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);

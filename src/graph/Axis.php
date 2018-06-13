@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -129,11 +129,15 @@ class Axis extends AxisPrototype
 
     /**
      * PRIVATE METHODS
-     * // Draw all the tick labels on major tick marks
+     * // Draw all the tick labels on major tick marks.
+     *
+     * @param mixed $aPos
+     * @param mixed $aMinor
+     * @param mixed $aAbsLabel
      */
     public function StrokeLabels($aPos, $aMinor = false, $aAbsLabel = false)
     {
-        if (is_array($this->label_color) && count($this->label_color) > 3) {
+        if (is_array($this->label_color) && safe_count($this->label_color) > 3) {
             $this->ticks_label_colors = $this->label_color;
             $this->img->SetColor($this->label_color[0]);
         } else {
@@ -143,7 +147,7 @@ class Axis extends AxisPrototype
         $yoff = $this->img->GetFontHeight() / 2;
 
         // Only draw labels at major tick marks
-        $nbr = count($this->scale->ticks->maj_ticks_label);
+        $nbr = safe_count($this->scale->ticks->maj_ticks_label);
 
         // We have the option to not-display the very first mark
         // (Usefull when the first label might interfere with another
@@ -156,7 +160,7 @@ class Axis extends AxisPrototype
         // of the scale.
         $ncolor = 0;
         if (isset($this->ticks_label_colors)) {
-            $ncolor = count($this->ticks_label_colors);
+            $ncolor = safe_count($this->ticks_label_colors);
         }
         while ($i < $nbr) {
             // $tpos holds the absolute text position for the label

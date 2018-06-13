@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -15,16 +15,16 @@ class ContourPlot extends Plot
     private $contourCoord;
     private $contourVal;
     private $contourColor;
-    private $nbrCountours         = 0;
-    private $dataMatrix           = [];
-    private $invertLegend         = false;
-    private $interpFactor         = 1;
-    private $flipData             = false;
-    private $isobar               = 10;
-    private $showLegend           = false;
-    private $highcontrast         = false;
-    private $highcontrastbw       = false;
-    private $manualIsobarColors   = [];
+    private $nbrCountours       = 0;
+    private $dataMatrix         = [];
+    private $invertLegend       = false;
+    private $interpFactor       = 1;
+    private $flipData           = false;
+    private $isobar             = 10;
+    private $showLegend         = false;
+    private $highcontrast       = false;
+    private $highcontrastbw     = false;
+    private $manualIsobarColors = [];
 
     /**
      * Construct a contour plotting algorithm. The end result of the algorithm is a sequence of
@@ -63,7 +63,7 @@ class ContourPlot extends Plot
         $this->contour = new Contour($this->dataMatrix, $this->isobar, $aIsobarColors);
 
         if (is_array($aIsobar)) {
-            $this->nbrContours = count($aIsobar);
+            $this->nbrContours = safe_count($aIsobar);
         } else {
             $this->nbrContours = $aIsobar;
         }
@@ -122,7 +122,7 @@ class ContourPlot extends Plot
      */
     public function Max()
     {
-        return [count($this->dataMatrix[0]) - 1, count($this->dataMatrix) - 1];
+        return [count($this->dataMatrix[0]) - 1, safe_count($this->dataMatrix) - 1];
     }
 
     /**
@@ -156,8 +156,8 @@ class ContourPlot extends Plot
      */
     public function PreScaleSetup($aGraph)
     {
-        $xn = count($this->dataMatrix[0]) - 1;
-        $yn = count($this->dataMatrix) - 1;
+        $xn = safe_count($this->dataMatrix[0]) - 1;
+        $yn = safe_count($this->dataMatrix) - 1;
 
         $aGraph->xaxis->scale->Update($aGraph->img, 0, $xn);
         $aGraph->yaxis->scale->Update($aGraph->img, 0, $yn);
@@ -188,9 +188,9 @@ class ContourPlot extends Plot
      */
     public function Stroke($img, $xscale, $yscale)
     {
-        if (count($this->manualIsobarColors) > 0) {
+        if (safe_count($this->manualIsobarColors) > 0) {
             $this->contourColor = $this->manualIsobarColors;
-            if (count($this->manualIsobarColors) != $this->nbrContours) {
+            if (safe_count($this->manualIsobarColors) != $this->nbrContours) {
                 Util\JpGraphError::RaiseL(28002);
             }
         }
@@ -200,7 +200,7 @@ class ContourPlot extends Plot
         for ($c = 0; $c < $this->nbrContours; ++$c) {
             $img->SetColor($this->contourColor[$c]);
 
-            $n = count($this->contourCoord[$c]);
+            $n = safe_count($this->contourCoord[$c]);
             $i = 0;
             while ($i < $n) {
                 list($x1, $y1) = $this->contourCoord[$c][$i][0];

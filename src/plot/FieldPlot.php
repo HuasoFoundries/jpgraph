@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -21,11 +21,11 @@ class FieldPlot extends Plot
 
     public function __construct($datay, $datax, $angles)
     {
-        if ((count($datax) != count($datay))) {
+        if ((safe_count($datax) != safe_count($datay))) {
             Util\JpGraphError::RaiseL(20001);
         }
         //("Fieldplots must have equal number of X and Y points.");
-        if ((count($datax) != count($angles))) {
+        if ((safe_count($datax) != safe_count($angles))) {
             Util\JpGraphError::RaiseL(20002);
         }
         //("Fieldplots must have an angle specified for each X and Y points.");

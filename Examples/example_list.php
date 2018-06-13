@@ -10,7 +10,8 @@ function GetFiles()
             while ($file = $examplefolder->Read()) {
                 if (is_dir($file) || !strstr($file, '.php')) {
                     continue;
-                } elseif (!strstr($entry, 'csim') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
+                }
+                if (!strstr($entry, 'csim') && strstr($file, 'x') && !strstr($file, 'show') && !strstr($file, 'csim')) {
                     $a[] = $entry . '/' . $file;
                 } elseif (strstr($entry, 'csim') && !strstr($entry, 'graph')) {
                     $a[] = $entry . '/' . $file;

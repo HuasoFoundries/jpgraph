@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
-/**
+/*
  * File:        JPGRAPH_RADAR.PHP
  * // Description: Radar plot extension for JpGraph
  * // Created:     2001-02-04
@@ -61,8 +61,8 @@ class RadarGrid
             return;
         }
 
-        $nbrticks = count($grid[0]) / 2;
-        $nbrpnts  = count($grid);
+        $nbrticks = safe_count($grid[0]) / 2;
+        $nbrpnts  = safe_count($grid);
         $img->SetColor($this->grid_color);
         $img->SetLineWeight($this->weight);
 
@@ -109,7 +109,9 @@ class RadarPlot
     private $linestyle  = 'solid';
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $data
      */
     public function __construct($data)
     {
@@ -177,7 +179,7 @@ class RadarPlot
 
     public function Stroke($img, $pos, $scale, $startangle)
     {
-        $nbrpnts = count($this->data);
+        $nbrpnts = safe_count($this->data);
         $astep   = 2 * M_PI / $nbrpnts;
         $a       = $startangle;
 
@@ -240,7 +242,7 @@ class RadarPlot
 
     public function GetCount()
     {
-        return count($this->data);
+        return safe_count($this->data);
     }
 
     public function Legend($graph)

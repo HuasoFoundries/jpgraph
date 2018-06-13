@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
-/**
+/*
  * File:        JPGRAPH_CANVTOOLS.PHP
  * // Description: Some utilities for text and shape drawing on a canvas
  * // Created:     2002-08-23
@@ -54,7 +54,7 @@ class Shape
 
     public function Polygon($p, $aClosed = false)
     {
-        $n = count($p);
+        $n = safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
@@ -64,7 +64,7 @@ class Shape
 
     public function FilledPolygon($p)
     {
-        $n = count($p);
+        $n = safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);

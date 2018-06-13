@@ -1,5 +1,8 @@
 <?php
-// $Id: canvasex01.php,v 1.3 2002/10/23 08:17:23 aditus Exp $
+
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;

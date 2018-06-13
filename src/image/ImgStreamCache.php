@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -19,8 +19,11 @@ class ImgStreamCache
     private $timeout = 0;
 
     // Infinite timeout
+
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aCacheDir
      */
     public function __construct($aCacheDir = CACHE_DIR)
     {
@@ -28,7 +31,9 @@ class ImgStreamCache
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aTimeout
      */
     // Specify a timeout (in minutes) for the file. If the file is older then the
     // timeout value it will be overwritten with a newer version.
@@ -186,7 +191,9 @@ class ImgStreamCache
     }
 
     /**
-     * PRIVATE METHODS
+     * PRIVATE METHODS.
+     *
+     * @param mixed $aFile
      */
 
     // Create all necessary directories in a path
@@ -199,7 +206,7 @@ class ImgStreamCache
             $dirs[] = $aFile . '/';
             $aFile  = dirname($aFile);
         }
-        for ($i = sizeof($dirs) - 1; $i >= 0; --$i) {
+        for ($i = safe_count($dirs) - 1; $i >= 0; --$i) {
             if (!@mkdir($dirs[$i], 0777)) {
                 Util\JpGraphError::RaiseL(25118, $aFile); //(" Can't create directory $aFile. Make sure PHP has write permission to this directory.");
             }

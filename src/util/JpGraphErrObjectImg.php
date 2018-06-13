@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 
 /**
- * An image based error handler
+ * An image based error handler.
  */
 class JpGraphErrObjectImg extends JpGraphErrObject
 {

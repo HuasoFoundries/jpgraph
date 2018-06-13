@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -9,7 +9,7 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
 
-/**
+/*
  * File:        JPGRAPH_LEGEND.INC.PHP
  * // Description: Class to handle the legend box in the graph that gives
  * //              names on the data series. The number of rows and columns
@@ -65,7 +65,7 @@ class Legend
     private $bkg_gradto   = 'gray';
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
      */
     public function __construct()
     {
@@ -73,7 +73,9 @@ class Legend
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aHide
      */
     public function Hide($aHide = true)
     {
@@ -220,7 +222,7 @@ class Legend
 
     public function HasItems()
     {
-        return (bool) (count($this->txtcol));
+        return (bool) (safe_count($this->txtcol));
     }
 
     public function Stroke($aImg)
@@ -238,7 +240,7 @@ class Legend
             $this->txtcol = array_reverse($this->txtcol);
         }
 
-        $n = count($this->txtcol);
+        $n = safe_count($this->txtcol);
         if ($n == 0) {
             return;
         }
@@ -480,7 +482,7 @@ class Legend
                     $prect->Stroke($aImg);
                     $prect = null;
                 } else {
-                    if (is_array($color) && count($color) == 2) {
+                    if (is_array($color) && safe_count($color) == 2) {
                         // The client want a gradient color
                         $grad->FilledRectangle(
                             $x1 - $boxsize / 2,

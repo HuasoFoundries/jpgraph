@@ -1,6 +1,8 @@
 <?php
-// $Id: canvasbezierex1.php,v 1.1 2002/10/05 21:04:28 aditus Exp $
 
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
@@ -18,7 +20,7 @@ $g->title->Set('Bezier line with control points');
 $p = [3, 6,
     6, 9,
     5, 3,
-    7, 4];
+    7, 4, ];
 
 // Visualize control points
 $shape->SetColor('blue');

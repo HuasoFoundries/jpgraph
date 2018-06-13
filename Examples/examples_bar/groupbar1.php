@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 // $Id: groupbarex1.php,v 1.2 2002/07/11 23:27:28 aditus Exp $

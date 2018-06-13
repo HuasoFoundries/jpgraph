@@ -1,5 +1,8 @@
 <?php
-// Gantt horizontal grid example
+
+/**
+ * JPGraph v3.1.20
+ */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
@@ -9,7 +12,7 @@ $data = [
     [0, 'Group 1  Johan', '2001-10-23', '2001-11-06', FF_FONT1, FS_BOLD, 8],
     [1, '  Label 2', '2001-10-26', '2001-11-04'],
     [3, 'Group 2', '2001-11-20', '2001-11-28', FF_FONT1, FS_BOLD, 8],
-    [4, '  Label 1', '2001-11-20', '2001-12-1']];
+    [4, '  Label 1', '2001-11-20', '2001-12-1'], ];
 
 // New Gantt Graph
 $graph = new Graph\GanttGraph(500);

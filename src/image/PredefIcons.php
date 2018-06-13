@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -12,7 +12,6 @@ use Amenadiel\JpGraph\Util;
  * @class PredefIcons
  * // Description: Predefined icons for use with Gantt charts
  */
-
 class PredefIcons
 {
     private $iBuiltinIcon;
@@ -35,7 +34,7 @@ class PredefIcons
 
     public function __construct()
     {
-        /**
+        /*
          * warning.png
          */
         $this->iBuiltinIcon[0][0] = 1043;
@@ -55,7 +54,7 @@ class PredefIcons
             'XGy/58QVxAC9MccJtZ5kIzNlW440WrJ2ea4YPA9cAooA7i0A/gS+iqLoOpB1HOegqrYB3UBmJrAtQAJwpwPr1Ry92wVlgZsiYlW1' .
             'uX1gU36dymgqYxJIJJNJT1W9QqHgNwFQBGYqo94OwHZQUuPD7ACglSvc+5n5T9m/wfJJX4U9qzEAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * edit.png
          */
         $this->iBuiltinIcon[1][0] = 959;
@@ -74,7 +73,7 @@ class PredefIcons
             'J7L7eSx7gAHVg7V3MSbi6m/r93baBd6qQjerAJg/9Ql/XrvG0ON1+vv7GH3qSfY5fahUnSTpwZgIEQesaVXRPbHRG/xyJSAxMYlp' .
             'EOm71HUINiY7mGb95l/8jZCyQmJjMDGJjUmsdCROtZ0n/P/Z8v4Fs2MTUUf7vYoAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * endconstrain.png
          */
         $this->iBuiltinIcon[2][0] = 666;
@@ -89,7 +88,7 @@ class PredefIcons
             'QpeuUMzv188MlwuHy0H13HnE48UzMcL0WAtUHX8OxZHoG1URiFw7rnLLCswuSPD1ulze/iWjT2PSf+dBXRFtVVGIvzqph0pQL7VE' .
             'avXYaXXxPwsnt0imdttCocMmZBdK7YU9D8wuNOW0nXc6QWzPsSa5naZ1beb9BbGB6dxGtMnXAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * mail.png
          */
         $this->iBuiltinIcon[3][0] = 1122;
@@ -110,7 +109,7 @@ class PredefIcons
             'fPcQF/oGsVW5ovHQlavs2/8+uYnRVSOUgHAmmAClBIOBwKC0gPjhIRgEIX2wg7NnwpZW3d3d4vs+vu8TBMGK51rvPM9b8hdteZxd' .
             'LBbVR8feJDs0Rlv6GFKeXJ21rNRXESxMPR+CBUl0nN7PjtO+dye7Up/8v1I88bf/ixT/AO1/hZsqW+C6AAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * startconstrain.png
          */
         $this->iBuiltinIcon[4][0] = 725;
@@ -126,7 +125,7 @@ class PredefIcons
             '5w7Gv4bQI2+xpt4jjv2nWBmIlcExE2vDAHYioszBZXw6CPE4ADoWVHmd/tuwlZR9eXYyoszBfpiNQqaAOU5+TXRN+DeeenADPT9b' .
             'EVgKVsutKPl0TGWGhwofoquaoKK4apsq/tH/e/kFwBMXLgAEKK4AAAAASUVORK5CYII=';
 
-        /**
+        /*
          * calc.png
          */
         $this->iBuiltinIcon[5][0] = 589;
@@ -140,7 +139,7 @@ class PredefIcons
             'u7n5i7jthmGIiEGcT+36PP+gFeJrxWLhb0UA/lb4ggGs1T0rZs0zwM/ZjNfilcIY5tutPxgOW3F6dUX464LrKILLiw+A7WErrl+2' .
             'rABG1EL/BilZP8DjU2uR4U+2E49P1Z8QJmNXUzl24A9GBT0IruCfi86d9x+D12RGzt+pNAAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * mag.png
          */
         $this->iBuiltinIcon[6][0] = 1415;
@@ -165,7 +164,7 @@ class PredefIcons
             'qJKsfWQD9IkaZ2RmUvr9aV4aGYcQgjfO3aWoYBF5eXm4ewIsu/CbdPz1aWb0/p1bNoOrQxlUiuiaFo3c3FyEEOx9+C9CCD6paaTW' .
             'p/TXyYkTJ0Xe59jf7QOyAKDWp/QXxcFQ61P4pT3ShBBcvnUHIQTjxmX19/8BCeVg+/GPpskAAAAASUVORK5CYII=';
 
-        /**
+        /*
          * lock.png
          */
         $this->iBuiltinIcon[7][0] = 963;
@@ -184,7 +183,7 @@ class PredefIcons
             '2v06t515C73YQftZB9GLnDrt4LoujuPgOA4Ui+C6yOpXJwZrJ7r/gv4P/u+D9W7fLxTz+1ScQxrZ3atRLaVxdjbY2d184R6/sLHe' .
             'opHP7/Do90Ua+WWUyezzZHObP/7cfX54/dowE1d66s8TV3oE+Mfn+L/zb4XmHPjRG9YjAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * stop.png
          */
         $this->iBuiltinIcon[8][0] = 889;
@@ -202,7 +201,7 @@ class PredefIcons
             'PSdmqL+P/YHkwMGDOGWDZTlQcNBRhPEComgB/YeHfq2InF1kLlXUOkpMbio1bd7aATRD/X0M1lPeSlM2vt2X1XBZjZnpLG2tmZO6' .
             'LbQVOIcP+HG2UauH3xgwBqOz9Cc3l1tC24Fz+MvUDroeGNb5if9H/1dM/wLPCYMw9fryKgAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * error.png
          */
         $this->iBuiltinIcon[9][0] = 541;
@@ -216,7 +215,7 @@ class PredefIcons
             'ijWPJhU1MjCo9dkYfiUVjQNTDKY6CVbR6A0niUSZjRwFanR0l9i/TyvGnFdqwStq5axMfDbyBksld/FUumvxS/Bd9VyJvQDWiiMx' .
             'iOsCHgAAAABJRU5ErkJggg==';
 
-        /**
+        /*
          * openfolder.png
          */
         $this->iBuiltinIcon[10][0] = 2040;
@@ -250,7 +249,7 @@ class PredefIcons
             'jx5N1IlitKahsZE1L69j69qHgx+urFX/lQL9JYdLlfnZihUhzOLFi8N3Ml1dthOxVH/f/8/CtqSJ2JaJ2JZ59J7RPsC/AViJsQS/' .
             'dBntAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * folder.png
          */
         $this->iBuiltinIcon[11][0] = 1824;
@@ -281,7 +280,7 @@ class PredefIcons
             'RUnV1dUNXLhwAa/Xy44dO4jFYgBEo9FFF1r134BPuYlk16LrAYXsAlmtq6sbKDwoFAp9m+ykuP5ZQVZF3f8tCdwCov8LyHIoAANI' .
             'AXf/A1TI0XCDh7OWAAAAAElFTkSuQmCC';
 
-        /**
+        /*
          * file_important.png
          */
         $this->iBuiltinIcon[12][0] = 1785;
@@ -311,6 +310,6 @@ class PredefIcons
             'bGUHIAIuydTIE5zfc5Wr4lJcahHnHTP3CVGm78DrgY38N+DEibp7dmYKdAQmBh1hjEFjis+9CTWYGK21H6PxPyOI0DobYwzZF/z7' .
             '7jadTvJtYG0kCD7lfwl49ijgT1gc0AH+dZSJA/xB+Mz/GSIvFoj/B7H1mAd8CO/zAAAAAElFTkSuQmCC';
 
-        $this->iLen = count($this->iBuiltinIcon);
+        $this->iLen = safe_count($this->iBuiltinIcon);
     }
 }

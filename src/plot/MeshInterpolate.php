@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -13,6 +13,8 @@ namespace Amenadiel\JpGraph\Plot;
  * // Ver:         $Id: jpgraph_meshinterpolate.inc.php 1709 2009-07-30 08:00:08Z ljp $
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
+ *
+ * @param mixed $aFactor
  */
 
 /**
@@ -88,8 +90,8 @@ class MeshInterpolate
     {
         $step = pow(2, $aIntFactor - 1);
 
-        $orig_cols = count($aData[0]);
-        $orig_rows = count($aData);
+        $orig_cols = safe_count($aData[0]);
+        $orig_rows = safe_count($aData);
         // Number of new columns/rows
         // N = (a-1) * 2^(f-1) + 1
         $p        = pow(2, $aIntFactor - 1);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -52,7 +52,9 @@ class GanttScale
     private $iWeekStart                = 1; // Default to have weekends start on Monday
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aImg
      */
     public function __construct($aImg)
     {
@@ -100,7 +102,9 @@ class GanttScale
 
     /**
      * PUBLIC METHODS
-     * // Specify what headers should be visible
+     * // Specify what headers should be visible.
+     *
+     * @param mixed $aFlg
      */
     public function ShowHeaders($aFlg)
     {
@@ -356,7 +360,7 @@ class GanttScale
          * "Week 01 of a year is per definition the first week that has the Thursday in this year,
          * which is equivalent to the week that contains the fourth day of January.
          * In other words, the first week of a new year is the week that has the majority of its
-         * days in the new year."
+         * days in the new year.".
          *
          * Be carefull, with PHP, -3 % 7 = -3, instead of 4 !!!
          *
@@ -365,7 +369,6 @@ class GanttScale
          * first thursday of year  = 1 + (11 - date("w", mktime(0, 0, 0, 1, 1, date("Y", $day)))) % 7
          * week number             = (thursday's day of year - first thursday's day of year) / 7 + 1
          * ---------------------------------------------------------------------------*/
-
         $thursday = $day + 60 * 60 * 24 * (3 - (date('w', $day) + 6) % 7); // take week's thursday
         $week     = 1 + (date('z', $thursday) - (11 - date('w', mktime(0, 0, 0, 1, 1, date('Y', $thursday)))) % 7) / 7;
 

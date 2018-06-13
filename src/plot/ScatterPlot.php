@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -20,11 +20,14 @@ class ScatterPlot extends Plot
     private $impuls = false;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $datay
+     * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
-        if ((count($datax) != count($datay)) && is_array($datax)) {
+        if ((safe_count($datax) != safe_count($datay)) && is_array($datax)) {
             Util\JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
@@ -38,7 +41,9 @@ class ScatterPlot extends Plot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $f
      */
     public function SetImpuls($f = true)
     {

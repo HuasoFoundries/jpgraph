@@ -1,5 +1,9 @@
 <?php
-// $Id: ganttex_slice.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
+
+/**
+ * JPGraph v3.1.20
+ */
+
 // Gantt example with sunday week start and only shows a partial graph
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;

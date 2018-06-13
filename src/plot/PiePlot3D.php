@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -33,7 +33,9 @@ class PiePlot3D extends PiePlot
     private $iThickness     = false;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $data
      */
     public function __construct($data)
     {
@@ -47,12 +49,14 @@ class PiePlot3D extends PiePlot
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aLegend
      */
     // Set label arrays
     public function SetLegends($aLegend)
     {
-        $this->legends = array_reverse(array_slice($aLegend, 0, count($this->data)));
+        $this->legends = array_reverse(array_slice($aLegend, 0, safe_count($this->data)));
     }
 
     public function SetSliceColors($aColors)
@@ -243,7 +247,7 @@ class PiePlot3D extends PiePlot
                 }
 
                 $p = [$xc, $yc, $xc, $yc + $z,
-                    $xc + $w * $cossa, $z + $yc - $h * $sinsa];
+                    $xc + $w * $cossa, $z + $yc - $h * $sinsa, ];
                 $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
                 for ($a = $rsa; $a < 2 * M_PI; $a += $step) {
@@ -276,7 +280,7 @@ class PiePlot3D extends PiePlot
                 $pt[] = $yc;
             } else {
                 $p = [$xc, $yc, $xc, $yc + $z,
-                    $xc + $w * $cossa, $z + $yc - $h * $sinsa];
+                    $xc + $w * $cossa, $z + $yc - $h * $sinsa, ];
                 $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
                 $rea = $rea == 0.0 ? 2 * M_PI : $rea;
@@ -365,7 +369,7 @@ class PiePlot3D extends PiePlot
                 $p = [$xc, $yc, $xc, $yc + $z,
                     $xc + $w * $cosea, $z + $yc - $h * $sinea,
                     $xc + $w * $cosea, $yc - $h * $sinea,
-                    $xc, $yc];
+                    $xc, $yc, ];
 
                 $pt = [$xc, $yc, $xc + $w * $cosea, $yc - $h * $sinea];
 
@@ -385,7 +389,7 @@ class PiePlot3D extends PiePlot
             $p = [$xc, $yc, $xc, $yc + $z,
                 $xc + $w * $cossa, $z + $yc - $h * $sinsa,
                 $xc + $w * $cossa, $yc - $h * $sinsa,
-                $xc, $yc];
+                $xc, $yc, ];
 
             $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
@@ -472,7 +476,7 @@ class PiePlot3D extends PiePlot
         // indication of the inclination angle
         $h   = ($angle / 90.0) * $d;
         $sum = 0;
-        for ($i = 0; $i < count($data); ++$i) {
+        for ($i = 0; $i < safe_count($data); ++$i) {
             $sum += $data[$i];
         }
 
@@ -495,8 +499,8 @@ class PiePlot3D extends PiePlot
         //
         $idx        = 0;
         $adjexplode = [];
-        $numcolors  = count($colors);
-        for ($i = 0; $i < count($data); ++$i, ++$idx) {
+        $numcolors  = safe_count($colors);
+        for ($i = 0; $i < safe_count($data); ++$i, ++$idx) {
             $da = $data[$i] / $sum * 360;
 
             if (empty($this->explode_radius[$i])) {
@@ -510,7 +514,7 @@ class PiePlot3D extends PiePlot
 
             $la      = $a + $da / 2;
             $explode = [$xc + $this->explode_radius[$i] * cos($la * M_PI / 180) * $expscale,
-                $yc - $this->explode_radius[$i] * sin($la * M_PI / 180) * ($h / $d) * $expscale];
+                $yc - $this->explode_radius[$i] * sin($la * M_PI / 180) * ($h / $d) * $expscale, ];
             $adjexplode[$idx]   = $explode;
             $labeldata[$i]      = [$la, $explode[0], $explode[1]];
             $originalangles[$i] = [$a, $a + $da];
@@ -592,7 +596,7 @@ class PiePlot3D extends PiePlot
         }
 
         // Total number of slices
-        $n = count($angles);
+        $n = safe_count($angles);
 
         for ($i = 0; $i < $n; ++$i) {
             list($dbgs, $dbge) = $angles[$i];
@@ -723,7 +727,7 @@ class PiePlot3D extends PiePlot
             // Now print possible labels and add csim
             $this->value->ApplyFont($img);
             $margin = $img->GetFontHeight() / 2 + $this->value->margin;
-            for ($i = 0; $i < count($data); ++$i) {
+            for ($i = 0; $i < safe_count($data); ++$i) {
                 $la = $labeldata[$i][0];
                 $x  = $labeldata[$i][1] + cos($la * M_PI / 180) * ($d + $margin) * $this->ilabelposadj;
                 $y  = $labeldata[$i][2] - sin($la * M_PI / 180) * ($h + $margin) * $this->ilabelposadj;
@@ -781,7 +785,7 @@ class PiePlot3D extends PiePlot
         $img->SetLineWeight($edgeweight);
 
         $fulledge = true;
-        for ($i = 0; $i < count($data) && $fulledge; ++$i) {
+        for ($i = 0; $i < safe_count($data) && $fulledge; ++$i) {
             if (empty($this->explode_radius[$i])) {
                 $this->explode_radius[$i] = 0;
             }
@@ -790,7 +794,7 @@ class PiePlot3D extends PiePlot
             }
         }
 
-        for ($i = 0; $i < count($data); ++$i, ++$idx) {
+        for ($i = 0; $i < safe_count($data); ++$i, ++$idx) {
             $da = $data[$i] / $sum * 2 * M_PI;
             $this->StrokeFullSliceFrame(
                 $img,
@@ -853,7 +857,7 @@ class PiePlot3D extends PiePlot
 
             if ($sa >= M_PI && $ea <= 2 * M_PI) {
                 $p = [$xc + $w * cos($sa), $yc - $h * sin($sa),
-                    $xc + $w * cos($sa), $z + $yc - $h * sin($sa)];
+                    $xc + $w * cos($sa), $z + $yc - $h * sin($sa), ];
 
                 for ($a = $sa + $step; $a < $ea; $a += $step) {
                     $p[] = $xc + $w * cos($a);
@@ -871,7 +875,7 @@ class PiePlot3D extends PiePlot
 
     public function Stroke($img, $aaoption = 0)
     {
-        $n = count($this->data);
+        $n = safe_count($this->data);
 
         // If user hasn't set the colors use the theme array
         if ($this->setslicecolors == null) {
@@ -879,7 +883,7 @@ class PiePlot3D extends PiePlot
             sort($colors);
             $idx_a = $this->themearr[$this->theme];
             $ca    = [];
-            $m     = count($idx_a);
+            $m     = safe_count($idx_a);
             for ($i = 0; $i < $m; ++$i) {
                 $ca[$i] = $colors[$idx_a[$i]];
             }
@@ -979,7 +983,14 @@ class PiePlot3D extends PiePlot
     }
 
     /**
-     * PRIVATE METHODS
+     * PRIVATE METHODS.
+     *
+     * @param mixed $label
+     * @param mixed $img
+     * @param mixed $a
+     * @param mixed $xp
+     * @param mixed $yp
+     * @param mixed $z
      */
 
     // Position the labels of each slice

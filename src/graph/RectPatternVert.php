@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -19,7 +19,9 @@ class RectPatternVert extends RectPattern
     }
 
     /**
-     * Private methods
+     * Private methods.
+     *
+     * @param mixed $aImg
      */
     public function DoPattern($aImg)
     {

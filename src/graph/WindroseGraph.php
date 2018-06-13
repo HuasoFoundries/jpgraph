@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -36,7 +36,7 @@ class WindroseGraph extends Graph
     public function StrokeTexts()
     {
         if ($this->texts != null) {
-            $n = count($this->texts);
+            $n = safe_count($this->texts);
             for ($i = 0; $i < $n; ++$i) {
                 $this->texts[$i]->Stroke($this->img);
             }
@@ -46,7 +46,7 @@ class WindroseGraph extends Graph
     public function StrokeIcons()
     {
         if ($this->iIcons != null) {
-            $n = count($this->iIcons);
+            $n = safe_count($this->iIcons);
             for ($i = 0; $i < $n; ++$i) {
                 // Since Windrose graphs doesn't have any linear scale the position of
                 // each icon has to be given as absolute coordinates
@@ -56,11 +56,13 @@ class WindroseGraph extends Graph
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aObj
      */
     public function Add($aObj)
     {
-        if (is_array($aObj) && count($aObj) > 0) {
+        if (is_array($aObj) && safe_count($aObj) > 0) {
             $cl = $aObj[0];
         } else {
             $cl = $aObj;
@@ -111,7 +113,7 @@ class WindroseGraph extends Graph
         }
 
         // n holds number of plots
-        $n = count($this->plots);
+        $n = safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
             $this->plots[$i]->Stroke($this);
         }

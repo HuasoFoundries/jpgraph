@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
@@ -26,7 +26,7 @@ $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $p1 = new Plot\PiePlot3D($data);
 $p1->SetLegends(['Jan (%d)', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']);
 $targ = ['pie3d_csimex1.php?v=1', 'pie3d_csimex1.php?v=2', 'pie3d_csimex1.php?v=3',
-    'pie3d_csimex1.php?v=4', 'pie3d_csimex1.php?v=5', 'pie3d_csimex1.php?v=6'];
+    'pie3d_csimex1.php?v=4', 'pie3d_csimex1.php?v=5', 'pie3d_csimex1.php?v=6', ];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $p1->SetCSIMTargets($targ, $alts);
 

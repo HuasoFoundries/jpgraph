@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -15,7 +15,12 @@ class MileStone extends GanttPlotObject
     public $mark;
 
     /**
-     * CONSTRUCTOR
+     * CONSTRUCTOR.
+     *
+     * @param mixed $aVPos
+     * @param mixed $aLabel
+     * @param mixed $aDate
+     * @param mixed $aCaption
      */
     public function __construct($aVPos, $aLabel, $aDate, $aCaption = '')
     {
@@ -35,7 +40,9 @@ class MileStone extends GanttPlotObject
     }
 
     /**
-     * PUBLIC METHODS
+     * PUBLIC METHODS.
+     *
+     * @param mixed $aImg
      */
     public function GetAbsHeight($aImg)
     {
@@ -59,7 +66,7 @@ class MileStone extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(count($colwidth), count($this->title->csimtarget));
+            $n = min(safe_count($colwidth), safe_count($this->title->csimtarget));
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];

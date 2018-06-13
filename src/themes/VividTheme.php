@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.15
+ * JPGraph v3.1.20
  */
 
 namespace Amenadiel\JpGraph\Themes;
@@ -145,7 +145,7 @@ class VividTheme extends Theme
             case 'LinePlot':
 
                     $plot->Clear();
-                    $plot->SetColor($this->GetNextColor().'@0.4');
+                    $plot->SetColor($this->GetNextColor() . '@0.4');
                     $plot->SetWeight(2);
                     //                $plot->SetBarCenter();
                     break;
