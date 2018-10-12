@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
+\PC::debug('WHAT');
 $data1y = [-8, 8, 9, 3, 5, 6];
 $data2y = [18, 2, 1, 7, 5, 4];
 

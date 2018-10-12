@@ -12,7 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.min.js" integrity="sha256-Q+4FYyw42bZJQS9v3+BXNtPLNxKqDLKIEPt50Z4fiYw=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/example_list.php"></script>
-    <script type="text/javascript" src="/example_parser.js"></script>
+    <script type="text/javascript" src="/example_parser_alt.js"></script>
     <style>
     #accordion {
         max-height: 100vh;
@@ -29,18 +29,21 @@
         font-size: 17px;
     }
 
-    #iframe_container {
-        margin: 20px auto;
-    }
-
-    #graph_image {
-        border: 1px solid #BBB;
-    }
 
     #graph_iframe {
-        height: 80vh;
-        width: 95%;
         border: 1px solid #BBB;
+        min-height: 95vh;
+        position: absolute;
+        right: 0;
+        top: 5vh;
+        width: 100%;
+    }
+
+    #filepath {
+        height: 5vh;
+        position: absolute;
+        top: 0;
+        width: 95%;
     }
 
     .invisible {
@@ -52,13 +55,10 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-        </div>
-        <div class="row">
             <div class="col-6 col-md-4  col-xl-2" id="accordion" role="tablist">
             </div>
             <div class="col-6 col-md-8  col-xl-10" id="iframe_container">
-                <div id="filepath" style="margin:5px;"></div>
-                <img src="examples_axis/axislabelbkgex01.php" id="graph_image" class="graph_image">
+                <div id="filepath"></div>
                 <iframe src="/intro.html" name="graph_iframe" id="graph_iframe" frameborder="0" />
                 <p>Your browser does not support iframes.</p>
                 </iframe>
