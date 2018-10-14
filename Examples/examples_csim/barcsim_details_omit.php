@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 if (empty($_GET['id'])) {
     echo 'Incorrect argument(s) to script <b>' . basename(__FILE__) . '</b>.';

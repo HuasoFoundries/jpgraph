@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 
 // Gantt example with sunday week start and only shows a partial graph

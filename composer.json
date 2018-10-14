@@ -2,7 +2,7 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.3",
+    "version": "3.6.21",
     "keywords": ["graph", "chart", "pie", "jpgraph", "data"],
     "homepage": "http://jpgraph.net/",
     "license": "QPL-1.0",

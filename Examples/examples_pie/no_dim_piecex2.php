@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 
 // $Id: piecex2.php,v 1.3.2.1 2003/08/19 20:40:12 aditus Exp $

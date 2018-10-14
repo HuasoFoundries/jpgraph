@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 
 // $Id: bar_csimex3.php,v 1.3 2002/08/31 20:03:46 aditus Exp $

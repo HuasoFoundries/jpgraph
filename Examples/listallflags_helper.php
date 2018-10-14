@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_flags.php';

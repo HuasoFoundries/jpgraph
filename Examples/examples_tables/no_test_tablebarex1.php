@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.3
+ * JPGraph v3.6.21
  */
 include '../jpgraph.php';
 include '../jpgraph_bar.php';
