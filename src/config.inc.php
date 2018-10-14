@@ -750,13 +750,15 @@ if (!class_exists('\Kint')) {
     {
         public static $enabled_mode = true;
 
-        public static function dump() {}
+        public static function dump()
+        {
+        }
     }
 }
 
 if (property_exists('\Kint', 'enabled_mode')) {
     \Kint::$enabled_mode = DEBUGMODE;
-} else if (method_exists('\Kint', 'enabled')) {
+} elseif (method_exists('\Kint', 'enabled')) {
     \Kint::enabled(DEBUGMODE);
 }
 
@@ -787,7 +789,9 @@ if (!class_exists('\PhpConsole\Handler')) {
      */
     class PC
     {
-        public static function debug() {}
+        public static function debug()
+        {
+        }
     }
 } elseif (
     getenv('JPGRAPH_USE_PHPCONSOLE') &&
