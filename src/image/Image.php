@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -1979,6 +1979,7 @@ class Image
         imageline($im, $p3x, $p3y, $p4x, $p4y, $color);
 
         return;
+
         return imageline($this->img, $x1, $y1, $x2, $y2, $this->current_color);
         $weight = 8;
         if ($weight <= 1) {

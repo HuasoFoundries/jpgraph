@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -262,7 +262,7 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe', ];
+        'Republic of Zimbabwe'                                    => 'zbwe'];
 
     private $iFlagCount  = -1;
     private $iFlagSetMap = [
@@ -326,7 +326,7 @@ class FlagImages
             reset($this->iCountryNameMap);
             $this->iOrdIdx = [];
             $i             = 0;
-            while (list($key, $val) = each($this->iCountryNameMap)) {
+            foreach ($this->iCountryNameMap as $key => $val) {
                 $this->iOrdIdx[$i++] = [$val, $key];
             }
             $tmp         = $this->iOrdIdx[$aOrd];
@@ -357,7 +357,7 @@ class FlagImages
         $nlen  = strlen($aName);
         reset($this->iCountryNameMap);
         // Start by trying to match exact index name
-        while (list($key, $val) = each($this->iCountryNameMap)) {
+        foreach ($this->iCountryNameMap as $key => $val) {
             if ($nlen == strlen($val) && $val == $aName) {
                 $found = true;
 
@@ -367,7 +367,7 @@ class FlagImages
         if (!$found) {
             reset($this->iCountryNameMap);
             // If the exact index doesn't work try a (partial) full name
-            while (list($key, $val) = each($this->iCountryNameMap)) {
+            foreach ($this->iCountryNameMap as $key => $val) {
                 if (strpos(strtolower($key), $aName) !== false) {
                     $found = true;
 

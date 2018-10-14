@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 
 /**
@@ -755,7 +755,12 @@ if (!class_exists('\Kint')) {
         }
     }
 }
-\Kint::$enabled_mode = DEBUGMODE;
+
+if (property_exists('\Kint', 'enabled_mode')) {
+    \Kint::$enabled_mode = DEBUGMODE;
+} elseif (method_exists('\Kint', 'enabled')) {
+    \Kint::enabled(DEBUGMODE);
+}
 
 if (!function_exists('is_countable')) {
     function is_countable($c)
