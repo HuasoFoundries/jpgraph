@@ -262,7 +262,7 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe'];
+        'Republic of Zimbabwe'                                    => 'zbwe', ];
 
     private $iFlagCount  = -1;
     private $iFlagSetMap = [
