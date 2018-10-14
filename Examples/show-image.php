@@ -1,14 +1,12 @@
 <?php
-$target = basename(urldecode($_GET['target']));
-
-$folder = null;
-if (isset($_GET['folder'])) {
-    $folder = basename(urldecode($_GET['folder']));
+if (!isset($_GET['target'])) {
+    $_GET['target'] = 'axislabelbkgex01.php';
 }
-/*echo $folder;
-echo '<br>';
-echo $target;
-die();*/
+if (!isset($_GET['folder'])) {
+    $_GET['folder'] = 'examples_axis';
+}
+$target = basename(urldecode($_GET['target']));
+$folder = basename(urldecode($_GET['folder']));
 
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -17,6 +15,6 @@ die();*/
 <title> Image <?php echo $target; ?></title>
 </head>
 <body>
-<img src="<?php echo($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
+<img src="<?php echo ($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
 </body>
 </html>

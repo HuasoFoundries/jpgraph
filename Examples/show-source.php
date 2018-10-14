@@ -3,10 +3,13 @@
 /**
  * JPGraph v3.6.20
  */
-$target = basename(urldecode($_GET['target']));
-$folder = null;
-if (isset($_GET['folder'])) {
-    $folder = basename(urldecode($_GET['folder']));
+if (!isset($_GET['target'])) {
+    $_GET['target'] = 'axislabelbkgex01.php';
 }
+if (!isset($_GET['folder'])) {
+    $_GET['folder'] = 'examples_axis';
+}
+$target = basename(urldecode($_GET['target']));
+$folder = basename(urldecode($_GET['folder']));
 
 highlight_file(($folder ? $folder . '/' : '') . $target);
