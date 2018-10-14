@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * JPGraph v3.6.3
+ */
 function GetFiles()
 {
     $d = dir(__DIR__);

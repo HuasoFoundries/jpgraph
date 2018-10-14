@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 if (!isset($_GET['target'])) {
     $_GET['target'] = 'axislabelbkgex01.php';

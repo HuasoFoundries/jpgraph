@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 require_once __DIR__ . '/../../src/config.inc.php';
 require_once 'jpgraph/jpgraph_gantt.php';

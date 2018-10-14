@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 
 // Illustration of the different patterns for bands

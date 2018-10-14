@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.20
+ * JPGraph v3.6.3
  */
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $

@@ -66,7 +66,7 @@ $imgtag2 = $piegraph->GetCSIMImgHTML($_mapname2, $_graphfilename2);
 <p>The graphs are then displayed as shown in figure 1 &amp; 2. With the following
   created &lt;img> tags:</p>
 <small><pre>
-<?php 
+<?php
 echo htmlentities($imgtag1);
 echo htmlentities($imgtag2);
 ?>
