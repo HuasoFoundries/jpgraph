@@ -1,8 +1,9 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
+
 include '../jpgraph.php';
 include '../jpgraph_canvas.php';
 include '../jpgraph_table.php';

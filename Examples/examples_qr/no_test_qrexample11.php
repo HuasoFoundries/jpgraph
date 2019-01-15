@@ -1,8 +1,9 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
+
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Example 11 : Generate postscript output

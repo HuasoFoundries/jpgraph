@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -28,6 +28,8 @@ class Gradient
 
     /**
      * CONSTRUCTOR.
+     *
+     * @param mixed $img
      */
     public function __construct(&$img)
     {
@@ -412,6 +414,7 @@ class Gradient
      * @param mixed $to_color
      * @param mixed $arr_size
      * @param mixed $numcols
+     * @param mixed $colors
      */
     // Add to the image color map the necessary colors to do the transition
     // between the two colors using $numcolors intermediate colors

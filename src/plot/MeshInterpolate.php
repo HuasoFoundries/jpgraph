@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -15,6 +15,7 @@ namespace Amenadiel\JpGraph\Plot;
  * // Copyright (c) Asial Corporation. All rights reserved.
  *
  * @param mixed $aFactor
+ * @param mixed $aData
  */
 
 /**
@@ -83,6 +84,7 @@ class MeshInterpolate
      * @param  $ &$aData The original data matricde
      * @param  $aInNbr Interpolation factor
      * @param mixed $aIntFactor
+     * @param mixed $aData
      *
      * @return the interpolated matrice
      */

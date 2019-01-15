@@ -1,8 +1,9 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
+
 require_once __DIR__ . '/../../src/config.inc.php';
 require_once 'jpgraph/jpgraph_canvas.php';
 require_once 'jpgraph/jpgraph_table.php';

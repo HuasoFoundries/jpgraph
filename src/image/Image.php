@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -2155,6 +2155,7 @@ class Image
      * @param mixed $start
      * @param mixed $stop
      * @param mixed $seg
+     * @param mixed $img
      */
     private function _imageSmoothArcDrawSegment(&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngleY, $color, $start, $stop, $seg)
     {

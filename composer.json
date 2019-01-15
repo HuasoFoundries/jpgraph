@@ -2,20 +2,23 @@
     "name": "amenadiel/jpgraph",
     "type": "library",
     "description": "jpGraph, library to make graphs and charts",
-    "version": "3.6.21",
+    "version": "4.0.0",
     "keywords": ["graph", "chart", "pie", "jpgraph", "data"],
     "homepage": "http://jpgraph.net/",
     "license": "QPL-1.0",
 
-    "support": {
+    "support":
+    {
         "issues": "https://github.com/huasofoundries/jpgraph/issues"
     },
-    "require": {
-        "php": ">=5.6.0",
+    "require":
+    {
+        "php": ">=7.0.0",
         "ext-gd": "*",
-        "symfony/dotenv": "~3.4"
+        "symfony/dotenv": "~4.2"
     },
-    "require-dev": {
+    "require-dev":
+    {
         "ext-xdebug": "*",
         "friendsofphp/php-cs-fixer": "^2.4",
         "phpunit/phpunit": "^6",
@@ -24,8 +27,10 @@
         "kint-php/kint": "^2.2",
         "php-console/php-console": "^3.1"
     },
-    "autoload": {
-        "psr-4": {
+    "autoload":
+    {
+        "psr-4":
+        {
             "Amenadiel\\JpGraph\\": "src/",
             "Amenadiel\\JpGraph\\Graph\\": "src/graph",
             "Amenadiel\\JpGraph\\Image\\": "src/image",
@@ -34,5 +39,9 @@
             "Amenadiel\\JpGraph\\Themes\\": "src/themes",
             "Amenadiel\\JpGraph\\Util\\": "src/util"
         }
+    },
+    "scripts":
+    {
+        "start": "php -S localhost:8000 -t Examples"
     }
 }

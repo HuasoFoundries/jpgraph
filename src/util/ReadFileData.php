@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -26,6 +26,7 @@ class ReadFileData
      * @param mixed $aFile
      * @param mixed $aSepChar
      * @param mixed $aMaxLineLength
+     * @param mixed $aData
      */
     public static function FromCSV($aFile, &$aData, $aSepChar = ',', $aMaxLineLength = 1024)
     {
@@ -77,6 +78,7 @@ class ReadFileData
      *
      * @param mixed $aFile
      * @param mixed $aOptions
+     * @param mixed $aData
      */
     public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {

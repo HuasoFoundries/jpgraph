@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 // $Id: listallflags.php,v 1.1.2.1 2003/06/29 15:28:12 aditus Exp $

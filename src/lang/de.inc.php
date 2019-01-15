@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v3.6.21
+ * JPGraph v4.0.0
  */
 
 // Notiz: Das Format fuer jede Fehlermeldung ist array(<Fehlermeldung>,<Anzahl der Argumente>)
