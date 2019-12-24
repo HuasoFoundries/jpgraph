@@ -38,13 +38,10 @@ class JpGraphException extends \Exception
         //$sent_headers = headers_list();
 
         if (JpGraphError::GetImageFlag()) {
-
             $this->handleImgException();
         } else {
-
             $this->handleTextException();
         }
-
     }
 
     public static function defaultHandler(\Throwable $exception)
@@ -68,7 +65,6 @@ class JpGraphException extends \Exception
     public static function registerHandler()
     {
         self::$previous_exception_handler = set_exception_handler([__CLASS__, 'defaultHandler']);
-
     }
 
     // If aHalt is true then execution can't continue. Typical used for fatal errors
@@ -86,7 +82,7 @@ class JpGraphException extends \Exception
             if (ini_get('display_errors')) {
                 echo $aMsg;
             }
-        } else if ($this->iDest == 'syslog') {
+        } elseif ($this->iDest == 'syslog') {
             error_log($this->iTitle . $aMsg);
         } else {
             $str = '[' . date('r') . '] ' . $this->iTitle . $aMsg . "\n";
@@ -104,7 +100,6 @@ class JpGraphException extends \Exception
 
     public function handleImgException($aHalt = HALT_ON_ERRORS)
     {
-
         $img_iconerror =
             'iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAaV' .
             'BMVEX//////2Xy8mLl5V/Z2VvMzFi/v1WyslKlpU+ZmUyMjEh/' .

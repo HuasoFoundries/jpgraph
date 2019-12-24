@@ -84,7 +84,6 @@ class Helper
             JpGraphError::SetImageFlag(false);
         }
         return self::$initialized;
-
     }
 
     /**
@@ -166,5 +165,4 @@ class Helper
 
         \PC::debug(func_get_args(), $tag);
     }
-
 }

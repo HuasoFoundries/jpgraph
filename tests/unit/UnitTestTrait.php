@@ -49,7 +49,6 @@ trait UnitTestTrait
             self::$exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $class . '/';
         }
         return self::$exampleRoot;
-
     }
 
     public static function getShallowFixtureArray($fixTureArray)
@@ -64,17 +63,17 @@ trait UnitTestTrait
         }, []);
     }
 
-/**
- * Check graph size against declared size. If it doesn't match, rename it.
- *
- * @param string  $exampleRoot  The example root folder
- * @param <type>  $filename     The example filename
- * @param <type>  $__width      The declared width
- * @param <type>  $__height     The declared height
- * @param <type>  $size         The actual size
- *
- * @return boolean  true if file was renamed. False otherwise
- */
+    /**
+     * Check graph size against declared size. If it doesn't match, rename it.
+     *
+     * @param string  $exampleRoot  The example root folder
+     * @param <type>  $filename     The example filename
+     * @param <type>  $__width      The declared width
+     * @param <type>  $__height     The declared height
+     * @param <type>  $size         The actual size
+     *
+     * @return boolean  true if file was renamed. False otherwise
+     */
     public static function renameIfDimensionsDontMatch($exampleRoot, $filename, $__width, $__height, $size)
     {
         if ($__width != $size[0] || $__height != $size[1]) {
@@ -100,7 +99,6 @@ trait UnitTestTrait
         }, $inputText);
 
         return $inputText;
-
     }
 
     private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = false)
@@ -109,7 +107,6 @@ trait UnitTestTrait
         $test_title    = $camelCased;
         $withoutSuffix = preg_match('/(\w(\s|\w)+\w)\s*(?:(ex|v))?\s*([\.\d]+)$/iU', $test_title, $matches);
         if ($matches) {
-
             $test_title = self::camelCase($matches[1]);
         }
 

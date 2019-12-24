@@ -106,12 +106,11 @@ defined('CACHE_FILE_MOD') || define('CACHE_FILE_MOD', getenv('JPGRAPH_CACHE_FILE
  * @class Constants
  *
  * Basic constants getter and setter.
-self::f(he user beforehand,
-self::t(efaults defined here.
+ * self::f(he user beforehand,
+ * self::t(efaults defined here.
  */
 class Constants
 {
-
     const FF_DEFAULT = 47;
     // Constants for types of static bands in plot area
     const BAND_RDIAG     = 1; // Right diagonal lines
@@ -573,7 +572,6 @@ class Constants
      */
     public static function __callStatic(string $const_name, array $args)
     {
-
         if (defined(sprintf('self::%s', $const_name))) {
             return constant(sprintf('self::%s', $const_name));
         }
@@ -588,7 +586,6 @@ class Constants
             !array_key_exists($const_name, self::$lazy_statics)
         ) {
             throw new \Exception(sprintf('Unknown constant %s', $const_name));
-
         }
         /**
          * It's a static that we know of, we'll check if the calling class is trying
@@ -597,7 +594,6 @@ class Constants
         if (array_key_exists($const_name, self::$lazy_statics)) {
             return $args && is_scalar($args) ? self::setConstant($const_name, $args) : self::getConstant($const_name);
         }
-
     }
 
     /**
@@ -615,7 +611,6 @@ class Constants
             static::$active_lazy_statics[$const_name] = $const_value;
         }
         return static::$active_lazy_statics[$const_name];
-
     }
 
     /**
@@ -639,48 +634,48 @@ class Constants
     public static function setGeneralConstants()
     {
         self::DEFAULT_ERR_LOCALE('en');
-// Automatic settings of path for cache and font directory
+        // Automatic settings of path for cache and font directory
         // if they have not been previously specified
         //
 
-// Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
+        // Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
         // You should use the proper locale strings directly
         // from now on.
         self::LOCALE_EN('en_UK');
         self::LOCALE_SV('sv_SE');
 
-// Determine if the error handler should be image based or purely
+        // Determine if the error handler should be image based or purely
         // text based. Image based makes it easier since the script will
         // always return an image even in case of errors.
         self::USE_IMAGE_ERROR_HANDLER(true);
 
-// Should the library examine the global php_errmsg string and convert
+        // Should the library examine the global php_errmsg string and convert
         // any error in it to a graphical representation. This is handy for the
         // occasions when, for example, header files cannot be found and this results
         // in the graph not being created and just a 'red-cross' image would be seen.
         // This should be turned off for a production site.
         self::CATCH_PHPERRMSG(true);
 
-// Determine if the library should also setup the default PHP
+        // Determine if the library should also setup the default PHP
         // error handler to generate a graphic error mesage. This is useful
         // during development to be able to see the error message as an image
         // instead as a 'red-cross' in a page where an image is expected.
         self::INSTALL_PHP_ERR_HANDLER(false);
 
-// Should usage of deprecated functions and parameters give a fatal error?
+        // Should usage of deprecated functions and parameters give a fatal error?
         // (Useful to check if code is future proof.)
         self::ERR_DEPRECATED(true);
 
-// Default theme class name
+        // Default theme class name
         self::DEFAULT_THEME_CLASS('UniversalTheme');
 
         self::SUPERSAMPLING(true);
         self::SUPERSAMPLING_SCALE(1);
 
-// Default font family
+        // Default font family
         self::FF_DV_SANSSERIF(self::FF_DEFAULT);
 
-// The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
+        // The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
         // PNG, JPG or GIF depending on what is installed on the target system
         // in that order.
         self::DEFAULT_GFORMAT('auto');
@@ -691,31 +686,30 @@ class Constants
         self::_FORCE_IMGTOFILE(false);
         self::_FORCE_IMGDIR('/tmp/jpgimg/');
 
-// Version info
+        // Version info
         self::JPG_VERSION('3.5.0b1');
 
-// Minimum required PHP version
+        // Minimum required PHP version
         self::MIN_PHPVERSION('7.0.0');
 
-// Special file name to indicate that we only want to calc
+        // Special file name to indicate that we only want to calc
         // the image map in the call to Graph::Stroke() used
         // internally from the GetHTMLCSIM() method.
         self::_CSIM_SPECIALFILE('_csim_special_');
 
-// HTTP GET argument that is used with image map
+        // HTTP GET argument that is used with image map
         // to indicate to the script to just generate the image
         // and not the full CSIM HTML page.
         self::_CSIM_DISPLAY('_jpg_csimd');
 
-// Special filename for Graph::Stroke(). If this filename is given
+        // Special filename for Graph::Stroke(). If this filename is given
         // then the image will NOT be streamed to browser of file. Instead the
         // Stroke call will return the handler for the created GD image.
         self::_IMG_HANDLER('__handle');
 
-// Special filename for Graph::Stroke(). If this filename is given
+        // Special filename for Graph::Stroke(). If this filename is given
         // the image will be stroked to a file with a name based on the script name.
         self::_IMG_AUTO('auto');
-
     }
 
     public static function verifyFontConstants()
@@ -1002,7 +996,6 @@ class Constants
         self::SKEW3D_RIGHT(3);
 
         // For internal use only
-
     }
 
     public static function verifyCacheSettings()
@@ -1136,7 +1129,8 @@ class Constants
             } else {
                 self::TTF_DIR('/usr/share/fonts/truetype/');
             }
-        }}
+        }
+    }
 
     public static function verifyMBTTFSettings()
     {
@@ -1159,7 +1153,7 @@ class Constants
 
     /**
      * Traverse format related constants.
-    self::heck(et them to defaults otherwise
+     * self::heck(et them to defaults otherwise
      */
     public static function verifyFormatSettings()
     {
@@ -1179,7 +1173,6 @@ class Constants
         // Maximum size for Automatic Gantt chart
         self::MAX_GANTTIMG_SIZE_W(8000);
         self::MAX_GANTTIMG_SIZE_H(5000);
-
     }
 }
 

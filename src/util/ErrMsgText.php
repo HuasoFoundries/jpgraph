@@ -30,7 +30,6 @@ class ErrMsgText
 
     public function __construct()
     {
-
         $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), Helper::getErrLocale());
 
         if (!file_exists($locale_messages_file)) {
