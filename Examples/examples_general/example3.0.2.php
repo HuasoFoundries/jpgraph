@@ -23,7 +23,8 @@ $graph->SetShadow();
 
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Interpolated values');
+$example_title = 'Interpolated values';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('x-title');
 $graph->yaxis->title->Set('y-title');
 

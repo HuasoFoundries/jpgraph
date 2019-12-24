@@ -14,8 +14,8 @@ $__width  = 330;
 $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('A simple 3D Pie plot');
+$example_title = 'A simple 3D Pie plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $p1 = new Plot\PiePlot3D($data);

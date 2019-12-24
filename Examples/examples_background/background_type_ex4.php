@@ -26,7 +26,8 @@ $graph->SetBox(true);
 
 // Steup graph titles
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->title->Set('Using background image');
+$example_title = 'Using background image';
+$graph->title->set($example_title);
 $graph->subtitle->SetFont(FF_COURIER, FS_BOLD, 11);
 $graph->subtitle->Set('"BGIMG_FILLFRAME"');
 $graph->subtitle->SetColor('darkred');

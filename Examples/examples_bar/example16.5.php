@@ -46,8 +46,8 @@ $l2plot->SetLegend('Result');
 // Add the plots to the graph
 $graph->Add($l1plot);
 $graph->Add($l2plot);
-
-$graph->title->Set('Example 16.3');
+$example_title = 'Example 16.3';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('Month');
 $graph->yaxis->title->Set('x10,000 US$');
 

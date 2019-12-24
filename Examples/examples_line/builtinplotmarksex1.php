@@ -22,8 +22,7 @@ $graph->SetScale('linlin');
 // Hide the frame around the graph
 $graph->SetFrame(false);
 
-// Setup title
-$graph->title->Set('Using Builtin PlotMarks');
+// Setup title$example_title='Using Builtin PlotMarks'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 
 // Note: requires jpgraph 1.12p or higher

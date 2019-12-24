@@ -16,8 +16,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin', 3, 35);
 $graph->SetTickDensity(TICKD_DENSE);
 $graph->yscale->SetAutoTicks();
-
-$graph->title->Set('Manual scale, auto ticks');
+$example_title = 'Manual scale, auto ticks';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $line = new Plot\LinePlot($ydata);

@@ -19,7 +19,8 @@ $graph->SetScale('textlin');
 $graph->SetShadow();
 
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 15);
-$graph->title->Set('Cash flow ');
+$example_title = 'Cash flow ';
+$graph->title->set($example_title);
 $graph->subtitle->Set('Use of static line, 3D and solid band');
 
 // Turn off Y-grid (it's on by default)

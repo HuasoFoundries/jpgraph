@@ -44,8 +44,7 @@ $graph->yaxis->Hide();
 // Use a worldmap as the background and let it fill the plot area
 $graph->SetBackgroundImage(WORLDMAP, BGIMG_FILLPLOT);
 
-// Setup a nice title with a striped bevel background
-$graph->title->Set('Pushpin graph');
+// Setup a nice title with a striped bevel background$example_title='Pushpin graph'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('white');
 $graph->SetTitleBackground('darkgreen', TITLEBKG_STYLE1, TITLEBKG_FRAME_BEVEL);

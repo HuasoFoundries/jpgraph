@@ -24,10 +24,11 @@ doMeshInterpolate($data, 3);
 $r = count($data);
 $c = count($data[0]);
 
-$__width  = 250;
-$__height = 220;
-$graph    = new MatrixGraph($__width, $__height);
-$graph->title->Set('Meshinterpolation=3');
+$__width       = 250;
+$__height      = 220;
+$graph         = new MatrixGraph($__width, $__height);
+$example_title = 'Meshinterpolation=3';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp = new MatrixPlot($data, 1);

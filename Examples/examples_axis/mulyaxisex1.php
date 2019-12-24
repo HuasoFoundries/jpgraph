@@ -25,7 +25,9 @@ $graph->SetMargin(40, 150, 40, 30);
 $graph->SetMarginColor('white');
 
 $graph->SetScale('intlin');
-$graph->title->Set('Using multiple Y-axis');
+$example_title = 'Using multiple Y-axis';
+$example_title = $example_title;
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_NORMAL, 14);
 
 $graph->SetYScale(0, 'lin');

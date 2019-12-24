@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-// Some "random" data
+// Some random data
 $ydata  = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
 $ydata2 = [10, 70, 40, 120, 200, 60, 80, 40, 20, 5];
 

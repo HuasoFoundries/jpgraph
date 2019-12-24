@@ -78,7 +78,7 @@ class Graph
     public $inline;
     public $showcsim     = 0;
     public $csimcolor    = 'red'; //debug stuff, draw the csim boundaris on the image if <>0
-    public $grid_depth   = DEPTH_BACK; // Draw grid under all plots as default
+    public $grid_depth   = Util\Constants::DEPTH_BACK; // Draw grid under all plots as default
     public $iAxisStyle   = AXSTYLE_SIMPLE;
     public $iCSIMdisplay = false;
     public $iHasStroked  = false;
@@ -130,7 +130,7 @@ class Graph
     public $legend;
     public $graph_theme;
     protected $iYAxisDeltaPos       = 50;
-    protected $iIconDepth           = DEPTH_BACK;
+    protected $iIconDepth           = Util\Constants::DEPTH_BACK;
     protected $iAxisLblBgType       = 0;
     protected $iXAxisLblBgFillColor = 'lightgray';
     protected $iXAxisLblBgColor     = 'black';
@@ -1267,7 +1267,6 @@ class Graph
     public function doAutoscaleXAxis()
     {
         $aPlots = array_filter($this->plots, function ($plot) {
-            //\Kint::dump($plot, $plot instanceof Plot\Plot);
             return $plot instanceof Plot\Plot;
         });
 
@@ -1634,7 +1633,6 @@ class Graph
             if ($this->plots[$i] instanceof Plot\Plot) {
                 $this->plots[$i]->PreScaleSetup($this);
             }
-            //\Kint::dump($this->plots[$i]);
         }
 
         // Init scale constants that are used to calculate the transformation from
@@ -1720,16 +1718,16 @@ class Graph
 
         if (!$_csim) {
             $this->StrokePlotArea();
-            if ($this->iIconDepth == DEPTH_BACK) {
+            if ($this->iIconDepth == Util\Constants::DEPTH_BACK) {
                 $this->StrokeIcons();
             }
         }
         $this->StrokeAxis(false);
 
         // Stroke colored bands
-        $this->StrokeBands(DEPTH_BACK, $_csim);
+        $this->StrokeBands(Util\Constants::DEPTH_BACK, $_csim);
 
-        if ($this->grid_depth == DEPTH_BACK && !$_csim) {
+        if ($this->grid_depth == Util\Constants::DEPTH_BACK && !$_csim) {
             $this->ygrid->Stroke();
             $this->xgrid->Stroke();
         }
@@ -2799,15 +2797,12 @@ class Graph
     public function GetPlotsYMinMax($bPlots)
     {
         $aPlots = array_filter($bPlots, function ($plot) {
-            //\Kint::dump($plot, $plot instanceof Plot\Plot);
             return $plot instanceof Plot\Plot;
         });
         reset($aPlots);
         $n = safe_count($aPlots);
         $i = 0;
-        //\Kint::dump($n, $aPlots);
         do {
-            //\Kint::dump($i, $aPlots[$i]);
             list($xmax, $max) = isset($aPlots[$i]) ? $aPlots[$i]->Max() : [null, null];
         } while (++$i < $n && !is_numeric($max));
 
@@ -2917,7 +2912,7 @@ class Graph
     {
         if ($do) {
             define('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             define('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

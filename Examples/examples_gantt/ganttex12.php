@@ -12,8 +12,7 @@ $graph = new Graph\GanttGraph();
 $graph->SetBox();
 $graph->SetShadow();
 
-// Add title and subtitle
-$graph->title->Set('A nice main title');
+// Add title and subtitle$example_title='A nice main title'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->subtitle->Set('(Draft version)');
 

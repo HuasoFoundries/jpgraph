@@ -265,7 +265,7 @@ class RadarGraph extends Graph
         $astep = 2 * M_PI / $nbrpnts;
 
         if (!$_csim) {
-            if ($this->iIconDepth == DEPTH_BACK) {
+            if ($this->iIconDepth == Util\Constants::DEPTH_BACK) {
                 $this->StrokeIcons();
             }
 
@@ -278,14 +278,14 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth == DEPTH_BACK) {
+            if ($this->grid_depth == Util\Constants::DEPTH_BACK) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);
                 }
                 $this->grid->Stroke($this->img, $grid);
             }
-            if ($this->iIconDepth == DEPTH_BACK) {
+            if ($this->iIconDepth == Util\Constants::DEPTH_BACK) {
                 $this->StrokeIcons();
             }
         }
@@ -297,7 +297,7 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth != DEPTH_BACK) {
+            if ($this->grid_depth != Util\Constants::DEPTH_BACK) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);

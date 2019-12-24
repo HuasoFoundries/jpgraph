@@ -24,8 +24,8 @@ $graph->SetShadow();
 $graph->SetAxisStyle(AXSTYLE_BOXIN);
 
 $graph->img->SetMargin(50, 50, 60, 40);
-
-$graph->title->Set('Linked scatter plot');
+$example_title = 'Linked scatter plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->subtitle->Set('(BOXIN Axis style)');
 $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);

@@ -19,8 +19,8 @@ $graph->SetScale('textlin');
 
 $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
-
-$graph->title->Set('Background Image');
+$example_title = 'Background Image';
+$graph->title->set($example_title);
 $graph->SetBox(false);
 
 $graph->yaxis->HideZeroLabel();

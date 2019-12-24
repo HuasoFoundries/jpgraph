@@ -23,7 +23,7 @@ for ($i = 0; $i < 25; ++$i) {
     $databary[] = rand(1, 50);
     $databarx[] = $months[$i % 12];
 }
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
 // Specify X-labels
@@ -33,8 +33,7 @@ $graph->xaxis->SetTextLabelInterval(3);
 // Hide the tick marks
 $graph->xaxis->HideTicks();
 
-// Set title and subtitle
-$graph->title->Set('Bar tutorial example 6');
+// Set title and subtitle$example_title='Bar tutorial example 6'; $graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(FF_FONT1, FS_BOLD);

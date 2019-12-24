@@ -35,8 +35,8 @@ $l2plot->SetLegend('Result');
 // Add the plots to the graph
 $graph->Add($l2plot);
 $graph->Add($l1plot);
-
-$graph->title->Set('Mixing line and filled line');
+$example_title = 'Mixing line and filled line';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

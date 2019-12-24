@@ -23,8 +23,8 @@ $graph->SetClipping(true);
 $graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
 
 $graph->ygrid->SetLineStyle('dashed');
-
-$graph->title->Set('Manual scale');
+$example_title = 'Manual scale';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->title->SetColor('white');
 $graph->subtitle->Set('(With clipping)');

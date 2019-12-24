@@ -15,8 +15,7 @@ $__width  = 300;
 $__height = 350;
 $graph    = new Graph\PieGraph($__width, $__height);
 
-// Set A title for the plot
-$graph->title->Set('Label guide lines');
+// Set A title for the plot$example_title='Label guide lines'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('darkblue');
 $graph->legend->Pos(0.1, 0.2);

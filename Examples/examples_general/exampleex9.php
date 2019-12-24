@@ -40,8 +40,8 @@ $graph->AddY2($lineplot2);
 $lineplot2->SetColor('orange');
 $lineplot2->SetWeight(2);
 $graph->y2axis->SetColor('orange');
-
-$graph->title->Set('Examples 9');
+$example_title = 'Examples 9';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

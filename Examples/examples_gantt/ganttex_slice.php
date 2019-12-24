@@ -21,8 +21,8 @@ $graph->SetDateRange('2001-11-22', '2002-1-24');
 
 // Weeks start on Sunday
 $graph->scale->SetWeekStart(0);
-
-$graph->title->Set('General conversion plan');
+$example_title = 'General conversion plan';
+$graph->title->set($example_title);
 $graph->subtitle->Set('(Slice between 2001-11-22 to 2002-01-24)');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 20);
 
@@ -65,8 +65,9 @@ for ($i = 0; $i < count($data); ++$i) {
 }
 
 // The line will NOT be shown since it is outside the specified slice
-$vline = new Plot\GanttVLine('2002-02-28');
-$vline->title->Set('2002-02-28');
+$vline         = new Plot\GanttVLine('2002-02-28');
+$example_title = '2002-02-28';
+$vline->title->set($example_title);
 $vline->title->SetFont(FF_FONT1, FS_BOLD, 10);
 $graph->Add($vline);
 

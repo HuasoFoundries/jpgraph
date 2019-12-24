@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Plot;
 
 // Some data
 
-$steps         = 100; for ($i = 0; $i < $steps; ++$i) {
+$steps = 100;for ($i = 0; $i < $steps; ++$i) {
     $datay[$i] = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
     $datax[]   = $i;
     if ($i % 10 == 0) {
@@ -30,7 +30,8 @@ $graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME
 
 $graph->SetScale('intlin');
 $graph->SetShadow();
-$graph->title->Set('Combined bar and line plot');
+$example_title = 'Combined bar and line plot';
+$graph->title->set($example_title);
 $graph->subtitle->Set('("center" aligned bars)');
 
 // Use built in font

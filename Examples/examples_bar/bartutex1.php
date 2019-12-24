@@ -17,11 +17,10 @@ $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetShadow();
 
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
-// Set title and subtitle
-$graph->title->Set('Elementary barplot with a text scale');
+// Set title and subtitle$example_title='Elementary barplot with a text scale'; $graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(FF_FONT1, FS_BOLD);

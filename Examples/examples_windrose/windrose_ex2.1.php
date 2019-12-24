@@ -14,15 +14,14 @@ $data = [
     0 => [1, 1, 6, 4],
     1 => [3, 8, 1, 4],
     2 => [2, 7, 4, 4, 3],
-    3 => [2, 7, 1, 2], ];
+    3 => [2, 7, 1, 2]];
 
 // First create a new windrose graph with a title
 $__width  = 400;
 $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup title
-$graph->title->Set('Windrose example 2');
+// Setup title$example_title='Windrose example 2'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('navy');
 

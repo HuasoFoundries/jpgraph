@@ -29,8 +29,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 $graph->SetBox();
-
-$graph->title->Set('Impuls Example 3');
+$example_title = 'Impuls Example 3';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Set format callback for labels

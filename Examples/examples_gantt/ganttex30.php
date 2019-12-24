@@ -15,8 +15,7 @@ $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 $graph->SetBox();
 
-// Titles for chart
-$graph->title->Set('General conversion plan');
+// Titles for chart$example_title='General conversion plan'; $graph->title->set($example_title);
 $graph->subtitle->Set('(Revision: 2001-11-18)');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 

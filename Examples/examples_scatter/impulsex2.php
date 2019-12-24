@@ -17,8 +17,8 @@ $graph->SetScale('textlin');
 
 $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
-
-$graph->title->Set('Impuls plot, variant 2');
+$example_title = 'Impuls plot, variant 2';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->xaxis->title->Set('Impuls respons');
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);

@@ -33,7 +33,8 @@ $graph->SetScale('intlin');
 
 $graph->SetShadow();
 $graph->SetBox();
-$graph->title->Set('Impuls Example 4');
+$example_title = 'Impuls Example 4';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Set some other color then the boring default

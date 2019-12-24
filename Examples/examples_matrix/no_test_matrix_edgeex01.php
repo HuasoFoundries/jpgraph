@@ -32,7 +32,8 @@ $__width  = 400;
 $__height = 250;
 $graph    = new MatrixGraph($__width, $__height);
 $graph->SetMarginColor('white');
-$graph->title->Set('Adding labels on the edges');
+$example_title = 'Adding labels on the edges';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Create one matrix plot

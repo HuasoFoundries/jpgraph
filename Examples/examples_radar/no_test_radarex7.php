@@ -31,8 +31,7 @@ $graph->grid->SetColor('navy');
 $graph->grid->Show();
 $graph->HideTickMarks();
 
-// Setup graph titles
-$graph->title->Set('Quality result');
+// Setup graph titles$example_title='Quality result'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->SetTitles(['One', 'Two', 'Three', 'Four', 'Five', 'Sex', 'Seven', 'Eight', 'Nine', 'Ten']);
 // Create the first radar plot

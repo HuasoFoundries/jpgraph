@@ -17,7 +17,8 @@ $graph->img->SetMargin(40, 40, 40, 80);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example slanted X-labels');
+$example_title = 'Example slanted X-labels';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 14);
 
 $graph->xaxis->SetFont(FF_ARIAL, FS_NORMAL, 11);

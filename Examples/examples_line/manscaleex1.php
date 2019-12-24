@@ -15,8 +15,8 @@ $__height = 170;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin', 3, 35);
 $graph->yscale->ticks->Set(8, 2);
-
-$graph->title->Set('Manual scale, manual ticks');
+$example_title = 'Manual scale, manual ticks';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $line = new Plot\LinePlot($ydata);

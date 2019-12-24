@@ -23,7 +23,8 @@ $lineplot = new Plot\LinePlot($ydata);
 $graph->Add($lineplot);
 
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Example 2.5');
+$example_title = 'Example 2.5';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->xaxis->SetPos('min');
 $graph->yaxis->title->Set('Y-title');

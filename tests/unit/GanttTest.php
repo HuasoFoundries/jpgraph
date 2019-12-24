@@ -1,35 +1,55 @@
 <?php
+use \Codeception\Util\Debug;
+
 /**
  * @group ready
  */
 class GanttTest extends \Codeception\Test\Unit
 {
-    protected function _before()
-    {
-        $className = strtolower(str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this))));
+    use Amenadiel\JpGraph\UnitTest\UnitTestTrait;
 
-        $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
+    public static $fixTures    = [];
+    public static $files       = null;
+    public static $exampleRoot = null;
+    public static $ranTests    = [];
+
+    public static function setUpBeforeClass()
+    {
+        $className = str_replace('test', '', strtolower(__CLASS__));
+
+        self::$files   = self::getFiles($className);
+        $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
+
+        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
+            return !array_key_exists($filename, $knownFixtures);
+        });
+
+        Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
+
     }
 
-    protected function _after()
-    {
-    }
+    protected function _before() {}
+
+    protected function _after() {}
 
     // tests
-    public function _fileCheck($filename)
+    private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
     {
+        $example_title = 'file_iterator';
         ob_start();
-        include $this->exampleRoot . $filename;
+        include self::$exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
         $this->assertEquals('image/png', $size['mime'], 'image should have mime image/png for ' . $filename);
+
+        return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug);
     }
 
     public function testFileIterator()
     {
-        $files = GetFiles($this->exampleRoot);
-        foreach ($files as $file) {
-            $this->_fileCheck($file);
-        }
+        self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
+            $carry = $this->_fileCheck($file, $carry);
+            return $carry;
+        }, []);
     }
 }

@@ -16,8 +16,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 80, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
-
-$graph->title->Set('Center the line points in bars');
+$example_title = 'Center the line points in bars';
+$graph->title->set($example_title);
 
 $line = new Plot\LinePlot($ydata);
 $line->SetBarCenter();

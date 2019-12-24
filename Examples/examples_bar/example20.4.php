@@ -35,8 +35,7 @@ $bplot->value->SetAngle(45);
 $bplot->value->SetFormat('%0.1f');
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('Bar graph with drop shadow');
+// Setup the titles$example_title='Bar graph with drop shadow'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

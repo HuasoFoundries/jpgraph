@@ -14,7 +14,7 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $month = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec', ];
+    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
 
 // Create some datapoints
 $steps = 100;
@@ -46,8 +46,7 @@ $graph->SetY2Scale('lin');
 $graph->yaxis->SetColor('black', 'red');
 $graph->y2axis->SetColor('black', 'orange');
 
-// Set title and subtitle
-$graph->title->Set('Combined bar and line plot');
+// Set title and subtitle$example_title='Combined bar and line plot'; $graph->title->set($example_title);
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font (don't need TTF support)

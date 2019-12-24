@@ -16,8 +16,7 @@ $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
-// Setup graph title
-$graph->title->Set('Example 5 of pie plot');
+// Setup graph title$example_title='Example 5 of pie plot'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Create pie plot

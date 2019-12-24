@@ -37,8 +37,7 @@ $bplot->SetCSIMTargets($targ, $alts);
 // Add plot to graph
 $graph->Add($bplot);
 
-// Setup the title, also wih a CSIM area
-$graph->title->Set('CSIM with popup windows');
+// Setup the title, also wih a CSIM area$example_title='CSIM with popup windows'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 // Assume we can give more details on the graph
 $graph->title->SetCSIMTarget(sprintf($fmtStr, -1), 'Title for Bar');

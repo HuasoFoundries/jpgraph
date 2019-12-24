@@ -14,8 +14,7 @@ $__width  = 250;
 $__height = 200;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup titles
-$graph->title->Set('Result for 2002');
+// Setup titles$example_title='Result for 2002'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->subtitle->Set('New York Office');

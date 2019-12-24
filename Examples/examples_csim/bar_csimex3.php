@@ -29,8 +29,7 @@ $graph->img->SetMargin(-80, -80, 210, 210);
 
 $graph->SetMarginColor('white');
 
-// Setup title for graph
-$graph->title->Set('Horizontal bar graph');
+// Setup title for graph$example_title='Horizontal bar graph'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 $graph->subtitle->Set("With image map\nNote: The URL just points back to this image");
 
@@ -64,14 +63,14 @@ $graph->yaxis->SetLabelAlign('center', 'top');
 $b1plot = new Plot\BarPlot($data1y);
 $b1plot->SetFillColor('orange');
 $targ = ['bar_csimex3.php#1', 'bar_csimex3.php#2', 'bar_csimex3.php#3',
-    'bar_csimex3.php#4', 'bar_csimex3.php#5', 'bar_csimex3.php#6', ];
+    'bar_csimex3.php#4', 'bar_csimex3.php#5', 'bar_csimex3.php#6'];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $b1plot->SetCSIMTargets($targ, $alts);
 
 $b2plot = new Plot\BarPlot($data2y);
 $b2plot->SetFillColor('blue');
 $targ = ['bar_csimex3.php#7', 'bar_csimex3.php#8', 'bar_csimex3.php#9',
-    'bar_csimex3.php#10', 'bar_csimex3.php#11', 'bar_csimex3.php#12', ];
+    'bar_csimex3.php#10', 'bar_csimex3.php#11', 'bar_csimex3.php#12'];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $b2plot->SetCSIMTargets($targ, $alts);
 

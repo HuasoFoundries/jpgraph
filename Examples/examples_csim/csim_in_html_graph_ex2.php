@@ -28,8 +28,7 @@ $n = count($data); // Number of slices
 // No border around graph
 $piegraph->SetFrame(false);
 
-// Setup title
-$piegraph->title->Set('CSIM Center Pie plot');
+// Setup title$example_title='CSIM Center Pie plot'; $piegraph->title->set($example_title);
 $piegraph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
 $piegraph->title->SetMargin(8); // Add a little bit more margin from the top
 
@@ -57,7 +56,7 @@ $p1->SetLabelType(PIE_VALUE_PER);
 // form,at string will be the value of the slice (either the percetage or absolute
 // depending on what was specified in the SetLabelType() above.
 $lbl = ["Jan\n%.1f%%", "Feb\n%.1f%%", "March\n%.1f%%",
-    "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%", ];
+    "Apr\n%.1f%%", "May\n%.1f%%", "Jun\n%.1f%%"];
 $p1->SetLabels($lbl);
 
 // Add drop shadow to slices

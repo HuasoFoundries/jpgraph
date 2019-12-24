@@ -39,8 +39,7 @@ $graph = new Graph\Graph($width, $height);
 // int = integer scale for the Y-axis
 $graph->SetScale('intint', 0, 0, 0, max($year) - min($year) + 1);
 
-// Setup a title for the graph
-$graph->title->Set('Sunspot example');
+// Setup a title for the graph$example_title='Sunspot example'; $graph->title->set($example_title);
 
 // Setup titles and X-axis labels
 $graph->xaxis->title->Set('(year from 1701)');

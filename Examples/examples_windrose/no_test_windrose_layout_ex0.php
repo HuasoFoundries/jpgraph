@@ -13,16 +13,16 @@ $data = [
     [
         1 => [10, 10, 13, 7],
         2 => [2, 8, 10],
-        4 => [1, 12, 22], ],
+        4 => [1, 12, 22]],
     [
         4 => [12, 8, 2, 3],
-        2 => [5, 4, 4, 5, 2], ],
+        2 => [5, 4, 4, 5, 2]],
     [
         1 => [12, 8, 2, 3],
-        3 => [5, 4, 4, 5, 2], ],
+        3 => [5, 4, 4, 5, 2]],
     [
         2 => [12, 8, 2, 3],
-        3 => [5, 4, 4, 5, 2], ],
+        3 => [5, 4, 4, 5, 2]],
 ];
 
 // Create a windrose graph with titles
@@ -30,8 +30,8 @@ $__width  = 600;
 $__height = 650;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('Multiple plots with automatic layout');
+$example_title = 'Multiple plots with automatic layout';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Setup the individual windrose plots

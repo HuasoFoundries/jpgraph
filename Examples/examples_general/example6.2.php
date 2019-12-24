@@ -27,8 +27,8 @@ $lineplot->SetStepStyle();
 
 // Adjust the axis color
 $graph->yaxis->SetColor('blue');
-
-$graph->title->Set('Example 6.2');
+$example_title = 'Example 6.2';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

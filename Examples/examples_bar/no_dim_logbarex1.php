@@ -20,8 +20,7 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlog');
 //$graph->SetShadow();
 
-// Setup titles for graph and axis
-$graph->title->Set('Bar with logarithmic Y-scale');
+// Setup titles for graph and axis$example_title='Bar with logarithmic Y-scale'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 18);
 
 $graph->xaxis->SetTitle('2002');
@@ -46,7 +45,7 @@ $bplot->SetShadow();
 $bplot->value->Show();
 $bplot->value->SetFont(FF_ARIAL,FS_BOLD);
 $bplot->value->SetAngle(45);
-$bplot->value->SetColor("black","darkred");
+$bplot->value->SetColor(black,darkred);
  */
 
 $graph->Add($bplot);

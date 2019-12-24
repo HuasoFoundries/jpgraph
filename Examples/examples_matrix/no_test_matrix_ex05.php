@@ -19,10 +19,11 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
 ];
 
-$width  = 400;
-$height = 350;
-$graph  = new MatrixGraph($width, $height);
-$graph->title->Set('Using a circular module type');
+$width         = 400;
+$height        = 350;
+$graph         = new MatrixGraph($width, $height);
+$example_title = 'Using a circular module type';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp = new MatrixPlot($data, 2);

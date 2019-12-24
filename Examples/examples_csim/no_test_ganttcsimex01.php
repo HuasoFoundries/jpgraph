@@ -14,8 +14,9 @@ $bar2 = new GanttBar(1, 'Activity 2', '2002-01-03', '2002-01-25');
 $bar2->SetCSIMTarget('#', 'Go back 2');
 $bar2->title->SetCSIMTarget('#', 'Go back 2 (title)');
 
-$graph = new GanttGraph(500);
-$graph->title->Set('Example with image map');
+$graph         = new GanttGraph(500);
+$example_title = 'Example with image map';
+$graph->title->set($example_title);
 $graph->ShowHeaders(GANTT_HYEAR | GANTT_HMONTH | GANTT_HDAY | GANTT_HWEEK);
 $graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
 $graph->scale->week->SetFont(FF_FONT1);

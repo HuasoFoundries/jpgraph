@@ -19,8 +19,8 @@ $graph->SetScale('textlin');
 
 $graph->SetMarginColor('navy:1.9');
 $graph->SetBox();
-
-$graph->title->Set('Bar Pattern');
+$example_title = 'Bar Pattern';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 20);
 
 $graph->SetTitleBackground('lightblue:1.3', TITLEBKG_STYLE2, TITLEBKG_FRAME_BEVEL);

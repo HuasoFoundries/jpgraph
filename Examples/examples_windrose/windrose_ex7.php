@@ -16,10 +16,11 @@ $data = [
 ];
 
 // First create a new windrose graph with a title
-$__width  = 400;
-$__height = 450;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 7');
+$__width       = 400;
+$__height      = 450;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 7';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 $graph->title->SetColor('navy');
 
@@ -34,7 +35,7 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 // Note: The labels for data must now also match the exact
 // string for the compass directions.
 $se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV',
-    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO', ];
+    'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO'];
 $wp->SetCompassLabels($se_CompassLbl);
 
 // Localize the "Calm" text into Swedish and make the circle

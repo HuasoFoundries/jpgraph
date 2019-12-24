@@ -49,7 +49,8 @@ $graph    = new Graph\Graph($__width, $__height);
 // We use an integer scale on the X-axis since the positions on the X axis
 // are assumed to be UNI timestamps
 $graph->SetScale('linlin', 0, 0, $xmin, $xmax);
-$graph->title->Set('Example with manual tick labels');
+$example_title = 'Example with manual tick labels';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
 
 //

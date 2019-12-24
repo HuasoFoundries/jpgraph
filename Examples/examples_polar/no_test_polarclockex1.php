@@ -15,7 +15,7 @@ $data = [
     50, 110, 60, 140, 70, 170, 80, 190,
     85, 195, 90, 200, 95, 195, 100, 190,
     110, 170, 120, 140, 130, 110, 140, 60,
-    150, 25, 170, 2, 180, 0, ];
+    150, 25, 170, 2, 180, 0];
 
 //$data2 = array(0,0,50,2,60,30,65,90,60,120,50,150,20,170,0,180);
 
@@ -43,8 +43,8 @@ $graph->axis->SetTitle('X-Axis', 'center');
 
 $graph->axis->SetColor('black', 'black', 'darkred');
 $graph->axis->SetAngleFont(FF_ARIAL, FS_NORMAL, 8);
-
-$graph->title->Set('Clockwise polar plot');
+$example_title = 'Clockwise polar plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_COMIC, FS_NORMAL, 16);
 $graph->title->SetColor('navy');
 

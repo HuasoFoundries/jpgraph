@@ -31,8 +31,7 @@ $bplot->SetFillColor('orange');
 $bplot->value->Show();
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('Bar graph with Y-scale grace');
+// Setup the titles$example_title='Bar graph with Y-scale grace'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

@@ -30,7 +30,7 @@ $graph->SetShadow();
 
 // Setup labels
 $lbl = ["Andrew\nTait", "Thomas\nAnderssen", "Kevin\nSpacey", "Nick\nDavidsson",
-    "David\nLindquist", "Jason\nTait", "Lorin\nPersson", ];
+    "David\nLindquist", "Jason\nTait", "Lorin\nPersson"];
 $graph->xaxis->SetTickLabels($lbl);
 
 // Label align for X-axis
@@ -39,8 +39,7 @@ $graph->xaxis->SetLabelAlign('right', 'center', 'right');
 // Label align for Y-axis
 $graph->yaxis->SetLabelAlign('center', 'bottom');
 
-// Titles
-$graph->title->Set('Number of incidents');
+// Titles$example_title='Number of incidents'; $graph->title->set($example_title);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);

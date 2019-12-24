@@ -16,7 +16,7 @@ $data = [0, 1, 30, 2, 30, 25, 40, 60,
     90, 480,
     95, 370, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
-    150, 25, 150, 2, 180, 1, ];
+    150, 25, 150, 2, 180, 1];
 
 $n = count($data);
 for ($i = 0; $i < $n; $i += 2) {
@@ -38,8 +38,8 @@ $graph->SetBackgroundGradient('blue:1.3', 'brown:1.4', GRAD_MIDHOR, BGRAD_PLOT);
 
 // Set color for gradient lines
 $graph->axis->SetGridColor('gray', 'gray', 'gray');
-
-$graph->title->Set('Polar plot #7-2');
+$example_title = 'Polar plot #7-2';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('navy');
 

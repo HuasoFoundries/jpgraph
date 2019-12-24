@@ -20,8 +20,8 @@ $graph->SetScale('textlin', 0, 50);
 
 $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
-
-$graph->title->Set('Line Plots with Markers');
+$example_title = 'Line Plots with Markers';
+$graph->title->set($example_title);
 
 $graph->SetBox(false);
 $graph->ygrid->SetFill(false);

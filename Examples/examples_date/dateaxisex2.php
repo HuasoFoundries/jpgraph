@@ -31,7 +31,8 @@ $graph->SetMargin(40, 40, 30, 130);
 
 // Fix the Y-scale to go between [0,100] and use date for the x-axis
 $graph->SetScale('datlin', 0, 100);
-$graph->title->Set('Example on Date scale');
+$example_title = 'Example on Date scale';
+$graph->title->set($example_title);
 
 // Set the angle for the labels to 90 degrees
 $graph->xaxis->SetLabelAngle(90);

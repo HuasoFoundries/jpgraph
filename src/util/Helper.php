@@ -8,21 +8,103 @@ namespace Amenadiel\JpGraph\Util;
 
 require_once __DIR__ . '/../config.inc.php';
 
+defined('DEFAULT_ERR_LOCALE') || define('DEFAULT_ERR_LOCALE', 'en');
+require_once __DIR__ . '/Constants.php';
 /**
  * @class Helper
  * // Misc Helper functions
  */
 class Helper
 {
-    //
-    // Setup PHP error handler
-    //
-    public static function phpErrorHandler($errno, $errmsg, $filename, $linenum, $vars)
+    private static $__jpg_err_locale = DEFAULT_ERR_LOCALE;
+    private static $initialized      = false;
+    /**
+     * Keeps a reference of the library related
+     * constants to verify their existance
+     *
+     * @var array
+     */
+    private static $Constants = [];
+
+    /**
+     * Declares handlers and last minute constants
+     */
+    public static function bootstrapLibrary()
     {
-        // Respect current error level
-        if ($errno & error_reporting()) {
-            JpGraphError::RaiseL(25003, basename($filename), $linenum, $errmsg);
+        // we don't need to initialize again, of course
+        if (self::$initialized) {
+            return;
         }
+        Constants::setGeneralConstants();
+        Constants::verifyFontConstants();
+        Constants::verifyCacheSettings();
+        Constants::verifyTTFSettings();
+        Constants::verifyMBTTFSettings();
+        Constants::verifyFormatSettings();
+        $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), self::$__jpg_err_locale);
+
+        // If the chosen locale doesn't exist try english
+        if (!file_exists($locale_messages_file)) {
+            self::$__jpg_err_locale = 'en';
+        }
+        //
+        // Make sure PHP version is high enough
+        //
+        if (version_compare(PHP_VERSION, Constants::MIN_PHPVERSION()) < 0) {
+            JpGraphError::RaiseL(13, PHP_VERSION, Constants::MIN_PHPVERSION());
+            die();
+        }
+
+//
+        // Make GD sanity check
+        //
+        if (!function_exists('imagetypes') || !function_exists('imagecreatefromstring')) {
+            JpGraphError::RaiseL(25001);
+            //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
+        }
+
+//
+        // Check if there were any warnings, perhaps some wrong includes by the user. In this
+        // case we raise it immediately since otherwise the image will not show and makes
+        // debugging difficult. This is controlled by the user setting CATCH_PHPERRMSG
+        //
+        if (isset($GLOBALS['php_errormsg']) && Constants::CATCH_PHPERRMSG() && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
+            JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
+        }
+
+        defined('HALT_ON_ERRORS') || define('HALT_ON_ERRORS', true);
+        self::$initialized = true;
+        if (Constants::INSTALL_PHP_ERR_HANDLER()) {
+            JpGraphError::registerHandler();
+        }
+        // Registers image exception handler
+        JpGraphException::registerHandler();
+
+        if (!Constants::USE_IMAGE_ERROR_HANDLER()) {
+            JpGraphError::SetImageFlag(false);
+        }
+        return self::$initialized;
+
+    }
+
+    /**
+     * Sets the error locale.
+     *
+     * @param <type>  $aLoc  A location
+     */
+    public static function SetErrLocale($aLoc)
+    {
+        self::$__jpg_err_locale = $aLoc;
+    }
+
+    /**
+     * Gets the error locale.
+     *
+     * @return <type>  The error locale.
+     */
+    public static function getErrLocale()
+    {
+        return self::$__jpg_err_locale;
     }
 
     //
@@ -84,4 +166,5 @@ class Helper
 
         \PC::debug(func_get_args(), $tag);
     }
+
 }

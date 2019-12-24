@@ -18,7 +18,8 @@ $graph->img->SetMargin(40, 40, 40, 40);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example of 10% top/bottom grace');
+$example_title = 'Example of 10% top/bottom grace';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Add 10% grace to top and bottom of plot

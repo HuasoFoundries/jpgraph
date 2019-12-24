@@ -25,10 +25,11 @@ doMeshInterpolate($data, 3);
 $r = count($data);
 $c = count($data[0]);
 
-$width  = 400;
-$height = 400;
-$graph  = new MatrixGraph($width, $height);
-$graph->title->Set('Adding an icon to the background');
+$width         = 400;
+$height        = 400;
+$graph         = new MatrixGraph($width, $height);
+$example_title = 'Adding an icon to the background';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp = new MatrixPlot($data, 1);

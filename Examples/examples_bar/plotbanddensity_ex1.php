@@ -18,7 +18,7 @@ $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 20, 25);
 $graph->SetBox(true);
 
-// Add 10% grace ("space") at top and botton of Y-scale.
+// Add 10% grace (space) at top and botton of Y-scale.
 $graph->yscale->SetGrace(10);
 
 // Create a bar pot
@@ -39,6 +39,7 @@ $graph->AddBand($band);
 // Set title
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
 $graph->title->SetColor('darkred');
-$graph->title->Set('BAND_3DPLANE, Density=40');
+$example_title = 'BAND_3DPLANE, Density=40';
+$graph->title->set($example_title);
 
 $graph->Stroke();

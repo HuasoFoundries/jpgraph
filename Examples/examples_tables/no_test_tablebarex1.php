@@ -12,7 +12,7 @@ $datay = [
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     [12, 18, 19, 7, 17, 6],
     [3, 5, 2, 7, 5, 25],
-    [6, 1.5, 2.4, 2.1, 6.9, 12.3], ]
+    [6, 1.5, 2.4, 2.1, 6.9, 12.3]]
 ;
 
 // Some basic defines to specify the shape of the bar+table
@@ -33,8 +33,7 @@ $graph->img->SetMargin($tablexpos, $rightmargin, 30, $height - $tableypos);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
-// Setup titles and fonts
-$graph->title->Set('Bar and table');
+// Setup titles and fonts$example_title='Bar and table'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 14);
 $graph->yaxis->title->Set('Flow');
 $graph->yaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 12);

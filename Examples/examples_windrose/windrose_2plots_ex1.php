@@ -26,8 +26,8 @@ $__width  = 660;
 $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('Two windrose plots in one graph');
+$example_title = 'Two windrose plots in one graph';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->subtitle->Set('(Using Box() for each plot)');
 

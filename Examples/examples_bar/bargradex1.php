@@ -22,8 +22,7 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue:1.1');
 $graph->SetShadow();
 
-// Set up the title for the graph
-$graph->title->Set('Bar gradient with left reflection');
+// Set up the title for the graph$example_title='Bar gradient with left reflection'; $graph->title->set($example_title);
 $graph->title->SetMargin(8);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('darkred');

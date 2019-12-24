@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
-$__width  = 250;
-$__height = 150;
-$graph    = new OdoGraph($__width, $__height);
-
-$graph->title->Set('Example with scale indicators');
+$__width       = 250;
+$__height      = 150;
+$graph         = new OdoGraph($__width, $__height);
+$example_title = 'Example with scale indicators';
+$graph->title->set($example_title);
 
 // Add drop shadow for graph
 $graph->SetShadow();

@@ -33,8 +33,8 @@ $lineplot = new Plot\LinePlot($ydata);
 
 // Add the plot to the graph
 $graph->Add($lineplot);
-
-$graph->title->Set('Examples 9');
+$example_title = 'Examples 9';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

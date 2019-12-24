@@ -15,7 +15,7 @@ $data = [
     [1, ACTYPE_NORMAL, '  Label 2', '2001-10-26', '2001-11-16', ''],
     [2, ACTYPE_NORMAL, '  Label 3', '2001-11-20', '2001-11-22', ''],
     [3, ACTYPE_NORMAL, '  Label 4', '2001-11-20', '2001-11-22', ''],
-    [4, ACTYPE_MILESTONE, '  Phase 1 Done', '2001-11-23', 'M2'], ];
+    [4, ACTYPE_MILESTONE, '  Phase 1 Done', '2001-11-23', 'M2']];
 
 // The constrains between the activities
 $constrains = [[1, 2, CONSTRAIN_ENDEND],
@@ -26,8 +26,9 @@ $constrains = [[1, 2, CONSTRAIN_ENDEND],
 $progress = [[1, 0.4]];
 
 // Create the basic graph
-$graph = new Graph\GanttGraph();
-$graph->title->Set('Example with grouping and constrains');
+$graph         = new Graph\GanttGraph();
+$example_title = 'Example with grouping and constrains';
+$graph->title->set($example_title);
 
 // Setup scale
 $graph->ShowHeaders(GANTT_HYEAR | GANTT_HMONTH | GANTT_HDAY | GANTT_HWEEK);

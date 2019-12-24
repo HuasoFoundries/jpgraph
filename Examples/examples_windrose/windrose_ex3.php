@@ -14,12 +14,12 @@ $data[0] = [
     0 => [1, 1, 2.5, 4],
     1 => [3, 4, 1, 4],
     3 => [2, 7, 4, 4, 3],
-    5 => [2, 7, 1, 2], ];
+    5 => [2, 7, 1, 2]];
 
 $data[1] = [
     'n'   => [1, 1, 2.5, 4],
     'ssw' => [3, 4, 1, 4],
-    'se'  => [2, 7, 4, 4, 3], ];
+    'se'  => [2, 7, 4, 4, 3]];
 
 // Store the position and size data for each plot in an
 // array to make it easier to create multiple plots.
@@ -27,7 +27,7 @@ $data[1] = [
 // (type,x-pos,y-pos,size, z-circle size)
 $layout = [
     [WINDROSE_TYPE8, 0.25, 0.55, 0.4, 0.25],
-    [WINDROSE_TYPE16, 0.75, 0.55, 0.4, 0.25], ];
+    [WINDROSE_TYPE16, 0.75, 0.55, 0.4, 0.25]];
 
 $legendtxt = ['(m/s) Station 7', '(m/s) Station 12'];
 
@@ -37,8 +37,7 @@ $__height = 350;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow('darkgray');
 
-// Setup titles
-$graph->title->Set('Windrose example 3');
+// Setup titles$example_title='Windrose example 3'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('navy');
 $graph->subtitle->Set('(Multiple plots in the same graph)');

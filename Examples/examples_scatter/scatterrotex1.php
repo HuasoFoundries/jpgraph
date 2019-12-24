@@ -18,8 +18,8 @@ $graph->SetScale('linlin');
 
 $graph->Set90AndMargin(40, 40, 40, 40);
 $graph->SetShadow();
-
-$graph->title->Set('A 90 degrees rotated scatter plot');
+$example_title = 'A 90 degrees rotated scatter plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Adjust the label align for X-axis so they look good rotated

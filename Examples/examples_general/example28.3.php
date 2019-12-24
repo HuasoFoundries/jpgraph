@@ -14,8 +14,8 @@ $__width  = 150;
 $__height = 150;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set("'water' Theme");
+$example_title = "'water' Theme";
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $p1 = new Plot\PiePlot($data);

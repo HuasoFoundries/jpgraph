@@ -14,8 +14,7 @@ $graph    = new Graph\GanttGraph($__width, $__height);
 $graph->SetBox();
 $graph->SetShadow();
 
-// Add title and subtitle
-$graph->title->Set('Example of captions');
+// Add title and subtitle$example_title='Example of captions'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->subtitle->Set('(ganttex17.php)');
 

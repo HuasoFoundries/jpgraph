@@ -25,10 +25,11 @@ doMeshInterpolate($data, 4);
 $r = count($data);
 $c = count($data[0]);
 
-$width  = 300;
-$height = 300;
-$graph  = new MatrixGraph($width, $height);
-$graph->title->Set('Adding a background image');
+$width         = 300;
+$height        = 300;
+$graph         = new MatrixGraph($width, $height);
+$example_title = 'Adding a background image';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->subtitle->Set('Alphablending = 0.2');
 

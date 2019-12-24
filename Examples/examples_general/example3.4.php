@@ -23,7 +23,8 @@ $graph->SetShadow();
 
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Calls per operator');
+$example_title = 'Calls per operator';
+$graph->title->set($example_title);
 $graph->subtitle->Set('(March 12, 2008)');
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');

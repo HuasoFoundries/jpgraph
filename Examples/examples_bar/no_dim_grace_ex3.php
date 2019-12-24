@@ -27,14 +27,13 @@ $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT1);
 $graph->xaxis->SetColor('darkblue', 'black');
 
-// Setup "hidden" y-axis by given it the same color
+// Setup hidden y-axis by given it the same color
 // as the background (this could also be done by setting the weight
 // to zero)
 $graph->yaxis->SetColor('lightblue', 'darkblue');
 $graph->ygrid->SetColor('white');
 
-// Setup graph title ands fonts
-$graph->title->Set('Using grace = 100%');
+// Setup graph title ands fonts$example_title='Using grace = 100%'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 $graph->xaxis->SetTitle('Year 2002', 'center');
 $graph->xaxis->SetTitleMargin(10);

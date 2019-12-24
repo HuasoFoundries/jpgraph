@@ -24,8 +24,8 @@ $graph->SetColor('lightyellow');
 $graph->SetAxisStyle(AXSTYLE_SIMPLE);
 
 //$graph->xaxis->SetLabelFormat('%.1f');
-
-$graph->title->Set('Function plot with marker');
+$example_title = 'Function plot with marker';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->subtitle->Set('(BOXOUT Axis style)');
 $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);

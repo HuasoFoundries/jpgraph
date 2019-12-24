@@ -32,8 +32,7 @@ $graph->SetShadow();
 // Specify title and subtitle using default fonts
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
-//---------------------------------------------------------------------
-$graph->title->Set('Result from 2002');
+//---------------------------------------------------------------------$example_title='Result from 2002'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->subtitle->Set('O1 - W-Site');
 $graph->subtitle->SetColor('white');

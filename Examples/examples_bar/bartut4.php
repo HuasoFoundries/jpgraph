@@ -26,7 +26,7 @@ for ($i = 0; $i < 25; ++$i) {
     $databarx[] = $months[$i % 12];
 }
 
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
 // Specify X-labels
@@ -35,8 +35,7 @@ $graph->xaxis->SetFont(FF_FONT1, FS_NORMAL);
 $graph->xaxis->SetTickLabels($databarx);
 $graph->xaxis->SetTextLabelInterval(3);
 
-// Set title and subtitle
-$graph->title->Set('Displaying only every third label');
+// Set title and subtitle$example_title='Displaying only every third label'; $graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(FF_FONT1, FS_BOLD);

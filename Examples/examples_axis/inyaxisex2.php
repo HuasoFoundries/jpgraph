@@ -34,8 +34,9 @@ $graph->SetColor('darkblue');
 $graph->SetAxisStyle(AXSTYLE_BOXOUT);
 $graph->SetBackgroundImage(__DIR__ . '/../assets/blueblack400x300grad.png', 1);
 //$graph->SetBackgroundImage("../assets/lightbluedarkblue400x300grad.png",1);
-
-$graph->title->Set('Depth curve. Dive #2');
+$example_title = 'Depth curve. Dive #2';
+$example_title = $example_title;
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetColor('white');
 

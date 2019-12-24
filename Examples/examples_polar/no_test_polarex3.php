@@ -16,15 +16,15 @@ $data = [0, 1, 10, 2, 30, 25, 40, 60,
     85, 270, 90, 280,
     95, 270, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
-    150, 25, 170, 2, 180, 1, ];
+    150, 25, 170, 2, 180, 1];
 
 $__width  = 300;
 $__height = 300;
 $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('log', 100);
 $graph->SetType(POLAR_180);
-
-$graph->title->Set('Polar plot #3');
+$example_title = 'Polar plot #3';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 $graph->title->SetColor('navy');
 

@@ -19,7 +19,9 @@ $graph->img->SetMargin(40, 40, 40, 20);
 
 $graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->title->Set('Top X-axis');
+$example_title = 'Top X-axis';
+$example_title = $example_title;
+$graph->title->set($example_title);
 
 // Start at 0
 $graph->yscale->SetAutoMin(0);

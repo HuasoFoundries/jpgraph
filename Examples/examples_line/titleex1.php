@@ -19,7 +19,8 @@ $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 30, 30);
 
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->title->Set('The Title');
+$example_title = 'The Title';
+$graph->title->set($example_title);
 $graph->subtitle->SetFont(FF_ARIAL, FS_BOLD, 10);
 $graph->subtitle->Set('The Subtitle');
 $graph->subsubtitle->SetFont(FF_ARIAL, FS_ITALIC, 9);

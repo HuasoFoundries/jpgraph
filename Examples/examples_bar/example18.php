@@ -26,8 +26,7 @@ $graph->img->SetMargin(40, 30, 20, 40);
 $bplot = new Plot\BarPlot($datay);
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('A simple bar graph');
+// Setup the titles$example_title='A simple bar graph'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

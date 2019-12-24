@@ -24,7 +24,7 @@ $ctxt = '中文';
 // Specify text for direction labels
 $labels = [
     '120.5' => $ctxt,
-    '232.2' => "Reference\n#13 Ver:2", ];
+    '232.2' => "Reference\n#13 Ver:2"];
 
 // Range colors to be used
 $rangeColors = ['khaki', 'yellow', 'orange', 'orange:0.7', 'brown', 'darkred', 'black'];
@@ -34,8 +34,7 @@ $__width  = 400;
 $__height = 450;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup title
-$graph->title->Set('Using chinese charecters');
+// Setup title$example_title='Using chinese charecters'; $graph->title->set($example_title);
 #$graph->title->SetFont(FF_VERDANA,FS_BOLD,12);
 $graph->title->SetColor('navy');
 $graph->subtitle->Set('(Free type plot)');

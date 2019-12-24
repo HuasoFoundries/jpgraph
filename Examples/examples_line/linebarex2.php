@@ -30,8 +30,7 @@ $graph->SetShadow();
 // Use an integer X-scale
 $graph->SetScale('intlin');
 
-// Set title and subtitle
-$graph->title->Set('Combined bar and line plot');
+// Set title and subtitle$example_title='Combined bar and line plot'; $graph->title->set($example_title);
 $graph->subtitle->Set('("left" aligned bars)');
 
 // Use built in font

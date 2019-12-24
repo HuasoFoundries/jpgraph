@@ -23,10 +23,11 @@ $ypos1 = 0.5;
 $ypos2 = 0.9;
 
 // First create a new windrose graph with a title
-$__width  = 650;
-$__height = 350;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Interpretation of ordinal keys');
+$__width       = 650;
+$__height      = 350;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Interpretation of ordinal keys';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 $graph->title->SetColor('navy');
 

@@ -36,7 +36,8 @@ $accplot = new Plot\AccLinePlot($dplot);
 $graph->Add($accplot);
 
 $graph->xaxis->SetTextTickInterval(2);
-$graph->title->Set('Example 17');
+$example_title = 'Example 17';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

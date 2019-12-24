@@ -24,7 +24,8 @@ $graph->SetScale('linlin');
 $graph->img->SetMargin(40, 40, 40, 40);
 
 $graph->SetShadow();
-$graph->title->Set('Linked scatter plot');
+$example_title = 'Linked scatter plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // 10% top and bottom grace

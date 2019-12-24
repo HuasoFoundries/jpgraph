@@ -36,8 +36,7 @@ $bplot->SetFillGradient($fcol, $tcol, GRAD_HOR);
 $bplot->SetFillColor('orange');
 $graph->Add($bplot);
 
-// Set up the title for the graph
-$graph->title->Set("Bargraph which doesn't start from y=0");
+// Set up the title for the graph$example_title=Bargraph which doesn't start from y=0; $graph->title->set($example_title);
 $graph->title->SetColor('yellow');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 

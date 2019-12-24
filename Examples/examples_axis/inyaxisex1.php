@@ -32,8 +32,9 @@ $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');
 $graph->SetColor('darkblue');
 $graph->SetAxisStyle(AXSTYLE_BOXOUT);
-
-$graph->title->Set('Depth curve. Dive #2');
+$example_title = 'Depth curve. Dive #2';
+$example_title = $example_title;
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetColor('white');
 

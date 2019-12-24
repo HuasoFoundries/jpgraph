@@ -13,8 +13,7 @@ $__height = 0;
 $graph    = new Graph\GanttGraph($__width, $__height);
 $graph->SetShadow();
 
-// Add title and subtitle
-$graph->title->Set('Main title');
+// Add title and subtitle$example_title='Main title'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 
 // Show day, week and month scale

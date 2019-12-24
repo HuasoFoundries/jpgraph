@@ -19,8 +19,7 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
 
-// Set A title for the plot
-$graph->title->Set('A Simple 3D Pie Plot');
+// Set A title for the plot$example_title='A Simple 3D Pie Plot'; $graph->title->set($example_title);
 
 // Create
 $p1 = new Plot\PiePlot3D($data);

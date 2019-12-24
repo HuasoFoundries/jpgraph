@@ -43,8 +43,8 @@ $bplot->value->SetColor('blue');
 $bplot->value->Show();
 
 $graph->Add($bplot);
-
-$graph->title->Set('Image maps barex1');
+$example_title = 'Image maps barex1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

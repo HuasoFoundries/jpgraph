@@ -10,8 +10,9 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 
 // Basic Gantt graph
-$graph = new Graph\GanttGraph();
-$graph->title->Set('Gantt chart with title columns and icons');
+$graph         = new Graph\GanttGraph();
+$example_title = 'Gantt chart with title columns and icons';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 
@@ -58,9 +59,9 @@ $endconicon   = new Image\IconImage(GICON_TEXTIMPORTANT, 0.5);
 $data = [
     [0, [$erricon, 'Pre-study', '102 days', "23 Nov '01", "1 Mar '02"], '2001-11-23', '2002-03-1', FF_ARIAL, FS_NORMAL, 8],
     [1, [$startconicon, 'Prototype', '21 days', "26 Oct '01", "16 Nov '01"],
-        '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8, ],
+        '2001-10-26', '2001-11-16', FF_ARIAL, FS_NORMAL, 8],
     [2, [$endconicon, 'Report', '12 days', "1 Mar '02", "13 Mar '02"],
-        '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8, ],
+        '2002-03-01', '2002-03-13', FF_ARIAL, FS_NORMAL, 8],
 ];
 
 // Create the bars and add them to the gantt chart

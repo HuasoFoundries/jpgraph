@@ -31,14 +31,13 @@ $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT1);
 $graph->xaxis->SetColor('darkblue', 'black');
 
-// Stup "hidden" y-axis by given it the same color
+// Stup hidden y-axis by given it the same color
 // as the background
 $graph->yaxis->SetColor('lightblue', 'darkblue');
 $graph->ygrid->SetColor('white');
 
-// Setup graph title ands fonts
-$graph->title->Set('Example of integer Y-scale');
-$graph->subtitle->Set('(With "hidden" y-axis)');
+// Setup graph title ands fonts$example_title='Example of integer Y-scale'; $graph->title->set($example_title);
+$graph->subtitle->Set('(With hidden y-axis)');
 
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 $graph->xaxis->title->Set('Year 2002');

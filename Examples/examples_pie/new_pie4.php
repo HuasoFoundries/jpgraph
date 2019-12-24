@@ -28,8 +28,7 @@ $graph->SetTheme(new $theme_class());
 // Setup background
 $graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLFRAME);
 
-// Setup title
-$graph->title->Set('Pie plots with background image');
+// Setup title$example_title='Pie plots with background image'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->SetTitleBackground('#4169E1', TITLEBKG_STYLE2, TITLEBKG_FRAME_FULL, '#4169E1', 10, 10, true);
 

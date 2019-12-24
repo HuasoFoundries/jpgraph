@@ -44,7 +44,8 @@ $__height = 350;
 $graph    = new MatrixGraph($__width, $__height);
 
 $graph->SetBackgroundGradient('lightsteelblue:0.8', 'lightsteelblue:0.3');
-$graph->title->Set('CSIM with matrix');
+$example_title = 'CSIM with matrix';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('white');
 

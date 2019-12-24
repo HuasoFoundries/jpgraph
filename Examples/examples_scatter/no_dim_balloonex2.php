@@ -37,7 +37,7 @@ $FCallback = function ($aYVal, $aXVal) {
     global $format;
 
     return [$format[(string) $aXVal][(string) $aYVal][0], '',
-        $format[(string) $aXVal][(string) $aYVal][1], '', '', ];
+        $format[(string) $aXVal][(string) $aYVal][1], '', ''];
 };
 
 // Setup a basic graph
@@ -47,8 +47,8 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('intlin');
 $graph->SetMargin(40, 40, 40, 40);
 $graph->SetMarginColor('wheat');
-
-$graph->title->Set('Example of ballon scatter plot with X,Y callback');
+$example_title = 'Example of ballon scatter plot with X,Y callback';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 

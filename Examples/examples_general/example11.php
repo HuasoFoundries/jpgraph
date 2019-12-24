@@ -22,8 +22,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $graph->SetMargin(40, 20, 20, 60);
-
-$graph->title->Set('Timing a graph');
+$example_title = 'Timing a graph';
+$graph->title->set($example_title);
 $graph->footer->right->Set('Timer (ms): ');
 $graph->footer->right->SetFont(FF_COURIER, FS_ITALIC);
 $graph->footer->SetTimer($timer);

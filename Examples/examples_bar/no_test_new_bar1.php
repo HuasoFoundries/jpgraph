@@ -47,8 +47,8 @@ $b2plot->SetFillColor('#11cccc');
 
 $b3plot->SetColor('white');
 $b3plot->SetFillColor('#1111cc');
-
-$graph->title->Set('Bar Plots');
+$example_title = 'Bar Plots';
+$graph->title->set($example_title);
 
 // Display the graph
 $graph->Stroke();

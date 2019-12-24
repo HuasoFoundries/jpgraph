@@ -18,8 +18,7 @@ $__width  = 300;
 $__height = 300;
 $graph    = new Graph\PieGraph($__width, $__height, 'auto');
 
-// Setup title
-$graph->title->Set('Pie plot with center circle');
+// Setup title$example_title='Pie plot with center circle'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 

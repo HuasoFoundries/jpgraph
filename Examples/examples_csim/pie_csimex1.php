@@ -17,8 +17,7 @@ $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 
-// Set A title for the plot
-$graph->title->Set('Client side image map');
+// Set A title for the plot$example_title='Client side image map'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Create
@@ -27,7 +26,7 @@ $p1->SetCenter(0.4, 0.5);
 
 $p1->SetLegends(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']);
 $targ = ['pie_csimex1.php#1', 'pie_csimex1.php#2', 'pie_csimex1.php#3',
-    'pie_csimex1.php#4', 'pie_csimex1.php#5', 'pie_csimex1.php#6', ];
+    'pie_csimex1.php#4', 'pie_csimex1.php#5', 'pie_csimex1.php#6'];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $p1->SetCSIMTargets($targ, $alts);
 

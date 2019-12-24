@@ -18,8 +18,8 @@ $graph->SetScale('textlin');
 $graph->SetMargin(40, 20, 50, 70);
 
 $graph->legend->SetPos(0.5, 0.97, 'center', 'bottom');
-
-$graph->title->Set('Plot line legend');
+$example_title = 'Plot line legend';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $graph->SetTitleBackground('lightblue:1.3', TITLEBKG_STYLE2, TITLEBKG_FRAME_BEVEL);

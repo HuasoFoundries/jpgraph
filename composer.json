@@ -1,47 +1,49 @@
 {
-    "name": "amenadiel/jpgraph",
-    "type": "library",
-    "description": "jpGraph, library to make graphs and charts",
-    "version": "4.0.0",
-    "keywords": ["graph", "chart", "pie", "jpgraph", "data"],
-    "homepage": "http://jpgraph.net/",
-    "license": "QPL-1.0",
-
-    "support":
-    {
-        "issues": "https://github.com/huasofoundries/jpgraph/issues"
-    },
-    "require":
-    {
-        "php": ">=7.0.0",
-        "ext-gd": "*",
-        "symfony/dotenv": "~4.2"
-    },
-    "require-dev":
-    {
-        "ext-xdebug": "*",
-        "friendsofphp/php-cs-fixer": "^2.4",
-        "phpunit/phpunit": "^6",
-        "codeception/codeception": "~2.4.1",
-        "monolog/monolog": "^1.23",
-        "kint-php/kint": "^2.2",
-        "php-console/php-console": "^3.1"
-    },
-    "autoload":
-    {
-        "psr-4":
-        {
-            "Amenadiel\\JpGraph\\": "src/",
-            "Amenadiel\\JpGraph\\Graph\\": "src/graph",
-            "Amenadiel\\JpGraph\\Image\\": "src/image",
-            "Amenadiel\\JpGraph\\Plot\\": "src/plot",
-            "Amenadiel\\JpGraph\\Text\\": "src/text",
-            "Amenadiel\\JpGraph\\Themes\\": "src/themes",
-            "Amenadiel\\JpGraph\\Util\\": "src/util"
-        }
-    },
-    "scripts":
-    {
-        "start": "php -S localhost:8000 -t Examples"
+  "name": "amenadiel/jpgraph",
+  "type": "library",
+  "description": "jpGraph, library to make graphs and charts",
+  "version": "4.0.0",
+  "keywords": [
+    "graph",
+    "chart",
+    "pie",
+    "jpgraph",
+    "data"
+  ],
+  "homepage": "http://jpgraph.net/",
+  "license": "QPL-1.0",
+  "support": {
+    "issues": "https://github.com/huasofoundries/jpgraph/issues"
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "ext-gd": "*",
+    "symfony/dotenv": "~4.2"
+  },
+  "require-dev": {
+    "ext-xdebug": "*",
+    "friendsofphp/php-cs-fixer": "^2.4",
+    "phpunit/phpunit": "^6",
+    "codeception/codeception": "~2.4.1",
+    "monolog/monolog": "^1.23",
+    "kint-php/kint": "^2.2",
+    "php-console/php-console": "^3.1",
+    "symfony/event-dispatcher": "~4.2",
+    "symfony/yaml": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Amenadiel\\JpGraph\\UnitTest\\": "tests/unit",
+      "Amenadiel\\JpGraph\\": "src/",
+      "Amenadiel\\JpGraph\\Graph\\": "src/graph",
+      "Amenadiel\\JpGraph\\Image\\": "src/image",
+      "Amenadiel\\JpGraph\\Plot\\": "src/plot",
+      "Amenadiel\\JpGraph\\Text\\": "src/text",
+      "Amenadiel\\JpGraph\\Themes\\": "src/themes",
+      "Amenadiel\\JpGraph\\Util\\": "src/util"
     }
+  },
+  "scripts": {
+    "start": "php -S localhost:8000 -t Examples"
+  }
 }

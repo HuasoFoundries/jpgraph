@@ -19,8 +19,8 @@ $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
 
 $graph->SetBox(false);
-
-$graph->title->Set('Step Line');
+$example_title = 'Step Line';
+$graph->title->set($example_title);
 $graph->ygrid->Show(true);
 $graph->xgrid->Show(false);
 $graph->yaxis->HideZeroLabel();

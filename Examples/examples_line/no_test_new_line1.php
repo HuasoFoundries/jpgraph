@@ -22,7 +22,8 @@ $theme_class = new UniversalTheme();
 
 $graph->SetTheme($theme_class);
 $graph->img->SetAntiAliasing(false);
-$graph->title->Set('Filled Y-grid');
+$example_title = 'Filled Y-grid';
+$graph->title->set($example_title);
 $graph->SetBox(false);
 
 $graph->img->SetAntiAliasing();

@@ -17,8 +17,8 @@ $__height = 150;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(25, 15, 25, 25);
-
-$graph->title->Set('"GRAD_MIDHOR"');
+$example_title = 'GRAD_MIDHOR';
+$graph->title->set($example_title);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis

@@ -21,8 +21,8 @@ $graph->SetMarginColor('darkgreen@0.8');
 
 // Setup a background gradient image
 $graph->SetBackgroundGradient('darkred', 'yellow', GRAD_HOR, BGRAD_PLOT);
-
-$graph->title->Set('Gradient filled line plot ex3');
+$example_title = 'Gradient filled line plot ex3';
+$graph->title->set($example_title);
 $graph->yscale->SetAutoMin(0);
 
 // Create the line

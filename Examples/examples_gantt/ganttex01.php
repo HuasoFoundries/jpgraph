@@ -11,8 +11,7 @@ use Amenadiel\JpGraph\Plot;
 $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 
-// Add title and subtitle
-$graph->title->Set('A main title');
+// Add title and subtitle$example_title='A main title'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->subtitle->Set('(Draft version)');
 

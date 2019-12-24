@@ -13,11 +13,11 @@ require_once 'jpgraph/jpgraph_radar.php';
 $data = [55, 80, 46, 71, 95];
 
 // Create the graph and the plot
-$__width  = 300;
-$__height = 200;
-$graph    = new RadarGraph($__width, $__height);
-
-$graph->title->Set('Weekly goals');
+$__width       = 300;
+$__height      = 200;
+$graph         = new RadarGraph($__width, $__height);
+$example_title = 'Weekly goals';
+$graph->title->set($example_title);
 $graph->subtitle->Set('Year 2003');
 
 $plot = new RadarPlot($data);

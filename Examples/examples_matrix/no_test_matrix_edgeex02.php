@@ -23,10 +23,11 @@ $data = [
 $nrow = count($data);
 $ncol = count($data[0]);
 
-$width  = 350;
-$height = 300;
-$graph  = new MatrixGraph($width, $height);
-$graph->title->Set('Add ine row/col labels');
+$width         = 350;
+$height        = 300;
+$graph         = new MatrixGraph($width, $height);
+$example_title = 'Add ine row/col labels';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp = new MatrixPlot($data, 1);

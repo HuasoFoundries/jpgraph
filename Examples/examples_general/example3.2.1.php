@@ -25,7 +25,8 @@ $lineplot->mark->SetType(MARK_CIRCLE);
 $graph->Add($lineplot);
 
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Grace value, version 1');
+$example_title = 'Grace value, version 1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

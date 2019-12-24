@@ -14,8 +14,7 @@ $__width  = 250;
 $__height = 170;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup graph titles
-$graph->title->Set('Custom formatting');
+// Setup graph titles$example_title='Custom formatting'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD);
 

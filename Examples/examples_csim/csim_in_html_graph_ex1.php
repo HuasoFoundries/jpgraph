@@ -38,8 +38,8 @@ for ($i = 0; $i < $n; ++$i) {
 $bplot->SetCSIMTargets($targ, $alt, $wtarg);
 
 $graph->Add($bplot);
-
-$graph->title->Set('Multiple Image maps');
+$example_title = 'Multiple Image maps';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetCSIMTarget('#45', 'Title for Bar', '_blank');
 

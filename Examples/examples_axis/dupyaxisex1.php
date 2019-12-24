@@ -22,8 +22,9 @@ $graph->SetFrame(false);
 $graph->SetBox(true, 'black', 2);
 $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow');
-
-$graph->title->Set('Duplicating Y-axis');
+$example_title = 'Duplicating Y-axis';
+$example_title = $example_title;
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $graph->SetAxisStyle(AXSTYLE_YBOXIN);

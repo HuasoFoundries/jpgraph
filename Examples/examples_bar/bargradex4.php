@@ -22,8 +22,7 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('teal');
 $graph->SetShadow();
 
-// Set up the title for the graph
-$graph->title->Set('Bargraph with small variations');
+// Set up the title for the graph$example_title='Bargraph with small variations'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 

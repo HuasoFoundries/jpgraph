@@ -8,9 +8,9 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$graph = new Graph\GanttGraph();
-
-$graph->title->Set('Only month & year scale');
+$graph         = new Graph\GanttGraph();
+$example_title = 'Only month & year scale';
+$graph->title->set($example_title);
 
 // Setup some "very" nonstandard colors
 $graph->SetMarginColor('lightgreen@0.8');
@@ -33,7 +33,7 @@ $graph->scale->year->grid->Show(true);
 // Data for our example activities
 $data = [
     [0, 'Group 1  Johan', '2001-11-23', '2002-03-1', FF_FONT1, FS_BOLD, 8],
-    [1, '  Label 2', '2001-10-26', '2001-11-16'], ];
+    [1, '  Label 2', '2001-10-26', '2001-11-16']];
 
 // Create the bars and add them to the gantt chart
 for ($i = 0; $i < count($data); ++$i) {

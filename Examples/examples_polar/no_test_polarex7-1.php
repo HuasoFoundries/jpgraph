@@ -16,7 +16,7 @@ $data = [0, 1, 30, 2, 30, 25, 40, 60,
     90, 480,
     95, 370, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
-    150, 25, 150, 2, 180, 1, ];
+    150, 25, 150, 2, 180, 1];
 
 $__width  = 300;
 $__height = 350;
@@ -36,8 +36,8 @@ $graph->axis->SetGridColor('gray', 'gray', 'gray');
 // Setup axis title
 $graph->axis->SetTitle('Coverage (in meter)', 'middle');
 $graph->axis->title->SetFont(FF_FONT1, FS_BOLD);
-
-$graph->title->Set('Polar plot #7');
+$example_title = 'Polar plot #7';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('navy');
 

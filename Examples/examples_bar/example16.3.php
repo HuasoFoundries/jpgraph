@@ -35,8 +35,8 @@ $bplot->SetLegend('Result');
 // Add the plots to t'he graph
 $graph->Add($bplot);
 $graph->Add($l1plot);
-
-$graph->title->Set('Adding a line plot to a bar graph v1');
+$example_title = 'Adding a line plot to a bar graph v1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

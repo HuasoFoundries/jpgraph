@@ -40,8 +40,7 @@ $graph->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');
 $graph->SetColor('darkblue');
 
-// Setup titles
-$graph->title->Set('Inverting both Y-axis');
+// Setup titles$example_title = 'Inverting both Y-axis';$example_title=$example_title; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetColor('white');
 

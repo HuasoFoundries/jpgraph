@@ -27,7 +27,8 @@ $lineplot->value->SetFont(FF_FONT1, FS_BOLD);
 $graph->Add($lineplot);
 
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Example 2.1');
+$example_title = 'Example 2.1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

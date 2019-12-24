@@ -104,8 +104,8 @@ $band = new Plot\PlotBand(VERTICAL, BAND_RDIAG, 11, 'max', 'khaki4');
 $band->ShowFrame(true);
 $band->SetOrder(DEPTH_BACK);
 $graph->Add($band);
-
-$graph->title->Set('Combineed Line and Bar plots');
+$example_title = 'Combineed Line and Bar plots';
+$graph->title->set($example_title);
 
 // Display the graph
 $graph->Stroke();

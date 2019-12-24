@@ -16,8 +16,7 @@ $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
-// Title setup
-$graph->title->Set('Exploding all slices');
+// Title setup$example_title='Exploding all slices'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Setup the pie plot

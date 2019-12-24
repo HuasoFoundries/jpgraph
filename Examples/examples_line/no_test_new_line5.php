@@ -20,8 +20,8 @@ $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
 
 $graph->SetMargin(40, 40, 50, 40);
-
-$graph->title->Set('Inverted Y-axis');
+$example_title = 'Inverted Y-axis';
+$graph->title->set($example_title);
 $graph->SetBox(false);
 $graph->yaxis->HideLine(false);
 $graph->yaxis->HideTicks(false, false);

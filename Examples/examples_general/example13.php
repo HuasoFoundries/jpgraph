@@ -26,8 +26,8 @@ $errplot->SetWeight(2);
 
 // Add the plot to the graph
 $graph->Add($errplot);
-
-$graph->title->Set('Simple error plot');
+$example_title = 'Simple error plot';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

@@ -14,7 +14,7 @@ $data = [
     [10, 10, 8, 14],
     [7, 7, 13, 17],
     [4, 5, 8, 12],
-    [10, 8, 7, 8], ];
+    [10, 8, 7, 8]];
 
 // create a basic graph as a container
 $__width  = 300;
@@ -24,8 +24,7 @@ $graph->SetMargin(30, 30, 40, 30);
 $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
-// Setup title of graph
-$graph->title->Set('Filled contour plot');
+// Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 
 $graph->subtitle->Set('(labels follows gradients)');

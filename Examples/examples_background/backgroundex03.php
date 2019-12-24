@@ -23,7 +23,8 @@ $graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_COPY);
 $graph->img->SetAntiAliasing('white');
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Background image');
+$example_title = 'Background image';
+$graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(FF_FONT1, FS_BOLD);

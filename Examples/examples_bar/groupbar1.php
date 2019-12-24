@@ -23,8 +23,8 @@ $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->xaxis->title->Set('Year 2002');
 $graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
-
-$graph->title->Set('Group bar plot');
+$example_title = 'Group bar plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $bplot1 = new Plot\BarPlot($datay1);

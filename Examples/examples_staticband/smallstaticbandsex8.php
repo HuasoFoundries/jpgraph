@@ -42,6 +42,7 @@ $graph->Add($band);
 // Set title
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
 $graph->title->SetColor('darkred');
-$graph->title->Set('BAND_3DPLANE');
+$example_title = 'BAND_3DPLANE';
+$graph->title->set($example_title);
 
 $graph->Stroke();

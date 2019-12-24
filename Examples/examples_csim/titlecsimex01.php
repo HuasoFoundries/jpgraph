@@ -57,8 +57,7 @@ $txt1->SetCSIMTarget('#88', 'Text element');
 $graph->Add($txt1);
 
 // Add image map to the graph title as well (you can do this to the
-// sub- and subsub-title as well)
-$graph->title->Set('Image maps barex1');
+// sub- and subsub-title as well)$example_title='Image maps barex1'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->title->SetCSIMTarget('#45', 'Title for Bar');
 $graph->xaxis->title->Set('X-title');

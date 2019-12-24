@@ -93,8 +93,7 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, 100, 0, 10);
 $graph->SetMarginColor('lightblue');
 
-// ..and titles
-$graph->title->Set('Field plot');
+// ..and titles$example_title='Field plot'; $graph->title->set($example_title);
 
 // Setup the field plot
 $fp = new Plot\FieldPlot($datay, $datax, $angle);

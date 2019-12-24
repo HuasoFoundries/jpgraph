@@ -17,7 +17,8 @@ $graph->img->SetMargin(40, 40, 40, 40);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->title->Set('Linked Scatter plot ex1');
+$example_title = 'Linked Scatter plot ex1';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);

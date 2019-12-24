@@ -16,7 +16,7 @@ $__height = 220;
 $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
-//$theme_class="DefaultTheme";
+//$theme_class=DefaultTheme;
 //$graph->SetTheme(new $theme_class());
 
 // set major and minor tick positions manually

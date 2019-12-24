@@ -17,8 +17,8 @@ $graph->scale->hour->SetBackgroundColor('lightyellow:1.5');
 $graph->scale->hour->SetFont(FF_FONT1);
 $graph->scale->day->SetBackgroundColor('lightyellow:1.5');
 $graph->scale->day->SetFont(FF_FONT1, FS_BOLD);
-
-$graph->title->Set('Example of hours in scale');
+$example_title = 'Example of hours in scale';
+$graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 

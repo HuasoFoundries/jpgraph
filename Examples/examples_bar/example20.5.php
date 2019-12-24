@@ -41,8 +41,7 @@ $bplot->SetWidth(0.7);
 
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('Centered values for bars');
+// Setup the titles$example_title='Centered values for bars'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

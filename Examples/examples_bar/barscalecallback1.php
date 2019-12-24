@@ -44,8 +44,7 @@ $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
 $graph->xaxis->SetFont(FF_FONT2);
 
-// Setup graph title ands fonts
-$graph->title->Set('Example of Y-scale callback formatting');
+// Setup graph title ands fonts$example_title='Example of Y-scale callback formatting'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT2, FS_BOLD);
 $graph->xaxis->title->Set('Year 2002');
 $graph->xaxis->title->SetFont(FF_FONT2, FS_BOLD);

@@ -37,7 +37,8 @@ $graph  = new MatrixGraph($width, $height);
 $graph->SetMargin(1, 2, 70, 1);
 $graph->SetColor('white');
 $graph->SetMarginColor('#fafafa');
-$graph->title->Set('Intro matrix graph');
+$example_title = 'Intro matrix graph';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Setup the background image
@@ -76,7 +77,7 @@ $graph->Add($hor1);
 $txts = [
     ['Temperature gradient', $width / 2, 80],
     ['Heat color map', 200, 110],
-    ['High contrast map', 560, 110], ];
+    ['High contrast map', 560, 110]];
 
 $n = count($txts);
 $t = [];

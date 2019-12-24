@@ -55,9 +55,10 @@ for ($i = 4; $i < 8; ++$i) {
 $graph->Add($gbplot);
 $graph->Add($plot[4]);
 
-$title = 'OceanTheme Example';
-$title = mb_convert_encoding($title, 'UTF-8');
-$graph->title->Set($title);
+$title         = 'OceanTheme Example';
+$title         = mb_convert_encoding($title, 'UTF-8');
+$example_title = $title;
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

@@ -30,8 +30,8 @@ $errplot->line->SetColor('blue');
 
 // Add the plot to the graph
 $graph->Add($errplot);
-
-$graph->title->Set('Linear error plot');
+$example_title = 'Linear error plot';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

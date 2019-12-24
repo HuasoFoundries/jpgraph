@@ -14,8 +14,7 @@ $__width  = 300;
 $__height = 320;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup graph titles
-$graph->title->Set('Manual positioning');
+// Setup graph titles$example_title='Manual positioning'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 

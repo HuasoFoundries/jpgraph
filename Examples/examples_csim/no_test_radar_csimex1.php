@@ -17,11 +17,11 @@ for ($i = 0; $i < $n; ++$i) {
     $alts[$i]    = "Data point #${i}";
 }
 
-$__width  = 300;
-$__height = 280;
-$graph    = new RadarGraph($__width, $__height);
-
-$graph->title->Set('Radar with marks');
+$__width       = 300;
+$__height      = 280;
+$graph         = new RadarGraph($__width, $__height);
+$example_title = 'Radar with marks';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 

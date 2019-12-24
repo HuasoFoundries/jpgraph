@@ -27,8 +27,7 @@ $graph->Set90AndMargin($left, $right, $top, $bottom);
 // Nice shadow
 $graph->SetShadow();
 
-// Setup title
-$graph->title->Set('Horizontal bar graph ex 2');
+// Setup title$example_title='Horizontal bar graph ex 2'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 $graph->subtitle->Set('(Axis at top)');
 

@@ -37,8 +37,8 @@ $graph->yaxis->scale->ticks->SupressFirst();
 // Add the plot to the graph
 $graph->Add($lineplot);
 $graph->AddY2($lineplot2);
-
-$graph->title->Set('Example 8');
+$example_title = 'Example 8';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

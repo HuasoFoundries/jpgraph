@@ -22,16 +22,17 @@ $data = [
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
 
-$__width  = 550;
-$__height = 500;
-$graph    = new MatrixGraph($__width, $__height);
-$graph->title->Set('Possible legend positions');
+$__width       = 550;
+$__height      = 500;
+$graph         = new MatrixGraph($__width, $__height);
+$example_title = 'Possible legend positions';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp  = [];
 $n   = 4;
 $pos = [0.3, 0.33, 0.8, 0.68,
-    0.3, 0.68, 0.8, 0.33, ];
+    0.3, 0.68, 0.8, 0.33];
 for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);
     $mp[$i]->colormap->SetMap($i);

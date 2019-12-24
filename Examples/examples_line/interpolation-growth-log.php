@@ -30,8 +30,8 @@ $graph->SetFrame(false);
 $graph->SetBox(true, 'black', 2);
 $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow@0.7');
-
-$graph->title->Set('Interpolation growth for size 10x10');
+$example_title = 'Interpolation growth for size 10x10';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $graph->xaxis->SetTitle('Interpolation factor', 'center');

@@ -24,39 +24,41 @@ if (!defined('USE_IMAGE_ERROR_HANDLER')) {
     define('USE_IMAGE_ERROR_HANDLER', true);
 }
 
-global $__jpg_err_locale;
-$__jpg_err_locale = DEFAULT_ERR_LOCALE;
-
 class ErrMsgText
 {
     private $lt;
 
     public function __construct()
     {
-        global $__jpg_err_locale;
-        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
 
-        // If the chosen locale doesn't exist try english
-        if (!file_exists($file)) {
-            $__jpg_err_locale = 'en';
-        }
+        $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), Helper::getErrLocale());
 
-        $file = dirname(dirname(__FILE__)) . '/lang/' . $__jpg_err_locale . '.inc.php';
-        if (!file_exists($file)) {
-            die('Chosen locale file ("' . $file . '") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.');
+        if (!file_exists($locale_messages_file)) {
+            $error_message =
+                sprintf(
+                'Chosen locale file ("%s") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.', $locale_messages_file);
+            die($error_message);
         }
-        require $file;
+        require $locale_messages_file;
+
         $this->lt = $_jpg_messages;
     }
 
     public function Get($errnbr, $a1 = null, $a2 = null, $a3 = null, $a4 = null, $a5 = null)
     {
-        global $__jpg_err_locale;
         if (!isset($this->lt[$errnbr])) {
-            return 'Internal error: The specified error message (' . $errnbr . ') does not exist in the chosen locale (' . $__jpg_err_locale . ')';
+            return sprintf(
+                'Internal error: The specified error message (%s) does not exist in the chosen locale (%s)',
+                $errnbr,
+                Helper::getErrLocale());
         }
         $ea = $this->lt[$errnbr];
-        $j  = 0;
+        /**
+         * @TODO I've been avoiding refactoring this madness. I know
+         *
+         * @var integer
+         */
+        $j = 0;
         if ($a1 !== null) {
             $argv[$j++] = $a1;
             if ($a2 !== null) {
@@ -108,12 +110,4 @@ class ErrMsgText
 
         return $msg;
     }
-}
-
-// Setup the default handler
-global $__jpg_OldHandler;
-$__jpg_OldHandler = set_exception_handler(['Amenadiel\JpGraph\Util\JpGraphException', 'defaultHandler']);
-
-if (!USE_IMAGE_ERROR_HANDLER) {
-    JpGraphError::SetImageFlag(false);
 }

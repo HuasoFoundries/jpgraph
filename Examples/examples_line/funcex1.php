@@ -26,8 +26,7 @@ $graph->SetBox(true, 'black', 2);
 $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow');
 
-// ... and titles
-$graph->title->Set('Example of Function plot');
+// ... and titles$example_title='Example of Function plot'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->subtitle->Set("(With some more advanced axis formatting\nHiding first and last label)");
 $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);

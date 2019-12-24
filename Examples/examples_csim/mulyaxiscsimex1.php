@@ -31,7 +31,8 @@ $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(60, 180, 50, 40);
 $graph->SetMarginColor('white');
-$graph->title->Set('Multi Y-axes with Image Map');
+$example_title = 'Multi Y-axes with Image Map';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Setup the scales for all axes

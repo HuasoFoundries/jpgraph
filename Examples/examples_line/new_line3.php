@@ -20,8 +20,8 @@ $graph->SetScale('textlin', 0, 50);
 
 //$theme_class=new DefaultTheme;
 //$graph->SetTheme($theme_class);
-
-$graph->title->Set('Filled Area');
+$example_title = 'Filled Area';
+$graph->title->set($example_title);
 
 $graph->SetBox(false);
 $graph->yaxis->HideLine(false);

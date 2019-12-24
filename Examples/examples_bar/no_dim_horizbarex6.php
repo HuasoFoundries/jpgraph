@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Text;
 
 $datay = [2, 3, 5, 8, 12, 6, 3];
 $datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
-    '1600x1200(32)', ];
+    '1600x1200(32)'];
 
 // Size of graph
 $__width  = 300;
@@ -36,8 +36,7 @@ $graph->SetBox();
 // Use a gradient to fill the plot area
 $graph->SetBackgroundGradient('white', 'lightblue', GRAD_HOR, BGRAD_PLOT);
 
-// Setup title
-$graph->title->Set('Graphic card performance');
+// Setup title$example_title='Graphic card performance'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 11);
 $graph->subtitle->Set('(Non optimized)');
 

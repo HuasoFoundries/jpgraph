@@ -33,8 +33,7 @@ $graph->SetMarginColor('white');
 $graph->SetScale('intlin'); // X and Y axis
 $graph->SetY2Scale('lin'); // Y2 axis
 
-// Overall graph title
-$graph->title->Set('Synchronized Y & Y2 scales');
+// Overall graph title$example_title='Synchronized Y & Y2 scales'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 
 // Title for X-axis

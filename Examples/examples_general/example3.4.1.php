@@ -16,9 +16,9 @@ function numberToRoman($aNum)
     $result = '';
 
     // Declare a lookup array that we will use to traverse the number:
-    $lookup = ['M'     => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+    $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
         'C'            => 100, 'XC'  => 90, 'L'  => 50, 'XL'  => 40,
-        'X'            => 10, 'IX'   => 9, 'V'   => 5, 'IV'   => 4, 'I' => 1, ];
+        'X'            => 10, 'IX'   => 9, 'V'   => 5, 'IV'   => 4, 'I' => 1];
 
     foreach ($lookup as $roman => $value) {
         // Determine the number of matches
@@ -55,7 +55,8 @@ $graph->SetShadow();
 
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Calls per operator');
+$example_title = 'Calls per operator';
+$graph->title->set($example_title);
 $graph->subtitle->Set('(March 12, 2008)');
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');

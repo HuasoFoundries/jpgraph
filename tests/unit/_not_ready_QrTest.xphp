@@ -23,7 +23,7 @@ class QrTest extends \Codeception\Test\Unit
 
     public function testFileIterator()
     {
-        $files = GetFiles($this->exampleRoot);
+        $files =self::getFiles($this->exampleRoot);
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }

@@ -14,8 +14,8 @@ $__width  = 400;
 $__height = 300;
 $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
-
-$graph->title->Set('Images on top of bars');
+$example_title = 'Images on top of bars';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 13);
 
 $graph->SetTitleBackground('lightblue:1.1', TITLEBKG_STYLE1, TITLEBKG_FRAME_BEVEL);

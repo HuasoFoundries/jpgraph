@@ -25,9 +25,13 @@ class ImgStreamCache
      *
      * @param mixed $aCacheDir
      */
-    public function __construct($aCacheDir = CACHE_DIR)
+    public function __construct($aCacheDir = null)
     {
-        $this->cache_dir = $aCacheDir;
+        // if CACHE_DIR is not defined, it means we haven't initialized the library yet
+        if (!defined('CACHE_DIR')) {
+            Util\Helper::bootstrapLibrary();
+        }
+        $this->cache_dir = $aCacheDir || CACHE_DIR;
     }
 
     /**

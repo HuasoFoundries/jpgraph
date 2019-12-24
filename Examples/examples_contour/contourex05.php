@@ -35,8 +35,8 @@ $__width  = 480;
 $__height = 390;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 120, 60, 50);
-
-$graph->title->Set('Contour plot, high contrast color');
+$example_title = 'Contour plot, high contrast color';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 $graph->title->SetMargin(10);
 

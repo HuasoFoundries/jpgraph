@@ -10,8 +10,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the basic graph
-$graph = new Graph\GanttGraph();
-$graph->title->Set('Example with multiple constrains');
+$graph         = new Graph\GanttGraph();
+$example_title = 'Example with multiple constrains';
+$graph->title->set($example_title);
 
 $bar1 = new Plot\GanttBar(0, 'Label 1', '2003-06-08', '2003-06-12');
 $bar2 = new Plot\GanttBar(1, 'Label 2', '2003-06-16', '2003-06-19');

@@ -27,8 +27,8 @@ $graph->grid->SetColor('navy@0.5');
 $graph->grid->Show();
 
 $graph->ShowMinorTickMarks();
-
-$graph->title->Set('Quality result');
+$example_title = 'Quality result';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->SetTitles(['One', 'Two', 'Three', 'Four', 'Five', 'Sex', 'Seven', 'Eight', 'Nine', 'Ten']);
 

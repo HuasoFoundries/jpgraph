@@ -34,8 +34,7 @@ $txt->SetColor('darkred');
 $txt->SetFont(FF_FONT2, FS_BOLD);
 $graph->AddText($txt);
 
-// Setup the titles
-$graph->title->Set('A simple bar graph');
+// Setup the titles$example_title='A simple bar graph'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

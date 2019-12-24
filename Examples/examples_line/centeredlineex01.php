@@ -17,7 +17,8 @@ $graph->img->SetMargin(40, 40, 40, 40);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example of line centered plot');
+$example_title = 'Example of line centered plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Use 20% "grace" to get slightly larger scale then min/max of

@@ -27,7 +27,8 @@ $graph->legend->SetFillColor('antiquewhite');
 $graph->legend->SetShadow(true);
 $graph->legend->SetLayout(LEGEND_VERT);
 $graph->legend->Pos(0.02, 0.01);
-$graph->title->Set('Step Styled Example');
+$example_title = 'Step Styled Example';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $lineplot = new Plot\LinePlot($ydata);

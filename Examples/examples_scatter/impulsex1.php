@@ -17,8 +17,8 @@ $graph->SetScale('textlin');
 
 $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
-
-$graph->title->Set('Simple mpuls plot');
+$example_title = 'Simple mpuls plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $sp1 = new Plot\ScatterPlot($datay);

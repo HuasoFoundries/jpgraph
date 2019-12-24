@@ -16,8 +16,7 @@ $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
-// Title setup
-$graph->title->Set('Adjusting the label pos');
+// Title setup$example_title='Adjusting the label pos'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Setup the pie plot

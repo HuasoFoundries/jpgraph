@@ -13,7 +13,7 @@ $data = [
     0 => [1, 1, 2.5, 4],
     1 => [3, 4, 1, 4],
     3 => [2, 7, 4, 4, 3],
-    5 => [2, 7, 1, 2], ];
+    5 => [2, 7, 1, 2]];
 
 // Text to be added.
 $txt    = [];
@@ -27,10 +27,11 @@ $txt[2] = 'Finally we can show a center aligned paragraph without box.';
 $rangeColors = ['silver', 'khaki', 'orange', 'brown', 'blue', 'navy', 'maroon', 'red'];
 
 // First create a new windrose graph with a title
-$__width  = 570;
-$__height = 430;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 5');
+$__width       = 570;
+$__height      = 430;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 5';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('navy');
 

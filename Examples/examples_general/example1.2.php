@@ -17,7 +17,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(30, 90, 40, 50);
 $graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
-$graph->title->Set('Dashed lineplot');
+$example_title = 'Dashed lineplot';
+$graph->title->set($example_title);
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);

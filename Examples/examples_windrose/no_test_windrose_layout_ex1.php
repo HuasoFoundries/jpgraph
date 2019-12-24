@@ -13,30 +13,30 @@ $data = [
     [
         1 => [10, 10, 13, 7],
         2 => [2, 8, 10],
-        4 => [1, 12, 22], ],
+        4 => [1, 12, 22]],
     [
         4 => [12, 8, 2, 3],
-        2 => [5, 4, 4, 5, 2], ],
+        2 => [5, 4, 4, 5, 2]],
     [
         1 => [12, 8, 2, 3],
-        3 => [5, 4, 4, 5, 2], ],
+        3 => [5, 4, 4, 5, 2]],
     [
         2 => [12, 8, 2, 3],
-        3 => [5, 4, 4, 5, 2], ],
+        3 => [5, 4, 4, 5, 2]],
     [
         4 => [12, 8, 2, 3],
-        6 => [5, 4, 4, 5, 2], ],
+        6 => [5, 4, 4, 5, 2]],
 ];
 
 // Legend range colors
 $rangecolors = ['green', 'yellow', 'red', 'brown'];
 
 // Create a windrose graph with titles
-$__width  = 750;
-$__height = 700;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-
-$graph->title->Set('Multiple plots with automatic layout');
+$__width       = 750;
+$__height      = 700;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Multiple plots with automatic layout';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 // Setup the individual windrose plots

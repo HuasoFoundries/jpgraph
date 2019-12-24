@@ -43,6 +43,7 @@ $graph->Add($band);
 // Set title
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
 $graph->title->SetColor('darkred');
-$graph->title->Set('BAND_HVCROSS, In front');
+$example_title = 'BAND_HVCROSS, In front';
+$graph->title->set($example_title);
 
 $graph->Stroke();

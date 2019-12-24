@@ -27,10 +27,11 @@ $axisweights = [355 => 8];
 $axisstyles  = [355 => 'solid', 150 => 'solid'];
 
 // First create a new windrose graph with a title
-$__width  = 400;
-$__height = 500;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 8');
+$__width       = 400;
+$__height      = 500;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 8';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 $graph->title->SetColor('navy');
 

@@ -21,8 +21,7 @@ $graph->SetTheme($theme_class);
 // after setting theme, you can change details as you want
 $graph->SetFrame(true, 'lightgray'); // set frame visible
 
-$graph->xaxis->SetTickLabels(['A', 'B', 'C', 'D']); // change xaxis lagels
-$graph->title->Set('Theme Example'); // add title
+$graph->xaxis->SetTickLabels(['A', 'B', 'C', 'D']); // change xaxis lagels$example_title='Theme Example'; $graph->title->set($example_title); // add title
 
 // add barplot
 $bplot = new Plot\BarPlot($data1y);

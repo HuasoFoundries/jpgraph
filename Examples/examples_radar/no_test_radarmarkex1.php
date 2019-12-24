@@ -11,11 +11,11 @@ require_once 'jpgraph/jpgraph_radar.php';
 $titles = ['Planning', 'Quality', 'Time', 'RR', 'CR', 'DR'];
 $data   = [18, 40, 70, 90, 42, 66];
 
-$__width  = 300;
-$__height = 280;
-$graph    = new RadarGraph($__width, $__height);
-
-$graph->title->Set('Radar with marks');
+$__width       = 300;
+$__height      = 280;
+$graph         = new RadarGraph($__width, $__height);
+$example_title = 'Radar with marks';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 12);
 
 $graph->SetTitles($titles);

@@ -21,10 +21,11 @@ $data = [
 
 doMeshInterpolate($data, 4);
 
-$__width  = 850;
-$__height = 580;
-$graph    = new MatrixGraph($__width, $__height);
-$graph->title->Set('Matrix layout example');
+$__width       = 850;
+$__height      = 580;
+$graph         = new MatrixGraph($__width, $__height);
+$example_title = 'Matrix layout example';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 
 $mp = [];

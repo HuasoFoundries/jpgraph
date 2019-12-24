@@ -16,7 +16,7 @@ $data = [5, 1, 20, 5, 30, 25, 40, 60,
     90, 480,
     95, 370, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
-    150, 25, 160, 5, 175, 1, ];
+    150, 25, 160, 5, 175, 1];
 $n = count($data);
 /*
 for($i=0; $i < $n; $i+=2 ) {
@@ -53,8 +53,7 @@ $graph->axis->SetLabelMargin(6);
 $graph->axis->SetFont(FF_ARIAL, FS_NORMAL, 8);
 $graph->axis->SetAngleFont(FF_ARIAL, FS_NORMAL, 8);
 
-// Setup graph title
-$graph->title->Set('Polar plot #10');
+// Setup graph title$example_title='Polar plot #10'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
 $graph->title->SetColor('navy');
 

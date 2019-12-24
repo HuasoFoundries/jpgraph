@@ -26,7 +26,8 @@ $graph->SetMargin(60, 20, 40, 60);
 
 // Setup the titles
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->title->Set('Development since 1984');
+$example_title = 'Development since 1984';
+$graph->title->set($example_title);
 $graph->subtitle->SetFont(FF_ARIAL, FS_ITALIC, 10);
 $graph->subtitle->Set('(Example using DateScaleUtils class)');
 

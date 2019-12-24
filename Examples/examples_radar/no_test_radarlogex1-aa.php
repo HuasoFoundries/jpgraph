@@ -22,7 +22,8 @@ $graph    = new RadarGraph($__width, $__height);
 $graph->SetScale('log');
 
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
-$graph->title->Set('Logarithmic scale');
+$example_title = 'Logarithmic scale';
+$graph->title->set($example_title);
 $graph->title->SetMargin(10);
 
 // Make the radar graph fill out it's bounding box

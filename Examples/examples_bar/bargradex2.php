@@ -23,8 +23,7 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('silver');
 $graph->SetShadow();
 
-// Set up the title for the graph
-$graph->title->Set('Example negative bars');
+// Set up the title for the graph$example_title='Example negative bars'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 18);
 $graph->title->SetColor('darkred');
 

@@ -17,7 +17,8 @@ $graph->img->SetMargin(40, 40, 40, 40);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example of filled line centered plot');
+$example_title = 'Example of filled line centered plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $p1 = new Plot\LinePlot($datay);

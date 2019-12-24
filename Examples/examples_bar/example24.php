@@ -40,8 +40,8 @@ $gbplot = new Plot\GroupBarPlot([$ab1plot, $ab2plot]);
 
 // ...and add it to the graph
 $graph->Add($gbplot);
-
-$graph->title->Set('Grouped Accumulated bar plots');
+$example_title = 'Grouped Accumulated bar plots';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

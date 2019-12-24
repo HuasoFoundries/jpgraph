@@ -32,8 +32,8 @@ $gbplot->SetWidth(0.9);
 
 // ...and add it to the graPH
 $graph->Add($gbplot);
-
-$graph->title->Set('Adjusting the width');
+$example_title = 'Adjusting the width';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

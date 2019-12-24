@@ -45,8 +45,8 @@ $graph->SetScale('datlin', 0, 360);
 $graph->Set90AndMargin(50, 30, 60, 30);
 $graph->SetFrame(true, 'white', 0);
 $graph->SetBox();
-
-$graph->title->Set('Wind direction');
+$example_title = 'Wind direction';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->title->SetMargin(10);
 
@@ -74,8 +74,8 @@ $graph2->Set90AndMargin(50, 30, 60, 30);
 $graph2->SetMarginColor('lightgray:1.7');
 $graph2->SetFrame(true, 'white', 0);
 $graph2->SetBox();
-
-$graph2->title->Set('Windspeed');
+$example_title = 'Windspeed';
+$graph2->title->set($example_title);
 $graph2->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph2->title->SetMargin(10);
 

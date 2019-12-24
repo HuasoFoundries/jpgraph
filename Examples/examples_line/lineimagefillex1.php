@@ -11,10 +11,11 @@ use Amenadiel\JpGraph\Plot;
 $datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 
 // Setup the graph
-$__width  = 320;
-$__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
-$graph->title->Set('Education growth');
+$__width       = 320;
+$__height      = 200;
+$graph         = new Graph\Graph($__width, $__height);
+$example_title = 'Education growth';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
 $graph->SetScale('intlin');
 $graph->SetMarginColor('white');

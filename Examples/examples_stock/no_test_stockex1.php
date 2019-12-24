@@ -16,7 +16,7 @@ $datay = [
     55, 25, 14, 59,
     15, 40, 12, 47,
     62, 38, 25, 65,
-    38, 49, 32, 64, ];
+    38, 49, 32, 64];
 
 // Setup a simple graph
 $__width  = 300;
@@ -24,7 +24,8 @@ $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
-$graph->title->Set('Stockchart example');
+$example_title = 'Stockchart example';
+$graph->title->set($example_title);
 
 // Create a new stock plot
 $p1 = new StockPlot($datay);

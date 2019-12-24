@@ -19,15 +19,14 @@ $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 
-// Set A title for the plot
-$graph->title->Set('3D Pie Client side image map');
+// Set A title for the plot$example_title='3D Pie Client side image map'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Create
 $p1 = new Plot\PiePlot3D($data);
 $p1->SetLegends(['Jan (%d)', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']);
 $targ = ['pie3d_csimex1.php?v=1', 'pie3d_csimex1.php?v=2', 'pie3d_csimex1.php?v=3',
-    'pie3d_csimex1.php?v=4', 'pie3d_csimex1.php?v=5', 'pie3d_csimex1.php?v=6', ];
+    'pie3d_csimex1.php?v=4', 'pie3d_csimex1.php?v=5', 'pie3d_csimex1.php?v=6'];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
 $p1->SetCSIMTargets($targ, $alts);
 

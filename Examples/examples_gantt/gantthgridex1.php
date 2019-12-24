@@ -13,13 +13,12 @@ $data = [
     [0, 'Group 1  Johan', '2001-10-23', '2001-11-06', FF_FONT1, FS_BOLD, 8],
     [1, '  Label 2', '2001-10-26', '2001-11-04'],
     [3, 'Group 2', '2001-11-20', '2001-11-28', FF_FONT1, FS_BOLD, 8],
-    [4, '  Label 1', '2001-11-20', '2001-12-1'], ];
+    [4, '  Label 1', '2001-11-20', '2001-12-1']];
 
 // New Gantt Graph
 $graph = new Graph\GanttGraph(500);
 
-// Setup a title
-$graph->title->Set('Grid example');
+// Setup a title$example_title='Grid example'; $graph->title->set($example_title);
 $graph->subtitle->Set('(Horizontal grid)');
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 14);
 
@@ -45,7 +44,8 @@ for ($i = 0; $i < count($data); ++$i) {
 // Setup a vertical marker line
 $vline = new Plot\GanttVLine('2001-11-01');
 $vline->SetDayOffset(0.5);
-$vline->title->Set('2001-11-01');
+$example_title = '2001-11-01';
+$vline->title->set($example_title);
 $vline->title->SetFont(FF_FONT1, FS_BOLD, 10);
 $graph->Add($vline);
 

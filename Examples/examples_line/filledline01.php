@@ -15,7 +15,8 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 40, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example of filled line plot');
+$example_title = 'Example of filled line plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 $p1 = new Plot\LinePlot($datay);

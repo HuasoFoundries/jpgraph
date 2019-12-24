@@ -51,7 +51,8 @@ $graph->SetMargin(40, 20, 30, 50);
 
 // Now specify the X-scale explicit but let the Y-scale be auto-scaled
 $graph->SetScale('intlin', 0, 0, $adjstart, $adjend);
-$graph->title->Set('Example on TimeStamp Callback');
+$example_title = 'Example on TimeStamp Callback';
+$graph->title->set($example_title);
 
 // Setup the callback and adjust the angle of the labels
 $graph->xaxis->SetLabelFormatCallback('TimeCallback');

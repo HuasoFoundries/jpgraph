@@ -13,8 +13,7 @@ $graph = new Graph\GanttGraph();
 $graph->SetMarginColor('gray:1.7');
 $graph->SetColor('white');
 
-// Setup the graph title and title font
-$graph->title->Set('Example of column fonts');
+// Setup the graph title and title font$example_title='Example of column fonts'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 
 // Show three headers

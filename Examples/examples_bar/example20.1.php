@@ -30,8 +30,7 @@ $bplot->SetFillColor('orange');
 $bplot->value->Show();
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('Bar graph');
+// Setup the titles$example_title='Bar graph'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

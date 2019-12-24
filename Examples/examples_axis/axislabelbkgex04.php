@@ -19,8 +19,9 @@ $graph->SetScale('intlin');
 $graph->SetMargin(30, 15, 40, 30);
 $graph->SetMarginColor('white');
 $graph->SetFrame(true, 'blue', 3);
-
-$graph->title->Set('Label background');
+$example_title = 'Label background';
+$example_title = $example_title;
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 
 $graph->subtitle->SetFont(FF_ARIAL, FS_NORMAL, 10);

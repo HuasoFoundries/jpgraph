@@ -37,7 +37,8 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('linlin');
 $graph->img->SetMargin(40, 100, 40, 40);
 $graph->SetShadow();
-$graph->title->Set('Example of ballon scatter plot');
+$example_title = 'Example of ballon scatter plot';
+$graph->title->set($example_title);
 // Use a lot of grace to get large scales
 $graph->yaxis->scale->SetGrace(50, 10);
 

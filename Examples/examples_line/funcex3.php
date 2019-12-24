@@ -27,8 +27,8 @@ $graph->xgrid->Show();
 //$graph->xaxis->SetLabelFormat('%.0f');
 
 $graph->img->SetMargin(50, 50, 60, 40);
-
-$graph->title->Set('Function plot');
+$example_title = 'Function plot';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 $graph->subtitle->Set('(BOXIN Axis style)');
 $graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);

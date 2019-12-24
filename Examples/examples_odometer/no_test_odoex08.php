@@ -49,8 +49,7 @@ $graph->SetMarginColor('khaki:0.6');
 // Specify title and subtitle using default fonts
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
-//---------------------------------------------------------------------
-$graph->title->Set('Odometer title');
+//---------------------------------------------------------------------$example_title='Odometer title'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
 $graph->subtitle->Set('2002-02-13');
 $graph->subtitle->SetColor('white');

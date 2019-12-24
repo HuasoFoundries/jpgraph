@@ -29,8 +29,8 @@ $lineplot2 = new Plot\LinePlot($y2data);
 $graph->Add($lineplot);
 $graph->AddY2($lineplot2);
 $graph->yaxis->SetColor('blue');
-
-$graph->title->Set('Example 7');
+$example_title = 'Example 7';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

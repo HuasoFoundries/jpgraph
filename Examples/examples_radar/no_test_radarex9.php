@@ -11,11 +11,11 @@ require_once 'jpgraph/jpgraph_radar.php';
 $titles = ['N', '', 'NW', '', 'W', '', 'SW', '', 'S', '', 'SE', '', 'E', '', 'NE', ''];
 $data   = [0, 0, 8, 10, 70, 90, 42, 0, 70, 60, 50, 40, 30, 40, 37.8, 72];
 
-$__width  = 250;
-$__height = 270;
-$graph    = new RadarGraph($__width, $__height);
-
-$graph->title->Set('Accumulated PPM');
+$__width       = 250;
+$__height      = 270;
+$graph         = new RadarGraph($__width, $__height);
+$example_title = 'Accumulated PPM';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_NORMAL, 12);
 
 $graph->subtitle->Set('(according to direction)');

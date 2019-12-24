@@ -35,8 +35,8 @@ $lineplot2->SetWeight(2);
 // Adjust the axis color
 $graph->y2axis->SetColor('orange');
 $graph->yaxis->SetColor('blue');
-
-$graph->title->Set('Example 6.1');
+$example_title = 'Example 6.1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

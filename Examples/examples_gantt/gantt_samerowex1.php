@@ -11,8 +11,7 @@ use Amenadiel\JpGraph\Plot;
 $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 
-// Add title and subtitle
-$graph->title->Set('Activities on same row');
+// Add title and subtitle$example_title='Activities on same row'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
 
 // Show day, week and month scale

@@ -37,7 +37,8 @@ $__height = 350;
 $graph    = new MatrixGraph($__width, $__height);
 
 $graph->SetBackgroundGradient('lightsteelblue:0.8', 'lightsteelblue:0.3');
-$graph->title->Set('Matrix with lines');
+$example_title = 'Matrix with lines';
+$graph->title->set($example_title);
 $graph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
 $graph->title->SetColor('white');
 

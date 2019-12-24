@@ -67,8 +67,8 @@ $graph->scale->tableTitle->Set('Phase 1');
 $graph->scale->tableTitle->SetFont(FF_ARIAL, FS_NORMAL, 12);
 $graph->scale->SetTableTitleBackground('darkgreen@0.6');
 $graph->scale->tableTitle->Show(true);
-
-$graph->title->Set('Example of hours & mins scale');
+$example_title = 'Example of hours & mins scale';
+$graph->title->set($example_title);
 $graph->title->SetColor('darkgray');
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
 
@@ -86,7 +86,8 @@ for ($i = 0; $i < count($data); ++$i) {
 $vline = new Plot\GanttVLine('2001-11-27 9:00'); //d=1006858800,
 $vline->SetWeight(5);
 $vline->SetDayOffset(0);
-$vline->title->Set('27/11 9:00');
+$example_title = '27/11 9:00';
+$vline->title->set($example_title);
 $vline->title->SetFont(FF_FONT1, FS_BOLD, 10);
 $graph->Add($vline);
 

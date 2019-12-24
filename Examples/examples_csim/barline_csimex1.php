@@ -19,8 +19,7 @@ $__width =300;
 $__height=200;
 $graph   = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
-$graph->img->SetMargin(40, 20, 30, 40);
-$graph->title->Set('CSIM example with bar and line');
+$graph->img->SetMargin(40, 20, 30, 40);$example_title='CSIM example with bar and line'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_FONT1, FS_BOLD);
 
 // Setup axis titles

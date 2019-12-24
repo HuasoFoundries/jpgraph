@@ -34,8 +34,8 @@ $gbplot = new Plot\AccBarPlot([$b1plot, $b2plot]);
 
 // ...and add it to the graPH
 $graph->Add($gbplot);
-
-$graph->title->Set('Accumulated bar plots');
+$example_title = 'Accumulated bar plots';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

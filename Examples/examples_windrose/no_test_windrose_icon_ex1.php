@@ -13,7 +13,7 @@ $data = [
     1     => [3, 4, 1, 4],
     'wsw' => [1, 5, 5, 3],
     'N'   => [2, 7, 5, 4, 2],
-    15    => [2, 7, 12], ];
+    15    => [2, 7, 12]];
 
 // First create a new windrose graph with a title
 $__width  = 400;
@@ -25,8 +25,7 @@ $icon = new IconPlot('tornado.jpg', 10, 10, 1.3, 50);
 $icon->SetAnchor('left', 'top');
 $graph->Add($icon);
 
-// Setup title
-$graph->title->Set('Windrose icon example');
+// Setup title$example_title='Windrose icon example'; $graph->title->set($example_title);
 $graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
 $graph->title->SetColor('navy');
 

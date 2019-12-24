@@ -23,8 +23,8 @@ $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetMargin(25, 25, 25, 25);
 $graph->SetFrame();
-
-$graph->title->Set('Example with background flag');
+$example_title = 'Example with background flag';
+$graph->title->set($example_title);
 #$graph->title->SetFont(FF_VERA,FS_BOLD,14);
 
 //$graph->SetBackgroundImage(__DIR__.'/../assets/bkgimg.jpg',BGIMG_FILLFRAME);

@@ -51,8 +51,7 @@ $graph->img->SetMargin(50, 70, 30, 40);
 $graph->yaxis->SetTitleMargin(30);
 $graph->SetMarginColor('#EEEEEE');
 
-// Setup titles and fonts
-$graph->title->Set('Frequence plot');
+// Setup titles and fonts$example_title='Frequence plot'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

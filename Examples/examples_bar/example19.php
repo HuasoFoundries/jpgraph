@@ -29,8 +29,7 @@ $bplot = new Plot\BarPlot($datay);
 $bplot->SetFillColor('orange');
 $graph->Add($bplot);
 
-// Setup the titles
-$graph->title->Set('A basic bar graph');
+// Setup the titles$example_title='A basic bar graph'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
