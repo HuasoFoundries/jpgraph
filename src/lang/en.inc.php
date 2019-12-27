@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.1
+ * JPGraph v4.0.2
  */
 
 // Note: Format of each error message is array(<error message>,<number of arguments>)

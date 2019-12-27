@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.1
+ * JPGraph v4.0.2
  */
 
 // Contour plot example 02

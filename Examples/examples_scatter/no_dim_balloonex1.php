@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.1
+ * JPGraph v4.0.2
  */
 
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
