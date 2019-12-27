@@ -138,7 +138,7 @@ class Configs extends Util\Configs
     // from the application including JpGraph.
     //
     const LANGUAGE_CHARSET = null;
-// Assume that Japanese text have been entered in EUC-JP encoding.
+    // Assume that Japanese text have been entered in EUC-JP encoding.
     // If this define is true then conversion from EUC-JP to UTF8 is done
     // automatically in the library using the mbstring module in PHP.
     const ASSUME_EUCJP_ENCODING = false;

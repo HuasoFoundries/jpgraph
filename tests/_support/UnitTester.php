@@ -15,12 +15,12 @@ namespace Amenadiel\JpGraph\UnitTest;
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class UnitTester extends \Codeception\Actor
 {
     use _generated\UnitTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * Define custom actions here
+     */
 }

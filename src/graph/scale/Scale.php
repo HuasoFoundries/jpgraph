@@ -47,7 +47,6 @@ class Scale extends Configs
         $this->type       = $aType;
         $this->scale      = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
-
     }
 
     // Check if scale is set or if we should autoscale

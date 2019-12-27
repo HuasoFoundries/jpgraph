@@ -182,7 +182,7 @@ class Driver
         // we are called to do the image.
         if ($inmediate) {
             $this->GenGradImage($aWidth, $aHeight);
-        } else if (@$_POST['ok'] === ' Ok ') {
+        } elseif (@$_POST['ok'] === ' Ok ') {
             $this->GenGradImage($aWidth, $aHeight);
         } else {
             $this->iForm->Run($example_title);
