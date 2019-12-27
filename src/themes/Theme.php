@@ -79,7 +79,9 @@ abstract class Theme extends Util\Configs
         }
     }
 
-    public function PreStrokeApply($graph) {}
+    public function PreStrokeApply($graph)
+    {
+    }
 
     public function GetThemeColors($num = 30)
     {
