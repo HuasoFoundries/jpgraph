@@ -18,7 +18,7 @@ class QrTest extends \Codeception\Test\Unit
         include $this->exampleRoot . $filename;
         $img  = (ob_get_clean());
         $size = getimagesizefromstring($img);
-        \Codeception\Util\Debug::debug($size);
+        Debug::debug($size);
     }
 
     public function testFileIterator()

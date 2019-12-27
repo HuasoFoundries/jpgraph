@@ -32,7 +32,8 @@ $graph->SetScale('intlin');
 $graph->SetShadow();
 $example_title = 'Combined bar and line plot';
 $graph->title->set($example_title);
-$graph->subtitle->Set('("center" aligned bars)');
+$subtitle_text = 'center aligned bars';
+$graph->subtitle->Set($subtitle_text);
 
 // Use built in font
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));

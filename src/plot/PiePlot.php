@@ -91,7 +91,7 @@ class PiePlot
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.1f%%');
-        $this->guideline = new Graph\LineProperty();
+        $this->guideline = new Graph\Scale\LineProperty();
     }
 
     /**
@@ -438,7 +438,7 @@ class PiePlot
 
             return $result;
         }
-        arsort($tmp, SORT_NUMERIC);
+        arsort($tmp, \SORT_NUMERIC);
         reset($tmp);
         for ($i = 0; $i < $mul - $quote_sum; ++$i) {
             ++$result[key($tmp)];

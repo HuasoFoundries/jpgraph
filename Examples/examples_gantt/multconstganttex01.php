@@ -23,7 +23,7 @@ $bar1->SetConstrain(1, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
 $bar1->SetConstrain(2, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
 
 // Setup scale
-$graph->ShowHeaders( /*GANTT_HYEAR | Graph\Configs::getConfig('GANTT_HMONTH') |*/GANTT_HDAY | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));
 $graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAYWNBR'));
 
 // Add the specified activities

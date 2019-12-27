@@ -35,7 +35,8 @@ $graph->SetShadow();
 // divider.
 //---------------------------------------------------------------------$example_title='Result from 2002'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->subtitle->Set('O1 - W-Site');
+$subtitle_text = 'O1 - W-Site';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------

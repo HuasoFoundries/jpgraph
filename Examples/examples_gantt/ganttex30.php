@@ -16,7 +16,8 @@ $graph->SetShadow();
 $graph->SetBox();
 
 // Titles for chart$example_title='General conversion plan'; $graph->title->set($example_title);
-$graph->subtitle->Set('(Revision: 2001-11-18)');
+$subtitle_text = '(Revision: 2001-11-18)';
+$graph->subtitle->Set($subtitle_text);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 // For illustration we enable all headers.

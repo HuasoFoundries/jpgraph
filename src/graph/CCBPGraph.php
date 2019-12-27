@@ -209,7 +209,7 @@ class CCBPGraph
             $graph->xaxis->SetColor('darkgray', 'darkgray:0.8');
             $graph->yaxis->SetColor('darkgray', 'darkgray:0.8');
         }
-        $graph->SetGridDepth(DEPTH_FRONT);
+        $graph->SetGridDepth(Configs::DEPTH_FRONT);
         $graph->ygrid->SetColor('gray@0.6');
         $graph->ygrid->SetLineStyle('dotted');
 

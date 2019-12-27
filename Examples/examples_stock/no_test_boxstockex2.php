@@ -26,7 +26,8 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
 $example_title = 'Box Stock chart example';
 $graph->title->set($example_title);
-$graph->subtitle->Set('(Indented X-axis)');
+$subtitle_text = '(Indented X-axis)';
+$graph->subtitle->Set($subtitle_text);
 
 // Create a new stock plot
 $p1 = new BoxPlot($datay);

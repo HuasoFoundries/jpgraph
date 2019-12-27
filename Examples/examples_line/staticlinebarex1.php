@@ -21,7 +21,8 @@ $graph->SetShadow();
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 15);
 $example_title = 'Cash flow ';
 $graph->title->set($example_title);
-$graph->subtitle->Set('(Department X)');
+$subtitle_text = '(Department X)';
+$graph->subtitle->Set($subtitle_text);
 
 // Show both X and Y grid
 $graph->xgrid->Show(true, false);

@@ -18,7 +18,7 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_Diamonds extends ImgData
 {
     protected $name   = 'Diamonds';
-    protected $an     = [Config::MARK_IMG_DIAMOND => 'imgdata'];
+    protected $an     = [Configs::MARK_IMG_DIAMOND => 'imgdata'];
     protected $colors = ['lightblue', 'darkblue', 'gray',
         'blue', 'pink', 'purple', 'red', 'yellow'];
     protected $index = ['lightblue' => 7, 'darkblue' => 2, 'gray'   => 6,

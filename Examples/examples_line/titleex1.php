@@ -22,7 +22,8 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getC
 $example_title = 'The Title';
 $graph->title->set($example_title);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
-$graph->subtitle->Set('The Subtitle');
+$subtitle_text = 'The Subtitle';
+$graph->subtitle->Set($subtitle_text);
 $graph->subsubtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 9);
 $graph->subsubtitle->Set('The Subsubitle');
 

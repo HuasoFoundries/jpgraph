@@ -13,7 +13,8 @@ $graph->SetShadow();
 
 // Add title and subtitle$example_title='Zooming a graph'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
-$graph->subtitle->Set('(zoom=1.5)');
+$subtitle_text = '(zoom=1.5)';
+$graph->subtitle->Set($subtitle_text);
 
 // Show day, week and month scale
 $graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK') | Graph\Configs::getConfig('GANTT_HMONTH'));

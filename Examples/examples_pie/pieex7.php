@@ -19,7 +19,8 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Setup title$example_title='Pie plot with absolute labels'; $graph->title->set($example_title);
-$graph->subtitle->Set('(With hidden 0 labels)');
+$subtitle_text = '(With hidden 0 labels)';
+$graph->subtitle->Set($subtitle_text);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // The pie plot

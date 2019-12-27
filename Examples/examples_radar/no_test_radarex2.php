@@ -18,7 +18,8 @@ $__height      = 200;
 $graph         = new RadarGraph($__width, $__height);
 $example_title = 'Weekly goals';
 $graph->title->set($example_title);
-$graph->subtitle->Set('Year 2003');
+$subtitle_text = 'Year 2003';
+$graph->subtitle->Set($subtitle_text);
 
 $plot = new RadarPlot($data);
 $plot->SetFillColor('lightred');

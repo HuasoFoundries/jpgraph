@@ -40,7 +40,8 @@ $graph->SetShadow('darkgray');
 // Setup titles$example_title='Windrose example 3'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
-$graph->subtitle->Set('(Multiple plots in the same graph)');
+$subtitle_text = '(Multiple plots in the same graph)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $graph->subtitle->SetColor('navy');
 

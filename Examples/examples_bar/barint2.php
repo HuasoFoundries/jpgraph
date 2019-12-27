@@ -37,7 +37,8 @@ $graph->yaxis->SetColor('lightblue', 'darkblue');
 $graph->ygrid->SetColor('white');
 
 // Setup graph title ands fonts$example_title='Example of integer Y-scale'; $graph->title->set($example_title);
-$graph->subtitle->Set('(With hidden y-axis)');
+$subtitle_text = '(With hidden y-axis)';
+$graph->subtitle->Set($subtitle_text);
 
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->Set('Year 2002');

@@ -12,20 +12,20 @@ class PolarGraph extends Graph
 {
     public $scale;
     public $axis;
-    public $iType       = POLAR_360;
+    public $iType       = Configs::POLAR_360;
     private $iClockwise = false;
 
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
-        $this->SetDensity(TICKD_DENSE);
+        $this->SetDensity(Configs::TICKD_DENSE);
         $this->SetBox();
         $this->SetMarginColor('white');
     }
 
     public function SetDensity($aDense)
     {
-        $this->SetTickDensity(TICKD_NORMAL, $aDense);
+        $this->SetTickDensity(Configs::TICKD_NORMAL, $aDense);
     }
 
     public function SetClockwise($aFlg)
@@ -145,7 +145,7 @@ class PolarGraph extends Graph
             $this->img->left_margin = $t2;
         }
 
-        if ($this->iType == POLAR_180) {
+        if ($this->iType == Configs::POLAR_180) {
             $pos = $this->img->height - $this->img->bottom_margin;
         } else {
             $pos = $this->img->plotheight / 2 + $this->img->top_margin;

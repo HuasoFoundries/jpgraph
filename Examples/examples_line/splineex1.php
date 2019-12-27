@@ -29,7 +29,8 @@ $g->SetMargin(30, 20, 40, 30);
 $example_title = 'Natural cubic splines';
 $g->title->set($example_title);
 $g->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
-$g->subtitle->Set('(Control points shown in red)');
+$subtitle_text = '(Control points shown in red)';
+$g->subtitle->Set($subtitle_text);
 $g->subtitle->SetColor('darkred');
 $g->SetMarginColor('lightblue');
 

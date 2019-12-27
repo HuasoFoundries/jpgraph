@@ -149,12 +149,12 @@ class PlotLine
         $aImg->SetColor($this->color);
         $aImg->SetLineWeight($this->weight);
         $oldStyle = $aImg->SetLineStyle($this->iLineStyle);
-        if ($this->direction == VERTICAL) {
+        if ($this->direction == Configs::VERTICAL) {
             $ymin_abs = $aMinY;
             $ymax_abs = $aMaxY;
             $xpos_abs = $aXPos;
             $aImg->StyleLine($xpos_abs, $ymin_abs, $xpos_abs, $ymax_abs);
-        } elseif ($this->direction == HORIZONTAL) {
+        } elseif ($this->direction == Configs::HORIZONTAL) {
             $xmin_abs = $aMinX;
             $xmax_abs = $aMaxX;
             $ypos_abs = $aYPos;

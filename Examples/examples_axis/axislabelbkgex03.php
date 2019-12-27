@@ -26,7 +26,8 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getC
 
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $graph->subtitle->SetColor('darkred');
-$graph->subtitle->Set('"LABELBKG_YAXIS"');
+$subtitle_text = 'LABELBKG_YAXIS';
+$graph->subtitle->Set($subtitle_text);
 
 $graph->SetAxisLabelBackground(Graph\Configs::getConfig('LABELBKG_YAXIS'), 'orange', 'red', 'lightblue', 'red');
 

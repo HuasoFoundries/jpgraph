@@ -1,5 +1,4 @@
 <?php
-use \Codeception\Util\Debug;
 
 /**
  * @group ready
@@ -8,27 +7,15 @@ class WindroseTest extends \Codeception\Test\Unit
 {
     use Amenadiel\JpGraph\UnitTest\UnitTestTrait;
 
-    public static $fixTures    = [];
+    public static $fixTures = [
+    ];
     public static $files       = null;
     public static $exampleRoot = null;
     public static $ranTests    = [];
+    public static $debugFileGroups;
 
-    public static function setUpBeforeClass(): void
-    {
-        $className = str_replace('test', '', strtolower(__CLASS__));
-
-        self::$files   = self::getFiles($className);
-        $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
-
-        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
-            return !array_key_exists($filename, $knownFixtures);
-        });
-
-        Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
-    }
-
-    protected function _before() {}
+    protected function _before()
+    {self::$debugFileGroups = true;}
 
     protected function _after() {}
 
@@ -37,6 +24,48 @@ class WindroseTest extends \Codeception\Test\Unit
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
             $carry = $this->_fileCheck($file, $carry/*, true*/);
             return $carry;
-        }, []);
+        }, self::$genericFixtures);
     }
+
+    public function testTwoWindrosePlotsInOneGraph()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
+    public function testExampleWithBackgroundFlag()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
+    public function testABasicWindroseGraph()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
+    public function testWindroseExample1b()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
+    public function testJapaneseLocale()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
+    public function testMultiplePlotsInTheSameGraph()
+    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
+
+    public function testFreeTypePlot()
+    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
+
+    public function testWindroseexample()
+    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
+
+    public function testAddingLabelBackgrounds()
+    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
 }

@@ -44,7 +44,8 @@ $graph->SetColor('darkblue');
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('white');
 
-$graph->subtitle->Set('(Negated Y & Y2 axis)');
+$subtitle_text = '(Negated Y & Y2 axis)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 $graph->subtitle->SetColor('white');
 

@@ -122,9 +122,22 @@ defined('USE_CACHE') || define('USE_CACHE', getenv('JPGRAPH_USE_CACHE') || false
  */
 class Configs
 {
-    const LBLALIGN_CENTER = 1;
-    const LBLALIGN_TOP    = 2;
-    const FF_DEFAULT      = 47;
+    const GICON_WARNINGRED    = 0;
+    const GICON_TEXT          = 1;
+    const GICON_ENDCONS       = 2;
+    const GICON_MAIL          = 3;
+    const GICON_STARTCONS     = 4;
+    const GICON_CALC          = 5;
+    const GICON_MAGNIFIER     = 6;
+    const GICON_LOCK          = 7;
+    const GICON_STOP          = 8;
+    const GICON_WARNINGYELLOW = 9;
+    const GICON_FOLDEROPEN    = 10;
+    const GICON_FOLDER        = 11;
+    const GICON_TEXTIMPORTANT = 12;
+    const LBLALIGN_CENTER     = 1;
+    const LBLALIGN_TOP        = 2;
+    const FF_DEFAULT          = 47;
     // Configs for types of static bands in plot area
     const BAND_RDIAG     = 1; // Right diagonal lines
     const BAND_LDIAG     = 2; // Left diagonal lines
@@ -516,12 +529,12 @@ class Configs
     const TTF_DIR                     = '/usr/share/fonts/truetype/';
     const USE_LIBRARY_IMAGETTFBBOX    = true;
     const VERTICAL                    = 1;
-    /*const WEEKSTYLE_FIRSTDAY          = 1;
+    /*const Configs::WEEKSTYLE_FIRSTDAY          = 1;
     const WEEKSTYLE_FIRSTDAY2         = 2;
     const WEEKSTYLE_FIRSTDAY2WNBR     = 4;
     const WEEKSTYLE_FIRSTDAYWNBR      = 3;
     const WEEKSTYLE_WNBR              = 0;*/
-    /*const YEARADJ_1                   = 0 + 30;
+    /*const Configs::YEARADJ_1                   = 0 + 30;
     const YEARADJ_2                   = 1 + 30;
     const YEARADJ_5                   = 2 + 30;*/
 
@@ -637,7 +650,7 @@ class Configs
         'MARK_IMG_BALL'               => self::MARK_IMG_BALL,
         'MARK_IMG_BEVEL'              => self::MARK_IMG_BEVEL,
         'MARK_IMG_DIAMOND'            => self::MARK_IMG_DIAMOND,
-        'MARK_IMG_LBALL'              => self::MARK_IMG_LBALL,
+
         'MARK_IMG_LPUSHPIN'           => self::MARK_IMG_LPUSHPIN,
         'MARK_IMG_MBALL'              => self::MARK_IMG_MBALL,
         'MARK_IMG_PUSHPIN'            => self::MARK_IMG_PUSHPIN,
@@ -1046,17 +1059,6 @@ class Configs
         self::setConfig('MARK_FLAG4', 17);
 
         // Builtin images
-        self::setConfig('MARK_IMG_PUSHPIN', 50);
-        self::setConfig('MARK_IMG_SPUSHPIN', 50);
-        self::setConfig('MARK_IMG_LPUSHPIN', 51);
-        self::setConfig('MARK_IMG_DIAMOND', 52);
-        self::setConfig('MARK_IMG_SQUARE', 53);
-        self::setConfig('MARK_IMG_STAR', 54);
-        self::setConfig('MARK_IMG_BALL', 55);
-        self::setConfig('MARK_IMG_SBALL', 55);
-        self::setConfig('MARK_IMG_MBALL', 56);
-        self::setConfig('MARK_IMG_LBALL', 57);
-        self::setConfig('MARK_IMG_BEVEL', 58);
 
         // Inline defines
         self::setConfig('INLINE_YES', 1);

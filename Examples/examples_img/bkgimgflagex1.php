@@ -49,7 +49,9 @@ $graph->yaxis->SetColor('navy');
 //$graph->ygrid->Show(false);
 $graph->ygrid->SetColor('white@0.5');
 
-// Setup graph title$example_title='Using a country flag background'; $graph->title->set($example_title);
+// Setup graph title
+$example_title = 'Using a country flag background';
+$graph->title->set($example_title);
 
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);

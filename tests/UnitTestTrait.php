@@ -7,8 +7,27 @@ use \Codeception\Util\Debug;
 trait UnitTestTrait
 {
     public static $exampleRoot;
-
+    public static $persistYaml     = true;
     public static $genericFixtures = [];
+
+    public function fixTures($method)
+    {
+        $keyname = str_replace(sprintf('%s::', __CLASS__), '', $method);
+        if (!array_key_exists($keyname, self::$fixTures)) {
+            return [];
+        }
+        return self::$fixTures[$keyname];
+    }
+
+    public function traverseFixtureGroup($fixTures)
+    {
+        self::$genericFixtures =
+            array_reduce($fixTures, function ($carry, $file) {
+            $carry = $this->_fileCheck($file, $carry);
+            return $carry;
+        }, self::$genericFixtures);
+    }
+
     public static function getFiles($class = '')
     {
         $arr       = explode('\\', static::class);
@@ -36,14 +55,49 @@ trait UnitTestTrait
         return $a;
     }
 
+    public static function setUpBeforeClass(): void
+    {
+        $arr       = explode('\\', static::class);
+        $className = array_pop($arr);
+
+        $knownFixtures = [];
+        self::$files   = self::getFiles(strtolower($className));
+        try {
+            self::$fixTures = Yaml::parseFile(sprintf('%s/_output/%s.yml', __DIR__, $className));
+
+        } catch (ParseException $exception) {
+            printf('Unable to parse the YAML string: %s', $exception->getMessage());
+        }
+        if (is_array(self::$fixTures)) {
+            $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
+        } else {
+            self::$fixTures = ['testFileIterator' => self::$files];
+        }
+        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
+            return !array_key_exists($filename, $knownFixtures) ||
+                (
+                array_key_exists('testFileIterator', self::$fixTures) &&
+                array_key_exists($filename, self::$fixTures['testFileIterator'])
+            );
+        });
+        Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' ungrouped files. knownFixtures are:');
+        Debug::debug($knownFixtures);
+
+    }
+
     public static function tearDownAfterClass(): void
     {
         if (count(self::$genericFixtures) > 0) {
-            Debug::debug('non grouped fixtures:');
-            Debug::debug(self::$genericFixtures);
+            if (isset(self::$debugFileGroups) && self::$debugFileGroups && array_key_exists('testFileIterator', self::$genericFixtures)) {
+                Debug::debug('non grouped fixtures:');
+                Debug::debug(self::$genericFixtures['testFileIterator']);
+            }
             $yaml = Yaml::dump(self::$genericFixtures);
-
-            file_put_contents(sprintf('%s/_output/%s.yml', __DIR__, get_class()), $yaml);
+            if (self::$persistYaml) {
+                $arr       = explode('\\', static::class);
+                $className = array_pop($arr);
+                file_put_contents(sprintf('%s/_output/%s.yml', __DIR__, $className), $yaml);
+            }
             fwrite(STDOUT, get_class() . "\n");
         }
     }
@@ -62,8 +116,15 @@ trait UnitTestTrait
     {
         return array_reduce(array_keys($fixTureArray), function ($fixTures, $testName) use ($fixTureArray) {
             $filenames = $fixTureArray[$testName];
-            $fixTures  = array_reduce($filenames, function ($carry, $filename) use ($testName) {
-                $carry[$filename] = $testName;
+
+            $fixTures = array_reduce($filenames, function ($carry, $fixture) use ($testName) {
+
+                if (is_string($fixture)) {
+                    $carry[$fixture] = $testName;
+                } elseif (is_array($fixture) && array_key_exists('filename', $fixture)) {
+                    // ['filename'=><FILE_NAME>,'width'=>x, etc etc]
+                    $carry[$fixture['filename']] = $testName;
+                }
                 return $carry;
             }, $fixTures);
             return $fixTures;
@@ -97,13 +158,14 @@ trait UnitTestTrait
 
         $campo_sanitizado = utf8_encode(strtr(utf8_decode($inputText), utf8_decode($tofind), $replac));
 
-        $inputText = str_replace('%', '_', $campo_sanitizado);
+        $inputText = strtolower(str_replace('%', '_', $campo_sanitizado));
         $inputText = preg_replace('/[^(\x20-\x7F)]*/', '', $inputText);
+        $inputText = explode(',', $inputText)[0];
         $inputText = preg_replace_callback('/[^a-zA-Z0-9]+([a-zA-Z0-9]+)/', function ($coincidencias) {
             $fixed           = ucfirst(trim(strtolower($coincidencias[1])));
             $coincidencias[] = $fixed;
             return $fixed;
-        }, $inputText);
+        }, strtolower(trim($inputText)));
 
         return $inputText;
 
@@ -111,15 +173,19 @@ trait UnitTestTrait
 
     private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = false)
     {
-        $camelCased    = self::camelCase($example_title);
-        $test_title    = $camelCased;
+        $filename_meaningful = explode('ex', $filename)[0];
+        $camelCased          = self::camelCase($example_title);
+        $test_title          = $camelCased;
+        if ($example_title === 'file_iterator') {
+            $example_title = self::camelCase(sprintf('%s_%s', $example_title, $filename_meaningful));
+        }
         $withoutSuffix = preg_match('/(\w(\s|\w)+\w)\s*(?:(ex|v))?\s*([\.\d]+)$/iU', $test_title, $matches);
         if ($matches) {
 
             $test_title = self::camelCase($matches[1]);
         }
 
-        $methodName = sprintf('test%s', $test_title);
+        $methodName = trim(sprintf('test%s', ucfirst($test_title)));
         $matches    = null;
 
         if ($debug) {
@@ -133,13 +199,17 @@ trait UnitTestTrait
         if (!array_key_exists($methodName, $ownFixtures)) {
             $ownFixtures[$methodName] = [];
         }
-        $ownFixtures[$methodName][$filename] = $example_title;
+        $ownFixtures[$methodName][$filename] = ['title' => $example_title, 'filename' => $filename];
         return $ownFixtures;
     }
 
     private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
     {
+        if (is_array($filename)) {
+            $filename = $filename['filename'];
+        }
         $example_title = 'file_iterator';
+        $subtitle_text = '';
         ob_start();
 
         include self::$exampleRoot . $filename;
@@ -148,6 +218,9 @@ trait UnitTestTrait
         $size = getimagesizefromstring($img);
 
         $size['filename'] = $filename;
+        if ($example_title === 'file_iterator' && $subtitle_text) {
+            $example_title = $subtitle_text;
+        }
         self::renameIfDimensionsDontMatch(self::$exampleRoot, $filename, $__width, $__height, $size);
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);

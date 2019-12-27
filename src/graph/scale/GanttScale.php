@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph\Scale;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
@@ -589,11 +590,11 @@ class GanttScale
                         }
 
                         switch ($this->minute->iStyle) {
-                            case MINUTESTYLE_CUSTOM:
+                            case Configs::MINUTESTYLE_CUSTOM:
                                 $txt = date($this->minute->iLabelFormStr, $datestamp);
 
                                 break;
-                            case MINUTESTYLE_MM:
+                            case Configs::MINUTESTYLE_MM:
                             default:
                                 // 15
                                 $txt = date('i', $datestamp);
@@ -965,31 +966,31 @@ class GanttScale
         $sn = $this->iDateLocale->GetShortMonthName($aMonthNbr);
         $ln = $this->iDateLocale->GetLongMonthName($aMonthNbr);
         switch ($this->month->iStyle) {
-            case MONTHSTYLE_SHORTNAME:
+            case Configs::getConfig('MONTHSTYLE_SHORTNAME'):
                 $m = $sn;
 
                 break;
-            case MONTHSTYLE_LONGNAME:
+            case Configs::getConfig('MONTHSTYLE_LONGNAME'):
                 $m = $ln;
 
                 break;
-            case MONTHSTYLE_SHORTNAMEYEAR2:
+            case Configs::getConfig('MONTHSTYLE_SHORTNAMEYEAR2'):
                 $m = $sn . " '" . substr('' . $year, 2);
 
                 break;
-            case MONTHSTYLE_SHORTNAMEYEAR4:
+            case Configs::getConfig('MONTHSTYLE_SHORTNAMEYEAR4'):
                 $m = $sn . ' ' . $year;
 
                 break;
-            case MONTHSTYLE_LONGNAMEYEAR2:
+            case Configs::getConfig('MONTHSTYLE_LONGNAMEYEAR2'):
                 $m = $ln . " '" . substr('' . $year, 2);
 
                 break;
-            case MONTHSTYLE_LONGNAMEYEAR4:
+            case Configs::getConfig('MONTHSTYLE_LONGNAMEYEAR4'):
                 $m = $ln . ' ' . $year;
 
                 break;
-            case MONTHSTYLE_FIRSTLETTER:
+            case Configs::getConfig('MONTHSTYLE_FIRSTLETTER'):
                 $m = $sn[0];
 
                 break;

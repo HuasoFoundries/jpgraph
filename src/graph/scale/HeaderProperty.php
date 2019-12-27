@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph\Scale;
 
+use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Graph\Configs;
 
 /**

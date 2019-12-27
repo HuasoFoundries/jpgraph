@@ -28,6 +28,12 @@ class TickTest extends \Codeception\Test\Unit
 
     }
 
+    public function testExampleWithManualTickLabels()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
+    }
+
     protected function _before() {}
 
     protected function _after() {}
@@ -37,6 +43,6 @@ class TickTest extends \Codeception\Test\Unit
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
             $carry = $this->_fileCheck($file, $carry/*, true*/);
             return $carry;
-        }, []);
+        }, self::$genericFixtures);
     }
 }

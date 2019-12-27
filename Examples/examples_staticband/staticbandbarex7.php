@@ -21,7 +21,8 @@ $graph->SetShadow();
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 15);
 $example_title = 'Cash flow ';
 $graph->title->set($example_title);
-$graph->subtitle->Set('Use of static line, 3D and solid band');
+$subtitle_text = 'Use of static line, 3D and solid band';
+$graph->subtitle->Set($subtitle_text);
 
 // Turn off Y-grid (it's on by default)
 $graph->ygrid->Show(false);

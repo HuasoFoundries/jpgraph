@@ -37,6 +37,6 @@ class ThemeTest extends \Codeception\Test\Unit
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
             $carry = $this->_fileCheck($file, $carry);
             return $carry;
-        }, []);
+        }, self::$genericFixtures);
     }
 }

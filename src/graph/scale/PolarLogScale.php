@@ -48,7 +48,7 @@ class PolarLogScale extends LogScale
         $y = sin($a) * $aRad;
 
         $x += $w + $this->graph->img->left_margin; //$this->_Translate(0);
-        if ($this->graph->iType == POLAR_360) {
+        if ($this->graph->iType == Configs::POLAR_360) {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight / 2) - $y;
         } else {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight) - $y;

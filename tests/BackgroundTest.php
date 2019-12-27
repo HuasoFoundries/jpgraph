@@ -50,16 +50,14 @@ class BackgroundTest extends \Codeception\Test\Unit
 
     public function testUsingBackgroundImage()
     {
-        foreach (self::$fixTures['testUsingBackgroundImage'] as $file) {
-            $this->_fileCheck($file);
-        }
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
     }
 
     public function testBackgroundImage()
     {
-        foreach (self::$fixTures['testBackgroundImage'] as $file) {
-            $this->_fileCheck($file);
-        }
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+
     }
 
     public function testFileIterator()
@@ -67,6 +65,6 @@ class BackgroundTest extends \Codeception\Test\Unit
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
             $carry = $this->_fileCheck($file, $carry);
             return $carry;
-        }, []);
+        }, self::$genericFixtures);
     }
 }

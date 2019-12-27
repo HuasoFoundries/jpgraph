@@ -29,7 +29,8 @@ $graph->SetShadow();
 $example_title = 'Two windrose plots in one graph';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
-$graph->subtitle->Set('(Using Box() for each plot)');
+$subtitle_text = '(Using Box() for each plot)';
+$graph->subtitle->Set($subtitle_text);
 
 $wp = new Plot\WindrosePlot($data);
 $wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));

@@ -34,7 +34,8 @@ $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
-$graph->subtitle->Set('(Free type plot)');
+$subtitle_text = '(Free type plot)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 $graph->subtitle->SetColor('navy');
 

@@ -18,7 +18,8 @@ class Configs extends Util\Configs
 /*
  * How should the labels for the circular grids be aligned
  */
-
+    const POLAR_360 = 1;
+    const POLAR_180 = 2;
 /*
  * How should the labels around the plot be align
  */

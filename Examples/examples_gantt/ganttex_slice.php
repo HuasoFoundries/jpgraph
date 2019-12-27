@@ -23,7 +23,8 @@ $graph->SetDateRange('2001-11-22', '2002-1-24');
 $graph->scale->SetWeekStart(0);
 $example_title = 'General conversion plan';
 $graph->title->set($example_title);
-$graph->subtitle->Set('(Slice between 2001-11-22 to 2002-01-24)');
+$subtitle_text = '(Slice between 2001-11-22 to 2002-01-24)';
+$graph->subtitle->Set($subtitle_text);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 20);
 
 $graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));

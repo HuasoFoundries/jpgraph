@@ -39,7 +39,8 @@ $graph->SetScale('dateint');
 $example_title = 'Current Bids';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
-$graph->subtitle->Set('(Updated every 5 minutes)');
+$subtitle_text = '(Updated every 5 minutes)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 // Enable antialias

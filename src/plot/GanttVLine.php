@@ -30,7 +30,7 @@ class GanttVLine extends GanttPlotObject
     public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
         parent::__construct();
-        $this->iLine = new Graph\LineProperty();
+        $this->iLine = new Graph\Scale\LineProperty();
         $this->iLine->SetColor($aColor);
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);

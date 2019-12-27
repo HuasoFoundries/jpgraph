@@ -10,6 +10,8 @@ use Amenadiel\JpGraph\Util;
 
 class Configs extends Util\Configs
 {
+    const POLAR_360      = 1;
+    const POLAR_180      = 2;
     const DSUTILS_MONTH  = 1; // Major and minor ticks on a monthly basis
     const DSUTILS_MONTH1 = 1; // Major and minor ticks on a monthly basis
     const DSUTILS_MONTH2 = 2; // Major ticks on a bi-monthly basis

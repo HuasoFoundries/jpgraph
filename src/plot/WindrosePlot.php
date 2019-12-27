@@ -470,7 +470,7 @@ class WindrosePlot
 
             // Get all the angles for the data and sort it
             $keys = array_keys($data);
-            sort($keys, Configs::SORT_NUMERIC);
+            sort($keys, \SORT_NUMERIC);
 
             $n     = safe_count($data);
             $found = false;

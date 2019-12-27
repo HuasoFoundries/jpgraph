@@ -41,7 +41,7 @@ for ($i = 0; $i < $n; ++$i) {
         $bar = new Plot\GanttBar($data[$i][0], [$data[$i][1], $data[$i][2], $data[$i][3]], $data[$i][2], $data[$i][3], '', 0.35);
 
         // For each group make the name bold but keep the dates as the default font
-        $bar->title->SetColumnFonts([[FF_ARIAL, Graph\Configs::getConfig('FS_BOLD'), 11]]);
+        $bar->title->SetColumnFonts([[Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11]]);
 
         // Add group markers
         $bar->leftMark->SetType(Graph\Configs::getConfig('MARK_LEFTTRIANGLE'));

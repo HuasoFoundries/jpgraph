@@ -17,7 +17,8 @@ $graph->scale->SetDateLocale('sv_SE');
 
 // Add title and subtitle$example_title='Example of captions'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
-$graph->subtitle->Set('(ganttex19.php)');
+$subtitle_text = '(ganttex19.php)';
+$graph->subtitle->Set($subtitle_text);
 
 // Show day, week and month scale
 $graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK') | Graph\Configs::getConfig('GANTT_HMONTH'));

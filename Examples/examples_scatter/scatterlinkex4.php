@@ -27,7 +27,8 @@ $graph->img->SetMargin(50, 50, 60, 40);
 $example_title = 'Linked scatter plot';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->subtitle->Set('(Graph\Configs::getConfig('BOXIN') Axis style)');
+$subtitle_text = 'BOXIN Axis style)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 
 // 10% top and bottom grace

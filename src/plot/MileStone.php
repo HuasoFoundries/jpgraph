@@ -32,7 +32,7 @@ class MileStone extends GanttPlotObject
         $this->title->SetColor('darkred');
         $this->mark = new PlotMark();
         $this->mark->SetWidth(10);
-        $this->mark->SetType(MARK_DIAMOND);
+        $this->mark->SetType(Configs::MARK_DIAMOND);
         $this->mark->SetColor('darkred');
         $this->mark->SetFillColor('darkred');
         $this->iVPos  = $aVPos;

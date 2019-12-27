@@ -29,7 +29,8 @@ $graph->SetShadow();
 
 // Setup title$example_title='Horizontal bar graph ex 2'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
-$graph->subtitle->Set('(Axis at top)');
+$subtitle_text = '(Axis at top)';
+$graph->subtitle->Set($subtitle_text);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);

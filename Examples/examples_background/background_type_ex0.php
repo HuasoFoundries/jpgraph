@@ -30,7 +30,8 @@ $example_title = 'Using background image';
 $example_title = $example_title;
 $graph->title->set($example_title);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_COURIER'), Graph\Configs::getConfig('FS_BOLD'), 11);
-$graph->subtitle->Set('"BGIMG_COPY"');
+$subtitle_text = 'BGIMG_COPY';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('darkred');
 
 // Add background with 25% mix

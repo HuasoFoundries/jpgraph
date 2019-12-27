@@ -13,7 +13,8 @@ $graph->SetShadow();
 
 // Add title and subtitle$example_title='Activities on same row'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
-$graph->subtitle->Set('Using break style');
+$subtitle_text = 'Using break style';
+$graph->subtitle->Set($subtitle_text);
 
 // Show day, week and month scale
 $graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK') | Graph\Configs::getConfig('GANTT_HMONTH'));

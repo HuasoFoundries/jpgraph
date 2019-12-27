@@ -208,7 +208,7 @@ class PolarAxis extends Axis
         $x0 = round($this->img->left_margin + $this->img->plotwidth / 2) + 1;
 
         $d = max($this->img->plotwidth, $this->img->plotheight) * 1.42;
-        $a = $this->angle_step;
+        $a = ($this->angle_step);
         $t = new Text\Text();
         $t->SetColor($this->angle_fontcolor);
         $t->SetFont($this->angle_fontfam, $this->angle_fontstyle, $this->angle_fontsize);
@@ -230,7 +230,7 @@ class PolarAxis extends Axis
         $this->img->SetColor($this->angle_tick_color);
         $rot90 = $this->img->a == 90;
 
-        if ($type == POLAR_360) {
+        if ($type == Configs::POLAR_360) {
             // Corner angles of the four corners
             $ca1 = atan($h / $w) / M_PI * 180;
             $ca2 = 180 - $ca1;
@@ -313,7 +313,7 @@ class PolarAxis extends Axis
                         $this->img->Line($x1, $y1, $x2, $y2);
                     }
                 }
-                $a += $this->angle_step;
+                $a = floatval($a) + floatval($this->angle_step);
             }
         } else {
             // POLAR_HALF
@@ -374,7 +374,7 @@ class PolarAxis extends Axis
                 if ($this->show_angle_tick) {
                     $this->img->Line($x1, $y1, $x2, $y2);
                 }
-                $a += $this->angle_step;
+                $a = floatval($a) + floatval($this->angle_step);
             }
         }
     }

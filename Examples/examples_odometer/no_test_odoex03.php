@@ -34,7 +34,8 @@ $graph->SetShadow();
 // divider.
 //---------------------------------------------------------------------$example_title='Odometer title'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->subtitle->Set('2002-02-13');
+$subtitle_text = '2002-02-13';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------

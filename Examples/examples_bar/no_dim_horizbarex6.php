@@ -38,7 +38,8 @@ $graph->SetBackgroundGradient('white', 'lightblue', Graph\Configs::getConfig('GR
 
 // Setup title$example_title='Graphic card performance'; $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 11);
-$graph->subtitle->Set('(Non optimized)');
+$subtitle_text = '(Non optimized)';
+$graph->subtitle->Set($subtitle_text);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);

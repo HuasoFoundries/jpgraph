@@ -6,9 +6,9 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Graph\Scale;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
-use Amenadiel\JpGraph\Scale;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
@@ -35,7 +35,7 @@ class GanttGraph extends Graph
     private $iZoomFactor             = 1.0;
 
     /**
-     * CONSTRUCTOR
+     * Configs::getConfig('CONSTRUCTOR')
      * // Create a new gantt graph.
      *
      * @param mixed $aWidth
@@ -65,14 +65,14 @@ class GanttGraph extends Graph
         // Default margins
         $this->img->SetMargin(15, 17, 25, 15);
 
-        $this->hgrid = new HorizontalGridLine();
+        $this->hgrid = new Scale\HorizontalGridLine();
 
         $this->scale->ShowHeaders(Configs::getConfig('GANTT_HWEEK') | Configs::getConfig('GANTT_HDAY'));
         $this->SetBox();
     }
 
     /**
-     * PUBLIC METHODS.
+     * Configs::getConfig('PUBLIC')  Configs::getConfig('METHODS') .
      *
      * @param mixed $aFont
      * @param mixed $aSize
@@ -171,7 +171,7 @@ class GanttGraph extends Graph
             // Setup caption
             $a->caption->Set($data[$i][$csimpos - 1]);
 
-            // Check if this activity should have a CSIM target�?
+            // Check if this activity should have a Configs::getConfig('CSIM')  target�?
             if (!empty($data[$i][$csimpos])) {
                 $a->SetCSIMTarget($data[$i][$csimpos]);
                 $a->SetCSIMAlt($data[$i][$csimpos + 1]);
@@ -559,7 +559,7 @@ class GanttGraph extends Graph
                             $txt2 = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
 
                             break;
-                        case MINUTESTYLE_MM:
+                        case Configs::getConfig('MINUTESTYLE_MM'):
                         default:
                             $txt2 = '15';
 
@@ -577,7 +577,7 @@ class GanttGraph extends Graph
             }
 
             // We need to repeat this code block here as well.
-            // THIS iS NOT A MISTAKE !
+            // Configs::getConfig('THIS')  iS NOT A Configs::getConfig('MISTAKE')  !
             // We really need it since we need to adjust for minutes both in the case
             // where hour scale is shown and when it is not shown.
 
@@ -590,7 +590,7 @@ class GanttGraph extends Graph
                         $txt = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
 
                         break;
-                    case MINUTESTYLE_MM:
+                    case Configs::getConfig('MINUTESTYLE_MM'):
                     default:
                         $txt = '15';
 
@@ -669,9 +669,9 @@ class GanttGraph extends Graph
             $width  = round($width);
             $height = round($height);
             // Make a sanity check on image size
-            if ($width > MAX_GANTTIMG_SIZE_W || $height > MAX_GANTTIMG_SIZE_H) {
+            if ($width > Configs::MAX_GANTTIMG_SIZE_W || $height > Configs::MAX_GANTTIMG_SIZE_H) {
                 Util\JpGraphError::RaiseL(6007, $width, $height);
-                //("Sanity check for automatic Gantt chart size failed. Either the width (=$width) or height (=$height) is larger than MAX_GANTTIMG_SIZE. This could potentially be caused by a wrong date in one of the activities.");
+                //("Sanity check for automatic Gantt chart size failed. Either the width (=$width) or height (=$height) is larger than Configs::getConfig('MAX_GANTTIMG_SIZE') . This could potentially be caused by a wrong date in one of the activities.");
             }
             $this->img->CreateImgCanvas($width, $height);
             $this->img->SetMargin($lm, $rm, $tm, $bm);
@@ -712,7 +712,7 @@ class GanttGraph extends Graph
     {
         // If the filename is the predefined value = '_csim_special_'
         // we assume that the call to stroke only needs to do enough
-        // to correctly generate the CSIM maps.
+        // to correctly generate the Configs::getConfig('CSIM')  maps.
         // We use this variable to skip things we don't strictly need
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
@@ -755,7 +755,7 @@ class GanttGraph extends Graph
 
         if (!$_csim) {
             $this->StrokePlotArea();
-            if ($this->iIconDepth == DEPTH_BACK) {
+            if ($this->iIconDepth == Configs::getConfig('DEPTH_BACK')) {
                 $this->StrokeIcons();
             }
         }
@@ -784,7 +784,7 @@ class GanttGraph extends Graph
             $this->StrokeConstrains();
             $this->footer->Stroke($this->img);
 
-            if ($this->iIconDepth == DEPTH_FRONT) {
+            if ($this->iIconDepth == Configs::getConfig('DEPTH_FRONT')) {
                 $this->StrokeIcons();
             }
 
@@ -854,7 +854,7 @@ class GanttGraph extends Graph
                     $c2 = $this->iObj[$targetobj]->iConstrainPos;
                     if (safe_count($c1) == 4 && safe_count($c2) == 4) {
                         switch ($this->iObj[$i]->constraints[$k]->iConstrainType) {
-                            case CONSTRAIN_ENDSTART:
+                            case Configs::getConfig('CONSTRAIN_ENDSTART'):
                                 if ($c1[1] < $c2[1]) {
                                     $link = new Image\GanttLink($c1[2], $c1[3], $c2[0], $c2[1]);
                                 } else {
@@ -863,7 +863,7 @@ class GanttGraph extends Graph
                                 $link->SetPath(3);
 
                                 break;
-                            case CONSTRAIN_STARTEND:
+                            case Configs::getConfig('CONSTRAIN_STARTEND'):
                                 if ($c1[1] < $c2[1]) {
                                     $link = new Image\GanttLink($c1[0], $c1[3], $c2[2], $c2[1]);
                                 } else {
@@ -872,7 +872,7 @@ class GanttGraph extends Graph
                                 $link->SetPath(0);
 
                                 break;
-                            case CONSTRAIN_ENDEND:
+                            case Configs::getConfig('CONSTRAIN_ENDEND'):
                                 if ($c1[1] < $c2[1]) {
                                     $link = new Image\GanttLink($c1[2], $c1[3], $c2[2], $c2[1]);
                                 } else {
@@ -881,7 +881,7 @@ class GanttGraph extends Graph
                                 $link->SetPath(1);
 
                                 break;
-                            case CONSTRAIN_STARTSTART:
+                            case Configs::getConfig('CONSTRAIN_STARTSTART'):
                                 if ($c1[1] < $c2[1]) {
                                     $link = new Image\GanttLink($c1[0], $c1[3], $c2[0], $c2[1]);
                                 } else {

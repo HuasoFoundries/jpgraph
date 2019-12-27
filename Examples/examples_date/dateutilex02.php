@@ -25,7 +25,8 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getC
 $example_title = 'Development since 1984';
 $graph->title->set($example_title);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
-$graph->subtitle->Set('(Example using the builtin date scale)');
+$subtitle_text = '(Example using the builtin date scale)';
+$graph->subtitle->Set($subtitle_text);
 
 // Setup the labels to be correctly format on the X-axis
 $graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);

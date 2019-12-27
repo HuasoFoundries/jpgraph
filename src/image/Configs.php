@@ -154,19 +154,7 @@ class Configs extends Util\Configs
     const TITLEBKG_FILLSTYLE_SOLID    = 3;
     const _FIRST_FONT                 = 10;
     const _LAST_FONT                  = 99;
-    const GICON_WARNINGRED            = 0;
-    const GICON_TEXT                  = 1;
-    const GICON_ENDCONS               = 2;
-    const GICON_MAIL                  = 3;
-    const GICON_STARTCONS             = 4;
-    const GICON_CALC                  = 5;
-    const GICON_MAGNIFIER             = 6;
-    const GICON_LOCK                  = 7;
-    const GICON_STOP                  = 8;
-    const GICON_WARNINGYELLOW         = 9;
-    const GICON_FOLDEROPEN            = 10;
-    const GICON_FOLDER                = 11;
-    const GICON_TEXTIMPORTANT         = 12;
+
     public function __construct()
     {
         parent::__construct();

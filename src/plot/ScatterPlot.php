@@ -32,11 +32,11 @@ class ScatterPlot extends Plot
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
-        $this->mark->SetType(MARK_SQUARE);
+        $this->mark->SetType(Configs::MARK_SQUARE);
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link        = new Graph\LineProperty(1, 'black', 'solid');
+        $this->link        = new Graph\Scale\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 

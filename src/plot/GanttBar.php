@@ -290,7 +290,7 @@ class GanttBar extends GanttPlotObject
             // We treat the RIGHT and LEFT triangle mark a little bi
             // special so that these marks are placed right under the
             // bar.
-            if ($this->leftMark->GetType() == MARK_LEFTTRIANGLE) {
+            if ($this->leftMark->GetType() == Configs::MARK_LEFTTRIANGLE) {
                 $y = $yb;
             }
             $this->leftMark->Stroke($aImg, $xt, $y);
@@ -300,7 +300,7 @@ class GanttBar extends GanttPlotObject
             // We treat the RIGHT and LEFT triangle mark a little bi
             // special so that these marks are placed right under the
             // bar.
-            if ($this->rightMark->GetType() == MARK_RIGHTTRIANGLE) {
+            if ($this->rightMark->GetType() == Configs::MARK_RIGHTTRIANGLE) {
                 $y = $yb;
             }
             $this->rightMark->Stroke($aImg, $xb, $y);

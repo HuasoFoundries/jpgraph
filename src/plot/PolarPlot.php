@@ -17,9 +17,6 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-defined('POLAR_360') || define('POLAR_360', 1);
-defined('POLAR_180') || define('POLAR_180', 2);
-
 //
 // Note. Don't attempt to make sense of this code.
 // In order not to have to be able to inherit the scaling code

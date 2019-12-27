@@ -18,7 +18,8 @@ $example_title = 'Accumulated PPM';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
-$graph->subtitle->Set('(according to direction)');
+$subtitle_text = '(according to direction)';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 $graph->SetTitles($titles);

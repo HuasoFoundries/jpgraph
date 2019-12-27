@@ -18,7 +18,8 @@ $graph->SetShadow();
 $example_title = 'Example of filled line plot';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->subtitle->Set('(Starting from Y=0)');
+$subtitle_text = '(Starting from Y=0)';
+$graph->subtitle->Set($subtitle_text);
 
 $graph->yaxis->scale->SetAutoMin(0);
 
