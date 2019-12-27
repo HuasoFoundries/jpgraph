@@ -64,7 +64,7 @@ trait UnitTestTrait
         $knownFixtures = [];
         self::$files   = self::getFiles(strtolower($className));
         try {
-            self::$fixTures = Yaml::parseFile(sprintf('%s/_output/%s.yml', __DIR__, $className));
+            self::$fixTures = Yaml::parseFile(sprintf('%s/_support/%s.yml', __DIR__, $className));
 
         } catch (ParseException $exception) {
             printf('Unable to parse the YAML string: %s', $exception->getMessage());
@@ -98,7 +98,7 @@ trait UnitTestTrait
             $yaml = Yaml::dump(self::$genericFixtures);
             if (self::$persistYaml) {
 
-                file_put_contents(sprintf('%s/_output/%s.yml', __DIR__, $className), $yaml);
+                file_put_contents(sprintf('%s/_support/%s.yml', __DIR__, $className), $yaml);
             }
             fwrite(STDOUT, $className . "\n");
         }
@@ -173,7 +173,7 @@ trait UnitTestTrait
 
     }
 
-    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = true, $attributes = [])
+    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = false, $attributes = [])
     {
         $filename_meaningful = explode('ex', $filename)[0];
 
@@ -210,7 +210,7 @@ trait UnitTestTrait
         return $ownFixtures;
     }
 
-    private function _fileCheck($filename, &$ownFixtures = [], $debug = true)
+    private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
     {
         if (is_array($filename)) {
             if (array_key_exists('width', $filename)) {

@@ -1,0 +1,8 @@
+testExampleOnDateScale:
+    dateaxisex2.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex2.php }
+    dateaxisex3.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex3.php }
+    dateaxisex4.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex4.php }
+testCurrentBids:
+    datescaleticksex01.php: { width: 600, height: 250, title: 'Current Bids', filename: datescaleticksex01.php }
+testAccumulatedValuesWithSpecifiedXAxisScale:
+    prepaccdata_example.php: { width: 600, height: 350, title: 'Accumulated values with specified X-axis scale', filename: prepaccdata_example.php }

@@ -1,0 +1,34 @@
+testBezierInterpolation:
+    bezierex1.php: { width: 300, height: 200, title: 'Bezier interpolation', filename: bezierex1.php }
+testCcbpfileiterator:
+    ccbp_ex1.php: { width: 600, height: 400, title: ccbpFileIterator, filename: ccbp_ex1.php }
+    ccbp_ex2.php: { width: 600, height: 400, title: ccbpFileIterator, filename: ccbp_ex2.php }
+testFieldscatterfileiterator:
+    fieldscatterex1.php: { width: 300, height: 200, title: fieldscatterFileIterator, filename: fieldscatterex1.php }
+testFooterfileiterator:
+    footerex1.php: { width: 300, height: 250, title: footerFileIterator, filename: footerex1.php }
+testSimpleMpulsPlot:
+    impulsex1.php: { width: 300, height: 200, title: 'Simple mpuls plot', filename: impulsex1.php }
+testImpulsPlot:
+    impulsex2.php: { width: 300, height: 200, title: 'Impuls plot, variant 2', filename: impulsex2.php }
+testImpulsexample:
+    impulsex3.php: { width: 400, height: 200, title: 'Impuls Example 3', filename: impulsex3.php }
+    impulsex4.php: { width: 500, height: 250, title: 'Impuls Example 4', filename: impulsex4.php }
+testGeoelektrik:
+    loglogex1.php: { width: 500, height: 300, title: Geoelektrik, filename: loglogex1.php }
+testMarkflagfileiterator:
+    markflagex1.php: { width: 300, height: 200, title: markflagFileIterator, filename: markflagex1.php }
+testPushpinfileiterator:
+    pushpinex1.php: { width: 400, height: 270, title: pushpinFileIterator, filename: pushpinex1.php }
+    pushpinex2.php: { width: 400, height: 270, title: pushpinFileIterator, filename: pushpinex2.php }
+testASimpleScatterPlot:
+    scatterex1.php: { width: 300, height: 200, title: 'A simple scatter plot', filename: scatterex1.php }
+    scatterex2.php: { width: 300, height: 200, title: 'A simple scatter plot', filename: scatterex2.php }
+testLinkedscatterplot:
+    scatterlinkex1.php: { width: 300, height: 200, title: 'Linked Scatter plot ex1', filename: scatterlinkex1.php }
+testLinkedScatterPlot:
+    scatterlinkex2.php: { width: 300, height: 200, title: 'Linked scatter plot', filename: scatterlinkex2.php }
+    scatterlinkex3.php: { width: 350, height: 230, title: 'Linked scatter plot', filename: scatterlinkex3.php }
+    scatterlinkex4.php: { width: 350, height: 230, title: 'Linked scatter plot', filename: scatterlinkex4.php }
+testA90DegreesRotatedScatterPlot:
+    scatterrotex1.php: { width: 300, height: 200, title: 'A 90 degrees rotated scatter plot', filename: scatterrotex1.php }

@@ -1,0 +1,9 @@
+testRotatefileiterator:
+    rotateex1.php: { width: 350, height: 300, title: rotateFileIterator, filename: rotateex1.php }
+testRotfileiterator:
+    rotex0.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex0.php }
+    rotex1.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex1.php }
+    rotex2.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex2.php }
+    rotex3.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex3.php }
+    rotex4.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex4.php }
+    rotex5.php: { width: 270, height: 170, title: rotFileIterator, filename: rotex5.php }

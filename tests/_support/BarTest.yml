@@ -1,0 +1,40 @@
+testGradHor:
+    bargradsmallex3.php: { width: 200, height: 150, title: GRAD_HOR, filename: bargradsmallex3.php }
+testAdjustingTheWidth:
+    example22.php: { width: 310, height: 200, title: 'Adjusting the width', filename: example22.php }
+testAddingalineplottoabargraph:
+    example16.2.php: { width: 400, height: 200, title: 'Adding a line plot to a bar graph v1', filename: example16.2.php }
+    example16.3.php: { width: 400, height: 200, title: 'Adding a line plot to a bar graph v1', filename: example16.3.php }
+    example16.4.php: { width: 400, height: 200, title: 'Adding a line plot to a bar graph v3', filename: example16.4.php }
+testGradVer:
+    bargradsmallex4.php: { width: 200, height: 150, title: GRAD_VER, filename: bargradsmallex4.php }
+testExampleWith2ScaleBars:
+    bar2scalesex1.php: { width: 450, height: 200, title: 'Example with 2 scale bars', filename: bar2scalesex1.php }
+testGradCenter:
+    bargradsmallex7.php: { width: 200, height: 150, title: GRAD_CENTER, filename: bargradsmallex7.php }
+testGroupedAccumulatedBarPlots:
+    example24.php: { width: 310, height: 200, title: 'Grouped Accumulated bar plots', filename: example24.php }
+testGradMidhor:
+    bargradsmallex2.php: { width: 200, height: 150, title: GRAD_MIDHOR, filename: bargradsmallex2.php }
+testGradMidver:
+    bargradsmallex1.php: { width: 200, height: 150, title: GRAD_MIDVER, filename: bargradsmallex1.php }
+testBand3dplane:
+    plotbanddensity_ex0.php: { width: 200, height: 200, title: 'BAND_3DPLANE, Density=10', filename: plotbanddensity_ex0.php }
+    plotbanddensity_ex1.php: { width: 200, height: 200, title: 'BAND_3DPLANE, Density=40', filename: plotbanddensity_ex1.php }
+    plotbanddensity_ex2.php: { width: 200, height: 200, title: 'BAND_3DPLANE, Density=80', filename: plotbanddensity_ex2.php }
+testGradWideMidhor:
+    bargradsmallex6.php: { width: 200, height: 150, title: GRAD_WIDE_MIDHOR, filename: bargradsmallex6.php }
+testExample:
+    example16.5.php: { width: 350, height: 200, title: 'Example 16.3', filename: example16.5.php }
+    example21.php: { width: 310, height: 200, title: 'Example 21', filename: example21.php }
+testExampleOfBarPlotWithAbsoluteLabels:
+    negbarvalueex01.php: { width: 400, height: 300, title: 'Example of bar plot with absolute labels', filename: negbarvalueex01.php }
+testAccumulatedBarPlots:
+    accbarex1.php: { width: 500, height: 400, title: 'Accumulated bar plots', filename: accbarex1.php }
+    example23.php: { width: 310, height: 200, title: 'Accumulated bar plots', filename: example23.php }
+testBarPattern:
+    barpatternex1.php: { width: 350, height: 300, title: 'Bar Pattern', filename: barpatternex1.php }
+testGradWideMidver:
+    bargradsmallex5.php: { width: 200, height: 150, title: GRAD_WIDE_MIDVER, filename: bargradsmallex5.php }
+testGradRaisedPanel:
+    bargradsmallex8.php: { width: 200, height: 150, title: GRAD_RAISED_PANEL, filename: bargradsmallex8.php }

@@ -1,0 +1,4 @@
+test200:
+    pieex3.php: { width: 350, height: 300, title: '2004', filename: pieex3.php }
+testExample4OfPiePlot:
+    pieex4.php: { width: 300, height: 200, title: 'Example 4 of pie plot', filename: pieex4.php }
