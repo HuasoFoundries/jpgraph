@@ -54,7 +54,6 @@ class RadarGraph extends Graph
         }
         if ($axtype == 'lin') {
             $this->yscale = new Scale\LinearScale($ymin, $ymax, 'y', 'radar');
-
         } elseif ($axtype == 'log') {
             $this->yscale = new Scale\LogScale($ymin, $ymax, 'y', 'radar');
         }

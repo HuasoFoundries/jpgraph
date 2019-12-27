@@ -25,12 +25,15 @@ class GanttTest extends \Codeception\Test\Unit
         });
 
         Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
     private function _fileCheck($filename, &$ownFixtures = [], $debug = false)

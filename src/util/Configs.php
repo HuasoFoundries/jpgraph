@@ -143,7 +143,7 @@ class Configs
     const READ_CACHE         = READ_CACHE;
     const CACHE_FILE_GROUP   = CACHE_FILE_GROUP;
     const CACHE_FILE_MOD     = CACHE_FILE_MOD;
-//const DEFAULT_THEME_CLASS=DEFAULT_THEME_CLASS;
+    //const DEFAULT_THEME_CLASS=DEFAULT_THEME_CLASS;
     // Bar patterns
     const GANTT_RDIAG     = self::BAND_RDIAG; // Right diagonal lines
     const GANTT_LDIAG     = self::BAND_LDIAG; // Left diagonal lines
@@ -759,10 +759,11 @@ class Configs
          * to set or get its value
          */
         return $args && is_scalar($args) ? self::setConfig($const_name, $args) : self::getConfig($const_name);
-
     }
 
-    public function __get($config_key) {}
+    public function __get($config_key)
+    {
+    }
 
     public static function getInstance()
     {
@@ -788,7 +789,6 @@ class Configs
         }
         // Local or inherited class constants come next
         if (defined(sprintf('static::%s', $config_key))) {
-
             return constant(sprintf('static::%s', $config_key));
         }
         // Global constants in third place
@@ -804,7 +804,6 @@ class Configs
         static::$active_lazy_statics[$config_key] = is_scalar($config_value) ? $config_value : self::$lazy_statics[$config_key];
 
         return static::$active_lazy_statics[$config_key];
-
     }
 
     /**
@@ -898,7 +897,6 @@ class Configs
 
         // Minimum required PHP version
         self::setConfig('MIN_PHPVERSION', '7.0.0');
-
     }
 
     public static function verifyFontConfigs()

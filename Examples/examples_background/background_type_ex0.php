@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+
 // [\(\s]([A-Z]{2}[A-Z_0-9]{2,100})
 // Some data
 $ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
