@@ -6,5 +6,4 @@ namespace Amenadiel\JpGraph\UnitTest\Helper;
 
 class Unit extends \Codeception\Module
 {
-
 }
