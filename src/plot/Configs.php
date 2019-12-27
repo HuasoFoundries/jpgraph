@@ -15,24 +15,24 @@ class Configs extends Util\Configs
     const WINDROSE_TYPE16   = 3;
     const WINDROSE_TYPEFREE = 4;
 
-/*
- * How should the labels for the circular grids be aligned
- */
+    /*
+     * How should the labels for the circular grids be aligned
+     */
     const POLAR_360 = 1;
     const POLAR_180 = 2;
-/*
- * How should the labels around the plot be align
- */
+    /*
+     * How should the labels around the plot be align
+     */
     const LBLPOSITION_CENTER = 1;
     const LBLPOSITION_EDGE   = 2;
 
-/*
- * Interpretation of ordinal values in the data
- */
+    /*
+     * Interpretation of ordinal values in the data
+     */
     const KEYENCODING_CLOCKWISE     = 1;
     const KEYENCODING_ANTICLOCKWISE = 2;
 
-// Internal debug flag
+    // Internal debug flag
     const __DEBUG           = false;
     const RANGE_OVERLAPPING = 0;
     const RANGE_DISCRETE    = 1;
