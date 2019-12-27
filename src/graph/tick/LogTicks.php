@@ -20,7 +20,9 @@ class LogTicks extends Ticks
     /**
      * CONSTRUCTOR.
      */
-    public function LogTicks() {}
+    public function LogTicks()
+    {
+    }
 
     /**
      * PUBLIC METHODS.

@@ -13,7 +13,9 @@ if (!class_exists('\Kint')) {
     {
         public static $enabled_mode = true;
 
-        public static function dump() {}
+        public static function dump()
+        {
+        }
     }
     \Kint\Renderer\RichRenderer::$folder = false;
 }
@@ -24,7 +26,9 @@ if (!class_exists('\PhpConsole\Handler')) {
      */
     class PC
     {
-        public static function debug() {}
+        public static function debug()
+        {
+        }
     }
 }
 if (property_exists('\Kint', 'aliases')) {
@@ -44,7 +48,6 @@ if (property_exists('\Kint', 'aliases')) {
 
         //dump($kintdump);
         fwrite(STDERR, $kintdump);
-
     }
 
     \Kint::$aliases[] = 'dd';
