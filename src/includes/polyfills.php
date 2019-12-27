@@ -13,9 +13,7 @@ if (!class_exists('\Kint')) {
     {
         public static $enabled_mode = true;
 
-        public static function dump()
-        {
-        }
+        public static function dump() {}
     }
     \Kint\Renderer\RichRenderer::$folder = false;
 }
@@ -26,27 +24,38 @@ if (!class_exists('\PhpConsole\Handler')) {
      */
     class PC
     {
-        public static function debug()
-        {
-        }
+        public static function debug() {}
     }
 }
 if (property_exists('\Kint', 'aliases')) {
-    function ddd(...$v)
+    function ddd(...$vars)
     {
-        ~d(...$v);
+        Kint::dump(...$vars);
         exit;
     }
 
-    \Kint::$aliases[] = 'ddd';
-}
+    function kdump(...$vars)
+    {
+        ob_start();
 
+        d(...$vars);
+
+        $kintdump = (ob_get_clean());
+
+        //dump($kintdump);
+        fwrite(STDERR, $kintdump);
+
+    }
+
+    \Kint::$aliases[] = 'dd';
+    \Kint::$aliases[] = 'kdump';
+}
 if (property_exists('\Kint', 'enabled_mode')) {
     \Kint::$enabled_mode = DEBUGMODE;
+    \Kint::$enabled_mode = Kint::$mode_default_cli;
 } elseif (method_exists('\Kint', 'enabled')) {
     \Kint::enabled(DEBUGMODE);
 }
-
 if (
     getenv('JPGRAPH_USE_PHPCONSOLE') &&
     isset($_SERVER['HTTP_USER_AGENT']) &&

@@ -5,10 +5,8 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_led.php';
-
 // By default each "LED" circle has a radius of 3 pixels. Change to 5 and slghtly smaller margin
-$led = new DigitalLED74(6);
-$led->SetSupersampling(4);
-$led->StrokeNumber('123.', Graph\Configs::getConfig('LEDC_RED'));
+use Amenadiel\JpGraph\Image;
+$led = new Image\DigitalLED74(6);
+$led->SetSupersampling(2);
+$led->StrokeNumber('123.', Image\Configs::getConfig('LEDC_RED'));

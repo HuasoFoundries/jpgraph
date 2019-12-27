@@ -23,6 +23,7 @@ trait UnitTestTrait
     {
         self::$genericFixtures =
             array_reduce($fixTures, function ($carry, $file) {
+            //Debug::debug($file);
             $carry = $this->_fileCheck($file, $carry);
             return $carry;
         }, self::$genericFixtures);
@@ -172,7 +173,7 @@ trait UnitTestTrait
 
     }
 
-    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = true)
+    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = true, $attributes = [])
     {
         $filename_meaningful = explode('ex', $filename)[0];
 
@@ -201,13 +202,23 @@ trait UnitTestTrait
         if (!array_key_exists($methodName, $ownFixtures)) {
             $ownFixtures[$methodName] = [];
         }
-        $ownFixtures[$methodName][$filename] = ['title' => $example_title, 'filename' => $filename];
+        $dims = [];
+        if (array_key_exists('mime', $attributes)) {
+            $dims = ['width' => $attributes[0], 'height' => $attributes[1]];
+        }
+        $ownFixtures[$methodName][$filename] = array_merge($dims, ['title' => $example_title, 'filename' => $filename]);
         return $ownFixtures;
     }
 
-    private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
+    private function _fileCheck($filename, &$ownFixtures = [], $debug = true)
     {
         if (is_array($filename)) {
+            if (array_key_exists('width', $filename)) {
+                $__width = $filename['width'];
+            }
+            if (array_key_exists('height', $filename)) {
+                $__height = $filename['height'];
+            }
             $filename = $filename['filename'];
         }
         $example_title = 'file_iterator';
@@ -224,9 +235,17 @@ trait UnitTestTrait
             $example_title = $subtitle_text;
         }
 
-        self::renameIfDimensionsDontMatch(self::$exampleRoot, $filename, $__width, $__height, $size);
-        $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
-        $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
-        return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug);
+        if (isset($__width) && isset($__height)) {
+
+            self::renameIfDimensionsDontMatch(self::$exampleRoot, $filename, $__width, $__height, $size);
+            $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
+            $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
+        } else {
+            Debug::debug(
+                'testing ' . $filename .
+                ' for image/jpeg headers ');
+            //$this->assertEquals('image/jpeg', $size['mime'], 'image should have mime image/jpeg for ' . $filename);
+        }
+        return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug, $size);
     }
 };

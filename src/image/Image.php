@@ -85,7 +85,7 @@ class Image extends Configs
      * @param mixed $aFormat
      * @param mixed $aSetAutoMargin
      */
-    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = self::DEFAULT_GFORMAT, $aSetAutoMargin = true)
+    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = Config::DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         $this->original_width  = $aWidth;
         $this->original_height = $aHeight;

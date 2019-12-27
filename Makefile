@@ -97,7 +97,7 @@ phpmd:
 psalm:
 	@if [ -f ./vendor/bin/psalm ]; then \
 		if [ -f ./vendor/bin/psalm ]; then \
-			./vendor/bin/psalm.xml --init $(target) 3 ;\
+			./vendor/bin/psalm --init $(target) 3 ;\
 		fi ;\
 	    ./vendor/bin/psalm $(target) ;\
     else \

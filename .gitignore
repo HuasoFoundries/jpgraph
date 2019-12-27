@@ -12,3 +12,9 @@ jpgraph.phprj
 jpgraph.workspace
 nbproject
 .idea
+.churn.yml
+.php_cs.cache
+.phpcs.config.xml
+.phpmd.xml
+.pmd.log
+psalm.xml

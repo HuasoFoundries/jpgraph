@@ -19,22 +19,6 @@ use Amenadiel\JpGraph\Util;
  * // Changed: 2007-08-06 by Alexander Kurochkin (inspector@list.ru)
  */
 // Configs for color schema
-define('LEDC_RED', 0);
-define('LEDC_GREEN', 1);
-define('LEDC_BLUE', 2);
-define('LEDC_YELLOW', 3);
-define('LEDC_GRAY', 4);
-define('LEDC_CHOCOLATE', 5);
-define('LEDC_PERU', 6);
-define('LEDC_GOLDENROD', 7);
-define('LEDC_KHAKI', 8);
-define('LEDC_OLIVE', 9);
-define('LEDC_LIMEGREEN', 10);
-define('LEDC_FORESTGREEN', 11);
-define('LEDC_TEAL', 12);
-define('LEDC_STEELBLUE', 13);
-define('LEDC_NAVY', 14);
-define('LEDC_INVERTGRAY', 15);
 
 // Check that mb_strlen() is available
 if (!function_exists('mb_strlen')) {
@@ -54,22 +38,22 @@ class DigitalLED74
     private $iLED_X       = 4;
     private $iLED_Y       = 7;
     private $iColorSchema = [
-        LEDC_RED         => ['red', 'darkred:0.9', 'red:0.3'], // 0
-        LEDC_GREEN       => ['green', 'darkgreen', 'green:0.3'], // 1
-        LEDC_BLUE        => ['lightblue:0.9', 'darkblue:0.85', 'darkblue:0.7'], // 2
-        LEDC_YELLOW      => ['yellow', 'yellow:0.4', 'yellow:0.3'], // 3
-        LEDC_GRAY        => ['gray:1.4', 'darkgray:0.85', 'darkgray:0.7'],
-        LEDC_CHOCOLATE   => ['chocolate', 'chocolate:0.7', 'chocolate:0.5'],
-        LEDC_PERU        => ['peru:0.95', 'peru:0.6', 'peru:0.5'],
-        LEDC_GOLDENROD   => ['goldenrod', 'goldenrod:0.6', 'goldenrod:0.5'],
-        LEDC_KHAKI       => ['khaki:0.7', 'khaki:0.4', 'khaki:0.3'],
-        LEDC_OLIVE       => ['#808000', '#808000:0.7', '#808000:0.6'],
-        LEDC_LIMEGREEN   => ['limegreen:0.9', 'limegreen:0.5', 'limegreen:0.4'],
-        LEDC_FORESTGREEN => ['forestgreen', 'forestgreen:0.7', 'forestgreen:0.5'],
-        LEDC_TEAL        => ['teal', 'teal:0.7', 'teal:0.5'],
-        LEDC_STEELBLUE   => ['steelblue', 'steelblue:0.65', 'steelblue:0.5'],
-        LEDC_NAVY        => ['navy:1.3', 'navy:0.95', 'navy:0.8'], //14
-        LEDC_INVERTGRAY  => ['darkgray', 'lightgray:1.5', 'white'], //15
+        Configs::LEDC_RED         => ['red', 'darkred:0.9', 'red:0.3'], // 0
+        Configs::LEDC_GREEN       => ['green', 'darkgreen', 'green:0.3'], // 1
+        Configs::LEDC_BLUE        => ['lightblue:0.9', 'darkblue:0.85', 'darkblue:0.7'], // 2
+        Configs::LEDC_YELLOW      => ['yellow', 'yellow:0.4', 'yellow:0.3'], // 3
+        Configs::LEDC_GRAY        => ['gray:1.4', 'darkgray:0.85', 'darkgray:0.7'],
+        Configs::LEDC_CHOCOLATE   => ['chocolate', 'chocolate:0.7', 'chocolate:0.5'],
+        Configs::LEDC_PERU        => ['peru:0.95', 'peru:0.6', 'peru:0.5'],
+        Configs::LEDC_GOLDENROD   => ['goldenrod', 'goldenrod:0.6', 'goldenrod:0.5'],
+        Configs::LEDC_KHAKI       => ['khaki:0.7', 'khaki:0.4', 'khaki:0.3'],
+        Configs::LEDC_OLIVE       => ['#808000', '#808000:0.7', '#808000:0.6'],
+        Configs::LEDC_LIMEGREEN   => ['limegreen:0.9', 'limegreen:0.5', 'limegreen:0.4'],
+        Configs::LEDC_FORESTGREEN => ['forestgreen', 'forestgreen:0.7', 'forestgreen:0.5'],
+        Configs::LEDC_TEAL        => ['teal', 'teal:0.7', 'teal:0.5'],
+        Configs::LEDC_STEELBLUE   => ['steelblue', 'steelblue:0.65', 'steelblue:0.5'],
+        Configs::LEDC_NAVY        => ['navy:1.3', 'navy:0.95', 'navy:0.8'], //14
+        Configs::LEDC_INVERTGRAY  => ['darkgray', 'lightgray:1.5', 'white'], //15
     ];
     private $iLEDSpec = [
         0    => [6, 9, 11, 15, 13, 9, 6],
@@ -219,7 +203,7 @@ class DigitalLED74
         $swidth  = $width * $this->iSuperSampling;
         $sheight = $height * $this->iSuperSampling;
 
-        $simg = new RotImage($swidth, $sheight, 0, DEFAULT_GFORMAT, false);
+        $simg = new RotImage($swidth, $sheight, 0, Configs::DEFAULT_GFORMAT, false);
         $simg->SetColor($this->iColorSchema[$aColor][2]);
         $simg->FilledRectangle(0, 0, $swidth - 1, $sheight - 1);
 
@@ -246,7 +230,7 @@ class DigitalLED74
             }
         }
 
-        $img = new Image($width, $height, DEFAULT_GFORMAT, false);
+        $img = new Image($width, $height, Configs::DEFAULT_GFORMAT, false);
         $img->Copy($simg->img, 0, 0, 0, 0, $width, $height, $swidth, $sheight);
         $simg->Destroy();
         unset($simg);
@@ -283,7 +267,7 @@ class DigitalLED74
         $w = imagesx($digit_img[0]->img);
         $h = imagesy($digit_img[0]->img);
 
-        $number_img = new Image\Image($w * $n, $h, DEFAULT_GFORMAT, false);
+        $number_img = new Image($w * $n, $h, Configs::DEFAULT_GFORMAT, false);
 
         for ($i = 0; $i < $n; ++$i) {
             $number_img->Copy($digit_img[$i]->img, $i * $w, 0, 0, 0, $w, $h, $w, $h);

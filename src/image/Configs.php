@@ -87,15 +87,30 @@ defined('CACHE_FILE_MOD') || define('CACHE_FILE_MOD', getenv('JPGRAPH_CACHE_FILE
 class Configs extends Util\Configs
 {
     // Configs for types of static bands in plot area
-
-    const BAND_RDIAG     = 1; // Right diagonal lines
-    const BAND_LDIAG     = 2; // Left diagonal lines
-    const BAND_SOLID     = 3; // Solid one color
-    const BAND_VLINE     = 4; // Vertical lines
-    const BAND_HLINE     = 5; // Horizontal lines
-    const BAND_3DPLANE   = 6; // "3D" Plane
-    const BAND_HVCROSS   = 7; // Vertical/Hor crosses
-    const BAND_DIAGCROSS = 8; // Diagonal crosses
+    const LEDC_RED         = 0;
+    const LEDC_GREEN       = 1;
+    const LEDC_BLUE        = 2;
+    const LEDC_YELLOW      = 3;
+    const LEDC_GRAY        = 4;
+    const LEDC_CHOCOLATE   = 5;
+    const LEDC_PERU        = 6;
+    const LEDC_GOLDENROD   = 7;
+    const LEDC_KHAKI       = 8;
+    const LEDC_OLIVE       = 9;
+    const LEDC_LIMEGREEN   = 10;
+    const LEDC_FORESTGREEN = 11;
+    const LEDC_TEAL        = 12;
+    const LEDC_STEELBLUE   = 13;
+    const LEDC_NAVY        = 14;
+    const LEDC_INVERTGRAY  = 15;
+    const BAND_RDIAG       = 1; // Right diagonal lines
+    const BAND_LDIAG       = 2; // Left diagonal lines
+    const BAND_SOLID       = 3; // Solid one color
+    const BAND_VLINE       = 4; // Vertical lines
+    const BAND_HLINE       = 5; // Horizontal lines
+    const BAND_3DPLANE     = 6; // "3D" Plane
+    const BAND_HVCROSS     = 7; // Vertical/Hor crosses
+    const BAND_DIAGCROSS   = 8; // Diagonal crosses
 
 // Style for background gradient fills
     const BGRAD_FRAME  = 1;
