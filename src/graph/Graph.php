@@ -2488,7 +2488,8 @@ class Graph extends Configs
     public function SetTitleBackground($aBackColor = 'gray',
         $aStyle = Configs::TITLEBKG_STYLE1,
         $aFrameStyle = Configs::TITLEBKG_FRAME_NONE,
-        $aFrameColor = 'black', $aFrameWeight = 1, $aBevelHeight = 3, $aEnable = true) {
+        $aFrameColor = 'black', $aFrameWeight = 1, $aBevelHeight = 3, $aEnable = true)
+    {
         $this->titlebackground             = $aEnable;
         $this->titlebackground_color       = $aBackColor;
         $this->titlebackground_style       = $aStyle;
@@ -2914,7 +2915,7 @@ class Graph extends Configs
     {
         if ($do) {
             Configs::setConfig('SUPERSAMPLING_SCALE', $scale);
-            // $this->img->scale = $scale;
+        // $this->img->scale = $scale;
         } else {
             Configs::setConfig('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

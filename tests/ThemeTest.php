@@ -25,71 +25,64 @@ class ThemeTest extends \Codeception\Test\Unit
         });
 
         Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testAquathemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testGreenthemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testOceanthemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testOrangethemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testPastelthemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testRosethemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testSoftythemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testThemefileiterator()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testUniversalthemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testVividthemeExample()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testFileIterator()

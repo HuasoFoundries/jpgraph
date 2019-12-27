@@ -39,6 +39,7 @@ if (DEBUGMODE) {
     error_reporting(E_ALL);
 }
 use \Amenadiel\JpGraph\Util;
+
 define('USE_IMAGE_ERROR_HANDLER', false);
 ini_set('display_errors', 1);
 require __DIR__ . '/includes/polyfills.php';
