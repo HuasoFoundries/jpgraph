@@ -31,10 +31,12 @@ class LanguageConv
             return $unistring;
         }
         if (Configs::getConfig('LANGUAGE_CYRILLIC')) {
-            if (Configs::getConfig('CYRILLIC_FROM_WINDOWS') && stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
+            if (Configs::getConfig('CYRILLIC_FROM_WINDOWS') &&
+                stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
                 $aTxt = convert_cyr_string($aTxt, 'w', 'k');
             }
-            if (stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'koi8-r') || stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
+            if (stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'koi8-r') ||
+                stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
                 $isostring = convert_cyr_string($aTxt, 'k', 'i');
                 $unistring = LanguageConv::iso2uni($isostring);
             } else {
@@ -46,7 +48,6 @@ class LanguageConv
         if ($aFF === Configs::getConfig('FF_SIMSUN')) {
             // Do Chinese conversion
             if ($this->g2312 == null) {
-                include_once 'jpgraph_gb2312.php';
                 $this->g2312 = new GB2312toUTF8();
             }
 
@@ -61,14 +62,19 @@ class LanguageConv
             return iconv('BIG5', 'UTF-8', $aTxt);
         }
         if (Configs::getConfig('ASSUME_EUCJP_ENCODING') &&
-            ($aFF == Configs::getConfig('FF_MINCHO') || $aFF == Configs::getConfig('FF_GOTHIC') || $aFF == Configs::getConfig('FF_PMINCHO') || $aFF == Configs::getConfig('FF_PGOTHIC'))) {
+            ($aFF == Configs::getConfig('FF_MINCHO') ||
+                $aFF == Configs::getConfig('FF_GOTHIC') ||
+                $aFF == Configs::getConfig('FF_PMINCHO') ||
+                $aFF == Configs::getConfig('FF_PGOTHIC'))) {
             if (!function_exists('mb_convert_encoding')) {
                 Util\JpGraphError::RaiseL(25127);
             }
 
             return mb_convert_encoding($aTxt, 'UTF-8', 'EUC-JP');
         }
-        if ($aFF == Configs::getConfig('FF_DAVID') || $aFF == Configs::getConfig('FF_MIRIAM') || $aFF == Configs::getConfig('FF_AHRON')) {
+        if ($aFF == Configs::getConfig('FF_DAVID') ||
+            $aFF == Configs::getConfig('FF_MIRIAM') ||
+            $aFF == Configs::getConfig('FF_AHRON')) {
             return LanguageConv::heb_iso2uni($aTxt);
         }
 
