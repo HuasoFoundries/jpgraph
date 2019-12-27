@@ -17,9 +17,18 @@ class TTF
 {
     private $font_files;
     private $style_names;
-
-    public function __construct()
+    public $FONT_BASEPATH;
+    /**
+     * Constructs a new instance.
+     *
+     * @param string  $base_path  If set, look for fonts in said path.
+     */
+    public function __construct($base_path = null)
     {
+        if (!$base_path || !is_readable($base_path) || !is_dir($base_path)) {
+            $base_path = dirname(__DIR__) . '/fonts/';
+        }
+        self::$FONT_BASEPATH = $base_path;
         // String names for font styles to be used in error messages
         $this->style_names = [
             Configs::FS_NORMAL     => 'normal',
@@ -104,13 +113,13 @@ class TTF
                 Configs::FS_BOLDITALIC => '',
             ],
             Configs::FF_CHINESE          => [
-                Configs::FS_NORMAL     => self::CHINESE_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
             Configs::FF_BIG5             => [
-                Configs::FS_NORMAL     => self::CHINESE_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
@@ -118,28 +127,28 @@ class TTF
 
             /* Japanese fonts */
             Configs::FF_MINCHO           => [
-                Configs::FS_NORMAL     => self::MINCHO_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::MINCHO_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
 
             Configs::FF_PMINCHO          => [
-                Configs::FS_NORMAL     => self::PMINCHO_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::PMINCHO_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
 
             Configs::FF_GOTHIC           => [
-                Configs::FS_NORMAL     => self::GOTHIC_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::GOTHIC_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
 
             Configs::FF_PGOTHIC          => [
-                Configs::FS_NORMAL     => self::PGOTHIC_TTF_FONT,
+                Configs::FS_NORMAL     => Configs::PGOTHIC_TTF_FONT,
                 Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
@@ -262,15 +271,15 @@ class TTF
      * Encapsulates the logic to check for a file existance
      * If it exists and it's readable, return full path. Otherwise return false.
      *
-     * @param <type> $file   The file
-     * @param bool   $folder The folder
+     * @param string $file   The file, e.g. arial.ttf
+     * @param string   $folder The folder e.g. ~/user, defaults to JPGraph font folder
      *
-     * @return bool the full path if exists
+     * @return <string|false> the full path if exists, false otherwise
      */
     private static function getFullPathIfExists($file, $folder = null)
     {
-        $default_path = $folder ? $folder : dirname(self::__DIR__) . '/fonts/';
-        $font_path    = sprintf('%s%s%s', $folder, self::DIRECTORY_SEPARATOR, $file);
+        $default_path = $folder ? $folder : self::$FONT_BASEPATH;
+        $font_path    = sprintf('%s%s%s', $folder, DIRECTORY_SEPARATOR, $file);
 
         if (file_exists($font_path) && is_readable($font_path)) {
             return $font_path;
@@ -303,40 +312,41 @@ class TTF
             $ff = [$ff];
         }
 
-        $jpgraph_font_dir = dirname(dirname(__FILE__)) . '/fonts/';
-
         foreach ($ff as $font_file) {
             // All font families are guaranteed to have the normal style
 
+            // Requesting a blank style will result in an error
+            // @todo maybe it's better to fallback to normal style
             if ($font_file === '') {
                 Util\JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
             }
-            //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][Configs::FS_NORMAL].'.');
+
+            // Style <style name> is not available for this font family
             if (!$font_file) {
-                Util\JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
+                Util\JpGraphError::RaiseL(25048, $fam);
             }
 
-            // check jpgraph/src/fonts dir
-            $jpgraph_font_file = $jpgraph_font_dir . $font_file;
-            if (file_exists($jpgraph_font_file) === true && is_readable($jpgraph_font_file) === true) {
-                $font_file = $jpgraph_font_file;
-
-                break;
+            // if a specific path was set in this method call, check it first
+            if ($font_path && $font_file = self::getFullPathIfExists($font_file, $font_path)) {
+                return $font_file;
+            }
+            // check the default font basepath otherwise
+            if ($font_file = self::getFullPathIfExists($font_file, self::$FONT_BASEPATH)) {
+                return $font_file;
             }
 
-            // check OS font dir
+            // last chance:check OS font dir
             if ($family >= Configs::FF_MINCHO && $family <= Configs::FF_PGOTHIC) {
                 $font_file = self::MBTTF_DIR . $font_file;
             } else {
                 $font_file = self::TTF_DIR . $font_file;
             }
-            if (file_exists($font_file) === true && is_readable($font_file) === true) {
-                break;
-            }
+
         }
 
         if (!file_exists($font_file)) {
-            //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
+            //Util\JpGraphError::RaiseL(25049, $font_file);
+            //("Font file \"$font_file\" is not readable or does not exist.");
             return $this->File(Configs::FF_DV_SANSSERIF, $style);
         }
 

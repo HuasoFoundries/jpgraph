@@ -318,12 +318,13 @@ class Image extends Configs
      * @param mixed $style
      * @param mixed $size
      */
-    public function SetFont($family, $style = self::FS_NORMAL, $size = 10)
+    public function SetFont($family, $style = self::FS_NORMAL, $size = 10, $path = null)
     {
         $this->font_family = $family;
         $this->font_style  = $style;
         $this->font_size   = $size * self::SUPERSAMPLING_SCALE;
         $this->font_file   = '';
+        $this->font_path   = $path;
         if (($this->font_family == self::FF_FONT1 || $this->font_family == self::FF_FONT2) && $this->font_style == self::FS_BOLD) {
             ++$this->font_family;
         }
@@ -336,7 +337,7 @@ class Image extends Configs
                 $this->font_family = self::FF_FONT1;
                 //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
             } else {
-                $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
+                $this->font_file = $this->ttf->File($this->font_family, $this->font_style, $this->font_path);
             }
         }
     }
