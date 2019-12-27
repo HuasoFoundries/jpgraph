@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ * JPGraph v4.0.1
  */
 
 // Gantt example 30

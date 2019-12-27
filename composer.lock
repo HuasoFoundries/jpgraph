@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "803d13b4ef9730e12fc61342ab54d7c5",
+    "content-hash": "265009d6c68d9cb2f287a6c7b38cae72",
     "packages": [
         {
             "name": "symfony/dotenv",
@@ -1950,6 +1950,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {

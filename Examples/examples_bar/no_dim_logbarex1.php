@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ * JPGraph v4.0.1
  */
 
 // $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
