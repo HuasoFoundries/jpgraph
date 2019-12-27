@@ -35,12 +35,12 @@ $graph->ygrid->Show(false);
 $graph->Add($bplot);
 
 // Add band
-$band = new Plot\PlotBand(HORIZONTAL, BAND_3DPLANE, 15, 35, 'khaki4');
+$band = new Plot\PlotBand(Graph\Configs::getConfig('HORIZONTAL'), Graph\Configs::getConfig('BAND_3DPLANE'), 15, 35, 'khaki4');
 $band->ShowFrame(false);
 $graph->Add($band);
 
 // Set title
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $graph->title->SetColor('darkred');
 $example_title = 'BAND_3DPLANE';
 $graph->title->set($example_title);

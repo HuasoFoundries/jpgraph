@@ -8,7 +8,7 @@ require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_flags.php';
 
 if (empty($_GET['size'])) {
-    $size = FLAGSIZE2;
+    $size = Graph\Configs::getConfig('FLAGSIZE2');
 } else {
     $size = $_GET['size'];
 }

@@ -39,10 +39,10 @@ $graph->SetColor('white');
 $graph->SetMarginColor('#fafafa');
 $example_title = 'Intro matrix graph';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the background image
-$graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
 $graph->SetBackgroundImageMix(50);
 
 // Setup the timer in the right footer
@@ -83,7 +83,7 @@ $n = count($txts);
 $t = [];
 for ($i = 0; $i < $n; ++$i) {
     $t[$i] = new Text($txts[$i][0], $txts[$i][1], $txts[$i][2]);
-    $t[$i]->SetFont(FF_ARIAL, FS_BOLD, 14);
+    $t[$i]->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
     $t[$i]->SetColor('white');
     $t[$i]->SetAlign('center', 'top');
 }

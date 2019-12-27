@@ -9,7 +9,7 @@ namespace Amenadiel\JpGraph\Util;
 require_once __DIR__ . '/../config.inc.php';
 
 defined('DEFAULT_ERR_LOCALE') || define('DEFAULT_ERR_LOCALE', 'en');
-require_once __DIR__ . '/Constants.php';
+require_once __DIR__ . '/Configs.php';
 /**
  * @class Helper
  * // Misc Helper functions
@@ -20,14 +20,14 @@ class Helper
     private static $initialized      = false;
     /**
      * Keeps a reference of the library related
-     * constants to verify their existance
+     * constants to verify their existance.
      *
      * @var array
      */
-    private static $Constants = [];
+    private static $Configs = [];
 
     /**
-     * Declares handlers and last minute constants
+     * Declares handlers and last minute constants.
      */
     public static function bootstrapLibrary()
     {
@@ -35,12 +35,12 @@ class Helper
         if (self::$initialized) {
             return;
         }
-        Constants::setGeneralConstants();
-        Constants::verifyFontConstants();
-        Constants::verifyCacheSettings();
-        Constants::verifyTTFSettings();
-        Constants::verifyMBTTFSettings();
-        Constants::verifyFormatSettings();
+        //Configs::setGeneralConfigs();
+        //Configs::verifyFontConfigs();
+        //Configs::verifyCacheSettings();
+        //Configs::verifyTTFSettings();
+        //Configs::verifyMBTTFSettings();
+        //Configs::verifyFormatSettings();
         $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), self::$__jpg_err_locale);
 
         // If the chosen locale doesn't exist try english
@@ -50,8 +50,8 @@ class Helper
         //
         // Make sure PHP version is high enough
         //
-        if (version_compare(PHP_VERSION, Constants::MIN_PHPVERSION()) < 0) {
-            JpGraphError::RaiseL(13, PHP_VERSION, Constants::MIN_PHPVERSION());
+        if (version_compare(PHP_VERSION, Configs::getConfig('MIN_PHPVERSION')) < 0) {
+            JpGraphError::RaiseL(13, PHP_VERSION, Configs::getConfig('MIN_PHPVERSION'));
             die();
         }
 
@@ -68,29 +68,29 @@ class Helper
         // case we raise it immediately since otherwise the image will not show and makes
         // debugging difficult. This is controlled by the user setting CATCH_PHPERRMSG
         //
-        if (isset($GLOBALS['php_errormsg']) && Constants::CATCH_PHPERRMSG() && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
+        if (isset($GLOBALS['php_errormsg']) && Configs::getConfig('CATCH_PHPERRMSG') && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
             JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
         }
 
         defined('HALT_ON_ERRORS') || define('HALT_ON_ERRORS', true);
         self::$initialized = true;
-        if (Constants::INSTALL_PHP_ERR_HANDLER()) {
+        if (Configs::getConfig('INSTALL_PHP_ERR_HANDLER')) {
             JpGraphError::registerHandler();
         }
         // Registers image exception handler
         JpGraphException::registerHandler();
 
-        if (!Constants::USE_IMAGE_ERROR_HANDLER()) {
+        if (!Configs::getConfig('USE_IMAGE_ERROR_HANDLER')) {
             JpGraphError::SetImageFlag(false);
         }
-        return self::$initialized;
 
+        return self::$initialized;
     }
 
     /**
      * Sets the error locale.
      *
-     * @param <type>  $aLoc  A location
+     * @param <type> $aLoc A location
      */
     public static function SetErrLocale($aLoc)
     {
@@ -100,7 +100,7 @@ class Helper
     /**
      * Gets the error locale.
      *
-     * @return <type>  The error locale.
+     * @return <type> The error locale
      */
     public static function getErrLocale()
     {
@@ -166,5 +166,4 @@ class Helper
 
         \PC::debug(func_get_args(), $tag);
     }
-
 }

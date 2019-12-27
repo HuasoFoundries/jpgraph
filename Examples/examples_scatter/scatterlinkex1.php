@@ -19,11 +19,11 @@ $graph->SetScale('linlin');
 $graph->SetShadow();
 $example_title = 'Linked Scatter plot ex1';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->SetLinkPoints(true, 'red', 2);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $sp1->mark->SetFillColor('navy');
 $sp1->mark->SetWidth(3);
 

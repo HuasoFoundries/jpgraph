@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ *  Graph\Configs::getConfig('JPG')raph v4.0.0
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,9 +25,9 @@ $graph->SetColor('lightyellow');
 $example_title = 'Duplicating Y-axis';
 $example_title = $example_title;
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
-$graph->SetAxisStyle(AXSTYLE_YBOXIN);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_YBOXIN'));
 $graph->xgrid->Show();
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);

@@ -22,7 +22,7 @@ $table->Set($data);
 $table->MergeRow(0);
 
 // Setup font and color
-$table->SetCellFont(0, 0, FF_ARIAL, FS_BOLD, 14);
+$table->SetCellFont(0, 0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $table->SetRowFillColor(0, 'orange@0.5');
 $table->SetRowColor(0, 'darkred');
 

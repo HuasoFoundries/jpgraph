@@ -8,6 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Scale;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
 
@@ -22,15 +23,15 @@ class GanttGraph extends Graph
     private $iObj                    = []; // Gantt objects
     private $iLabelHMarginFactor     = 0.2; // 10% margin on each side of the labels
     private $iLabelVMarginFactor     = 0.4; // 40% margin on top and bottom of label
-    private $iLayout                 = GANTT_FROMTOP; // Could also be GANTT_EVEN
-    private $iSimpleFont             = FF_FONT1;
+    private $iLayout                 = Configs::GANTT_FROMTOP; // Could also be Configs::GANTT_EVEN
+    private $iSimpleFont             = Configs::FF_FONT1;
     private $iSimpleFontSize         = 11;
-    private $iSimpleStyle            = GANTT_RDIAG;
+    private $iSimpleStyle            = Configs::GANTT_RDIAG;
     private $iSimpleColor            = 'yellow';
     private $iSimpleBkgColor         = 'red';
     private $iSimpleProgressBkgColor = 'gray';
     private $iSimpleProgressColor    = 'darkgreen';
-    private $iSimpleProgressStyle    = GANTT_SOLID;
+    private $iSimpleProgressStyle    = Configs::GANTT_SOLID;
     private $iZoomFactor             = 1.0;
 
     /**
@@ -59,14 +60,14 @@ class GanttGraph extends Graph
             //("You can't specify negative sizes for Gantt graph dimensions. Use 0 to indicate that you want the library to automatically determine a dimension.");
         }
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
-        $this->scale = new GanttScale($this->img);
+        $this->scale = new Scale\GanttScale($this->img);
 
         // Default margins
         $this->img->SetMargin(15, 17, 25, 15);
 
         $this->hgrid = new HorizontalGridLine();
 
-        $this->scale->ShowHeaders(GANTT_HWEEK | GANTT_HDAY);
+        $this->scale->ShowHeaders(Configs::getConfig('GANTT_HWEEK') | Configs::getConfig('GANTT_HDAY'));
         $this->SetBox();
     }
 
@@ -95,30 +96,30 @@ class GanttGraph extends Graph
         $num = safe_count($data);
         for ($i = 0; $i < $num; ++$i) {
             switch ($data[$i][1]) {
-                case ACTYPE_GROUP:
+                case Configs::getConfig('ACTYPE_GROUP'):
                     // Create a slightly smaller height bar since the
                     // "wings" at the end will make it look taller
                     $a = new Plot\GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 8);
-                    $a->title->SetFont($this->iSimpleFont, FS_BOLD, $this->iSimpleFontSize);
+                    $a->title->SetFont($this->iSimpleFont, Configs::getConfig('FS_BOLD'), $this->iSimpleFontSize);
                     $a->rightMark->Show();
-                    $a->rightMark->SetType(MARK_RIGHTTRIANGLE);
+                    $a->rightMark->SetType(Configs::getConfig('MARK_RIGHTTRIANGLE'));
                     $a->rightMark->SetWidth(8);
                     $a->rightMark->SetColor('black');
                     $a->rightMark->SetFillColor('black');
 
                     $a->leftMark->Show();
-                    $a->leftMark->SetType(MARK_LEFTTRIANGLE);
+                    $a->leftMark->SetType(Configs::getConfig('MARK_LEFTTRIANGLE'));
                     $a->leftMark->SetWidth(8);
                     $a->leftMark->SetColor('black');
                     $a->leftMark->SetFillColor('black');
 
-                    $a->SetPattern(BAND_SOLID, 'black');
+                    $a->SetPattern(Configs::getConfig('BAND_SOLID'), 'black');
                     $csimpos = 6;
 
                     break;
-                case ACTYPE_NORMAL:
+                case Configs::getConfig('ACTYPE_NORMAL'):
                     $a = new Plot\GanttBar($data[$i][0], $data[$i][2], $data[$i][3], $data[$i][4], '', 10);
-                    $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
+                    $a->title->SetFont($this->iSimpleFont, Configs::getConfig('FS_NORMAL'), $this->iSimpleFontSize);
                     $a->SetPattern($this->iSimpleStyle, $this->iSimpleColor);
                     $a->SetFillColor($this->iSimpleBkgColor);
                     // Check if this activity should have a constrain line
@@ -129,7 +130,7 @@ class GanttGraph extends Graph
                             //("Invalid format for Constrain parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)");
                         }
                         if ($constrains[$j][0] == $data[$i][0]) {
-                            $a->SetConstrain($constrains[$j][1], $constrains[$j][2], 'black', ARROW_S2, ARROWT_SOLID);
+                            $a->SetConstrain($constrains[$j][1], $constrains[$j][2], 'black', Configs::getConfig('ARROW_S2'), Configs::getConfig('ARROWT_SOLID'));
                         }
                     }
 
@@ -154,10 +155,10 @@ class GanttGraph extends Graph
                     $csimpos = 6;
 
                     break;
-                case ACTYPE_MILESTONE:
+                case Configs::getConfig('ACTYPE_MILESTONE'):
                     $a = new Plot\MileStone($data[$i][0], $data[$i][2], $data[$i][3]);
-                    $a->title->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
-                    $a->caption->SetFont($this->iSimpleFont, FS_NORMAL, $this->iSimpleFontSize);
+                    $a->title->SetFont($this->iSimpleFont, Configs::getConfig('FS_NORMAL'), $this->iSimpleFontSize);
+                    $a->caption->SetFont($this->iSimpleFont, Configs::getConfig('FS_NORMAL'), $this->iSimpleFontSize);
                     $csimpos = 5;
 
                     break;
@@ -459,55 +460,55 @@ class GanttGraph extends Graph
                 // If the days are displayed we also need to figure out
                 // how much space each day's title will require.
                 switch ($this->scale->day->iStyle) {
-                    case DAYSTYLE_LONG:
+                    case Configs::DAYSTYLE_LONG:
                         $txt = 'Monday';
 
                         break;
-                    case DAYSTYLE_LONGDAYDATE1:
+                    case Configs::DAYSTYLE_LONGDAYDATE1:
                         $txt = 'Monday 23 Jun';
 
                         break;
-                    case DAYSTYLE_LONGDAYDATE2:
+                    case Configs::DAYSTYLE_LONGDAYDATE2:
                         $txt = 'Monday 23 Jun 2003';
 
                         break;
-                    case DAYSTYLE_SHORT:
+                    case Configs::DAYSTYLE_SHORT:
                         $txt = 'Mon';
 
                         break;
-                    case DAYSTYLE_SHORTDAYDATE1:
+                    case Configs::DAYSTYLE_SHORTDAYDATE1:
                         $txt = 'Mon 23/6';
 
                         break;
-                    case DAYSTYLE_SHORTDAYDATE2:
+                    case Configs::DAYSTYLE_SHORTDAYDATE2:
                         $txt = 'Mon 23 Jun';
 
                         break;
-                    case DAYSTYLE_SHORTDAYDATE3:
+                    case Configs::DAYSTYLE_SHORTDAYDATE3:
                         $txt = 'Mon 23';
 
                         break;
-                    case DAYSTYLE_SHORTDATE1:
+                    case Configs::DAYSTYLE_SHORTDATE1:
                         $txt = '23/6';
 
                         break;
-                    case DAYSTYLE_SHORTDATE2:
+                    case Configs::DAYSTYLE_SHORTDATE2:
                         $txt = '23 Jun';
 
                         break;
-                    case DAYSTYLE_SHORTDATE3:
+                    case Configs::DAYSTYLE_SHORTDATE3:
                         $txt = 'Mon 23';
 
                         break;
-                    case DAYSTYLE_SHORTDATE4:
+                    case Configs::DAYSTYLE_SHORTDATE4:
                         $txt = '88';
 
                         break;
-                    case DAYSTYLE_CUSTOM:
+                    case Configs::DAYSTYLE_CUSTOM:
                         $txt = date($this->scale->day->iLabelFormStr, strtotime('2003-12-20 18:00'));
 
                         break;
-                    case DAYSTYLE_ONELETTER:
+                    case Configs::DAYSTYLE_ONELETTER:
                     default:
                         $txt = 'M';
 
@@ -523,24 +524,24 @@ class GanttGraph extends Graph
                 // of space. We therefore create a typical string for the choosen format
                 // and determine the length of that string.
                 switch ($this->scale->hour->iStyle) {
-                    case HOURSTYLE_HMAMPM:
+                    case Configs::HOURSTYLE_HMAMPM:
                         $txt = '12:00pm';
 
                         break;
-                    case HOURSTYLE_H24:
+                    case Configs::HOURSTYLE_H24:
                         // 13
                         $txt = '24';
 
                         break;
-                    case HOURSTYLE_HAMPM:
+                    case Configs::HOURSTYLE_HAMPM:
                         $txt = '12pm';
 
                         break;
-                    case HOURSTYLE_CUSTOM:
+                    case Configs::HOURSTYLE_CUSTOM:
                         $txt = date($this->scale->hour->iLabelFormStr, strtotime('2003-12-20 18:00'));
 
                         break;
-                    case HOURSTYLE_HM24:
+                    case Configs::HOURSTYLE_HM24:
                     default:
                         $txt = '24:00';
 
@@ -554,7 +555,7 @@ class GanttGraph extends Graph
                     // of space. We therefore create a typical string for the choosen format
                     // and determine the length of that string.
                     switch ($this->scale->minute->iStyle) {
-                        case HOURSTYLE_CUSTOM:
+                        case Configs::HOURSTYLE_CUSTOM:
                             $txt2 = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
 
                             break;
@@ -585,7 +586,7 @@ class GanttGraph extends Graph
                 // of space. We therefore create a typical string for the choosen format
                 // and determine the length of that string.
                 switch ($this->scale->minute->iStyle) {
-                    case HOURSTYLE_CUSTOM:
+                    case Configs::HOURSTYLE_CUSTOM:
                         $txt = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
 
                         break;
@@ -608,9 +609,9 @@ class GanttGraph extends Graph
                 // Depending on what format the user has choose we need different amount
                 // of space
                 $fsw = strlen($this->scale->week->iLabelFormStr);
-                if ($this->scale->week->iStyle == WEEKSTYLE_FIRSTDAY2WNBR) {
+                if ($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAY2WNBR) {
                     $fsw += 8;
-                } elseif ($this->scale->week->iStyle == WEEKSTYLE_FIRSTDAYWNBR) {
+                } elseif ($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAYWNBR) {
                     $fsw += 7;
                 } else {
                     $fsw += 4;
@@ -623,8 +624,8 @@ class GanttGraph extends Graph
             }
 
             if (!$this->scale->IsDisplayDay() && !$this->scale->IsDisplayHour() &&
-                !(($this->scale->week->iStyle == WEEKSTYLE_FIRSTDAYWNBR ||
-                    $this->scale->week->iStyle == WEEKSTYLE_FIRSTDAY2WNBR) && $this->scale->IsDisplayWeek())) {
+                !(($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAYWNBR ||
+                    $this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAY2WNBR) && $this->scale->IsDisplayWeek())) {
                 // If we don't display the individual days we can shrink the
                 // scale a little bit. This is a little bit pragmatic at the
                 // moment and should be re-written to take into account
@@ -716,7 +717,7 @@ class GanttGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // Should we autoscale dates?
 
@@ -733,7 +734,7 @@ class GanttGraph extends Graph
         // Should we start from the top or just spread the bars out even over the
         // available height
         $this->scale->SetVertLayout($this->iLayout);
-        if ($this->iLayout == GANTT_FROMTOP) {
+        if ($this->iLayout == Configs::GANTT_FROMTOP) {
             $maxheight = max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
             $this->scale->SetVertSpacing($maxheight * (1 + $this->iLabelVMarginFactor));
         }
@@ -807,7 +808,7 @@ class GanttGraph extends Graph
             // If the filename is given as the special "__handle"
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
+            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
                 return $this->img->img;
             }
             // Finally stream the generated picture

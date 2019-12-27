@@ -21,12 +21,12 @@ $__height      = 450;
 $graph         = new Graph\WindroseGraph($__width, $__height);
 $example_title = 'Windrose example 7';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->title->SetColor('navy');
 
 // Create the free windrose plot.
 $wp = new Plot\WindrosePlot($data);
-$wp->SetType(WINDROSE_TYPE16);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE16'));
 
 // Add some "arbitrary" text to the center
 $wp->scale->SetZeroLabel("SOx\n8%%");

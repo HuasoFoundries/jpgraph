@@ -42,12 +42,12 @@ $graph->yaxis->SetLabelFormatCallback('separator1000');
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(FF_FONT2);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT2'));
 
 // Setup graph title ands fonts$example_title='Example of Y-scale callback formatting'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -59,7 +59,7 @@ $bplot->SetShadow();
 $bplot->value->Show();
 
 // Must use TTF fonts if we want text at an arbitrary angle
-$bplot->value->SetFont(FF_ARIAL, FS_BOLD);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
 $bplot->value->SetAngle(45);
 $bplot->value->SetFormatCallback('separator1000_usd');
 

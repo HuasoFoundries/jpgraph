@@ -20,7 +20,7 @@ $graph    = new Graph\PieGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 
 // Set A title for the plot$example_title='3D Pie Client side image map'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create
 $p1 = new Plot\PiePlot3D($data);
@@ -39,6 +39,6 @@ $p1->SetCenter(0.4, 0.5);
 
 $graph->Add($p1);
 
-// Send back the HTML page which will call this script again
+// Send back the Graph\Configs::getConfig('HTML') page which will call this script again
 // to retrieve the image.
 $graph->StrokeCSIM();

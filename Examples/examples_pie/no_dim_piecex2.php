@@ -25,7 +25,7 @@ $graph->SetFrame(false);
 // $graph->SetShadow();
 
 // Setup title$example_title='Plot\\PiePlotC'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 
 // Create the pie plot
@@ -35,20 +35,20 @@ $p1 = new Plot\PiePlotC($data);
 $p1->SetSize(0.35);
 
 // Label font and color setup
-$p1->value->SetFont(FF_ARIAL, FS_BOLD, 12);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $p1->value->SetColor('white');
 
 $p1->value->Show();
 
 // Setup the title on the center circle
 $p1->midtitle->Set("Test mid\nRow 1\nRow 2");
-$p1->midtitle->SetFont(FF_ARIAL, FS_NORMAL, 14);
+$p1->midtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
 
 // Set color for mid circle
 $p1->SetMidColor('yellow');
 
 // Use percentage values in the legends values (This is also the default)
-$p1->SetLabelType(PIE_VALUE_PER);
+$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_PER'));
 
 // The label array values may have printf() formatting in them. The argument to the
 // form,at string will be the value of the slice (either the percetage or absolute

@@ -27,6 +27,7 @@ use Amenadiel\JpGraph\Image;
  */
 class CanvasGraph extends Graph
 {
+    public $scale;
     /**
      * CONSTRUCTOR.
      *
@@ -71,7 +72,7 @@ class CanvasGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -94,10 +95,10 @@ class CanvasGraph extends Graph
                 );
             }
 
-            // If the filename is given as the special _IMG_HANDLER
+            // If the filename is given as the special Configs::getConfig('_IMG_HANDLER')
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
+            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
                 return $this->img->img;
             }
             // Finally stream the generated picture
@@ -105,6 +106,12 @@ class CanvasGraph extends Graph
 
             return true;
         }
+    }
+
+    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10)
+    {
+        $this->scale = new Scale\CanvasScale($this, $xmin, $xmax, $ymin, $ymax);
+        $this->scale->Set($xmin, $xmax, $ymin, $ymax);
     }
 } // @class
 

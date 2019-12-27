@@ -34,15 +34,15 @@ $data     = [];
 $xdata    = [];
 $data[0]  = rand(20, 100);
 $xdata[0] = $adjstart;
-for ($i = 1; $i < NDATAPOINTS; ++$i) {
+for ($i = 1; $i < Graph\Configs::getConfig('NDATAPOINTS'); ++$i) {
     $data[$i]  = rand(20, 100) * 0.2 + $data[$i - 1] * 0.8;
-    $xdata[$i] = $adjstart + $i * SAMPLERATE;
+    $xdata[$i] = $adjstart + $i * Graph\Configs::getConfig('SAMPLERATE');
 }
 
 // Assume that the data points represents data that is sampled every 10s
 // when determing the end value on the scale. We also add some extra
 // length to end on an even label tick.
-$adjend = $adjstart + (NDATAPOINTS + 10) * 10;
+$adjend = $adjstart + (Graph\Configs::getConfig('NDATAPOINTS') + 10) * 10;
 
 $__width  = 500;
 $__height = 250;

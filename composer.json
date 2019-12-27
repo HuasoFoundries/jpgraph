@@ -22,20 +22,26 @@
   },
   "require-dev": {
     "ext-xdebug": "*",
-    "friendsofphp/php-cs-fixer": "^2.4",
-    "phpunit/phpunit": "^6",
-    "codeception/codeception": "~2.4.1",
+    "friendsofphp/php-cs-fixer": "2.15",
     "monolog/monolog": "^1.23",
     "kint-php/kint": "^2.2",
     "php-console/php-console": "^3.1",
     "symfony/event-dispatcher": "~4.2",
-    "symfony/yaml": "4.*"
+    "symfony/yaml": "4.*",
+    "phpmd/phpmd": "^2.8",
+    "bmitch/churn-php": "^1.0",
+    "sebastian/phpcpd": "^4.1",
+    "codeception/codeception": "^4.0",
+    "vimeo/psalm": "^3.7",
+    "codeception/module-asserts": "^1.1"
   },
   "autoload": {
     "psr-4": {
-      "Amenadiel\\JpGraph\\UnitTest\\": "tests/unit",
+      "Amenadiel\\JpGraph\\UnitTest\\": "tests",
       "Amenadiel\\JpGraph\\": "src/",
       "Amenadiel\\JpGraph\\Graph\\": "src/graph",
+      "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
+      "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
       "Amenadiel\\JpGraph\\Image\\": "src/image",
       "Amenadiel\\JpGraph\\Plot\\": "src/plot",
       "Amenadiel\\JpGraph\\Text\\": "src/text",

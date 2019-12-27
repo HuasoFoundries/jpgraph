@@ -39,15 +39,15 @@ $table->SetRowFillColor($r - 1, 'yellow');
 $table->SetCellAlign($r - 1, 0, 'right');
 
 // Setup row and column headers
-$table->SetRowFont(0, FF_ARIAL, FS_NORMAL, 10);
+$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $table->SetRowColor(0, 'navy');
 $table->SetRowFillColor(0, 'lightgray');
 
-$table->SetColFont(0, FF_ARIAL, FS_NORMAL, 10);
+$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 
-$table->SetRowGrid($r - 1, 1, 'black', TGRID_DOUBLE);
+$table->SetRowGrid($r - 1, 1, 'black', Graph\Configs::getConfig('TGRID_DOUBLE'));
 
 $graph->Add($table);
 $graph->Stroke();

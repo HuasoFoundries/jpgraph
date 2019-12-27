@@ -29,7 +29,7 @@ $graph->yaxis->HideTicks(false, false);
 
 $graph->xaxis->SetTickLabels(['A', 'B', 'C', 'D']);
 $graph->ygrid->SetFill(false);
-$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 
 $p1 = new Plot\LinePlot($datay1);
 $graph->Add($p1);
@@ -39,14 +39,14 @@ $graph->Add($p2);
 
 $p1->SetColor('#55bbdd');
 $p1->SetLegend('Line 1');
-$p1->mark->SetType(MARK_FILLEDCIRCLE, '', 1.0);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'), '', 1.0);
 $p1->mark->SetColor('#55bbdd');
 $p1->mark->SetFillColor('#55bbdd');
 $p1->SetCenter();
 
 $p2->SetColor('#aaaaaa');
 $p2->SetLegend('Line 2');
-$p2->mark->SetType(MARK_UTRIANGLE, '', 1.0);
+$p2->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'), '', 1.0);
 $p2->mark->SetColor('#aaaaaa');
 $p2->mark->SetFillColor('#aaaaaa');
 $p2->value->SetMargin(14);

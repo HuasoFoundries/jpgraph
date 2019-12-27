@@ -57,7 +57,7 @@ class PiePlot
         'earth'  => [136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430],
         'pastel' => [27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38],
         'water'  => [8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388],
-        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393], ];
+        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393]];
     protected $setslicecolors      = [];
     protected $labeltype           = 0; // Default to percentage
     protected $pie_border          = true;
@@ -87,7 +87,7 @@ class PiePlot
     {
         $this->data  = array_reverse($data);
         $this->title = new Text\Text('');
-        $this->title->SetFont(FF_DEFAULT, FS_BOLD);
+        $this->title->SetFont(Configs::FF_DEFAULT, Configs::FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.1f%%');

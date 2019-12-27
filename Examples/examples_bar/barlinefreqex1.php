@@ -48,15 +48,15 @@ $graph->SetMarginColor('#EEEEEE');
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Turn the tickmarks
-$graph->xaxis->SetTickSide(SIDE_DOWN);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
-$graph->y2axis->SetTickSide(SIDE_RIGHT);
+$graph->y2axis->SetTickSide(Graph\Configs::getConfig('SIDE_RIGHT'));
 $graph->y2axis->SetColor('black', 'blue');
 $graph->y2axis->SetLabelFormat('%3d.0%%');
 
@@ -78,12 +78,12 @@ $graph->AddY2($lplot);
 $bplot->SetFillColor('orange@0.2');
 $bplot->SetValuePos('center');
 $bplot->value->SetFormat('%d');
-$bplot->value->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $bplot->value->Show();
 
 // Add it to the graph
 $graph->Add($bplot);
 
-// Send back the HTML page which will call this script again
+// Send back the Graph\Configs::getConfig('HTML') page which will call this script again
 // to retrieve the image.
 $graph->Stroke();

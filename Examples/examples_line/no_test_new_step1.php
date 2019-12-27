@@ -25,7 +25,7 @@ $graph->ygrid->Show(true);
 $graph->xgrid->Show(false);
 $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#FFFFFF@0.5', '#FFFFFF@0.5');
-$graph->SetBackgroundGradient('blue', '#55eeff', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('blue', '#55eeff', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 $graph->xaxis->SetTickLabels(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
 
 // Create the line

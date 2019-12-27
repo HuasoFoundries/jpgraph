@@ -27,4 +27,4 @@ $text = 'Р' .
     'Э' .
     'Ю' .
     'Я';
-$led->StrokeNumber($text, LEDC_RED);
+$led->StrokeNumber($text, Graph\Configs::getConfig('LEDC_RED'));

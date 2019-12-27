@@ -27,8 +27,8 @@ $odo2->SetColor('lightgray:1.9');
 // Adjust start and end angle for the scale
 $odo2->scale->SetAngle(110, 250);
 
-$odo1->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
-$odo2->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
+$odo1->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$odo2->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $odo2->AddIndication(-15, 0, 'lightgray');
 $odo2->AddIndication(100, 115, 'lightgray');
 

@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX05.PHP
+// File:    Graph\Configs::getConfig('ODOEX05').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -86,7 +86,7 @@ $odo->scale->SetTickWeight(2);
 //---------------------------------------------------------------------
 // Use a bold font for tick labels
 //---------------------------------------------------------------------
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Set display value for the odometer
@@ -102,7 +102,7 @@ $odo->label->Set('% Passed');
 //---------------------------------------------------------------------
 // Set a new style for the needle
 //---------------------------------------------------------------------
-$odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
+$odo->needle->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_MEDIUM_TRIANGLE'));
 $odo->needle->SetLength(0.7); // Length as 70% of the radius
 $odo->needle->SetFillColor('orange');
 
@@ -110,7 +110,7 @@ $odo->needle->SetFillColor('orange');
 // Setup the second indicator needle
 //---------------------------------------------------------------------
 $odo->needle2->Set(24);
-$odo->needle2->SetStyle(NEEDLE_STYLE_SMALL_TRIANGLE);
+$odo->needle2->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_SMALL_TRIANGLE'));
 $odo->needle2->SetLength(0.55); // Length as 70% of the radius
 $odo->needle2->SetFillColor('lightgray');
 $odo->needle2->Show();

@@ -28,7 +28,7 @@ $g        = new Graph\Graph($__width, $__height);
 $g->SetMargin(30, 20, 40, 30);
 $example_title = 'Bezier interpolation';
 $g->title->set($example_title);
-$g->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$g->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $g->subtitle->Set('(Control points shown in red)');
 $g->subtitle->SetColor('darkred');
 $g->SetMarginColor('lightblue');

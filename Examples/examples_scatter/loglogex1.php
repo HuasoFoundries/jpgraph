@@ -34,9 +34,9 @@ $graph->yaxis->title->Set('rho_s [Ohm m]');
 $graph->y2axis->title->Set('mn/2 [m]');
 $graph->y2axis->title->SetColor('blue');
 $graph->y2axis->SetTitleMargin(35);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xgrid->Show(true, true);
 $graph->ygrid->Show(true, true);
 
@@ -44,13 +44,13 @@ $graph->ygrid->Show(true, true);
 
 $lineplot = new Plot\LinePlot($rhos, $ab2);
 $lineplot->SetWeight(1);
-$lineplot->mark->SetType(MARK_FILLEDCIRCLE);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $lineplot->mark->SetWidth(2);
 
 // Create scatter plot
 
 $scplot = new Plot\ScatterPlot($mn2, $ab2);
-$scplot->mark->SetType(MARK_FILLEDCIRCLE);
+$scplot->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $scplot->mark->SetColor('blue');
 $scplot->mark->SetWidth(2);
 

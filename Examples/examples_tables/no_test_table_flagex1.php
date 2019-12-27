@@ -23,18 +23,18 @@ $data = [
     ['Feb', 13, 17, 15, 8, 3, 9],
     ['Mar', 34, 35, 26, 20, 22, 16],
     ['Apr', 41, 43, 49, 45, 51, 47],
-    ['Sum:', 88, 95, 90, 73, 76, 72], ];
+    ['Sum:', 88, 95, 90, 73, 76, 72]];
 
 $countries = ['united states', 'united kingdom', 'french republic', 'denmark', 'iceland', 'canada'];
 
 // Create a basic table and default fonr
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(FF_TIMES, FS_NORMAL, 11);
+$table->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 11);
 
 // Adjust the font for row 0 and 6
-$table->SetColFont(0, FF_ARIAL, FS_BOLD, 11);
-$table->SetRowFont(6, FF_TIMES, FS_BOLD, 12);
+$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetRowFont(6, Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 // Set the minimum heigth/width
 $table->SetMinRowHeight(2, 10);
@@ -42,11 +42,11 @@ $table->SetMinColWidth(70);
 
 // Add some padding (in pixels)
 $table->SetRowPadding(2, 0);
-$table->SetRowGrid(6, 1, 'darkgray', TGRID_DOUBLE2);
+$table->SetRowGrid(6, 1, 'darkgray', Graph\Configs::getConfig('TGRID_DOUBLE2'));
 
 // Setup the grid
 $table->SetGrid(0);
-$table->SetRowGrid(6, 1, 'black', TGRID_DOUBLE2);
+$table->SetRowGrid(6, 1, 'black', Graph\Configs::getConfig('TGRID_DOUBLE2'));
 
 // Merge all cells in row 0
 $table->MergeRow(0);
@@ -64,7 +64,7 @@ $table->SetColFillColor(0, 'lightgray@0.5');
 $n = count($countries);
 for ($i = 0; $i < $n; ++$i) {
     $table->SetCellCountryFlag(1, $i + 1, $countries[$i], 0.5);
-    $table->SetCellImageConstrain(1, $i + 1, TIMG_HEIGHT, 20);
+    $table->SetCellImageConstrain(1, $i + 1, Graph\Configs::getConfig('TIMG_HEIGHT'), 20);
 }
 
 // Add the table to the graph

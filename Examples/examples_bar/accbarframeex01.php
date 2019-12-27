@@ -23,12 +23,12 @@ $graph->SetMarginColor('white');
 
 // Create the first bar
 $bplot = new Plot\BarPlot($datay1);
-$bplot->SetFillGradient('AntiqueWhite2', 'AntiqueWhite4:0.8', GRAD_VERT);
+$bplot->SetFillGradient('AntiqueWhite2', 'AntiqueWhite4:0.8', Graph\Configs::getConfig('GRAD_VERT'));
 $bplot->SetColor('darkred');
 
 // Create the second bar
 $bplot2 = new Plot\BarPlot($datay2);
-$bplot2->SetFillGradient('olivedrab1', 'olivedrab4', GRAD_VERT);
+$bplot2->SetFillGradient('olivedrab1', 'olivedrab4', Graph\Configs::getConfig('GRAD_VERT'));
 $bplot2->SetColor('darkgreen');
 
 // And join them in an accumulated bar

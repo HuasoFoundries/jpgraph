@@ -119,7 +119,7 @@ $(document).ready(() => {
             //_.omit(obj.prefixes, prior)
           )
             //obj.value
-            .concat(`\n---------- COMMON: \n`)
+            .concat(`\n---------- Graph\Configs::getConfig('COMMON'): \n`)
             .concat(common)
             .join(", ") +
           "</textarea><hr>"

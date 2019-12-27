@@ -24,7 +24,7 @@ $graph->SetMarginColor('lightblue');
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(FF_FONT1);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 $graph->xaxis->SetColor('darkblue', 'black');
 
 // Setup hidden y-axis by given it the same color
@@ -34,10 +34,10 @@ $graph->yaxis->SetColor('lightblue', 'darkblue');
 $graph->ygrid->SetColor('white');
 
 // Setup graph title ands fonts$example_title='Using grace = 10%'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->SetTitle('Year 2002', 'center');
 $graph->xaxis->SetTitleMargin(10);
-$graph->xaxis->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add some grace to the top so that the scale doesn't
 // end exactly at the max value.
@@ -53,7 +53,7 @@ $bplot->SetShadow('darkgray');
 // Setup the values that are displayed on top of each bar
 // Must use TTF fonts if we want text at an arbitrary angle
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $bplot->value->SetFormat('$%d');
 $bplot->value->SetColor('darkred');
 $bplot->value->SetAngle(45);

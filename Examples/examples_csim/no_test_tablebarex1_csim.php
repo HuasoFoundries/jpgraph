@@ -34,9 +34,9 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
 // Setup titles and fonts$example_title='Bar and table'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_NORMAL, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 14);
 $graph->yaxis->title->Set('Flow');
-$graph->yaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $graph->yaxis->title->SetMargin(10);
 
 // Create the bars and the accbar plot
@@ -58,14 +58,14 @@ $table->SetPos($tablexpos, $tableypos + 1);
 $table->SetCellCSIMTarget(1, 1, 'tableex02.php', 'View details');
 
 // Basic table formatting
-$table->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$table->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $table->SetAlign('right');
 $table->SetMinColWidth($cellwidth);
 $table->SetNumberFormat('%0.1f');
 
 // Format table header row
 $table->SetRowFillColor(0, 'teal@0.7');
-$table->SetRowFont(0, FF_ARIAL, FS_BOLD, 11);
+$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $table->SetRowAlign(0, 'center');
 
 // .. and add it to the graph

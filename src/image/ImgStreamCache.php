@@ -13,7 +13,7 @@ use Amenadiel\JpGraph\Util;
  * // Description: Handle caching of graphs to files. All image output goes
  * //              through this class
  */
-class ImgStreamCache
+class ImgStreamCache extends Configs
 {
     private $cache_dir;
     private $timeout = 0;
@@ -27,11 +27,9 @@ class ImgStreamCache
      */
     public function __construct($aCacheDir = null)
     {
-        // if CACHE_DIR is not defined, it means we haven't initialized the library yet
-        if (!defined('CACHE_DIR')) {
-            Util\Helper::bootstrapLibrary();
-        }
-        $this->cache_dir = $aCacheDir || CACHE_DIR;
+        // if Configs::getConfig('CACHE_DIR') is not defined, it means we haven't initialized the library yet
+
+        $this->cache_dir = $aCacheDir || Configs::getConfig('CACHE_DIR');
     }
 
     /**
@@ -52,8 +50,8 @@ class ImgStreamCache
     public function PutAndStream($aImage, $aCacheFileName, $aInline, $aStrokeFileName)
     {
         // Check if we should always stroke the image to a file
-        if (_FORCE_IMGTOFILE) {
-            $aStrokeFileName = _FORCE_IMGDIR . Util\Helper::GenImgName();
+        if (self::_FORCE_IMGTOFILE) {
+            $aStrokeFileName = self::_FORCE_IMGDIR . Util\Helper::GenImgName();
         }
 
         if ($aStrokeFileName != '') {
@@ -83,7 +81,7 @@ class ImgStreamCache
             return;
         }
 
-        if ($aCacheFileName != '' && USE_CACHE) {
+        if ($aCacheFileName != '' && Configs::getConfig('USE_CACHE')) {
             $aCacheFileName = $this->cache_dir . $aCacheFileName;
             if (file_exists($aCacheFileName)) {
                 if (!$aInline) {
@@ -123,11 +121,11 @@ class ImgStreamCache
 
             $res = true;
             // Set group to specified
-            if (CACHE_FILE_GROUP != '') {
-                $res = @chgrp($aCacheFileName, CACHE_FILE_GROUP);
+            if (Configs::getConfig('CACHE_FILE_GROUP') != '') {
+                $res = @chgrp($aCacheFileName, Configs::getConfig('CACHE_FILE_GROUP'));
             }
-            if (CACHE_FILE_MOD != '') {
-                $res = @chmod($aCacheFileName, CACHE_FILE_MOD);
+            if (Configs::getConfig('CACHE_FILE_MOD') != '') {
+                $res = @chmod($aCacheFileName, Configs::getConfig('CACHE_FILE_MOD'));
             }
             if (!$res) {
                 Util\JpGraphError::RaiseL(25115, $aStrokeFileName);
@@ -155,7 +153,7 @@ class ImgStreamCache
     public function IsValid($aCacheFileName)
     {
         $aCacheFileName = $this->cache_dir . $aCacheFileName;
-        if (USE_CACHE && file_exists($aCacheFileName)) {
+        if (Configs::getConfig('USE_CACHE') && file_exists($aCacheFileName)) {
             $diff = time() - filemtime($aCacheFileName);
             if ($this->timeout > 0 && ($diff > $this->timeout * 60)) {
                 return false;
@@ -218,9 +216,9 @@ class ImgStreamCache
             // This is necessary if Apache user doesn't belong the
             // default group and hence can't specify group permission
             // in the previous mkdir() call
-            if (CACHE_FILE_GROUP != '') {
+            if (Configs::getConfig('CACHE_FILE_GROUP') != '') {
                 $res = true;
-                $res = @chgrp($dirs[$i], CACHE_FILE_GROUP);
+                $res = @chgrp($dirs[$i], Configs::getConfig('CACHE_FILE_GROUP'));
                 $res = @chmod($dirs[$i], 0777);
                 if (!$res) {
                     Util\JpGraphError::RaiseL(25119, $aFile); //(" Can't set permissions for $aFile. Permission problems?");

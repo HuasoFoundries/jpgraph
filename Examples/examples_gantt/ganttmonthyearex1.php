@@ -24,7 +24,7 @@ $graph->scale->dividerh->SetColor('yellow:0.6');
 $graph->SetDateRange('2001-10-06', '2002-4-01');
 
 // Display month and year scale with the gridlines
-$graph->ShowHeaders(GANTT_HMONTH | GANTT_HYEAR);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HYEAR'));
 $graph->scale->month->grid->SetColor('gray');
 $graph->scale->month->grid->Show(true);
 $graph->scale->year->grid->SetColor('gray');
@@ -32,7 +32,7 @@ $graph->scale->year->grid->Show(true);
 
 // Data for our example activities
 $data = [
-    [0, 'Group 1  Johan', '2001-11-23', '2002-03-1', FF_FONT1, FS_BOLD, 8],
+    [0, 'Group 1  Johan', '2001-11-23', '2002-03-1', Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 8],
     [1, '  Label 2', '2001-10-26', '2001-11-16']];
 
 // Create the bars and add them to the gantt chart
@@ -41,10 +41,10 @@ for ($i = 0; $i < count($data); ++$i) {
     if (count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
-    $bar->SetPattern(BAND_RDIAG, 'yellow');
+    $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');
     $bar->SetFillColor('red');
     $bar->progress->Set(0.5);
-    $bar->progress->SetPattern(GANTT_SOLID, 'darkgreen');
+    $bar->progress->SetPattern(Graph\Configs::getConfig('GANTT_SOLID'), 'darkgreen');
     $graph->Add($bar);
 }
 

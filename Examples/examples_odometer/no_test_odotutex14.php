@@ -16,7 +16,7 @@ $graph         = new OdoGraph($__width, $__height);
 $example_title = 'Custom scale';
 $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add drop shadow for graph
 $graph->SetShadow();

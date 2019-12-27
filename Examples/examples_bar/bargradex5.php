@@ -32,26 +32,26 @@ $bplot->SetYMin(0.302);
 // Setup color for gradient fill style
 $tcol = [100, 100, 255];
 $fcol = [255, 100, 100];
-$bplot->SetFillGradient($fcol, $tcol, GRAD_HOR);
+$bplot->SetFillGradient($fcol, $tcol, Graph\Configs::getConfig('GRAD_HOR'));
 $bplot->SetFillColor('orange');
 $graph->Add($bplot);
 
 // Set up the title for the graph$example_title=Bargraph which doesn't start from y=0; $graph->title->set($example_title);
 $graph->title->SetColor('yellow');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 // Setup color for axis and labels
 $graph->xaxis->SetColor('black', 'white');
 $graph->yaxis->SetColor('black', 'white');
 
 // Setup font for axis
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
-$graph->yaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 
 // Setup X-axis title (color & font)
 $graph->xaxis->title->Set('X-axis');
 $graph->xaxis->title->SetColor('white');
-$graph->xaxis->title->SetFont(FF_VERDANA, FS_BOLD, 10);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 10);
 
 // Finally send the graph to the browser
 $graph->Stroke();

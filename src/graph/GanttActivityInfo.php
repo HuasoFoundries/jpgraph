@@ -32,8 +32,8 @@ class GanttActivityInfo
     public $vgrid;
     private $iColor           = 'black';
     private $iBackgroundColor = 'lightgray';
-    private $iFFamily         = FF_FONT1;
-    private $iFStyle          = FS_NORMAL;
+    private $iFFamily         = Configs::FF_FONT1;
+    private $iFStyle          = Configs::FS_NORMAL;
     private $iFSize           = 10;
     private $iFontColor       = 'black';
     private $iTitles          = [];
@@ -59,7 +59,7 @@ class GanttActivityInfo
     }
 
     // Specify font
-    public function SetFont($aFFamily, $aFStyle = FS_NORMAL, $aFSize = 10)
+    public function SetFont($aFFamily, $aFStyle = Configs::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
         $this->iFStyle  = $aFStyle;

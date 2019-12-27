@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ *  Graph\Configs::getConfig('JPG')raph v4.0.0
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -28,7 +28,7 @@ $graph->SetScale('intlin');
 $example_title = 'Using multiple Y-axis';
 $example_title = $example_title;
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
 
 $graph->SetYScale(0, 'lin');
 $graph->SetYScale(1, 'lin');

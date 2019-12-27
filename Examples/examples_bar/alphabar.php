@@ -32,17 +32,17 @@ $graph->legend->SetFillColor('lightblue@0.3');
 $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 // Set a nice summer (in Stockholm) image
-$graph->SetBackgroundImage(__DIR__ . '/../assets/stship.jpg', BGIMG_COPY);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/stship.jpg', Graph\Configs::getConfig('BGIMG_COPY'));
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->SetColor('white');
 
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->SetColor('white');
 
-$graph->yaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->yaxis->SetColor('white');
 
 //$graph->ygrid->Show(false);
@@ -51,7 +51,7 @@ $graph->ygrid->SetColor('white@0.5');
 // Setup graph title$example_title='Using alpha blending with a background'; $graph->title->set($example_title);
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Create the three var series we will combine
 $bplot1 = new Plot\BarPlot($datay1);

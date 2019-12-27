@@ -17,15 +17,15 @@ use Amenadiel\JpGraph\Util;
  * // This was a design decision to make the code easier to
  * // follow.
  */
-class AxisPrototype
+class AxisPrototype extends Configs
 {
     public $scale;
     public $img;
     public $hide        = false;
     public $hide_labels = false;
     public $title;
-    public $font_family = FF_DEFAULT;
-    public $font_style  = FS_NORMAL;
+    public $font_family = Configs::FF_DEFAULT;
+    public $font_style  = Configs::FS_NORMAL;
     public $font_size   = 8;
     public $label_angle = 0;
     public $tick_step   = 1;
@@ -43,7 +43,7 @@ class AxisPrototype
     protected $labelPos = 0; // Which side of the axis should the labels be?
     protected $title_adjust;
     protected $title_margin;
-    protected $title_side        = SIDE_LEFT;
+    protected $title_side        = Configs::SIDE_LEFT;
     protected $tick_label_margin = 5;
     protected $label_halign      = '';
     protected $label_valign      = '';
@@ -63,14 +63,14 @@ class AxisPrototype
             $this->title_adjust = 'middle';
             $this->title->SetOrientation(90);
             $this->tick_label_margin = 7;
-            $this->labelPos          = SIDE_LEFT;
+            $this->labelPos          = Configs::getConfig('SIDE_LEFT');
         } else {
             $this->title_margin = 5;
             $this->title_adjust = 'high';
             $this->title->SetOrientation(0);
             $this->tick_label_margin = 5;
-            $this->labelPos          = SIDE_DOWN;
-            $this->title_side        = SIDE_DOWN;
+            $this->labelPos          = Configs::getConfig('SIDE_DOWN');
+            $this->title_side        = Configs::getConfig('SIDE_DOWN');
         }
     }
 
@@ -244,7 +244,7 @@ class AxisPrototype
     }
 
     // Set the font
-    public function SetFont($aFamily, $aStyle = FS_NORMAL, $aSize = 10)
+    public function SetFont($aFamily, $aStyle = Configs::FS_NORMAL, $aSize = 10)
     {
         $this->font_family = $aFamily;
         $this->font_style  = $aStyle;

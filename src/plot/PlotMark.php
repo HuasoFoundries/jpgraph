@@ -73,8 +73,8 @@ class PlotMark
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
         $this->type = $aType;
-        if ($aType == MARK_IMG && $aFileName == '') {
-            Util\JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to MARK_IMG.');
+        if ($aType == Configs::getConfig('MARK_IMG') && $aFileName == '') {
+            Util\JpGraphError::RaiseL(23003); //('A filename must be specified if you set the mark type to Configs::getConfig('MARK_IMG').');
         }
         $this->iFileName = $aFileName;
         $this->iScale    = $aScale;
@@ -124,8 +124,8 @@ class PlotMark
     public function SetDefaultWidth()
     {
         switch ($this->type) {
-            case MARK_CIRCLE:
-            case MARK_FILLEDCIRCLE:
+            case Configs::getConfig('MARK_CIRCLE'):
+            case Configs::getConfig('MARK_FILLEDCIRCLE'):
                 $this->width = 4;
 
                 break;
@@ -260,22 +260,22 @@ class PlotMark
             $imgscale = $this->iScale;
         }
 
-        if ($this->type == MARK_IMG ||
-            ($this->type >= MARK_FLAG1 && $this->type <= MARK_FLAG4) ||
-            $this->type >= MARK_IMG_PUSHPIN) {
+        if ($this->type == Configs::getConfig('MARK_IMG') ||
+            ($this->type >= Configs::getConfig('MARK_FLAG1') && $this->type <= Configs::getConfig('MARK_FLAG4')) ||
+            $this->type >= Configs::getConfig('MARK_IMG_PUSHPIN')) {
             // Note: For the builtin images we use the "filename" parameter
             // to denote the color
             $anchor_x = 0.5;
             $anchor_y = 0.5;
             switch ($this->type) {
-                case MARK_FLAG1:
-                case MARK_FLAG2:
-                case MARK_FLAG3:
-                case MARK_FLAG4:
-                    $this->markimg = Util\FlagCache::GetFlagImgByName($this->type - MARK_FLAG1 + 1, $filename);
+                case Configs::getConfig('MARK_FLAG1'):
+                case Configs::getConfig('MARK_FLAG2'):
+                case Configs::getConfig('MARK_FLAG3'):
+                case Configs::getConfig('MARK_FLAG4'):
+                    $this->markimg = Util\FlagCache::GetFlagImgByName($this->type - Configs::getConfig('MARK_FLAG1') + 1, $filename);
 
                     break;
-                case MARK_IMG:
+                case Configs::getConfig('MARK_IMG'):
                     // Load an image and use that as a marker
                     // Small optimization, if we have already read an image don't
                     // waste time reading it again.
@@ -285,9 +285,9 @@ class PlotMark
                     }
 
                     break;
-                case MARK_IMG_PUSHPIN:
-                case MARK_IMG_SPUSHPIN:
-                case MARK_IMG_LPUSHPIN:
+                case Configs::getConfig('MARK_IMG_PUSHPIN'):
+                case Configs::getConfig('MARK_IMG_SPUSHPIN'):
+                case Configs::getConfig('MARK_IMG_LPUSHPIN'):
                     if ($this->imgdata_pushpins == null) {
                         $this->imgdata_pushpins = new Image\ImgData_PushPins();
                     }
@@ -295,7 +295,7 @@ class PlotMark
                     list($anchor_x, $anchor_y) = $this->imgdata_pushpins->GetAnchor();
 
                     break;
-                case MARK_IMG_SQUARE:
+                case Configs::getConfig('MARK_IMG_SQUARE'):
                     if ($this->imgdata_squares == null) {
                         $this->imgdata_squares = new Image\ImgData_Squares();
                     }
@@ -303,7 +303,7 @@ class PlotMark
                     list($anchor_x, $anchor_y) = $this->imgdata_squares->GetAnchor();
 
                     break;
-                case MARK_IMG_STAR:
+                case Configs::getConfig('MARK_IMG_STAR'):
                     if ($this->imgdata_stars == null) {
                         $this->imgdata_stars = new Image\ImgData_Stars();
                     }
@@ -311,7 +311,7 @@ class PlotMark
                     list($anchor_x, $anchor_y) = $this->imgdata_stars->GetAnchor();
 
                     break;
-                case MARK_IMG_BEVEL:
+                case Configs::getConfig('MARK_IMG_BEVEL'):
                     if ($this->imgdata_bevels == null) {
                         $this->imgdata_bevels = new Image\ImgData_Bevels();
                     }
@@ -319,7 +319,7 @@ class PlotMark
                     list($anchor_x, $anchor_y) = $this->imgdata_bevels->GetAnchor();
 
                     break;
-                case MARK_IMG_DIAMOND:
+                case Configs::getConfig('MARK_IMG_DIAMOND'):
                     if ($this->imgdata_diamonds == null) {
                         $this->imgdata_diamonds = new Image\ImgData_Diamonds();
                     }
@@ -327,10 +327,10 @@ class PlotMark
                     list($anchor_x, $anchor_y) = $this->imgdata_diamonds->GetAnchor();
 
                     break;
-                case MARK_IMG_BALL:
-                case MARK_IMG_SBALL:
-                case MARK_IMG_MBALL:
-                case MARK_IMG_LBALL:
+                case Configs::getConfig('MARK_IMG_BALL'):
+                case Configs::getConfig('MARK_IMG_SBALL'):
+                case Configs::getConfig('MARK_IMG_MBALL'):
+                case Configs::getConfig('MARK_IMG_LBALL'):
                     if ($this->imgdata_balls == null) {
                         $this->imgdata_balls = new Image\ImgData_Balls();
                     }
@@ -384,7 +384,7 @@ class PlotMark
         $pts    = 0;
 
         switch ($this->type) {
-            case MARK_SQUARE:
+            case Configs::getConfig('MARK_SQUARE'):
                 $c[] = $x - $dx;
                 $c[] = $y - $dy;
                 $c[] = $x + $dx;
@@ -398,7 +398,7 @@ class PlotMark
                 $pts = 5;
 
                 break;
-            case MARK_UTRIANGLE:
+            case Configs::getConfig('MARK_UTRIANGLE'):
                 ++$dx; ++$dy;
                 $c[] = $x - $dx;
                 $c[] = $y + 0.87 * $dy; // tan(60)/2*$dx
@@ -411,7 +411,7 @@ class PlotMark
                 $pts = 4;
 
                 break;
-            case MARK_DTRIANGLE:
+            case Configs::getConfig('MARK_DTRIANGLE'):
                 ++$dx; ++$dy;
                 $c[] = $x;
                 $c[] = $y + 0.87 * $dy; // tan(60)/2*$dx
@@ -424,7 +424,7 @@ class PlotMark
                 $pts = 4;
 
                 break;
-            case MARK_DIAMOND:
+            case Configs::getConfig('MARK_DIAMOND'):
                 $c[] = $x;
                 $c[] = $y + $dy;
                 $c[] = $x - $dx;
@@ -438,7 +438,7 @@ class PlotMark
                 $pts = 5;
 
                 break;
-            case MARK_LEFTTRIANGLE:
+            case Configs::getConfig('MARK_LEFTTRIANGLE'):
                 $c[] = $x;
                 $c[] = $y;
                 $c[] = $x;
@@ -450,7 +450,7 @@ class PlotMark
                 $pts = 4;
 
                 break;
-            case MARK_RIGHTTRIANGLE:
+            case Configs::getConfig('MARK_RIGHTTRIANGLE'):
                 $c[] = $x - $dx * 2;
                 $c[] = $y;
                 $c[] = $x;
@@ -462,7 +462,7 @@ class PlotMark
                 $pts = 4;
 
                 break;
-            case MARK_FLASH:
+            case Configs::getConfig('MARK_FLASH'):
                 $dy *= 2;
                 $c[] = $x + $dx / 2;
                 $c[] = $y - $dy;
@@ -489,30 +489,30 @@ class PlotMark
             $img->SetColor($color);
             $img->Polygon($c);
             $img->SetLineWeight(1);
-        } elseif ($this->type == MARK_CIRCLE) {
+        } elseif ($this->type == Configs::getConfig('MARK_CIRCLE')) {
             $img->SetColor($color);
             $img->Circle($x, $y, $width);
             $this->AddCSIMCircle($x, $y, $width);
-        } elseif ($this->type == MARK_FILLEDCIRCLE) {
+        } elseif ($this->type == Configs::getConfig('MARK_FILLEDCIRCLE')) {
             $img->SetColor($fcolor);
             $img->FilledCircle($x, $y, $width);
             $img->SetColor($color);
             $img->Circle($x, $y, $width);
             $this->AddCSIMCircle($x, $y, $width);
-        } elseif ($this->type == MARK_CROSS) {
+        } elseif ($this->type == Configs::getConfig('MARK_CROSS')) {
             // Oversize by a pixel to match the X
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x, $y + $dy + 1, $x, $y - $dy - 1);
             $img->Line($x - $dx - 1, $y, $x + $dx + 1, $y);
             $this->AddCSIMCircle($x, $y, $dx);
-        } elseif ($this->type == MARK_X) {
+        } elseif ($this->type == Configs::getConfig('MARK_X')) {
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x + $dx, $y + $dy, $x - $dx, $y - $dy);
             $img->Line($x - $dx, $y + $dy, $x + $dx, $y - $dy);
             $this->AddCSIMCircle($x, $y, $dx + $dy);
-        } elseif ($this->type == MARK_STAR) {
+        } elseif ($this->type == Configs::getConfig('MARK_STAR')) {
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x + $dx, $y + $dy, $x - $dx, $y - $dy);

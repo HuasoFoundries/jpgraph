@@ -24,7 +24,7 @@ $graph->legend->SetFillColor('antiquewhite');
 $graph->legend->SetShadow(true);
 
 // Setup title$example_title='Filled Area Example'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Setup semi-filled line plot
 $lineplot = new Plot\LinePlot($ydata);
@@ -34,11 +34,11 @@ $lineplot->SetLegend("Semi-filled\nLineplot");
 $lineplot->SetColor('black');
 
 // Setup the two areas to be filled
-$lineplot->AddArea(2, 5, LP_AREA_FILLED, 'red');
-$lineplot->AddArea(6, 8, LP_AREA_FILLED, 'green');
+$lineplot->AddArea(2, 5, Graph\Configs::getConfig('LP_AREA_FILLED'), 'red');
+$lineplot->AddArea(6, 8, Graph\Configs::getConfig('LP_AREA_FILLED'), 'green');
 
 // Display the marks on the lines
-$lineplot->mark->SetType(MARK_DIAMOND);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_DIAMOND'));
 $lineplot->mark->SetSize(8);
 $lineplot->mark->Show();
 

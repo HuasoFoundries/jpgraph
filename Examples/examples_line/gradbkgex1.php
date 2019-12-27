@@ -25,11 +25,11 @@ $graph->SetMargin(30, 50, 30, 30);
 $graph->SetFrame(true, 'white');
 
 // Setup a background gradient image
-$graph->SetBackgroundGradient('blue', 'navy:0.5', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('blue', 'navy:0.5', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
 // Setup the tab title
 $graph->tabtitle->Set(' 3rd Division ');
-$graph->tabtitle->SetFont(FF_ARIAL, FS_BOLD, 13);
+$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 13);
 
 // Setup x,Y grid
 $graph->xgrid->Show();
@@ -42,13 +42,13 @@ $graph->xaxis->SetColor('orange', 'black');
 $graph->yaxis->SetColor('orange', 'black');
 
 // Ticks on the outsid
-$graph->xaxis->SetTickSide(SIDE_DOWN);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
 // Setup the legend box colors and font
 $graph->legend->SetColor('white', 'navy');
 $graph->legend->SetFillColor('navy@0.25');
-$graph->legend->SetFont(FF_ARIAL, FS_BOLD, 8);
+$graph->legend->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 8);
 $graph->legend->SetShadow('darkgray@0.4', 3);
 $graph->legend->SetPos(0.05, 0.05, 'right', 'top');
 

@@ -13,7 +13,7 @@ use Amenadiel\JpGraph\Util;
  * @class DisplayValue
  * // Description: Used to print data values at data points
  */
-class DisplayValue
+class DisplayValue extends Configs
 {
     public $margin         = 5;
     public $show           = false;
@@ -21,8 +21,8 @@ class DisplayValue
     public $halign         = 'center';
     public $format         = '%.1f';
     public $negformat      = '';
-    private $ff            = FF_DEFAULT;
-    private $fs            = FS_NORMAL;
+    private $ff            = self::FF_DEFAULT;
+    private $fs            = self::FS_NORMAL;
     private $fsize         = 8;
     private $iFormCallback = '';
     private $angle         = 0;
@@ -47,7 +47,7 @@ class DisplayValue
         $this->negcolor = $aNegcolor;
     }
 
-    public function SetFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 8)
+    public function SetFont($aFontFamily, $aFontStyle = self::FS_NORMAL, $aFontSize = 8)
     {
         $this->ff    = $aFontFamily;
         $this->fs    = $aFontStyle;

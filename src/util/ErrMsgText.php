@@ -30,13 +30,14 @@ class ErrMsgText
 
     public function __construct()
     {
-
         $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), Helper::getErrLocale());
 
         if (!file_exists($locale_messages_file)) {
             $error_message =
                 sprintf(
-                'Chosen locale file ("%s") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.', $locale_messages_file);
+                    'Chosen locale file ("%s") for error messages does not exist or is not readable for the PHP process. Please make sure that the file exists and that the file permissions are such that the PHP process is allowed to read this file.',
+                    $locale_messages_file
+                );
             die($error_message);
         }
         require $locale_messages_file;
@@ -50,13 +51,14 @@ class ErrMsgText
             return sprintf(
                 'Internal error: The specified error message (%s) does not exist in the chosen locale (%s)',
                 $errnbr,
-                Helper::getErrLocale());
+                Helper::getErrLocale()
+            );
         }
         $ea = $this->lt[$errnbr];
         /**
          * @TODO I've been avoiding refactoring this madness. I know
          *
-         * @var integer
+         * @var int
          */
         $j = 0;
         if ($a1 !== null) {

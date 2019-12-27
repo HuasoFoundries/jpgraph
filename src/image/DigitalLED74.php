@@ -18,7 +18,7 @@ use Amenadiel\JpGraph\Util;
  * //
  * // Changed: 2007-08-06 by Alexander Kurochkin (inspector@list.ru)
  */
-// Constants for color schema
+// Configs for color schema
 define('LEDC_RED', 0);
 define('LEDC_GREEN', 1);
 define('LEDC_BLUE', 2);

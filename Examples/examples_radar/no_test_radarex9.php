@@ -16,10 +16,10 @@ $__height      = 270;
 $graph         = new RadarGraph($__width, $__height);
 $example_title = 'Accumulated PPM';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 $graph->subtitle->Set('(according to direction)');
-$graph->subtitle->SetFont(FF_VERDANA, FS_ITALIC, 10);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 $graph->SetTitles($titles);
 $graph->SetCenter(0.5, 0.55);
@@ -29,7 +29,7 @@ $graph->axis->SetColor('darkgray@0.3');
 $graph->grid->SetColor('darkgray@0.3');
 $graph->grid->Show();
 
-$graph->SetGridDepth(DEPTH_BACK);
+$graph->SetGridDepth(Graph\Configs::getConfig('DEPTH_BACK'));
 
 $plot = new RadarPlot($data);
 $plot->SetColor('red@0.2');

@@ -17,14 +17,14 @@ $graph->SetScale('textlin');
 $graph->SetShadow();
 $example_title = 'Example of filled line plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->subtitle->Set('(Starting from Y=0)');
 
 $graph->yaxis->scale->SetAutoMin(0);
 
 $p1 = new Plot\LinePlot($datay);
 $p1->SetFillColor('orange');
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $graph->Add($p1);

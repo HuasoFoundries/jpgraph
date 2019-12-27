@@ -29,7 +29,7 @@ for ($i = 0; $i < $steps; ++$i) {
 $__width  = 450;
 $__height = 300;
 $graph    = new Graph\Graph($__width, $__height);
-$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetShadow();
 
 // Use an integer X-scale
@@ -39,7 +39,7 @@ $graph->SetScale('textlin');
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Make the margin around the plot a little bit bigger
 // then default

@@ -22,15 +22,15 @@ $graph->title->set($example_title);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(FF_FONT1);
-$graph->yaxis->SetFont(FF_FONT1);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 
 // Create the bar pot
 $bplot = new Plot\BarPlot($datay);
 $bplot->SetWidth(0.6);
 
 // Setup color for gradient fill style
-$bplot->SetFillGradient('navy', 'lightsteelblue', GRAD_WIDE_MIDHOR);
+$bplot->SetFillGradient('navy', 'lightsteelblue', Graph\Configs::getConfig('GRAD_WIDE_MIDHOR'));
 
 // Set color for the frame of each bar
 $bplot->SetColor('navy');

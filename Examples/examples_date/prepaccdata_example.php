@@ -44,8 +44,8 @@ $graph->SetMarginColor('green@0.95');
 $graph->SetMargin(40, 30, 40, 120);
 
 // Turn the tick marks out from the plot area
-$graph->xaxis->SetTickSide(SIDE_BOTTOM);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_BOTTOM'));
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
 $p0 = new Plot\LinePlot($ydata[0]);
 $p0->SetFillColor('sandybrown');

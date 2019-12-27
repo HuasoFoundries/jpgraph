@@ -17,8 +17,8 @@ class PolarAxis extends Axis
     private $angle_step        = 15;
     private $angle_color       = 'lightgray';
     private $angle_label_color = 'black';
-    private $angle_fontfam     = FF_FONT1;
-    private $angle_fontstyle   = FS_NORMAL;
+    private $angle_fontfam     = Configs::FF_FONT1;
+    private $angle_fontstyle   = Configs::FS_NORMAL;
     private $angle_fontsize    = 10;
     private $angle_fontcolor   = 'navy';
     private $gridminor_color   = 'lightgray';
@@ -67,7 +67,7 @@ class PolarAxis extends Axis
         $this->show_angle_grid = $aAngle;
     }
 
-    public function SetAngleFont($aFontFam, $aFontStyle = FS_NORMAL, $aFontSize = 10)
+    public function SetAngleFont($aFontFam, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->angle_fontfam   = $aFontFam;
         $this->angle_fontstyle = $aFontStyle;

@@ -29,8 +29,8 @@ $graph->subtitle->Set('(March 12, 2008)');
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $graph->yaxis->SetColor('blue');
 
@@ -38,7 +38,7 @@ $graph->yaxis->SetColor('blue');
 $lineplot = new Plot\LinePlot($ydata);
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2); // Two pixel wide
-$lineplot->mark->SetType(MARK_UTRIANGLE);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'));
 $lineplot->mark->SetColor('blue');
 $lineplot->mark->SetFillColor('red');
 

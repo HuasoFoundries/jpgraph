@@ -12,6 +12,7 @@ use Amenadiel\JpGraph\Text;
 class JpGraphException extends \Exception
 {
     public static $previous_exception_handler;
+
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0)
     {
@@ -22,12 +23,16 @@ class JpGraphException extends \Exception
     // custom string representation of object
     public function _toString()
     {
+        ~d($this);
         return sprintf(
             '[%s : %s]: %s ' . PHP_EOL . // class and error code, plus error message
             ' %s  %s' . PHP_EOL . // filename and line number
             '%s ' . PHP_EOL, // Trace
-            __CLASS__, $this->code, $this->message,
-            $this->getFile(), $this->getLine(),
+            __CLASS__,
+            $this->code,
+            $this->message,
+            $this->getFile(),
+            $this->getLine(),
             $this->getTraceAsString()
         );
     }
@@ -38,13 +43,10 @@ class JpGraphException extends \Exception
         //$sent_headers = headers_list();
 
         if (JpGraphError::GetImageFlag()) {
-
             $this->handleImgException();
         } else {
-
             $this->handleTextException();
         }
-
     }
 
     public static function defaultHandler(\Throwable $exception)
@@ -63,12 +65,11 @@ class JpGraphException extends \Exception
     }
 
     /**
-     * Register exception handler for JpGraphException
+     * Register exception handler for JpGraphException.
      */
     public static function registerHandler()
     {
         self::$previous_exception_handler = set_exception_handler([__CLASS__, 'defaultHandler']);
-
     }
 
     // If aHalt is true then execution can't continue. Typical used for fatal errors
@@ -76,6 +77,7 @@ class JpGraphException extends \Exception
     {
         $logDestination = JpGraphError::GetLogFile();
         $aMsg           = JpGraphError::GetTitle() . $this->getMessage();
+        \PC::dump($this);
         if (!$logDestination) {
             // Check SAPI and if we are called from the command line
             // send the error to STDERR instead
@@ -86,7 +88,7 @@ class JpGraphException extends \Exception
             if (ini_get('display_errors')) {
                 echo $aMsg;
             }
-        } else if ($this->iDest == 'syslog') {
+        } elseif ($this->iDest == 'syslog') {
             error_log($this->iTitle . $aMsg);
         } else {
             $str = '[' . date('r') . '] ' . $this->iTitle . $aMsg . "\n";
@@ -104,7 +106,10 @@ class JpGraphException extends \Exception
 
     public function handleImgException($aHalt = HALT_ON_ERRORS)
     {
-
+        \PC::dump($this);
+        ~d($this);
+        die();
+        ddd($this);
         $img_iconerror =
             'iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAaV' .
             'BMVEX//////2Xy8mLl5V/Z2VvMzFi/v1WyslKlpU+ZmUyMjEh/' .
@@ -195,12 +200,12 @@ class JpGraphException extends \Exception
 
         // Stroke text
         $img->SetColor('darkred');
-        $img->SetFont(FF_FONT2, FS_BOLD);
+        $img->SetFont(Configs::FF_FONT2, Configs::FS_BOLD);
         $img->StrokeText($m - 90, 15, JpGraphError::GetTitle());
         $img->SetColor('black');
-        $img->SetFont(FF_FONT1, FS_NORMAL);
+        $img->SetFont(Configs::FF_FONT1, Configs::FS_NORMAL);
         $txt = new Text\Text($this->getMessage(), 52, 25);
-        $txt->SetFont(FF_FONT1);
+        $txt->SetFont(Configs::FF_FONT1);
         $txt->Align('left', 'top');
         $txt->Stroke($img);
         if ($this->iDest) {

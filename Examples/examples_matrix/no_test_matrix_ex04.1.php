@@ -30,11 +30,11 @@ $height        = 300;
 $graph         = new MatrixGraph($width, $height);
 $example_title = 'Adding a background image';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->subtitle->Set('Alphablending = 0.2');
 
 // Add a stretched background image
-$graph->SetBackgroundImage(__DIR__ . '/../assets/ironrod.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/ironrod.jpg', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetBackgroundImageMix(50);
 
 $mp = new MatrixPlot($data, 1);

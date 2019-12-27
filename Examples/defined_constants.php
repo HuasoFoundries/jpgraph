@@ -7,12 +7,12 @@
 if (getenv('JPGRAPH_DEBUGMODE') && !defined('DEBUGMODE')) {
     define('DEBUGMODE', getenv('JPGRAPH_DEBUGMODE'));
 }
-// Sets DEBUGMODE for the app. Set this to true to enable debugging outputs
+// Sets Graph\Configs::getConfig('DEBUGMODE') for the app. Set this to true to enable debugging outputs
 defined('DEBUGMODE') || define('DEBUGMODE', false);
 
-ini_set('display_errors', (int) DEBUGMODE);
-ini_set('display_startup_errors', (int) DEBUGMODE);
-if (DEBUGMODE) {
+ini_set('display_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+ini_set('display_startup_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+if (Graph\Configs::getConfig('DEBUGMODE')) {
     error_reporting(E_ALL);
 }
 
@@ -20,27 +20,27 @@ if (DEBUGMODE) {
  * Directories for cache and font directory.
  * Define these constants explicitly or read them from environment vars
  *
- * CACHE_DIR:
+ * Graph\Configs::getConfig('CACHE_DIR'):
  * The full absolute name of the directory to be used to store the
- * cached image files. This directory will not be used if the USE_CACHE
+ * cached image files. This directory will not be used if the Graph\Configs::getConfig('USE_CACHE')
  * define (further down) is false. If you enable the cache please note that
- * this directory MUST be readable and writable for the process running PHP.
+ * this directory Graph\Configs::getConfig('MUST') be readable and writable for the process running PHP.
  * Must end with '/'
  *
- * TTF_DIR:
+ * Graph\Configs::getConfig('TTF_DIR'):
  * Directory where TTF fonts can be found. Must end with '/'
  *
  * The default values used if these defines are left commented out are:
  *
- * UNIX:
- *   CACHE_DIR /tmp/jpgraph_cache/
- *   TTF_DIR   /usr/share/fonts/truetype/
- *   MBTTF_DIR /usr/share/fonts/truetype/
+ * Graph\Configs::getConfig('UNIX'):
+ *   Graph\Configs::getConfig('CACHE_DIR') /tmp/jpgraph_cache/
+ *   Graph\Configs::getConfig('TTF_DIR')   /usr/share/fonts/truetype/
+ *   Graph\Configs::getConfig('MBTTF_DIR') /usr/share/fonts/truetype/
  *
- * WINDOWS:
- *   CACHE_DIR $SERVER_TEMP/jpgraph_cache/
- *   TTF_DIR   $SERVER_SYSTEMROOT/fonts/
- *   MBTTF_DIR $SERVER_SYSTEMROOT/fonts/
+ * Graph\Configs::getConfig('WINDOWS'):
+ *   Graph\Configs::getConfig('CACHE_DIR') $SERVER_TEMP/jpgraph_cache/
+ *   Graph\Configs::getConfig('TTF_DIR')   $SERVER_SYSTEMROOT/fonts/
+ *   Graph\Configs::getConfig('MBTTF_DIR') $SERVER_SYSTEMROOT/fonts/
  *
  */
 
@@ -61,11 +61,11 @@ if (getenv('JPGRAPH_MBTTF_DIR')) {
 }
 
 /*
- * Cache directory specification for use with CSIM graphs that are
+ * Cache directory specification for use with Graph\Configs::getConfig('CSIM') graphs that are
  * // using the cache.
  * // The directory must be the filesysystem name as seen by PHP
  * // and the 'http' version must be the same directory but as
- * // seen by the HTTP server relative to the 'htdocs' ddirectory.
+ * // seen by the Graph\Configs::getConfig('HTTP') server relative to the 'htdocs' ddirectory.
  * // If a relative path is specified it is taken to be relative from where
  * // the image script is executed.
  * // Note: The default setting is to create a subdirectory in the
@@ -78,7 +78,7 @@ define('CSIMCACHE_HTTP_DIR', 'csimcache/');
 /*
  * Various JpGraph Settings. Adjust accordingly to your
  * // preferences. Note that cache functionality is turned off by
- * // default (Enable by setting USE_CACHE to true)
+ * // default (Enable by setting Graph\Configs::getConfig('USE_CACHE') to true)
  */
 // Deafult locale for error messages.
 // This defaults to English = 'en'
@@ -91,9 +91,9 @@ define('DEFAULT_GFORMAT', 'auto');
 
 // Should the cache be used at all? By setting this to false no
 // files will be generated in the cache directory.
-// The difference from READ_CACHE being that setting READ_CACHE to
+// The difference from Graph\Configs::getConfig('READ_CACHE') being that setting Graph\Configs::getConfig('READ_CACHE') to
 // false will still create the image in the cache directory
-// just not use it. By setting USE_CACHE=false no files will even
+// just not use it. By setting Graph\Configs::getConfig('USE_CACHE')=false no files will even
 // be generated in the cache directory.
 if (!defined('USE_CACHE')) {
     define('USE_CACHE', getenv('JPGRAPH_USE_CACHE') ? getenv('JPGRAPH_USE_CACHE') : false);
@@ -233,9 +233,9 @@ define('FF_FONT2', 4);
 /*
  * Defines for font setup
  */
-// Actual name of the TTF file used together with FF_CHINESE aka FF_BIG5
+// Actual name of the TTF file used together with Graph\Configs::getConfig('FF_CHINESE') aka Graph\Configs::getConfig('FF_BIG5')
 // This is the TTF file being used when the font family is specified as
-// either FF_CHINESE or FF_BIG5
+// either Graph\Configs::getConfig('FF_CHINESE') or Graph\Configs::getConfig('FF_BIG5')
 define('CHINESE_TTF_FONT', 'bkai00mp.ttf');
 
 // Special unicode greek language support
@@ -275,12 +275,12 @@ define('CYRILLIC_FROM_WINDOWS', false);
 //
 // Usage: define('LANGUAGE_CHARSET', $locale_char_set);
 //
-// where $locale_char_set is a GLOBAL (string) variable
+// where $locale_char_set is a Graph\Configs::getConfig('GLOBAL') (string) variable
 // from the application including JpGraph.
 //
 define('LANGUAGE_CHARSET', null);
 
-// Japanese TrueType font used with FF_MINCHO, FF_PMINCHO, FF_GOTHIC, FF_PGOTHIC
+// Japanese TrueType font used with Graph\Configs::getConfig('FF_MINCHO'), Graph\Configs::getConfig('FF_PMINCHO'), Graph\Configs::getConfig('FF_GOTHIC'), Graph\Configs::getConfig('FF_PGOTHIC')
 // Standard fonts from Infomation-technology Promotion Agency (IPA)
 // See http://mix-mplus-ipa.sourceforge.jp/
 define('MINCHO_TTF_FONT', 'ipam.ttf');
@@ -289,12 +289,12 @@ define('GOTHIC_TTF_FONT', 'ipag.ttf');
 define('PGOTHIC_TTF_FONT', 'ipagp.ttf');
 
 // Assume that Japanese text have been entered in EUC-JP encoding.
-// If this define is true then conversion from EUC-JP to UTF8 is done
+// If this define is true then conversion from EUC-JP to Graph\Configs::getConfig('UTF8') is done
 // automatically in the library using the mbstring module in PHP.
 define('ASSUME_EUCJP_ENCODING', false);
 
 // Default font family
-define('FF_DEFAULT', FF_DV_SANSSERIF);
+define('FF_DEFAULT', Graph\Configs::getConfig('FF_DV_SANSSERIF'));
 
 // Line styles
 define('LINESTYLE_SOLID', 1);
@@ -302,7 +302,7 @@ define('LINESTYLE_DOTTED', 2);
 define('LINESTYLE_DASHED', 3);
 define('LINESTYLE_LONGDASH', 4);
 
-// The DEFAULT_GFORMAT sets the default graphic encoding format, i.e.
+// The Graph\Configs::getConfig('DEFAULT_GFORMAT') sets the default graphic encoding format, i.e.
 // PNG, JPG or GIF depending on what is installed on the target system
 // in that order.
 if (!defined('DEFAULT_GFORMAT')) {
@@ -335,9 +335,9 @@ define('MIN_PHPVERSION', '5.1.0');
 // internally from the GetHTMLCSIM() method.
 define('_CSIM_SPECIALFILE', '_csim_special_');
 
-// HTTP GET argument that is used with image map
+// Graph\Configs::getConfig('HTTP') GET argument that is used with image map
 // to indicate to the script to just generate the image
-// and not the full CSIM HTML page.
+// and not the full Graph\Configs::getConfig('CSIM') Graph\Configs::getConfig('HTML') page.
 define('_CSIM_DISPLAY', '_jpg_csimd');
 
 // Special filename for Graph::Stroke(). If this filename is given
@@ -470,12 +470,12 @@ define('_FORCE_IMGDIR', '/tmp/jpgimg/');
 // Automatic settings of path for cache and font directory
 // if they have not been previously specified
 //
-if (strstr(PHP_OS, 'WIN')) {
+if (strstr(Graph\Configs::getConfig('PHP_OS'), 'WIN')) {
     define('SYSTEMROOT', getenv('SystemRoot'));
 }
-if (USE_CACHE) {
+if (Graph\Configs::getConfig('USE_CACHE')) {
     if (!defined('CACHE_DIR')) {
-        if (strstr(PHP_OS, 'WIN')) {
+        if (strstr(Graph\Configs::getConfig('PHP_OS'), 'WIN')) {
             if (empty($_SERVER['TEMP'])) {
                 $t   = new ErrMsgText();
                 $msg = $t->Get(11, $file, $lineno);
@@ -494,13 +494,13 @@ if (USE_CACHE) {
 // Setup path for western/latin TTF fonts
 //
 if (!defined('TTF_DIR')) {
-    if (strstr(PHP_OS, 'WIN')) {
-        if (empty(SYSTEMROOT)) {
+    if (strstr(Graph\Configs::getConfig('PHP_OS'), 'WIN')) {
+        if (empty(Graph\Configs::getConfig('SYSTEMROOT'))) {
             $t   = new ErrMsgText();
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('TTF_DIR', SYSTEMROOT . '/fonts/');
+        define('TTF_DIR', Graph\Configs::getConfig('SYSTEMROOT') . '/fonts/');
     } else {
         define('TTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -510,13 +510,13 @@ if (!defined('TTF_DIR')) {
 // Setup path for MultiByte TTF fonts (japanese, chinese etc.)
 //
 if (!defined('MBTTF_DIR')) {
-    if (strstr(PHP_OS, 'WIN')) {
-        if (empty(SYSTEMROOT)) {
+    if (strstr(Graph\Configs::getConfig('PHP_OS'), 'WIN')) {
+        if (empty(Graph\Configs::getConfig('SYSTEMROOT'))) {
             $t   = new ErrMsgText();
             $msg = $t->Get(12, $file, $lineno);
             die($msg);
         }
-        define('MBTTF_DIR', SYSTEMROOT . '/fonts/');
+        define('MBTTF_DIR', Graph\Configs::getConfig('SYSTEMROOT') . '/fonts/');
     } else {
         define('MBTTF_DIR', '/usr/share/fonts/truetype/');
     }
@@ -525,8 +525,8 @@ if (!defined('MBTTF_DIR')) {
 //
 // Make sure PHP version is high enough
 //
-if (version_compare(PHP_VERSION, MIN_PHPVERSION) < 0) {
-    Amenadiel\JpGraph\Util\JpGraphError::RaiseL(13, PHP_VERSION, MIN_PHPVERSION);
+if (version_compare(Graph\Configs::getConfig('PHP_VERSION'), Graph\Configs::getConfig('MIN_PHPVERSION')) < 0) {
+    Amenadiel\JpGraph\Util\JpGraphError::RaiseL(13, Graph\Configs::getConfig('PHP_VERSION'), Graph\Configs::getConfig('MIN_PHPVERSION'));
     die();
 }
 
@@ -538,16 +538,16 @@ if (!function_exists('imagetypes') || !function_exists('imagecreatefromstring'))
     //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
 }
 
-if (INSTALL_PHP_ERR_HANDLER) {
+if (Graph\Configs::getConfig('INSTALL_PHP_ERR_HANDLER')) {
     set_error_handler('\Amenadiel\JpGraph\Util\Helper::phpErrorHandler');
 }
 
 //
 // Check if there were any warnings, perhaps some wrong includes by the user. In this
 // case we raise it immediately since otherwise the image will not show and makes
-// debugging difficult. This is controlled by the user setting CATCH_PHPERRMSG
+// debugging difficult. This is controlled by the user setting Graph\Configs::getConfig('CATCH_PHPERRMSG')
 //
-if (isset($GLOBALS['php_errormsg']) && CATCH_PHPERRMSG && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
+if (isset($GLOBALS['php_errormsg']) && Graph\Configs::getConfig('CATCH_PHPERRMSG') && !preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
     Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
 }
 
@@ -574,14 +574,14 @@ define('GANTT_HHOUR', 16);
 define('GANTT_HMIN', 32);
 
 // Bar patterns
-define('GANTT_RDIAG', BAND_RDIAG); // Right diagonal lines
-define('GANTT_LDIAG', BAND_LDIAG); // Left diagonal lines
-define('GANTT_SOLID', BAND_SOLID); // Solid one color
-define('GANTT_VLINE', BAND_VLINE); // Vertical lines
-define('GANTT_HLINE', BAND_HLINE); // Horizontal lines
-define('GANTT_3DPLANE', BAND_3DPLANE); // "3D" Plane
-define('GANTT_HVCROSS', BAND_HVCROSS); // Vertical/Hor crosses
-define('GANTT_DIAGCROSS', BAND_DIAGCROSS); // Diagonal crosses
+define('GANTT_RDIAG', Graph\Configs::getConfig('BAND_RDIAG')); // Right diagonal lines
+define('GANTT_LDIAG', Graph\Configs::getConfig('BAND_LDIAG')); // Left diagonal lines
+define('GANTT_SOLID', Graph\Configs::getConfig('BAND_SOLID')); // Solid one color
+define('GANTT_VLINE', Graph\Configs::getConfig('BAND_VLINE')); // Vertical lines
+define('GANTT_HLINE', Graph\Configs::getConfig('BAND_HLINE')); // Horizontal lines
+define('GANTT_3DPLANE', Graph\Configs::getConfig('BAND_3DPLANE')); // "3D" Plane
+define('GANTT_HVCROSS', Graph\Configs::getConfig('BAND_HVCROSS')); // Vertical/Hor crosses
+define('GANTT_DIAGCROSS', Graph\Configs::getConfig('BAND_DIAGCROSS')); // Diagonal crosses
 
 // Conversion constant
 define('HOURADJ_1', 0 + 30);
@@ -619,7 +619,7 @@ define('SECPERDAY', 86400);
 define('SECPERHOUR', 3600);
 define('SECPERMIN', 60);
 
-// Locales. ONLY KEPT FOR BACKWARDS COMPATIBILITY
+// Locales. Graph\Configs::getConfig('ONLY') Graph\Configs::getConfig('KEPT') FOR Graph\Configs::getConfig('BACKWARDS') Graph\Configs::getConfig('COMPATIBILITY')
 // You should use the proper locale strings directly
 // from now on.
 define('LOCALE_EN', 'en_UK');
@@ -735,8 +735,8 @@ $text_ct = array_filter($user_ct, function ($ct) {
         'TABTITLE',
         'TGRID',
         'TIMG',
-        'TTF', ], true);
-}, ARRAY_FILTER_USE_KEY);
+        'TTF'], true);
+}, Graph\Configs::getConfig('ARRAY_FILTER_USE_KEY'));
 echo '<pre>';
 print_r($text_ct);
 echo '</pre>';

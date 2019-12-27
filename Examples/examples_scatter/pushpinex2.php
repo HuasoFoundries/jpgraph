@@ -42,20 +42,20 @@ $graph->xaxis->Hide();
 $graph->yaxis->Hide();
 
 // Use a worldmap as the background and let it fill the plot area
-$graph->SetBackgroundImage(WORLDMAP, BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(Graph\Configs::getConfig('WORLDMAP'), Graph\Configs::getConfig('BGIMG_FILLPLOT'));
 
 // Setup a nice title with a striped bevel background$example_title='Pushpin graph'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
 $graph->title->SetColor('white');
-$graph->SetTitleBackground('darkgreen', TITLEBKG_STYLE1, TITLEBKG_FRAME_BEVEL);
-$graph->SetTitleBackgroundFillStyle(TITLEBKG_FILLSTYLE_HSTRIPED, 'blue', 'darkgreen');
+$graph->SetTitleBackground('darkgreen', Graph\Configs::getConfig('TITLEBKG_STYLE1'), Graph\Configs::getConfig('TITLEBKG_FRAME_BEVEL'));
+$graph->SetTitleBackgroundFillStyle(Graph\Configs::getConfig('TITLEBKG_FILLSTYLE_HSTRIPED'), 'blue', 'darkgreen');
 
 // Finally create the lineplot
 $lp = new Plot\LinePlot($datay, $datax);
 $lp->SetColor('lightgray');
 
 // We want the markers to be an image
-$lp->mark->SetType(MARK_IMG_PUSHPIN, 'blue', 0.6);
+$lp->mark->SetType(Graph\Configs::getConfig('MARK_IMG_PUSHPIN'), 'blue', 0.6);
 
 // Install the Y-X callback for the markers
 $lp->mark->SetCallbackYX($markCallback);

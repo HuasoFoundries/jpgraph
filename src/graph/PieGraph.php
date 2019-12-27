@@ -88,6 +88,23 @@ class PieGraph extends Graph
         }
     }
 
+    public function ClearTheme()
+    {
+        $this->graph_theme = null;
+
+        $this->isRunningClear = true;
+
+        $this->__construct(
+            $this->inputValues['aWidth'],
+            $this->inputValues['aHeight'],
+            $this->inputValues['aCachedName'],
+            $this->inputValues['aTimeout'],
+            $this->inputValues['aInline']
+        );
+
+        $this->isRunningClear = false;
+    }
+
     public function SetAntiAliasing($aFlg = true)
     {
         $this->pieaa = $aFlg;
@@ -139,7 +156,7 @@ class PieGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // If we are called the second time (perhaps the user has called GetHTMLImageMap()
         // himself then the legends have alsready been populated once in order to get the
@@ -264,7 +281,7 @@ class PieGraph extends Graph
                 }
             }
 
-            if (_JPG_DEBUG) {
+            if (Configs::_JPG_DEBUG) {
                 $this->DisplayCSIMAreas();
             }
 
@@ -285,7 +302,7 @@ class PieGraph extends Graph
             // If the filename is given as the special "__handle"
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
+            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
                 return $this->img->img;
             }
             // Finally stream the generated picture

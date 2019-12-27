@@ -42,8 +42,8 @@ class GTextTableCell
     public $iVal;
     private $iBGColor   = '';
     private $iFontColor = 'black';
-    private $iFF        = FF_FONT1;
-    private $iFS        = FS_NORMAL;
+    private $iFF        = Configs::FF_FONT1;
+    private $iFS        = self::FS_NORMAL;
     private $iFSize     = 10;
     private $iRow       = 0;
     private $iCol       = 0;

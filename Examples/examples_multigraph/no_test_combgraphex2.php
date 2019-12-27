@@ -25,7 +25,7 @@ for ($i = 0; $i < $n; ++$i) {
 }
 
 // Now get labels at the start of each month
-list($tickPositions, $minTickPositions) = DateScaleUtils::getTicks($datax, DSUTILS_MONTH1);
+list($tickPositions, $minTickPositions) = DateScaleUtils::getTicks($datax, Graph\Configs::getConfig('DSUTILS_MONTH1'));
 
 // Now create the real graph
 // Combine a line and a bar graph
@@ -53,7 +53,7 @@ $graph->SetFrame(false);
 $graph->SetBox(true);
 $example_title = 'Example of combined graph with background';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
 $graph->xaxis->SetTickPositions($tickPositions, $minTickPositions);
 $graph->xaxis->SetLabelFormatString('My', true);
 $graph->xgrid->Show();
@@ -74,7 +74,7 @@ $graph2->xaxis->SetTickPositions($tickPositions, $minTickPositions);
 $graph2->xaxis->SetLabelFormatString('My', true);
 $graph2->xaxis->SetPos('max');
 $graph2->xaxis->HideLabels();
-$graph2->xaxis->SetTickSide(SIDE_DOWN);
+$graph2->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 $b1 = new Plot\BarPlot($datay2, $datax);
 $b1->SetFillColor('teal');
 $b1->SetColor('teal:1.2');

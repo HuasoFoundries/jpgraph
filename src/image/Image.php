@@ -28,13 +28,13 @@ use Amenadiel\JpGraph\Util\ErrMsgText;
  * //              class RotImage which extends the Image class with transparent
  * //              rotation.
  */
-class Image
+class Image extends Configs
 {
     public $img;
     public $rgb;
     public $img_format;
     public $ttf;
-    public $line_style = LINESTYLE_SOLID;
+    public $line_style = self::LINESTYLE_SOLID;
     public $current_color;
     public $current_color_name;
     public $original_width  = 0;
@@ -57,8 +57,8 @@ class Image
     protected $lasty             = 0;
     protected $obs_list          = [];
     protected $font_size         = 12;
-    protected $font_family       = FF_DEFAULT;
-    protected $font_style        = FS_NORMAL;
+    protected $font_family       = self::FF_DEFAULT;
+    protected $font_style        = self::FS_NORMAL;
     protected $font_file         = '';
     protected $text_halign       = 'left';
     protected $text_valign       = 'bottom';
@@ -85,7 +85,7 @@ class Image
      * @param mixed $aFormat
      * @param mixed $aSetAutoMargin
      */
-    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
+    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = self::DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         $this->original_width  = $aWidth;
         $this->original_height = $aHeight;
@@ -132,8 +132,8 @@ class Image
 
     public function CreateRawCanvas($aWidth = 0, $aHeight = 0)
     {
-        $aWidth *= SUPERSAMPLING_SCALE;
-        $aHeight *= SUPERSAMPLING_SCALE;
+        $aWidth *= self::SUPERSAMPLING_SCALE;
+        $aHeight *= self::SUPERSAMPLING_SCALE;
 
         if ($aWidth <= 1 || $aHeight <= 1) {
             Util\JpGraphError::RaiseL(25082, $aWidth, $aHeight); //("Illegal sizes specified for width or height when creating an image, (width=$aWidth, height=$aHeight)");
@@ -318,23 +318,23 @@ class Image
      * @param mixed $style
      * @param mixed $size
      */
-    public function SetFont($family, $style = FS_NORMAL, $size = 10)
+    public function SetFont($family, $style = self::FS_NORMAL, $size = 10)
     {
         $this->font_family = $family;
         $this->font_style  = $style;
-        $this->font_size   = $size * SUPERSAMPLING_SCALE;
+        $this->font_size   = $size * self::SUPERSAMPLING_SCALE;
         $this->font_file   = '';
-        if (($this->font_family == FF_FONT1 || $this->font_family == FF_FONT2) && $this->font_style == FS_BOLD) {
+        if (($this->font_family == self::FF_FONT1 || $this->font_family == self::FF_FONT2) && $this->font_style == self::FS_BOLD) {
             ++$this->font_family;
         }
-        if ($this->font_family > FF_FONT2 + 1) {
+        if ($this->font_family > self::FF_FONT2 + 1) {
             // A TTF font so get the font file
 
             // Check that this PHP has support for TTF fonts
             if (!function_exists('imagettfbbox')) {
                 // use internal font when php is configured without '--with-ttf'
-                $this->font_family = FF_FONT1;
-            //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+                $this->font_family = self::FF_FONT1;
+                //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
             } else {
                 $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
             }
@@ -351,7 +351,7 @@ class Image
             $m = max($m, strlen($tmp[$i]));
         }
 
-        if ($this->font_family <= FF_FONT2 + 1) {
+        if ($this->font_family <= self::FF_FONT2 + 1) {
             if ($angle == 0) {
                 $h = imagefontheight($this->font_family);
                 if ($h === false) {
@@ -395,7 +395,7 @@ class Image
     {
         $tmp = preg_split('/\n/', $txt);
         $n   = safe_count($tmp);
-        if ($this->font_family <= FF_FONT2 + 1) {
+        if ($this->font_family <= self::FF_FONT2 + 1) {
             $m = 0;
             for ($i = 0; $i < $n; ++$i) {
                 $l = strlen($tmp[$i]);
@@ -464,7 +464,7 @@ class Image
             //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
         }
 
-        if ($this->font_family >= FF_FONT0 && $this->font_family <= FF_FONT2 + 1) {
+        if ($this->font_family >= self::FF_FONT0 && $this->font_family <= self::FF_FONT2 + 1) {
             $width  = $this->GetTextWidth($txt, $dir);
             $height = $this->GetTextHeight($txt, $dir);
         } else {
@@ -540,7 +540,7 @@ class Image
         $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
 
         $bb = [$x - $xmarg, $y + $height - $ymarg, $x + $width, $y + $height - $ymarg,
-            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg, ];
+            $x + $width, $y - $ymarg, $x - $xmarg, $y - $ymarg];
         $this->SetTextAlign($h, $v);
 
         $this->SetAngle($olda);
@@ -573,7 +573,7 @@ class Image
         // 1) This methos will only support TTF fonts
         // 2) The only two alignment that makes sense are centered or baselined
 
-        if ($this->font_family <= FF_FONT2 + 1) {
+        if ($this->font_family <= self::FF_FONT2 + 1) {
             Util\JpGraphError::RaiseL(25131); //StrokeBoxedText2() Only support TTF fonts and not built in bitmap fonts
         }
 
@@ -706,7 +706,7 @@ class Image
         $bb = [$x - $xmarg, $y + $height - $ymarg,
             $x + $width, $y + $height - $ymarg,
             $x + $width, $y - $ymarg,
-            $x - $xmarg, $y - $ymarg, ];
+            $x - $xmarg, $y - $ymarg];
 
         $this->SetTextAlign($h, $v);
         $this->SetAngle($olda);
@@ -825,7 +825,7 @@ class Image
 
     public function imagettfbbox_fixed($size, $angle, $fontfile, $text)
     {
-        if (!USE_LIBRARY_IMAGETTFBBOX) {
+        if (!self::USE_LIBRARY_IMAGETTFBBOX) {
             $bbox = @imagettfbbox($size, $angle, $fontfile, $text);
             if ($bbox === false) {
                 Util\JpGraphError::RaiseL(25092, $this->font_file);
@@ -939,35 +939,35 @@ class Image
             if ($aAngle <= 90) {
                 //<=0
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
             } elseif ($aAngle <= 180) {
                 //<= 2
                 $bbox = [$bbox[4], $bbox[7], $bbox[0], $bbox[7],
-                    $bbox[0], $bbox[3], $bbox[4], $bbox[3], ];
+                    $bbox[0], $bbox[3], $bbox[4], $bbox[3]];
             } elseif ($aAngle <= 270) {
                 //<= 3
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             }
         } elseif ($aAngle < 0) {
             if ($aAngle <= -270) {
                 // <= -3
                 $bbox = [$bbox[6], $bbox[1], $bbox[2], $bbox[1],
-                    $bbox[2], $bbox[5], $bbox[6], $bbox[5], ];
+                    $bbox[2], $bbox[5], $bbox[6], $bbox[5]];
             } elseif ($aAngle <= -180) {
                 // <= -2
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             } elseif ($aAngle <= -90) {
                 // <= -1
                 $bbox = [$bbox[2], $bbox[5], $bbox[6], $bbox[5],
-                    $bbox[6], $bbox[1], $bbox[2], $bbox[1], ];
+                    $bbox[6], $bbox[1], $bbox[2], $bbox[1]];
             } else {
                 $bbox = [$bbox[0], $bbox[3], $bbox[4], $bbox[3],
-                    $bbox[4], $bbox[7], $bbox[0], $bbox[7], ];
+                    $bbox[4], $bbox[7], $bbox[0], $bbox[7]];
             }
         }
 
@@ -1206,9 +1206,9 @@ class Image
             Util\JpGraphError::RaiseL(25094); //(" Direction for text most be given as an angle between 0 and 90.");
         }
 
-        if ($this->font_family >= FF_FONT0 && $this->font_family <= FF_FONT2 + 1) {
+        if ($this->font_family >= self::FF_FONT0 && $this->font_family <= self::FF_FONT2 + 1) {
             $this->_StrokeBuiltinFont($x, $y, $txt, $dir, $paragraph_align, $boundingbox, $debug);
-        } elseif ($this->font_family >= _FIRST_FONT && $this->font_family <= _LAST_FONT) {
+        } elseif ($this->font_family >= self::_FIRST_FONT && $this->font_family <= self::_LAST_FONT) {
             $this->_StrokeTTF($x, $y, $txt, $dir, $paragraph_align, $boundingbox, $debug);
         } else {
             Util\JpGraphError::RaiseL(25095); //(" Unknown font font family specification. ");
@@ -1247,7 +1247,7 @@ class Image
         if ($this->current_color == -1) {
             $tc = imagecolorstotal($this->img);
             Util\JpGraphError::RaiseL(25096);
-            //("Can't allocate any more colors. Image has already allocated maximum of <b>$tc colors</b>. This might happen if you have anti-aliasing turned on together with a background image or perhaps gradient fill since this requires many, many colors. Try to turn off anti-aliasing. If there is still a problem try downgrading the quality of the background image to use a smaller pallete to leave some entries for your graphs. You should try to limit the number of colors in your background image to 64. If there is still problem set the constant DEFINE(\"USE_APPROX_COLORS\",true); in jpgraph.php This will use approximative colors when the palette is full. Unfortunately there is not much JpGraph can do about this since the palette size is a limitation of current graphic format and what the underlying GD library suppports.");
+            //("Can't allocate any more colors. Image has already allocated maximum of <b>$tc colors</b>. This might happen if you have anti-aliasing turned on together with a background image or perhaps gradient fill since this requires many, many colors. Try to turn off anti-aliasing. If there is still a problem try downgrading the quality of the background image to use a smaller pallete to leave some entries for your graphs. You should try to limit the number of colors in your background image to 64. If there is still problem set the constant DEFINE(\"self::USE_APPROX_COLORS\",true); in jpgraph.php This will use approximative colors when the palette is full. Unfortunately there is not much JpGraph can do about this since the palette size is a limitation of current graphic format and what the underlying GD library suppports.");
         }
 
         return $this->current_color;
@@ -1496,8 +1496,8 @@ class Image
         $y1 = round($y1);
         $y2 = round($y2);
 
-        $dash_length *= SUPERSAMPLING_SCALE;
-        $dash_space *= SUPERSAMPLING_SCALE;
+        $dash_length *= self::SUPERSAMPLING_SCALE;
+        $dash_space *= self::SUPERSAMPLING_SCALE;
 
         $style = array_fill(0, $dash_length, $this->current_color);
         $style = array_pad($style, $dash_space, IMG_COLOR_TRANSPARENT);
@@ -1534,7 +1534,7 @@ class Image
         $dash_length = 2;
         $dash_length = 4;
         imagesetthickness($this->img, 1);
-        $style = array_fill(0, $dash_length, $this->current_color); //hexdec('CCCCCC'));
+        $style = array_fill(0, $dash_length, $this->current_color); //hexdec('self::CCCCCC'));
         $style = array_pad($style, $dash_space, IMG_COLOR_TRANSPARENT);
         imagesetstyle($this->img, $style);
         imageline($this->img, $x1, $y1, $x2, $y2, IMG_COLOR_STYLED);
@@ -1873,7 +1873,7 @@ class Image
     // Do SuperSampling using $scale
     public function DoSupersampling()
     {
-        if (SUPERSAMPLING_SCALE <= 1) {
+        if (self::SUPERSAMPLING_SCALE <= 1) {
             return $this->img;
         }
 
@@ -2131,7 +2131,7 @@ class Image
         $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
-            return $this->{$variable_name} * SUPERSAMPLING_SCALE;
+            return $this->{$variable_name} * self::SUPERSAMPLING_SCALE;
         }
         Util\JpGraphError::RaiseL('25132', $name);
     }

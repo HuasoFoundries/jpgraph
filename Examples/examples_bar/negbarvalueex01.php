@@ -37,10 +37,10 @@ $graph->yscale->SetGrace(10, 10);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_VERDANA, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $example_title = 'Example of bar plot with absolute labels';
 $graph->title->set($example_title);
 
-$graph->yaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 16);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
 
 $graph->Stroke();

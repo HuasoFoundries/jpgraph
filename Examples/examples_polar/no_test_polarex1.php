@@ -16,13 +16,13 @@ $data = [0, 1, 10, 2, 30, 25, 40, 60,
     85, 270, 90, 280,
     95, 270, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
-    150, 25, 170, 2, 180, 1, ];
+    150, 25, 170, 2, 180, 1];
 
 $__width  = 600;
 $__height = 500;
 $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('lin');
-$graph->SetType(POLAR_180);
+$graph->SetType(Graph\Configs::getConfig('POLAR_180'));
 //$graph->SetAngle(90);
 //$graph->SetMargin(30-150,30-150,30+150,30+150);
 $graph->Set90AndMargin(40, 40, 40, 40);

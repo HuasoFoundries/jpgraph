@@ -15,7 +15,7 @@ $__height = 140;
 $graph    = new OdoGraph($__width, $__height);
 
 // Setup a title$example_title='An example with thick border'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 11);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 // Add drop shadow for graph
 $graph->SetShadow();
@@ -31,7 +31,7 @@ $odo = new Odometer();
 $odo->SetColor('white');
 $odo->SetBorder('darkgreen:0.8', 5);
 
-$odo->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $odo->scale->label->SetColor('brown:0.6');
 
 // Set display value for the odometer

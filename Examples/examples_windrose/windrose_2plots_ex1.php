@@ -28,17 +28,17 @@ $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
 $example_title = 'Two windrose plots in one graph';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->subtitle->Set('(Using Box() for each plot)');
 
 $wp = new Plot\WindrosePlot($data);
-$wp->SetType(WINDROSE_TYPE8);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
 $wp->SetSize(0.42);
 $wp->SetPos(0.25, 0.55);
 $wp->SetBox();
 
 $wp2 = new Plot\WindrosePlot($data2);
-$wp2->SetType(WINDROSE_TYPE16);
+$wp2->SetType(Plot\Configs::getConfig('WINDROSE_TYPE16'));
 $wp2->SetSize(0.42);
 $wp2->SetPos(0.74, 0.55);
 $wp2->SetBox();

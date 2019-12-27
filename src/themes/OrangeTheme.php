@@ -50,13 +50,13 @@ class OrangeTheme extends Theme
          */
         $graph->SetFrame(false);
         $graph->SetMarginColor('white');
-        $graph->SetBackgroundGradient($this->background_color, '#FFFFFF', GRAD_HOR, BGRAD_PLOT);
+        $graph->SetBackgroundGradient($this->background_color, '#FFFFFF', self::GRAD_HOR, self::BGRAD_PLOT);
 
         // legend
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.85, 'center', 'top');
         $graph->legend->SetFillColor('white');
-        $graph->legend->SetLayout(LEGEND_HOR);
+        $graph->legend->SetLayout(self::LEGEND_HOR);
         $graph->legend->SetColumns(3);
         $graph->legend->SetShadow(false);
         $graph->legend->SetMarkAbsSize(5);
@@ -64,13 +64,13 @@ class OrangeTheme extends Theme
         // xaxis
         $graph->xaxis->title->SetColor($this->font_color);
         $graph->xaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->xaxis->SetTickSide(SIDE_BOTTOM);
+        $graph->xaxis->SetTickSide(self::SIDE_BOTTOM);
         $graph->xaxis->SetLabelMargin(10);
 
         // yaxis
         $graph->yaxis->title->SetColor($this->font_color);
         $graph->yaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->yaxis->SetTickSide(SIDE_LEFT);
+        $graph->yaxis->SetTickSide(self::SIDE_LEFT);
         $graph->yaxis->SetLabelMargin(8);
         $graph->yaxis->HideLine();
         $graph->yaxis->HideTicks();
@@ -98,7 +98,7 @@ class OrangeTheme extends Theme
         /*
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.85, 'center', 'top');
-        $graph->legend->SetLayout(LEGEND_HOR);
+        $graph->legend->SetLayout(self::LEGEND_HOR);
         $graph->legend->SetColumns(3);
          */
         $graph->legend->SetShadow(false);
@@ -126,47 +126,47 @@ class OrangeTheme extends Theme
         switch (get_class($plot)) {
             case 'GroupBarPlot':
 
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                    }
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                }
 
-                    break;
+                break;
             case 'AccBarPlot':
 
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                    }
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                }
 
-                    break;
+                break;
             case 'BarPlot':
 
-                    $plot->Clear();
+                $plot->Clear();
 
-                    $color = $this->GetNextColor();
-                    $plot->SetColor($color);
-                    $plot->SetFillColor($color);
-                    $plot->SetShadow('red', 3, 4, false);
+                $color = $this->GetNextColor();
+                $plot->SetColor($color);
+                $plot->SetFillColor($color);
+                $plot->SetShadow('red', 3, 4, false);
 
-                    break;
+                break;
             case 'LinePlot':
 
-                    $plot->Clear();
+                $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
-                    $plot->SetWeight(2);
+                $plot->SetColor($this->GetNextColor() . '@0.4');
+                $plot->SetWeight(2);
 
-                    break;
+                break;
             case 'PiePlot':
 
-                    $plot->ShowBorder(false);
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->ShowBorder(false);
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'PiePlot3D':
 
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

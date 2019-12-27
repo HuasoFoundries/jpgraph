@@ -49,7 +49,7 @@ $graph->SetMargin(40, 40, 40, 40);
 $graph->SetMarginColor('wheat');
 $example_title = 'Example of ballon scatter plot with X,Y callback';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetMargin(10);
 
 // Use a lot of grace to get large scales since the ballon have
@@ -65,11 +65,11 @@ $graph->xscale->SetAutoMin(0);
 
 // Create the scatter plot
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 
 // Uncomment the following two lines to display the values
 $sp1->value->Show();
-$sp1->value->SetFont(FF_FONT1, FS_BOLD);
+$sp1->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Specify the callback
 $sp1->mark->SetCallbackYX($FCallback);

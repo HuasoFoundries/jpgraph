@@ -24,12 +24,12 @@ $graph->SetShadow();
 
 // Set up the title for the graph$example_title='Bar gradient with left reflection'; $graph->title->set($example_title);
 $graph->title->SetMargin(8);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
-$graph->yaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 
 // Show 0 label on Y-axis (default is not to show)
 $graph->yscale->ticks->SupressZeroLabel(false);
@@ -43,7 +43,7 @@ $bplot = new Plot\BarPlot($datay);
 $bplot->SetWidth(0.6);
 
 // Setup color for gradient fill style
-$bplot->SetFillGradient('navy:0.9', 'navy:1.85', GRAD_LEFT_REFLECTION);
+$bplot->SetFillGradient('navy:0.9', 'navy:1.85', Graph\Configs::getConfig('GRAD_LEFT_REFLECTION'));
 
 // Set color for the frame of each bar
 $bplot->SetColor('white');

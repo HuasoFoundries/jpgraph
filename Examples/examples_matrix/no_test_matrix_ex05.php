@@ -24,7 +24,7 @@ $height        = 350;
 $graph         = new MatrixGraph($width, $height);
 $example_title = 'Using a circular module type';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 $mp = new MatrixPlot($data, 2);
 $mp->SetSize(0.85);

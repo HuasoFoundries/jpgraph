@@ -28,8 +28,8 @@ $graph->title->set($example_title);
 $graph->xaxis->title->Set('x-title');
 $graph->yaxis->title->Set('y-title');
 
-$graph->yaxis->title->SetFont(FF_ARIAL, FS_BOLD, 9);
-$graph->xaxis->title->SetFont(FF_ARIAL, FS_BOLD, 9);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 9);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 9);
 
 $graph->yaxis->SetColor('blue');
 

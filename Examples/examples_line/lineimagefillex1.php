@@ -16,15 +16,15 @@ $__height      = 200;
 $graph         = new Graph\Graph($__width, $__height);
 $example_title = 'Education growth';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->SetScale('intlin');
 $graph->SetMarginColor('white');
 $graph->SetBox();
 //$graph->img->SetAntialiasing();
 
-$graph->SetGridDepth(DEPTH_FRONT);
+$graph->SetGridDepth(Graph\Configs::getConfig('DEPTH_FRONT'));
 $graph->ygrid->SetColor('gray@0.7');
-$graph->SetBackgroundImage(__DIR__ . '/../assets/classroom.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/classroom.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
 
 // Masking graph
 $p1 = new Plot\LinePlot($datay);
@@ -37,7 +37,7 @@ $graph->Add($p1);
 $p2 = new Plot\LinePlot($datay);
 $p2->SetColor('black@0.4');
 $p2->SetWeight(3);
-$p2->mark->SetType(MARK_SQUARE);
+$p2->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $p2->mark->SetColor('orange@0.5');
 $p2->mark->SetFillColor('orange@0.3');
 $graph->Add($p2);

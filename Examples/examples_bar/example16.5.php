@@ -27,7 +27,7 @@ $graph->img->SetTransparent('white');
 $t1 = new Text\Text('This is a text');
 $t1->SetPos(0.5, 0.5);
 $t1->SetOrientation('h');
-$t1->SetFont(FF_FONT1, FS_BOLD);
+$t1->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $t1->SetBox('white', 'black', 'gray');
 $t1->SetColor('black');
 $graph->AddText($t1);
@@ -51,9 +51,9 @@ $graph->title->set($example_title);
 $graph->xaxis->title->Set('Month');
 $graph->yaxis->title->Set('x10,000 US$');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $graph->xaxis->SetTickLabels($datax);
 //$graph->xaxis->SetTextTickInterval(2);

@@ -22,10 +22,10 @@ $__width  = 300;
 $__height = 300;
 $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('lin', 200);
-$graph->SetType(POLAR_180);
+$graph->SetType(Graph\Configs::getConfig('POLAR_180'));
 $example_title = 'Polar plot #3';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('navy');
 
 $graph->axis->ShowGrid(true, false);

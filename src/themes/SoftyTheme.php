@@ -59,7 +59,7 @@ class SoftyTheme extends Theme
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.85, 'center', 'top');
         $graph->legend->SetFillColor('white');
-        $graph->legend->SetLayout(LEGEND_HOR);
+        $graph->legend->SetLayout(self::LEGEND_HOR);
         $graph->legend->SetColumns(3);
         $graph->legend->SetShadow(false);
         $graph->legend->SetMarkAbsSize(5);
@@ -67,13 +67,13 @@ class SoftyTheme extends Theme
         // xaxis
         $graph->xaxis->title->SetColor($this->font_color);
         $graph->xaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->xaxis->SetTickSide(SIDE_BOTTOM);
+        $graph->xaxis->SetTickSide(self::SIDE_BOTTOM);
         $graph->xaxis->SetLabelMargin(10);
 
         // yaxis
         $graph->yaxis->title->SetColor($this->font_color);
         $graph->yaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->yaxis->SetTickSide(SIDE_LEFT);
+        $graph->yaxis->SetTickSide(self::SIDE_LEFT);
         $graph->yaxis->SetLabelMargin(8);
         $graph->yaxis->HideLine();
         $graph->yaxis->HideTicks();
@@ -83,7 +83,7 @@ class SoftyTheme extends Theme
         if (isset($graph->y2axis)) {
             $graph->y2axis->title->SetColor($this->font_color);
             $graph->y2axis->SetColor($this->axis_color, $this->font_color);
-            $graph->y2axis->SetTickSide(SIDE_LEFT);
+            $graph->y2axis->SetTickSide(self::SIDE_LEFT);
             $graph->y2axis->SetLabelMargin(8);
             $graph->y2axis->HideLine();
             $graph->y2axis->HideTicks();
@@ -94,7 +94,7 @@ class SoftyTheme extends Theme
             foreach ($graph->ynaxis as $axis) {
                 $axis->title->SetColor($this->font_color);
                 $axis->SetColor($this->axis_color, $this->font_color);
-                $axis->SetTickSide(SIDE_LEFT);
+                $axis->SetTickSide(self::SIDE_LEFT);
                 $axis->SetLabelMargin(8);
                 $axis->HideLine();
                 $axis->HideTicks();
@@ -144,53 +144,53 @@ class SoftyTheme extends Theme
         switch (get_class($plot)) {
             case 'BarPlot':
 
-                    $plot->Clear();
+                $plot->Clear();
 
-                    $color = $this->GetNextColor();
-                    $plot->SetColor($color);
-                    $plot->SetFillColor($color);
-                    $plot->SetShadow('red', 3, 4, false);
-                    $plot->value->SetAlign('center', 'center');
+                $color = $this->GetNextColor();
+                $plot->SetColor($color);
+                $plot->SetFillColor($color);
+                $plot->SetShadow('red', 3, 4, false);
+                $plot->value->SetAlign('center', 'center');
 
-                    break;
+                break;
             case 'LinePlot':
 
-                    $plot->Clear();
+                $plot->Clear();
 
-                    $plot->SetColor($this->GetNextColor());
-                    $plot->SetWeight(2);
-                    //                $plot->SetBarCenter();
-                    break;
+                $plot->SetColor($this->GetNextColor());
+                $plot->SetWeight(2);
+                //                $plot->SetBarCenter();
+                break;
             case 'PiePlot':
 
-                    $plot->ShowBorder(false);
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->ShowBorder(false);
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'GroupBarPlot':
 
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                    }
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                }
 
-                    break;
+                break;
             case 'AccBarPlot':
 
-                    $plot->value->SetAlign('center', 'center');
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                        $_plot->SetValuePos('center');
-                    }
+                $plot->value->SetAlign('center', 'center');
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                    $_plot->SetValuePos('center');
+                }
 
-                    break;
+                break;
             case 'ScatterPlot':
 
-                    break;
+                break;
             case 'PiePlot3D':
 
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

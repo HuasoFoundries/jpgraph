@@ -32,7 +32,7 @@ class PlotBand
     private $min;
     private $max;
 
-    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = DEPTH_BACK)
+    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = Configs::DEPTH_BACK)
     {
         $f           = new Graph\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
@@ -94,7 +94,7 @@ class PlotBand
     public function Stroke($aImg, $aXScale, $aYScale)
     {
         assert($this->prect != null);
-        if ($this->dir == HORIZONTAL) {
+        if ($this->dir == Configs::HORIZONTAL) {
             if ($this->min === 'min') {
                 $this->min = $aYScale->GetMinVal();
             }

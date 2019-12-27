@@ -1,0 +1,16 @@
+testfileIterator:
+    basic_contourex01.php: file_iterator
+    basic_contourex02.php: file_iterator
+    basic_contourex03-1.php: file_iterator
+    basic_contourex03-2.php: file_iterator
+    basic_contourex03-3.php: file_iterator
+    basic_contourex04.php: file_iterator
+    basic_contourex05.php: file_iterator
+testExampleOfContourPlot:
+    contourex01.php: 'Example of contour plot'
+    contourex02.php: 'Example of contour plot'
+    contourex03.php: 'Example of contour plot'
+testExampleOfInterpolatedContourPlot:
+    contourex04.php: 'Example of interpolated contour plot'
+testContourPlotHighContrastColor:
+    contourex05.php: 'Contour plot, high contrast color'

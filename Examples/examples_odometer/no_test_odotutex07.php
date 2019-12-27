@@ -16,9 +16,9 @@ $graph    = new OdoGraph($__width, $__height);
 
 $odo     = [];
 $astyles = [
-    NEEDLE_ARROW_SS, NEEDLE_ARROW_SM, NEEDLE_ARROW_SL,
-    NEEDLE_ARROW_MS, NEEDLE_ARROW_MM, NEEDLE_ARROW_ML,
-    NEEDLE_ARROW_LS, NEEDLE_ARROW_LM, NEEDLE_ARROW_LL,
+    Graph\Configs::getConfig('NEEDLE_ARROW_SS'), Graph\Configs::getConfig('NEEDLE_ARROW_SM'), Graph\Configs::getConfig('NEEDLE_ARROW_SL'),
+    Graph\Configs::getConfig('NEEDLE_ARROW_MS'), Graph\Configs::getConfig('NEEDLE_ARROW_MM'), Graph\Configs::getConfig('NEEDLE_ARROW_ML'),
+    Graph\Configs::getConfig('NEEDLE_ARROW_LS'), Graph\Configs::getConfig('NEEDLE_ARROW_LM'), Graph\Configs::getConfig('NEEDLE_ARROW_LL'),
 ];
 $acaptions = [
     'SS', 'SM', 'SL', 'MS', 'MM', 'ML', 'LS', 'LM', 'LL',
@@ -28,8 +28,8 @@ for ($i = 0; $i < 9; ++$i) {
     $odo[$i] = new Odometer();
     $odo[$i]->SetColor('lightyellow');
     $odo[$i]->needle->Set(75);
-    $odo[$i]->needle->SetStyle(NEEDLE_STYLE_ENDARROW, $astyles[$i]);
-    $odo[$i]->caption->SetFont(FF_FONT1, FS_BOLD);
+    $odo[$i]->needle->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_ENDARROW'), $astyles[$i]);
+    $odo[$i]->caption->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
     $odo[$i]->caption->Set('Arrow: ' . $acaptions[$i]);
 }
 

@@ -31,11 +31,11 @@ class CCBPGraph
     private $iColorInd = [
         [5, 75], /* Green */
         [25, 85], /* Yellow */
-        [50, 100], ]; /* Red */
+        [50, 100]]; /* Red */
     private $iColorMap  = 0;
     private $iColorSpec = [
         ['darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'],
-        ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'], ];
+        ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787']];
     private $iMarginColor = ['darkgreen@0.7', 'darkgreen@0.9'];
     private $iSubTitle    = '';
     private $iTitle       = 'CC Buffer penetration';
@@ -175,13 +175,13 @@ class CCBPGraph
         $graph->title->Set($this->iTitle);
         $graph->subtitle->Set($this->iSubTitle);
 
-        $graph->title->SetFont(FF_ARIAL, FS_BOLD, $labelsize + 4);
-        $graph->subtitle->SetFont(FF_ARIAL, FS_BOLD, $labelsize + 1);
+        $graph->title->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 4);
+        $graph->subtitle->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 1);
 
         $graph->SetBox(true, 'black@0.3');
 
-        $graph->xaxis->SetFont(FF_ARIAL, FS_BOLD, $labelsize);
-        $graph->yaxis->SetFont(FF_ARIAL, FS_BOLD, $labelsize);
+        $graph->xaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
+        $graph->yaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
 
         $graph->xaxis->scale->ticks->Set(CCBPGraph::TickStep, CCBPGraph::TickStep);
         $graph->yaxis->scale->ticks->Set(CCBPGraph::TickStep, CCBPGraph::TickStep);
@@ -219,13 +219,13 @@ class CCBPGraph
         $graph->yaxis->SetWeight(1);
 
         $ytitle = new Text\Text(CCBPGraph::YTitle, floor($lm * .75), ($height - $tm - $bm) / 2 + $tm);
-        #$ytitle->SetFont(FF_VERA,FS_BOLD,$labelsize+1);
+        #$ytitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize+1);
         $ytitle->SetAlign('right', 'center');
         $ytitle->SetAngle(90);
         $graph->Add($ytitle);
 
         $xtitle = new Text\Text(CCBPGraph::XTitle, ($width - $lm - $rm) / 2 + $lm, $height - 10);
-        #$xtitle->SetFont(FF_VERA,FS_BOLD,$labelsize);
+        #$xtitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize);
         $xtitle->SetAlign('center', 'bottom');
         $graph->Add($xtitle);
 
@@ -236,7 +236,7 @@ class CCBPGraph
 
         $time = new Text\Text(date($df), $width - 10, $height - 10);
         $time->SetAlign('right', 'bottom');
-        #$time->SetFont(FF_VERA,FS_NORMAL,$labelsize-1);
+        #$time->SetFont(Configs::FF_VERA,Configs::getConfig('FS_NORMAL'),$labelsize-1);
         $time->SetColor('darkgray');
         $graph->Add($time);
 

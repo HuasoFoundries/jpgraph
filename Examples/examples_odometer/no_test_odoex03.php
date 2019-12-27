@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX03.PHP
+// File:    Graph\Configs::getConfig('ODOEX03').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -69,7 +69,7 @@ $odo->scale->SetTicks(10, 2);
 //---------------------------------------------------------------------
 // Use a bold font for tick labels
 //---------------------------------------------------------------------
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Set display value for the odometer

@@ -9,11 +9,11 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 // Setup canvas graph
-$__width       = 400;
-$__height      = 300;
-$g             = new Graph\CanvasGraph($__width, $__height);
-$scale         = new Graph\CanvasScale($g);
-$shape         = new Graph\Shape($g, $scale);
+$__width  = 400;
+$__height = 300;
+$g        = new Graph\CanvasGraph($__width, $__height);
+$g->SetScale();
+$shape         = new Graph\Shape($g, $g->scale);
 $example_title = 'Bezier line with control points';
 $g->title->set($example_title);
 

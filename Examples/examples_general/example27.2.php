@@ -16,7 +16,7 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 $example_title = 'A simple Pie plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $p1 = new Plot\PiePlot($data);
 $p1->ExplodeSlice(1);

@@ -24,7 +24,7 @@ $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('lin');
 $example_title = 'Polar plot #2';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('navy');
 
 // Hide last labels on the Radius axis

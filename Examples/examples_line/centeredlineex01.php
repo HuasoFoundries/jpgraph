@@ -19,14 +19,14 @@ $graph->SetScale('textlin');
 $graph->SetShadow();
 $example_title = 'Example of line centered plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Use 20% "grace" to get slightly larger scale then min/max of
 // data
 $graph->yscale->SetGrace(20);
 
 $p1 = new Plot\LinePlot($datay);
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $p1->SetColor('blue');

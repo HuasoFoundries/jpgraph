@@ -25,21 +25,20 @@ $g->SetMarginColor('teal');
 $g->InitFrame();
 
 // Create a new Graph\scale
-$scale = new Graph\CanvasScale($g);
-$scale->Set(0, $xmax, 0, $ymax);
+$g->SetScale('canvas', 0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Graph\Shape($g, $scale);
+$shape = new Graph\Shape($g, $g->scale);
 $shape->SetColor('black');
 
-$shape->IndentedRectangle(1, 2, 15, 15, 8, 8, CORNER_TOPLEFT, 'khaki');
+$shape->IndentedRectangle(1, 2, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_TOPLEFT'), 'khaki');
 
-$shape->IndentedRectangle(1, 20, 15, 15, 8, 8, CORNER_BOTTOMLEFT, 'khaki');
+$shape->IndentedRectangle(1, 20, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_BOTTOMLEFT'), 'khaki');
 
-$shape->IndentedRectangle(20, 2, 15, 15, 8, 8, CORNER_TOPRIGHT, 'khaki');
+$shape->IndentedRectangle(20, 2, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_TOPRIGHT'), 'khaki');
 
-$shape->IndentedRectangle(20, 20, 15, 15, 8, 8, CORNER_BOTTOMRIGHT, 'khaki');
+$shape->IndentedRectangle(20, 20, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_BOTTOMRIGHT'), 'khaki');
 
 // Stroke the graph
 $g->Stroke();

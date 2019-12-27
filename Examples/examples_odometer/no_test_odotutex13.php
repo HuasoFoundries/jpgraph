@@ -21,7 +21,7 @@ $graph->SetShadow();
 
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
-$odo = new Odometer(ODO_HALF);
+$odo = new Odometer(Graph\Configs::getConfig('ODO_HALF'));
 
 // Add color indications
 $odo->AddIndication(0, 20, 'green:0.7');
@@ -37,7 +37,7 @@ $odo->needle->Set(90);
 
 // Add scale labels
 $odo->label->Set('mBar');
-$odo->label->SetFont(FF_FONT2, FS_BOLD);
+$odo->label->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add drop shadow for needle
 $odo->needle->SetShadow();

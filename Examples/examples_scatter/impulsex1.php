@@ -19,10 +19,10 @@ $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
 $example_title = 'Simple mpuls plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(MARK_SQUARE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->SetImpuls();
 
 $graph->Add($sp1);

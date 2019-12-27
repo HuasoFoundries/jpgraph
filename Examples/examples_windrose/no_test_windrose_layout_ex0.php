@@ -32,7 +32,7 @@ $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
 $example_title = 'Multiple plots with automatic layout';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the individual windrose plots
 $wp = [];

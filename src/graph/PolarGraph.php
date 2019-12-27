@@ -48,9 +48,9 @@ class PolarGraph extends Graph
     public function SetScale($aScale, $rmax = 0, $dummy1 = 1, $dummy2 = 1, $dummy3 = 1)
     {
         if ($aScale == 'lin') {
-            $this->scale = new PolarScale($rmax, $this, $this->iClockwise);
+            $this->scale = new Scale\PolarScale($rmax, $this, $this->iClockwise);
         } elseif ($aScale == 'log') {
-            $this->scale = new PolarLogScale($rmax, $this, $this->iClockwise);
+            $this->scale = new Scale\PolarLogScale($rmax, $this, $this->iClockwise);
         } else {
             Util\JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }
@@ -100,7 +100,7 @@ class PolarGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -231,14 +231,14 @@ class PolarGraph extends Graph
             $this->img->SetAngle($aa);
 
             // Draw an outline around the image map
-            if (_JPG_DEBUG) {
+            if (Configs::_JPG_DEBUG) {
                 $this->DisplayClientSideaImageMapAreas();
             }
 
             // If the filename is given as the special "__handle"
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
+            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
                 return $this->img->img;
             }
             // Finally stream the generated picture

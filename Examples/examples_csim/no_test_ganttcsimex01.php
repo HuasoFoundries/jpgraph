@@ -17,9 +17,9 @@ $bar2->title->SetCSIMTarget('#', 'Go back 2 (title)');
 $graph         = new GanttGraph(500);
 $example_title = 'Example with image map';
 $graph->title->set($example_title);
-$graph->ShowHeaders(GANTT_HYEAR | GANTT_HMONTH | GANTT_HDAY | GANTT_HWEEK);
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
-$graph->scale->week->SetFont(FF_FONT1);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAY'));
+$graph->scale->week->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 
 $graph->Add([$bar1, $bar2]);
 

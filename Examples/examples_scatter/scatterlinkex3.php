@@ -21,21 +21,21 @@ $__height = 230;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 
 $graph->img->SetMargin(50, 50, 60, 40);
 $example_title = 'Linked scatter plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->subtitle->Set('(BOXOUT Axis style)');
-$graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->subtitle->Set('(Graph\Configs::getConfig('BOXOUT') Axis style)');
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 
 // 10% top and bottom grace
 $graph->yscale->SetGrace(5, 5);
 $graph->xscale->SetGrace(1, 1);
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');
 

@@ -16,7 +16,7 @@ $graph    = new OdoGraph($__width, $__height);
 
 // Setup titles$example_title='Result for 2002'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->subtitle->Set('New York Office');
 $graph->subtitle->SetColor('white');
 $graph->caption->Set('Figure 1. Branch results.');

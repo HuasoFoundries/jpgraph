@@ -34,7 +34,7 @@ $graph    = new MatrixGraph($__width, $__height);
 $graph->SetMarginColor('white');
 $example_title = 'Adding labels on the edges';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Create one matrix plot
 $mp = new MatrixPlot($data, 1);
@@ -45,13 +45,13 @@ $mp->colormap->SetNullColor('gray');
 // Setup column lablels
 $mp->collabel->Set($xlabels);
 $mp->collabel->SetSide('bottom');
-$mp->collabel->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$mp->collabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $mp->collabel->SetFontColor('darkgray');
 
 // Setup row lablels
 $mp->rowlabel->Set($ylabels);
 $mp->rowlabel->SetSide('right');
-$mp->rowlabel->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$mp->rowlabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $mp->rowlabel->SetFontColor('darkgray');
 
 // Move the legend more to the right

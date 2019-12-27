@@ -19,12 +19,12 @@ $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
 $example_title = 'Impuls plot, variant 2';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->Set('Impuls respons');
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $sp1 = new Plot\ScatterPlot($datay); //,$datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $sp1->mark->SetFillColor('red');
 $sp1->mark->SetWidth(4);
 $sp1->SetImpuls();

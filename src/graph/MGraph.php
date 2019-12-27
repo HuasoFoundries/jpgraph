@@ -69,7 +69,7 @@ class MGraph
 
         // If the cached version exist just read it directly from the
         // cache, stream it back to browser and exit
-        if ($aCachedName != '' && READ_CACHE && $aInline) {
+        if ($aCachedName != '' && Configs::READ_CACHE && $aInline) {
             $this->cache = new Image\ImgStreamCache();
             $this->cache->SetTimeOut($aTimeOut);
             $image = new Image\Image();
@@ -82,19 +82,19 @@ class MGraph
 
         $this->title = new Text\Text();
         $this->title->ParagraphAlign('center');
-        $this->title->SetFont(FF_FONT2, FS_BOLD);
+        $this->title->SetFont(Configs::FF_FONT2, Configs::FS_BOLD);
         $this->title->SetMargin(3);
         $this->title->SetAlign('center');
 
         $this->subtitle = new Text\Text();
         $this->subtitle->ParagraphAlign('center');
-        $this->subtitle->SetFont(FF_FONT1, FS_BOLD);
+        $this->subtitle->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->subtitle->SetMargin(3);
         $this->subtitle->SetAlign('center');
 
         $this->subsubtitle = new Text\Text();
         $this->subsubtitle->ParagraphAlign('center');
-        $this->subsubtitle->SetFont(FF_FONT1, FS_NORMAL);
+        $this->subsubtitle->SetFont(Configs::FF_FONT1, Configs::getConfig('FS_NORMAL'));
         $this->subsubtitle->SetMargin(3);
         $this->subsubtitle->SetAlign('center');
 
@@ -196,12 +196,12 @@ class MGraph
 
     public function AddMix($aGraph, $x = 0, $y = 0, $mix = 100, $fx = 0, $fy = 0, $w = 0, $h = 0)
     {
-        $this->_gdImgHandle($aGraph->Stroke(_IMG_HANDLER), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
+        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
     }
 
     public function Add($aGraph, $x = 0, $y = 0, $fx = 0, $fy = 0, $w = 0, $h = 0)
     {
-        $this->_gdImgHandle($aGraph->Stroke(_IMG_HANDLER), $x, $y, $fx = 0, $fy = 0, $w, $h);
+        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h);
     }
 
     public function _gdImgHandle($agdCanvas, $x, $y, $fx = 0, $fy = 0, $w = 0, $h = 0, $mix = 100)
@@ -372,7 +372,7 @@ class MGraph
         $this->footer->Stroke($image);
 
         // Output image
-        if ($aFileName == _IMG_HANDLER) {
+        if ($aFileName == Configs::getConfig('_IMG_HANDLER')) {
             return $image->img;
         }
         //Finally stream the generated picture

@@ -48,7 +48,7 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, 0, $xmin, $xmax);
 $example_title = 'Basic example with manual ticks';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 //
 // Make sure that the X-axis is always at the bottom of the scale
@@ -63,7 +63,7 @@ $graph->xaxis->SetTickPositions($tickPositions, $minTickPositions);
 $graph->xaxis->SetLabelFormatString('My', true);
 
 // Use Ariel font
-$graph->xaxis->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 
 // Add a X-grid
 $graph->xgrid->Show();

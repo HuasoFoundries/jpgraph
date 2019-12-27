@@ -21,7 +21,7 @@ $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title$example_title='Windrose basic example'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.

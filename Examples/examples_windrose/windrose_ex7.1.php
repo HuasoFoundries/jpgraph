@@ -23,12 +23,12 @@ $__height      = 580;
 $graph         = new Graph\WindroseGraph($__width, $__height);
 $example_title = 'Japanese locale';
 $graph->title->set($example_title);
-#$graph->title->SetFont(FF_VERDANA,FS_BOLD,14);
+#$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'),FS_BOLD,14);
 $graph->title->SetColor('navy');
 
 // Create the free windrose plot.
 $wp = new Plot\WindrosePlot($data);
-$wp->SetType(WINDROSE_TYPE8);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
 
 // Add some "arbitrary" text to the center
 $wp->scale->SetZeroLabel("SOx\n8%%");
@@ -48,14 +48,14 @@ $wp->scale->SetZeroLabel("SOx\n8%%");
 $jp_CompassLbl = ['東', '', '北東', '', '北', '', '北西', '',
     '西', '', '南西', '', '南', '', '南東', ''];
 $wp->SetCompassLabels($jp_CompassLbl);
-#$wp->SetFont(FF_MINCHO,FS_NORMAL,15);
+#$wp->SetFont(Graph\Configs::getConfig('FF_MINCHO'),FS_NORMAL,15);
 
 // Localize the "Calm" text into Swedish and make the circle
 // slightly bigger than default
 $jp_calmtext = '平穏';
 $wp->legend->SetCircleText($jp_calmtext);
 $wp->legend->SetCircleRadius(20);
-#$wp->legend->SetCFont(FF_MINCHO,FS_NORMAL,10);
+#$wp->legend->SetCFont(Graph\Configs::getConfig('FF_MINCHO'),FS_NORMAL,10);
 $wp->legend->SetMargin(5, 0);
 $wp->SetPos(0.5, 0.5);
 
@@ -65,7 +65,7 @@ $wp->SetRanges($ranges);
 
 // Set the scale to always have max value of 30
 $wp->scale->Set(30, 10);
-#$wp->scale->SetFont(FF_VERA,FS_NORMAL,12);
+#$wp->scale->SetFont(Graph\Configs::getConfig('FF_VERA'),FS_NORMAL,12);
 
 // Finally add it to the graph and send back to client
 $graph->Add($wp);

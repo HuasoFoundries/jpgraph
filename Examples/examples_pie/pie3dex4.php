@@ -18,7 +18,7 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot$example_title='Example 4 3D Pie plot'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 18);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $graph->title->SetColor('darkblue');
 $graph->legend->Pos(0.1, 0.2);
 
@@ -38,7 +38,7 @@ $p1->SetStartAngle(45);
 $p1->ExplodeSlice(3);
 
 // Setup slice values
-$p1->value->SetFont(FF_ARIAL, FS_BOLD, 11);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $p1->value->SetColor('navy');
 
 $p1->SetLegends(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']);

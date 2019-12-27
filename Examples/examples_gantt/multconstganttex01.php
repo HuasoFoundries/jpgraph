@@ -19,12 +19,12 @@ $bar2 = new Plot\GanttBar(1, 'Label 2', '2003-06-16', '2003-06-19');
 $bar3 = new Plot\GanttBar(2, 'Label 3', '2003-06-15', '2003-06-21');
 
 //create constraints
-$bar1->SetConstrain(1, CONSTRAIN_ENDSTART);
-$bar1->SetConstrain(2, CONSTRAIN_ENDSTART);
+$bar1->SetConstrain(1, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
+$bar1->SetConstrain(2, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
 
 // Setup scale
-$graph->ShowHeaders( /*GANTT_HYEAR | GANTT_HMONTH |*/GANTT_HDAY | GANTT_HWEEK);
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAYWNBR);
+$graph->ShowHeaders( /*GANTT_HYEAR | Graph\Configs::getConfig('GANTT_HMONTH') |*/GANTT_HDAY | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAYWNBR'));
 
 // Add the specified activities
 $graph->Add($bar1);

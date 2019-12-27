@@ -29,7 +29,7 @@ $__height      = 220;
 $graph         = new MatrixGraph($__width, $__height);
 $example_title = 'Meshinterpolation=3';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 $mp = new MatrixPlot($data, 1);
 $mp->colormap->SetMap(0);

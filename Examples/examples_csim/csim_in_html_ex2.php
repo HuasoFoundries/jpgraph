@@ -6,7 +6,7 @@
 $_graphfilename1 = 'csim_in_html_graph_ex1.php';
 $_graphfilename2 = 'csim_in_html_graph_ex2.php';
 
-// This is the filename of this HTML file
+// This is the filename of this Graph\Configs::getConfig('HTML') file
 global $_wrapperfilename;
 $_wrapperfilename = basename(__FILE__);
 
@@ -26,7 +26,7 @@ echo $imgmap2;
 
 ?>
 
-<h2>This is an example page with CSIM graphs with arbitrary HTML text</h2>
+<h2>This is an example page with Graph\Configs::getConfig('CSIM') graphs with arbitrary Graph\Configs::getConfig('HTML') text</h2>
 
 <?php
 if (empty($_GET['clickedon'])) {
@@ -43,7 +43,7 @@ if (empty($_GET['pie_clickedon'])) {
 echo '<p />';
 ?>
 
-<p>First we need to get hold of the image maps and include them in the HTML
+<p>First we need to get hold of the image maps and include them in the Graph\Configs::getConfig('HTML')
   page.</p>
 <p>For these graphs the maps are:</p>
 <?php
@@ -82,14 +82,14 @@ Note: For the Pie the center is counted as the first slice.
 <?php
 echo $imgtag1;
 ?>
-<br><b>Figure 1. </b>The included Bar CSIM graph.
+<br><b>Figure 1. </b>The included Bar Graph\Configs::getConfig('CSIM') graph.
 </p>
 </td>
 <td valign="bottom">
 <?php
 echo $imgtag2;
 ?>
-<br><b>Figure 2. </b>The included Pie CSIM graph.
+<br><b>Figure 2. </b>The included Pie Graph\Configs::getConfig('CSIM') graph.
 </p>
 </td>
 </tr>

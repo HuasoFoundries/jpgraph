@@ -20,7 +20,7 @@ class RotImage extends Image
     public $transy = 0;
     private $m     = [];
 
-    public function __construct($aWidth, $aHeight, $a = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
+    public function __construct($aWidth, $aHeight, $a = 0, $aFormat = self::DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         parent::__construct($aWidth, $aHeight, $aFormat, $aSetAutoMargin);
         $this->dx = $this->left_margin + $this->plotwidth / 2;

@@ -2,8 +2,6 @@
 #
 # Suite for unit or integration tests.
 
-actor: UnitWizard
 modules:
-    enabled:
-        - Asserts
-        - \Helper\Unit
+  enabled:
+    - Asserts

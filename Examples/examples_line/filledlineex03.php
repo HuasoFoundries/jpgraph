@@ -15,7 +15,7 @@ $__width  = 400;
 $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
-$example_title = 'Filled line with NULL values';
+$example_title = 'Filled line with Graph\Configs::getConfig('NULL') values';
 $graph->title->set($example_title);
 //Make sure data starts from Zero whatever data we have
 $graph->yscale->SetAutoMin(0);

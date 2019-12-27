@@ -19,11 +19,11 @@ class JpGraphError
     public static $previous_handler;
 
     /**
-     * Generic error or exception messages
+     * Generic error or exception messages.
      *
-     * @param <type>  $aMsg   A message
+     * @param <type> $aMsg A message
      *
-     * @throws JpGraphException  (description)
+     * @throws JpGraphException (description)
      */
     public static function Raise($aMsg)
     {
@@ -31,22 +31,23 @@ class JpGraphError
     }
 
     /**
-     * Customized and i18n error messages
+     * Customized and i18n error messages.
      *
-     * @param int  $error_number  The error number (it will be searched in locale file)
-     * @param string  $a1            A 1
-     * @param string  $a2            A 2
-     * @param string  $a3            A 3
-     * @param string  $a4            A 4
-     * @param string  $a5            A 5
+     * @param int    $error_number The error number (it will be searched in locale file)
+     * @param string $a1           A 1
+     * @param string $a2           A 2
+     * @param string $a3           A 3
+     * @param string $a4           A 4
+     * @param string $a5           A 5
      *
-     * @throws JpGraphExceptionL  (description)
+     * @throws JpGraphExceptionL (description)
      */
     public static function RaiseL($error_number, $a1 = null, $a2 = null, $a3 = null, $a4 = null, $a5 = null)
     {
         $errtxt = new ErrMsgText();
         self::SetTitle('JpGraph Error: ' . $error_number);
         $exceptionMessage = $errtxt->Get($error_number, $a1, $a2, $a3, $a4, $a5);
+
         throw new JpGraphException($exceptionMessage);
     }
 

@@ -49,13 +49,13 @@ class UniversalTheme extends Theme
         $graph->SetFrame(false);
         $graph->SetMarginColor('white');
         $graph->SetBox(true, '#DADADA');
-        //        $graph->SetBackgroundGradient($this->background_color, '#FFFFFF', GRAD_HOR, BGRAD_PLOT);
+        //        $graph->SetBackgroundGradient($this->background_color, '#FFFFFF', self::GRAD_HOR, self::BGRAD_PLOT);
 
         // legend
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.85, 'center', 'top');
         $graph->legend->SetFillColor('white');
-        $graph->legend->SetLayout(LEGEND_HOR);
+        $graph->legend->SetLayout(self::LEGEND_HOR);
         $graph->legend->SetColumns(3);
         $graph->legend->SetShadow(false);
         $graph->legend->SetMarkAbsSize(5);
@@ -63,7 +63,7 @@ class UniversalTheme extends Theme
         // xaxis
         $graph->xaxis->title->SetColor($this->font_color);
         $graph->xaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->xaxis->SetTickSide(SIDE_BOTTOM);
+        $graph->xaxis->SetTickSide(self::SIDE_BOTTOM);
         $graph->xaxis->SetLabelMargin(10);
         $graph->xaxis->HideTicks();
         $graph->xaxis->SetTitleMargin(15);
@@ -72,7 +72,7 @@ class UniversalTheme extends Theme
         // yaxis
         $graph->yaxis->title->SetColor($this->font_color);
         $graph->yaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->yaxis->SetTickSide(SIDE_LEFT);
+        $graph->yaxis->SetTickSide(self::SIDE_LEFT);
         $graph->yaxis->SetLabelMargin(8);
         //        $graph->yaxis->SetTickPositions(array(50, 100, 150));
         //        $graph->yaxis->HideLine();
@@ -101,7 +101,7 @@ class UniversalTheme extends Theme
 
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.80, 'center', 'top');
-        $graph->legend->SetLayout(LEGEND_HOR);
+        $graph->legend->SetLayout(self::LEGEND_HOR);
         $graph->legend->SetColumns(4);
 
         $graph->legend->SetShadow(false);
@@ -134,48 +134,48 @@ class UniversalTheme extends Theme
         switch (get_class($plot)) {
             case 'GroupBarPlot':
 
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                    }
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                }
 
-                    break;
+                break;
             case 'AccBarPlot':
 
-                    foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                    }
+                foreach ($plot->plots as $_plot) {
+                    $this->ApplyPlot($_plot);
+                }
 
-                    break;
+                break;
             case 'BarPlot':
 
-                    if (!$plot->fill) {
-                        $plot->Clear();
-                        $color = $this->GetNextColor();
-                        $plot->SetColor($color);
-                        $plot->SetFillColor($color);
-                        $plot->SetShadow('red', 3, 4, false);
-                    }
+                if (!$plot->fill) {
+                    $plot->Clear();
+                    $color = $this->GetNextColor();
+                    $plot->SetColor($color);
+                    $plot->SetFillColor($color);
+                    $plot->SetShadow('red', 3, 4, false);
+                }
 
-                    break;
+                break;
             case 'LinePlot':
 
-                    $plot->Clear();
-                    $plot->SetColor($this->GetNextColor() . '@0.4');
-                    $plot->SetWeight(2);
+                $plot->Clear();
+                $plot->SetColor($this->GetNextColor() . '@0.4');
+                $plot->SetWeight(2);
 
-                    break;
+                break;
             case 'PiePlot':
 
-                    $plot->SetCenter(0.5, 0.45);
-                    $plot->ShowBorder(false);
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->SetCenter(0.5, 0.45);
+                $plot->ShowBorder(false);
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'PiePlot3D':
 
-                    $plot->SetSliceColors($this->GetThemeColors());
+                $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

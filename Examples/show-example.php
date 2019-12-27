@@ -10,7 +10,7 @@ $target = basename(urldecode($_GET['target']));
 $folder = basename(urldecode($_GET['folder']));
 
 ?>
-<!doctype html public "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!doctype html public "-//W3C//DTD Graph\Configs::getConfig('HTML') 4.0 Frameset//EN">
 <html>
 <head>
 <title> Test suite for JpGraph - <?php echo $target; ?></title>

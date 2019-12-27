@@ -42,7 +42,7 @@ class PiePlot3D extends PiePlot
         $this->radius = 0.5;
         $this->data   = $data;
         $this->title  = new Text\Text('');
-        $this->title->SetFont(FF_FONT1, FS_BOLD);
+        $this->title->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.0f%%');
@@ -91,7 +91,7 @@ class PiePlot3D extends PiePlot
     {
         if ($a < 5 || $a > 90) {
             Util\JpGraphError::RaiseL(14002);
-        //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
+            //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
         } else {
             $this->angle = $a;
         }
@@ -247,7 +247,7 @@ class PiePlot3D extends PiePlot
                 }
 
                 $p = [$xc, $yc, $xc, $yc + $z,
-                    $xc + $w * $cossa, $z + $yc - $h * $sinsa, ];
+                    $xc + $w * $cossa, $z + $yc - $h * $sinsa];
                 $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
                 for ($a = $rsa; $a < 2 * M_PI; $a += $step) {
@@ -280,7 +280,7 @@ class PiePlot3D extends PiePlot
                 $pt[] = $yc;
             } else {
                 $p = [$xc, $yc, $xc, $yc + $z,
-                    $xc + $w * $cossa, $z + $yc - $h * $sinsa, ];
+                    $xc + $w * $cossa, $z + $yc - $h * $sinsa];
                 $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
                 $rea = $rea == 0.0 ? 2 * M_PI : $rea;
@@ -369,7 +369,7 @@ class PiePlot3D extends PiePlot
                 $p = [$xc, $yc, $xc, $yc + $z,
                     $xc + $w * $cosea, $z + $yc - $h * $sinea,
                     $xc + $w * $cosea, $yc - $h * $sinea,
-                    $xc, $yc, ];
+                    $xc, $yc];
 
                 $pt = [$xc, $yc, $xc + $w * $cosea, $yc - $h * $sinea];
 
@@ -389,7 +389,7 @@ class PiePlot3D extends PiePlot
             $p = [$xc, $yc, $xc, $yc + $z,
                 $xc + $w * $cossa, $z + $yc - $h * $sinsa,
                 $xc + $w * $cossa, $yc - $h * $sinsa,
-                $xc, $yc, ];
+                $xc, $yc];
 
             $pt = [$xc, $yc, $xc + $w * $cossa, $yc - $h * $sinsa];
 
@@ -514,7 +514,7 @@ class PiePlot3D extends PiePlot
 
             $la      = $a + $da / 2;
             $explode = [$xc + $this->explode_radius[$i] * cos($la * M_PI / 180) * $expscale,
-                $yc - $this->explode_radius[$i] * sin($la * M_PI / 180) * ($h / $d) * $expscale, ];
+                $yc - $this->explode_radius[$i] * sin($la * M_PI / 180) * ($h / $d) * $expscale];
             $adjexplode[$idx]   = $explode;
             $labeldata[$i]      = [$la, $explode[0], $explode[1]];
             $originalangles[$i] = [$a, $a + $da];
@@ -857,7 +857,7 @@ class PiePlot3D extends PiePlot
 
             if ($sa >= M_PI && $ea <= 2 * M_PI) {
                 $p = [$xc + $w * cos($sa), $yc - $h * sin($sa),
-                    $xc + $w * cos($sa), $z + $yc - $h * sin($sa), ];
+                    $xc + $w * cos($sa), $z + $yc - $h * sin($sa)];
 
                 for ($a = $sa + $step; $a < $ea; $a += $step) {
                     $p[] = $xc + $w * cos($a);

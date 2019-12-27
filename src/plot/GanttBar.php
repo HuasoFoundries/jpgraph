@@ -28,7 +28,7 @@ class GanttBar extends GanttPlotObject
     private $iShadowColor     = 'darkgray';
     private $iShadowWidth     = 1;
     private $iShadowFrame     = 'black';
-    private $iPattern         = GANTT_RDIAG;
+    private $iPattern         = Configs::GANTT_RDIAG;
     private $iPatternColor    = 'blue';
     private $iPatternDensity  = 95;
     private $iBreakStyle      = false;
@@ -54,12 +54,12 @@ class GanttBar extends GanttPlotObject
             // If end date has been specified without a time we will asssume
             // end date is at the end of that date
             if (strpos($aEnd, ':') === false) {
-                $this->iEnd = strtotime($aEnd) + SECPERDAY - 1;
+                $this->iEnd = strtotime($aEnd) + Configs::SECPERDAY - 1;
             } else {
                 $this->iEnd = $aEnd;
             }
         } elseif (is_int($aEnd) || is_float($aEnd)) {
-            $this->iEnd = strtotime($aStart) + round($aEnd * SECPERDAY);
+            $this->iEnd = strtotime($aStart) + round($aEnd * Configs::SECPERDAY);
         }
         $this->iVPos         = $aPos;
         $this->iHeightFactor = $aHeightFactor;

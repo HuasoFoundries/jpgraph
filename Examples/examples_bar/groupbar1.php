@@ -22,10 +22,10 @@ $graph->img->SetMargin(40, 30, 40, 40);
 $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $example_title = 'Group bar plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $bplot1 = new Plot\BarPlot($datay1);
 $bplot2 = new Plot\BarPlot($datay2);

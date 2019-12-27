@@ -25,11 +25,11 @@ class WindroseGraph extends Graph
         $this->posx = $width / 2;
         $this->posy = $height / 2;
         $this->SetColor('white');
-        $this->title->SetFont(FF_VERDANA, FS_NORMAL, 12);
+        $this->title->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 12);
         $this->title->SetMargin(8);
-        $this->subtitle->SetFont(FF_VERDANA, FS_NORMAL, 10);
+        $this->subtitle->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 10);
         $this->subtitle->SetMargin(0);
-        $this->subsubtitle->SetFont(FF_VERDANA, FS_NORMAL, 8);
+        $this->subsubtitle->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 8);
         $this->subsubtitle->SetMargin(0);
     }
 
@@ -98,7 +98,7 @@ class WindroseGraph extends Graph
         // to do to generate the image map to improve performance
         // as best we can. Therefore you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -126,7 +126,7 @@ class WindroseGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if ($aStrokeFileName == _IMG_HANDLER) {
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
             return $this->img->img;
         }
         // Finally stream the generated picture

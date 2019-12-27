@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX012.PHP
+// File:    Graph\Configs::getConfig('ODOEX012').PHP
 // Description: Example 0 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -63,15 +63,15 @@ $odo5 = new Odometer();
 // Set caption for each odometer
 //---------------------------------------------------------------------
 $odo1->caption->Set('April');
-$odo1->caption->SetFont(FF_ARIAL, FS_BOLD);
+$odo1->caption->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
 $odo2->caption->Set('May');
-$odo2->caption->SetFont(FF_FONT2, FS_BOLD);
+$odo2->caption->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $odo3->caption->Set('June');
-$odo3->caption->SetFont(FF_FONT2, FS_BOLD);
+$odo3->caption->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $odo4->caption->Set('Daily low average');
-$odo4->caption->SetFont(FF_FONT1, FS_BOLD);
+$odo4->caption->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $odo5->caption->Set('Daily high average');
-$odo5->caption->SetFont(FF_FONT1, FS_BOLD);
+$odo5->caption->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Set Indicator bands for the odometers
@@ -103,9 +103,9 @@ $odo1->scale->label->SetColor('navy');
 $odo2->scale->label->SetColor('blue');
 $odo3->scale->label->SetColor('darkred');
 
-$odo1->scale->label->SetFont(FF_FONT1);
-$odo2->scale->label->SetFont(FF_FONT2, FS_BOLD);
-$odo3->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
+$odo1->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$odo2->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$odo3->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 
 //---------------------------------------------------------------------
 // Add the odometers to the graph using a vertical layout

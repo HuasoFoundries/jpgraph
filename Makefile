@@ -4,8 +4,7 @@ SHELL = /usr/bin/env bash
 
 XDSWI := $(shell command -v xd_swi 2> /dev/null)
 HASPHPMD := $(shell command -v phpmd 2> /dev/null)
-
-YELLOW=\033[0;33m
+ YELLOW=\033[0;33m
 RED=\033[0;31m
 WHITE=\033[0m
 GREEN=\u001B[32m
@@ -13,7 +12,9 @@ GREEN=\u001B[32m
 ifneq ($(g),)	
 	groups=-g
 endif
-
+ifeq ($(target),)	
+	target=src
+endif
 default: clean
 .PHONY: version install test tag start csfixer
 
@@ -69,4 +70,36 @@ csfixer:
 		${MAKE} runcsfixer --no-print-directory ;\
 		xd_swi on	;\
     fi
+
+phpmd:
+	@if [ -f ./vendor/bin/phpmd ]; then \
+	    ./vendor/bin/phpmd $(target) text .phpmd.xml |  sed "s/.*\///" ;\
+    else \
+        echo -e "$(GREEN)phpmd$(WHITE) is $(RED)NOT$(WHITE) installed. Install it with $(GREEN)composer require --dev phpmd/phpmd$(WHITE)" ;\
+    fi ;\
+    echo ""
 	
+psalm:
+	@if [ -f ./vendor/bin/psalm ]; then \
+		if [ -f ./vendor/bin/psalm ]; then \
+			./vendor/bin/psalm.xml --init $(target) 3 ;\
+		fi ;\
+	    ./vendor/bin/psalm $(target) ;\
+    else \
+        echo -e "$(GREEN)phpmd$(WHITE) is $(RED)NOT$(WHITE) installed. Install it with $(GREEN)composer require --dev vimeo/psalm$(WHITE)" ;\
+    fi ;\
+
+
+churn:
+	@if [ -f ./vendor/bin/churn ]; then \
+		vendor/bin/churn run $(target) -c .churn.yml ;\
+    else \
+        echo -e "$(GREEN)churn$(WHITE) is $(RED)NOT$(WHITE) installed. Install it with $(GREEN)composer require --dev bmitch/churn-php$(WHITE)" ;\
+    fi ;\
+
+phpcpd:
+	@if [ -f ./vendor/bin/phpcpd ]; then \
+		vendor/bin/phpcpd --fuzzy --ansi --log-pmd=.pmd.log $(target) ;\
+    else \
+        echo -e "$(GREEN)churn$(WHITE) is $(RED)NOT$(WHITE) installed. Install it with $(GREEN)composer require --dev sebastian/phpcpd$(WHITE)" ;\
+    fi ;\

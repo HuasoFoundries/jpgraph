@@ -15,7 +15,7 @@ $data = [
     50, 110, 60, 140, 70, 170, 80, 190,
     85, 195, 90, 200, 95, 195, 100, 190,
     110, 170, 120, 140, 130, 110, 140, 60,
-    150, 25, 170, 2, 180, 0, ];
+    150, 25, 170, 2, 180, 0];
 
 //$data2 = array(0,0,50,2,60,30,65,90,60,120,50,150,20,170,0,180);
 
@@ -27,7 +27,7 @@ $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('lin', 150);
 
 $graph->SetMarginColor('#FFE6C0');
-$graph->SetType(POLAR_360);
+$graph->SetType(Graph\Configs::getConfig('POLAR_360'));
 $graph->SetClockwise(true);
 $graph->Set90AndMargin(40, 40, 50, 40);
 
@@ -36,14 +36,14 @@ $graph->SetFrame(false);
 $graph->axis->ShowGrid(true, false, true);
 $graph->axis->SetGridColor('gray', 'gray', 'gray');
 
-$graph->axis->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$graph->axis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $graph->axis->SetTitle('X-Axis', 'center');
 
 $graph->axis->SetColor('black', 'black', 'darkred');
-$graph->axis->SetAngleFont(FF_ARIAL, FS_NORMAL, 8);
+$graph->axis->SetAngleFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 
 $graph->title->Set('Clockwise polar plot (rotated)');
-$graph->title->SetFont(FF_COMIC, FS_NORMAL, 16);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_COMIC'), Graph\Configs::getConfig('FS_NORMAL'), 16);
 $graph->title->SetColor('navy');
 
 $p = new PolarPlot($data);

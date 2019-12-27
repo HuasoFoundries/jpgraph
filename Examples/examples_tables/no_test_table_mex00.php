@@ -25,7 +25,7 @@ $data = [
 // Setup the basic table and font
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(FF_TIMES, FS_NORMAL, 11);
+$table->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 11);
 
 // Set default table alignment
 $table->SetAlign('right');

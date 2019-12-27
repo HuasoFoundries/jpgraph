@@ -9,112 +9,112 @@ $_jpg_messages = [
 /*
  ** Headers wurden bereits gesendet - Fehler. Dies wird als HTML formatiert, weil es direkt als text zurueckgesendet wird
  */
-    10 => ['<table border="1"><tr><td style="color:darkred;font-size:1.2em;"><b>JpGraph Fehler:</b>
+    10    => ['<table border="1"><tr><td style="color:darkred;font-size:1.2em;"><b>JpGraph Fehler:</b>
 HTTP header wurden bereits gesendet.<br>Fehler in der Datei <b>%s</b> in der Zeile <b>%d</b>.</td></tr><tr><td><b>Erklärung:</b><br>HTTP header wurden bereits zum Browser gesendet, wobei die Daten als Text gekennzeichnet wurden, bevor die Bibliothek die Chance hatte, seinen Bild-HTTP-Header zum Browser zu schicken. Dies verhindert, dass die Bibliothek Bilddaten zum Browser schicken kann (weil sie vom Browser als Text interpretiert würden und daher nur Mist dargestellt würde).<p>Wahrscheinlich steht Text im Skript bevor <i>Graph::Stroke()</i> aufgerufen wird. Wenn dieser Text zum Browser gesendet wird, nimmt dieser an, dass die gesamten Daten aus Text bestehen. Such nach irgendwelchem Text, auch nach Leerzeichen und Zeilenumbrüchen, die eventuell bereits zum Browser gesendet wurden. <p>Zum Beispiel ist ein oft auftretender Fehler, eine Leerzeile am Anfang der Datei oder vor <i>Graph::Stroke()</i> zu lassen."<b>&lt;?php</b>".</td></tr></table>', 2],
 
 /*
  ** Setup Fehler
  */
-    11 => ['Es wurde kein Pfad für CACHE_DIR angegeben. Bitte gib einen Pfad CACHE_DIR in der Datei jpg-config.inc an.', 0],
-    12 => ['Es wurde kein Pfad für TTF_DIR angegeben und der Pfad kann nicht automatisch ermittelt werden. Bitte gib den Pfad in der Datei jpg-config.inc an.', 0],
-    13 => ['The installed PHP version (%s) is not compatible with this release of the library. The library requires at least PHP version %s', 2],
+    11    => ['Es wurde kein Pfad für Configs::CACHE_DIR angegeben. Bitte gib einen Pfad Configs::CACHE_DIR in der Datei jpg-config.inc an.', 0],
+    12    => ['Es wurde kein Pfad für TTF_DIR angegeben und der Pfad kann nicht automatisch ermittelt werden. Bitte gib den Pfad in der Datei jpg-config.inc an.', 0],
+    13    => ['The installed PHP version (%s) is not compatible with this release of the library. The library requires at least PHP version %s', 2],
 
 /*
  **  jpgraph_bar
  */
 
-    2001 => ['Die Anzahl der Farben ist nicht gleich der Anzahl der Vorlagen in BarPlot::SetPattern().', 0],
-    2002 => ['Unbekannte Vorlage im Aufruf von BarPlot::SetPattern().', 0],
-    2003 => ['Anzahl der X- und Y-Koordinaten sind nicht identisch. Anzahl der X-Koordinaten: %d; Anzahl der Y-Koordinaten: %d.', 2],
-    2004 => ['Alle Werte für ein Balkendiagramm (barplot) müssen numerisch sein. Du hast den Wert nr [%d] == %s angegeben.', 2],
-    2005 => ['Du hast einen leeren Vektor für die Schattierungsfarben im Balkendiagramm (barplot) angegeben.', 0],
-    2006 => ['Unbekannte Position für die Werte der Balken: %s.', 1],
-    2007 => ['Kann GroupBarPlot nicht aus einem leeren Vektor erzeugen.', 0],
-    2008 => ['GroupBarPlot Element nbr %d wurde nicht definiert oder ist leer.', 0],
-    2009 => ['Eins der Objekte, das an GroupBar weitergegeben wurde ist kein Balkendiagramm (BarPlot). Versichere Dich, dass Du den GroupBarPlot aus einem Vektor von Balkendiagrammen (barplot) oder AccBarPlot-Objekten erzeugst. (Class = %s)', 1],
-    2010 => ['Kann AccBarPlot nicht aus einem leeren Vektor erzeugen.', 0],
-    2011 => ['AccBarPlot-Element nbr %d wurde nicht definiert oder ist leer.', 1],
-    2012 => ['Eins der Objekte, das an AccBar weitergegeben wurde ist kein Balkendiagramm (barplot). Versichere Dich, dass Du den AccBar-Plot aus einem Vektor von Balkendiagrammen (barplot) erzeugst. (Class=%s)', 1],
-    2013 => ['Du hast einen leeren Vektor für die Schattierungsfarben im Balkendiagramm (barplot) angegeben.', 0],
-    2014 => ['Die Anzahl der Datenpunkte jeder Datenreihe in AccBarPlot muss gleich sein.', 0],
-    2015 => ['Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-coordinates', 0],
+    2001  => ['Die Anzahl der Farben ist nicht gleich der Anzahl der Vorlagen in BarPlot::SetPattern().', 0],
+    2002  => ['Unbekannte Vorlage im Aufruf von BarPlot::SetPattern().', 0],
+    2003  => ['Anzahl der X- und Y-Koordinaten sind nicht identisch. Anzahl der X-Koordinaten: %d; Anzahl der Y-Koordinaten: %d.', 2],
+    2004  => ['Alle Werte für ein Balkendiagramm (barplot) müssen numerisch sein. Du hast den Wert nr [%d] == %s angegeben.', 2],
+    2005  => ['Du hast einen leeren Vektor für die Schattierungsfarben im Balkendiagramm (barplot) angegeben.', 0],
+    2006  => ['Unbekannte Position für die Werte der Balken: %s.', 1],
+    2007  => ['Kann GroupBarPlot nicht aus einem leeren Vektor erzeugen.', 0],
+    2008  => ['GroupBarPlot Element nbr %d wurde nicht definiert oder ist leer.', 0],
+    2009  => ['Eins der Objekte, das an GroupBar weitergegeben wurde ist kein Balkendiagramm (BarPlot). Versichere Dich, dass Du den GroupBarPlot aus einem Vektor von Balkendiagrammen (barplot) oder AccBarPlot-Objekten erzeugst. (Class = %s)', 1],
+    2010  => ['Kann AccBarPlot nicht aus einem leeren Vektor erzeugen.', 0],
+    2011  => ['AccBarPlot-Element nbr %d wurde nicht definiert oder ist leer.', 1],
+    2012  => ['Eins der Objekte, das an AccBar weitergegeben wurde ist kein Balkendiagramm (barplot). Versichere Dich, dass Du den AccBar-Plot aus einem Vektor von Balkendiagrammen (barplot) erzeugst. (Class=%s)', 1],
+    2013  => ['Du hast einen leeren Vektor für die Schattierungsfarben im Balkendiagramm (barplot) angegeben.', 0],
+    2014  => ['Die Anzahl der Datenpunkte jeder Datenreihe in AccBarPlot muss gleich sein.', 0],
+    2015  => ['Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-coordinates', 0],
 
 /*
  **  jpgraph_date
  */
 
-    3001 => ['Es ist nur möglich, entweder SetDateAlign() oder SetTimeAlign() zu benutzen, nicht beides!', 0],
+    3001  => ['Es ist nur möglich, entweder SetDateAlign() oder SetTimeAlign() zu benutzen, nicht beides!', 0],
 
 /*
  **  jpgraph_error
  */
 
-    4002 => ['Fehler bei den Eingabedaten von LineErrorPlot. Die Anzahl der Datenpunkte mus ein Mehrfaches von drei sein!', 0],
+    4002  => ['Fehler bei den Eingabedaten von LineErrorPlot. Die Anzahl der Datenpunkte mus ein Mehrfaches von drei sein!', 0],
 
 /*
  **  jpgraph_flags
  */
 
-    5001 => ['Unbekannte Flaggen-Größe (%d).', 1],
-    5002 => ['Der Flaggen-Index %s existiert nicht.', 1],
-    5003 => ['Es wurde eine ungültige Ordnungszahl (%d) für den Flaggen-Index angegeben.', 1],
-    5004 => ['Der Landesname %s hat kein korrespondierendes Flaggenbild. Die Flagge mag existieren, abr eventuell unter einem anderen Namen, z.B. versuche "united states" statt "usa".', 1],
+    5001  => ['Unbekannte Flaggen-Größe (%d).', 1],
+    5002  => ['Der Flaggen-Index %s existiert nicht.', 1],
+    5003  => ['Es wurde eine ungültige Ordnungszahl (%d) für den Flaggen-Index angegeben.', 1],
+    5004  => ['Der Landesname %s hat kein korrespondierendes Flaggenbild. Die Flagge mag existieren, abr eventuell unter einem anderen Namen, z.B. versuche "united states" statt "usa".', 1],
 
 /*
  **  jpgraph_gantt
  */
 
-    6001 => ['Interner Fehler. Die Höhe für ActivityTitles ist < 0.', 0],
-    6002 => ['Es dürfen keine negativen Werte für die Gantt-Diagramm-Dimensionen angegeben werden. Verwende 0, wenn die Dimensionen automatisch ermittelt werden sollen.', 0],
-    6003 => ['Ungültiges Format für den Bedingungs-Parameter bei Index=%d in CreateSimple(). Der Parameter muss bei index 0 starten und Vektoren in der Form (Row,Constrain-To,Constrain-Type) enthalten.', 1],
-    6004 => ['Ungültiges Format für den Fortschritts-Parameter bei Index=%d in CreateSimple(). Der Parameter muss bei Index 0 starten und Vektoren in der Form (Row,Progress) enthalten.', 1],
-    6005 => ['SetScale() ist nicht sinnvoll bei Gantt-Diagrammen.', 0],
-    6006 => ['Das Gantt-Diagramm kann nicht automatisch skaliert werden. Es existieren keine Aktivitäten mit Termin. [GetBarMinMax() start >= n]', 0],
-    6007 => ['Plausibiltätsprüfung für die automatische Gantt-Diagramm-Größe schlug fehl. Entweder die Breite (=%d) oder die Höhe (=%d) ist größer als MAX_GANTTIMG_SIZE. Dies kann möglicherweise durch einen falschen Wert bei einer Aktivität hervorgerufen worden sein.', 2],
-    6008 => ['Du hast eine Bedingung angegeben von Reihe=%d bis Reihe=%d, die keine Aktivität hat.', 2],
-    6009 => ['Unbekannter Bedingungstyp von Reihe=%d bis Reihe=%d', 2],
-    6010 => ['Ungültiger Icon-Index für das eingebaute Gantt-Icon [%d]', 1],
-    6011 => ['Argument für IconImage muss entweder ein String oder ein Integer sein.', 0],
-    6012 => ['Unbekannter Typ bei der Gantt-Objekt-Title-Definition.', 0],
-    6015 => ['Ungültige vertikale Position %d', 1],
-    6016 => ['Der eingegebene Datums-String (%s) für eine Gantt-Aktivität kann nicht interpretiert werden. Versichere Dich, dass es ein gültiger Datumsstring ist, z.B. 2005-04-23 13:30', 1],
-    6017 => ['Unbekannter Datumstyp in GanttScale (%s).', 1],
-    6018 => ['Intervall für Minuten muss ein gerader Teiler einer Stunde sein, z.B. 1,5,10,12,15,20,30, etc. Du hast ein Intervall von %d Minuten angegeben.', 1],
-    6019 => ['Die vorhandene Breite (%d) für die Minuten ist zu klein, um angezeigt zu werden. Bitte benutze die automatische Größenermittlung oder vergrößere die Breite des Diagramms.', 1],
-    6020 => ['Das Intervall für die Stunden muss ein gerader Teiler eines Tages sein, z.B. 0:30, 1:00, 1:30, 4:00, etc. Du hast ein Intervall von %d eingegeben.', 1],
-    6021 => ['Unbekanntes Format für die Woche.', 0],
-    6022 => ['Die Gantt-Skala wurde nicht eingegeben.', 0],
-    6023 => ['Wenn Du sowohl Stunden als auch Minuten anzeigen lassen willst, muss das Stunden-Interval gleich 1 sein (anderenfalls ist es nicht sinnvoll, Minuten anzeigen zu lassen).', 0],
-    6024 => ['Das CSIM-Ziel muss als String angegeben werden. Der Start des Ziels ist: %d', 1],
-    6025 => ['Der CSIM-Alt-Text muss als String angegeben werden. Der Beginn des Alt-Textes ist: %d', 1],
-    6027 => ['Der Fortschrittswert muss im Bereich [0, 1] liegen.', 0],
-    6028 => ['Die eingegebene Höhe (%d) für GanttBar ist nicht im zulässigen Bereich.', 1],
-    6029 => ['Der Offset für die vertikale Linie muss im Bereich [0,1] sein.', 0],
-    6030 => ['Unbekannte Pfeilrichtung für eine Verbindung.', 0],
-    6031 => ['Unbekannter Pfeiltyp für eine Verbindung.', 0],
-    6032 => ['Interner Fehler: Unbekannter Pfadtyp (=%d) für eine Verbindung.', 1],
-    6033 => ['Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)', 0],
+    6001  => ['Interner Fehler. Die Höhe für ActivityTitles ist < 0.', 0],
+    6002  => ['Es dürfen keine negativen Werte für die Gantt-Diagramm-Dimensionen angegeben werden. Verwende 0, wenn die Dimensionen automatisch ermittelt werden sollen.', 0],
+    6003  => ['Ungültiges Format für den Bedingungs-Parameter bei Index=%d in CreateSimple(). Der Parameter muss bei index 0 starten und Vektoren in der Form (Row,Constrain-To,Constrain-Type) enthalten.', 1],
+    6004  => ['Ungültiges Format für den Fortschritts-Parameter bei Index=%d in CreateSimple(). Der Parameter muss bei Index 0 starten und Vektoren in der Form (Row,Progress) enthalten.', 1],
+    6005  => ['SetScale() ist nicht sinnvoll bei Gantt-Diagrammen.', 0],
+    6006  => ['Das Gantt-Diagramm kann nicht automatisch skaliert werden. Es existieren keine Aktivitäten mit Termin. [GetBarMinMax() start >= n]', 0],
+    6007  => ['Plausibiltätsprüfung für die automatische Gantt-Diagramm-Größe schlug fehl. Entweder die Breite (=%d) oder die Höhe (=%d) ist größer als MAX_GANTTIMG_SIZE. Dies kann möglicherweise durch einen falschen Wert bei einer Aktivität hervorgerufen worden sein.', 2],
+    6008  => ['Du hast eine Bedingung angegeben von Reihe=%d bis Reihe=%d, die keine Aktivität hat.', 2],
+    6009  => ['Unbekannter Bedingungstyp von Reihe=%d bis Reihe=%d', 2],
+    6010  => ['Ungültiger Icon-Index für das eingebaute Gantt-Icon [%d]', 1],
+    6011  => ['Argument für IconImage muss entweder ein String oder ein Integer sein.', 0],
+    6012  => ['Unbekannter Typ bei der Gantt-Objekt-Title-Definition.', 0],
+    6015  => ['Ungültige vertikale Position %d', 1],
+    6016  => ['Der eingegebene Datums-String (%s) für eine Gantt-Aktivität kann nicht interpretiert werden. Versichere Dich, dass es ein gültiger Datumsstring ist, z.B. 2005-04-23 13:30', 1],
+    6017  => ['Unbekannter Datumstyp in GanttScale (%s).', 1],
+    6018  => ['Intervall für Minuten muss ein gerader Teiler einer Stunde sein, z.B. 1,5,10,12,15,20,30, etc. Du hast ein Intervall von %d Minuten angegeben.', 1],
+    6019  => ['Die vorhandene Breite (%d) für die Minuten ist zu klein, um angezeigt zu werden. Bitte benutze die automatische Größenermittlung oder vergrößere die Breite des Diagramms.', 1],
+    6020  => ['Das Intervall für die Stunden muss ein gerader Teiler eines Tages sein, z.B. 0:30, 1:00, 1:30, 4:00, etc. Du hast ein Intervall von %d eingegeben.', 1],
+    6021  => ['Unbekanntes Format für die Woche.', 0],
+    6022  => ['Die Gantt-Skala wurde nicht eingegeben.', 0],
+    6023  => ['Wenn Du sowohl Stunden als auch Minuten anzeigen lassen willst, muss das Stunden-Interval gleich 1 sein (anderenfalls ist es nicht sinnvoll, Minuten anzeigen zu lassen).', 0],
+    6024  => ['Das CSIM-Ziel muss als String angegeben werden. Der Start des Ziels ist: %d', 1],
+    6025  => ['Der CSIM-Alt-Text muss als String angegeben werden. Der Beginn des Alt-Textes ist: %d', 1],
+    6027  => ['Der Fortschrittswert muss im Bereich [0, 1] liegen.', 0],
+    6028  => ['Die eingegebene Höhe (%d) für GanttBar ist nicht im zulässigen Bereich.', 1],
+    6029  => ['Der Offset für die vertikale Linie muss im Bereich [0,1] sein.', 0],
+    6030  => ['Unbekannte Pfeilrichtung für eine Verbindung.', 0],
+    6031  => ['Unbekannter Pfeiltyp für eine Verbindung.', 0],
+    6032  => ['Interner Fehler: Unbekannter Pfadtyp (=%d) für eine Verbindung.', 1],
+    6033  => ['Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)', 0],
 
 /*
  **  jpgraph_gradient
  */
 
-    7001 => ['Unbekannter Gradiententyp (=%d).', 1],
+    7001  => ['Unbekannter Gradiententyp (=%d).', 1],
 
 /*
  **  jpgraph_iconplot
  */
 
-    8001 => ['Der Mix-Wert für das Icon muss zwischen 0 und 100 sein.', 0],
-    8002 => ['Die Ankerposition für Icons muss entweder "top", "bottom", "left", "right" oder "center" sein.', 0],
-    8003 => ['Es ist nicht möglich, gleichzeitig ein Bild und eine Landesflagge für dasselbe Icon zu definieren', 0],
-    8004 => ['Wenn Du Landesflaggen benutzen willst, musst Du die Datei "jpgraph_flags.php" hinzufügen (per include).', 0],
+    8001  => ['Der Mix-Wert für das Icon muss zwischen 0 und 100 sein.', 0],
+    8002  => ['Die Ankerposition für Icons muss entweder "top", "bottom", "left", "right" oder "center" sein.', 0],
+    8003  => ['Es ist nicht möglich, gleichzeitig ein Bild und eine Landesflagge für dasselbe Icon zu definieren', 0],
+    8004  => ['Wenn Du Landesflaggen benutzen willst, musst Du die Datei "jpgraph_flags.php" hinzufügen (per include).', 0],
 
 /*
  **  jpgraph_imgtrans
  */
 
-    9001 => ['Der Wert für die Bildtransformation ist außerhalb des zulässigen Bereichs. Der verschwindende Punkt am Horizont muss als Wert zwischen 0 und 1 angegeben werden.', 0],
+    9001  => ['Der Wert für die Bildtransformation ist außerhalb des zulässigen Bereichs. Der verschwindende Punkt am Horizont muss als Wert zwischen 0 und 1 angegeben werden.', 0],
 
 /*
  **  jpgraph_lineplot
@@ -257,7 +257,7 @@ HTTP header wurden bereits gesendet.<br>Fehler in der Datei <b>%s</b> in der Zei
     25003 => ['Genereller PHP Fehler : Bei %s:%d : %s', 3],
     25004 => ['Genereller PHP Fehler : %s ', 1],
     25005 => ['PHP_SELF, die PHP-Global-Variable kann nicht ermittelt werden. PHP kann nicht von der Kommandozeile gestartet werden, wenn der Cache oder die Bilddateien automatisch benannt werden sollen.', 0],
-    25006 => ['Die Benutzung der FF_CHINESE (FF_BIG5) Schriftfamilie benötigt die iconv() Funktion in Deiner PHP-Konfiguration. Dies wird nicht defaultmäßig in PHP kompiliert (benötigt "--width-iconv" bei der Konfiguration).', 0],
+    25006 => ['Die Benutzung der Configs::FF_CHINESE (Configs::FF_BIG5) Schriftfamilie benötigt die iconv() Funktion in Deiner PHP-Konfiguration. Dies wird nicht defaultmäßig in PHP kompiliert (benötigt "--width-iconv" bei der Konfiguration).', 0],
     25007 => ['Du versuchst das lokale (%s) zu verwenden, was von Deiner PHP-Installation nicht unterstützt wird. Hinweis: Benutze \'\', um das defaultmäßige Lokale für diese geographische Region festzulegen.', 1],
     25008 => ['Die Bild-Breite und Höhe in Graph::Graph() müssen numerisch sein', 0],
     25009 => ['Die Skalierung der Achsen muss angegeben werden mit Graph::SetScale()', 0],
@@ -300,7 +300,7 @@ HTTP header wurden bereits gesendet.<br>Fehler in der Datei <b>%s</b> in der Zei
     25042 => ['Unbekanntes Hintergrundbild-Layout', 0],
     25043 => ['Unbekannter Titelhintergrund-Stil.', 0],
     25044 => ['Automatisches Skalieren kann nicht verwendet werden, weil es unmöglich ist, einen gültigen min/max Wert für die Y-Achse zu ermitteln (nur Null-Werte).', 0],
-    25045 => ['Die Schriftfamilien FF_HANDWRT und FF_BOOK sind wegen Copyright-Problemen nicht mehr verfügbar. Diese Schriften können nicht mehr mit JpGraph verteilt werden. Bitte lade Dir Schriften von http://corefonts.sourceforge.net/ herunter.', 0],
+    25045 => ['Die Schriftfamilien Configs::FF_HANDWRT und Configs::FF_BOOK sind wegen Copyright-Problemen nicht mehr verfügbar. Diese Schriften können nicht mehr mit JpGraph verteilt werden. Bitte lade Dir Schriften von http://corefonts.sourceforge.net/ herunter.', 0],
     25046 => ['Angegebene TTF-Schriftfamilie (id=%d) ist unbekannt oder existiert nicht. Bitte merke Dir, dass TTF-Schriften wegen Copyright-Problemen nicht mit JpGraph mitgeliefert werden. Du findest MS-TTF-Internetschriften (arial, courier, etc.) zum Herunterladen unter http://corefonts.sourceforge.net/', 1],
     25047 => ['Stil %s ist nicht verfügbar für Schriftfamilie %s', 2],
     25048 => ['Unbekannte Schriftstildefinition [%s].', 1],
@@ -466,17 +466,17 @@ HTTP header wurden bereits gesendet.<br>Fehler in der Datei <b>%s</b> in der Zei
  **  jpgraph_barcode
  */
 
-    1001 => ['Unbekannte Kodier-Specifikation: %s', 1],
-    1002 => ['datenvalidierung schlug fehl. [%s] kann nicht mittels der Kodierung "%s" kodiert werden', 2],
-    1003 => ['Interner Kodierfehler. Kodieren von %s ist nicht möglich in Code 128', 1],
-    1004 => ['Interner barcode Fehler. Unbekannter UPC-E Kodiertyp: %s', 1],
-    1005 => ['Interner Fehler. Das Textzeichen-Tupel (%s, %s) kann nicht im Code-128 Zeichensatz C kodiert werden.', 2],
-    1006 => ['Interner Kodierfehler für CODE 128. Es wurde versucht, CTRL in CHARSET != A zu kodieren.', 0],
-    1007 => ['Interner Kodierfehler für CODE 128. Es wurde versucht, DEL in CHARSET != B zu kodieren.', 0],
-    1008 => ['Interner Kodierfehler für CODE 128. Es wurde versucht, kleine Buchstaben in CHARSET != B zu kodieren.', 0],
-    1009 => ['Kodieren mittels CODE 93 wird noch nicht unterstützt.', 0],
-    1010 => ['Kodieren mittels POSTNET wird noch nicht unterstützt.', 0],
-    1011 => ['Nicht untrstütztes Barcode-Backend für den Typ %s', 1],
+    1001  => ['Unbekannte Kodier-Specifikation: %s', 1],
+    1002  => ['datenvalidierung schlug fehl. [%s] kann nicht mittels der Kodierung "%s" kodiert werden', 2],
+    1003  => ['Interner Kodierfehler. Kodieren von %s ist nicht möglich in Code 128', 1],
+    1004  => ['Interner barcode Fehler. Unbekannter UPC-E Kodiertyp: %s', 1],
+    1005  => ['Interner Fehler. Das Textzeichen-Tupel (%s, %s) kann nicht im Code-128 Zeichensatz C kodiert werden.', 2],
+    1006  => ['Interner Kodierfehler für CODE 128. Es wurde versucht, CTRL in CHARSET != A zu kodieren.', 0],
+    1007  => ['Interner Kodierfehler für CODE 128. Es wurde versucht, DEL in CHARSET != B zu kodieren.', 0],
+    1008  => ['Interner Kodierfehler für CODE 128. Es wurde versucht, kleine Buchstaben in CHARSET != B zu kodieren.', 0],
+    1009  => ['Kodieren mittels CODE 93 wird noch nicht unterstützt.', 0],
+    1010  => ['Kodieren mittels POSTNET wird noch nicht unterstützt.', 0],
+    1011  => ['Nicht untrstütztes Barcode-Backend für den Typ %s', 1],
 
 /*
  ** PDF417

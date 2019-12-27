@@ -26,11 +26,11 @@ $graph->Set90AndMargin(50, 20, 50, 30);
 $graph->SetShadow();
 
 // Setup title$example_title='Horizontal bar graph ex 1'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 12);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Some extra margin looks nicer
 $graph->xaxis->SetLabelMargin(10);
@@ -55,7 +55,7 @@ $bplot->SetShadow();
 
 // We want to display the value of each bar at the top
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL, FS_BOLD, 12);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $bplot->value->SetAlign('left', 'center');
 $bplot->value->SetColor('black', 'darkred');
 $bplot->value->SetFormat('%.1f mkr');

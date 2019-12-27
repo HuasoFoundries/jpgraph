@@ -20,16 +20,16 @@ $graph->SetMarginColor([177, 191, 174]);
 
 $graph->SetClipping(false);
 
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $graph->ygrid->SetLineStyle('dashed');
 $example_title = 'Manual scale';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->title->SetColor('white');
 $graph->subtitle->Set('(No clipping)');
 $graph->subtitle->SetColor('white');
-$graph->subtitle->SetFont(FF_ARIAL, FS_BOLD, 10);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);

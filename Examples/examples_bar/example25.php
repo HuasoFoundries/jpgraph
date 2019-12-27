@@ -31,16 +31,16 @@ $graph->Add($bplot);
 $txt = new Text\Text('This is a text');
 $txt->SetPos(0, 20);
 $txt->SetColor('darkred');
-$txt->SetFont(FF_FONT2, FS_BOLD);
+$txt->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->AddText($txt);
 
 // Setup the titles$example_title='A simple bar graph'; $graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Display the graph
 $graph->Stroke();

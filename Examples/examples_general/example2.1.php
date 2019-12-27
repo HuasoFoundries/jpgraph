@@ -21,7 +21,7 @@ $lineplot = new Plot\LinePlot($ydata);
 
 $lineplot->value->Show();
 $lineplot->value->SetColor('red');
-$lineplot->value->SetFont(FF_FONT1, FS_BOLD);
+$lineplot->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add the plot to the graph
 $graph->Add($lineplot);

@@ -16,7 +16,7 @@ $graph    = new OdoGraph($__width, $__height);
 
 // Setup graph titles$example_title='Manual positioning'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Add drop shadow for graph
 $graph->SetShadow();

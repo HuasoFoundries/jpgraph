@@ -14,7 +14,7 @@ use Amenadiel\JpGraph\Util;
  * @class Plot
  * // Description: Abstract base class for all concrete plot classes
  */
-class Plot
+class Plot extends Configs
 {
     public $numpoints = 0;
     public $value;

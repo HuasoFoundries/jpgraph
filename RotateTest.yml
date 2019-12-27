@@ -1,0 +1,8 @@
+testfileIterator:
+    rotateex1.php: file_iterator
+    rotex0.php: file_iterator
+    rotex1.php: file_iterator
+    rotex2.php: file_iterator
+    rotex3.php: file_iterator
+    rotex4.php: file_iterator
+    rotex5.php: file_iterator

@@ -21,7 +21,7 @@ $graph->SetShadow();
 
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
-$odo = new Odometer(ODO_HALF);
+$odo = new Odometer(Graph\Configs::getConfig('ODO_HALF'));
 
 // Add color indications
 $odo->AddIndication(0, 20, 'green:0.7');

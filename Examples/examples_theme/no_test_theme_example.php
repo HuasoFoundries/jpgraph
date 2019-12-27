@@ -29,6 +29,6 @@ $graph->Add($bplot);
 
 // you can change properties of the plot only after calling Add()
 $bplot->SetWeight(0);
-$bplot->SetFillGradient('#FFAAAA:0.7', '#FFAAAA:1.2', GRAD_VER);
+$bplot->SetFillGradient('#FFAAAA:0.7', '#FFAAAA:1.2', Graph\Configs::getConfig('GRAD_VER'));
 
 $graph->Stroke();

@@ -5,7 +5,7 @@
  */
 
 //=======================================================================
-// File:    TESTSUIT.PHP
+// File:    Graph\Configs::getConfig('TESTSUIT').PHP
 // Description:    Run all the example script in current directory
 // Created:     2002-07-11
 // Ver:        $Id: testsuit.php,v 1.1.2.1 2004/03/27 12:43:07 aditus Exp $
@@ -101,7 +101,7 @@ class TestDriver
         }
         $d->Close();
         if (count($a) == 0) {
-            die("PANIC: Apache/PHP does not have enough permission to read the CSIM scripts in directory: {$this->iDir}");
+            die("PANIC: Apache/PHP does not have enough permission to read the Graph\Configs::getConfig('CSIM') scripts in directory: {$this->iDir}");
         }
         sort($a);
 

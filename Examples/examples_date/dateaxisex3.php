@@ -39,13 +39,13 @@ $graph->xaxis->SetLabelAngle(90);
 
 // It is possible to adjust the density for the X-axis as well
 // The following call makes the dates a little more sparse
-// $graph->SetTickDensity(TICKD_NORMAL,TICKD_SPARSE);
+// $graph->SetTickDensity(Graph\Configs::getConfig('TICKD_NORMAL'),TICKD_SPARSE);
 
 // The automatic format string for dates can be overridden
 // $graph->xaxis->scale->SetDateFormat('h:i');
 
 // Adjust the start/end to a specific alignment
-$graph->xaxis->scale->SetTimeAlign(MINADJ_15);
+$graph->xaxis->scale->SetTimeAlign(Graph\Configs::getConfig('MINADJ_15'));
 
 $line = new Plot\LinePlot($data, $xdata);
 $line->SetLegend('Year 2005');

@@ -25,15 +25,15 @@ $graph->ygrid->setColor('darkgray');
 $graph->SetBox(true);
 
 // Steup graph titles
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $example_title = 'Using background image';
 $graph->title->set($example_title);
-$graph->subtitle->SetFont(FF_COURIER, FS_BOLD, 11);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_COURIER'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $graph->subtitle->Set('"BGIMG_CENTER"');
 $graph->subtitle->SetColor('darkred');
 
 // Add background with 25% mix
-$graph->SetBackgroundImage(__DIR__ . '/../assets/heat1.jpg', BGIMG_CENTER);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/heat1.jpg', Graph\Configs::getConfig('BGIMG_CENTER'));
 $graph->SetBackgroundImageMix(25);
 
 // Create the linear plot

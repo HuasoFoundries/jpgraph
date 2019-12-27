@@ -33,17 +33,17 @@ $graph->legend->Hide();
 
 // Get localised version of the month names
 $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
-$graph->SetBackgroundCountryFlag('mais', BGIMG_COPY, 50);
+$graph->SetBackgroundCountryFlag('mais', Graph\Configs::getConfig('BGIMG_COPY'), 50);
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->SetColor('white');
 
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->SetColor('navy');
 
-$graph->yaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->yaxis->SetColor('navy');
 
 //$graph->ygrid->Show(false);
@@ -53,7 +53,7 @@ $graph->ygrid->SetColor('white@0.5');
 
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Create the three var series we will combine
 $bplot1 = new Plot\BarPlot($datay1);

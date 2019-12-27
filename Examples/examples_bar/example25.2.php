@@ -30,7 +30,7 @@ $graph->Add($bplot);
 // Create and add a new text
 $txt = new Text\Text("This is a text\nwith many\nand even\nmore\nlines of text");
 $txt->SetPos(0.5, 0.5, 'center', 'center');
-$txt->SetFont(FF_FONT2, FS_BOLD);
+$txt->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $txt->ParagraphAlign('center');
 $txt->SetBox('yellow', 'navy', 'gray');
 $txt->SetColor('red');
@@ -40,9 +40,9 @@ $graph->AddText($txt);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Display the graph
 $graph->Stroke();

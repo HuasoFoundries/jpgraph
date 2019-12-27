@@ -23,7 +23,7 @@ class RadarAxis extends AxisPrototype
         parent::__construct($img, $aScale, $color);
         $this->len   = $img->plotheight;
         $this->title = new Text\Text();
-        $this->title->SetFont(FF_FONT1, FS_BOLD);
+        $this->title->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->color = [0, 0, 0];
     }
 

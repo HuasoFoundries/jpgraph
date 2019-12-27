@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX02.PHP
+// File:    Graph\Configs::getConfig('ODOEX02').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$

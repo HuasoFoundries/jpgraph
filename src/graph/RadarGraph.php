@@ -53,12 +53,10 @@ class RadarGraph extends Graph
             //("Illegal scale for radarplot ($axtype). Must be \"lin\" or \"log\"");
         }
         if ($axtype == 'lin') {
-            $this->yscale        = new LinearScale($ymin, $ymax);
-            $this->yscale->ticks = new RadarLinearTicks();
-            $this->yscale->ticks->SupressMinorTickMarks();
+            $this->yscale = new Scale\LinearScale($ymin, $ymax, 'y', 'radar');
+
         } elseif ($axtype == 'log') {
-            $this->yscale        = new LogScale($ymin, $ymax);
-            $this->yscale->ticks = new RadarLogTicks();
+            $this->yscale = new Scale\LogScale($ymin, $ymax, 'y', 'radar');
         }
 
         $this->axis = new RadarAxis($this->img, $this->yscale);
@@ -200,7 +198,7 @@ class RadarGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -265,7 +263,7 @@ class RadarGraph extends Graph
         $astep = 2 * M_PI / $nbrpnts;
 
         if (!$_csim) {
-            if ($this->iIconDepth == Util\Constants::DEPTH_BACK) {
+            if ($this->iIconDepth == Confis::getConfig('DEPTH_BACK')) {
                 $this->StrokeIcons();
             }
 
@@ -278,14 +276,14 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth == Util\Constants::DEPTH_BACK) {
+            if ($this->grid_depth == Confis::getConfig('DEPTH_BACK')) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);
                 }
                 $this->grid->Stroke($this->img, $grid);
             }
-            if ($this->iIconDepth == Util\Constants::DEPTH_BACK) {
+            if ($this->iIconDepth == Confis::getConfig('DEPTH_BACK')) {
                 $this->StrokeIcons();
             }
         }
@@ -297,7 +295,7 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth != Util\Constants::DEPTH_BACK) {
+            if ($this->grid_depth != Confis::getConfig('DEPTH_BACK')) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);
@@ -330,7 +328,7 @@ class RadarGraph extends Graph
             // If the filename is given as the special "__handle"
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
+            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
                 return $this->img->img;
             }
             // Finally stream the generated picture

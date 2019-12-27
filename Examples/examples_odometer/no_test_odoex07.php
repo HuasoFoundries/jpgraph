@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX07.PHP
+// File:    Graph\Configs::getConfig('ODOEX07').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -56,7 +56,7 @@ $graph->caption->SetColor('white');
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
 //---------------------------------------------------------------------
-$odo = new Odometer(ODO_FULL);
+$odo = new Odometer(Graph\Configs::getConfig('ODO_FULL'));
 
 //---------------------------------------------------------------------
 // Set color indication
@@ -84,7 +84,7 @@ $odo->scale->SetTickWeight(2);
 //---------------------------------------------------------------------
 // Use a bold font for tick labels
 //---------------------------------------------------------------------
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Change the start and end angle for the scale
@@ -105,7 +105,7 @@ $odo->label->Set('% Passed');
 //---------------------------------------------------------------------
 // Set a new style for the needle
 //---------------------------------------------------------------------
-$odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
+$odo->needle->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_MEDIUM_TRIANGLE'));
 $odo->needle->SetLength(0.7); // Length as 70% of the radius
 $odo->needle->SetFillColor('orange');
 
@@ -113,7 +113,7 @@ $odo->needle->SetFillColor('orange');
 // Setup the second indicator needle
 //---------------------------------------------------------------------
 $odo->needle2->Set(15);
-$odo->needle2->SetStyle(NEEDLE_STYLE_SMALL_TRIANGLE);
+$odo->needle2->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_SMALL_TRIANGLE'));
 $odo->needle2->SetLength(0.55); // Length as 70% of the radius
 $odo->needle2->SetFillColor('lightgray');
 $odo->needle2->Show();

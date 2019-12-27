@@ -9,12 +9,12 @@ $target = basename(urldecode($_GET['target']));
 $folder = basename(urldecode($_GET['folder']));
 
 ?>
-<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!doctype html public "-//W3C//DTD Graph\Configs::getConfig('HTML') 4.0 Transitional//EN">
 <html>
 <head>
 <title> Image <?php echo $target; ?></title>
 </head>
 <body>
-<img src="<?php echo($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
+<img src="<?php echo ($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
 </body>
 </html>

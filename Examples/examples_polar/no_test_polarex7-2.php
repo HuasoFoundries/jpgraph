@@ -28,19 +28,19 @@ $__width  = 300;
 $__height = 400;
 $graph    = new PolarGraph($__width, $__height);
 $graph->SetScale('log', 100);
-$graph->SetType(POLAR_360);
+$graph->SetType(Graph\Configs::getConfig('POLAR_360'));
 $graph->SetPlotSize(220, 300);
 
 // Hide frame around graph (by setting width=0)
 $graph->SetFrame(true, 'white', 1);
 
-$graph->SetBackgroundGradient('blue:1.3', 'brown:1.4', GRAD_MIDHOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('blue:1.3', 'brown:1.4', Graph\Configs::getConfig('GRAD_MIDHOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
 // Set color for gradient lines
 $graph->axis->SetGridColor('gray', 'gray', 'gray');
 $example_title = 'Polar plot #7-2';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
 $graph->title->SetColor('navy');
 
 // Adjust legen box position and color
@@ -50,7 +50,7 @@ $graph->legend->SetShadow('darkgray@0.5', 5);
 
 $p = new PolarPlot($data);
 $p->SetFillColor('yellow@0.6');
-$p->mark->SetType(MARK_SQUARE);
+$p->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $p->SetLegend("Mirophone #1\n(No amps)");
 
 $graph->Add($p);

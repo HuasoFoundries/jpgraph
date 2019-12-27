@@ -20,7 +20,7 @@ $graph->SetBox();
 $graph->SetMarginColor('darkgreen@0.8');
 
 // Setup a background gradient image
-$graph->SetBackgroundGradient('darkred', 'yellow', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('darkred', 'yellow', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 $example_title = 'Gradient filled line plot ex3';
 $graph->title->set($example_title);
 $graph->yscale->SetAutoMin(0);

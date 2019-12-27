@@ -27,7 +27,7 @@ class MileStone extends GanttPlotObject
         parent::__construct();
         $this->caption->Set($aCaption);
         $this->caption->Align('left', 'center');
-        $this->caption->SetFont(FF_FONT1, FS_BOLD);
+        $this->caption->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->title->Set($aLabel);
         $this->title->SetColor('darkred');
         $this->mark = new PlotMark();
@@ -52,7 +52,7 @@ class MileStone extends GanttPlotObject
     public function Stroke($aImg, $aScale)
     {
         // Put the mark in the middle at the middle of the day
-        $d = $aScale->NormalizeDate($this->iStart) + SECPERDAY / 2;
+        $d = $aScale->NormalizeDate($this->iStart) + Configs::SECPERDAY / 2;
         $x = $aScale->TranslateDate($d);
         $y = $aScale->TranslateVertPos($this->iVPos) - ($aScale->GetVertSpacing() / 2);
 

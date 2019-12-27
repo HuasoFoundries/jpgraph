@@ -23,7 +23,7 @@ use Amenadiel\JpGraph\Util;
  * @class Text
  * // Description: Arbitrary text object that can be added to the graph
  */
-class Text //extends Graph
+class Text extends Configs
 {
     public $t;
     public $x      = 0;
@@ -36,8 +36,8 @@ class Text //extends Graph
     public $iScalePosY;
     public $iScalePosX;
     public $iWordwrap          = 0;
-    public $font_family        = FF_DEFAULT;
-    public $font_style         = FS_NORMAL; // old. FF_FONT1
+    public $font_family        = self::FF_DEFAULT;
+    public $font_style         = self::FS_NORMAL; // old. self::FF_FONT1
     public $boxed              = false; // Should the text be boxed
     protected $paragraph_align = 'left';
     protected $icornerradius   = 0;
@@ -183,7 +183,7 @@ class Text //extends Graph
     }
 
     // Specify font
-    public function SetFont($aFamily, $aStyle = FS_NORMAL, $aSize = 10)
+    public function SetFont($aFamily, $aStyle = self::FS_NORMAL, $aSize = 10)
     {
         $this->font_family = $aFamily;
         $this->font_style  = $aStyle;
@@ -334,7 +334,7 @@ class Text //extends Graph
 
             $oldweight = $aImg->SetLineWeight(1);
 
-            if ($this->iBoxType == 2 && $this->font_family > FF_FONT2 + 2) {
+            if ($this->iBoxType == 2 && $this->font_family > self::FF_FONT2 + 2) {
                 $bbox = $aImg->StrokeBoxedText2(
                     $this->x,
                     $this->y,
@@ -402,7 +402,7 @@ class Text //extends Graph
         $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
-            return $this->{$variable_name} * SUPERSAMPLING_SCALE;
+            return $this->{$variable_name} * self::SUPERSAMPLING_SCALE;
         }
         Util\JpGraphError::RaiseL('25132', $name);
     }

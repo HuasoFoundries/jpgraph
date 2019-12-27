@@ -60,7 +60,7 @@ class Axis extends AxisPrototype
                     $pos + $this->weight - 1
                 );
             }
-            if ($this->title_side == SIDE_DOWN) {
+            if ($this->title_side == Configs::getConfig('SIDE_DOWN')) {
                 $y      = $pos + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
                 $yalign = 'top';
             } else {
@@ -91,7 +91,7 @@ class Axis extends AxisPrototype
             }
 
             $x = $pos;
-            if ($this->title_side == SIDE_LEFT) {
+            if ($this->title_side == Configs::getConfig('SIDE_LEFT')) {
                 $x -= $this->title_margin;
                 $x -= $this->title->margin;
                 $halign = 'right';
@@ -205,7 +205,7 @@ class Axis extends AxisPrototype
                 }
 
                 if ($this->scale->type == 'x') {
-                    if ($this->labelPos == SIDE_DOWN) {
+                    if ($this->labelPos == Configs::getConfig('SIDE_DOWN')) {
                         if ($this->label_angle == 0 || $this->label_angle == 90) {
                             if ($this->label_halign == '' && $this->label_valign == '') {
                                 $this->img->SetTextAlign('center', 'top');
@@ -252,7 +252,7 @@ class Axis extends AxisPrototype
                     // scale->type == "y"
                     //if( $this->label_angle!=0 )
                     //Util\JpGraphError::Raise(" Labels at an angle are not supported on Y-axis");
-                    if ($this->labelPos == SIDE_LEFT) {
+                    if ($this->labelPos == Configs::getConfig('SIDE_LEFT')) {
                         // To the left of y-axis
                         if ($this->label_halign == '' && $this->label_valign == '') {
                             $this->img->SetTextAlign('right', 'center');

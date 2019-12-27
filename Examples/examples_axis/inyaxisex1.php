@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ *  Graph\Configs::getConfig('JPG')raph v4.0.0
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -31,15 +31,15 @@ $graph->SetScale('linlin');
 $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');
 $graph->SetColor('darkblue');
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 $example_title = 'Depth curve. Dive #2';
 $example_title = $example_title;
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('white');
 
 $graph->subtitle->Set('(Negated Y-axis)');
-$graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 $graph->subtitle->SetColor('white');
 
 // Setup axis

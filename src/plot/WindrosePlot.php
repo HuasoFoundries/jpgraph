@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.0
+ * Configs::JPGraph v4.0.0
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -10,34 +10,6 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-
-define('WINDROSE_TYPE4', 1);
-define('WINDROSE_TYPE8', 2);
-define('WINDROSE_TYPE16', 3);
-define('WINDROSE_TYPEFREE', 4);
-
-/*
- * How should the labels for the circular grids be aligned
- */
-define('LBLALIGN_CENTER', 1);
-define('LBLALIGN_TOP', 2);
-
-/*
- * How should the labels around the plot be align
- */
-define('LBLPOSITION_CENTER', 1);
-define('LBLPOSITION_EDGE', 2);
-
-/*
- * Interpretation of ordinal values in the data
- */
-define('KEYENCODING_CLOCKWISE', 1);
-define('KEYENCODING_ANTICLOCKWISE', 2);
-
-// Internal debug flag
-define('__DEBUG', false);
-define('RANGE_OVERLAPPING', 0);
-define('RANGE_DISCRETE', 1);
 
 /**
  * @class WindrosePlot
@@ -55,11 +27,11 @@ class WindrosePlot
     private $iRadialWeightArray  = [];
     private $iRadialStyleArray   = [];
     private $iRanges             = [1, 2, 3, 5, 6, 10, 13.5, 99.0];
-    private $iRangeStyle         = RANGE_OVERLAPPING;
+    private $iRangeStyle         = Configs::RANGE_OVERLAPPING;
     public $iCenterSize          = 60;
-    private $iType               = WINDROSE_TYPE16;
-    public $iFontFamily          = FF_VERDANA;
-    public $iFontStyle           = FS_NORMAL;
+    private $iType               = Configs::WINDROSE_TYPE16;
+    public $iFontFamily          = Configs::FF_VERDANA;
+    public $iFontStyle           = Configs::FS_NORMAL;
     public $iFontSize            = 10;
     public $iFontColor           = 'darkgray';
     private $iRadialGridStyle    = 'longdashed';
@@ -72,13 +44,13 @@ class WindrosePlot
     private $iLegColors          = ['orange', 'black', 'blue', 'red', 'green', 'purple', 'navy', 'yellow', 'brown'];
     private $iLabelFormatString  = '';
     private $iLabels             = [];
-    private $iLabelPositioning   = LBLPOSITION_EDGE;
+    private $iLabelPositioning   = Configs::LBLPOSITION_EDGE;
     private $iColor              = 'white';
     private $iShowBox            = false;
     private $iBoxColor           = 'black';
     private $iBoxWeight          = 1;
     private $iBoxStyle           = 'solid';
-    private $iOrdinalEncoding    = KEYENCODING_ANTICLOCKWISE;
+    private $iOrdinalEncoding    = Configs::KEYENCODING_ANTICLOCKWISE;
     public $legend;
 
     public function __construct($aData)
@@ -87,7 +59,7 @@ class WindrosePlot
         $this->legend = new LegendStyle();
 
         // Setup the scale
-        $this->scale = new Graph\WindrosePlotScale($this->iData);
+        $this->scale = new Graph\Scale\WindrosePlotScale($this->iData);
 
         // default label for free type i agle and a degree sign
         $this->iLabelFormatString = '%.1f' . Graph\SymChar::Get('degree');
@@ -182,7 +154,7 @@ class WindrosePlot
         $this->iCenterSize = $aSize;
     }
 
-    public function SetFont($aFFam, $aFStyle = FS_NORMAL, $aFSize = 10)
+    public function SetFont($aFFam, $aFStyle = Configs::FS_NORMAL, $aFSize = 10)
     {
         $this->iFontFamily = $aFFam;
         $this->iFontStyle  = $aFStyle;
@@ -241,7 +213,7 @@ class WindrosePlot
 
     public function SetType($aType)
     {
-        if ($aType < WINDROSE_TYPE4 || $aType > WINDROSE_TYPEFREE) {
+        if ($aType < Configs::WINDROSE_TYPE4 || $aType > Configs::WINDROSE_TYPEFREE) {
             Util\JpGraphError::RaiseL(22006); //('Illegal windrose type specified.');
         }
         $this->iType = $aType;
@@ -398,7 +370,7 @@ class WindrosePlot
             $x2 = $x + $l;
             $aImg->SetColor($this->iLegColors[$i % $nlc]);
             $aImg->FilledRectangle($x, $y1, $x2, $y2);
-            if ($this->iRangeStyle == RANGE_OVERLAPPING) {
+            if ($this->iRangeStyle == Configs::RANGE_OVERLAPPING) {
                 $lbl = sprintf($fmt, $this->iRanges[$idx], $this->iRanges[$idx + 1]);
             } else {
                 $lbl = sprintf($fmt, $this->iRanges[$idx], $this->iRanges[$idx + 1]);
@@ -498,7 +470,7 @@ class WindrosePlot
 
             // Get all the angles for the data and sort it
             $keys = array_keys($data);
-            sort($keys, SORT_NUMERIC);
+            sort($keys, Configs::SORT_NUMERIC);
 
             $n     = safe_count($data);
             $found = false;
@@ -599,7 +571,7 @@ class WindrosePlot
     {
         // Plot radial grid lines and remember the end position
         // and the angle for later use when plotting the labels
-        if ($this->iType != WINDROSE_TYPEFREE) {
+        if ($this->iType != Configs::WINDROSE_TYPEFREE) {
             Util\JpGraphError::RaiseL(22008); //('Internal error: Trying to plot free Windrose even though type is not a free windorose');
         }
 
@@ -628,7 +600,7 @@ class WindrosePlot
             } elseif (is_numeric($dir)) {
                 $this->NormAngle($dir);
 
-                if ($this->iOrdinalEncoding == KEYENCODING_CLOCKWISE) {
+                if ($this->iOrdinalEncoding == Configs::KEYENCODING_CLOCKWISE) {
                     $dir = 360 - $dir;
                 }
 
@@ -664,7 +636,7 @@ class WindrosePlot
         // Setup labels
         $lr = $scaling * $this->iLabelMargin;
 
-        if ($this->iLabelPositioning == LBLPOSITION_EDGE) {
+        if ($this->iLabelPositioning == Configs::LBLPOSITION_EDGE) {
             $value->SetAlign('left', 'top');
         } else {
             $value->SetAlign('center', 'center');
@@ -677,7 +649,7 @@ class WindrosePlot
             // Determine the label
 
             $da = $a * 180 / M_PI;
-            if ($this->iOrdinalEncoding == KEYENCODING_CLOCKWISE) {
+            if ($this->iOrdinalEncoding == Configs::KEYENCODING_CLOCKWISE) {
                 $da = 360 - $da;
             }
 
@@ -689,10 +661,10 @@ class WindrosePlot
                 $lbl = sprintf($this->iLabelFormatString, $da);
             }
 
-            if ($this->iLabelPositioning == LBLPOSITION_CENTER) {
+            if ($this->iLabelPositioning == Configs::LBLPOSITION_CENTER) {
                 $dx = $dy = 0;
             } else {
-                // LBLPOSIITON_EDGE
+                // Configs::LBLPOSIITON_EDGE
                 if ($a >= 7 * M_PI / 4 || $a <= M_PI / 4) {
                     $dx = 0;
                 }
@@ -739,7 +711,7 @@ class WindrosePlot
             $value->Stroke($dblImg, $xt, $yt);
         }
 
-        if (__DEBUG) {
+        if (Configs::__DEBUG) {
             $dblImg->SetColor('red');
             $dblImg->Circle($xc, $yc, $lr + $r);
         }
@@ -810,15 +782,15 @@ class WindrosePlot
         // Plot radial grid lines and remember the end position
         // and the angle for later use when plotting the labels
         switch ($this->iType) {
-            case WINDROSE_TYPE4:
+            case Configs::WINDROSE_TYPE4:
                 $num = 4;
 
                 break;
-            case WINDROSE_TYPE8:
+            case Configs::WINDROSE_TYPE8:
                 $num = 8;
 
                 break;
-            case WINDROSE_TYPE16:
+            case Configs::WINDROSE_TYPE16:
                 $num = 16;
 
                 break;
@@ -873,7 +845,7 @@ class WindrosePlot
         $dblImg->SetLineWeight(1);
 
         $lr = $scaling * $this->iLabelMargin;
-        if ($this->iLabelPositioning == LBLPOSITION_CENTER) {
+        if ($this->iLabelPositioning == Configs::LBLPOSITION_CENTER) {
             $value->SetAlign('center', 'center');
         } else {
             $value->SetAlign('left', 'top');
@@ -885,10 +857,10 @@ class WindrosePlot
             list($x, $y, $a) = $txtpos[$i];
 
             // Set the position of the label
-            if ($this->iLabelPositioning == LBLPOSITION_CENTER) {
+            if ($this->iLabelPositioning == Configs::LBLPOSITION_CENTER) {
                 $dx = $dy = 0;
             } else {
-                // LBLPOSIITON_EDGE
+                // Configs::LBLPOSIITON_EDGE
                 if ($a >= 7 * M_PI / 4 || $a <= M_PI / 4) {
                     $dx = 0;
                 }
@@ -935,7 +907,7 @@ class WindrosePlot
             $value->Stroke($dblImg, $xt, $yt);
         }
 
-        if (__DEBUG) {
+        if (Configs::__DEBUG) {
             $dblImg->SetColor('red');
             $dblImg->Circle($xc, $yc, $lr + $r);
         }
@@ -1117,7 +1089,7 @@ class WindrosePlot
             $dblImg->SetTranslation($this->iX - $w / 2, $this->iY - $h / 2);
         }
 
-        if (__DEBUG) {
+        if (Configs::__DEBUG) {
             $dblImg->SetColor('red');
             $dblImg->Rectangle(0, 0, $w - 1, $h - 1);
         }
@@ -1135,7 +1107,7 @@ class WindrosePlot
         $xc = round($w / 2);
         $yc = round(($h - $legendheight) / 2);
 
-        if (__DEBUG) {
+        if (Configs::__DEBUG) {
             $dblImg->SetColor('red');
             $old = $dblImg->SetLineWeight(2);
             $dblImg->Line($xc - 5, $yc - 5, $xc + 5, $yc + 5);
@@ -1170,7 +1142,7 @@ class WindrosePlot
 
         $num = 0;
 
-        if ($this->iType == WINDROSE_TYPEFREE) {
+        if ($this->iType == Configs::WINDROSE_TYPEFREE) {
             $this->_StrokeFreeRose($dblImg, $value, $scaling, $xc, $yc, $r, $ri);
         } else {
             // Check if we need to re-code the interpretation of the ordinal
@@ -1178,11 +1150,11 @@ class WindrosePlot
             // counted anti-clockwise. The user might choose an encoding
             // that have 0 being the first axis to the right of the "N" axis and then
             // counted clock-wise
-            if ($this->iOrdinalEncoding == KEYENCODING_CLOCKWISE) {
-                if ($this->iType == WINDROSE_TYPE16) {
+            if ($this->iOrdinalEncoding == Configs::KEYENCODING_CLOCKWISE) {
+                if ($this->iType == Configs::WINDROSE_TYPE16) {
                     $const1 = 19;
                     $const2 = 16;
-                } elseif ($this->iType == WINDROSE_TYPE8) {
+                } elseif ($this->iType == Configs::WINDROSE_TYPE8) {
                     $const1 = 9;
                     $const2 = 8;
                 } else {

@@ -24,7 +24,7 @@ $g->InitFrame();
 // Draw a text box in the middle
 $txt = "This\nis\na TEXT!!!";
 $t   = new Text\Text($txt, 200, 10);
-$t->SetFont(FF_ARIAL, FS_BOLD, 40);
+$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 40);
 
 // How should the text box interpret the coordinates?
 $t->Align('center', 'top');

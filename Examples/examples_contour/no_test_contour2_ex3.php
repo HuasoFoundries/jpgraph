@@ -25,10 +25,10 @@ $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
 // Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 $graph->subtitle->Set('(Manual colors)');
-$graph->subtitle->SetFont(FF_VERDANA, FS_ITALIC, 10);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 // Create a new contour plot with only 3 isobars
 $cp = new FilledContourPlot($data, 3);

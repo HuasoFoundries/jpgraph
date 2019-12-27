@@ -68,7 +68,7 @@ class GanttPlotObject
         $this->csimalt = $aAlt;
     }
 
-    public function SetConstrain($aRow, $aType, $aColor = 'black', $aArrowSize = ARROW_S2, $aArrowType = ARROWT_SOLID)
+    public function SetConstrain($aRow, $aType, $aColor = 'black', $aArrowSize = Configs::ARROW_S2, $aArrowType = Configs::ARROWT_SOLID)
     {
         $this->constraints[] = new Util\GanttConstraint($aRow, $aType, $aColor, $aArrowSize, $aArrowType);
     }

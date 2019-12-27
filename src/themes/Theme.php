@@ -6,7 +6,7 @@
 
 /**
  * // File:        JPGRAPH_THEME.INC.PHP
- * // Description: Class to define graph theme
+ * // Description: Class to const raph=he;
  * // Created:     2010-09-29
  * // Ver:         $Id: jpgraph_theme.inc.php 83 2010-10-01 11:24:19Z atsushi $
  * //
@@ -23,8 +23,20 @@ use Amenadiel\JpGraph\Util;
  * @class
  * // Description:
  */
-abstract class Theme
+abstract class Theme extends Util\Configs
 {
+    // Side for ticks and labels.
+    const SIDE_LEFT   = -1;
+    const SIDE_RIGHT  = 1;
+    const SIDE_DOWN   = -1;
+    const SIDE_BOTTOM = -1;
+    const SIDE_UP     = 1;
+    const SIDE_TOP    = 1;
+
+    // Legend type stacked vertical or horizontal
+    const LEGEND_VERT   = 0;
+    const LEGLEGEND_HOR = 1;
+
     protected $color_index;
 
     public function __construct()
@@ -63,13 +75,11 @@ abstract class Theme
         if (method_exists($this, $method_name)) {
             $this->{$method_name}($graph);
         } else {
-            Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not defined. \nPlease make %s(\$graph) function in your theme classs.
+            Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
         }
     }
 
-    public function PreStrokeApply($graph)
-    {
-    }
+    public function PreStrokeApply($graph) {}
 
     public function GetThemeColors($num = 30)
     {

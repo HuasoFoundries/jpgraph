@@ -50,11 +50,11 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin', 0, 0, $xmin, $xmax);
 $example_title = 'Example with manual tick labels';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('white');
 
 // Setup a abackground gradient
-$graph->SetBackgroundGradient('darkred:0.7', 'black', 2, BGRAD_MARGIN);
+$graph->SetBackgroundGradient('darkred:0.7', 'black', 2, Graph\Configs::getConfig('BGRAD_MARGIN'));
 $graph->SetPlotGradient('black', 'darkred:0.8', 2);
 
 // Make sure that the X-axis is always at the bottom of the scale
@@ -66,8 +66,8 @@ $graph->xaxis->SetPos('min');
 $graph->xaxis->SetMajTickPositions($tickPositions, $tickLabels);
 
 // Use Times font
-$graph->xaxis->SetFont(FF_TIMES, FS_NORMAL, 11);
-$graph->yaxis->SetFont(FF_TIMES, FS_NORMAL, 9);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 
 // Set colors for axis
 $graph->xaxis->SetColor('lightgray');
@@ -77,9 +77,9 @@ $graph->yaxis->SetColor('lightgray');
 $graph->xgrid->Show();
 
 // Show ticks outwards
-$graph->xaxis->SetTickSide(SIDE_DOWN);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 $graph->xaxis->SetLabelMargin(8);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
 // Setup a filled y-grid
 //$graph->ygrid->SetFill(true,'darkgray:1.55@0.7','darkgray:1.6@0.7');

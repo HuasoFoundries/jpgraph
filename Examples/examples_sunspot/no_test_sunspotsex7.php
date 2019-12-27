@@ -12,7 +12,7 @@ require_once 'jpgraph/jpgraph_bar.php';
 
 function readsunspotdata($aFile, &$aYears, &$aSunspots)
 {
-    $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $lines = @file($aFile, Graph\Configs::getConfig('FILE_IGNORE_NEW_LINES') | Graph\Configs::getConfig('FILE_SKIP_EMPTY_LINES'));
     if ($lines === false) {
         throw new JpGraphException('Can not read sunspot data file.');
     }

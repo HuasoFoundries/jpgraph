@@ -26,11 +26,11 @@ $theme_class = 'PastelTheme';
 $graph->SetTheme(new $theme_class());
 
 // Setup background
-$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 
 // Setup title$example_title='Pie plots with background image'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->SetTitleBackground('#4169E1', TITLEBKG_STYLE2, TITLEBKG_FRAME_FULL, '#4169E1', 10, 10, true);
+$graph->SetTitleBackground('#4169E1', Graph\Configs::getConfig('TITLEBKG_STYLE2'), Graph\Configs::getConfig('TITLEBKG_FRAME_FULL'), '#4169E1', 10, 10, true);
 
 $p = [];
 // Create the plots
@@ -50,7 +50,7 @@ for ($i = 0; $i < $n; ++$i) {
 // Set the titles
 for ($i = 0; $i < $n; ++$i) {
     $p[$i]->title->Set($titles[$i]);
-    $p[$i]->title->SetFont(FF_ARIAL, FS_NORMAL, 8);
+    $p[$i]->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 }
 
 for ($i = 0; $i < $n; ++$i) {

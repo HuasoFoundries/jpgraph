@@ -27,10 +27,10 @@ $graph->SetMarginColor('black');
 $graph->SetColor('black');
 
 // ... and titles$example_title='Example of Function plot'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('lightgreen');
 $graph->subtitle->Set("(With some more advanced axis formatting\nHiding first and last label)");
-$graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 $graph->subtitle->SetColor('lightgreen');
 
 $graph->xgrid->Show();
@@ -40,7 +40,7 @@ $graph->ygrid->SetColor('darkgreen');
 $graph->yaxis->SetPos(0);
 $graph->yaxis->SetWeight(2);
 $graph->yaxis->HideZeroLabel();
-$graph->yaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->yaxis->SetColor('green', 'green');
 $graph->yaxis->HideTicks(true, true);
 $graph->yaxis->HideFirstLastLabel();
@@ -48,7 +48,7 @@ $graph->yaxis->HideFirstLastLabel();
 $graph->xaxis->SetWeight(2);
 $graph->xaxis->HideZeroLabel();
 $graph->xaxis->HideFirstLastLabel();
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->SetColor('green', 'green');
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);

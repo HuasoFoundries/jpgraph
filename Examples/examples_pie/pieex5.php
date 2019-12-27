@@ -17,11 +17,11 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Setup graph title$example_title='Example 5 of pie plot'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create pie plot
 $p1 = new Plot\PiePlot($data);
-$p1->value->SetFont(FF_VERDANA, FS_BOLD);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'));
 $p1->value->SetColor('darkred');
 $p1->SetSize(0.3);
 $p1->SetCenter(0.4);

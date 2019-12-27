@@ -4,7 +4,7 @@
  * JPGraph v4.0.0
  */
 
-// File:    ODOEX04.PHP
+// File:    Graph\Configs::getConfig('ODOEX04').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -74,7 +74,7 @@ $odo->scale->SetTicks(10, 2);
 //---------------------------------------------------------------------
 // Use a bold font for tick labels
 //---------------------------------------------------------------------
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Set display value for the odometer
@@ -84,7 +84,7 @@ $odo->needle->Set(30);
 //---------------------------------------------------------------------
 // Set a new style for the needle
 //---------------------------------------------------------------------
-$odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
+$odo->needle->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_MEDIUM_TRIANGLE'));
 $odo->needle->SetLength(0.7); // Length as 70% of the radius
 $odo->needle->SetFillColor('orange');
 

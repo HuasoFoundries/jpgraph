@@ -16,8 +16,8 @@ $modwidth = 2;  // Setup module width (in pixels)
 
 // Create a new encoder and backend to generate PNG images
 try {
-    $encoder = new PDF417Barcode($columns, $errlevel);
-    $backend = PDF417BackendFactory::Create(BACKEND_IMAGE, $encoder);
+    $encoder = new Graph\Configs::getConfig('PDF417B')arcode($columns, $errlevel);
+    $backend = Graph\Configs::getConfig('PDF417B')ackendFactory::Create(Graph\Configs::getConfig('BACKEND_IMAGE'), $encoder);
     $backend->ShowText(true);
     $backend->SetModuleWidth($modwidth);
     $backend->Stroke($data);

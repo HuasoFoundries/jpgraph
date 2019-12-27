@@ -26,7 +26,7 @@ $icon->SetAnchor('left', 'top');
 $graph->Add($icon);
 
 // Setup title$example_title='Windrose icon example'; $graph->title->set($example_title);
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.

@@ -21,7 +21,7 @@ $graph->SetMargin(30, 5, 25, 20);
 
 // Setup the tab
 $graph->tabtitle->Set(' Year 2003 ');
-$graph->tabtitle->SetFont(FF_ARIAL, FS_BOLD, 13);
+$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 13);
 $graph->tabtitle->SetColor('darkred', '#E1E1FF');
 
 // Enable X-grid as well
@@ -35,13 +35,13 @@ $p1 = new Plot\LinePlot($datay1);
 $p1->SetColor('navy');
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/saab_95.jpg', 0.5);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/saab_95.jpg', 0.5);
 
 // Displayes value on top of marker image
 $p1->value->SetFormat('%d mil');
 $p1->value->Show();
 $p1->value->SetColor('darkred');
-$p1->value->SetFont(FF_ARIAL, FS_BOLD, 10);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 // Increase the margin so that the value is printed avove tje
 // img marker
 $p1->value->SetMargin(14);

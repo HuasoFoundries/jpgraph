@@ -33,7 +33,7 @@ $graph->yaxis->HideLine(false);
 $graph->yaxis->HideTicks(false, false);
 
 // For background to be gradient, setfill is needed first.
-$graph->SetBackgroundGradient('#00CED1', '#FFFFFF', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('#00CED1', '#FFFFFF', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
 // Create the bar plots
 $b1plot = new Plot\BarPlot($datay);
@@ -42,7 +42,7 @@ $b1plot = new Plot\BarPlot($datay);
 $graph->Add($b1plot);
 
 $b1plot->SetWeight(0);
-$b1plot->SetFillGradient('#808000', '#90EE90', GRAD_HOR);
+$b1plot->SetFillGradient('#808000', '#90EE90', Graph\Configs::getConfig('GRAD_HOR'));
 $b1plot->SetWidth(17);
 
 // Display the graph

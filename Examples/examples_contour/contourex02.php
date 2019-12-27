@@ -26,12 +26,12 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 140, 60, 40);
 $example_title = 'Example of contour plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // For contour plots it is custom to use a box style ofr the axis
 $graph->legend->SetPos(0.05, 0.5, 'right', 'center');
 $graph->SetScale('intint');
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 $graph->xgrid->Show();
 $graph->ygrid->Show();
 

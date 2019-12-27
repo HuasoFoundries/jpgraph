@@ -18,8 +18,8 @@ class TextProperty
     public $csimtarget    = '';
     public $csimwintarget = '';
     public $csimalt       = '';
-    private $iFFamily     = FF_FONT1;
-    private $iFStyle      = FS_NORMAL;
+    private $iFFamily     = Configs::FF_FONT1;
+    private $iFStyle      = Configs::FS_NORMAL;
     private $iFSize       = 10;
     private $iFontArray   = [];
     private $iColor       = 'black';
@@ -118,7 +118,7 @@ class TextProperty
     }
 
     // Specify font
-    public function SetFont($aFFamily, $aFStyle = FS_NORMAL, $aFSize = 10)
+    public function SetFont($aFFamily, $aFStyle = self::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
         $this->iFStyle  = $aFStyle;
