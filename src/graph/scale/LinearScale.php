@@ -53,7 +53,6 @@ class LinearScale extends Scale
         } else {
             $this->ticks = new Tick\LinearTicks();
         }
-
     }
 
     // Check if scale is set or if we should autoscale
@@ -172,5 +171,4 @@ class LinearScale extends Scale
 
         return 3; // $c smallest
     }
-
 } // @class

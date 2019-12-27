@@ -14,7 +14,7 @@ class Configs extends Util\Configs
     const TGRID_DOUBLE  = 2;
     const TGRID_DOUBLE2 = 3;
 
-// Type of constrain for image constrain
+    // Type of constrain for image constrain
     const TIMG_WIDTH  = 1;
     const TIMG_HEIGHT = 2;
     // Width of tab titles
@@ -145,7 +145,7 @@ class Configs extends Util\Configs
     // from the application including JpGraph.
     //
     const LANGUAGE_CHARSET = null;
-// Assume that Japanese text have been entered in EUC-JP encoding.
+    // Assume that Japanese text have been entered in EUC-JP encoding.
     // If this define is true then conversion from EUC-JP to UTF8 is done
     // automatically in the library using the mbstring module in PHP.
     const ASSUME_EUCJP_ENCODING = false;
