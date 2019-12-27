@@ -6,9 +6,8 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Themes;
 
 $theme = isset($_GET['theme']) ? $_GET['theme'] : null;
 
@@ -33,7 +32,7 @@ $graph->SetScale('textlin');
 if ($theme) {
     $graph->SetTheme(new $theme());
 }
-$theme_class = new SoftyTheme();
+$theme_class = new Themes\SoftyTheme();
 $graph->SetTheme($theme_class);
 
 $plot = [];

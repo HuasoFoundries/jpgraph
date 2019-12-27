@@ -31,22 +31,21 @@ jQuery(document).ready(function() {
       '<div class="card-header" role="tab" id="heading' + index + '">'
     );
     var h5 = jQuery('<h5 class="mb-0"/>');
-    var data_toggle = jQuery(
-      '<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href=""  aria-controls="collapse' +
-        index +
-        '">'
-    );
+    let toggle_id = "#collapse" + index,
+      data_toggle = jQuery(
+        `<a class="collapsed" 
+      data-toggle="collapse" 
+      data-parent="#accordion" 
+      href="${toggle_id}"  aria-controls="collapse${index}" ></a>`
+      );
     data_toggle.text(title);
-    data_toggle.attr("href", "#collapse" + index);
+
     data_toggle.appendTo(h5);
     h5.appendTo(card_header);
     card_header.appendTo(card);
     var collapse = jQuery(
-      '<div id="collapse' +
-        index +
-        '" class="collapse" role="tabpanel" aria-labelledby="heading' +
-        index +
-        '"/>'
+      `<div id="collapse${index}" class="collapse" 
+      role="tabpanel" data-parent="#accordion" aria-labelledby="heading${index}"/>`
     );
     var card_block = jQuery('<div class="card-block"/>');
     var ul = jQuery("<ul/>");
@@ -81,6 +80,7 @@ jQuery(document).ready(function() {
             "href",
             "show-example.php?folder=" + folder + "&target=" + target
           )
+
           .text(target.replace(".php", ""));
       }
     });
@@ -101,7 +101,18 @@ jQuery(document).ready(function() {
       .text(filename);
     return false;
   });
+  jQuery("#accordion").on("click", "a.collapsed", function(e) {
+    var $this = $(this),
+      href = $this.attr("href");
+
+    location.hash = href;
+  });
   var firstgroup = jQuery(".card").first();
+  if (location.hash && location.hash.includes("#collapse")) {
+    firstgroup =
+      ($(location.hash).length && $(location.hash).parent()) || firstgroup;
+  }
+
   firstgroup.find(".collapsed").click();
   firstgroup
     .find("a.example")

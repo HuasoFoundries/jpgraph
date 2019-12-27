@@ -55,7 +55,7 @@ class PolarGraph extends Graph
             Util\JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }
 
-        $this->axis = new PolarAxis($this->img, $this->scale);
+        $this->axis = new Axis\PolarAxis($this->img, $this->scale);
         $this->SetMargin(40, 40, 50, 40);
     }
 

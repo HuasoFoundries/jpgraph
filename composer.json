@@ -42,6 +42,7 @@
       "Amenadiel\\JpGraph\\Graph\\": "src/graph",
       "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
       "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
+      "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
       "Amenadiel\\JpGraph\\Image\\": "src/image",
       "Amenadiel\\JpGraph\\Plot\\": "src/plot",
       "Amenadiel\\JpGraph\\Text\\": "src/text",

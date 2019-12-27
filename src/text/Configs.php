@@ -10,6 +10,13 @@ use Amenadiel\JpGraph\Util;
 
 class Configs extends Util\Configs
 {
+    const TGRID_SINGLE  = 1;
+    const TGRID_DOUBLE  = 2;
+    const TGRID_DOUBLE2 = 3;
+
+// Type of constrain for image constrain
+    const TIMG_WIDTH  = 1;
+    const TIMG_HEIGHT = 2;
     // Width of tab titles
     const TABTITLE_WIDTHFIT  = 0;
     const TABTITLE_WIDTHFULL = -1;

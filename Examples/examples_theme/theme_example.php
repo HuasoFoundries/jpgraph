@@ -6,8 +6,8 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Themes;
 
 $data1y   = [47, 80, 40, 116];
 $__width  = 400;
@@ -15,7 +15,7 @@ $__height = 300;
 $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
-$theme_class = new AquaTheme();
+$theme_class = new Themes\AquaTheme();
 $graph->SetTheme($theme_class);
 
 // after setting theme, you can change details as you want

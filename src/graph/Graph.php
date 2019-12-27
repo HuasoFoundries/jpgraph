@@ -701,8 +701,8 @@ class Graph extends Configs
             Util\JpGraphError::RaiseL(25022, $aAxisType); //(" Unknown scale specification for X-scale. ($aAxisType)");
         }
 
-        $this->xaxis = new Axis($this->img, $this->xscale);
-        $this->yaxis = new Axis($this->img, $this->yscale);
+        $this->xaxis = new Axis\Axis($this->img, $this->xscale);
+        $this->yaxis = new Axis\Axis($this->img, $this->yscale);
         $this->xgrid = new Grid($this->xaxis);
         $this->ygrid = new Grid($this->yaxis);
         $this->ygrid->Show();
@@ -736,7 +736,7 @@ class Graph extends Configs
             Util\JpGraphError::RaiseL(25023, $aAxisType); //("JpGraph: Unsupported self::Y2 axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
-        $this->y2axis = new Axis($this->img, $this->y2scale);
+        $this->y2axis = new Axis\Axis($this->img, $this->y2scale);
         $this->y2axis->scale->ticks->SetDirection(Configs::getConfig('SIDE_LEFT'));
         $this->y2axis->SetLabelSide(Configs::getConfig('SIDE_RIGHT'));
         $this->y2axis->SetPos('max');
@@ -770,7 +770,7 @@ class Graph extends Configs
             Util\JpGraphError::RaiseL(25024, $aAxisType); //("JpGraph: Unsupported Y axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
-        $this->ynaxis[$aN] = new Axis($this->img, $this->ynscale[$aN]);
+        $this->ynaxis[$aN] = new Axis\Axis($this->img, $this->ynscale[$aN]);
         $this->ynaxis[$aN]->scale->ticks->SetDirection(Configs::getConfig('SIDE_LEFT'));
         $this->ynaxis[$aN]->SetLabelSide(Configs::getConfig('SIDE_RIGHT'));
 
@@ -994,9 +994,11 @@ class Graph extends Configs
 
     public function StrokeCSIM($aScriptName = 'auto', $aCSIMName = '', $aBorder = 0)
     {
+        $microtime = microtime(true);
+        $random    = $microtime * 1000000;
         if ($aCSIMName == '') {
             // create a random map name
-            srand((int) (microtime() * 1000000));
+            srand((int) $random);
             $r         = rand(0, 100000);
             $aCSIMName = '__mapname' . $r . '__';
         }

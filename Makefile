@@ -3,10 +3,13 @@ VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
 SHELL = /usr/bin/env bash
 
 XDSWI := $(shell command -v xd_swi 2> /dev/null)
+XDSWI_STATUS:=$(shell command xd_swi stat 2> /dev/null)
+CURRENT_FOLDER:=$(shell command pwd 2> /dev/null)
 HASPHPMD := $(shell command -v phpmd 2> /dev/null)
  YELLOW=\033[0;33m
 RED=\033[0;31m
-WHITE=\033[0m
+WHITE=\033[1m
+RESET=\033[0m
 GREEN=\u001B[32m
 
 ifneq ($(g),)	
@@ -27,10 +30,22 @@ install:
 	composer install --no-dev
 
 test:
-	php vendor/bin/codecept run unit $(test) $(groups) $(g) --debug
+	@if [[ "$(XDSWI)" != "" ]]; then \
+		echo -e "$(WHITE)XDebug state is$(RESET) $(XDSWI_STATUS)" ;\
+	fi ;\
+	xd_swi off ;\
+	php vendor/bin/codecept run unit $(test) $(groups) $(g) --debug ;\
+	echo seting XDebug to initial state $(XDSWI_STATUS)  ;\
+	xd_swi $(XDSWI_STATUS)
 
 test_coverage:
-	php vendor/bin/codecept run unit $(test)  -g ready --coverage --coverage-xml
+	@if [[ "$(XDSWI)" != "" ]]; then \
+		echo -e "$(WHITE)XDebug state is$(RESET) $(XDSWI_STATUS)" ;\
+	fi ;\
+	xd_swi on ;\
+	php vendor/bin/codecept run unit $(test)     --coverage-html  ;\
+	echo seting XDebug to initial state $(XDSWI_STATUS)  ;\
+	xd_swi $(XDSWI_STATUS)
 
 update_version:
 	@echo "Current version is " ${VERSION}

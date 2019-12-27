@@ -87,6 +87,8 @@ trait UnitTestTrait
 
     public static function tearDownAfterClass(): void
     {
+        $arr       = explode('\\', static::class);
+        $className = array_pop($arr);
         if (count(self::$genericFixtures) > 0) {
             if (isset(self::$debugFileGroups) && self::$debugFileGroups && array_key_exists('testFileIterator', self::$genericFixtures)) {
                 Debug::debug('non grouped fixtures:');
@@ -94,11 +96,10 @@ trait UnitTestTrait
             }
             $yaml = Yaml::dump(self::$genericFixtures);
             if (self::$persistYaml) {
-                $arr       = explode('\\', static::class);
-                $className = array_pop($arr);
+
                 file_put_contents(sprintf('%s/_output/%s.yml', __DIR__, $className), $yaml);
             }
-            fwrite(STDOUT, get_class() . "\n");
+            fwrite(STDOUT, $className . "\n");
         }
     }
 
@@ -171,14 +172,15 @@ trait UnitTestTrait
 
     }
 
-    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = false)
+    private function _normalizeTestGroup($filename, &$ownFixtures = [], $example_title = 'file_iterator', $debug = true)
     {
         $filename_meaningful = explode('ex', $filename)[0];
-        $camelCased          = self::camelCase($example_title);
-        $test_title          = $camelCased;
+
         if ($example_title === 'file_iterator') {
-            $example_title = self::camelCase(sprintf('%s_%s', $example_title, $filename_meaningful));
+            $example_title = self::camelCase(sprintf('%s_%s', $filename_meaningful, $example_title));
         }
+        $camelCased    = self::camelCase($example_title);
+        $test_title    = $camelCased;
         $withoutSuffix = preg_match('/(\w(\s|\w)+\w)\s*(?:(ex|v))?\s*([\.\d]+)$/iU', $test_title, $matches);
         if ($matches) {
 
@@ -221,6 +223,7 @@ trait UnitTestTrait
         if ($example_title === 'file_iterator' && $subtitle_text) {
             $example_title = $subtitle_text;
         }
+
         self::renameIfDimensionsDontMatch(self::$exampleRoot, $filename, $__width, $__height, $size);
         $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
         $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);

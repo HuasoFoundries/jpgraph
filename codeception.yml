@@ -7,8 +7,20 @@ bootstrap: _bootstrap.php
 settings:
   shuffle: true
   lint: true
+
 paths:
   tests: tests
   output: tests/_output
   support: tests/_support
   data: tests
+
+coverage:
+  enabled: true
+  include:
+    - src/*.php
+  exclude:
+    - src/flags/*
+    - src/lang/*
+    - src/fonts/*
+    - src/includes/*
+

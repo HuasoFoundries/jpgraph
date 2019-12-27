@@ -77,7 +77,7 @@ class JpGraphException extends \Exception
     {
         $logDestination = JpGraphError::GetLogFile();
         $aMsg           = JpGraphError::GetTitle() . $this->getMessage();
-        \PC::dump($this);
+
         if (!$logDestination) {
             // Check SAPI and if we are called from the command line
             // send the error to STDERR instead
@@ -106,10 +106,11 @@ class JpGraphException extends \Exception
 
     public function handleImgException($aHalt = HALT_ON_ERRORS)
     {
-        \PC::dump($this);
-        ~d($this);
-        die();
-        ddd($this);
+        if (class_exists('\Kint') && getenv('JPGRAPH_IMGEXCEPTION_TO_TEXT')) {
+            ~d($this);
+            die();
+        }
+
         $img_iconerror =
             'iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAaV' .
             'BMVEX//////2Xy8mLl5V/Z2VvMzFi/v1WyslKlpU+ZmUyMjEh/' .

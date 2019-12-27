@@ -59,7 +59,7 @@ class RadarGraph extends Graph
             $this->yscale = new Scale\LogScale($ymin, $ymax, 'y', 'radar');
         }
 
-        $this->axis = new RadarAxis($this->img, $this->yscale);
+        $this->axis = new Axis\RadarAxis($this->img, $this->yscale);
         $this->grid = new RadarGrid();
     }
 
@@ -77,23 +77,23 @@ class RadarGraph extends Graph
         $this->SetSize($aSize);
     }
 
-    public function SetTickDensity($densy = TICKD_NORMAL, $dummy1 = null)
+    public function SetTickDensity($densy = Configs::TICKD_NORMAL, $dummy1 = null)
     {
         $this->ytick_factor = 25;
         switch ($densy) {
-            case TICKD_DENSE:
+            case Configs::TICKD_DENSE:
                 $this->ytick_factor = 12;
 
                 break;
-            case TICKD_NORMAL:
+            case Configs::TICKD_NORMAL:
                 $this->ytick_factor = 25;
 
                 break;
-            case TICKD_SPARSE:
+            case Configs::TICKD_SPARSE:
                 $this->ytick_factor = 40;
 
                 break;
-            case TICKD_VERYSPARSE:
+            case Configs::TICKD_VERYSPARSE:
                 $this->ytick_factor = 70;
 
                 break;
@@ -305,7 +305,7 @@ class RadarGraph extends Graph
 
             $this->StrokeTitles();
             $this->StrokeTexts();
-            if ($this->iIconDepth == DEPTH_FRONT) {
+            if ($this->iIconDepth == Configs::DEPTH_FRONT) {
                 $this->StrokeIcons();
             }
         }

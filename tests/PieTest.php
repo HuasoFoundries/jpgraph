@@ -1,5 +1,4 @@
 <?php
-use \Codeception\Util\Debug;
 
 /**
  * @group ready
@@ -13,29 +12,44 @@ class PieTest extends \Codeception\Test\Unit
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    public static function setUpBeforeClass(): void
-    {
-        $className = str_replace('test', '', strtolower(__CLASS__));
-
-        self::$files   = self::getFiles($className);
-        $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
-
-        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
-            return !array_key_exists($filename, $knownFixtures);
-        });
-
-        Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
-    }
-
     protected function _before() {}
 
     protected function _after() {}
 
+    public function testpie3dFileIterator()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testpieFileIterator()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testpielabelsFileIterator()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function test200()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testExample4OfPiePlot()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testWithHidden0Labels()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
     public function testFileIterator()
     {
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
+            $carry = $this->_fileCheck($file, $carry, true);
             return $carry;
         }, self::$genericFixtures);
     }

@@ -150,20 +150,4 @@ class Helper
         return $a >= 0 ? 1 : -1;
     }
 
-    public static function trace()
-    {
-        $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-
-        $btarray0 = ([
-            'class2'    => $backtrace[1]['class'],
-            'type2'     => $backtrace[1]['type'],
-            'function2' => $backtrace[1]['function'],
-            'spacer4'   => ' ',
-            'line2'     => $backtrace[0]['line'],
-        ]);
-
-        $tag = implode('', $btarray0);
-
-        \PC::debug(func_get_args(), $tag);
-    }
 }

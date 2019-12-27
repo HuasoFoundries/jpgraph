@@ -6,9 +6,8 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_bar.php';
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Themes;
 
 $theme = isset($_GET['theme']) ? $_GET['theme'] : null;
 
@@ -33,7 +32,7 @@ $graph->SetScale('textlin');
 if ($theme) {
     $graph->SetTheme(new $theme());
 }
-$theme_class = new GreenTheme();
+$theme_class = new Themes\VividTheme();
 $graph->SetTheme($theme_class);
 
 $plot = [];
@@ -55,7 +54,7 @@ for ($i = 4; $i < 8; ++$i) {
 $graph->Add($gbplot);
 $graph->Add($plot[4]);
 
-$title         = 'GreenTheme Example';
+$title         = 'VividTheme Example';
 $title         = mb_convert_encoding($title, 'UTF-8');
 $example_title = $title;
 $graph->title->set($example_title);

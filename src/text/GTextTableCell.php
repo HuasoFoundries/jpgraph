@@ -18,13 +18,6 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 // Style of grid lines in table
-define('TGRID_SINGLE', 1);
-define('TGRID_DOUBLE', 2);
-define('TGRID_DOUBLE2', 3);
-
-// Type of constrain for image constrain
-define('TIMG_WIDTH', 1);
-define('TIMG_HEIGHT', 2);
 
 /**
  * @class GTextTableCell
@@ -43,7 +36,7 @@ class GTextTableCell
     private $iBGColor   = '';
     private $iFontColor = 'black';
     private $iFF        = Configs::FF_FONT1;
-    private $iFS        = self::FS_NORMAL;
+    private $iFS        = Configs::FS_NORMAL;
     private $iFSize     = 10;
     private $iRow       = 0;
     private $iCol       = 0;
@@ -55,7 +48,7 @@ class GTextTableCell
     private $iTable;
     private $iGridColor  = ['darkgray', 'darkgray', 'darkgray', 'darkgray'];
     private $iGridWeight = [1, 1, 0, 0]; // left,top,bottom,right;
-    private $iGridStyle  = [TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE]; // left,top,bottom,right;
+    private $iGridStyle  = [Configs::TGRID_SINGLE, Configs::TGRID_SINGLE, Configs::TGRID_SINGLE, Configs::TGRID_SINGLE]; // left,top,bottom,right;
     private $iNumberFormat;
     private $iIcon;
     private $iIconConstrain = [];
@@ -97,7 +90,7 @@ class GTextTableCell
 
     public function SetImageConstrain($aType, $aVal)
     {
-        if (!in_array($aType, [TIMG_WIDTH, TIMG_HEIGHT], true)) {
+        if (!in_array($aType, [Configs::TIMG_WIDTH, Configs::TIMG_HEIGHT], true)) {
             Util\JpGraphError::RaiseL(27015);
         }
         $this->iIconConstrain = [$aType, $aVal];
@@ -235,11 +228,11 @@ class GTextTableCell
     public function GetWidth($aImg)
     {
         if ($this->iIcon !== null) {
-            if ($this->iIconConstrain[0] == TIMG_WIDTH) {
+            if ($this->iIconConstrain[0] == Configs::TIMG_WIDTH) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif ($this->iIconConstrain[0] == TIMG_HEIGHT) {
+            } elseif ($this->iIconConstrain[0] == Configs::TIMG_HEIGHT) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -265,11 +258,11 @@ class GTextTableCell
     public function GetHeight($aImg)
     {
         if ($this->iIcon !== null) {
-            if ($this->iIconConstrain[0] == TIMG_WIDTH) {
+            if ($this->iIconConstrain[0] == Configs::TIMG_WIDTH) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif ($this->iIconConstrain[0] == TIMG_HEIGHT) {
+            } elseif ($this->iIconConstrain[0] == Configs::TIMG_HEIGHT) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -305,13 +298,13 @@ class GTextTableCell
     {
         if ($this->iCol > 0) {
             switch ($this->iGridStyle[0]) {
-                case TGRID_SINGLE:$wf = 1;
+                case Configs::TGRID_SINGLE:$wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case Configs::TGRID_DOUBLE:$wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case Configs::TGRID_DOUBLE2:$wf = 4;
 
                     break;
             }
@@ -319,13 +312,13 @@ class GTextTableCell
         }
         if ($this->iRow > 0) {
             switch ($this->iGridStyle[1]) {
-                case TGRID_SINGLE:$wf = 1;
+                case Configs::TGRID_SINGLE:$wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case Configs::TGRID_DOUBLE:$wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case Configs::TGRID_DOUBLE2:$wf = 4;
 
                     break;
             }
@@ -333,13 +326,13 @@ class GTextTableCell
         }
         if ($this->iRow + $this->iRowSpan - 1 < $this->iTable->iSize[0] - 1) {
             switch ($this->iGridStyle[2]) {
-                case TGRID_SINGLE:$wf = 1;
+                case Configs::TGRID_SINGLE:$wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case Configs::TGRID_DOUBLE:$wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case Configs::TGRID_DOUBLE2:$wf = 4;
 
                     break;
             }
@@ -347,13 +340,13 @@ class GTextTableCell
         }
         if ($this->iCol + $this->iColSpan - 1 < $this->iTable->iSize[1] - 1) {
             switch ($this->iGridStyle[3]) {
-                case TGRID_SINGLE:$wf = 1;
+                case Configs::TGRID_SINGLE:$wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case Configs::TGRID_DOUBLE:$wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case Configs::TGRID_DOUBLE2:$wf = 4;
 
                     break;
             }
@@ -376,13 +369,13 @@ class GTextTableCell
             $y = $aY + $aHeight - 1;
             $aImg->SetColor($this->iGridColor[$idx]);
             switch ($this->iGridStyle[$idx]) {
-                case TGRID_SINGLE:
+                case Configs::TGRID_SINGLE:
                     for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
                         $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
                     }
 
                     break;
-                case TGRID_DOUBLE:
+                case Configs::TGRID_DOUBLE:
                     for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
                         $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
                     }
@@ -393,7 +386,7 @@ class GTextTableCell
                     }
 
                     break;
-                case TGRID_DOUBLE2:
+                case Configs::TGRID_DOUBLE2:
                     for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
                         $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
                     }
@@ -423,13 +416,13 @@ class GTextTableCell
             $x = $aX + $aWidth - 1;
             $aImg->SetColor($this->iGridColor[$idx]);
             switch ($this->iGridStyle[$idx]) {
-                case TGRID_SINGLE:
+                case Configs::TGRID_SINGLE:
                     for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
                         $aImg->Line($aX, $y + $i, $x, $y + $i);
                     }
 
                     break;
-                case TGRID_DOUBLE:
+                case Configs::TGRID_DOUBLE:
                     for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
                         $aImg->Line($aX, $y + $i, $x, $y + $i);
                     }
@@ -440,7 +433,7 @@ class GTextTableCell
                     }
 
                     break;
-                case TGRID_DOUBLE2:
+                case Configs::TGRID_DOUBLE2:
                     for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
                         $aImg->Line($aX, $y + $i, $x, $y + $i);
                     }

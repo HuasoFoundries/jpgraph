@@ -4,9 +4,11 @@
  * JPGraph v4.0.0
  */
 
-include '../jpgraph.php';
-include '../jpgraph_bar.php';
-include '../jpgraph_table.php';
+require_once __DIR__ . '/../../src/config.inc.php';
+
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 
 $datay = [
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -51,7 +53,7 @@ $accbplot->value->Show();
 $graph->Add($accbplot);
 
 //Setup the table
-$table = new GTextTable();
+$table = new Text\GTextTable();
 $table->Set($datay);
 $table->SetPos($tablexpos, $tableypos + 1);
 

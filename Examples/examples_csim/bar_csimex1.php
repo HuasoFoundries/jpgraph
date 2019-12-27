@@ -52,6 +52,6 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getC
 $graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
-// Send back the Graph\Configs::getConfig('HTML') page which will call this script again
+// Send back the HTML page which will call this script again
 // to retrieve the image.
 $graph->StrokeCSIM();

@@ -4,8 +4,9 @@
  * JPGraph v4.0.0
  */
 
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Graph\Axis;
 
+use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Text;
 
 /**
