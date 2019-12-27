@@ -12,3 +12,5 @@ jpgraph.phprj
 jpgraph.workspace
 nbproject
 .idea
+tests/_output/coverage
+
