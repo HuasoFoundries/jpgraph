@@ -6,8 +6,7 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_matrix.php';
+use Amenadiel\JpGraph\Plot;
 
 $data = [
     [0, null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 8, 6, 4, 2],
@@ -30,14 +29,14 @@ for ($i = 0; $i < count($data); ++$i) {
 // Setup a nasic matrix graph
 $__width  = 400;
 $__height = 250;
-$graph    = new MatrixGraph($__width, $__height);
+$graph    = new Graph\MatrixGraph($__width, $__height);
 $graph->SetMarginColor('white');
 $example_title = 'Adding labels on the edges';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Create one matrix plot
-$mp = new MatrixPlot($data, 1);
+$mp = new Plot\MatrixPlot($data, 1);
 $mp->SetModuleSize(13, 15);
 $mp->SetCenterPos(0.35, 0.45);
 $mp->colormap->SetNullColor('gray');

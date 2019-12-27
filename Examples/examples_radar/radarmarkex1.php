@@ -6,14 +6,15 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 
-require_once 'jpgraph/jpgraph_radar.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $titles = ['Planning', 'Quality', 'Time', 'RR', 'CR', 'DR'];
 $data   = [18, 40, 70, 90, 42, 66];
 
 $__width       = 300;
 $__height      = 280;
-$graph         = new RadarGraph($__width, $__height);
+$graph         = new Graph\RadarGraph($__width, $__height);
 $example_title = 'Radar with marks';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
@@ -31,7 +32,7 @@ $graph->axis->title->SetMargin(5);
 $graph->SetGridDepth(Graph\Configs::getConfig('DEPTH_BACK'));
 $graph->SetSize(0.6);
 
-$plot = new RadarPlot($data);
+$plot = new Plot\RadarPlot($data);
 $plot->SetColor('red@0.2');
 $plot->SetLineWeight(1);
 $plot->SetFillColor('red@0.7');

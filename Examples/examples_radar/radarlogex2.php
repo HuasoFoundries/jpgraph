@@ -5,8 +5,8 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-require_once 'jpgraph/jpgraph_log.php';
-require_once 'jpgraph/jpgraph_radar.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // Some data to plot
 $data = [242, 58, 500, 12, 397, 810, 373];
@@ -14,7 +14,7 @@ $data = [242, 58, 500, 12, 397, 810, 373];
 // Create the graph
 $__width  = 200;
 $__height = 200;
-$graph    = new RadarGraph($__width, $__height);
+$graph    = new Graph\RadarGraph($__width, $__height);
 
 // Uncomment the following line to use anti-aliasing
 // Note: Enabling this results in a very noticable slow
@@ -43,7 +43,7 @@ $graph->axis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs
 // Use blue axis
 $graph->axis->SetColor('blue');
 
-$plot = new RadarPlot($data);
+$plot = new Plot\RadarPlot($data);
 $plot->SetLineWeight(2);
 $plot->SetColor('forestgreen');
 

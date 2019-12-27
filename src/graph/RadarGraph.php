@@ -31,9 +31,9 @@ class RadarGraph extends Graph
         $this->posy = $height / 2;
         $this->len  = min($width, $height) * 0.35;
         $this->SetColor([255, 255, 255]);
-        $this->SetTickDensity(TICKD_NORMAL);
+        $this->SetTickDensity(Configs::TICKD_NORMAL);
         $this->SetScale('lin');
-        $this->SetGridDepth(DEPTH_FRONT);
+        $this->SetGridDepth(Configs::DEPTH_FRONT);
     }
 
     public function HideTickMarks($aFlag = true)
@@ -263,7 +263,7 @@ class RadarGraph extends Graph
         $astep = 2 * M_PI / $nbrpnts;
 
         if (!$_csim) {
-            if ($this->iIconDepth == Confis::getConfig('DEPTH_BACK')) {
+            if ($this->iIconDepth == Configs::getConfig('DEPTH_BACK')) {
                 $this->StrokeIcons();
             }
 
@@ -276,14 +276,14 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth == Confis::getConfig('DEPTH_BACK')) {
+            if ($this->grid_depth == Configs::getConfig('DEPTH_BACK')) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);
                 }
                 $this->grid->Stroke($this->img, $grid);
             }
-            if ($this->iIconDepth == Confis::getConfig('DEPTH_BACK')) {
+            if ($this->iIconDepth == Configs::getConfig('DEPTH_BACK')) {
                 $this->StrokeIcons();
             }
         }
@@ -295,7 +295,7 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if ($this->grid_depth != Confis::getConfig('DEPTH_BACK')) {
+            if ($this->grid_depth != Configs::getConfig('DEPTH_BACK')) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], $i == 0);

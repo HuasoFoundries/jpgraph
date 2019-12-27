@@ -5,12 +5,12 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_radar.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 $__width  = 300;
 $__height = 300;
-$graph    = new RadarGraph($__width, $__height);
+$graph    = new Graph\RadarGraph($__width, $__height);
 $graph->SetScale('lin', 0, 50);
 $graph->yscale->ticks->Set(25, 5);
 $graph->SetColor('white');
@@ -32,7 +32,7 @@ $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->SetTitles(['One', 'Two', 'Three', 'Four', 'Five', 'Sex', 'Seven', 'Eight', 'Nine', 'Ten']);
 
-$plot = new RadarPlot([12, 35, 20, 30, 33, 15, 37]);
+$plot = new Plot\RadarPlot([12, 35, 20, 30, 33, 15, 37]);
 $plot->SetLegend('Goal');
 $plot->SetColor('red', 'lightred');
 $plot->SetFillColor('lightblue');

@@ -4,16 +4,15 @@
  * JPGraph v4.0.0
  */
 
-namespace Amenadiel\JpGraph\Graph\Scale;
+namespace Amenadiel\JpGraph\Graph;
 
-use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Util;
 
 /**
  * @class LinearScale
  * // Description: Handle linear scaling between screen and world
  */
-class Scale extends Configs
+class LinearScale
 {
     public $textscale = false; // Just a flag to let the Plot class find out if
     // we are a textscale or not. This is a cludge since
@@ -47,7 +46,7 @@ class Scale extends Configs
         $this->type       = $aType;
         $this->scale      = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
-
+        $this->ticks      = new LinearTicks();
     }
 
     // Check if scale is set or if we should autoscale
@@ -62,28 +61,92 @@ class Scale extends Configs
         return true;
     }
 
-    // Initialize the conversion constants for this scale
-    // This tries to pre-calculate as much as possible to speed up the
-    // actual conversion (with Translate()) later on
-    // $start =scale start in absolute pixels (for x-scale this is an y-position
-    //     and for an y-scale this is an x-position
-    // $len   =absolute length in pixels of scale
-    public function SetConstants($aStart, $aLen)
+    // Set the minimum data value when the autoscaling is used.
+    // Usefull if you want a fix minimum (like 0) but have an
+    // automatic maximum
+    public function SetAutoMin($aMin)
     {
-        $this->world_abs_size = $aLen;
-        $this->off            = $aStart;
+        $this->autoscale_min = $aMin;
+    }
 
-        if ($this->world_size <= 0) {
-            // This should never ever happen !!
-            Util\JpGraphError::RaiseL(25074);
-            //("You have unfortunately stumbled upon a bug in JpGraph. It seems like the scale range is ".$this->world_size." [for ".$this->type." scale] <br> Please report Bug #01 to info@jpgraph.net and include the script that gave this error. This problem could potentially be caused by trying to use \"illegal\" values in the input data arrays (like trying to send in strings or only NULL values) which causes the autoscaling to fail.");
+    // Set the minimum data value when the autoscaling is used.
+    // Usefull if you want a fix minimum (like 0) but have an
+    // automatic maximum
+    public function SetAutoMax($aMax)
+    {
+        $this->autoscale_max = $aMax;
+    }
+
+    // If the user manually specifies a scale should the ticks
+    // still be set automatically?
+    public function SetAutoTicks($aFlag = true)
+    {
+        $this->auto_ticks = $aFlag;
+    }
+
+    // Specify scale "grace" value (top and bottom)
+    public function SetGrace($aGraceTop, $aGraceBottom = 0)
+    {
+        if ($aGraceTop < 0 || $aGraceBottom < 0) {
+            Util\JpGraphError::RaiseL(25069); //(" Grace must be larger then 0");
+        }
+        $this->gracetop    = $aGraceTop;
+        $this->gracebottom = $aGraceBottom;
+    }
+
+    // Get the minimum value in the scale
+    public function GetMinVal()
+    {
+        return $this->scale[0];
+    }
+
+    // get maximum value for scale
+    public function GetMaxVal()
+    {
+        return $this->scale[1];
+    }
+
+    // Specify a new min/max value for sclae
+    public function Update($aImg, $aMin, $aMax)
+    {
+        $this->scale      = [$aMin, $aMax];
+        $this->world_size = $aMax - $aMin;
+        $this->InitConstants($aImg);
+    }
+
+    // Translate between world and screen
+    public function Translate($aCoord)
+    {
+        if (!is_numeric($aCoord)) {
+            if ($aCoord != '' && $aCoord != '-' && $aCoord != 'x') {
+                Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
+            }
+
+            return 0;
         }
 
-        // scale_factor = number of pixels per world unit
-        $this->scale_factor = $this->world_abs_size / ($this->world_size * 1.0);
+        return round($this->off + ($aCoord - $this->scale[0]) * $this->scale_factor);
+    }
 
-        // scale_abs = start and end points of scale in absolute pixels
-        $this->scale_abs = [$this->off, $this->off + $this->world_size * $this->scale_factor];
+    // Relative translate (don't include offset) usefull when we just want
+    // to know the relative position (in pixels) on the axis
+    public function RelTranslate($aCoord)
+    {
+        if (!is_numeric($aCoord)) {
+            if ($aCoord != '' && $aCoord != '-' && $aCoord != 'x') {
+                Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
+            }
+
+            return 0;
+        }
+
+        return ($aCoord - $this->scale[0]) * $this->scale_factor;
+    }
+
+    // Restrict autoscaling to only use integers
+    public function SetIntScale($aIntScale = true)
+    {
+        $this->intscale = $aIntScale;
     }
 
     // Calculate an integer autoscale
@@ -321,7 +384,7 @@ class Scale extends Configs
     // margins in the image. If the margins in the image are changed
     // this method should be called for every scale that is registred with
     // that image. Should really be installed as an observer of that image.
-    public function InitConfigs($img)
+    public function InitConstants($img)
     {
         if ($this->type == 'x') {
             $this->world_abs_size = $img->width - $img->left_margin - $img->right_margin;
@@ -349,7 +412,7 @@ class Scale extends Configs
     // $start =scale start in absolute pixels (for x-scale this is an y-position
     //     and for an y-scale this is an x-position
     // $len   =absolute length in pixels of scale
-    public function SetConfigs($aStart, $aLen)
+    public function SetConstants($aStart, $aLen)
     {
         $this->world_abs_size = $aLen;
         $this->off            = $aStart;
@@ -517,12 +580,29 @@ class Scale extends Configs
         return [$numsteps, $majstep];
     }
 
+    // Determine the minimum of three values witha  weight for last value
+    public function MatchMin3($a, $b, $c, $weight)
+    {
+        if ($a < $b) {
+            if ($a < ($c * $weight)) {
+                return 1; // $a smallest
+            }
+
+            return 3; // $c smallest
+        }
+        if ($b < ($c * $weight)) {
+            return 2; // $b smallest
+        }
+
+        return 3; // $c smallest
+    }
+
     public function __get($name)
     {
         $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
-            return $this->{$variable_name} * Configs::getConfig('SUPERSAMPLING_SCALE');
+            return $this->{$variable_name} * SUPERSAMPLING_SCALE;
         }
         Util\JpGraphError::RaiseL('25132', $name);
     }

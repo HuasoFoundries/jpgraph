@@ -5,8 +5,8 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-require_once 'jpgraph/jpgraph_log.php';
-require_once 'jpgraph/jpgraph_radar.php';
+use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot;
 
 // Some data to plot
 $data  = [242, 58, 1500, 12, 1397, 810, 373];
@@ -15,7 +15,7 @@ $data2 = [447, 176, 1472, 191, 1616, 42, 46];
 // Create the graph
 $__width  = 300;
 $__height = 350;
-$graph    = new RadarGraph($__width, $__height);
+$graph    = new Graph\RadarGraph($__width, $__height);
 
 // Use logarithmic scale (If you don't use any SetScale()
 // the radar graph will default to linear scale
@@ -29,11 +29,6 @@ $graph->title->SetMargin(10);
 // Make the radar graph fill out it's bounding box
 $graph->SetPlotSize(0.8);
 $graph->SetCenter(0.5, 0.55);
-
-// Note: Enabling this results in a very noticable slow
-// down of the image generation! And more load on your
-// server.
-$graph->img->SetAntiAliasing();
 
 // Uncomment the following line if you want to supress
 // minor tick marks
@@ -50,12 +45,12 @@ $graph->axis->title->SetColor('darkred:0.8');
 // Use blue axis
 $graph->axis->SetColor('blue');
 
-$plot = new RadarPlot($data);
+$plot = new Plot\RadarPlot($data);
 $plot->SetLineWeight(1);
 $plot->SetColor('forestgreen');
 $plot->SetFillColor('forestgreen@0.9');
 
-$plot2 = new RadarPlot($data2);
+$plot2 = new Plot\RadarPlot($data2);
 $plot2->SetLineWeight(2);
 $plot2->SetColor('red');
 $plot2->SetFillColor('red@0.9');
