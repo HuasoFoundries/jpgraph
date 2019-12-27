@@ -341,7 +341,6 @@ class TTF
             } else {
                 $font_file = self::TTF_DIR . $font_file;
             }
-
         }
 
         if (!file_exists($font_file)) {

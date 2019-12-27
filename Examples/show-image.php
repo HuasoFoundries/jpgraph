@@ -15,6 +15,6 @@ $folder = basename(urldecode($_GET['folder']));
 <title> Image <?php echo $target; ?></title>
 </head>
 <body>
-<img src="<?php echo ($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
+<img src="<?php echo($folder ? $folder . '/' : '') . ($target); ?>" border=0 alt="<?php echo $target; ?>" align="left">
 </body>
 </html>
