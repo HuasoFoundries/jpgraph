@@ -44,17 +44,19 @@ class ImgTest extends \Codeception\Test\Unit
         });
 
         // Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testHorizontallySkewedImages()
     {
         foreach (self::$fixTures['testHorizontallySkewedImages'] as $file => $dims) {
-
             $this->_fileCheck($file, self::$ranTests, false, $dims);
         }
     }
@@ -69,14 +71,12 @@ class ImgTest extends \Codeception\Test\Unit
     public function testVerticallySkewedImages()
     {
         foreach (self::$fixTures['testVerticallySkewedImages'] as $file => $dims) {
-
             $this->_fileCheck($file, self::$ranTests, false, $dims);
         }
     }
 
     private function _fileCheck($filename, &$ownFixtures = [], $debug = false, $dims = [])
     {
-
         $example_title = 'file_iterator';
         ob_start();
 
@@ -112,6 +112,5 @@ class ImgTest extends \Codeception\Test\Unit
             $carry = $this->_fileCheck($file, $carry);
             return $carry;
         }, self::$genericFixtures);
-
     }
 }

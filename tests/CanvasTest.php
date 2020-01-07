@@ -13,9 +13,13 @@ class CanvasTest extends \Codeception\Test\Unit
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testFileIterator()
     {
@@ -28,36 +32,30 @@ class CanvasTest extends \Codeception\Test\Unit
     public function testBezierLineWithControlPoints()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testCanvasSpiral()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testGenerateGradientBackground()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testFontDemonstrationOnCanvas()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testtextWithSeveralLines()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testThisIsATextWithMoreText()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 }

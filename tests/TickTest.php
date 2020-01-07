@@ -25,18 +25,20 @@ class TickTest extends \Codeception\Test\Unit
         });
 
         Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
     }
 
     public function testExampleWithManualTickLabels()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testFileIterator()
     {
