@@ -7,8 +7,8 @@ testFieldscatterfileiterator:
     fieldscatterex1.php: { width: 300, height: 200, title: fieldscatterFileIterator, filename: fieldscatterex1.php }
 testFooterfileiterator:
     footerex1.php: { width: 300, height: 250, title: footerFileIterator, filename: footerex1.php }
-testSimpleMpulsPlot:
-    impulsex1.php: { width: 300, height: 200, title: 'Simple mpuls plot', filename: impulsex1.php }
+testSimpleImpulsePlot:
+    impulsex1.php: { width: 300, height: 200, title: 'Simple impulse plot', filename: impulsex1.php }
 testImpulsPlot:
     impulsex2.php: { width: 300, height: 200, title: 'Impuls plot, variant 2', filename: impulsex2.php }
 testImpulsexample:

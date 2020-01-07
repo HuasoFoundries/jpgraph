@@ -59,7 +59,7 @@ $graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 $line = new Plot\PlotLine(Graph\Configs::getConfig('HORIZONTAL'), 0, 'black', 2);
 $graph->AddLine($line);
 
-// Create a new impuls type scatter plot
+// Create a new impulse type scatter plot
 $sp1 = new Plot\ScatterPlot($datay, $datax);
 $sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->mark->SetFillColor('red');

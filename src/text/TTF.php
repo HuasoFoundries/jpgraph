@@ -108,7 +108,7 @@ class TTF
             ],
             Configs::FF_CHINESE          => [
                 Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
-                Configs::FS_BOLD       => 'ms_kaity.ttf',
+                Configs::FS_BOLD       => '',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
@@ -248,24 +248,32 @@ class TTF
             ],
 
             Configs::FF_DV_SERIF         => [
-                Configs::FS_NORMAL     => ['DejaVuSerif.ttf',
+                Configs::FS_NORMAL     => [
+                    'DejaVuSerif.ttf',
                 ],
-                Configs::FS_BOLD       => ['DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf',
+                Configs::FS_BOLD       => [
+                    'DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf',
                 ],
-                Configs::FS_ITALIC     => ['DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf',
+                Configs::FS_ITALIC     => [
+                    'DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf',
                 ],
-                Configs::FS_BOLDITALIC => ['DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf',
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf',
                 ],
             ],
 
             Configs::FF_DV_SERIFCOND     => [
-                Configs::FS_NORMAL     => ['DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf',
+                Configs::FS_NORMAL     => [
+                    'DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf',
                 ],
-                Configs::FS_BOLD       => ['DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf',
+                Configs::FS_BOLD       => [
+                    'DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf',
                 ],
-                Configs::FS_ITALIC     => ['DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf',
+                Configs::FS_ITALIC     => [
+                    'DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf',
                 ],
-                Configs::FS_BOLDITALIC => ['DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf',
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf',
                 ],
             ],
 
@@ -309,9 +317,6 @@ class TTF
         $full_path = sprintf('%s%s', $font_path, $font_file);
         //kdump($full_path);
 
-        if (strstr($font_file, 'bkai')) {
-            kdump('Looking for: ' . $full_path);
-        }
         if (file_exists($full_path) && is_readable($full_path)) {
             return $full_path;
         }
@@ -343,13 +348,7 @@ class TTF
             if (array_key_exists($font_translation, Configs::$FOUND_FONTS)) {
                 return Configs::$FOUND_FONTS[$font_translation];
             }
-            kdump([
-                'family'      => sprintf('%s (%d)', Configs::$font_dict[$family], $family),
-                'style'       => sprintf('%s (%d)', Configs::$font_dict[$style], $style),
-                'fam'         => $fam,
-                'ff'          => $fam[$style],
-                'FOUND_FONTS' => Configs::$FOUND_FONTS,
-            ]);
+
         }
         if (!$fam) {
             Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
@@ -403,8 +402,19 @@ class TTF
             // which is DejaVuSans in Ubuntu
             $font_file = $this->File(Configs::FF_DV_SANSSERIF, $style);
         }
+        // Try to use the canonical path
+        if (is_readable(realpath($font_file))) {
+            $font_file = realpath($font_file);
+        }
         if ($font_translation) {
+            // Will store found font to skip next search
             Configs::$FOUND_FONTS[$font_translation] = $font_file;
+            /*kdump([
+        'family'      => sprintf('%s (%d)', Configs::$font_dict[$family], $family),
+        'style'       => sprintf('%s (%d)', Configs::$font_dict[$style], $style),
+        'ff'          => $fam[$style],
+        'FOUND_FONTS' => Configs::$FOUND_FONTS,
+        ]);*/
         }
         return $font_file;
     }

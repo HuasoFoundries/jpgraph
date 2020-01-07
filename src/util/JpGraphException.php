@@ -93,7 +93,7 @@ class JpGraphException extends Exception
         } elseif ($this->iDest == 'syslog') {
             error_log($this->iTitle . $aMsg);
         } else {
-            $str = '[' . date('r') . '] ' . $this->iTitle . $aMsg . "\n";
+            $str = '[' . date('r') . '] ' . $this->iTitle . ', ' . $aMsg . "\n";
             $f   = @fopen($this->iDest, 'a');
             if ($f) {
                 @fwrite($f, $str);

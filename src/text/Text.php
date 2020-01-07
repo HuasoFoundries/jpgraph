@@ -8,15 +8,6 @@ namespace Amenadiel\JpGraph\Text;
 
 //use Amenadiel\JpGraph\Graph\Graph;
 use Amenadiel\JpGraph\Util;
-use function htmlentities;
-use function implode;
-use function is_numeric;
-use function is_string;
-use function round;
-use function str_replace;
-use function strpos;
-use function trim;
-use function wordwrap;
 
 /**
  * File:        JPGRAPH_TEXT.INC.PHP
@@ -384,7 +375,7 @@ class Text extends Configs
         }
 
         // Create CSIM targets
-        $coords           = implode(',', [
+        $coords = implode(',', [
             $bbox[0],
             $bbox[1],
             $bbox[2],
@@ -394,7 +385,7 @@ class Text extends Configs
             $bbox[6],
             $bbox[7],
         ]);
-        $this->iCSIMarea  = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
+        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
         $this->iCSIMarea .= htmlentities($this->iCSIMtarget) . '" ';
         if (trim($this->iCSIMalt) != '') {
             $this->iCSIMarea .= ' alt="' . $this->iCSIMalt . '" ';
@@ -429,4 +420,5 @@ class Text extends Configs
     {
         $this->{'_' . $name} = $value;
     }
-} // @class
+}
+// @class

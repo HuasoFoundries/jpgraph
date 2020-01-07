@@ -35,76 +35,44 @@ class Configs extends Util\Configs
     const FS_ITALIC     = 9003;
     const FS_BOLDIT     = 9004;
     const FS_BOLDITALIC = 9004;
-    const FF_DEFAULT    = 47;
 
-    const FF_AHRON = 46;
-
-    const FF_ARIAL = 15;
-
-    const FF_BIG5 = 32;
-
-    const FF_CALCULATOR = 74;
-
-    const FF_CHINESE = 31;
-
-    const FF_COMIC = 14;
-
-    const FF_COMPUTER = 73;
-
-    const FF_COURIER = 10;
-
-    const FF_DAVID = 44;
-
-    const FF_DIGITAL      = 72;
-    const FF_DV_SANSSERIF = self::FF_DEFAULT;
-
+    const FF_DEFAULT          = 47;
+    const FF_AHRON            = 46;
+    const FF_ARIAL            = 15;
+    const FF_BIG5             = 32;
+    const FF_COMIC            = 14;
+    const FF_COMPUTER         = 73;
+    const FF_COURIER          = 10;
+    const FF_DAVID            = 44;
     const FF_DV_SANSSERIFCOND = 51;
-
     const FF_DV_SANSSERIFMONO = 49;
+    const FF_DV_SERIF         = 48;
+    const FF_DV_SERIFCOND     = 50;
+    const FF_FONT0            = 1;
+    const FF_FONT1            = 2;
+    const FF_FONT2            = 4;
+    const FF_GEORGIA          = 16;
+    const FF_GOTHIC           = 42;
+    const FF_MINCHO           = 40;
+    const FF_MIRIAM           = 45;
+    const FF_PGOTHIC          = 43;
+    const FF_PMINCHO          = 41;
+    const FF_SIMSUN           = 30;
+    const FF_TIMES            = 12;
+    const FF_TREBUCHE         = 17;
+    const FF_USERFONT         = 90;
+    const FF_USERFONT1        = 90;
+    const FF_USERFONT2        = 91;
+    const FF_USERFONT3        = 92;
+    const FF_VERA             = 18;
+    const FF_VERAMONO         = 19;
+    const FF_VERASERIF        = 20;
+    const FF_VERDANA          = 11;
+    const FF_CALCULATOR       = 74;
+    const FF_CHINESE          = 31;
+    const FF_DIGITAL          = 72;
+    const FF_DV_SANSSERIF     = self::FF_DEFAULT;
 
-    const FF_DV_SERIF = 48;
-
-    const FF_DV_SERIFCOND = 50;
-
-    const FF_FONT0 = 1;
-
-    const FF_FONT1 = 2;
-
-    const FF_FONT2 = 4;
-
-    const FF_GEORGIA = 16;
-
-    const FF_GOTHIC = 42;
-
-    const FF_MINCHO = 40;
-
-    const FF_MIRIAM = 45;
-
-    const FF_PGOTHIC = 43;
-
-    const FF_PMINCHO = 41;
-
-    const FF_SIMSUN = 30;
-
-    const FF_TIMES = 12;
-
-    const FF_TREBUCHE = 17;
-
-    const FF_USERFONT = 90;
-
-    const FF_USERFONT1 = 90;
-
-    const FF_USERFONT2 = 91;
-
-    const FF_USERFONT3 = 92;
-
-    const FF_VERA = 18;
-
-    const FF_VERAMONO = 19;
-
-    const FF_VERASERIF = 20;
-
-    const FF_VERDANA = 11;
     /*
      * Defines for font setup
      */
@@ -170,46 +138,46 @@ class Configs extends Util\Configs
      * @var array
      */
     public static $font_dict = [
-        Configs::FF_CHINESE          => 'FF_CHINESE',
-        Configs::FF_BIG5             => 'FF_BIG5',
-        Configs::FF_SIMSUN           => 'FF_SIMSUN',
-        Configs::FS_NORMAL           => 'FS_NORMAL',
-        Configs::FS_BOLDITALIC       => 'FS_BOLDITALIC',
-        Configs::FS_BOLD             => 'FS_BOLD',
-        Configs::FS_ITALIC           => 'FS_ITALIC',
-        Configs::FF_FONT1            => 'FF_FONT1',
-        Configs::FF_FONT2            => 'FF_FONT2',
-        Configs::FF_FONT0            => 'FF_FONT0',
-        Configs::FF_COURIER          => 'FF_COURIER',
-        Configs::FF_GEORGIA          => 'FF_GEORGIA',
-        Configs::FF_TREBUCHE         => 'FF_TREBUCHE',
-        Configs::FF_VERDANA          => 'FF_VERDANA',
-        Configs::FF_TIMES            => 'FF_TIMES',
-        Configs::FF_COMIC            => 'FF_COMIC',
-        Configs::FF_ARIAL            => 'FF_ARIAL',
-        Configs::FF_VERA             => 'FF_VERA',
-        Configs::FF_VERAMONO         => 'FF_VERAMONO',
-        Configs::FF_VERASERIF        => 'FF_VERASERIF',
-        Configs::FF_MINCHO           => 'FF_MINCHO',
-        Configs::FF_PMINCHO          => 'FF_PMINCHO',
-        Configs::FF_GOTHIC           => 'FF_GOTHIC',
-        Configs::FF_PGOTHIC          => 'FF_PGOTHIC',
-        Configs::FF_DAVID            => 'FF_DAVID',
-        Configs::FF_MIRIAM           => 'FF_MIRIAM',
-        Configs::FF_AHRON            => 'FF_AHRON',
-        Configs::FF_DIGITAL          => 'FF_DIGITAL',
         //Configs::FF_SPEEDO           => 'FF_SPEEDO',
-        Configs::FF_COMPUTER         => 'FF_COMPUTER',
+        Configs::FF_AHRON            => 'FF_AHRON',
+        Configs::FF_ARIAL            => 'FF_ARIAL',
+        Configs::FF_BIG5             => 'FF_BIG5',
         Configs::FF_CALCULATOR       => 'FF_CALCULATOR',
+        Configs::FF_CHINESE          => 'FF_CHINESE',
+        Configs::FF_COMIC            => 'FF_COMIC',
+        Configs::FF_COMPUTER         => 'FF_COMPUTER',
+        Configs::FF_COURIER          => 'FF_COURIER',
+        Configs::FF_DAVID            => 'FF_DAVID',
+        Configs::FF_DIGITAL          => 'FF_DIGITAL',
         Configs::FF_DV_SANSSERIF     => 'FF_DV_SANSSERIF',
-        Configs::FF_DV_SANSSERIFMONO => 'FF_DV_SANSSERIFMONO',
         Configs::FF_DV_SANSSERIFCOND => 'FF_DV_SANSSERIFCOND',
+        Configs::FF_DV_SANSSERIFMONO => 'FF_DV_SANSSERIFMONO',
         Configs::FF_DV_SERIF         => 'FF_DV_SERIF',
         Configs::FF_DV_SERIFCOND     => 'FF_DV_SERIFCOND',
+        Configs::FF_FONT0            => 'FF_FONT0',
+        Configs::FF_FONT1            => 'FF_FONT1',
+        Configs::FF_FONT2            => 'FF_FONT2',
+        Configs::FF_GEORGIA          => 'FF_GEORGIA',
+        Configs::FF_GOTHIC           => 'FF_GOTHIC',
+        Configs::FF_MINCHO           => 'FF_MINCHO',
+        Configs::FF_MIRIAM           => 'FF_MIRIAM',
+        Configs::FF_PGOTHIC          => 'FF_PGOTHIC',
+        Configs::FF_PMINCHO          => 'FF_PMINCHO',
+        Configs::FF_SIMSUN           => 'FF_SIMSUN',
+        Configs::FF_TIMES            => 'FF_TIMES',
+        Configs::FF_TREBUCHE         => 'FF_TREBUCHE',
+        Configs::FF_USERFONT         => 'FF_USERFONT',
         Configs::FF_USERFONT1        => 'FF_USERFONT1',
         Configs::FF_USERFONT2        => 'FF_USERFONT2',
         Configs::FF_USERFONT3        => 'FF_USERFONT3',
-        Configs::FF_USERFONT         => 'FF_USERFONT',
+        Configs::FF_VERA             => 'FF_VERA',
+        Configs::FF_VERAMONO         => 'FF_VERAMONO',
+        Configs::FF_VERASERIF        => 'FF_VERASERIF',
+        Configs::FF_VERDANA          => 'FF_VERDANA',
+        Configs::FS_BOLD             => 'FS_BOLD',
+        Configs::FS_BOLDITALIC       => 'FS_BOLDITALIC',
+        Configs::FS_ITALIC           => 'FS_ITALIC',
+        Configs::FS_NORMAL           => 'FS_NORMAL',
     ];
     public function __construct()
     {

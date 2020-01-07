@@ -46,7 +46,7 @@ $graph->xaxis->SetLabelMargin(6);
 $graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 $graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 
-// Create a new impuls type scatter plot
+// Create a new impulse type scatter plot
 $sp1 = new Plot\ScatterPlot($datay);
 $sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->mark->SetFillColor('red');
