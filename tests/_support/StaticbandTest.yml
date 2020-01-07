@@ -1,0 +1,20 @@
+testSmallstaticbandsfileiterator:
+    smallstaticbandsex3.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex3.php }
+    smallstaticbandsex2.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex2.php }
+    smallstaticbandsex6.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex6.php }
+    smallstaticbandsex1.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex1.php }
+    smallstaticbandsex5.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex5.php }
+    smallstaticbandsex9.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex9.php }
+    smallstaticbandsex10.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex10.php }
+    smallstaticbandsex11.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex11.php }
+    smallstaticbandsex7.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex7.php }
+    smallstaticbandsex4.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex4.php }
+    smallstaticbandsex8.php: { width: 200, height: 150, title: smallstaticbandsFileIterator, filename: smallstaticbandsex8.php }
+testStaticbandbarfileiterator:
+    staticbandbarex1.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex1.php }
+    staticbandbarex2.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex2.php }
+    staticbandbarex3.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex3.php }
+    staticbandbarex4.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex4.php }
+    staticbandbarex5.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex5.php }
+    staticbandbarex6.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex6.php }
+    staticbandbarex7.php: { width: 400, height: 300, title: staticbandbarFileIterator, filename: staticbandbarex7.php }

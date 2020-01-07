@@ -1,0 +1,21 @@
+testBuiltinplotmarksfileiterator:
+    builtinplotmarksex1.php: { width: 350, height: 200, title: builtinplotmarksFileIterator, filename: builtinplotmarksex1.php }
+testNullvaluefileiterator:
+    nullvalueex01.php: { width: 400, height: 250, title: nullvalueFileIterator, filename: nullvalueex01.php }
+testTabtitlefileiterator:
+    tabtitleex1.php: { width: 300, height: 200, title: tabtitleFileIterator, filename: tabtitleex1.php }
+testLinebarfileiterator:
+    linebarex2.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex2.php }
+    linebarex3.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex3.php }
+    linebarex1.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex1.php }
+testFuncfileiterator:
+    funcex3.php: { width: 350, height: 430, title: funcFileIterator, filename: funcex3.php }
+    funcex2.php: { width: 380, height: 450, title: funcFileIterator, filename: funcex2.php }
+    funcex1.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex1.php }
+    funcex4.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex4.php }
+testGradbkgfileiterator:
+    gradbkgex1.php: { width: 300, height: 200, title: gradbkgFileIterator, filename: gradbkgex1.php }
+testLinlogfileiterator:
+    linlogex1.php: { width: 500, height: 300, title: linlogFileIterator, filename: linlogex1.php }
+testPartiallyfilledlinefileiterator:
+    partiallyfilledlineex1.php: { width: 400, height: 300, title: partiallyfilledlineFileIterator, filename: partiallyfilledlineex1.php }

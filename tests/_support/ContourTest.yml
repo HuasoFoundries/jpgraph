@@ -1,0 +1,14 @@
+testBasiccontourfileiterator:
+    basic_contourex01.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex01.php }
+    basic_contourex02.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex02.php }
+    basic_contourex03-1.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex03-1.php }
+    basic_contourex03-2.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex03-2.php }
+    basic_contourex03-3.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex03-3.php }
+    basic_contourex04.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex04.php }
+    basic_contourex05.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex05.php }
+testContourfileiterator:
+    contourex01.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex01.php }
+    contourex02.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex02.php }
+    contourex03.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex03.php }
+    contourex04.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex04.php }
+    contourex05.php: { width: 480, height: 390, title: contourFileIterator, filename: contourex05.php }

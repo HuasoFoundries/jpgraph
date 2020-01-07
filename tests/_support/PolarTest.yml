@@ -1,0 +1,13 @@
+testPolarplot:
+    polarex2.php: { width: 300, height: 350, title: 'Polar plot #2', filename: polarex2.php }
+    polarex3-lin.php: { width: 300, height: 300, title: 'Polar plot #3', filename: polarex3-lin.php }
+    polarex3.php: { width: 300, height: 300, title: 'Polar plot #3', filename: polarex3.php }
+    polarex4.php: { width: 300, height: 350, title: 'Polar plot #4', filename: polarex4.php }
+    polarex5.php: { width: 300, height: 350, title: 'Polar plot #5', filename: polarex5.php }
+    polarex6.php: { width: 300, height: 350, title: 'Polar plot #6', filename: polarex6.php }
+    polarex7-1.php: { width: 300, height: 350, title: 'Polar plot #7', filename: polarex7-1.php }
+    polarex7-2.php: { width: 300, height: 400, title: 'Polar plot #7-2', filename: polarex7-2.php }
+    polarex7.php: { width: 300, height: 350, title: 'Polar plot #7', filename: polarex7.php }
+    polarex8.php: { width: 350, height: 400, title: 'Polar plot #8', filename: polarex8.php }
+testClockwisePolarPlot:
+    polarclockex1.php: { width: 350, height: 350, title: 'Clockwise polar plot', filename: polarclockex1.php }

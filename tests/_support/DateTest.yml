@@ -1,0 +1,5 @@
+testDateaxisfileiterator:
+    dateaxisex1.php: { width: 324, height: 250, title: dateaxisFileIterator, filename: dateaxisex1.php }
+testDateutilfileiterator:
+    dateutilex01.php: { width: 500, height: 300, title: dateutilFileIterator, filename: dateutilex01.php }
+    dateutilex02.php: { width: 500, height: 300, title: dateutilFileIterator, filename: dateutilex02.php }

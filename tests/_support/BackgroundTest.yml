@@ -1,0 +1,10 @@
+testBackgroundfileiterator:
+    backgroundex01.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex01.php }
+    backgroundex02.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex02.php }
+    backgroundex03.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex03.php }
+testBackgroundtypefileiterator:
+    background_type_ex0.php: { width: 350, height: 250, title: backgroundTypeFileIterator, filename: background_type_ex0.php }
+    background_type_ex1.php: { width: 350, height: 250, title: backgroundTypeFileIterator, filename: background_type_ex1.php }
+    background_type_ex2.php: { width: 350, height: 250, title: backgroundTypeFileIterator, filename: background_type_ex2.php }
+    background_type_ex3.php: { width: 350, height: 250, title: backgroundTypeFileIterator, filename: background_type_ex3.php }
+    background_type_ex4.php: { width: 350, height: 250, title: backgroundTypeFileIterator, filename: background_type_ex4.php }

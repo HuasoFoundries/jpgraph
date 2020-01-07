@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.0.3
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -436,13 +436,13 @@ class LinePlot extends Plot
 
                 $areaCoords =
                     array_merge(
-                    $areaCoords,
-                    array_slice(
+                        $areaCoords,
+                        array_slice(
                         $cord,
                         $this->filledAreas[$i][0] * $factor,
                         ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
                     )
-                );
+                    );
                 $areaCoords[] = $areaCoords[safe_count($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y
 

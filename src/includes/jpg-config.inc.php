@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.0.3
  */
 
 /**
@@ -56,7 +56,6 @@
  * // there. As ususal this directory must be writeable by the PHP process.
  * define('CSIMCACHE_DIR', 'csimcache/');
  * define('CSIMCACHE_HTTP_DIR', 'csimcache/');.
- *
  * /**
  * Various JpGraph Settings. Adjust accordingly to your
  * // preferences. Note that cache functionality is turned off by

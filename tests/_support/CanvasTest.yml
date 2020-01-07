@@ -1,0 +1,7 @@
+testCanvasbezierfileiterator:
+    canvasbezierex1.php: { width: 400, height: 300, title: canvasbezierFileIterator, filename: canvasbezierex1.php }
+testCanvasfileiterator:
+    canvasex05.php: { width: 400, height: 200, title: canvasFileIterator, filename: canvasex05.php }
+    canvasex06.php: { width: 400, height: 200, title: canvasFileIterator, filename: canvasex06.php }
+testCanvaspiralfileiterator:
+    canvaspiralex1.php: { width: 150, height: 240, title: canvaspiralFileIterator, filename: canvaspiralex1.php }

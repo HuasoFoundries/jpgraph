@@ -1,0 +1,2 @@
+testAquafileiterator:
+    aqua_example.php: { width: 400, height: 300, title: aquaFileIterator, filename: aqua_example.php }

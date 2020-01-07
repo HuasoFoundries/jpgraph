@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.0.3
  */
 
 //$Id: pieex7.php,v 1.1 2002/06/17 13:53:43 aditus Exp $

@@ -1,0 +1,19 @@
+testWindrosefileiterator:
+    windrose_ex7.php: { width: 400, height: 450, title: windroseFileIterator, filename: windrose_ex7.php }
+    windrose_ex8.php: { width: 400, height: 500, title: windroseFileIterator, filename: windrose_ex8.php }
+    windrose_ex9.php: { width: 400, height: 500, title: windroseFileIterator, filename: windrose_ex9.php }
+    windrose_ex1b.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex1b.php }
+    windrose_ex1.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex1.php }
+    windrose_ex2.1.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex2.1.php }
+    windrose_ex2.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex2.php }
+    windrose_ex3.php: { width: 600, height: 350, title: windroseFileIterator, filename: windrose_ex3.php }
+    windrose_ex4.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex4.php }
+    windrose_ex6.1.php: { width: 400, height: 450, title: windroseFileIterator, filename: windrose_ex6.1.php }
+    windrose_ex6.php: { width: 400, height: 450, title: windroseFileIterator, filename: windrose_ex6.php }
+    windrose_ex7.1.php: { width: 590, height: 580, title: windroseFileIterator, filename: windrose_ex7.1.php }
+    windrose_ex0.php: { width: 400, height: 400, title: windroseFileIterator, filename: windrose_ex0.php }
+    windrose_ex8.1.php: { width: 400, height: 460, title: windroseFileIterator, filename: windrose_ex8.1.php }
+testWindrosebgimgfileiterator:
+    windrose_bgimg_ex1.php: { width: 400, height: 400, title: windroseBgimgFileIterator, filename: windrose_bgimg_ex1.php }
+testWindrose2plotsfileiterator:
+    windrose_2plots_ex1.php: { width: 660, height: 400, title: windrose2plotsFileIterator, filename: windrose_2plots_ex1.php }

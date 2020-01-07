@@ -1,0 +1,4 @@
+testManualtickfileiterator:
+    manualtickex2.php: { width: 400, height: 200, title: manualtickFileIterator, filename: manualtickex2.php }
+    manualtickex3.php: { width: 400, height: 200, title: manualtickFileIterator, filename: manualtickex3.php }
+    manualtickex4.php: { width: 400, height: 200, title: manualtickFileIterator, filename: manualtickex4.php }

@@ -1,0 +1,31 @@
+testBezierfileiterator:
+    bezierex1.php: { width: 300, height: 200, title: bezierFileIterator, filename: bezierex1.php }
+testCcbpfileiterator:
+    ccbp_ex1.php: { width: 600, height: 400, title: ccbpFileIterator, filename: ccbp_ex1.php }
+    ccbp_ex2.php: { width: 600, height: 400, title: ccbpFileIterator, filename: ccbp_ex2.php }
+testFieldscatterfileiterator:
+    fieldscatterex1.php: { width: 300, height: 200, title: fieldscatterFileIterator, filename: fieldscatterex1.php }
+testFooterfileiterator:
+    footerex1.php: { width: 300, height: 250, title: footerFileIterator, filename: footerex1.php }
+testImpulsfileiterator:
+    impulsex1.php: { width: 300, height: 200, title: impulsFileIterator, filename: impulsex1.php }
+    impulsex2.php: { width: 300, height: 200, title: impulsFileIterator, filename: impulsex2.php }
+    impulsex3.php: { width: 400, height: 200, title: impulsFileIterator, filename: impulsex3.php }
+    impulsex4.php: { width: 500, height: 250, title: impulsFileIterator, filename: impulsex4.php }
+testLoglogfileiterator:
+    loglogex1.php: { width: 500, height: 300, title: loglogFileIterator, filename: loglogex1.php }
+testMarkflagfileiterator:
+    markflagex1.php: { width: 300, height: 200, title: markflagFileIterator, filename: markflagex1.php }
+testPushpinfileiterator:
+    pushpinex1.php: { width: 400, height: 270, title: pushpinFileIterator, filename: pushpinex1.php }
+    pushpinex2.php: { width: 400, height: 270, title: pushpinFileIterator, filename: pushpinex2.php }
+testScatterfileiterator:
+    scatterex1.php: { width: 300, height: 200, title: scatterFileIterator, filename: scatterex1.php }
+    scatterex2.php: { width: 300, height: 200, title: scatterFileIterator, filename: scatterex2.php }
+testScatterlinkfileiterator:
+    scatterlinkex1.php: { width: 300, height: 200, title: scatterlinkFileIterator, filename: scatterlinkex1.php }
+    scatterlinkex2.php: { width: 300, height: 200, title: scatterlinkFileIterator, filename: scatterlinkex2.php }
+    scatterlinkex3.php: { width: 350, height: 230, title: scatterlinkFileIterator, filename: scatterlinkex3.php }
+    scatterlinkex4.php: { width: 350, height: 230, title: scatterlinkFileIterator, filename: scatterlinkex4.php }
+testScatterrotfileiterator:
+    scatterrotex1.php: { width: 300, height: 200, title: scatterrotFileIterator, filename: scatterrotex1.php }

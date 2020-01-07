@@ -1,0 +1,16 @@
+testAxislabelbkgfileiterator:
+    axislabelbkgex01.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex01.php }
+    axislabelbkgex02.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex02.php }
+    axislabelbkgex03.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex03.php }
+    axislabelbkgex04.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex04.php }
+    axislabelbkgex05.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex05.php }
+    axislabelbkgex06.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex06.php }
+    axislabelbkgex07.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex07.php }
+testDupyaxisfileiterator:
+    dupyaxisex1.php: { width: 300, height: 200, title: dupyaxisFileIterator, filename: dupyaxisex1.php }
+testMulyaxisfileiterator:
+    mulyaxisex1.php: { width: 450, height: 250, title: mulyaxisFileIterator, filename: mulyaxisex1.php }
+testInyaxisfileiterator:
+    inyaxisex1.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex1.php }
+    inyaxisex2.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex2.php }
+    inyaxisex3.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex3.php }

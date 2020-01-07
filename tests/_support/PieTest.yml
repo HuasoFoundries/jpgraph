@@ -1,0 +1,10 @@
+testPiefileiterator:
+    pieex5.php: { width: 300, height: 200, title: pieFileIterator, filename: pieex5.php }
+    pieex3.php: { width: 350, height: 300, title: pieFileIterator, filename: pieex3.php }
+    pieex7.php: { width: 350, height: 200, title: pieFileIterator, filename: pieex7.php }
+    pieex1.php: { width: 300, height: 200, title: pieFileIterator, filename: pieex1.php }
+    pieex2.php: { width: 300, height: 200, title: pieFileIterator, filename: pieex2.php }
+    pieex8.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex8.php }
+    pieex9.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex9.php }
+    pieex4.php: { width: 300, height: 200, title: pieFileIterator, filename: pieex4.php }
+    pieex6.php: { width: 350, height: 200, title: pieFileIterator, filename: pieex6.php }

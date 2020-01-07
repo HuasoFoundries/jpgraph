@@ -1,0 +1,68 @@
+testBargradsmallfileiterator:
+    bargradsmallex4.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex4.php }
+    bargradsmallex2.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex2.php }
+    bargradsmallex6.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex6.php }
+    bargradsmallex1.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex1.php }
+    bargradsmallex5.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex5.php }
+    bargradsmallex7.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex7.php }
+    bargradsmallex3.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex3.php }
+    bargradsmallex8.php: { width: 200, height: 150, title: bargradsmallFileIterator, filename: bargradsmallex8.php }
+testAccbarframefileiterator:
+    accbarframeex01.php: { width: 350, height: 250, title: accbarframeFileIterator, filename: accbarframeex01.php }
+    accbarframeex02.php: { width: 350, height: 250, title: accbarframeFileIterator, filename: accbarframeex02.php }
+    accbarframeex03.php: { width: 350, height: 250, title: accbarframeFileIterator, filename: accbarframeex03.php }
+testBarformatcallbackfileiterator:
+    barformatcallbackex1.php: { width: 400, height: 300, title: barformatcallbackFileIterator, filename: barformatcallbackex1.php }
+testBargradfileiterator:
+    bargradex1.php: { width: 400, height: 240, title: bargradFileIterator, filename: bargradex1.php }
+    bargradex2.php: { width: 400, height: 200, title: bargradFileIterator, filename: bargradex2.php }
+    bargradex3.php: { width: 400, height: 200, title: bargradFileIterator, filename: bargradex3.php }
+    bargradex4.php: { width: 400, height: 200, title: bargradFileIterator, filename: bargradex4.php }
+    bargradex5.php: { width: 400, height: 200, title: bargradFileIterator, filename: bargradex5.php }
+    bargradex6.php: { width: 500, height: 200, title: bargradFileIterator, filename: bargradex6.php }
+testBarlinealphafileiterator:
+    barlinealphaex1.php: { width: 300, height: 200, title: barlinealphaFileIterator, filename: barlinealphaex1.php }
+testBarlinefreqfileiterator:
+    barlinefreqex1.php: { width: 350, height: 250, title: barlinefreqFileIterator, filename: barlinefreqex1.php }
+testBartutfileiterator:
+    bartutex1.php: { width: 300, height: 200, title: bartutFileIterator, filename: bartutex1.php }
+    bartutex12.php: { width: 450, height: 300, title: bartutFileIterator, filename: bartutex12.php }
+testFileiterator:
+    example18.php: { width: 300, height: 200, title: FileIterator, filename: example18.php }
+    example19.1.php: { width: 300, height: 200, title: FileIterator, filename: example19.1.php }
+    example19.php: { width: 300, height: 200, title: FileIterator, filename: example19.php }
+    example20.1.php: { width: 300, height: 200, title: FileIterator, filename: example20.1.php }
+    example20.2.php: { width: 300, height: 200, title: FileIterator, filename: example20.2.php }
+    example20.3.php: { width: 300, height: 200, title: FileIterator, filename: example20.3.php }
+    example20.4.php: { width: 300, height: 200, title: FileIterator, filename: example20.4.php }
+    example20.5.php: { width: 300, height: 200, title: FileIterator, filename: example20.5.php }
+    example20.php: { width: 300, height: 200, title: FileIterator, filename: example20.php }
+    example25.1.php: { width: 300, height: 200, title: FileIterator, filename: example25.1.php }
+    example25.2.php: { width: 300, height: 200, title: FileIterator, filename: example25.2.php }
+    example25.php: { width: 300, height: 200, title: FileIterator, filename: example25.php }
+    example24.php: { width: 310, height: 200, title: FileIterator, filename: example24.php }
+    example16.2.php: { width: 400, height: 200, title: FileIterator, filename: example16.2.php }
+    example16.3.php: { width: 400, height: 200, title: FileIterator, filename: example16.3.php }
+    example16.4.php: { width: 400, height: 200, title: FileIterator, filename: example16.4.php }
+    example22.php: { width: 310, height: 200, title: FileIterator, filename: example22.php }
+    example16.5.php: { width: 350, height: 200, title: FileIterator, filename: example16.5.php }
+    example21.php: { width: 310, height: 200, title: FileIterator, filename: example21.php }
+    example23.php: { width: 310, height: 200, title: FileIterator, filename: example23.php }
+testHorizbarfileiterator:
+    horizbarex4.php: { width: 400, height: 500, title: horizbarFileIterator, filename: horizbarex4.php }
+testManualtfileiterator:
+    manual_textscale_ex2.php: { width: 300, height: 200, title: manualTFileIterator, filename: manual_textscale_ex2.php }
+    manual_textscale_ex3.php: { width: 300, height: 200, title: manualTFileIterator, filename: manual_textscale_ex3.php }
+    manual_textscale_ex4.php: { width: 400, height: 200, title: manualTFileIterator, filename: manual_textscale_ex4.php }
+testBar2scalesfileiterator:
+    bar2scalesex1.php: { width: 450, height: 200, title: bar2scalesFileIterator, filename: bar2scalesex1.php }
+testPlotbanddensityfileiterator:
+    plotbanddensity_ex0.php: { width: 200, height: 200, title: plotbanddensityFileIterator, filename: plotbanddensity_ex0.php }
+    plotbanddensity_ex1.php: { width: 200, height: 200, title: plotbanddensityFileIterator, filename: plotbanddensity_ex1.php }
+    plotbanddensity_ex2.php: { width: 200, height: 200, title: plotbanddensityFileIterator, filename: plotbanddensity_ex2.php }
+testAccbarfileiterator:
+    accbarex1.php: { width: 500, height: 400, title: accbarFileIterator, filename: accbarex1.php }
+testNegbarvaluefileiterator:
+    negbarvalueex01.php: { width: 400, height: 300, title: negbarvalueFileIterator, filename: negbarvalueex01.php }
+testBarpatternfileiterator:
+    barpatternex1.php: { width: 350, height: 300, title: barpatternFileIterator, filename: barpatternex1.php }
