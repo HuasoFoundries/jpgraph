@@ -12,9 +12,13 @@ class GanttTest extends \Codeception\Test\Unit
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
     private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
