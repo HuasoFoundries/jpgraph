@@ -12,9 +12,13 @@ class LineTest extends \Codeception\Test\Unit
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testAddingalineplottoabargraph()
     {
