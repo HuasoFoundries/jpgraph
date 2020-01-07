@@ -17,7 +17,9 @@ class StaticbandTest extends \Codeception\Test\Unit
         //self::$persistYaml = false;
     }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testBandRdiag()
     {
@@ -41,7 +43,6 @@ class StaticbandTest extends \Codeception\Test\Unit
 
     public function testBandHvcross()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
@@ -57,13 +58,11 @@ class StaticbandTest extends \Codeception\Test\Unit
 
     public function testBand3dplane()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
     public function testCashFlow()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
@@ -71,8 +70,8 @@ class StaticbandTest extends \Codeception\Test\Unit
     {
         self::$genericFixtures =
             array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
-        }, self::$genericFixtures);
+                $carry = $this->_fileCheck($file, $carry);
+                return $carry;
+            }, self::$genericFixtures);
     }
 }
