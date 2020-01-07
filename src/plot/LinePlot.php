@@ -448,10 +448,10 @@ class LinePlot extends Plot
                     array_merge(
                         $areaCoords,
                         array_slice(
-                        $cord,
-                        $this->filledAreas[$i][0] * $factor,
-                        ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
-                    )
+                            $cord,
+                            $this->filledAreas[$i][0] * $factor,
+                            ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
+                        )
                     );
                 $areaCoords[] = $areaCoords[Configs::safe_count($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y

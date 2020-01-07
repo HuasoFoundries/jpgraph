@@ -12,7 +12,9 @@ $graph = new Graph\GanttGraph();
 $graph->SetBox();
 $graph->SetShadow();
 
-// Add title and subtitle$example_title='Example of captions'; $graph->title->set($example_title);
+// Add title and subtitle
+$example_title = 'Example of captions';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $subtitle_text = '(ganttex15.php)';
 $graph->subtitle->Set($subtitle_text);

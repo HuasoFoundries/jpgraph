@@ -24,7 +24,9 @@ $graph    = new Graph\PieGraph($__width, $__height);
 // Uncomment this line to add a drop shadow to the border
 // $graph->SetShadow();
 
-// Setup title$example_title='CSIM Center Pie plot ex 1'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'CSIM Center Pie plot ex 1';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 

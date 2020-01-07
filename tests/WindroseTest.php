@@ -19,6 +19,26 @@ class WindroseTest extends \Codeception\Test\Unit
 
     protected function _after() {}
 
+    public function testWindroseBasicExample()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testMultiplePlotsInTheSameGraph()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testUsingChineseCharecters()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testFreeTypePlot()
+    {
+        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
     public function testFileIterator()
     {
         self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
@@ -56,12 +76,6 @@ class WindroseTest extends \Codeception\Test\Unit
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
 
     }
-
-    public function testMultiplePlotsInTheSameGraph()
-    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
-
-    public function testFreeTypePlot()
-    {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}
 
     public function testWindroseexample()
     {$this->traverseFixtureGroup($this->fixTures(__METHOD__));}

@@ -11,7 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 
-// Add title and subtitle$example_title='Zooming a graph'; $graph->title->set($example_title);
+// Add title and subtitle
+$example_title = 'Zooming a graph';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $subtitle_text = '(zoom=0.7)';
 $graph->subtitle->Set($subtitle_text);

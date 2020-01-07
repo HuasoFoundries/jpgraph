@@ -1,7 +1,6 @@
 testFileiterator:
     example0-0.php: { width: 350, height: 250, title: FileIterator, filename: example0-0.php }
     example0.php: { width: 350, height: 250, title: FileIterator, filename: example0.php }
-    example16.6.php: { width: 300, height: 250, title: FileIterator, filename: example16.6.php }
     example2.6.php: { width: 300, height: 200, title: FileIterator, filename: example2.6.php }
 testExample11SameYValues:
     example1.1.php: { width: 350, height: 250, title: 'Example 1.1 same y-values', filename: example1.1.php }
@@ -33,6 +32,8 @@ testLinearErrorPlot:
     example16.php: { width: 300, height: 200, title: 'Linear error plot', filename: example16.php }
 testMixingLineAndFilledLine:
     example16.1.php: { width: 400, height: 200, title: 'Mixing line and filled line', filename: example16.1.php }
+testLinearRegression:
+    example16.6.php: { width: 300, height: 250, title: 'Linear regression', filename: example16.6.php }
 testCallsPerOperator:
     example2.php: { width: 350, height: 250, title: 'Calls per operator', filename: example2.php }
     example3.0.1.php: { width: 350, height: 250, title: 'Calls per operator', filename: example3.0.1.php }

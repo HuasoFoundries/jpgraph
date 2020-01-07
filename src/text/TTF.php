@@ -7,12 +7,6 @@
 namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Util;
-use function dirname;
-use function file_exists;
-use function getenv;
-use function is_array;
-use function is_readable;
-use function sprintf;
 
 /**
  * @class TTF
@@ -24,7 +18,6 @@ class TTF
     private $font_files;
     private $style_names;
     public static $FONT_BASEPATH;
-
     public function __construct()
     {
         self::$FONT_BASEPATH = getenv('JPGRAPH_FONT_BASEPATH') ?
@@ -115,7 +108,7 @@ class TTF
             ],
             Configs::FF_CHINESE          => [
                 Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
-                Configs::FS_BOLD       => '',
+                Configs::FS_BOLD       => 'ms_kaity.ttf',
                 Configs::FS_ITALIC     => '',
                 Configs::FS_BOLDITALIC => '',
             ],
@@ -210,38 +203,70 @@ class TTF
 
             /* Dejavu fonts */
             Configs::FF_DV_SANSSERIF     => [
-                Configs::FS_NORMAL     => ['DejaVuSans.ttf'],
-                Configs::FS_BOLD       => ['DejaVuSans-Bold.ttf', 'DejaVuSansBold.ttf'],
-                Configs::FS_ITALIC     => ['DejaVuSans-Oblique.ttf', 'DejaVuSansOblique.ttf'],
-                Configs::FS_BOLDITALIC => ['DejaVuSans-BoldOblique.ttf', 'DejaVuSansBoldOblique.ttf'],
+                Configs::FS_NORMAL     => [
+                    'DejaVuSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSans-Bold.ttf', 'DejaVuSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSans-Oblique.ttf', 'DejaVuSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSans-BoldOblique.ttf', 'DejaVuSansBoldOblique.ttf',
+                ],
             ],
 
             Configs::FF_DV_SANSSERIFMONO => [
-                Configs::FS_NORMAL     => ['DejaVuSansMono.ttf', 'DejaVuMonoSans.ttf'],
-                Configs::FS_BOLD       => ['DejaVuSansMono-Bold.ttf', 'DejaVuMonoSansBold.ttf'],
-                Configs::FS_ITALIC     => ['DejaVuSansMono-Oblique.ttf', 'DejaVuMonoSansOblique.ttf'],
-                Configs::FS_BOLDITALIC => ['DejaVuSansMono-BoldOblique.ttf', 'DejaVuMonoSansBoldOblique.ttf'],
+                Configs::FS_NORMAL     => [
+                    'DejaVuSansMono.ttf', 'DejaVuMonoSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSansMono-Bold.ttf', 'DejaVuMonoSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSansMono-Oblique.ttf', 'DejaVuMonoSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSansMono-BoldOblique.ttf', 'DejaVuMonoSansBoldOblique.ttf',
+                ],
             ],
 
             Configs::FF_DV_SANSSERIFCOND => [
-                Configs::FS_NORMAL     => ['DejaVuSansCondensed.ttf', 'DejaVuCondensedSans.ttf'],
-                Configs::FS_BOLD       => ['DejaVuSansCondensed-Bold.ttf', 'DejaVuCondensedSansBold.ttf'],
-                Configs::FS_ITALIC     => ['DejaVuSansCondensed-Oblique.ttf', 'DejaVuCondensedSansOblique.ttf'],
-                Configs::FS_BOLDITALIC => ['DejaVuSansCondensed-BoldOblique.ttf', 'DejaVuCondensedSansBoldOblique.ttf'],
+                Configs::FS_NORMAL     => [
+                    'DejaVuSansCondensed.ttf', 'DejaVuCondensedSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSansCondensed-Bold.ttf', 'DejaVuCondensedSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSansCondensed-Oblique.ttf', 'DejaVuCondensedSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSansCondensed-BoldOblique.ttf', 'DejaVuCondensedSansBoldOblique.ttf',
+                ],
             ],
 
             Configs::FF_DV_SERIF         => [
-                Configs::FS_NORMAL     => ['DejaVuSerif.ttf'],
-                Configs::FS_BOLD       => ['DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf'],
-                Configs::FS_ITALIC     => ['DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf'],
-                Configs::FS_BOLDITALIC => ['DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf'],
+                Configs::FS_NORMAL     => ['DejaVuSerif.ttf',
+                ],
+                Configs::FS_BOLD       => ['DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf',
+                ],
+                Configs::FS_ITALIC     => ['DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf',
+                ],
+                Configs::FS_BOLDITALIC => ['DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf',
+                ],
             ],
 
             Configs::FF_DV_SERIFCOND     => [
-                Configs::FS_NORMAL     => ['DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf'],
-                Configs::FS_BOLD       => ['DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf'],
-                Configs::FS_ITALIC     => ['DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf'],
-                Configs::FS_BOLDITALIC => ['DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf'],
+                Configs::FS_NORMAL     => ['DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf',
+                ],
+                Configs::FS_BOLD       => ['DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf',
+                ],
+                Configs::FS_ITALIC     => ['DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf',
+                ],
+                Configs::FS_BOLDITALIC => ['DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf',
+                ],
             ],
 
             /* Placeholders for defined fonts */
@@ -282,11 +307,14 @@ class TTF
     private static function getFullPathIfExists($font_file, $font_path = '')
     {
         $full_path = sprintf('%s%s', $font_path, $font_file);
+        //kdump($full_path);
 
+        if (strstr($font_file, 'bkai')) {
+            kdump('Looking for: ' . $full_path);
+        }
         if (file_exists($full_path) && is_readable($full_path)) {
             return $full_path;
         }
-        //kdump('Not found: ' . $full_path);
         return false;
     }
 
@@ -302,7 +330,27 @@ class TTF
      * ` */
     public function File($family, $style = Configs::FS_NORMAL, $font_path = null)
     {
-        $fam = @$this->font_files[$family];
+        $font_translation = null;
+        $fam              = @$this->font_files[$family];
+        if (array_key_exists($family, Configs::$font_dict) &&
+            array_key_exists($style, Configs::$font_dict)
+            // && !array_key_exists($family,$this->font_files)
+        ) {
+            $font_translation = sprintf('%s::%s',
+                Configs::$font_dict[$family],
+                Configs::$font_dict[$style]
+            );
+            if (array_key_exists($font_translation, Configs::$FOUND_FONTS)) {
+                return Configs::$FOUND_FONTS[$font_translation];
+            }
+            kdump([
+                'family'      => sprintf('%s (%d)', Configs::$font_dict[$family], $family),
+                'style'       => sprintf('%s (%d)', Configs::$font_dict[$style], $style),
+                'fam'         => $fam,
+                'ff'          => $fam[$style],
+                'FOUND_FONTS' => Configs::$FOUND_FONTS,
+            ]);
+        }
         if (!$fam) {
             Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
         }
@@ -351,9 +399,13 @@ class TTF
 
         if (!file_exists($font_file)) {
             //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
-            return $this->File(Configs::FF_DV_SANSSERIF, $style);
+            // Fallback to FF_DV_SANSSERIF
+            // which is DejaVuSans in Ubuntu
+            $font_file = $this->File(Configs::FF_DV_SANSSERIF, $style);
         }
-
+        if ($font_translation) {
+            Configs::$FOUND_FONTS[$font_translation] = $font_file;
+        }
         return $font_file;
     }
 
@@ -401,4 +453,5 @@ class TTF
         ];
     }
 }
+
 // @class

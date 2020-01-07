@@ -1,0 +1,49 @@
+
+      #accordion {
+          max-height: 100vh;
+          overflow-y: auto;
+          border-right: 1px solid #AAA;
+          width: 300px;
+          float:left;
+          padding-left: 0;
+          padding-right: 0;
+      }
+
+      #accordion h5 {
+          text-transform: capitalize;
+          font-size: 17px;
+      }
+
+
+      #graph_iframe {
+          border: 1px solid #BBB;
+          min-height: 95vh;
+          position: absolute;
+          right: 0;
+          top: 5vh;
+          width: 100%;
+      }
+
+      #filepath {
+          height: 4vh;
+          position: absolute;
+          top: 0;
+          width: 95%;
+          padding: 1vh;
+          box-sizing: content-box;
+      }
+
+      .invisible {
+          display: none;
+      }
+
+      .active {
+          font-weight: bold;
+          color: #004a9a;
+      }
+      .card-block ul {
+        padding-top: 1em;
+       padding-left: 1.1em;
+        font-size: 0.9em;
+      }
+    

@@ -21,7 +21,9 @@ $graph->img->SetMargin(40, 150, 40, 80);
 $graph->SetScale('textlin');
 $graph->SetShadow();
 
-//Setup title$example_title='Line plot with null values'; $graph->title->set($example_title);
+//Setup title
+$example_title = 'Line plot with null values';
+$graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);

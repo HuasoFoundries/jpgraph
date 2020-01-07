@@ -28,7 +28,9 @@ $n = count($data); // Number of slices
 // No border around graph
 $piegraph->SetFrame(false);
 
-// Setup title$example_title='CSIM Center Pie plot'; $piegraph->title->set($example_title);
+// Setup title
+$example_title = 'CSIM Center Pie plot';
+$piegraph->title->set($example_title);
 $piegraph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $piegraph->title->SetMargin(8); // Add a little bit more margin from the top
 

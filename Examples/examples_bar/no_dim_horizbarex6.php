@@ -36,7 +36,9 @@ $graph->SetBox();
 // Use a gradient to fill the plot area
 $graph->SetBackgroundGradient('white', 'lightblue', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
-// Setup title$example_title='Graphic card performance'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Graphic card performance';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $subtitle_text = '(Non optimized)';
 $graph->subtitle->Set($subtitle_text);

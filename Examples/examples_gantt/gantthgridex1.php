@@ -18,7 +18,9 @@ $data = [
 // New Gantt Graph
 $graph = new Graph\GanttGraph(500);
 
-// Setup a title$example_title='Grid example'; $graph->title->set($example_title);
+// Setup a title
+$example_title = 'Grid example';
+$graph->title->set($example_title);
 $subtitle_text = '(Horizontal grid)';
 $graph->subtitle->Set($subtitle_text);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 14);

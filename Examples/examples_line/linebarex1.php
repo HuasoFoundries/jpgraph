@@ -35,7 +35,9 @@ $graph->SetShadow();
 // Use an integer X-scale
 $graph->SetScale('textlin');
 
-// Set title and subtitle$example_title='Combined bar and line plot'; $graph->title->set($example_title);
+// Set title and subtitle
+$example_title = 'Combined bar and line plot';
+$graph->title->set($example_title);
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font

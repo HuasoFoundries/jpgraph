@@ -19,7 +19,9 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
-// Setup title$example_title='Acc bar with gradient'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Acc bar with gradient';
+$graph->title->set($example_title);
 
 // Create the first bar
 $bplot = new Plot\BarPlot($datay1);

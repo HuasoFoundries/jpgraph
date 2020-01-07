@@ -548,6 +548,7 @@ class Configs
     /*const Configs::YEARADJ_1                   = 0 + 30;
     const YEARADJ_2                   = 1 + 30;
     const YEARADJ_5                   = 2 + 30;*/
+    public static $FOUND_FONTS = [];
 
     protected static $lazy_statics = [
         'AXSTYLE_BOXIN'               => self::AXSTYLE_BOXIN,
@@ -783,9 +784,7 @@ class Configs
         return $args && is_scalar($args) ? self::setConfig($const_name, $args) : self::getConfig($const_name);
     }
 
-    public function __get($config_key)
-    {
-    }
+    public function __get($config_key) {}
 
     public static function getInstance()
     {

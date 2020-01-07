@@ -24,7 +24,9 @@ $graph->SetScale('textlin');
 // Specify X-labels
 $graph->xaxis->SetTickLabels($months);
 
-// Set title and subtitle$example_title='Textscale with specified labels'; $graph->title->set($example_title);
+// Set title and subtitle
+$example_title = 'Textscale with specified labels';
+$graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));

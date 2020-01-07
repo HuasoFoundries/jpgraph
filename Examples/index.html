@@ -12,6 +12,7 @@
       integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
       crossorigin="anonymous"
     />
+    <link href="assets/style.css" rel="stylesheet" />
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -29,50 +30,6 @@
     ></script>
     <script type="text/javascript" src="/example_list.php"></script>
     <script type="text/javascript" src="/example_parser.js"></script>
-    <style>
-      #accordion {
-          max-height: 100vh;
-          overflow-y: auto;
-          border-right: 1px solid #AAA;
-          width: 300px;
-          float-left;
-          padding-left: 0;
-          padding-right: 0;
-      }
-
-      #accordion h5 {
-          text-transform: capitalize;
-          font-size: 17px;
-      }
-
-
-      #graph_iframe {
-          border: 1px solid #BBB;
-          min-height: 95vh;
-          position: absolute;
-          right: 0;
-          top: 5vh;
-          width: 100%;
-      }
-
-      #filepath {
-          height: 4vh;
-          position: absolute;
-          top: 0;
-          width: 95%;
-          padding: 1vh;
-          box-sizing: content-box;
-      }
-
-      .invisible {
-          display: none;
-      }
-
-      .active {
-          font-weight: bold;
-          color: #004a9a;
-      }
-    </style>
   </head>
 
   <body>
@@ -82,6 +39,7 @@
           class="col-6 col-md-4  col-xl-2"
           id="accordion"
           role="tablist"
+          style="margin-bottom: 5em;"
         ></div>
         <div class="col-6 col-md-8  col-xl-10" id="iframe_container">
           <a id="filepath"></a>

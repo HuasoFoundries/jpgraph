@@ -23,7 +23,9 @@ $graph->SetMarginColor('lightblue');
 $graph->legend->SetFillColor('antiquewhite');
 $graph->legend->SetShadow(true);
 
-// Setup title$example_title='Filled Area Example'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Filled Area Example';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Setup semi-filled line plot

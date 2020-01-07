@@ -35,7 +35,9 @@ $graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getC
 $graph->xaxis->SetTickLabels($databarx);
 $graph->xaxis->SetTextLabelInterval(3);
 
-// Set title and subtitle$example_title='Displaying only every third label'; $graph->title->set($example_title);
+// Set title and subtitle
+$example_title = 'Displaying only every third label';
+$graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));

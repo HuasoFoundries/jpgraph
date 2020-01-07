@@ -164,7 +164,53 @@ class Configs extends Util\Configs
     const PMINCHO_TTF_FONT = 'ipamp.ttf';
     const GOTHIC_TTF_FONT  = 'ipag.ttf';
     const PGOTHIC_TTF_FONT = 'ipagp.ttf';
-
+    /**
+     * I had to do this because it's impossible to debug otherwise
+     *
+     * @var array
+     */
+    public static $font_dict = [
+        Configs::FF_CHINESE          => 'FF_CHINESE',
+        Configs::FF_BIG5             => 'FF_BIG5',
+        Configs::FF_SIMSUN           => 'FF_SIMSUN',
+        Configs::FS_NORMAL           => 'FS_NORMAL',
+        Configs::FS_BOLDITALIC       => 'FS_BOLDITALIC',
+        Configs::FS_BOLD             => 'FS_BOLD',
+        Configs::FS_ITALIC           => 'FS_ITALIC',
+        Configs::FF_FONT1            => 'FF_FONT1',
+        Configs::FF_FONT2            => 'FF_FONT2',
+        Configs::FF_FONT0            => 'FF_FONT0',
+        Configs::FF_COURIER          => 'FF_COURIER',
+        Configs::FF_GEORGIA          => 'FF_GEORGIA',
+        Configs::FF_TREBUCHE         => 'FF_TREBUCHE',
+        Configs::FF_VERDANA          => 'FF_VERDANA',
+        Configs::FF_TIMES            => 'FF_TIMES',
+        Configs::FF_COMIC            => 'FF_COMIC',
+        Configs::FF_ARIAL            => 'FF_ARIAL',
+        Configs::FF_VERA             => 'FF_VERA',
+        Configs::FF_VERAMONO         => 'FF_VERAMONO',
+        Configs::FF_VERASERIF        => 'FF_VERASERIF',
+        Configs::FF_MINCHO           => 'FF_MINCHO',
+        Configs::FF_PMINCHO          => 'FF_PMINCHO',
+        Configs::FF_GOTHIC           => 'FF_GOTHIC',
+        Configs::FF_PGOTHIC          => 'FF_PGOTHIC',
+        Configs::FF_DAVID            => 'FF_DAVID',
+        Configs::FF_MIRIAM           => 'FF_MIRIAM',
+        Configs::FF_AHRON            => 'FF_AHRON',
+        Configs::FF_DIGITAL          => 'FF_DIGITAL',
+        //Configs::FF_SPEEDO           => 'FF_SPEEDO',
+        Configs::FF_COMPUTER         => 'FF_COMPUTER',
+        Configs::FF_CALCULATOR       => 'FF_CALCULATOR',
+        Configs::FF_DV_SANSSERIF     => 'FF_DV_SANSSERIF',
+        Configs::FF_DV_SANSSERIFMONO => 'FF_DV_SANSSERIFMONO',
+        Configs::FF_DV_SANSSERIFCOND => 'FF_DV_SANSSERIFCOND',
+        Configs::FF_DV_SERIF         => 'FF_DV_SERIF',
+        Configs::FF_DV_SERIFCOND     => 'FF_DV_SERIFCOND',
+        Configs::FF_USERFONT1        => 'FF_USERFONT1',
+        Configs::FF_USERFONT2        => 'FF_USERFONT2',
+        Configs::FF_USERFONT3        => 'FF_USERFONT3',
+        Configs::FF_USERFONT         => 'FF_USERFONT',
+    ];
     public function __construct()
     {
         parent::__construct();

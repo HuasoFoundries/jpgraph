@@ -1,5 +1,3 @@
-testClockwisePolarPlot:
-    polarclockex1.php: { width: 350, height: 350, title: 'Clockwise polar plot', filename: polarclockex1.php }
 testPolarplot:
     polarex2.php: { width: 300, height: 350, title: 'Polar plot #2', filename: polarex2.php }
     polarex3-lin.php: { width: 300, height: 300, title: 'Polar plot #3', filename: polarex3-lin.php }
@@ -11,11 +9,5 @@ testPolarplot:
     polarex7-2.php: { width: 300, height: 400, title: 'Polar plot #7-2', filename: polarex7-2.php }
     polarex7.php: { width: 300, height: 350, title: 'Polar plot #7', filename: polarex7.php }
     polarex8.php: { width: 350, height: 400, title: 'Polar plot #8', filename: polarex8.php }
-testPolarclockfileiterator:
-    polarclockex2.php: { width: 350, height: 350, title: polarclockFileIterator, filename: polarclockex2.php }
-testPolarfileiterator:
-    polarex0-180.php: { width: 250, height: 250, title: polarFileIterator, filename: polarex0-180.php }
-    polarex0.php: { width: 250, height: 250, title: polarFileIterator, filename: polarex0.php }
-    polarex1.php: { width: 600, height: 500, title: polarFileIterator, filename: polarex1.php }
-    polarex10.php: { width: 350, height: 480, title: polarFileIterator, filename: polarex10.php }
-    polarex9.php: { width: 350, height: 320, title: polarFileIterator, filename: polarex9.php }
+testClockwisePolarPlot:
+    polarclockex1.php: { width: 350, height: 350, title: 'Clockwise polar plot', filename: polarclockex1.php }

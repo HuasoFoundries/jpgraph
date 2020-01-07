@@ -17,8 +17,8 @@ $graph->SetShadow();
 $example_title = ' Using Arial';
 $graph->title->set($example_title);
 $graph->title->SetFont(
-    FF_ARIAL,
-    FS_NORMAL,
+    Graph\Configs::FF_ARIAL,
+    Graph\Configs::FS_NORMAL,
     14
 );
 $p1 = new Plot\PiePlot($data);
@@ -36,8 +36,8 @@ $graph2->SetUserFont1(
     '/usr/share/fonts/truetype/ubuntu/Ubuntu-I.ttf'
 );
 $graph2->title->SetFont(
-    FF_USERFONT1,
-    FS_NORMAL,
+    Graph\Configs::FF_USERFONT1,
+    Graph\Configs::FS_NORMAL,
     14
 );
 
@@ -48,17 +48,19 @@ $data3 = [60, 30, 11, 53];
 
 $graph3 = new Graph\PieGraph($__width, $__height);
 $graph3->SetShadow();
-$example_title3 = 'Using Lato Italic';
+$example_title3 = 'Using Lato';
 $graph3->title->set($example_title3);
 $graph3->SetUserFont2(
+
     '/usr/share/fonts/truetype/lato/Lato-Regular.ttf',
     '/usr/share/fonts/truetype/lato/Lato-Bold.ttf',
     '/usr/share/fonts/truetype/lato/Lato-Italic.ttf',
     '/usr/share/fonts/truetype/lato/Lato-BoldItalic.ttf'
+
 );
 $graph3->title->SetFont(
-    FF_USERFONT2,
-    FS_ITALIC,
+    Graph\Configs::FF_USERFONT2,
+    Graph\Configs::FS_ITALIC,
     14
 );
 
@@ -76,8 +78,8 @@ $graph4->SetUserFont3(
     '/usr/share/fonts/truetype/crosextra/Carlito-BoldItalic.ttf'
 );
 $graph4->title->SetFont(
-    FF_USERFONT3,
-    FS_BOLDITALIC,
+    Graph\Configs::FF_USERFONT3,
+    Graph\Configs::FS_BOLDITALIC,
     14
 );
 

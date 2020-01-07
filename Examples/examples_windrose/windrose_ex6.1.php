@@ -34,7 +34,9 @@ $__width  = 400;
 $__height = 450;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup title$example_title='Using chinese charecters'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Using chinese charecters';
+$graph->title->set($example_title);
 #$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'),FS_BOLD,12);
 $graph->title->SetColor('navy');
 $subtitle_text = '(Free type plot)';
@@ -66,7 +68,7 @@ $wp->SetZCircleSize(30);
 $wp->SetPos(0.5, 0.5);
 
 // Adjust the font and font color for compass directions
-#$wp->SetFont(Graph\Configs::getConfig('FF_CHINESE'),FS_NORMAL,12);
+$wp->SetFont(Graph\Configs::getConfig('FF_CHINESE'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $wp->SetFontColor('darkgreen');
 
 // Adjust grid colors

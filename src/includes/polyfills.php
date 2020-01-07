@@ -3,10 +3,17 @@
 /**
  * JPGraph v4.1.0-beta.01
  */
+if (!defined('STDIN')) {
+    define('STDIN', fopen('php://stdin', 'rb'));
+}
 
-/*
- * JPGraph v4.0.0
- */
+if (!defined('STDOUT')) {
+    define('STDOUT', fopen('php://stdout', 'wb'));
+}
+
+if (!defined('STDERR')) {
+    define('STDERR', fopen('php://stderr', 'wb'));
+}
 
 if (!class_exists('\Kint')) {
     /**
@@ -18,9 +25,7 @@ if (!class_exists('\Kint')) {
         public static $enabled_mode = true;
         public static $aliases      = [];
 
-        public static function dump()
-        {
-        }
+        public static function dump() {}
     }
 }
 if (class_exists('\Kint\Renderer\RichRenderer')) {
@@ -38,9 +43,7 @@ if (!class_exists('\PhpConsole\Handler')) {
      */
     class PC
     {
-        public static function debug()
-        {
-        }
+        public static function debug() {}
     }
 }
 function ddd(...$vars)
@@ -61,7 +64,7 @@ function kdump(...$vars)
     fwrite(STDERR, $kintdump);
 }
 
-\Kint::$aliases[] = 'dd';
+\Kint::$aliases[] = 'ddd';
 \Kint::$aliases[] = 'kdump';
 
 if (getenv('JPGRAPH_USE_PHPCONSOLE') &&

@@ -14,7 +14,9 @@ $__width  = 250;
 $__height = 140;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup a title$example_title='An example with thick border'; $graph->title->set($example_title);
+// Setup a title
+$example_title = 'An example with thick border';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 // Add drop shadow for graph

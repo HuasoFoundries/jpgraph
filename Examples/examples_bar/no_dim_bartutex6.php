@@ -33,7 +33,9 @@ $graph->xaxis->SetTextLabelInterval(3);
 // Hide the tick marks
 $graph->xaxis->HideTicks();
 
-// Set title and subtitle$example_title='Bar tutorial example 6'; $graph->title->set($example_title);
+// Set title and subtitle
+$example_title = 'Bar tutorial example 6';
+$graph->title->set($example_title);
 
 // Use built in font
 $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));

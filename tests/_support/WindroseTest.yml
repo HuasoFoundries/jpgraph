@@ -1,10 +1,2 @@
-testWindroseexample:
-    windrose_ex7.php: { width: 400, height: 450, title: 'Windrose example 7', filename: windrose_ex7.php }
-    windrose_ex8.php: { width: 400, height: 500, title: 'Windrose example 8', filename: windrose_ex8.php }
-    windrose_ex9.php: { width: 400, height: 500, title: 'Windrose example 9', filename: windrose_ex9.php }
-testExampleWithBackgroundFlag:
-    windrose_bgimg_ex1.php: { width: 400, height: 400, title: 'Example with background flag', filename: windrose_bgimg_ex1.php }
-testTwoWindrosePlotsInOneGraph:
-    windrose_2plots_ex1.php: { width: 660, height: 400, title: 'Two windrose plots in one graph', filename: windrose_2plots_ex1.php }
-testAddingLabelBackgrounds:
-    windrose_ex8.1.php: { width: 400, height: 460, title: 'Adding label backgrounds', filename: windrose_ex8.1.php }
+testUsingChineseCharecters:
+    windrose_ex6.1.php: { width: 400, height: 450, title: 'Using chinese charecters', filename: windrose_ex6.1.php }

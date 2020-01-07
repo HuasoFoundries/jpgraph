@@ -83,7 +83,7 @@ class Image
      * @param mixed $aFormat
      * @param mixed $aSetAutoMargin
      */
-    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = Config::DEFAULT_GFORMAT, $aSetAutoMargin = true)
+    public function __construct($aWidth = 0, $aHeight = 0, $aFormat = Configs::DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         $this->original_width  = $aWidth;
         $this->original_height = $aHeight;
@@ -335,7 +335,7 @@ class Image
         if (!function_exists('imagettfbbox')) {
             // use internal font when php is configured without '--with-ttf'
             $this->font_family = Configs::FF_FONT1;
-        //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+            //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
         } else {
             $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
         }

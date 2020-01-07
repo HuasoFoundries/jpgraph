@@ -52,7 +52,9 @@ $graph->axis->SetLabelMargin(6);
 $graph->axis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $graph->axis->SetAngleFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 
-// Setup graph title$example_title='Polar plot #10'; $graph->title->set($example_title);
+// Setup graph title
+$example_title = 'Polar plot #10';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
 $graph->title->SetColor('navy');
 

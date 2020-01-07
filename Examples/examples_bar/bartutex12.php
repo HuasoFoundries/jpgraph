@@ -46,7 +46,9 @@ $graph->SetY2Scale('lin');
 $graph->yaxis->SetColor('black', 'red');
 $graph->y2axis->SetColor('black', 'orange');
 
-// Set title and subtitle$example_title='Combined bar and line plot'; $graph->title->set($example_title);
+// Set title and subtitle
+$example_title = 'Combined bar and line plot';
+$graph->title->set($example_title);
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font (don't need TTF support)

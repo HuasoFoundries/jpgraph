@@ -8,18 +8,7 @@ namespace Amenadiel\JpGraph\Util;
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
-use function date;
-use function error_log;
 use Exception;
-use function fclose;
-use function fopen;
-use function fwrite;
-use function ini_get;
-use const PHP_EOL;
-use const PHP_SAPI;
-use function set_exception_handler;
-use function sprintf;
-use const STDERR;
 use Throwable;
 
 class JpGraphException extends Exception
@@ -94,8 +83,8 @@ class JpGraphException extends Exception
         if (!$logDestination) {
             // Check SAPI and if we are called from the command line
             // send the error to STDERR instead
-            if (PHP_SAPI == 'cli') {
-                fwrite(STDERR, $aMsg);
+            if (PHP_SAPI == 'cli' || PHP_SAPI === 'cli-server') {
+                fwrite(STDOUT, $aMsg);
             }
             error_log($aMsg);
             if (ini_get('display_errors')) {

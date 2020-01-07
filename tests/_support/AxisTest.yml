@@ -9,3 +9,9 @@ testLabelBackground:
     axislabelbkgex05.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex05.php }
     axislabelbkgex06.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex06.php }
     axislabelbkgex07.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex07.php }
+testDuplicatingYAxis:
+    dupyaxisex1.php: { width: 300, height: 200, title: 'Duplicating Y-axis', filename: dupyaxisex1.php }
+testNegatedYY2Axis):
+    inyaxisex3.php: { width: 400, height: 300, title: '(Negated Y & Y2 axis)', filename: inyaxisex3.php }
+testUsingMultipleYAxis:
+    mulyaxisex1.php: { width: 450, height: 250, title: 'Using multiple Y-axis', filename: mulyaxisex1.php }

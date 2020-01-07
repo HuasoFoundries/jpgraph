@@ -25,7 +25,9 @@ $graph->Set90AndMargin(50, 20, 50, 30);
 // Nice shadow
 $graph->SetShadow();
 
-// Setup title$example_title='Horizontal bar graph ex 1'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Horizontal bar graph ex 1';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup X-axis

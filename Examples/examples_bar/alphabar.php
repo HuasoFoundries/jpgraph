@@ -48,7 +48,9 @@ $graph->yaxis->SetColor('white');
 //$graph->ygrid->Show(false);
 $graph->ygrid->SetColor('white@0.5');
 
-// Setup graph title$example_title='Using alpha blending with a background'; $graph->title->set($example_title);
+// Setup graph title
+$example_title = 'Using alpha blending with a background';
+$graph->title->set($example_title);
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);

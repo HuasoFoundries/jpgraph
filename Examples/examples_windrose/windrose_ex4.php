@@ -21,7 +21,9 @@ $__width  = 400;
 $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup title$example_title='Windrose example 4'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Windrose example 4';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 

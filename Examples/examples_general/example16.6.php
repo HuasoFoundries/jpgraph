@@ -29,7 +29,9 @@ $graph->SetScale('linlin');
 $lr                  = new Util\LinearRegression($datax, $datay);
 list($stderr, $corr) = $lr->GetStat();
 list($xd, $yd)       = $lr->GetY(0, 19);
-// Setup title$example_title='Linear regression'; $graph->title->set($example_title);
+// Setup title
+$example_title = 'Linear regression';
+$graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 $graph->subtitle->Set('(stderr=' . sprintf('%.2f', $stderr) . ', corr=' . sprintf('%.2f', $corr) . ')');

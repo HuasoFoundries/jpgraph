@@ -14,7 +14,9 @@ $__width  = 250;
 $__height = 140;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup a title$example_title='An example with drop shadows'; $graph->title->set($example_title);
+// Setup a title
+$example_title = 'An example with drop shadows';
+$graph->title->set($example_title);
 
 // Add drop shadow for graph
 $graph->SetShadow();
