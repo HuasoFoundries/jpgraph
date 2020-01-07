@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once 'jpgraph/QR/qrencoder.inc.php';
@@ -14,7 +14,7 @@ $data = '01234567';
 $encoder = new QREncoder();
 
 // Use the image backend
-$backend = QRCodeBackendFactory::Create($encoder, BACKEND_IMAGE);
+$backend = QRCodeBackendFactory::Create($encoder, Graph\Configs::getConfig('BACKEND_IMAGE'));
 
 // Set the module size (quite big)
 $backend->SetModuleWidth(5);

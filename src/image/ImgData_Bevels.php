@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -17,7 +17,7 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_Bevels extends ImgData
 {
     protected $name = 'Round Bevels';
-    protected $an   = [MARK_IMG_BEVEL => 'imgdata'];
+    protected $an   = [Configs::MARK_IMG_BEVEL => 'imgdata'];
 
     protected $colors = ['green', 'purple', 'orange', 'red', 'yellow'];
     protected $index  = ['green' => 1, 'purple' => 4, 'orange' => 2, 'red' => 0, 'yellow' => 3];

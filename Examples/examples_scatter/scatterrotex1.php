@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,9 +18,9 @@ $graph->SetScale('linlin');
 
 $graph->Set90AndMargin(40, 40, 40, 40);
 $graph->SetShadow();
-
-$graph->title->Set('A 90 degrees rotated scatter plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'A 90 degrees rotated scatter plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Adjust the label align for X-axis so they look good rotated
 $graph->xaxis->SetLabelAlign('right', 'center', 'right');
@@ -33,7 +33,7 @@ $graph->xaxis->title->SetAngle(90);
 $graph->xaxis->title->SetMargin(15);
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $sp1->mark->SetFillColor('red');
 $sp1->mark->SetWidth(5);
 

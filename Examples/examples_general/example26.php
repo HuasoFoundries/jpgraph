@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,8 +14,8 @@ $__width  = 300;
 $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('A simple Pie plot');
+$example_title = 'A simple Pie plot';
+$graph->title->set($example_title);
 
 $p1 = new Plot\PiePlot($data);
 $graph->Add($p1);

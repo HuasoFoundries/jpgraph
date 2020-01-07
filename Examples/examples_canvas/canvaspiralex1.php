@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -78,12 +78,13 @@ function SeaShell($img, $x, $y, $w, $h, $r, $n = 12, $color1 = 'navy', $color2 =
 
 $g = new Graph\CanvasGraph($__width, $__height);
 //$gr = 1.61803398874989484820;
+$example_title = 'Canvas Spiral';
 
 $p = SeaShell($g->img, 0, 20, $w - 1, $h - 21, $r, 19);
 $g->img->SetColor('black');
 $g->img->Rectangle(0, 20, $w - 1, $h - 1);
-$g->img->SetFont(FF_FONT2, FS_BOLD);
+$g->img->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $g->img->SetTextAlign('center', 'top');
-$g->img->StrokeText($w / 2, 0, 'Canvas Spiral');
+$g->img->StrokeText($w / 2, 0, $example_title);
 
 $g->Stroke();

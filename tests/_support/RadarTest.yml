@@ -1,0 +1,23 @@
+testRadarWithMarks:
+    radarmarkex1.php: { width: 300, height: 280, title: 'Radar with marks', filename: radarmarkex1.php }
+testQualityResult:
+    fixed_scale_radarex1.php: { width: 300, height: 300, title: 'Quality result', filename: fixed_scale_radarex1.php }
+testLogarithmicScale:
+    radarlogex1-aa.php: { width: 300, height: 350, title: 'Logarithmic scale', filename: radarlogex1-aa.php }
+    radarlogex1.php: { width: 300, height: 350, title: 'Logarithmic scale', filename: radarlogex1.php }
+testRadarlogfileiterator:
+    radarlogex2.php: { width: 200, height: 200, title: radarlogFileIterator, filename: radarlogex2.php }
+testWeeklyGoals:
+    radarex2.php: { width: 300, height: 200, title: 'Weekly goals', filename: radarex2.php }
+testAccumulatedPpm:
+    radarex9.php: { width: 250, height: 270, title: 'Accumulated PPM', filename: radarex9.php }
+testRadarfileiterator:
+    radarex1.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex1.php }
+    radarex3.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex3.php }
+    radarex4.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex4.php }
+    radarex5.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex5.php }
+    radarex6.1.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex6.1.php }
+    radarex6.php: { width: 250, height: 200, title: radarFileIterator, filename: radarex6.php }
+    radarex7.php: { width: 300, height: 200, title: radarFileIterator, filename: radarex7.php }
+    radarex8.1.php: { width: 300, height: 200, title: radarFileIterator, filename: radarex8.1.php }
+    radarex8.php: { width: 300, height: 200, title: radarFileIterator, filename: radarex8.php }

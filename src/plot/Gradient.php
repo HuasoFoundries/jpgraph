@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -14,7 +14,14 @@ namespace Amenadiel\JpGraph\Plot;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+use function abs;
 use Amenadiel\JpGraph\Util;
+use function ceil;
+use function floor;
+use function max;
+use function min;
+use function round;
+use function sprintf;
 
 /**
  * @class Gradient
@@ -27,8 +34,6 @@ class Gradient
     private $numcolors = 100;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $img
      */
     public function __construct(&$img)
@@ -63,7 +68,7 @@ class Gradient
     {
         $this->img->SetLineWeight(1);
         switch ($style) {
-            case GRAD_VER:
+            case Configs::getConfig('GRAD_VER'):
                 $steps = ceil(abs($xr - $xl) + 1);
                 $delta = $xr >= $xl ? 1 : -1;
                 $this->GetColArray($from_color, $to_color, $steps, $colors, $this->numcolors);
@@ -74,7 +79,7 @@ class Gradient
                 }
 
                 break;
-            case GRAD_HOR:
+            case Configs::getConfig('GRAD_HOR'):
                 $steps = ceil(abs($yb - $yt) + 1);
                 $delta = $yb >= $yt ? 1 : -1;
                 $this->GetColArray($from_color, $to_color, $steps, $colors, $this->numcolors);
@@ -85,7 +90,7 @@ class Gradient
                 }
 
                 break;
-            case GRAD_MIDHOR:
+            case Configs::getConfig('GRAD_MIDHOR'):
                 $steps = ceil(abs($yb - $yt) / 2);
                 $delta = $yb >= $yt ? 1 : -1;
                 $this->GetColArray($from_color, $to_color, $steps, $colors, $this->numcolors);
@@ -106,7 +111,7 @@ class Gradient
                 $this->img->Line($xl, $y, $xr, $y);
 
                 break;
-            case GRAD_MIDVER:
+            case Configs::getConfig('GRAD_MIDVER'):
                 $steps = ceil(abs($xr - $xl) / 2);
                 $delta = $xr >= $xl ? 1 : -1;
                 $this->GetColArray($from_color, $to_color, $steps, $colors, $this->numcolors);
@@ -127,7 +132,7 @@ class Gradient
                 $this->img->Line($x, $yb, $x, $yt);
 
                 break;
-            case GRAD_WIDE_MIDVER:
+            case Configs::getConfig('GRAD_WIDE_MIDVER'):
                 $diff      = ceil(abs($xr - $xl));
                 $steps     = floor(abs($diff) / 3);
                 $firststep = $diff - 2 * $steps;
@@ -152,7 +157,7 @@ class Gradient
                 }
 
                 break;
-            case GRAD_WIDE_MIDHOR:
+            case Configs::getConfig('GRAD_WIDE_MIDHOR'):
                 $diff      = ceil(abs($yb - $yt));
                 $steps     = floor(abs($diff) / 3);
                 $firststep = $diff - 2 * $steps;
@@ -176,18 +181,21 @@ class Gradient
                 }
 
                 break;
-            case GRAD_LEFT_REFLECTION:
+            case Configs::getConfig('GRAD_LEFT_REFLECTION'):
                 $steps1 = ceil(0.3 * abs($xr - $xl));
                 $delta  = $xr >= $xl ? 1 : -1;
 
                 $from_color  = $this->img->rgb->Color($from_color);
                 $adj         = 1.4;
                 $m           = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
-                $from_color2 = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                $from_color2 = [
+                    min(255, $from_color[0] + $m),
+                    min(255, $from_color[1] + $m),
+                    min(255, $from_color[2] + $m),
+                ];
 
                 $this->GetColArray($from_color2, $to_color, $steps1, $colors, $this->numcolors);
-                $n = safe_count($colors);
+                $n = Configs::safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -201,7 +209,7 @@ class Gradient
                 }
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
-                $n = safe_count($colors);
+                $n = Configs::safe_count($colors);
                 for ($i = 0; $i < $steps && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -209,12 +217,12 @@ class Gradient
                 }
 
                 break;
-            case GRAD_RIGHT_REFLECTION:
+            case Configs::getConfig('GRAD_RIGHT_REFLECTION'):
                 $steps1 = ceil(0.7 * abs($xr - $xl));
                 $delta  = $xr >= $xl ? 1 : -1;
 
                 $this->GetColArray($from_color, $to_color, $steps1, $colors, $this->numcolors);
-                $n = safe_count($colors);
+                $n = Configs::safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -230,12 +238,15 @@ class Gradient
                 $from_color = $this->img->rgb->Color($from_color);
                 $adj        = 1.4;
                 $m          = ($adj - 1.0) * (255 - min(255, min($from_color[0], min($from_color[1], $from_color[2]))));
-                $from_color = [min(255, $from_color[0] + $m),
-                    min(255, $from_color[1] + $m), min(255, $from_color[2] + $m), ];
+                $from_color = [
+                    min(255, $from_color[0] + $m),
+                    min(255, $from_color[1] + $m),
+                    min(255, $from_color[2] + $m),
+                ];
 
                 $steps = abs($xr - $xl) - $steps1 - $steps2;
                 $this->GetColArray($to_color, $from_color, $steps, $colors, $this->numcolors);
-                $n = safe_count($colors);
+                $n = Configs::safe_count($colors);
                 for ($i = 0; $i < $steps && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -243,7 +254,7 @@ class Gradient
                 }
 
                 break;
-            case GRAD_CENTER:
+            case Configs::getConfig('GRAD_CENTER'):
                 $steps = ceil(min(($yb - $yt) + 1, ($xr - $xl) + 1) / 2);
                 $this->GetColArray($from_color, $to_color, $steps, $colors, $this->numcolors);
                 $dx = ($xr - $xl) / 2;
@@ -252,7 +263,7 @@ class Gradient
                 $y  = $yt;
                 $x2 = $xr;
                 $y2 = $yb;
-                $n  = safe_count($colors);
+                $n  = Configs::safe_count($colors);
                 for ($x = $xl, $i = 0; $x < $xl + $dx && $y < $yt + $dy && $i < $n; ++$x, ++$y, --$x2, --$y2, ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Rectangle($x, $y, $x2, $y2);
@@ -260,12 +271,12 @@ class Gradient
                 $this->img->Line($x, $y, $x2, $y2);
 
                 break;
-            case GRAD_RAISED_PANEL:
+            case Configs::getConfig('GRAD_RAISED_PANEL'):
                 // right to left
                 $steps1 = $xr - $xl;
                 $delta  = $xr >= $xl ? 1 : -1;
                 $this->GetColArray($to_color, $from_color, $steps1, $colors, $this->numcolors);
-                $n = safe_count($colors);
+                $n = Configs::safe_count($colors);
                 for ($x = $xl, $i = 0; $i < $steps1 && $i < $n; ++$i) {
                     $this->img->current_color = $colors[$i];
                     $this->img->Line($x, $yb, $x, $yt);
@@ -286,7 +297,7 @@ class Gradient
                 }
 
                 break;
-            case GRAD_DIAGONAL:
+            case Configs::getConfig('GRAD_DIAGONAL'):
                 // use the longer dimension to determine the required number of steps.
                 // first loop draws from one corner to the mid-diagonal and the second
                 // loop draws from the mid-diagonal to the opposing corner.
@@ -295,7 +306,7 @@ class Gradient
                     $steps = $xr - $xl;
                     $delta = $xr >= $xl ? 1 : -1;
                     $this->GetColArray($from_color, $to_color, $steps * 2, $colors, $this->numcolors);
-                    $n = safe_count($colors);
+                    $n = Configs::safe_count($colors);
 
                     for ($x = $xl, $i = 0; $i < $steps && $i < $n; ++$i) {
                         $this->img->current_color = $colors[$i];
@@ -315,7 +326,7 @@ class Gradient
                     $steps = $yb - $yt;
                     $delta = $yb >= $yt ? 1 : -1;
                     $this->GetColArray($from_color, $to_color, $steps * 2, $colors, $this->numcolors);
-                    $n = safe_count($colors);
+                    $n = Configs::safe_count($colors);
 
                     for ($y = $yt, $i = 0; $i < $steps && $i < $n; ++$i) {
                         $this->img->current_color = $colors[$i];
@@ -347,13 +358,13 @@ class Gradient
     // of a mountain)
     public function FilledFlatPolygon($pts, $from_color, $to_color)
     {
-        if (safe_count($pts) == 0) {
+        if (Configs::safe_count($pts) == 0) {
             return;
         }
 
         $maxy = $pts[1];
         $miny = $pts[1];
-        $n    = safe_count($pts);
+        $n    = Configs::safe_count($pts);
         for ($i = 0, $idx = 0; $i < $n; $i += 2) {
             $x    = round($pts[$i]);
             $y    = round($pts[$i + 1]);
@@ -367,7 +378,7 @@ class Gradient
             $colmap[$i] = $colors[$idx++];
         }
 
-        $n   = safe_count($pts) / 2;
+        $n   = Configs::safe_count($pts) / 2;
         $idx = 0;
         while ($idx < $n - 1) {
             $p1 = [round($pts[$idx * 2]), round($pts[$idx * 2 + 1])];
@@ -453,4 +464,6 @@ class Gradient
             $prevcolnum = $colnum;
         }
     }
-} // @class
+}
+
+// @class

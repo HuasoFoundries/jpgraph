@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Contour plot example
@@ -31,14 +31,14 @@ $graph->SetMargin(40, 140, 60, 40);
 
 // Enable antialias. Note with antiaaliasing only line weight=1 is supported.
 $graph->img->SetAntiAliasing();
-
-$graph->title->Set('Example of contour plot');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$example_title = 'Example of contour plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // For contour plots it is custom to use a box style ofr the axis
 $graph->legend->SetPos(0.05, 0.5, 'right', 'center');
 $graph->SetScale('intint');
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 $graph->xgrid->Show();
 $graph->ygrid->Show();
 

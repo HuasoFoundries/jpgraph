@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 /**
@@ -18,11 +18,27 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_Diamonds extends ImgData
 {
     protected $name   = 'Diamonds';
-    protected $an     = [MARK_IMG_DIAMOND => 'imgdata'];
-    protected $colors = ['lightblue', 'darkblue', 'gray',
-        'blue', 'pink', 'purple', 'red', 'yellow', ];
-    protected $index = ['lightblue'     => 7, 'darkblue' => 2, 'gray'   => 6,
-        'blue'                          => 4, 'pink'     => 1, 'purple' => 5, 'red' => 0, 'yellow' => 3, ];
+    protected $an     = [Configs::MARK_IMG_DIAMOND => 'imgdata'];
+    protected $colors = [
+        'lightblue',
+        'darkblue',
+        'gray',
+        'blue',
+        'pink',
+        'purple',
+        'red',
+        'yellow',
+    ];
+    protected $index  = [
+        'lightblue'                     => 7,
+        'darkblue'                      => 2,
+        'gray'                          => 6,
+        'blue'                          => 4,
+        'pink'                          => 1,
+        'purple'                        => 5,
+        'red'                           => 0,
+        'yellow'                        => 3,
+    ];
 
     protected $maxidx = 7;
     protected $imgdata;

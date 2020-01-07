@@ -1,12 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
+use function max;
 
 /*
  * File:        JPGRAPH_POLAR.PHP
@@ -17,10 +18,6 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 
-defined('POLAR_360') || define('POLAR_360', 1);
-defined('POLAR_180') || define('POLAR_180', 2);
-
-//
 // Note. Don't attempt to make sense of this code.
 // In order not to have to be able to inherit the scaling code
 // from the main graph package we have had to make some "tricks" since
@@ -30,8 +27,6 @@ defined('POLAR_180') || define('POLAR_180', 2);
 // and 2: do some "small" trickery and be able to inherit most of
 // the functionlity from the main graph package.
 // We choose 2: here in order to save some time.
-//
-
 /**
  * @class PolarPlot
  */
@@ -54,7 +49,7 @@ class PolarPlot
 
     public function __construct($aData)
     {
-        $n = safe_count($aData);
+        $n = Configs::safe_count($aData);
         if ($n & 1) {
             Util\JpGraphError::RaiseL(17001);
             //('Polar plots must have an even number of data point. Each data point is a tuple (angle,radius).');
@@ -116,27 +111,29 @@ class PolarPlot
     public function Legend($aGraph)
     {
         $color = $this->iColor;
-        if ($this->legend != '') {
-            if ($this->iFillColor != '') {
-                $color = $this->iFillColor;
-                $aGraph->legend->Add(
-                    $this->legend,
-                    $color,
-                    $this->mark,
-                    0,
-                    $this->legendcsimtarget,
-                    $this->legendcsimalt
-                );
-            } else {
-                $aGraph->legend->Add(
-                    $this->legend,
-                    $color,
-                    $this->mark,
-                    $this->line_style,
-                    $this->legendcsimtarget,
-                    $this->legendcsimalt
-                );
-            }
+        if ($this->legend == '') {
+            return;
+        }
+
+        if ($this->iFillColor != '') {
+            $color = $this->iFillColor;
+            $aGraph->legend->Add(
+                $this->legend,
+                $color,
+                $this->mark,
+                0,
+                $this->legendcsimtarget,
+                $this->legendcsimalt
+            );
+        } else {
+            $aGraph->legend->Add(
+                $this->legend,
+                $color,
+                $this->mark,
+                $this->line_style,
+                $this->legendcsimtarget,
+                $this->legendcsimalt
+            );
         }
     }
 

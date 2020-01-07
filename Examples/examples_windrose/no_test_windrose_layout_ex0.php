@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -30,9 +30,9 @@ $__width  = 600;
 $__height = 650;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('Multiple plots with automatic layout');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$example_title = 'Multiple plots with automatic layout';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the individual windrose plots
 $wp = [];

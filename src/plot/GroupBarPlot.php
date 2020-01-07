@@ -1,12 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
+use function get_class;
+use function max;
+use function min;
+use function round;
 
 /**
  * @class GroupBarPlot
@@ -18,22 +22,22 @@ class GroupBarPlot extends BarPlot
     private $nbrplots = 0;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $plots
      */
     public function __construct($plots)
     {
         $this->width    = 0.7;
         $this->plots    = $plots;
-        $this->nbrplots = safe_count($plots);
+        $this->nbrplots = Configs::safe_count($plots);
         if ($this->nbrplots < 1) {
             Util\JpGraphError::RaiseL(2007); //('Cannot create GroupBarPlot from empty plot array.');
         }
         for ($i = 0; $i < $this->nbrplots; ++$i) {
-            if (empty($this->plots[$i]) || !isset($this->plots[$i])) {
-                Util\JpGraphError::RaiseL(2008, $i); //("Group bar plot element nbr $i is undefined or empty.");
+            if (!empty($this->plots[$i]) && isset($this->plots[$i])) {
+                continue;
             }
+
+            Util\JpGraphError::RaiseL(2008, $i); //("Group bar plot element nbr $i is undefined or empty.");
         }
         $this->numpoints = $plots[0]->numpoints;
         $this->width     = 0.7;
@@ -46,7 +50,7 @@ class GroupBarPlot extends BarPlot
      */
     public function Legend($graph)
     {
-        $n = safe_count($this->plots);
+        $n = Configs::safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
             $c = get_class($this->plots[$i]);
             if (!($this->plots[$i] instanceof BarPlot)) {
@@ -60,7 +64,7 @@ class GroupBarPlot extends BarPlot
     public function Min()
     {
         list($xmin, $ymin) = $this->plots[0]->Min();
-        $n                 = safe_count($this->plots);
+        $n                 = Configs::safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
             list($xm, $ym) = $this->plots[$i]->Min();
             $xmin          = max($xmin, $xm);
@@ -73,7 +77,7 @@ class GroupBarPlot extends BarPlot
     public function Max()
     {
         list($xmax, $ymax) = $this->plots[0]->Max();
-        $n                 = safe_count($this->plots);
+        $n                 = Configs::safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
             list($xm, $ym) = $this->plots[$i]->Max();
             $xmax          = max($xmax, $xm);
@@ -85,7 +89,7 @@ class GroupBarPlot extends BarPlot
 
     public function GetCSIMareas()
     {
-        $n         = safe_count($this->plots);
+        $n         = Configs::safe_count($this->plots);
         $csimareas = '';
         for ($i = 0; $i < $n; ++$i) {
             $csimareas .= $this->plots[$i]->csimareas;
@@ -98,7 +102,7 @@ class GroupBarPlot extends BarPlot
     public function Stroke($img, $xscale, $yscale)
     {
         $tmp      = $xscale->off;
-        $n        = safe_count($this->plots);
+        $n        = Configs::safe_count($this->plots);
         $subwidth = $this->width / $this->nbrplots;
 
         for ($i = 0; $i < $n; ++$i) {
@@ -115,4 +119,5 @@ class GroupBarPlot extends BarPlot
         }
         $xscale->off = $tmp;
     }
-} // @class
+}
+// @class

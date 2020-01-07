@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,8 +16,9 @@ $__height = 350;
 $graph    = new Graph\PieGraph($__width, $__height);
 
 // Set A title for the plot
-$graph->title->Set('Label guide lines');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$example_title = 'Label guide lines';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('darkblue');
 $graph->legend->Pos(0.1, 0.2);
 
@@ -31,9 +32,9 @@ $p1->SetGuideLines(true, false);
 $p1->SetGuideLinesAdjust(1.5);
 
 // Setup the labels
-$p1->SetLabelType(PIE_VALUE_PER);
+$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_PER'));
 $p1->value->Show();
-$p1->value->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $p1->value->SetFormat('%2.1f%%');
 
 // Add and stroke

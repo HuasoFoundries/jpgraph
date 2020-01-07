@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -37,11 +37,12 @@ $graph  = new MatrixGraph($width, $height);
 $graph->SetMargin(1, 2, 70, 1);
 $graph->SetColor('white');
 $graph->SetMarginColor('#fafafa');
-$graph->title->Set('Intro matrix graph');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$example_title = 'Intro matrix graph';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the background image
-$graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
 $graph->SetBackgroundImageMix(50);
 
 // Setup the timer in the right footer
@@ -82,7 +83,7 @@ $n = count($txts);
 $t = [];
 for ($i = 0; $i < $n; ++$i) {
     $t[$i] = new Text($txts[$i][0], $txts[$i][1], $txts[$i][2]);
-    $t[$i]->SetFont(FF_ARIAL, FS_BOLD, 14);
+    $t[$i]->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
     $t[$i]->SetColor('white');
     $t[$i]->SetAlign('center', 'top');
 }

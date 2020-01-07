@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $
@@ -39,8 +39,7 @@ $graph->xaxis->SetLabelAlign('right', 'center', 'right');
 // Label align for Y-axis
 $graph->yaxis->SetLabelAlign('center', 'bottom');
 
-// Titles
-$graph->title->Set('Number of incidents');
+// Titles$example_title='Number of incidents'; $graph->title->set($example_title);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);

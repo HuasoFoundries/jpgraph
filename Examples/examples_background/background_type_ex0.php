@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,6 +9,7 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
+// [\(\s]([A-Z]{2}[A-Z_0-9]{2,100})
 // Some data
 $ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
@@ -25,14 +26,17 @@ $graph->ygrid->setColor('darkgray');
 $graph->SetBox(true);
 
 // Steup graph titles
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->title->Set('Using background image');
-$graph->subtitle->SetFont(FF_COURIER, FS_BOLD, 11);
-$graph->subtitle->Set('"BGIMG_COPY"');
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$example_title = 'Using background image';
+$example_title = $example_title;
+$graph->title->set($example_title);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_COURIER'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$subtitle_text = 'BGIMG_COPY';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('darkred');
 
 // Add background with 25% mix
-$graph->SetBackgroundImage(__DIR__ . '/../assets/heat1.jpg', BGIMG_COPY);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/heat1.jpg', Graph\Configs::getConfig('BGIMG_COPY'));
 $graph->SetBackgroundImageMix(25);
 
 // Create the linear plot

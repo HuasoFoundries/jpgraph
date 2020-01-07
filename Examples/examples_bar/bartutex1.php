@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,14 +17,13 @@ $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetShadow();
 
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
-// Set title and subtitle
-$graph->title->Set('Elementary barplot with a text scale');
+// Set title and subtitle$example_title='Elementary barplot with a text scale'; $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
+
+use function define;
 
 /*
  * File:        JPGRAPH_CANVTOOLS.PHP
@@ -54,7 +56,7 @@ class Shape
 
     public function Polygon($p, $aClosed = false)
     {
-        $n = safe_count($p);
+        $n = Configs::safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
@@ -64,7 +66,7 @@ class Shape
 
     public function FilledPolygon($p)
     {
-        $n = safe_count($p);
+        $n = Configs::safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
@@ -214,8 +216,7 @@ class Shape
         $yl = $yt + $h - 0;
 
         switch ($aCorner) {
-            case 0: // Upper left
-
+            case 0:
                 // Bottom line, left &  right arc
                 $this->img->Line($xt + $r, $yl, $xr - $r, $yl);
                 $this->img->Arc($xt + $r, $yl - $r, $r * 2, $r * 2, 90, 180);
@@ -248,8 +249,7 @@ class Shape
                 }
 
                 break;
-            case 1: // Upper right
-
+            case 1:
                 // Bottom line, left &  right arc
                 $this->img->Line($xt + $r, $yl, $xr - $r, $yl);
                 $this->img->Arc($xt + $r, $yl - $r, $r * 2, $r * 2, 90, 180);

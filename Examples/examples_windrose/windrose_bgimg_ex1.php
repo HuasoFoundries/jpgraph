@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -23,28 +23,28 @@ $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetMargin(25, 25, 25, 25);
 $graph->SetFrame();
-
-$graph->title->Set('Example with background flag');
-#$graph->title->SetFont(FF_VERA,FS_BOLD,14);
+$example_title = 'Example with background flag';
+$graph->title->set($example_title);
+#$graph->title->SetFont(Graph\Configs::getConfig('FF_VERA'),FS_BOLD,14);
 
 //$graph->SetBackgroundImage(__DIR__.'/../assets/bkgimg.jpg',BGIMG_FILLFRAME);
 //$graph->SetBackgroundImageMix(90);
-$graph->SetBackgroundCFlag(28, BGIMG_FILLFRAME, 15);
+$graph->SetBackgroundCFlag(28, Graph\Configs::getConfig('BGIMG_FILLFRAME'), 15);
 
 $wp2 = new Plot\WindrosePlot($data2);
-$wp2->SetType(WINDROSE_TYPE16);
+$wp2->SetType(Plot\Configs::getConfig('WINDROSE_TYPE16'));
 $wp2->SetSize(0.55);
 $wp2->SetPos(0.5, 0.5);
 $wp2->SetAntiAlias(false);
 
-$wp2->SetFont(FF_ARIAL, FS_BOLD, 10);
+$wp2->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $wp2->SetFontColor('black');
 
 $wp2->SetCompassLabels($se_CompassLbl);
 $wp2->legend->SetMargin(20, 5);
 
-$wp2->scale->SetZFont(FF_ARIAL, FS_NORMAL, 8);
-$wp2->scale->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$wp2->scale->SetZFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$wp2->scale->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $wp2->scale->SetLabelFillColor('white', 'white');
 
 $wp2->SetRangeColors(['green', 'yellow', 'red', 'brown']);

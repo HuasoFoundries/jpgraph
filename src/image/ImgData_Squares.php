@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 /**
@@ -18,12 +18,28 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_Squares extends ImgData
 {
     protected $name = 'Squares';
-    protected $an   = [MARK_IMG_SQUARE => 'imgdata'];
+    protected $an   = [Configs::MARK_IMG_SQUARE => 'imgdata'];
 
-    protected $colors = ['bluegreen', 'blue', 'green',
-        'lightblue', 'orange', 'purple', 'red', 'yellow', ];
-    protected $index = ['bluegreen'     => 2, 'blue'   => 5, 'green'  => 6,
-        'lightblue'                     => 0, 'orange' => 7, 'purple' => 4, 'red' => 3, 'yellow' => 1, ];
+    protected $colors = [
+        'bluegreen',
+        'blue',
+        'green',
+        'lightblue',
+        'orange',
+        'purple',
+        'red',
+        'yellow',
+    ];
+    protected $index  = [
+        'bluegreen'                     => 2,
+        'blue'                          => 5,
+        'green'                         => 6,
+        'lightblue'                     => 0,
+        'orange'                        => 7,
+        'purple'                        => 4,
+        'red'                           => 3,
+        'yellow'                        => 1,
+    ];
     protected $maxidx = 7;
     protected $imgdata;
 

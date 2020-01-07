@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
+
+use function round;
 
 /**
  * @class RectPatternLDiag

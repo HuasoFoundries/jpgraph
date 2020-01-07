@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,17 +25,16 @@ for ($i = 0; $i < 25; ++$i) {
     $databarx[] = $months[$i % 12];
 }
 
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
 // Specify X-labels
 $graph->xaxis->SetTickLabels($databarx);
 
-// Set title and subtitle
-$graph->title->Set('Bar tutorial example 3');
+// Set title and subtitle$example_title='Bar tutorial example 3'; $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

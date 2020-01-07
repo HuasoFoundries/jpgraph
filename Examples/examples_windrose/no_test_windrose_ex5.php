@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -27,11 +27,12 @@ $txt[2] = 'Finally we can show a center aligned paragraph without box.';
 $rangeColors = ['silver', 'khaki', 'orange', 'brown', 'blue', 'navy', 'maroon', 'red'];
 
 // First create a new windrose graph with a title
-$__width  = 570;
-$__height = 430;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 5');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$__width       = 570;
+$__height      = 430;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 5';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // We store the layout for each of the text boxes in an array
@@ -39,7 +40,7 @@ $graph->title->SetColor('navy');
 $txtlayout = [
     [0.97, 0.15, 25, 'left', 'black', 'lightblue'],
     [0.97, 0.4, 20, 'right', 'black', 'lightblue'],
-    [0.97, 0.7, 20, 'center', 'darkred', false, FF_COMIC, FS_NORMAL, 12],
+    [0.97, 0.7, 20, 'center', 'darkred', false, Graph\Configs::getConfig('FF_COMIC'), Graph\Configs::getConfig('FS_NORMAL'), 12],
 ];
 
 // Setup graph background color
@@ -73,7 +74,7 @@ $wp->SetBox();
 $wp->SetRangeColors($rangeColors);
 
 // Adjust the font and font color for scale labels
-$wp->scale->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$wp->scale->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $wp->scale->SetFontColor('navy');
 
 // Set the diameter and position for plot
@@ -83,7 +84,7 @@ $wp->SetPos(0.35, 0.53);
 $wp->SetZCircleSize(0.2);
 
 // Adjust the font and font color for compass directions
-$wp->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$wp->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $wp->SetFontColor('darkgreen');
 
 // Adjust the margin to the compass directions

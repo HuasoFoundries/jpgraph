@@ -1,12 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
+use function round;
 
 /**
  * @class GanttLink
@@ -22,8 +23,8 @@ class GanttLink
     private $iPathExtend = 15;
     private $iColor      = 'black';
     private $iWeight     = 1;
-    private $iArrowSize  = ARROW_S2;
-    private $iArrowType  = ARROWT_SOLID;
+    private $iArrowSize  = Configs::ARROW_S2;
+    private $iArrowType  = Configs::ARROWT_SOLID;
 
     public function __construct($x1 = 0, $y1 = 0, $x2 = 0, $y2 = 0)
     {
@@ -51,7 +52,7 @@ class GanttLink
         $this->iColor = $aColor;
     }
 
-    public function SetArrow($aSize, $aType = ARROWT_SOLID)
+    public function SetArrow($aSize, $aType = Configs::ARROWT_SOLID)
     {
         $this->iArrowSize = $aSize;
         $this->iArrowType = $aType;
@@ -86,7 +87,7 @@ class GanttLink
         // Depending on if the target is below or above we have to
         // handle thi different.
         if ($y2 > $y1) {
-            $arrowtype = ARROW_DOWN;
+            $arrowtype = Configs::ARROW_DOWN;
             $midy      = round(($y2 - $y1) / 2 + $y1);
             if ($x2 > $x1) {
                 switch ($this->iPathType) {
@@ -119,18 +120,35 @@ class GanttLink
                         // If we draw a link back in time (end to start) and the bars
                         // are very close we also change the path so it comes in from
                         // the left on the activity
-                        $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
-                            $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2, ];
+                        $c = [
+                            $x1,
+                            $y1,
+                            $x1 + $this->iPathExtend,
+                            $y1,
+                            $x1 + $this->iPathExtend,
+                            $midy,
+                            $x2,
+                            $midy,
+                            $x2,
+                            $y2,
+                        ];
 
                         break;
                     case 3:
                         if ($y2 - $midy < 6) {
-                            $c = [$x1, $y1, $x1, $midy,
-                                $x2 - $this->iPathExtend, $midy,
-                                $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2, ];
-                            $arrowtype = ARROW_RIGHT;
+                            $c         = [
+                                $x1,
+                                $y1,
+                                $x1,
+                                $midy,
+                                $x2 - $this->iPathExtend,
+                                $midy,
+                                $x2 - $this->iPathExtend,
+                                $y2,
+                                $x2,
+                                $y2,
+                            ];
+                            $arrowtype = Configs::ARROW_RIGHT;
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }
@@ -147,7 +165,7 @@ class GanttLink
             $arrow = new LinkArrow($x2, $y2, $arrowtype);
         } else {
             // Y2 < Y1
-            $arrowtype = ARROW_UP;
+            $arrowtype = Configs::ARROW_UP;
             $midy      = round(($y1 - $y2) / 2 + $y2);
             if ($x2 > $x1) {
                 switch ($this->iPathType) {
@@ -158,7 +176,7 @@ class GanttLink
                         break;
                     case 3:
                         if ($midy - $y2 < 8) {
-                            $arrowtype = ARROW_RIGHT;
+                            $arrowtype = Configs::ARROW_RIGHT;
                             $c         = [$x1, $y1, $x1, $y2, $x2, $y2];
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
@@ -179,17 +197,35 @@ class GanttLink
                         break;
                     case 2:
                         // Always extend out horizontally a bit from the first point
-                        $c = [$x1, $y1, $x1 + $this->iPathExtend, $y1,
-                            $x1 + $this->iPathExtend, $midy,
-                            $x2, $midy, $x2, $y2, ];
+                        $c = [
+                            $x1,
+                            $y1,
+                            $x1 + $this->iPathExtend,
+                            $y1,
+                            $x1 + $this->iPathExtend,
+                            $midy,
+                            $x2,
+                            $midy,
+                            $x2,
+                            $y2,
+                        ];
 
                         break;
                     case 3:
                         if ($midy - $y2 < 16) {
-                            $arrowtype = ARROW_RIGHT;
-                            $c         = [$x1, $y1, $x1, $midy, $x2 - $this->iPathExtend, $midy,
-                                $x2 - $this->iPathExtend, $y2,
-                                $x2, $y2, ];
+                            $arrowtype = Configs::ARROW_RIGHT;
+                            $c         = [
+                                $x1,
+                                $y1,
+                                $x1,
+                                $midy,
+                                $x2 - $this->iPathExtend,
+                                $midy,
+                                $x2 - $this->iPathExtend,
+                                $y2,
+                                $x2,
+                                $y2,
+                            ];
                         } else {
                             $c = [$x1, $y1, $x1, $midy, $x2, $midy, $x2, $y2];
                         }

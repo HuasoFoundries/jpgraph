@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -11,6 +11,10 @@ require_once __DIR__ . '/../config.inc.php';
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
+use function count;
+use function is_array;
+use function preg_match_all;
+use function preg_split;
 
 /**
  * @class PieGraph
@@ -26,8 +30,6 @@ class PieGraph extends Graph
     public $pieaa    = false;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $width
      * @param mixed $height
      * @param mixed $cachedName
@@ -41,9 +43,11 @@ class PieGraph extends Graph
         $this->posy = $height / 2;
         $this->SetColor([255, 255, 255]);
 
-        if ($this->graph_theme) {
-            $this->graph_theme->ApplyGraph($this);
+        if (!$this->graph_theme) {
+            return;
         }
+
+        $this->graph_theme->ApplyGraph($this);
     }
 
     /**
@@ -53,7 +57,7 @@ class PieGraph extends Graph
      */
     public function Add($aObj)
     {
-        if (is_array($aObj) && safe_count($aObj) > 0) {
+        if (is_array($aObj) && Configs::safe_count($aObj) > 0) {
             $cl = $aObj[0];
         } else {
             $cl = $aObj;
@@ -65,7 +69,7 @@ class PieGraph extends Graph
             $this->AddIcon($aObj);
         } else {
             if (is_array($aObj)) {
-                $n = safe_count($aObj);
+                $n = Configs::safe_count($aObj);
                 for ($i = 0; $i < $n; ++$i) {
                     //if ($aObj[$i]->theme) {
                     //    $this->ClearTheme();
@@ -80,12 +84,33 @@ class PieGraph extends Graph
             }
         }
 
-        if ($this->graph_theme) {
-            $this->graph_theme->SetupPlot($aObj);
-            if ($aObj->is_using_plot_theme) {
-                $aObj->UsePlotThemeColors();
-            }
+        if (!$this->graph_theme) {
+            return;
         }
+
+        $this->graph_theme->SetupPlot($aObj);
+        if (!$aObj->is_using_plot_theme) {
+            return;
+        }
+
+        $aObj->UsePlotThemeColors();
+    }
+
+    public function ClearTheme()
+    {
+        $this->graph_theme = null;
+
+        $this->isRunningClear = true;
+
+        $this->__construct(
+            $this->inputValues['aWidth'],
+            $this->inputValues['aHeight'],
+            $this->inputValues['aCachedName'],
+            $this->inputValues['aTimeout'],
+            $this->inputValues['aInline']
+        );
+
+        $this->isRunningClear = false;
     }
 
     public function SetAntiAliasing($aFlg = true)
@@ -106,25 +131,27 @@ class PieGraph extends Graph
         }
 
         $csim .= $this->legend->GetCSIMareas();
-        if (preg_match_all('/area shape="(\\w+)" coords="([0-9\\, ]+)"/', $csim, $coords)) {
-            $this->img->SetColor($this->csimcolor);
-            $n = safe_count($coords[0]);
-            for ($i = 0; $i < $n; ++$i) {
-                if ($coords[1][$i] == 'poly') {
-                    preg_match_all('/\s*([0-9]+)\s*,\s*([0-9]+)\s*,*/', $coords[2][$i], $pts);
-                    $this->img->SetStartPoint($pts[1][count($pts[0]) - 1], $pts[2][count($pts[0]) - 1]);
-                    $m = safe_count($pts[0]);
-                    for ($j = 0; $j < $m; ++$j) {
-                        $this->img->LineTo($pts[1][$j], $pts[2][$j]);
-                    }
-                } elseif ($coords[1][$i] == 'rect') {
-                    $pts = preg_split('/,/', $coords[2][$i]);
-                    $this->img->SetStartPoint($pts[0], $pts[1]);
-                    $this->img->LineTo($pts[2], $pts[1]);
-                    $this->img->LineTo($pts[2], $pts[3]);
-                    $this->img->LineTo($pts[0], $pts[3]);
-                    $this->img->LineTo($pts[0], $pts[1]);
+        if (!preg_match_all('/area shape="(\\w+)" coords="([0-9\\, ]+)"/', $csim, $coords)) {
+            return;
+        }
+
+        $this->img->SetColor($this->csimcolor);
+        $n = Configs::safe_count($coords[0]);
+        for ($i = 0; $i < $n; ++$i) {
+            if ($coords[1][$i] == 'poly') {
+                preg_match_all('/\s*([0-9]+)\s*,\s*([0-9]+)\s*,*/', $coords[2][$i], $pts);
+                $this->img->SetStartPoint($pts[1][count($pts[0]) - 1], $pts[2][count($pts[0]) - 1]);
+                $m = Configs::safe_count($pts[0]);
+                for ($j = 0; $j < $m; ++$j) {
+                    $this->img->LineTo($pts[1][$j], $pts[2][$j]);
                 }
+            } elseif ($coords[1][$i] == 'rect') {
+                $pts = preg_split('/,/', $coords[2][$i]);
+                $this->img->SetStartPoint($pts[0], $pts[1]);
+                $this->img->LineTo($pts[2], $pts[1]);
+                $this->img->LineTo($pts[2], $pts[3]);
+                $this->img->LineTo($pts[0], $pts[3]);
+                $this->img->LineTo($pts[0], $pts[1]);
             }
         }
     }
@@ -139,7 +166,7 @@ class PieGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // If we are called the second time (perhaps the user has called GetHTMLImageMap()
         // himself then the legends have alsready been populated once in order to get the
@@ -153,7 +180,7 @@ class PieGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        $n = safe_count($this->plots);
+        $n = Configs::safe_count($this->plots);
 
         if ($this->pieaa) {
             if (!$_csim) {
@@ -176,16 +203,18 @@ class PieGraph extends Graph
 
             // Make all icons *2 i size since we will be scaling down the
             // imahe to do the anti aliasing
-            $ni = safe_count($this->iIcons);
+            $ni = Configs::safe_count($this->iIcons);
             for ($i = 0; $i < $ni; ++$i) {
                 $this->iIcons[$i]->iScale *= 2;
                 if ($this->iIcons[$i]->iX > 1) {
                     $this->iIcons[$i]->iX *= 2;
                 }
 
-                if ($this->iIcons[$i]->iY > 1) {
-                    $this->iIcons[$i]->iY *= 2;
+                if ($this->iIcons[$i]->iY <= 1) {
+                    continue;
                 }
+
+                $this->iIcons[$i]->iY *= 2;
             }
 
             $this->StrokeIcons();
@@ -205,9 +234,11 @@ class PieGraph extends Graph
                     $this->plots[$i]->posx /= 2;
                 }
 
-                if ($this->plots[$i]->posy > 1) {
-                    $this->plots[$i]->posy /= 2;
+                if ($this->plots[$i]->posy <= 1) {
+                    continue;
                 }
+
+                $this->plots[$i]->posy /= 2;
             }
 
             $indent = $this->doframe ? ($this->frame_weight + ($this->doshadow ? $this->shadow_width : 0)) : 0;
@@ -255,46 +286,50 @@ class PieGraph extends Graph
         $this->footer->Stroke($this->img);
         $this->StrokeTitles();
 
-        if (!$_csim) {
-            // Stroke texts
-            if ($this->texts != null) {
-                $n = safe_count($this->texts);
-                for ($i = 0; $i < $n; ++$i) {
-                    $this->texts[$i]->Stroke($this->img);
-                }
-            }
+        if ($_csim) {
+            return;
+        }
 
-            if (_JPG_DEBUG) {
-                $this->DisplayCSIMAreas();
+        // Stroke texts
+        if ($this->texts != null) {
+            $n = Configs::safe_count($this->texts);
+            for ($i = 0; $i < $n; ++$i) {
+                $this->texts[$i]->Stroke($this->img);
             }
+        }
 
-            // Should we do any final image transformation
-            if ($this->iImgTrans) {
-                $tform          = new Image\ImgTrans($this->img->img);
-                $this->img->img = $tform->Skew3D(
-                    $this->iImgTransHorizon,
-                    $this->iImgTransSkewDist,
-                    $this->iImgTransDirection,
-                    $this->iImgTransHighQ,
-                    $this->iImgTransMinSize,
-                    $this->iImgTransFillColor,
-                    $this->iImgTransBorder
-                );
-            }
+        if (Configs::_JPG_DEBUG) {
+            $this->DisplayCSIMAreas();
+        }
 
-            // If the filename is given as the special "__handle"
-            // then the image handler is returned and the image is NOT
-            // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
-                return $this->img->img;
-            }
-            // Finally stream the generated picture
-            $this->cache->PutAndStream(
-                $this->img,
-                $this->cache_name,
-                $this->inline,
-                $aStrokeFileName
+        // Should we do any final image transformation
+        if ($this->iImgTrans) {
+            $tform          = new Image\ImgTrans($this->img->img);
+            $this->img->img = $tform->Skew3D(
+                $this->iImgTransHorizon,
+                $this->iImgTransSkewDist,
+                $this->iImgTransDirection,
+                $this->iImgTransHighQ,
+                $this->iImgTransMinSize,
+                $this->iImgTransFillColor,
+                $this->iImgTransBorder
             );
         }
+
+        // If the filename is given as the special "__handle"
+        // then the image handler is returned and the image is NOT
+        // streamed back
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            return $this->img->img;
+        }
+        // Finally stream the generated picture
+        $this->cache->PutAndStream(
+            $this->img,
+            $this->cache_name,
+            $this->inline,
+            $aStrokeFileName
+        );
     }
-} // @class
+}
+
+// @class

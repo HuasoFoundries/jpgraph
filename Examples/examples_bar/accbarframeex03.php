@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,18 +19,17 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
-// Setup title
-$graph->title->Set('Acc bar with gradient');
+// Setup title$example_title='Acc bar with gradient'; $graph->title->set($example_title);
 
 // Create the first bar
 $bplot = new Plot\BarPlot($datay1);
-$bplot->SetFillGradient('AntiqueWhite2', 'AntiqueWhite4:0.8', GRAD_VERT);
+$bplot->SetFillGradient('AntiqueWhite2', 'AntiqueWhite4:0.8', Graph\Configs::getConfig('GRAD_VERT'));
 $bplot->SetColor('darkred');
 $bplot->SetWeight(0);
 
 // Create the second bar
 $bplot2 = new Plot\BarPlot($datay2);
-$bplot2->SetFillGradient('olivedrab1', 'olivedrab4', GRAD_VERT);
+$bplot2->SetFillGradient('olivedrab1', 'olivedrab4', Graph\Configs::getConfig('GRAD_VERT'));
 $bplot2->SetColor('darkgreen');
 $bplot2->SetWeight(0);
 

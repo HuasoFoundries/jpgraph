@@ -1,10 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
+
+use function assert;
+use function explode;
+use function floor;
+use function microtime;
 
 /**
  * @class JpgTimer
@@ -25,8 +30,8 @@ class JpgTimer
     // Push a new timer start on stack
     public function Push()
     {
-        list($ms, $s)              = explode(' ', microtime());
-        $this->start[$this->idx++] = floor($ms * 1000) + 1000 * $s;
+        list($ms, $s)                  = explode(' ', microtime());
+        $this->start[$this->idx++]     = floor($ms * 1000) + 1000 * $s;
     }
 
     // Pop the latest timer start and return the diff with the

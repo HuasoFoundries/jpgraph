@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Illustration of the different patterns for bands
@@ -35,14 +35,15 @@ $graph->ygrid->Show(false);
 $graph->Add($bplot);
 
 // Add band
-$band = new Plot\PlotBand(HORIZONTAL, BAND_3DPLANE, 15, 35, 'khaki4');
+$band = new Plot\PlotBand(Graph\Configs::getConfig('HORIZONTAL'), Graph\Configs::getConfig('BAND_3DPLANE'), 15, 35, 'khaki4');
 $band->SetDensity(80);
 $band->ShowFrame(true);
 $graph->Add($band);
 
 // Set title
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $graph->title->SetColor('darkred');
-$graph->title->Set('BAND_3DPLANE, Density=60');
+$example_title = 'BAND_3DPLANE, Density=60';
+$graph->title->set($example_title);
 
 $graph->Stroke();

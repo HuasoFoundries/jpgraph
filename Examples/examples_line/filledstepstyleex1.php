@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,15 +20,16 @@ $graph->SetShadow(true);
 $graph->SetMarginColor('antiquewhite');
 $graph->img->SetMargin(60, 40, 40, 50);
 $graph->img->setTransparent('white');
-$graph->xaxis->SetFont(FF_FONT1);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 $graph->xaxis->setTextTickInterval(1);
 $graph->xaxis->SetTextLabelInterval(1);
 $graph->legend->SetFillColor('antiquewhite');
 $graph->legend->SetShadow(true);
-$graph->legend->SetLayout(LEGEND_VERT);
+$graph->legend->SetLayout(Graph\Configs::getConfig('LEGEND_VERT'));
 $graph->legend->Pos(0.02, 0.01);
-$graph->title->Set('Step Styled Example');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'Step Styled Example';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $lineplot = new Plot\LinePlot($ydata);
 $lineplot->SetColor('black');

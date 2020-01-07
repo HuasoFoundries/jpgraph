@@ -1,12 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
+use function floor;
+use function is_numeric;
 
 /**
  * @class RectPattern
@@ -77,8 +79,12 @@ class RectPattern
         $this->DoPattern($aImg);
 
         // Frame around the pattern area
-        if ($this->doframe) {
-            $aImg->Rectangle($this->rect->x, $this->rect->y, $this->rect->xe, $this->rect->ye);
+        if (!$this->doframe) {
+            // Frame around the pattern area
+            return;
+            // Frame around the pattern area
         }
+
+        $aImg->Rectangle($this->rect->x, $this->rect->y, $this->rect->xe, $this->rect->ye);
     }
 }

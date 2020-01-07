@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,19 +19,20 @@ $graph->yaxis->scale->SetGrace(10, 10);
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);
-$lineplot->mark->SetType(MARK_CIRCLE);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_CIRCLE'));
 
 // Add the plot to the graph
 $graph->Add($lineplot);
 
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Grace value, version 1');
+$example_title = 'Grace value, version 1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2);

@@ -1,13 +1,18 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
+use function abs;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
+use function assert;
+use function is_numeric;
+use function max;
+use function min;
 
 /**
  * File:        JPGRAPH_PLOTBAND.PHP
@@ -32,7 +37,7 @@ class PlotBand
     private $min;
     private $max;
 
-    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = DEPTH_BACK)
+    public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = Configs::DEPTH_BACK)
     {
         $f           = new Graph\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
@@ -94,7 +99,7 @@ class PlotBand
     public function Stroke($aImg, $aXScale, $aYScale)
     {
         assert($this->prect != null);
-        if ($this->dir == HORIZONTAL) {
+        if ($this->dir == Configs::HORIZONTAL) {
             if ($this->min === 'min') {
                 $this->min = $aYScale->GetMinVal();
             }

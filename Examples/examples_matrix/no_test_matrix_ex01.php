@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,11 +22,12 @@ $data = [
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
 
-$__width  = 550;
-$__height = 500;
-$graph    = new MatrixGraph($__width, $__height);
-$graph->title->Set('Possible legend positions');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$__width       = 550;
+$__height      = 500;
+$graph         = new MatrixGraph($__width, $__height);
+$example_title = 'Possible legend positions';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 $mp  = [];
 $n   = 4;

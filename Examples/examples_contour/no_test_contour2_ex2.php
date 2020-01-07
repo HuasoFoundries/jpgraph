@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -24,12 +24,12 @@ $graph->SetMargin(30, 30, 40, 30);
 $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
-// Setup title of graph
-$graph->title->Set('Filled contour plot');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+// Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
-$graph->subtitle->Set('(No lines, no labels)');
-$graph->subtitle->SetFont(FF_VERDANA, FS_ITALIC, 10);
+$subtitle_text = '(No lines, no labels)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 // Create a new contour plot
 $cp = new FilledContourPlot($data);

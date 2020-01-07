@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,8 +22,9 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot
-$graph->title->Set('String labels with values');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$example_title = 'String labels with values';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('black');
 
 // Create pie plot
@@ -42,9 +43,9 @@ $p1->SetLabelPos(1);
 
 // Setup the label formats and what value we want to be shown (The absolute)
 // or the percentage.
-$p1->SetLabelType(PIE_VALUE_PER);
+$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_PER'));
 $p1->value->Show();
-$p1->value->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $p1->value->SetColor('darkgray');
 
 // Add and stroke

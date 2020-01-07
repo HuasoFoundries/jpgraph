@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,18 +20,17 @@ for ($i = 0; $i < 12; ++$i) {
     $databary[$i] = rand(1, 20);
 }
 $months = $graph->gDateLocale->GetShortMonth();
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
 // Specify X-labels
 $graph->xaxis->SetTickLabels($months);
 $graph->xaxis->SetTextLabelInterval(2);
 
-// Set title and subtitle
-$graph->title->Set('Textscale with tickinterval=2');
+// Set title and subtitle$example_title='Textscale with tickinterval=2'; $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

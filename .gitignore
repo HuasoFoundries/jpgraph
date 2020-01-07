@@ -12,5 +12,14 @@ jpgraph.phprj
 jpgraph.workspace
 nbproject
 .idea
+<<<<<<< HEAD
+.churn.yml
+.php_cs.cache
+.phpcs.config.xml
+.phpmd.xml
+.pmd.log
+psalm.xml
+=======
 tests/_output/coverage
 
+>>>>>>> master

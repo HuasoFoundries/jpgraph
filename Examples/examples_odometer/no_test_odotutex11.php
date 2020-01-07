@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,18 +10,18 @@ use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
-$__width  = 250;
-$__height = 150;
-$graph    = new OdoGraph($__width, $__height);
-
-$graph->title->Set('Example with scale indicators');
+$__width       = 250;
+$__height      = 150;
+$graph         = new OdoGraph($__width, $__height);
+$example_title = 'Example with scale indicators';
+$graph->title->set($example_title);
 
 // Add drop shadow for graph
 $graph->SetShadow();
 
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
-$odo = new Odometer(ODO_HALF);
+$odo = new Odometer(Graph\Configs::getConfig('ODO_HALF'));
 
 // Add color indications
 $odo->AddIndication(0, 20, 'green:0.7');

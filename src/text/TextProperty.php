@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -18,8 +18,8 @@ class TextProperty
     public $csimtarget    = '';
     public $csimwintarget = '';
     public $csimalt       = '';
-    private $iFFamily     = FF_FONT1;
-    private $iFStyle      = FS_NORMAL;
+    private $iFFamily     = Configs::FF_FONT1;
+    private $iFStyle      = Configs::FS_NORMAL;
     private $iFSize       = 10;
     private $iFontArray   = [];
     private $iColor       = 'black';
@@ -28,8 +28,6 @@ class TextProperty
     private $iVAlign      = 'bottom';
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $aTxt
      */
     public function __construct($aTxt = '')
@@ -118,7 +116,7 @@ class TextProperty
     }
 
     // Specify font
-    public function SetFont($aFFamily, $aFStyle = FS_NORMAL, $aFSize = 10)
+    public function SetFont($aFFamily, $aFStyle = self::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
         $this->iFStyle  = $aFStyle;
@@ -127,7 +125,7 @@ class TextProperty
 
     public function SetColumnFonts($aFontArray)
     {
-        if (!is_array($aFontArray) || safe_count($aFontArray[0]) != 3) {
+        if (!is_array($aFontArray) || Configs::safe_count($aFontArray[0]) != 3) {
             Util\JpGraphError::RaiseL(6033);
             // 'Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)'
         }
@@ -152,13 +150,13 @@ class TextProperty
             }
 
             $tmp = preg_split('/\t/', $this->iText);
-            if (safe_count($tmp) <= 1 || !$aUseTabs) {
+            if (Configs::safe_count($tmp) <= 1 || !$aUseTabs) {
                 $w = $aImg->GetTextWidth($this->iText);
 
                 return $w + 2 * $extra_margin;
             }
             $tot = 0;
-            $n   = safe_count($tmp);
+            $n   = Configs::safe_count($tmp);
             for ($i = 0; $i < $n; ++$i) {
                 $res[$i] = $aImg->GetTextWidth($tmp[$i]);
                 $tot += $res[$i] * $aTabExtraMargin;
@@ -173,8 +171,8 @@ class TextProperty
         if (is_array($this->iText)) {
             // Must be an array of texts. In this case we return the sum of the
             // length + a fixed margin of 4 pixels on each text string
-            $n  = safe_count($this->iText);
-            $nf = safe_count($this->iFontArray);
+            $n  = Configs::safe_count($this->iText);
+            $nf = Configs::safe_count($this->iFontArray);
             for ($i = 0, $w = 0; $i < $n; ++$i) {
                 if ($i < $nf) {
                     $aImg->SetFont($this->iFontArray[$i][0], $this->iFontArray[$i][1], $this->iFontArray[$i][2]);
@@ -204,8 +202,8 @@ class TextProperty
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         if (is_array($this->iText)) {
-            $n  = safe_count($this->iText);
-            $nf = safe_count($this->iFontArray);
+            $n  = Configs::safe_count($this->iText);
+            $nf = Configs::safe_count($this->iFontArray);
             for ($i = 0, $w = []; $i < $n; ++$i) {
                 $tmp = $this->iText[$i];
                 if (is_string($tmp)) {
@@ -232,7 +230,7 @@ class TextProperty
     // Get total height of text
     public function GetHeight($aImg)
     {
-        $nf        = safe_count($this->iFontArray);
+        $nf        = Configs::safe_count($this->iFontArray);
         $maxheight = -1;
 
         if ($nf > 0) {
@@ -263,63 +261,65 @@ class TextProperty
     // tab mark. If no array is supplied then the tabs will be ignored.
     public function Stroke($aImg, $aX, $aY)
     {
-        if ($this->iShow) {
-            $aImg->SetColor($this->iColor);
-            $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-            $aImg->SetTextAlign($this->iHAlign, $this->iVAlign);
-            if ($this->GetNbrTabs() < 1) {
-                if (is_string($this->iText)) {
-                    if (is_array($aX)) {
-                        $aX = $aX[0];
-                    }
+        if (!$this->iShow) {
+            return;
+        }
 
-                    if (is_array($aY)) {
-                        $aY = $aY[0];
-                    }
-
-                    $aImg->StrokeText($aX, $aY, $this->iText);
-                } elseif (is_array($this->iText) && ($n = safe_count($this->iText)) > 0) {
-                    $ax = is_array($aX);
-                    $ay = is_array($aY);
-                    if ($ax && $ay) {
-                        // Nothing; both are already arrays
-                    } elseif ($ax) {
-                        $aY = array_fill(0, $n, $aY);
-                    } elseif ($ay) {
-                        $aX = array_fill(0, $n, $aX);
-                    } else {
-                        $aX = array_fill(0, $n, $aX);
-                        $aY = array_fill(0, $n, $aY);
-                    }
-                    $n = min($n, safe_count($aX));
-                    $n = min($n, safe_count($aY));
-                    for ($i = 0; $i < $n; ++$i) {
-                        $tmp = $this->iText[$i];
-                        if (is_object($tmp)) {
-                            $tmp->Stroke($aImg, $aX[$i], $aY[$i]);
-                        } else {
-                            if ($i < safe_count($this->iFontArray)) {
-                                $font = $this->iFontArray[$i];
-                                $aImg->SetFont($font[0], $font[1], $font[2]);
-                            } else {
-                                $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-                            }
-                            $aImg->StrokeText($aX[$i], $aY[$i], str_replace("\t", ' ', $tmp));
-                        }
-                    }
+        $aImg->SetColor($this->iColor);
+        $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+        $aImg->SetTextAlign($this->iHAlign, $this->iVAlign);
+        if ($this->GetNbrTabs() < 1) {
+            if (is_string($this->iText)) {
+                if (is_array($aX)) {
+                    $aX = $aX[0];
                 }
-            } else {
-                $tmp = preg_split('/\t/', $this->iText);
-                $n   = min(safe_count($tmp), safe_count($aX));
+
+                if (is_array($aY)) {
+                    $aY = $aY[0];
+                }
+
+                $aImg->StrokeText($aX, $aY, $this->iText);
+            } elseif (is_array($this->iText) && ($n = Configs::safe_count($this->iText)) > 0) {
+                $ax = is_array($aX);
+                $ay = is_array($aY);
+                if ($ax && $ay) {
+                    // Nothing; both are already arrays
+                } elseif ($ax) {
+                    $aY = array_fill(0, $n, $aY);
+                } elseif ($ay) {
+                    $aX = array_fill(0, $n, $aX);
+                } else {
+                    $aX = array_fill(0, $n, $aX);
+                    $aY = array_fill(0, $n, $aY);
+                }
+                $n = min($n, Configs::safe_count($aX));
+                $n = min($n, Configs::safe_count($aY));
                 for ($i = 0; $i < $n; ++$i) {
-                    if ($i < safe_count($this->iFontArray)) {
-                        $font = $this->iFontArray[$i];
-                        $aImg->SetFont($font[0], $font[1], $font[2]);
+                    $tmp = $this->iText[$i];
+                    if (is_object($tmp)) {
+                        $tmp->Stroke($aImg, $aX[$i], $aY[$i]);
                     } else {
-                        $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+                        if ($i < Configs::safe_count($this->iFontArray)) {
+                            $font = $this->iFontArray[$i];
+                            $aImg->SetFont($font[0], $font[1], $font[2]);
+                        } else {
+                            $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+                        }
+                        $aImg->StrokeText($aX[$i], $aY[$i], str_replace("\t", ' ', $tmp));
                     }
-                    $aImg->StrokeText($aX[$i], $aY, $tmp[$i]);
                 }
+            }
+        } else {
+            $tmp = preg_split('/\t/', $this->iText);
+            $n   = min(Configs::safe_count($tmp), Configs::safe_count($aX));
+            for ($i = 0; $i < $n; ++$i) {
+                if ($i < Configs::safe_count($this->iFontArray)) {
+                    $font = $this->iFontArray[$i];
+                    $aImg->SetFont($font[0], $font[1], $font[2]);
+                } else {
+                    $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
+                }
+                $aImg->StrokeText($aX[$i], $aY, $tmp[$i]);
             }
         }
     }

@@ -1,0 +1,20 @@
+testAquathemeExample:
+    aqua_example.php: { width: 400, height: 300, title: 'AquaTheme Example', filename: aqua_example.php }
+testGreenthemeExample:
+    green_example.php: { width: 400, height: 300, title: 'GreenTheme Example', filename: green_example.php }
+testOceanthemeExample:
+    ocean_example.php: { width: 400, height: 300, title: 'OceanTheme Example', filename: ocean_example.php }
+testOrangethemeExample:
+    orange_example.php: { width: 400, height: 300, title: 'OrangeTheme Example', filename: orange_example.php }
+testPastelthemeExample:
+    pastel_example.php: { width: 400, height: 300, title: 'PastelTheme Example', filename: pastel_example.php }
+testRosethemeExample:
+    rose_example.php: { width: 400, height: 300, title: 'RoseTheme Example', filename: rose_example.php }
+testSoftythemeExample:
+    softy_example.php: { width: 400, height: 300, title: 'SoftyTheme Example', filename: softy_example.php }
+testThemefileiterator:
+    theme_example.php: { width: 400, height: 300, title: themeFileIterator, filename: theme_example.php }
+testUniversalthemeExample:
+    universal_example.php: { width: 400, height: 300, title: 'UniversalTheme Example', filename: universal_example.php }
+testVividthemeExample:
+    vivid_example.php: { width: 400, height: 300, title: 'VividTheme Example', filename: vivid_example.php }

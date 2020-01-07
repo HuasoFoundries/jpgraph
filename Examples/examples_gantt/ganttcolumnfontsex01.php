@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,16 +13,15 @@ $graph = new Graph\GanttGraph();
 $graph->SetMarginColor('gray:1.7');
 $graph->SetColor('white');
 
-// Setup the graph title and title font
-$graph->title->Set('Example of column fonts');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
+// Setup the graph title and title font$example_title='Example of column fonts'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Show three headers
-$graph->ShowHeaders(GANTT_HDAY | GANTT_HMONTH | GANTT_HYEAR);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HYEAR'));
 
 // Set the column headers and font
 $graph->scale->actinfo->SetColTitles(['Name', 'Start', 'End'], [100]);
-$graph->scale->actinfo->SetFont(FF_ARIAL, FS_BOLD, 11);
+$graph->scale->actinfo->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 // Some "dummy" data to be dsiplayed
 $data = [
@@ -42,23 +41,23 @@ for ($i = 0; $i < $n; ++$i) {
         $bar = new Plot\GanttBar($data[$i][0], [$data[$i][1], $data[$i][2], $data[$i][3]], $data[$i][2], $data[$i][3], '', 0.35);
 
         // For each group make the name bold but keep the dates as the default font
-        $bar->title->SetColumnFonts([[FF_ARIAL, FS_BOLD, 11]]);
+        $bar->title->SetColumnFonts([[Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11]]);
 
         // Add group markers
-        $bar->leftMark->SetType(MARK_LEFTTRIANGLE);
+        $bar->leftMark->SetType(Graph\Configs::getConfig('MARK_LEFTTRIANGLE'));
         $bar->leftMark->Show();
-        $bar->rightMark->SetType(MARK_RIGHTTRIANGLE);
+        $bar->rightMark->SetType(Graph\Configs::getConfig('MARK_RIGHTTRIANGLE'));
         $bar->rightMark->Show();
         $bar->SetFillColor('black');
-        $bar->SetPattern(BAND_SOLID, 'black');
+        $bar->SetPattern(Graph\Configs::getConfig('BAND_SOLID'), 'black');
     } else {
         // Format the activity bars
         $bar = new Plot\GanttBar($data[$i][0], [$data[$i][1], $data[$i][2], $data[$i][3]], $data[$i][2], $data[$i][3], '', 0.45);
-        $bar->SetPattern(BAND_RDIAG, 'black');
+        $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'black');
         $bar->SetFillColor('orange');
     }
     // Default font
-    $bar->title->SetFont(FF_ARIAL, FS_NORMAL, 10);
+    $bar->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
     $graph->Add($bar);
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -9,6 +9,11 @@ namespace Amenadiel\JpGraph\Plot;
 require_once __DIR__ . '/../config.inc.php';
 
 use Amenadiel\JpGraph\Util;
+use function is_array;
+use function is_numeric;
+use function max;
+use function min;
+use function substr;
 
 /**
  * @class Plot
@@ -38,7 +43,7 @@ class Plot
 
     public function __construct($aDatay, $aDatax = false)
     {
-        $this->numpoints = safe_count($aDatay);
+        $this->numpoints = Configs::safe_count($aDatay);
         if ($this->numpoints == 0) {
             Util\JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");
         }
@@ -52,11 +57,13 @@ class Plot
         $this->coords[0] = $aDatay;
         if (is_array($aDatax)) {
             $this->coords[1] = $aDatax;
-            $n               = safe_count($aDatax);
+            $n               = Configs::safe_count($aDatax);
             for ($i = 0; $i < $n; ++$i) {
-                if (!is_numeric($aDatax[$i])) {
-                    Util\JpGraphError::RaiseL(25070);
+                if (is_numeric($aDatax[$i])) {
+                    continue;
                 }
+
+                Util\JpGraphError::RaiseL(25070);
             }
         }
         $this->value = new DisplayValue();
@@ -77,9 +84,11 @@ class Plot
 
     public function DoLegend($graph)
     {
-        if (!$this->hidelegend) {
-            $this->Legend($graph);
+        if ($this->hidelegend) {
+            return;
         }
+
+        $this->Legend($graph);
     }
 
     public function StrokeDataValue($img, $aVal, $x, $y)
@@ -127,13 +136,13 @@ class Plot
         } else {
             $x = '';
         }
-        if ($x != '' && safe_count($x) > 0) {
+        if ($x != '' && Configs::safe_count($x) > 0) {
             $xm = min($x);
         } else {
             $xm = 0;
         }
         $y   = $this->coords[0];
-        $cnt = safe_count($y);
+        $cnt = Configs::safe_count($y);
         if ($cnt > 0) {
             $i = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
@@ -161,14 +170,14 @@ class Plot
             $x = '';
         }
 
-        if ($x != '' && safe_count($x) > 0) {
+        if ($x != '' && Configs::safe_count($x) > 0) {
             $xm = max($x);
         } else {
             $xm = $this->numpoints - 1;
         }
         $y = $this->coords[0];
-        if (safe_count($y) > 0) {
-            $cnt = safe_count($y);
+        if (Configs::safe_count($y) > 0) {
+            $cnt = Configs::safe_count($y);
             $i   = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {
                 ++$i;
@@ -224,9 +233,11 @@ class Plot
     // Framework function the chance for each plot class to set a legend
     public function Legend($aGraph)
     {
-        if ($this->legend != '') {
-            $aGraph->legend->Add($this->legend, $this->color, '', 0, $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
+        if ($this->legend == '') {
+            return;
         }
+
+        $aGraph->legend->Add($this->legend, $this->color, '', 0, $this->legendcsimtarget, $this->legendcsimalt, $this->legendcsimwintarget);
     }
 
     public function Clear()
@@ -235,4 +246,5 @@ class Plot
         $this->__construct($this->inputValues['aDatay'], $this->inputValues['aDatax']);
         $this->isRunningClear = false;
     }
-} // @class
+}
+// @class

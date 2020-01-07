@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
-// File:    ODOEX00.PHP
+// File:    Graph\Configs::getConfig('ODOEX00').PHP
 // Description: Example 0 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$

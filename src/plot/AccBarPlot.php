@@ -1,13 +1,21 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
+use function abs;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
+use function get_class;
+use function is_array;
+use function is_numeric;
+use function max;
+use function min;
+use function round;
+use function sprintf;
 
 /**
  * @class AccBarPlot
@@ -19,29 +27,31 @@ class AccBarPlot extends BarPlot
     private $nbrplots = 0;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $plots
      */
     public function __construct($plots)
     {
         $this->plots    = $plots;
-        $this->nbrplots = safe_count($plots);
+        $this->nbrplots = Configs::safe_count($plots);
         if ($this->nbrplots < 1) {
             Util\JpGraphError::RaiseL(2010); //('Cannot create AccBarPlot from empty plot array.');
         }
         for ($i = 0; $i < $this->nbrplots; ++$i) {
-            if (empty($this->plots[$i]) || !isset($this->plots[$i])) {
-                Util\JpGraphError::RaiseL(2011, $i); //("Acc bar plot element nbr $i is undefined or empty.");
+            if (!empty($this->plots[$i]) && isset($this->plots[$i])) {
+                continue;
             }
+
+            Util\JpGraphError::RaiseL(2011, $i); //("Acc bar plot element nbr $i is undefined or empty.");
         }
 
         // We can only allow individual plost which do not have specified X-positions
         for ($i = 0; $i < $this->nbrplots; ++$i) {
-            if (!empty($this->plots[$i]->coords[1])) {
-                Util\JpGraphError::RaiseL(2015);
-                //'Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-positions.');
+            if (empty($this->plots[$i]->coords[1])) {
+                continue;
             }
+
+            Util\JpGraphError::RaiseL(2015);
+            //'Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-positions.');
         }
 
         // Use 0 weight by default which means that the individual bar
@@ -59,7 +69,7 @@ class AccBarPlot extends BarPlot
      */
     public function Legend($graph)
     {
-        $n = safe_count($this->plots);
+        $n = Configs::safe_count($this->plots);
         for ($i = $n - 1; $i >= 0; --$i) {
             $c = get_class($this->plots[$i]);
             if (!($this->plots[$i] instanceof BarPlot)) {
@@ -74,8 +84,8 @@ class AccBarPlot extends BarPlot
     {
         list($xmax) = $this->plots[0]->Max();
         $nmax       = 0;
-        for ($i = 0; $i < safe_count($this->plots); ++$i) {
-            $n       = safe_count($this->plots[$i]->coords[0]);
+        for ($i = 0; $i < Configs::safe_count($this->plots); ++$i) {
+            $n       = Configs::safe_count($this->plots[$i]->coords[0]);
             $nmax    = max($nmax, $n);
             list($x) = $this->plots[$i]->Max();
             $xmax    = max($xmax, $x);
@@ -98,9 +108,11 @@ class AccBarPlot extends BarPlot
                 if (!isset($this->plots[$j]->coords[0][$i])) {
                     Util\JpGraphError::RaiseL(2014);
                 }
-                if ($this->plots[$j]->coords[0][$i] > 0) {
-                    $y += $this->plots[$j]->coords[0][$i];
+                if ($this->plots[$j]->coords[0][$i] <= 0) {
+                    continue;
                 }
+
+                $y += $this->plots[$j]->coords[0][$i];
             }
             $ymax[$i] = $y;
         }
@@ -118,8 +130,8 @@ class AccBarPlot extends BarPlot
     {
         $nmax                 = 0;
         list($xmin, $ysetmin) = $this->plots[0]->Min();
-        for ($i = 0; $i < safe_count($this->plots); ++$i) {
-            $n           = safe_count($this->plots[$i]->coords[0]);
+        for ($i = 0; $i < Configs::safe_count($this->plots); ++$i) {
+            $n           = Configs::safe_count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $n);
             list($x, $y) = $this->plots[$i]->Min();
             $xmin        = min($xmin, $x);
@@ -137,9 +149,11 @@ class AccBarPlot extends BarPlot
             }
 
             for ($j = 1; $j < $this->nbrplots; ++$j) {
-                if ($this->plots[$j]->coords[0][$i] < 0) {
-                    $y += $this->plots[$j]->coords[0][$i];
+                if ($this->plots[$j]->coords[0][$i] >= 0) {
+                    continue;
                 }
+
+                $y += $this->plots[$j]->coords[0][$i];
             }
             $ymin[$i] = $y;
         }
@@ -219,7 +233,7 @@ class AccBarPlot extends BarPlot
                         // the total value is larger than 0 then we
                         // add the shadow.
                         if (is_array($this->bar_shadow_color)) {
-                            $numcolors = safe_count($this->bar_shadow_color);
+                            $numcolors = Configs::safe_count($this->bar_shadow_color);
                             if ($numcolors == 0) {
                                 Util\JpGraphError::RaiseL(2013); //('You have specified an empty array for shadow colors in the bar plot.');
                             }
@@ -264,7 +278,7 @@ class AccBarPlot extends BarPlot
                         // an array to specify both (from, to style) for each individual bar. The way to know the difference is
                         // to investgate the first element. If this element is an integer [0,255] then we assume it is an Image\RGB
                         // triple.
-                        $ng = safe_count($this->plots[$j]->grad_fromcolor);
+                        $ng = Configs::safe_count($this->plots[$j]->grad_fromcolor);
                         if ($ng === 3) {
                             if (is_numeric($this->plots[$j]->grad_fromcolor[0]) && $this->plots[$j]->grad_fromcolor[0] > 0 &&
                                 $this->plots[$j]->grad_fromcolor[0] < 256) {
@@ -304,7 +318,7 @@ class AccBarPlot extends BarPlot
                     }
                 } else {
                     if (is_array($this->plots[$j]->fill_color)) {
-                        $numcolors = safe_count($this->plots[$j]->fill_color);
+                        $numcolors = Configs::safe_count($this->plots[$j]->fill_color);
                         $fillcolor = $this->plots[$j]->fill_color[$i % $numcolors];
                         // If the bar is specified to be non filled then the fill color is false
                         if ($fillcolor !== false) {
@@ -346,7 +360,7 @@ class AccBarPlot extends BarPlot
 
                 // CSIM array
 
-                if ($i < safe_count($this->plots[$j]->csimtargets)) {
+                if ($i < Configs::safe_count($this->plots[$j]->csimtargets)) {
                     // Create the client side image map
                     $rpts      = $img->ArrRotate($pts);
                     $csimcoord = round($rpts[0]) . ', ' . round($rpts[1]);
@@ -460,4 +474,5 @@ class AccBarPlot extends BarPlot
 
         return true;
     }
-} // @class
+}
+// @class

@@ -1,0 +1,22 @@
+testLedfileiterator:
+    ledex1.php: { width: 546, height: 36, title: ledFileIterator, filename: ledex1.php }
+    ledex10.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex10.php }
+    ledex11.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex11.php }
+    ledex12.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex12.php }
+    ledex13.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex13.php }
+    ledex14.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex14.php }
+    ledex15.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex15.php }
+    ledex16.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex16.php }
+    ledex17.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex17.php }
+    ledex2.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex2.php }
+    ledex3.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex3.php }
+    ledex4.1.php: { width: 228, height: 100, title: ledFileIterator, filename: ledex4.1.php }
+    ledex4.2.php: { width: 228, height: 100, title: ledFileIterator, filename: ledex4.2.php }
+    ledex4.php: { width: 228, height: 100, title: ledFileIterator, filename: ledex4.php }
+    ledex5.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex5.php }
+    ledex6.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex6.php }
+    ledex7.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex7.php }
+    ledex8.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex8.php }
+    ledex9.php: { width: 504, height: 36, title: ledFileIterator, filename: ledex9.php }
+    ledex_cyrillic.php: { width: 480, height: 52, title: ledFileIterator, filename: ledex_cyrillic.php }
+    ledex_cyrillic2.php: { width: 480, height: 52, title: ledFileIterator, filename: ledex_cyrillic2.php }

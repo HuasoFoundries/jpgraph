@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -35,7 +35,7 @@ class GTextTable
 
     /**
      * First and second phase constructors
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      */
     public function __construct()
     {
@@ -57,7 +57,7 @@ class GTextTable
 
     /**
      * Outer border of table
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      *
      * @param mixed $aWeight
      * @param mixed $aColor
@@ -70,7 +70,7 @@ class GTextTable
 
     /**
      * Position in graph of table
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      *
      * @param mixed $aX
      * @param mixed $aY
@@ -95,7 +95,7 @@ class GTextTable
 
     /**
      * Setup country flag in a cell
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      *
      * @param mixed $aRow
      * @param mixed $aCol
@@ -113,7 +113,7 @@ class GTextTable
 
     /**
      * Setup image in a cell
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      *
      * @param mixed $aRow
      * @param mixed $aCol
@@ -182,7 +182,7 @@ class GTextTable
 
     /**
      * Generate a HTML version of the table
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      */
     public function toString()
     {
@@ -209,7 +209,7 @@ class GTextTable
 
     /**
      * Specify data for table
-     *-----------------------------------------------------------------.
+     * -----------------------------------------------------------------.
      *
      * @param mixed      $aArg1
      * @param null|mixed $aArg2
@@ -220,11 +220,11 @@ class GTextTable
         if ($aArg2 === null && $aArg3 === null) {
             if (is_array($aArg1)) {
                 if (is_array($aArg1[0])) {
-                    $m = safe_count($aArg1);
+                    $m = Configs::safe_count($aArg1);
                     // Find the longest row
                     $n = 0;
                     for ($i = 0; $i < $m; ++$i) {
-                        $n = max(safe_count($aArg1[$i]), $n);
+                        $n = max(Configs::safe_count($aArg1[$i]), $n);
                     }
 
                     for ($i = 0; $i < $m; ++$i) {
@@ -257,7 +257,7 @@ class GTextTable
 
     /**
      * Cell margin setting
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aArgR1
      * @param null|mixed $aC1
@@ -311,7 +311,7 @@ class GTextTable
 
     /**
      * Cell text orientation setting
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aArgR1
      * @param null|mixed $aC1
@@ -365,7 +365,7 @@ class GTextTable
 
     /**
      * Font color setting
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aArgR1
      * @param null|mixed $aC1
@@ -419,7 +419,7 @@ class GTextTable
 
     /**
      * Fill color settings
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aArgR1
      * @param null|mixed $aC1
@@ -469,7 +469,7 @@ class GTextTable
 
     /**
      * Font family setting
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      */
     public function SetFont()
     {
@@ -539,7 +539,7 @@ class GTextTable
 
     /**
      * Cell align settings
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param null|mixed $aR1HAlign
      * @param null|mixed $aC1VAlign
@@ -563,7 +563,7 @@ class GTextTable
                 $aC1VAlign = 'center';
             }
             $aHArg     = $aR1HAlign;
-            $aVArg     = $aC1VAlign === null ? 'center' : $aC1VAlign;
+            $aVArg     = $aC1VAlign ?? 'center';
             $aR2       = $this->iSize[0] - 1;
             $aR1HAlign = 0;
             $aC2       = $this->iSize[1] - 1;
@@ -601,7 +601,7 @@ class GTextTable
 
     /**
      * Cell number format
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aArgR1
      * @param null|mixed $aC1
@@ -667,7 +667,7 @@ class GTextTable
 
     /**
      * Set row and column min size
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aColWidth
      * @param null|mixed $aWidth
@@ -702,7 +702,7 @@ class GTextTable
 
     /**
      * Grid line settings
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed $aWeight
      * @param mixed $aColor
@@ -743,7 +743,7 @@ class GTextTable
 
     /**
      * Merge cells
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed $aRow
      * @param mixed $aHAlign
@@ -782,20 +782,22 @@ class GTextTable
         $this->iCells[$aR1][$aC1]->SetAlign($aHAlign, $aVAlign);
         for ($i = $aR1; $i <= $aR2; ++$i) {
             for ($j = $aC1; $j <= $aC2; ++$j) {
-                if (!($i == $aR1 && $j == $aC1)) {
-                    if ($this->iCells[$i][$j]->IsMerged()) {
-                        Util\JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
-                        //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
-                    }
-                    $this->iCells[$i][$j]->SetMerged($aR1, $aC1, true);
+                if ($i == $aR1 && $j == $aC1) {
+                    continue;
                 }
+
+                if ($this->iCells[$i][$j]->IsMerged()) {
+                    Util\JpGraphError::RaiseL(27005, $aR1, $aC1, $aR2, $aC2);
+                    //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
+                }
+                $this->iCells[$i][$j]->SetMerged($aR1, $aC1, true);
             }
         }
     }
 
     /**
      * CSIM methods
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      *
      * @param mixed      $aTarget
      * @param null|mixed $aAlt
@@ -828,7 +830,7 @@ class GTextTable
 
     /**
      * Private methods
-     *---------------------------------------------------------------------.
+     * ---------------------------------------------------------------------.
      */
     public function GetCSIMAreas()
     {
@@ -964,7 +966,7 @@ class GTextTable
         // adjust row and column size depending on cell content
         $this->_autoSizeTable($aImg);
 
-        if ($this->iSize[1] != safe_count($this->iColWidth) || $this->iSize[0] != safe_count($this->iRowHeight)) {
+        if ($this->iSize[1] != Configs::safe_count($this->iColWidth) || $this->iSize[0] != Configs::safe_count($this->iRowHeight)) {
             Util\JpGraphError::RaiseL(27008);
             //('Column and row size arrays must match the dimesnions of the table');
         }

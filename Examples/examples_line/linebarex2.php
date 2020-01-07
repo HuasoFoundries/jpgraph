@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -24,18 +24,18 @@ for ($i = 0; $i < $steps; ++$i) {
 $__width  = 450;
 $__height = 300;
 $graph    = new Graph\Graph($__width, $__height);
-$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetShadow();
 
 // Use an integer X-scale
 $graph->SetScale('intlin');
 
-// Set title and subtitle
-$graph->title->Set('Combined bar and line plot');
-$graph->subtitle->Set('("left" aligned bars)');
+// Set title and subtitle$example_title='Combined bar and line plot'; $graph->title->set($example_title);
+$subtitle_text = 'left aligned bars';
+$graph->subtitle->Set($subtitle_text);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Make the margin around the plot a little bit bigger
 // then default

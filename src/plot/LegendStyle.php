@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -30,14 +30,14 @@ class LegendStyle
     public $iCircleWeight     = 2;
     public $iCircleRadius     = 18;
     public $iCircleColor      = 'black';
-    public $iTxtFontFamily    = FF_VERDANA;
-    public $iTxtFontStyle     = FS_NORMAL;
+    public $iTxtFontFamily    = Configs::FF_VERDANA;
+    public $iTxtFontStyle     = Configs::FS_NORMAL;
     public $iTxtFontSize      = 8;
-    public $iLblFontFamily    = FF_VERDANA;
-    public $iLblFontStyle     = FS_NORMAL;
+    public $iLblFontFamily    = Configs::FF_VERDANA;
+    public $iLblFontStyle     = Configs::FS_NORMAL;
     public $iLblFontSize      = 8;
-    public $iCircleFontFamily = FF_VERDANA;
-    public $iCircleFontStyle  = FS_NORMAL;
+    public $iCircleFontFamily = Configs::FF_VERDANA;
+    public $iCircleFontStyle  = Configs::FS_NORMAL;
     public $iCircleFontSize   = 8;
     public $iLblFontColor     = 'black';
     public $iTxtFontColor     = 'black';
@@ -48,7 +48,7 @@ class LegendStyle
     public $iTxt              = '';
     public $iZCircleTxt       = 'Calm';
 
-    public function SetFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
+    public function SetFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iLblFontFamily    = $aFontFamily;
         $this->iLblFontStyle     = $aFontStyle;
@@ -61,21 +61,21 @@ class LegendStyle
         $this->iCircleFontSize   = $aFontSize;
     }
 
-    public function SetLFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
+    public function SetLFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iLblFontFamily = $aFontFamily;
         $this->iLblFontStyle  = $aFontStyle;
         $this->iLblFontSize   = $aFontSize;
     }
 
-    public function SetTFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
+    public function SetTFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iTxtFontFamily = $aFontFamily;
         $this->iTxtFontStyle  = $aFontStyle;
         $this->iTxtFontSize   = $aFontSize;
     }
 
-    public function SetCFont($aFontFamily, $aFontStyle = FS_NORMAL, $aFontSize = 10)
+    public function SetCFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iCircleFontFamily = $aFontFamily;
         $this->iCircleFontStyle  = $aFontStyle;

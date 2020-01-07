@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,7 +25,7 @@ $data = [
 // Setup the basic table and font
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(FF_ARIAL, FS_NORMAL, 11);
+$table->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
 
 // Set default minimum color width
 $table->SetMinColWidth(40);
@@ -40,14 +40,14 @@ $table->setGrid(0);
 $table->SetBorder(2);
 
 // Setup font
-$table->SetRowFont(4, FF_ARIAL, FS_BOLD, 11);
-$table->SetRowFont(0, FF_ARIAL, FS_BOLD, 11);
-$table->SetFont(1, 2, 1, 3, FF_ARIAL, FS_BOLD, 11);
+$table->SetRowFont(4, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetFont(1, 2, 1, 3, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 // Setup grids
-$table->SetRowGrid(4, 2, 'black', TGRID_SINGLE);
-$table->SetColGrid(1, 1, 'black', TGRID_SINGLE);
-$table->SetRowGrid(1, 1, 'black', TGRID_SINGLE);
+$table->SetRowGrid(4, 2, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
+$table->SetColGrid(1, 1, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
+$table->SetRowGrid(1, 1, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
 
 // Setup colors
 $table->SetFillColor(0, 1, 0, 6, 'black');

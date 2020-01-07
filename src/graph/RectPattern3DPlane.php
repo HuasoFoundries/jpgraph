@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
+
+use function round;
 
 /**
  * @class RectPattern3DPlane
@@ -66,8 +68,8 @@ class RectPattern3DPlane extends RectPattern
 
         // Endpoint falls on sides
         $dist -= $this->linespacing;
-        $d = $this->rect->w / 2;
-        $c = $apa - $d * $apa / $dist;
+        $d     = $this->rect->w / 2;
+        $c     = $apa - $d * $apa / $dist;
         while ($x0 > $this->rect->x) {
             $aImg->Line($x0, $y0, $this->rect->x, $this->rect->ye - $c);
             $aImg->Line($x0_right, $y0, $this->rect->xe, $this->rect->ye - $c);
@@ -124,7 +126,7 @@ class RectPattern3DPlane extends RectPattern
                 $adj = 1;
             }
 
-            $y = $this->rect->ye - round($adj);
+            $y     = $this->rect->ye - round($adj);
             $dist += $hls;
         }
     }

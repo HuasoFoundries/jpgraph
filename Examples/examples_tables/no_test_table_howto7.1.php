@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,17 +19,17 @@ $table = new GTextTable();
 $table->Set($data);
 
 // Set default font in entire table
-$table->SetFont(FF_ARIAL, FS_NORMAL, 11);
+$table->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
 
 // Setup font and color for row = 2
-$table->SetRowFont(2, FF_ARIAL, FS_BOLD, 11);
+$table->SetRowFont(2, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $table->SetRowFillColor(2, 'orange@0.5');
 
 // Setup minimum color width
 $table->SetMinColWidth(35);
 
 // Setup grid on row 2
-$table->SetRowGrid(2, 1, 'black', TGRID_DOUBLE);
+$table->SetRowGrid(2, 1, 'black', Graph\Configs::getConfig('TGRID_DOUBLE'));
 
 // Add table to the graph
 $graph->Add($table);

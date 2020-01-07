@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,9 +20,9 @@ $graph->SetBox();
 $graph->SetMarginColor('darkgreen@0.8');
 
 // Setup a background gradient image
-$graph->SetBackgroundGradient('darkred', 'yellow', GRAD_HOR, BGRAD_PLOT);
-
-$graph->title->Set('Gradient filled line plot ex2');
+$graph->SetBackgroundGradient('darkred', 'yellow', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
+$example_title = 'Gradient filled line plot ex2';
+$graph->title->set($example_title);
 $graph->yscale->SetAutoMin(0);
 
 // Create the line

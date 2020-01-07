@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,11 +14,12 @@ $bar2 = new GanttBar(1, 'Activity 2', '2002-01-03', '2002-01-25');
 $bar2->SetCSIMTarget('#', 'Go back 2');
 $bar2->title->SetCSIMTarget('#', 'Go back 2 (title)');
 
-$graph = new GanttGraph(500);
-$graph->title->Set('Example with image map');
-$graph->ShowHeaders(GANTT_HYEAR | GANTT_HMONTH | GANTT_HDAY | GANTT_HWEEK);
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
-$graph->scale->week->SetFont(FF_FONT1);
+$graph         = new GanttGraph(500);
+$example_title = 'Example with image map';
+$graph->title->set($example_title);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAY'));
+$graph->scale->week->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 
 $graph->Add([$bar1, $bar2]);
 

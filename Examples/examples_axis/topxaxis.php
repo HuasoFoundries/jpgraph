@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,7 +19,9 @@ $graph->img->SetMargin(40, 40, 40, 20);
 
 $graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->title->Set('Top X-axis');
+$example_title = 'Top X-axis';
+$example_title = $example_title;
+$graph->title->set($example_title);
 
 // Start at 0
 $graph->yscale->SetAutoMin(0);
@@ -28,19 +30,19 @@ $graph->yscale->SetAutoMin(0);
 $graph->yscale->SetGrace(100);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Adjust the X-axis
 $graph->xaxis->SetPos('max');
-$graph->xaxis->SetLabelSide(SIDE_UP);
-$graph->xaxis->SetTickSide(SIDE_DOWN);
+$graph->xaxis->SetLabelSide(Graph\Configs::getConfig('SIDE_UP'));
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 
 // Create the line plot
 $p1 = new Plot\LinePlot($datay);
 $p1->SetColor('blue');
 
 // Specify marks for the line plots
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 

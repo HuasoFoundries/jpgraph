@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
-// File:    ODOEX02.PHP
+// File:    Graph\Configs::getConfig('ODOEX02').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -31,10 +31,10 @@ $graph    = new OdoGraph($__width, $__height);
 // Specify title and subtitle using default fonts
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
-//---------------------------------------------------------------------
-$graph->title->Set('Odometer title');
+//---------------------------------------------------------------------$example_title='Odometer title'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->subtitle->Set('2002-02-13');
+$subtitle_text = '2002-02-13';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------

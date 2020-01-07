@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
@@ -37,7 +37,8 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('linlin');
 $graph->img->SetMargin(40, 100, 40, 40);
 $graph->SetShadow();
-$graph->title->Set('Example of ballon scatter plot');
+$example_title = 'Example of ballon scatter plot';
+$graph->title->set($example_title);
 // Use a lot of grace to get large scales
 $graph->yaxis->scale->SetGrace(50, 10);
 
@@ -46,11 +47,11 @@ $graph->xaxis->SetPos('min');
 
 // Create the scatter plot
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 
 // Uncomment the following two lines to display the values
 $sp1->value->Show();
-$sp1->value->SetFont(FF_FONT1, FS_BOLD);
+$sp1->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Specify the callback
 $sp1->mark->SetCallback($FCallback);

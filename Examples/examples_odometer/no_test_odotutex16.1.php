@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -27,8 +27,8 @@ $odo2->SetColor('lightgray:1.9');
 // Adjust start and end angle for the scale
 $odo2->scale->SetAngle(110, 250);
 
-$odo1->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
-$odo2->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
+$odo1->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$odo2->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $odo2->AddIndication(-15, 0, 'lightgray');
 $odo2->AddIndication(100, 115, 'lightgray');
 

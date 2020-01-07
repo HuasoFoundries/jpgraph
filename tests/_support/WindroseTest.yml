@@ -1,0 +1,16 @@
+testAddingLabelBackgrounds:
+    windrose_ex8.1.php: { width: 400, height: 460, title: 'Adding label backgrounds', filename: windrose_ex8.1.php }
+testWindroseexample:
+    windrose_ex7.php: { width: 400, height: 450, title: 'Windrose example 7', filename: windrose_ex7.php }
+    windrose_ex8.php: { width: 400, height: 500, title: 'Windrose example 8', filename: windrose_ex8.php }
+    windrose_ex9.php: { width: 400, height: 500, title: 'Windrose example 9', filename: windrose_ex9.php }
+testABasicWindroseGraph:
+    windrose_ex0.php: { width: 400, height: 400, title: 'A basic Windrose graph', filename: windrose_ex0.php }
+testTwoWindrosePlotsInOneGraph:
+    windrose_2plots_ex1.php: { width: 660, height: 400, title: 'Two windrose plots in one graph', filename: windrose_2plots_ex1.php }
+testJapaneseLocale:
+    windrose_ex7.1.php: { width: 590, height: 580, title: 'Japanese locale', filename: windrose_ex7.1.php }
+testWindroseExample1b:
+    windrose_ex1b.php: { width: 400, height: 400, title: 'Windrose example 1b', filename: windrose_ex1b.php }
+testExampleWithBackgroundFlag:
+    windrose_bgimg_ex1.php: { width: 400, height: 400, title: 'Example with background flag', filename: windrose_bgimg_ex1.php }

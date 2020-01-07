@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -87,11 +87,11 @@ class PiePlot
     {
         $this->data  = array_reverse($data);
         $this->title = new Text\Text('');
-        $this->title->SetFont(FF_DEFAULT, FS_BOLD);
+        $this->title->SetFont(Configs::FF_DEFAULT, Configs::FS_BOLD);
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.1f%%');
-        $this->guideline = new Graph\LineProperty();
+        $this->guideline = new Graph\Scale\LineProperty();
     }
 
     /**
@@ -335,16 +335,16 @@ class PiePlot
         $colors = array_keys($graph->img->rgb->rgb_table);
         sort($colors);
         $ta = $this->themearr[$this->theme];
-        $n  = safe_count($this->data);
+        $n  = Configs::safe_count($this->data);
 
         if ($this->setslicecolors == null) {
-            $numcolors = safe_count($ta);
+            $numcolors = Configs::safe_count($ta);
             if (($this instanceof PiePlot3D)) {
                 $ta = array_reverse(array_slice($ta, 0, $n));
             }
         } else {
             $this->setslicecolors = array_slice($this->setslicecolors, 0, $n);
-            $numcolors            = safe_count($this->setslicecolors);
+            $numcolors            = Configs::safe_count($this->setslicecolors);
             if ($graph->pieaa && !($this instanceof PiePlot3D)) {
                 $this->setslicecolors = array_reverse($this->setslicecolors);
             }
@@ -363,14 +363,14 @@ class PiePlot
 
         // Make sure we don't plot more values than data points
         // (in case the user added more legends than data points)
-        $n = min(safe_count($this->legends), safe_count($this->data));
+        $n = min(Configs::safe_count($this->legends), Configs::safe_count($this->data));
         if ($this->legends != '') {
             $this->legends = array_reverse(array_slice($this->legends, 0, $n));
         }
         for ($i = $n - 1; $i >= 0; --$i) {
             $l = $this->legends[$i];
             // Replace possible format with actual values
-            if (safe_count($this->csimalts) > $i) {
+            if (Configs::safe_count($this->csimalts) > $i) {
                 $fmt = $this->csimalts[$i];
             } else {
                 $fmt = '%d'; // Deafult Alt if no other has been specified
@@ -417,7 +417,7 @@ class PiePlot
         $tmp       = [];
         $result    = [];
         $quote_sum = 0;
-        $n         = safe_count($aData);
+        $n         = Configs::safe_count($aData);
         for ($i = 0, $sum = 0; $i < $n; ++$i) {
             $sum += $aData[$i];
         }
@@ -438,7 +438,7 @@ class PiePlot
 
             return $result;
         }
-        arsort($tmp, SORT_NUMERIC);
+        arsort($tmp, \SORT_NUMERIC);
         reset($tmp);
         for ($i = 0; $i < $mul - $quote_sum; ++$i) {
             ++$result[key($tmp)];
@@ -477,14 +477,14 @@ class PiePlot
         $colors = array_keys($img->rgb->rgb_table);
         sort($colors);
         $ta = $this->themearr[$this->theme];
-        $n  = safe_count($this->data);
+        $n  = Configs::safe_count($this->data);
 
         if ($this->setslicecolors == null) {
-            $numcolors = safe_count($ta);
+            $numcolors = Configs::safe_count($ta);
         } else {
             // We need to create an array of colors as long as the data
             // since we need to reverse it to get the colors in the right order
-            $numcolors = safe_count($this->setslicecolors);
+            $numcolors = Configs::safe_count($this->setslicecolors);
             $i         = 2 * $numcolors;
             while ($n > $i) {
                 $this->setslicecolors = array_merge($this->setslicecolors, $this->setslicecolors);
@@ -525,7 +525,7 @@ class PiePlot
             $yc = $this->posy;
         }
 
-        $n = safe_count($this->data);
+        $n = Configs::safe_count($this->data);
 
         if ($this->explode_all) {
             for ($i = 0; $i < $n; ++$i) {
@@ -759,7 +759,7 @@ class PiePlot
 
     public function StrokeGuideLabels($img, $xc, $yc, $radius)
     {
-        $n = safe_count($this->labels);
+        $n = Configs::safe_count($this->labels);
 
         /**
          * Step 1 of the algorithm is to construct a number of clusters
@@ -892,7 +892,7 @@ class PiePlot
         $this->value->SetMargin(0);
 
         // Number of clusters found
-        $nc = safe_count($clusters);
+        $nc = Configs::safe_count($clusters);
 
         // Walk through all the clusters
         for ($i = 0; $i < $nc; ++$i) {
@@ -1030,14 +1030,14 @@ class PiePlot
     public function StrokeAllLabels($img, $xc, $yc, $radius)
     {
         // First normalize all angles for labels
-        $n = safe_count($this->la);
+        $n = Configs::safe_count($this->la);
         for ($i = 0; $i < $n; ++$i) {
             $this->la[$i] = $this->NormAngle($this->la[$i]);
         }
         if ($this->guideline->iShow) {
             $this->StrokeGuideLabels($img, $xc, $yc, $radius);
         } else {
-            $n = safe_count($this->labels);
+            $n = Configs::safe_count($this->labels);
             for ($i = 0; $i < $n; ++$i) {
                 $this->StrokeLabel(
                     $this->labels[$i],

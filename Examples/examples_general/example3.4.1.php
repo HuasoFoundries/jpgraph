@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -55,13 +55,15 @@ $graph->SetShadow();
 
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Calls per operator');
-$graph->subtitle->Set('(March 12, 2008)');
+$example_title = 'Calls per operator';
+$graph->title->set($example_title);
+$subtitle_text = '(March 12, 2008)';
+$graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $graph->yaxis->SetColor('blue');
 
@@ -69,12 +71,12 @@ $graph->yaxis->SetColor('blue');
 $lineplot = new Plot\LinePlot($ydata);
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2); // Two pixel wide
-$lineplot->mark->SetType(MARK_UTRIANGLE);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'));
 $lineplot->mark->SetColor('blue');
 $lineplot->mark->SetFillColor('red');
 
 $lineplot->value->Show();
-$lineplot->value->SetFont(FF_ARIAL, FS_BOLD, 10);
+$lineplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $lineplot->value->SetColor('darkred');
 $lineplot->value->SetFormatCallback('formatCallback');
 

@@ -1,10 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
+
+use function count;
+use function is_array;
+use function sprintf;
 
 /**
  * This class represent a plotting of a contour outline of data given as a X-Y matrice.
@@ -63,7 +67,7 @@ class ContourPlot extends Plot
         $this->contour = new Contour($this->dataMatrix, $this->isobar, $aIsobarColors);
 
         if (is_array($aIsobar)) {
-            $this->nbrContours = safe_count($aIsobar);
+            $this->nbrContours = Configs::safe_count($aIsobar);
         } else {
             $this->nbrContours = $aIsobar;
         }
@@ -122,7 +126,7 @@ class ContourPlot extends Plot
      */
     public function Max()
     {
-        return [count($this->dataMatrix[0]) - 1, safe_count($this->dataMatrix) - 1];
+        return [count($this->dataMatrix[0]) - 1, Configs::safe_count($this->dataMatrix) - 1];
     }
 
     /**
@@ -156,8 +160,8 @@ class ContourPlot extends Plot
      */
     public function PreScaleSetup($aGraph)
     {
-        $xn = safe_count($this->dataMatrix[0]) - 1;
-        $yn = safe_count($this->dataMatrix) - 1;
+        $xn = Configs::safe_count($this->dataMatrix[0]) - 1;
+        $yn = Configs::safe_count($this->dataMatrix) - 1;
 
         $aGraph->xaxis->scale->Update($aGraph->img, 0, $xn);
         $aGraph->yaxis->scale->Update($aGraph->img, 0, $yn);
@@ -188,9 +192,9 @@ class ContourPlot extends Plot
      */
     public function Stroke($img, $xscale, $yscale)
     {
-        if (safe_count($this->manualIsobarColors) > 0) {
+        if (Configs::safe_count($this->manualIsobarColors) > 0) {
             $this->contourColor = $this->manualIsobarColors;
-            if (safe_count($this->manualIsobarColors) != $this->nbrContours) {
+            if (Configs::safe_count($this->manualIsobarColors) != $this->nbrContours) {
                 Util\JpGraphError::RaiseL(28002);
             }
         }
@@ -200,7 +204,7 @@ class ContourPlot extends Plot
         for ($c = 0; $c < $this->nbrContours; ++$c) {
             $img->SetColor($this->contourColor[$c]);
 
-            $n = safe_count($this->contourCoord[$c]);
+            $n = Configs::safe_count($this->contourCoord[$c]);
             $i = 0;
             while ($i < $n) {
                 list($x1, $y1) = $this->contourCoord[$c][$i][0];

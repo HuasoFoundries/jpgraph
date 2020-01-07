@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -17,11 +17,19 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_Stars extends ImgData
 {
     protected $name = 'Stars';
-    protected $an   = [MARK_IMG_STAR => 'imgdata'];
+    protected $an   = [Configs::MARK_IMG_STAR => 'imgdata'];
 
     protected $colors = ['bluegreen', 'lightblue', 'purple', 'blue', 'green', 'pink', 'red', 'yellow'];
-    protected $index  = ['bluegreen'     => 3, 'lightblue' => 4, 'purple' => 1,
-        'blue'                           => 5, 'green'     => 0, 'pink'   => 7, 'red' => 2, 'yellow' => 6, ];
+    protected $index  = [
+        'bluegreen'                      => 3,
+        'lightblue'                      => 4,
+        'purple'                         => 1,
+        'blue'                           => 5,
+        'green'                          => 0,
+        'pink'                           => 7,
+        'red'                            => 2,
+        'yellow'                         => 6,
+    ];
     protected $maxidx = 7;
     protected $imgdata;
 

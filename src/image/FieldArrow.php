@@ -1,12 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
-use Amenadiel\JpGraph\Plot;
+use function round;
 
 /**
  * File:        JPGRAPH_SCATTER.PHP
@@ -27,7 +27,16 @@ class FieldArrow
     public $iSize      = 10; // Length in pixels for  arrow
     public $iArrowSize = 2;
     private $isizespec = [
-        [2, 1], [3, 2], [4, 3], [6, 4], [7, 4], [8, 5], [10, 6], [12, 7], [16, 8], [20, 10],
+        [2, 1],
+        [3, 2],
+        [4, 3],
+        [6, 4],
+        [7, 4],
+        [8, 5],
+        [10, 6],
+        [12, 7],
+        [16, 8],
+        [20, 10],
     ];
 
     public function __construct()

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -31,14 +31,14 @@ $gbplot = new Plot\GroupBarPlot([$b1plot, $b2plot]);
 
 // ...and add it to the graPH
 $graph->Add($gbplot);
-
-$graph->title->Set('Example 21');
+$example_title = 'Example 21';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Display the graph
 $graph->Stroke();

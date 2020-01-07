@@ -1,10 +1,18 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
+
+use function cos;
+use function is_null;
+use const M_PI;
+use function max;
+use function min;
+use function round;
+use function sin;
 
 /**
  * @class RadarPlot
@@ -27,8 +35,6 @@ class RadarPlot
     private $linestyle  = 'solid';
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $data
      */
     public function __construct($data)
@@ -76,10 +82,12 @@ class RadarPlot
     public function SetColor($aColor, $aFillColor = false)
     {
         $this->color = $aColor;
-        if ($aFillColor) {
-            $this->SetFillColor($aFillColor);
-            $this->fill = true;
+        if (!$aFillColor) {
+            return;
         }
+
+        $this->SetFillColor($aFillColor);
+        $this->fill = true;
     }
 
     // Set href targets for CSIM
@@ -97,7 +105,7 @@ class RadarPlot
 
     public function Stroke($img, $pos, $scale, $startangle)
     {
-        $nbrpnts = safe_count($this->data);
+        $nbrpnts = Configs::safe_count($this->data);
         $astep   = 2 * M_PI / $nbrpnts;
         $a       = $startangle;
 
@@ -143,24 +151,28 @@ class RadarPlot
         $img->SetLineStyle('solid'); // Reset line style to default
 
         // Add plotmarks on top
-        if ($this->mark->show) {
-            for ($i = 0; $i < $nbrpnts; ++$i) {
-                if (isset($this->csimtargets[$i])) {
-                    $this->mark->SetCSIMTarget($this->csimtargets[$i]);
-                    $this->mark->SetCSIMAlt($this->csimalts[$i]);
-                    $this->mark->SetCSIMAltVal($pnts[$i * 2], $pnts[$i * 2 + 1]);
-                    $this->mark->Stroke($img, $pnts[$i * 2], $pnts[$i * 2 + 1]);
-                    $this->csimareas .= $this->mark->GetCSIMAreas();
-                } else {
-                    $this->mark->Stroke($img, $pnts[$i * 2], $pnts[$i * 2 + 1]);
-                }
+        if (!$this->mark->show) {
+            // Add plotmarks on top
+            return;
+            // Add plotmarks on top
+        }
+
+        for ($i = 0; $i < $nbrpnts; ++$i) {
+            if (isset($this->csimtargets[$i])) {
+                $this->mark->SetCSIMTarget($this->csimtargets[$i]);
+                $this->mark->SetCSIMAlt($this->csimalts[$i]);
+                $this->mark->SetCSIMAltVal($pnts[$i * 2], $pnts[$i * 2 + 1]);
+                $this->mark->Stroke($img, $pnts[$i * 2], $pnts[$i * 2 + 1]);
+                $this->csimareas .= $this->mark->GetCSIMAreas();
+            } else {
+                $this->mark->Stroke($img, $pnts[$i * 2], $pnts[$i * 2 + 1]);
             }
         }
     }
 
     public function GetCount()
     {
-        return safe_count($this->data);
+        return Configs::safe_count($this->data);
     }
 
     public function Legend($graph)
@@ -174,4 +186,5 @@ class RadarPlot
             $graph->legend->Add($this->legend, $this->color, $this->mark);
         }
     }
-} // @class
+}
+// @class

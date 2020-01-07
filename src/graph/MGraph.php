@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -9,6 +9,16 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
+use function count;
+use function explode;
+use function imagecopymerge;
+use function imagesx;
+use function imagesy;
+use function in_array;
+use function is_numeric;
+use function max;
+use function round;
+use function strtolower;
 
 /**
  * File:        JPGRAPH_MGRAPH.PHP
@@ -69,12 +79,12 @@ class MGraph
 
         // If the cached version exist just read it directly from the
         // cache, stream it back to browser and exit
-        if ($aCachedName != '' && READ_CACHE && $aInline) {
+        if ($aCachedName != '' && Configs::READ_CACHE && $aInline) {
             $this->cache = new Image\ImgStreamCache();
             $this->cache->SetTimeOut($aTimeOut);
             $image = new Image\Image();
             if ($this->cache->GetAndStream($image, $aCachedName)) {
-                exit();
+                exit;
             }
         }
         $this->inline     = $aInline;
@@ -82,19 +92,19 @@ class MGraph
 
         $this->title = new Text\Text();
         $this->title->ParagraphAlign('center');
-        $this->title->SetFont(FF_FONT2, FS_BOLD);
+        $this->title->SetFont(Configs::FF_FONT2, Configs::FS_BOLD);
         $this->title->SetMargin(3);
         $this->title->SetAlign('center');
 
         $this->subtitle = new Text\Text();
         $this->subtitle->ParagraphAlign('center');
-        $this->subtitle->SetFont(FF_FONT1, FS_BOLD);
+        $this->subtitle->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->subtitle->SetMargin(3);
         $this->subtitle->SetAlign('center');
 
         $this->subsubtitle = new Text\Text();
         $this->subsubtitle->ParagraphAlign('center');
-        $this->subsubtitle->SetFont(FF_FONT1, FS_NORMAL);
+        $this->subsubtitle->SetFont(Configs::FF_FONT1, Configs::getConfig('FS_NORMAL'));
         $this->subsubtitle->SetMargin(3);
         $this->subsubtitle->SetAlign('center');
 
@@ -196,12 +206,12 @@ class MGraph
 
     public function AddMix($aGraph, $x = 0, $y = 0, $mix = 100, $fx = 0, $fy = 0, $w = 0, $h = 0)
     {
-        $this->_gdImgHandle($aGraph->Stroke(_IMG_HANDLER), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
+        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
     }
 
     public function Add($aGraph, $x = 0, $y = 0, $fx = 0, $fy = 0, $w = 0, $h = 0)
     {
-        $this->_gdImgHandle($aGraph->Stroke(_IMG_HANDLER), $x, $y, $fx = 0, $fy = 0, $w, $h);
+        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h);
     }
 
     public function _gdImgHandle($agdCanvas, $x, $y, $fx = 0, $fy = 0, $w = 0, $h = 0, $mix = 100)
@@ -242,9 +252,9 @@ class MGraph
     // Set the shadow around the whole image
     public function SetShadow($aShowShadow = true, $aShadowWidth = 4, $aShadowColor = 'gray@0.3')
     {
-        $this->doshadow     = $aShowShadow;
-        $this->shadow_color = $aShadowColor;
-        $this->shadow_width = $aShadowWidth;
+        $this->doshadow               = $aShowShadow;
+        $this->shadow_color           = $aShadowColor;
+        $this->shadow_width           = $aShadowWidth;
         $this->footer->iBottomMargin += $aShadowWidth;
         $this->footer->iRightMargin += $aShadowWidth;
     }
@@ -252,53 +262,57 @@ class MGraph
     public function StrokeTitle($image, $w, $h)
     {
         // Stroke title
-        if ($this->title->t !== '') {
-            $margin = 3;
-
-            $y = $this->title->margin;
-            if ($this->title->halign == 'center') {
-                $this->title->Center(0, $w, $y);
-            } elseif ($this->title->halign == 'left') {
-                $this->title->SetPos($this->title->margin + 2, $y);
-            } elseif ($this->title->halign == 'right') {
-                $indent = 0;
-                if ($this->doshadow) {
-                    $indent = $this->shadow_width + 2;
-                }
-                $this->title->SetPos($w - $this->title->margin - $indent, $y, 'right');
-            }
-            $this->title->Stroke($image);
-
-            // ... and subtitle
-            $y += $this->title->GetTextHeight($image) + $margin + $this->subtitle->margin;
-            if ($this->subtitle->halign == 'center') {
-                $this->subtitle->Center(0, $w, $y);
-            } elseif ($this->subtitle->halign == 'left') {
-                $this->subtitle->SetPos($this->subtitle->margin + 2, $y);
-            } elseif ($this->subtitle->halign == 'right') {
-                $indent = 0;
-                if ($this->doshadow) {
-                    $indent = $this->shadow_width + 2;
-                }
-                $this->subtitle->SetPos($this->img->width - $this->subtitle->margin - $indent, $y, 'right');
-            }
-            $this->subtitle->Stroke($image);
-
-            // ... and subsubtitle
-            $y += $this->subtitle->GetTextHeight($image) + $margin + $this->subsubtitle->margin;
-            if ($this->subsubtitle->halign == 'center') {
-                $this->subsubtitle->Center(0, $w, $y);
-            } elseif ($this->subsubtitle->halign == 'left') {
-                $this->subsubtitle->SetPos($this->subsubtitle->margin + 2, $y);
-            } elseif ($this->subsubtitle->halign == 'right') {
-                $indent = 0;
-                if ($this->doshadow) {
-                    $indent = $this->shadow_width + 2;
-                }
-                $this->subsubtitle->SetPos($w - $this->subsubtitle->margin - $indent, $y, 'right');
-            }
-            $this->subsubtitle->Stroke($image);
+        if ($this->title->t === '') {
+            // Stroke title
+            return;
+            // Stroke title
         }
+
+        $margin = 3;
+
+        $y = $this->title->margin;
+        if ($this->title->halign == 'center') {
+            $this->title->Center(0, $w, $y);
+        } elseif ($this->title->halign == 'left') {
+            $this->title->SetPos($this->title->margin + 2, $y);
+        } elseif ($this->title->halign == 'right') {
+            $indent = 0;
+            if ($this->doshadow) {
+                $indent = $this->shadow_width + 2;
+            }
+            $this->title->SetPos($w - $this->title->margin - $indent, $y, 'right');
+        }
+        $this->title->Stroke($image);
+
+        // ... and subtitle
+        $y += $this->title->GetTextHeight($image) + $margin + $this->subtitle->margin;
+        if ($this->subtitle->halign == 'center') {
+            $this->subtitle->Center(0, $w, $y);
+        } elseif ($this->subtitle->halign == 'left') {
+            $this->subtitle->SetPos($this->subtitle->margin + 2, $y);
+        } elseif ($this->subtitle->halign == 'right') {
+            $indent = 0;
+            if ($this->doshadow) {
+                $indent = $this->shadow_width + 2;
+            }
+            $this->subtitle->SetPos($this->img->width - $this->subtitle->margin - $indent, $y, 'right');
+        }
+        $this->subtitle->Stroke($image);
+
+        // ... and subsubtitle
+        $y += $this->subtitle->GetTextHeight($image) + $margin + $this->subsubtitle->margin;
+        if ($this->subsubtitle->halign == 'center') {
+            $this->subsubtitle->Center(0, $w, $y);
+        } elseif ($this->subsubtitle->halign == 'left') {
+            $this->subsubtitle->SetPos($this->subsubtitle->margin + 2, $y);
+        } elseif ($this->subsubtitle->halign == 'right') {
+            $indent = 0;
+            if ($this->doshadow) {
+                $indent = $this->shadow_width + 2;
+            }
+            $this->subsubtitle->SetPos($w - $this->subsubtitle->margin - $indent, $y, 'right');
+        }
+        $this->subsubtitle->Stroke($image);
     }
 
     public function Stroke($aFileName = '')
@@ -372,7 +386,7 @@ class MGraph
         $this->footer->Stroke($image);
 
         // Output image
-        if ($aFileName == _IMG_HANDLER) {
+        if ($aFileName == Configs::getConfig('_IMG_HANDLER')) {
             return $image->img;
         }
         //Finally stream the generated picture

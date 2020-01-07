@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -31,13 +31,13 @@ for ($i = 0; $i < $n; ++$i) {
 
     $t->SetColor('black');
     $t->SetAlign('left', 'top');
-    $t->SetFont(FF_ARIAL, FS_NORMAL, 11);
+    $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
     $t->SetBox();
     $t->SetParagraphAlign($palign[$i]);
     $t->Stroke($img, $x, $y);
 
     $img->SetColor('black');
-    $img->SetFont(FF_FONT1, FS_BOLD);
+    $img->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
     $img->SetTextAlign('center', 'top');
     $img->StrokeText($x + 140, $y + 160, '"' . $palign[$i] . '"' . ' pargraph align');
 }

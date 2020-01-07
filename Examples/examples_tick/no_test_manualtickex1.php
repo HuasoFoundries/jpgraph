@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 //
@@ -46,8 +46,9 @@ $graph    = new Graph\Graph($__width, $__height);
 // We use an integer scale on the X-axis since the positions on the X axis
 // are assumed to be UNI timestamps
 $graph->SetScale('intlin', 0, 0, $xmin, $xmax);
-$graph->title->Set('Basic example with manual ticks');
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$example_title = 'Basic example with manual ticks';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 //
 // Make sure that the X-axis is always at the bottom of the scale
@@ -62,7 +63,7 @@ $graph->xaxis->SetTickPositions($tickPositions, $minTickPositions);
 $graph->xaxis->SetLabelFormatString('My', true);
 
 // Use Ariel font
-$graph->xaxis->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 
 // Add a X-grid
 $graph->xgrid->Show();

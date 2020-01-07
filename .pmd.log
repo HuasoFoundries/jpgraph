@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+  <duplication lines="75" tokens="108">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/util/Configs.php" line="356"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/Configs.php" line="40"/>
+    <codefragment>    const FF_AHRON            = 46;
+    const FF_ARIAL            = 15;
+    const FF_BIG5             = 32;
+    const FF_CALCULATOR       = 74;
+    const FF_CHINESE          = 31;
+    const FF_COMIC            = 14;
+    const FF_COMPUTER         = 73;
+    const FF_COURIER          = 10;
+    const FF_DAVID            = 44;
+    const FF_DIGITAL          = 72;
+    const FF_DV_SANSSERIF     = self::FF_DEFAULT;
+    const FF_DV_SANSSERIFCOND = 51;
+    const FF_DV_SANSSERIFMONO = 49;
+    const FF_DV_SERIF         = 48;
+    const FF_DV_SERIFCOND     = 50;
+    const FF_FONT0            = 1;
+    const FF_FONT1            = 2;
+    const FF_FONT2            = 4;
+    const FF_GEORGIA          = 16;
+    const FF_GOTHIC           = 42;
+    const FF_MINCHO           = 40;
+    const FF_MIRIAM           = 45;
+    const FF_PGOTHIC          = 43;
+    const FF_PMINCHO          = 41;
+    const FF_SIMSUN           = 30;
+    const FF_TIMES            = 12;
+    const FF_TREBUCHE         = 17;
+    const FF_USERFONT         = 90;
+    const FF_USERFONT1        = 90;
+    const FF_USERFONT2        = 91;
+    const FF_USERFONT3        = 92;
+    const FF_VERA             = 18;
+    const FF_VERAMONO         = 19;
+    const FF_VERASERIF        = 20;
+    const FF_VERDANA          = 11;
+    const FS_BOLD             = 9002;
+    const FS_BOLDIT           = 9004;
+    const FS_BOLDITALIC       = 9004;
+    const FS_ITALIC           = 9003;
+    const FS_NORMAL           = 9001;
+    /*
+    const GANTT_EVEN                  = 1;
+    const GANTT_FROMTOP               = 2;
+    const GANTT_HDAY                  = 1;
+    const GANTT_HHOUR                 = 16;
+    const GANTT_HMIN                  = 32;
+    const GANTT_HMONTH                = 4;
+    const GANTT_HWEEK                 = 2;
+    const GANTT_HYEAR                 = 8;
+
+     */
+    const GOTHIC_TTF_FONT       = 'ipag.ttf';
+    const GRAD_CENTER           = 5;
+    const GRAD_DIAGONAL         = 11;
+    const GRAD_HOR              = 2;
+    const GRAD_LEFT_REFLECTION  = 8;
+    const GRAD_MIDHOR           = 3;
+    const GRAD_MIDVER           = 4;
+    const GRAD_RAISED_PANEL     = 10;
+    const GRAD_RIGHT_REFLECTION = 9;
+    const GRAD_VER              = 1;
+    const GRAD_VERT             = 1;
+    const GRAD_WIDE_MIDHOR      = 7;
+    const GRAD_WIDE_MIDVER      = 6;
+    const GREEK_FROM_WINDOWS    = false;
+    const HORIZONTAL            = 0;
+    /*
+    const HOURADJ_1                   = 0 + 30;
+    const HOURADJ_12                  = 5 + 30;
+    const HOURADJ_2                   = 1 + 30;
+    const HOURADJ_3                   = 2 + 30;
+    const HOURADJ_4                   = 3 + 30;
+    const HOURADJ_6                   = 4 + 30;
+    const HOURSTYLE_CUSTOM            = 4;
+    const HOURSTYLE_H24               = 2;
+</codefragment>
+  </duplication>
+  <duplication lines="65" tokens="148">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Configs.php" line="119"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Configs.php" line="50"/>
+    <codefragment>    const BAND_RDIAG       = 1; // Right diagonal lines
+    const BAND_LDIAG       = 2; // Left diagonal lines
+    const BAND_SOLID       = 3; // Solid one color
+    const BAND_VLINE       = 4; // Vertical lines
+    const BAND_HLINE       = 5; // Horizontal lines
+    const BAND_3DPLANE     = 6; // "3D" Plane
+    const BAND_HVCROSS     = 7; // Vertical/Hor crosses
+    const BAND_DIAGCROSS   = 8; // Diagonal crosses
+
+// Style for background gradient fills
+    const BGRAD_FRAME  = 1;
+    const BGRAD_MARGIN = 2;
+    const BGRAD_PLOT   = 3;
+
+    // Format for background images
+    const BGIMG_FILLPLOT  = 1;
+    const BGIMG_FILLFRAME = 2;
+    const BGIMG_COPY      = 3;
+    const BGIMG_CENTER    = 4;
+    const BGIMG_FREE      = 5;
+    // Activity types for use with utility method CreateSimple()
+    const ACTYPE_NORMAL    = 0;
+    const ACTYPE_GROUP     = 1;
+    const ACTYPE_MILESTONE = 2;
+
+    const ACTINFO_3D = 1;
+    const ACTINFO_2D = 0;
+    // Axis styles for scientific style axis
+    const AXSTYLE_SIMPLE  = 1;
+    const AXSTYLE_BOXIN   = 2;
+    const AXSTYLE_BOXOUT  = 3;
+    const AXSTYLE_YBOXIN  = 4;
+    const AXSTYLE_YBOXOUT = 5;
+    // Depth of objects
+    const DEPTH_BACK  = 0;
+    const DEPTH_FRONT = 1;
+
+    // TTF Font styles
+    const FS_NORMAL     = 9001;
+    const FS_BOLD       = 9002;
+    const FS_ITALIC     = 9003;
+    const FS_BOLDIT     = 9004;
+    const FS_BOLDITALIC = 9004;
+
+    // Tick density
+    const TICKD_DENSE      = 1;
+    const TICKD_NORMAL     = 2;
+    const TICKD_SPARSE     = 3;
+    const TICKD_VERYSPARSE = 4;
+
+    // Side for ticks and labels.
+    const SIDE_LEFT  = -1;
+    const SIDE_RIGHT = 1;
+    // Style for title backgrounds
+    const TITLEBKG_STYLE1             = 1;
+    const TITLEBKG_STYLE2             = 2;
+    const TITLEBKG_STYLE3             = 3;
+    const TITLEBKG_FRAME_NONE         = 0;
+    const TITLEBKG_FRAME_FULL         = 1;
+    const TITLEBKG_FRAME_BOTTOM       = 2;
+    const TITLEBKG_FRAME_BEVEL        = 3;
+    const TITLEBKG_FILLSTYLE_HSTRIPED = 1;
+    const TITLEBKG_FILLSTYLE_VSTRIPED = 2;
+    const TITLEBKG_FILLSTYLE_SOLID    = 3;
+    const _FIRST_FONT                 = 10;
+</codefragment>
+  </duplication>
+  <duplication lines="64" tokens="147">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Configs.php" line="119"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/Configs.php" line="40"/>
+    <codefragment>    const BAND_RDIAG       = 1; // Right diagonal lines
+    const BAND_LDIAG       = 2; // Left diagonal lines
+    const BAND_SOLID       = 3; // Solid one color
+    const BAND_VLINE       = 4; // Vertical lines
+    const BAND_HLINE       = 5; // Horizontal lines
+    const BAND_3DPLANE     = 6; // "3D" Plane
+    const BAND_HVCROSS     = 7; // Vertical/Hor crosses
+    const BAND_DIAGCROSS   = 8; // Diagonal crosses
+
+// Style for background gradient fills
+    const BGRAD_FRAME  = 1;
+    const BGRAD_MARGIN = 2;
+    const BGRAD_PLOT   = 3;
+
+    // Format for background images
+    const BGIMG_FILLPLOT  = 1;
+    const BGIMG_FILLFRAME = 2;
+    const BGIMG_COPY      = 3;
+    const BGIMG_CENTER    = 4;
+    const BGIMG_FREE      = 5;
+    // Activity types for use with utility method CreateSimple()
+    const ACTYPE_NORMAL    = 0;
+    const ACTYPE_GROUP     = 1;
+    const ACTYPE_MILESTONE = 2;
+
+    const ACTINFO_3D = 1;
+    const ACTINFO_2D = 0;
+    // Axis styles for scientific style axis
+    const AXSTYLE_SIMPLE  = 1;
+    const AXSTYLE_BOXIN   = 2;
+    const AXSTYLE_BOXOUT  = 3;
+    const AXSTYLE_YBOXIN  = 4;
+    const AXSTYLE_YBOXOUT = 5;
+    // Depth of objects
+    const DEPTH_BACK  = 0;
+    const DEPTH_FRONT = 1;
+
+    // TTF Font styles
+    const FS_NORMAL     = 9001;
+    const FS_BOLD       = 9002;
+    const FS_ITALIC     = 9003;
+    const FS_BOLDIT     = 9004;
+    const FS_BOLDITALIC = 9004;
+
+    // Tick density
+    const TICKD_DENSE      = 1;
+    const TICKD_NORMAL     = 2;
+    const TICKD_SPARSE     = 3;
+    const TICKD_VERYSPARSE = 4;
+
+    // Side for ticks and labels.
+    const SIDE_LEFT  = -1;
+    const SIDE_RIGHT = 1;
+    // Style for title backgrounds
+    const TITLEBKG_STYLE1             = 1;
+    const TITLEBKG_STYLE2             = 2;
+    const TITLEBKG_STYLE3             = 3;
+    const TITLEBKG_FRAME_NONE         = 0;
+    const TITLEBKG_FRAME_FULL         = 1;
+    const TITLEBKG_FRAME_BOTTOM       = 2;
+    const TITLEBKG_FRAME_BEVEL        = 3;
+    const TITLEBKG_FILLSTYLE_HSTRIPED = 1;
+    const TITLEBKG_FILLSTYLE_VSTRIPED = 2;
+    const TITLEBKG_FILLSTYLE_SOLID    = 3;
+</codefragment>
+  </duplication>
+  <duplication lines="54" tokens="151">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/Theme.php" line="107"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/PastelTheme.php" line="50"/>
+    <codefragment>        $graph-&gt;legend-&gt;SetShadow(false);
+        $graph-&gt;legend-&gt;SetMarkAbsSize(5);
+
+        // title
+        $graph-&gt;title-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;subtitle-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;subsubtitle-&gt;SetColor($this-&gt;font_color);
+
+        $graph-&gt;SetAntiAliasing();
+    }
+
+    public function PreStrokeApply($graph)
+    {
+        if (!$graph-&gt;legend-&gt;HasItems()) {
+            return;
+        }
+
+        $img    = $graph-&gt;img;
+        $height = $img-&gt;height;
+        $graph-&gt;SetMargin($img-&gt;left_margin, $img-&gt;right_margin, $img-&gt;top_margin, $height * 0.25);
+    }
+
+    public function ApplyPlot($plot)
+    {
+        switch (get_class($plot)) {
+            case 'GroupBarPlot':
+                foreach ($plot-&gt;plots as $_plot) {
+                    $this-&gt;ApplyPlot($_plot);
+                }
+
+                break;
+            case 'AccBarPlot':
+                foreach ($plot-&gt;plots as $_plot) {
+                    $this-&gt;ApplyPlot($_plot);
+                }
+
+                break;
+            case 'BarPlot':
+                $plot-&gt;Clear();
+
+                $color = $this-&gt;GetNextColor();
+                $plot-&gt;SetColor($color);
+                $plot-&gt;SetFillColor($color);
+                $plot-&gt;SetShadow('red', 3, 4, false);
+
+                break;
+            case 'LinePlot':
+                $plot-&gt;Clear();
+
+                $plot-&gt;SetColor($this-&gt;GetNextColor() . '@0.4');
+                $plot-&gt;SetWeight(2);
+
+                break;
+            case 'PiePlot':
+</codefragment>
+  </duplication>
+  <duplication lines="47" tokens="119">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2293"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2420"/>
+    <codefragment>        for ($x = 0; $x &lt; $a; ++$x) {
+            /*$y = $b * sqrt( 1 - ($x*$x)/($a*$a) );
+
+            $error = $y - (int)($y);
+            $y = (int)($y);
+
+            $diffColor = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error );*/
+
+            $_y1 = $dyStop * $x;
+            $_y2 = $dyStart * $x;
+            if ($xStart &gt; $xStop) {
+                $error1 = $_y1 - (int) ($_y1);
+                $error2 = 1 - $_y2 + (int) $_y2;
+                $_y1    = $_y1 - $error1;
+                $_y2    = $_y2 + $error2;
+            } else {
+                $error1 = 1 - $_y1 + (int) $_y1;
+                $error2 = $_y2 - (int) ($_y2);
+                $_y1    = $_y1 + $error1;
+                $_y2    = $_y2 - $error2;
+            }
+            /*
+            if ($aaStopX)
+            $diffColor1 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error1 );
+            if ($aaStartX)
+            $diffColor2 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error2 );
+             */
+
+            if ($seg == 0 || $seg == 2) {
+                $i = $seg;
+                if (!($start &gt; $i * M_PI / 2 &amp;&amp; $x &gt; $xStart)) {
+                    if ($i == 0) {
+                        $xp = +1;
+                        $yp = -1;
+                        $xa = +1;
+                        $ya = 0;
+                    } else {
+                        $xp = -1;
+                        $yp = +1;
+                        $xa = 0;
+                        $ya = +1;
+                    }
+                    if ($stop &lt; ($i + 1) * (M_PI / 2) &amp;&amp; $x &lt;= $xStop) {
+                        $diffColor1 = imagecolorexactalpha($img, $color[0], $color[1], $color[2], 127 - (127 - $color[3]) * $error1);
+                        $y1         = $_y1;
+                        if ($aaStopX) {
+                            imagesetpixel($img, $cx + $xp * ($x) + $xa, $cy + $yp * ($y1 + 1) + $ya, $diffColor1);
+</codefragment>
+  </duplication>
+  <duplication lines="45" tokens="152">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="679"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="875"/>
+    <codefragment>                $lbl = sprintf($this-&gt;iLabelFormatString, $da);
+            }
+
+            if ($this-&gt;iLabelPositioning == Configs::LBLPOSITION_CENTER) {
+                $dx = $dy = 0;
+            } else {
+                // Configs::LBLPOSIITON_EDGE
+                if ($a &gt;= 7 * M_PI / 4 || $a &lt;= M_PI / 4) {
+                    $dx = 0;
+                }
+
+                if ($a &gt;= M_PI / 4 &amp;&amp; $a &lt;= 3 * M_PI / 4) {
+                    $dx = ($a - M_PI / 4) * 2 / M_PI;
+                }
+
+                if ($a &gt;= 3 * M_PI / 4 &amp;&amp; $a &lt;= 5 * M_PI / 4) {
+                    $dx = 1;
+                }
+
+                if ($a &gt;= 5 * M_PI / 4 &amp;&amp; $a &lt;= 7 * M_PI / 4) {
+                    $dx = (1 - ($a - M_PI * 5 / 4) * 2 / M_PI);
+                }
+
+                if ($a &gt;= 7 * M_PI / 4) {
+                    $dy = (($a - M_PI) - 3 * M_PI / 4) * 2 / M_PI;
+                }
+
+                if ($a &lt;= M_PI / 4) {
+                    $dy = (0.5 + $a * 2 / M_PI);
+                }
+
+                if ($a &gt;= M_PI / 4 &amp;&amp; $a &lt;= 3 * M_PI / 4) {
+                    $dy = 1;
+                }
+
+                if ($a &gt;= 3 * M_PI / 4 &amp;&amp; $a &lt;= 5 * M_PI / 4) {
+                    $dy = (1 - ($a - 3 * M_PI / 4) * 2 / M_PI);
+                }
+
+                if ($a &gt;= 5 * M_PI / 4 &amp;&amp; $a &lt;= 7 * M_PI / 4) {
+                    $dy = 0;
+                }
+            }
+
+            $value-&gt;Set($lbl);
+</codefragment>
+  </duplication>
+  <duplication lines="41" tokens="144">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/PiePlot.php" line="1110"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/PiePlot3D.php" line="1083"/>
+    <codefragment>            while ($a &gt; 2 * M_PI) {
+                $a -= 2 * M_PI;
+            }
+
+            if ($a &gt;= 7 * M_PI / 4 || $a &lt;= M_PI / 4) {
+                $dx = 0;
+            }
+
+            if ($a &gt;= M_PI / 4 &amp;&amp; $a &lt;= 3 * M_PI / 4) {
+                $dx = ($a - M_PI / 4) * 2 / M_PI;
+            }
+
+            if ($a &gt;= 3 * M_PI / 4 &amp;&amp; $a &lt;= 5 * M_PI / 4) {
+                $dx = 1;
+            }
+
+            if ($a &gt;= 5 * M_PI / 4 &amp;&amp; $a &lt;= 7 * M_PI / 4) {
+                $dx = (1 - ($a - M_PI * 5 / 4) * 2 / M_PI);
+            }
+
+            if ($a &gt;= 7 * M_PI / 4) {
+                $dy = (($a - M_PI) - 3 * M_PI / 4) * 2 / M_PI;
+            }
+
+            if ($a &lt;= M_PI / 4) {
+                $dy = (1 - $a * 2 / M_PI);
+            }
+
+            if ($a &gt;= M_PI / 4 &amp;&amp; $a &lt;= 3 * M_PI / 4) {
+                $dy = 1;
+            }
+
+            if ($a &gt;= 3 * M_PI / 4 &amp;&amp; $a &lt;= 5 * M_PI / 4) {
+                $dy = (1 - ($a - 3 * M_PI / 4) * 2 / M_PI);
+            }
+
+            if ($a &gt;= 5 * M_PI / 4 &amp;&amp; $a &lt;= 7 * M_PI / 4) {
+                $dy = 0;
+            }
+
+            $this-&gt;value-&gt;Stroke($img, $label, $xt - $dx * $w, $yt - $dy * $h);
+</codefragment>
+  </duplication>
+  <duplication lines="33" tokens="106">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/AquaTheme.php" line="38"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/PastelTheme.php" line="37"/>
+    <codefragment>    public function SetupPieGraph($graph)
+    {
+        // graph
+        $graph-&gt;SetFrame(false);
+
+        // legend
+        $graph-&gt;legend-&gt;SetFillColor('white');
+
+        $graph-&gt;legend-&gt;SetFrameWeight(0);
+        $graph-&gt;legend-&gt;Pos(0.5, 0.80, 'center', 'top');
+        $graph-&gt;legend-&gt;SetLayout(self::LEGEND_HOR);
+        $graph-&gt;legend-&gt;SetColumns(4);
+
+        $graph-&gt;legend-&gt;SetShadow(false);
+        $graph-&gt;legend-&gt;SetMarkAbsSize(5);
+
+        // title
+        $graph-&gt;title-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;subtitle-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;subsubtitle-&gt;SetColor($this-&gt;font_color);
+
+        $graph-&gt;SetAntiAliasing();
+    }
+
+    public function PreStrokeApply($graph)
+    {
+        if (!$graph-&gt;legend-&gt;HasItems()) {
+            return;
+        }
+
+        $img    = $graph-&gt;img;
+        $height = $img-&gt;height;
+        $graph-&gt;SetMargin(
+</codefragment>
+  </duplication>
+  <duplication lines="32" tokens="159">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/PieGraph.php" line="129"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/Graph.php" line="2786"/>
+    <codefragment>        $csim = '';
+        foreach ($this-&gt;plots as $p) {
+            $csim .= $p-&gt;GetCSIMareas();
+        }
+
+        $csim .= $this-&gt;legend-&gt;GetCSIMareas();
+        if (!preg_match_all('/area shape="(\\w+)" coords="([0-9\\, ]+)"/', $csim, $coords)) {
+            return;
+        }
+
+        $this-&gt;img-&gt;SetColor($this-&gt;csimcolor);
+        $n = Configs::safe_count($coords[0]);
+        for ($i = 0; $i &lt; $n; ++$i) {
+            if ($coords[1][$i] == 'poly') {
+                preg_match_all('/\s*([0-9]+)\s*,\s*([0-9]+)\s*,*/', $coords[2][$i], $pts);
+                $this-&gt;img-&gt;SetStartPoint($pts[1][count($pts[0]) - 1], $pts[2][count($pts[0]) - 1]);
+                $m = Configs::safe_count($pts[0]);
+                for ($j = 0; $j &lt; $m; ++$j) {
+                    $this-&gt;img-&gt;LineTo($pts[1][$j], $pts[2][$j]);
+                }
+            } elseif ($coords[1][$i] == 'rect') {
+                $pts = preg_split('/,/', $coords[2][$i]);
+                $this-&gt;img-&gt;SetStartPoint($pts[0], $pts[1]);
+                $this-&gt;img-&gt;LineTo($pts[2], $pts[1]);
+                $this-&gt;img-&gt;LineTo($pts[2], $pts[3]);
+                $this-&gt;img-&gt;LineTo($pts[0], $pts[3]);
+                $this-&gt;img-&gt;LineTo($pts[0], $pts[1]);
+            }
+        }
+    }
+
+    // Method description
+</codefragment>
+  </duplication>
+  <duplication lines="31" tokens="79">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2361"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2482"/>
+    <codefragment>                        imageline($img, $cx + $xp * $x + $xa, $cy + $yp * $y1 + $ya, $cx + $xp * $x + $xa, $cy + $yp * $y2 + $ya, $fillColor);
+                    }
+                }
+            }
+
+            if ($seg != 1 &amp;&amp; $seg != 3) {
+                continue;
+            }
+
+            $i = $seg;
+            if ($stop &lt; ($i + 1) * M_PI / 2 &amp;&amp; $x &gt; $xStop) {
+                continue;
+            }
+
+            if ($i == 1) {
+                $xp = -1;
+                $yp = -1;
+                $xa = 0;
+                $ya = 0;
+            } else {
+                $xp = +1;
+                $yp = +1;
+                $xa = 1;
+                $ya = 1;
+            }
+            if ($start &gt; $i * M_PI / 2 &amp;&amp; $x &lt; $xStart) {
+                $diffColor2 = imagecolorexactalpha($img, $color[0], $color[1], $color[2], 127 - (127 - $color[3]) * $error2);
+                $y1         = $_y2;
+                if ($aaStartX) {
+                    imagesetpixel($img, $cx + $xp * $x + $xa, $cy + $yp * ($y1 + 1) + $ya, $diffColor2);
+                }
+</codefragment>
+  </duplication>
+  <duplication lines="25" tokens="70">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/PieGraph.php" line="307"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/GanttGraph.php" line="823"/>
+    <codefragment>        if ($this-&gt;iImgTrans) {
+            $tform          = new Image\ImgTrans($this-&gt;img-&gt;img);
+            $this-&gt;img-&gt;img = $tform-&gt;Skew3D(
+                $this-&gt;iImgTransHorizon,
+                $this-&gt;iImgTransSkewDist,
+                $this-&gt;iImgTransDirection,
+                $this-&gt;iImgTransHighQ,
+                $this-&gt;iImgTransMinSize,
+                $this-&gt;iImgTransFillColor,
+                $this-&gt;iImgTransBorder
+            );
+        }
+
+        // If the filename is given as the special "__handle"
+        // then the image handler is returned and the image is NOT
+        // streamed back
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            return $this-&gt;img-&gt;img;
+        }
+        // Finally stream the generated picture
+        $this-&gt;cache-&gt;PutAndStream(
+            $this-&gt;img,
+            $this-&gt;cache_name,
+            $this-&gt;inline,
+            $aStrokeFileName
+</codefragment>
+  </duplication>
+  <duplication lines="24" tokens="119">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="136"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="161"/>
+    <codefragment>                $diff      = ceil(abs($xr - $xl));
+                $steps     = floor(abs($diff) / 3);
+                $firststep = $diff - 2 * $steps;
+                $delta     = $xr &gt;= $xl ? 1 : -1;
+                $this-&gt;GetColArray($from_color, $to_color, $firststep, $colors, $this-&gt;numcolors);
+                for ($x = $xl, $i = 0; $i &lt; $firststep; ++$i) {
+                    $this-&gt;img-&gt;current_color = $colors[$i];
+                    $this-&gt;img-&gt;Line($x, $yb, $x, $yt);
+                    $x += $delta;
+                }
+                --$i;
+                $this-&gt;img-&gt;current_color = $colors[$i];
+                for ($j = 0; $j &lt; $steps; ++$j) {
+                    $this-&gt;img-&gt;Line($x, $yb, $x, $yt);
+                    $x += $delta;
+                }
+
+                for ($j = 0; $j &lt; $steps; ++$j, --$i) {
+                    $this-&gt;img-&gt;current_color = $colors[$i];
+                    $this-&gt;img-&gt;Line($x, $yb, $x, $yt);
+                    $x += $delta;
+                }
+
+                break;
+</codefragment>
+  </duplication>
+  <duplication lines="24" tokens="72">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/PieGraph.php" line="307"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/Graph.php" line="1952"/>
+    <codefragment>        if ($this-&gt;iImgTrans) {
+            $tform          = new Image\ImgTrans($this-&gt;img-&gt;img);
+            $this-&gt;img-&gt;img = $tform-&gt;Skew3D(
+                $this-&gt;iImgTransHorizon,
+                $this-&gt;iImgTransSkewDist,
+                $this-&gt;iImgTransDirection,
+                $this-&gt;iImgTransHighQ,
+                $this-&gt;iImgTransMinSize,
+                $this-&gt;iImgTransFillColor,
+                $this-&gt;iImgTransBorder
+            );
+        }
+
+        // If the filename is given as the special "__handle"
+        // then the image handler is returned and the image is NOT
+        // streamed back
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            return $this-&gt;img-&gt;img;
+        }
+        // Finally stream the generated picture
+        $this-&gt;cache-&gt;PutAndStream(
+            $this-&gt;img,
+            $this-&gt;cache_name,
+            $this-&gt;inline,
+</codefragment>
+  </duplication>
+  <duplication lines="22" tokens="78">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="978"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="1018"/>
+    <codefragment>    public function getWidth($aImg)
+    {
+        $scaling = 1; //$this-&gt;iAntiAlias ? 2 : 1 ;
+        if ($this-&gt;iSize &gt; 0 &amp;&amp; $this-&gt;iSize &lt; 1) {
+            $this-&gt;iSize *= min($aImg-&gt;width, $aImg-&gt;height);
+        }
+
+        $value = new Text\Text();
+        $value-&gt;SetFont($this-&gt;iFontFamily, $this-&gt;iFontStyle, $this-&gt;iFontSize * $scaling);
+        $value-&gt;SetColor($this-&gt;iFontColor);
+        // Setup extra size around the graph needed so that the labels
+        // doesn't get cut. For this we need to find the largest label.
+        // The code below gives a possible a little to large margin. The
+        // really, really proper way would be to account for what angle
+        // the label are at
+        $n = Configs::safe_count($this-&gt;iLabels);
+        if ($n &gt; 0) {
+            $maxh = 0;
+            $maxw = 0;
+            foreach ($this-&gt;iLabels as $key =&gt; $lbl) {
+                $value-&gt;Set($lbl);
+                $maxw = max($maxw, $value-&gt;GetWidth($aImg));
+</codefragment>
+  </duplication>
+  <duplication lines="22" tokens="133">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/SoftyTheme.php" line="63"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/Theme.php" line="59"/>
+    <codefragment>        $graph-&gt;legend-&gt;SetFrameWeight(0);
+        $graph-&gt;legend-&gt;Pos(0.5, 0.85, 'center', 'top');
+        $graph-&gt;legend-&gt;SetFillColor('white');
+        $graph-&gt;legend-&gt;SetLayout(self::LEGEND_HOR);
+        $graph-&gt;legend-&gt;SetColumns(3);
+        $graph-&gt;legend-&gt;SetShadow(false);
+        $graph-&gt;legend-&gt;SetMarkAbsSize(5);
+
+        // xaxis
+        $graph-&gt;xaxis-&gt;title-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;xaxis-&gt;SetColor($this-&gt;axis_color, $this-&gt;font_color);
+        $graph-&gt;xaxis-&gt;SetTickSide(self::SIDE_BOTTOM);
+        $graph-&gt;xaxis-&gt;SetLabelMargin(10);
+
+        // yaxis
+        $graph-&gt;yaxis-&gt;title-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;yaxis-&gt;SetColor($this-&gt;axis_color, $this-&gt;font_color);
+        $graph-&gt;yaxis-&gt;SetTickSide(self::SIDE_LEFT);
+        $graph-&gt;yaxis-&gt;SetLabelMargin(8);
+        $graph-&gt;yaxis-&gt;HideLine();
+        $graph-&gt;yaxis-&gt;HideTicks();
+        $graph-&gt;xaxis-&gt;SetTitleMargin(15);
+</codefragment>
+  </duplication>
+  <duplication lines="22" tokens="84">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="686"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/PiePlot.php" line="1114"/>
+    <codefragment>                if ($a &gt;= 7 * M_PI / 4 || $a &lt;= M_PI / 4) {
+                    $dx = 0;
+                }
+
+                if ($a &gt;= M_PI / 4 &amp;&amp; $a &lt;= 3 * M_PI / 4) {
+                    $dx = ($a - M_PI / 4) * 2 / M_PI;
+                }
+
+                if ($a &gt;= 3 * M_PI / 4 &amp;&amp; $a &lt;= 5 * M_PI / 4) {
+                    $dx = 1;
+                }
+
+                if ($a &gt;= 5 * M_PI / 4 &amp;&amp; $a &lt;= 7 * M_PI / 4) {
+                    $dx = (1 - ($a - M_PI * 5 / 4) * 2 / M_PI);
+                }
+
+                if ($a &gt;= 7 * M_PI / 4) {
+                    $dy = (($a - M_PI) - 3 * M_PI / 4) * 2 / M_PI;
+                }
+
+                if ($a &lt;= M_PI / 4) {
+                    $dy = (0.5 + $a * 2 / M_PI);
+</codefragment>
+  </duplication>
+  <duplication lines="21" tokens="70">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/PieGraph.php" line="307"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/CanvasGraph.php" line="84"/>
+    <codefragment>        if ($this-&gt;iImgTrans) {
+            $tform          = new Image\ImgTrans($this-&gt;img-&gt;img);
+            $this-&gt;img-&gt;img = $tform-&gt;Skew3D(
+                $this-&gt;iImgTransHorizon,
+                $this-&gt;iImgTransSkewDist,
+                $this-&gt;iImgTransDirection,
+                $this-&gt;iImgTransHighQ,
+                $this-&gt;iImgTransMinSize,
+                $this-&gt;iImgTransFillColor,
+                $this-&gt;iImgTransBorder
+            );
+        }
+
+        // If the filename is given as the special "__handle"
+        // then the image handler is returned and the image is NOT
+        // streamed back
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            return $this-&gt;img-&gt;img;
+        }
+        // Finally stream the generated picture
+        $this-&gt;cache-&gt;PutAndStream(
+</codefragment>
+  </duplication>
+  <duplication lines="21" tokens="103">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="94"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="115"/>
+    <codefragment>                $steps = ceil(abs($yb - $yt) / 2);
+                $delta = $yb &gt;= $yt ? 1 : -1;
+                $this-&gt;GetColArray($from_color, $to_color, $steps, $colors, $this-&gt;numcolors);
+                for ($y = $yt, $i = 0; $i &lt; $steps; ++$i) {
+                    $this-&gt;img-&gt;current_color = $colors[$i];
+                    $this-&gt;img-&gt;Line($xl, $y, $xr, $y);
+                    $y += $delta;
+                }
+                --$i;
+                if (abs($yb - $yt) % 2 == 1) {
+                    --$steps;
+                }
+                for ($j = 0; $j &lt; $steps; ++$j, --$i) {
+                    $this-&gt;img-&gt;current_color = $colors[$i];
+                    $this-&gt;img-&gt;Line($xl, $y, $xr, $y);
+                    $y += $delta;
+                }
+                $this-&gt;img-&gt;Line($xl, $y, $xr, $y);
+
+                break;
+            case Configs::getConfig('GRAD_MIDVER'):
+</codefragment>
+  </duplication>
+  <duplication lines="19" tokens="74">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="633"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/WindrosePlot.php" line="843"/>
+    <codefragment>            $y   = round($yc - sin($a) * $r);
+            if (empty($this-&gt;iRadialColorArray[$dir])) {
+                $dblImg-&gt;SetColor($this-&gt;iGridColor2);
+            } else {
+                $dblImg-&gt;SetColor($this-&gt;iRadialColorArray[$dir]);
+            }
+            if (empty($this-&gt;iRadialWeightArray[$dir])) {
+                $dblImg-&gt;SetLineWeight($this-&gt;iRadialGridWeight);
+            } else {
+                $dblImg-&gt;SetLineWeight($this-&gt;iRadialWeightArray[$dir]);
+            }
+            if (empty($this-&gt;iRadialStyleArray[$dir])) {
+                $dblImg-&gt;SetLineStyle($this-&gt;iRadialGridStyle);
+            } else {
+                $dblImg-&gt;SetLineStyle($this-&gt;iRadialStyleArray[$dir]);
+            }
+            $dblImg-&gt;StyleLine($xxc, $yyc, $x, $y);
+            $txtpos[] = [$x, $y, $a];
+        }
+</codefragment>
+  </duplication>
+  <duplication lines="19" tokens="73">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/tick/LogTicks.php" line="102"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/graph/tick/LogTicks.php" line="158"/>
+    <codefragment>                            $img-&gt;Line($pos, $ys, $a2, $ys);
+                        }
+                    }
+
+                    $this-&gt;maj_ticks_pos[$i]      = $ys;
+                    $this-&gt;maj_ticklabels_pos[$i] = $ys;
+
+                    if ($this-&gt;label_formfunc != '') {
+                        $f                         = $this-&gt;label_formfunc;
+                        $this-&gt;maj_ticks_label[$i] = call_user_func($f, $nextMajor);
+                    } elseif ($this-&gt;label_logtype == 0) {
+                        $this-&gt;maj_ticks_label[$i] = $nextMajor;
+                    } else {
+                        $this-&gt;maj_ticks_label[$i] = '10^' . round(log10($nextMajor));
+                    }
+                    ++$i;
+                    $nextMajor *= 10;
+                    $step *= 10;
+                    $count = 1;
+</codefragment>
+  </duplication>
+  <duplication lines="17" tokens="81">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2335"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/image/Image.php" line="2386"/>
+    <codefragment>                    if ($stop &lt; ($i + 1) * (M_PI / 2) &amp;&amp; $x &lt;= $xStop) {
+                        $diffColor1 = imagecolorexactalpha($img, $color[0], $color[1], $color[2], 127 - (127 - $color[3]) * $error1);
+                        $y1         = $_y1;
+                        if ($aaStopX) {
+                            imagesetpixel($img, $cx + $xp * ($x) + $xa, $cy + $yp * ($y1 + 1) + $ya, $diffColor1);
+                        }
+                    } else {
+                        $y         = $b * sqrt(1 - ($x * $x) / ($a * $a));
+                        $error     = $y - (int) ($y);
+                        $y         = (int) ($y);
+                        $diffColor = imagecolorexactalpha($img, $color[0], $color[1], $color[2], 127 - (127 - $color[3]) * $error);
+                        $y1        = $y;
+                        if ($x &lt; $aaAngleX) {
+                            imagesetpixel($img, $cx + $xp * $x + $xa, $cy + $yp * ($y1 + 1) + $ya, $diffColor);
+                        }
+                    }
+                    if ($start &gt; $i * M_PI / 2 &amp;&amp; $x &lt;= $xStart) {
+</codefragment>
+  </duplication>
+  <duplication lines="17" tokens="102">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="306"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="326"/>
+    <codefragment>                    $steps = $xr - $xl;
+                    $delta = $xr &gt;= $xl ? 1 : -1;
+                    $this-&gt;GetColArray($from_color, $to_color, $steps * 2, $colors, $this-&gt;numcolors);
+                    $n = Configs::safe_count($colors);
+
+                    for ($x = $xl, $i = 0; $i &lt; $steps &amp;&amp; $i &lt; $n; ++$i) {
+                        $this-&gt;img-&gt;current_color = $colors[$i];
+                        $y                        = $yt + ($i / $steps) * ($yb - $yt) * $delta;
+                        $this-&gt;img-&gt;Line($x, $yt, $xl, $y);
+                        $x += $delta;
+                    }
+
+                    for ($x = $xl, $i = 0; $i &lt; $steps &amp;&amp; $i &lt; $n; ++$i) {
+                        $this-&gt;img-&gt;current_color = $colors[$steps + $i];
+                        $y                        = $yt + ($i / $steps) * ($yb - $yt) * $delta;
+                        $this-&gt;img-&gt;Line($x, $yb, $xr, $y);
+                        $x += $delta;
+</codefragment>
+  </duplication>
+  <duplication lines="17" tokens="82">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/GTextTable.php" line="268"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/GTextTable.php" line="322"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/GTextTable.php" line="376"/>
+    <codefragment>    public function SetPadding($aArgR1, $aC1 = null, $aR2 = null, $aC2 = null, $aPad = null)
+    {
+        if ($aC1 !== null &amp;&amp; $aR2 !== null &amp;&amp; $aC2 !== null &amp;&amp; $aPad !== null) {
+            $this-&gt;_chkR($aArgR1);
+            $this-&gt;_chkC($aC1);
+            $this-&gt;_chkR($aR2);
+            $this-&gt;_chkC($aC2);
+        } else {
+            $aPad   = $aArgR1;
+            $aR2    = $this-&gt;iSize[0] - 1;
+            $aArgR1 = 0;
+            $aC2    = $this-&gt;iSize[1] - 1;
+            $aC1    = 0;
+        }
+        for ($i = $aArgR1; $i &lt;= $aR2; ++$i) {
+            for ($j = $aC1; $j &lt;= $aC2; ++$j) {
+                $this-&gt;iCells[$i][$j]-&gt;SetMargin($aPad, $aPad, $aPad, $aPad);
+</codefragment>
+  </duplication>
+  <duplication lines="17" tokens="111">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/MileStone.php" line="68"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/GanttBar.php" line="186"/>
+    <codefragment>            $colwidth  = $this-&gt;title-&gt;GetColWidth($aImg);
+            $colstarts = [];
+            $aScale-&gt;actinfo-&gt;GetColStart($aImg, $colstarts, true);
+            $n = min(Configs::safe_count($colwidth), Configs::safe_count($this-&gt;title-&gt;csimtarget));
+            for ($i = 0; $i &lt; $n; ++$i) {
+                $title_xt = $colstarts[$i];
+                $title_xb = $title_xt + $colwidth[$i];
+                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
+
+                if (empty($this-&gt;title-&gt;csimtarget[$i])) {
+                    continue;
+                }
+
+                $this-&gt;csimarea .= "&lt;area shape=\"poly\" coords=\"${coords}\" href=\"" . $this-&gt;title-&gt;csimtarget[$i] . '"';
+
+                if (!empty($this-&gt;title-&gt;csimwintarget[$i])) {
+                    $this-&gt;csimarea .= 'target="' . $this-&gt;title-&gt;csimwintarget[$i] . '"';
+</codefragment>
+  </duplication>
+  <duplication lines="15" tokens="80">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="197"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/plot/Gradient.php" line="224"/>
+    <codefragment>                $this-&gt;GetColArray($from_color2, $to_color, $steps1, $colors, $this-&gt;numcolors);
+                $n = Configs::safe_count($colors);
+                for ($x = $xl, $i = 0; $i &lt; $steps1 &amp;&amp; $i &lt; $n; ++$i) {
+                    $this-&gt;img-&gt;current_color = $colors[$i];
+                    $this-&gt;img-&gt;Line($x, $yb, $x, $yt);
+                    $x += $delta;
+                }
+                $steps2 = max(1, ceil(0.08 * abs($xr - $xl)));
+                $this-&gt;img-&gt;SetColor($to_color);
+                for ($j = 0; $j &lt; $steps2; ++$j) {
+                    $this-&gt;img-&gt;Line($x, $yb, $x, $yt);
+                    $x += $delta;
+                }
+                $steps = abs($xr - $xl) - $steps1 - $steps2;
+                $this-&gt;GetColArray($to_color, $from_color, $steps, $colors, $this-&gt;numcolors);
+</codefragment>
+  </duplication>
+  <duplication lines="14" tokens="84">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/SoftyTheme.php" line="63"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/themes/UniversalTheme.php" line="55"/>
+    <codefragment>        $graph-&gt;legend-&gt;SetFrameWeight(0);
+        $graph-&gt;legend-&gt;Pos(0.5, 0.85, 'center', 'top');
+        $graph-&gt;legend-&gt;SetFillColor('white');
+        $graph-&gt;legend-&gt;SetLayout(self::LEGEND_HOR);
+        $graph-&gt;legend-&gt;SetColumns(3);
+        $graph-&gt;legend-&gt;SetShadow(false);
+        $graph-&gt;legend-&gt;SetMarkAbsSize(5);
+
+        // xaxis
+        $graph-&gt;xaxis-&gt;title-&gt;SetColor($this-&gt;font_color);
+        $graph-&gt;xaxis-&gt;SetColor($this-&gt;axis_color, $this-&gt;font_color);
+        $graph-&gt;xaxis-&gt;SetTickSide(self::SIDE_BOTTOM);
+        $graph-&gt;xaxis-&gt;SetLabelMargin(10);
+
+</codefragment>
+  </duplication>
+  <duplication lines="14" tokens="79">
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/GTextTableCell.php" line="242"/>
+    <file path="/home/ffflabs/ctohm/huasofoundries/PHP/jpgraph/src/text/GTextTableCell.php" line="272"/>
+    <codefragment>    public function GetWidth($aImg)
+    {
+        if ($this-&gt;iIcon !== null) {
+            if ($this-&gt;iIconConstrain[0] == Configs::TIMG_WIDTH) {
+                $this-&gt;iIcon-&gt;SetScale(1);
+                $tmp = $this-&gt;iIcon-&gt;GetWidthHeight();
+                $this-&gt;iIcon-&gt;SetScale($this-&gt;iIconConstrain[1] / $tmp[0]);
+            } elseif ($this-&gt;iIconConstrain[0] == Configs::TIMG_HEIGHT) {
+                $this-&gt;iIcon-&gt;SetScale(1);
+                $tmp = $this-&gt;iIcon-&gt;GetWidthHeight();
+                $this-&gt;iIcon-&gt;SetScale($this-&gt;iIconConstrain[1] / $tmp[1]);
+            }
+            $tmp    = $this-&gt;iIcon-&gt;GetWidthHeight();
+            $iwidth = $tmp[0];
+</codefragment>
+  </duplication>
+</pmd-cpd>

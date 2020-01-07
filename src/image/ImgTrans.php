@@ -1,12 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
+use function ceil;
+use function floor;
+use function imagecolorallocate;
+use function imagecolorat;
+use function imagecreatetruecolor;
+use function imagefilledrectangle;
+use function imagerectangle;
+use function imagesetpixel;
+use function imagesx;
+use function imagesy;
+use function round;
 
 /**
  * File:        JPGRAPH_IMGTRANS.PHP
@@ -35,7 +46,7 @@ class ImgTrans
     // _TransVert3D() and _TransHor3D() are helper methods to
     // Skew3D().
     // --------------------------------------------------------------------
-    public function _TransVert3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = SKEW3D_DOWN, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
+    public function _TransVert3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = Configs::SKEW3D_DOWN, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
     {
         // Parameter check
         if ($aHorizonPos < 0 || $aHorizonPos > 1.0) {
@@ -81,7 +92,7 @@ class ImgTrans
 
             for ($x = 0; $x < $w; ++$x) {
                 $xt = ($x - $mid) * $aSkewDist / ($aSkewDist + $yp);
-                if ($aDir == SKEW3D_UP) {
+                if ($aDir == Configs::SKEW3D_UP) {
                     $rgb = imagecolorat($aGdImg, $x, $h - $y - 1);
                 } else {
                     $rgb = imagecolorat($aGdImg, $x, $y);
@@ -92,7 +103,7 @@ class ImgTrans
                 $b      = $rgb & 0xFF;
                 $colidx = imagecolorallocate($newgdh, $r, $g, $b);
                 $xt     = round($xt + $mid);
-                if ($aDir == SKEW3D_UP) {
+                if ($aDir == Configs::SKEW3D_UP) {
                     $syt = $yt;
                 } else {
                     $syt = $hh - $yt - 1;
@@ -124,7 +135,7 @@ class ImgTrans
     // _TransVert3D() and _TransHor3D() are helper methods to
     // Skew3D().
     // --------------------------------------------------------------------
-    public function _TransHor3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = SKEW3D_LEFT, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
+    public function _TransHor3D($aGdImg, $aHorizon = 100, $aSkewDist = 120, $aDir = Configs::SKEW3D_LEFT, $aMinSize = true, $aFillColor = '#FFFFFF', $aQuality = false, $aBorder = false, $aHorizonPos = 0.5)
     {
         $w = imagesx($aGdImg);
         $h = imagesy($aGdImg);
@@ -164,7 +175,7 @@ class ImgTrans
                 $yp = $h - $y - 1;
                 $yt = ($yp - $mid) * $aSkewDist / ($aSkewDist + $x);
 
-                if ($aDir == SKEW3D_RIGHT) {
+                if ($aDir == Configs::SKEW3D_RIGHT) {
                     $rgb = imagecolorat($aGdImg, $w - $x - 1, $y);
                 } else {
                     $rgb = imagecolorat($aGdImg, $x, $y);
@@ -175,7 +186,7 @@ class ImgTrans
                 $b      = $rgb & 0xFF;
                 $colidx = imagecolorallocate($newgdh, $r, $g, $b);
                 $yt     = floor($hh - $yt - $mid - 1);
-                if ($aDir == SKEW3D_RIGHT) {
+                if ($aDir == Configs::SKEW3D_RIGHT) {
                     $sxt = $ww - $xt - 1;
                 } else {
                     $sxt = $xt;
@@ -232,7 +243,7 @@ class ImgTrans
     // * $aBorder, if set to anything besides false this will draw a
     //   a border of the speciied color around the image
     // --------------------------------------------------------------------
-    public function Skew3D($aHorizon = 120, $aSkewDist = 150, $aDir = SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
+    public function Skew3D($aHorizon = 120, $aSkewDist = 150, $aDir = Configs::SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
     {
         return $this->_Skew3D(
             $this->gdImg,
@@ -246,9 +257,9 @@ class ImgTrans
         );
     }
 
-    public function _Skew3D($aGdImg, $aHorizon = 120, $aSkewDist = 150, $aDir = SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
+    public function _Skew3D($aGdImg, $aHorizon = 120, $aSkewDist = 150, $aDir = Configs::SKEW3D_DOWN, $aHiQuality = false, $aMinSize = true, $aFillColor = '#FFFFFF', $aBorder = false)
     {
-        if ($aDir == SKEW3D_DOWN || $aDir == SKEW3D_UP) {
+        if ($aDir == Configs::SKEW3D_DOWN || $aDir == Configs::SKEW3D_UP) {
             return $this->_TransVert3D($aGdImg, $aHorizon, $aSkewDist, $aDir, $aMinSize, $aFillColor, $aHiQuality, $aBorder);
         }
 

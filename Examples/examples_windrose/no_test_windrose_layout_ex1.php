@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -32,18 +32,18 @@ $data = [
 $rangecolors = ['green', 'yellow', 'red', 'brown'];
 
 // Create a windrose graph with titles
-$__width  = 750;
-$__height = 700;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-
-$graph->title->Set('Multiple plots with automatic layout');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$__width       = 750;
+$__height      = 700;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Multiple plots with automatic layout';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the individual windrose plots
 $wp = [];
 for ($i = 0; $i < 5; ++$i) {
     $wp[$i] = new Plot\WindrosePlot($data[$i]);
-    $wp[$i]->SetType(WINDROSE_TYPE8);
+    $wp[$i]->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
     if ($i < 2) {
         $wp[$i]->SetSize(0.28);
     } else {

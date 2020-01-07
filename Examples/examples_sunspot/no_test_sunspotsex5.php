@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,7 +12,7 @@ require_once 'jpgraph/jpgraph_bar.php';
 
 function readsunspotdata($aFile, &$aYears, &$aSunspots)
 {
-    $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $lines = @file($aFile, Graph\Configs::getConfig('FILE_IGNORE_NEW_LINES') | Graph\Configs::getConfig('FILE_SKIP_EMPTY_LINES'));
     if ($lines === false) {
         throw new JpGraphException('Can not read sunspot data file.');
     }
@@ -44,8 +44,7 @@ $graph = new Graph\Graph($width, $height);
 // int = integer scale for the Y-axis
 $graph->SetScale('intint');
 
-// Setup a title for the graph
-$graph->title->Set('Sunspot example');
+// Setup a title for the graph$example_title='Sunspot example'; $graph->title->set($example_title);
 
 // Setup titles and X-axis labels
 $graph->xaxis->title->Set('(year from 1701)');

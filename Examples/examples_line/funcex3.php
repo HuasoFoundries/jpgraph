@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,17 +21,18 @@ $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetBox(true, 'black', 2);
 $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow');
-$graph->SetAxisStyle(AXSTYLE_BOXIN);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXIN'));
 $graph->xgrid->Show();
 
 //$graph->xaxis->SetLabelFormat('%.0f');
 
 $graph->img->SetMargin(50, 50, 60, 40);
-
-$graph->title->Set('Function plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->subtitle->Set('(BOXIN Axis style)');
-$graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
+$example_title = 'Function plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$subtitle_text = ' BOXIN  Axis style)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);
 $lp1->SetColor('blue');

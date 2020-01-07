@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -47,8 +47,8 @@ $b2plot->SetFillColor('#11cccc');
 
 $b3plot->SetColor('white');
 $b3plot->SetFillColor('#1111cc');
-
-$graph->title->Set('Bar Plots');
+$example_title = 'Bar Plots';
+$graph->title->set($example_title);
 
 // Display the graph
 $graph->Stroke();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,12 +17,12 @@ $graph->SetScale('textlin');
 
 $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 40, 40);
-
-$graph->title->Set('Simple mpuls plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'Simple mpuls plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(MARK_SQUARE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->SetImpuls();
 
 $graph->Add($sp1);

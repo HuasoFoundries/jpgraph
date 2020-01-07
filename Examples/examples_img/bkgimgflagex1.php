@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -33,28 +33,29 @@ $graph->legend->Hide();
 
 // Get localised version of the month names
 $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
-$graph->SetBackgroundCountryFlag('mais', BGIMG_COPY, 50);
+$graph->SetBackgroundCountryFlag('mais', Graph\Configs::getConfig('BGIMG_COPY'), 50);
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->SetColor('white');
 
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->SetColor('navy');
 
-$graph->yaxis->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->yaxis->SetColor('navy');
 
 //$graph->ygrid->Show(false);
 $graph->ygrid->SetColor('white@0.5');
 
 // Setup graph title
-$graph->title->Set('Using a country flag background');
+$example_title = 'Using a country flag background';
+$graph->title->set($example_title);
 
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Create the three var series we will combine
 $bplot1 = new Plot\BarPlot($datay1);

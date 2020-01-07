@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_flags.php';
 
 if (empty($_GET['size'])) {
-    $size = FLAGSIZE2;
+    $size = Graph\Configs::getConfig('FLAGSIZE2');
 } else {
     $size = $_GET['size'];
 }

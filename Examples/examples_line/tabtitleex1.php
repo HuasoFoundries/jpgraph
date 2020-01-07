@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,7 +22,7 @@ $graph->SetFrame(false);
 $graph->SetMargin(30, 50, 30, 30);
 
 $graph->tabtitle->Set(' Year 2003 ');
-$graph->tabtitle->SetFont(FF_ARIAL, FS_BOLD, 13);
+$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 13);
 
 $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');

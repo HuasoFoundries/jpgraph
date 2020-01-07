@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ $__width  = 150;
 $__height = 150;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set("'sand' Theme");
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = "'sand' Theme";
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $p1 = new Plot\PiePlot($data);
 $p1->SetTheme('sand');

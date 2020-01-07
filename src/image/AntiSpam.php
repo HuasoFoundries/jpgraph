@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -63,7 +63,7 @@ class AntiSpam
             }
         }
 
-        $img = @imagecreatetruecolor($n * $this->iDD->iWidth, $this->iDD->iHeight);
+        $img = @imagecreatetruecolor((int) ($n * $this->iDD->iWidth), (int) ($this->iDD->iHeight));
         if ($img < 1) {
             return false;
         }

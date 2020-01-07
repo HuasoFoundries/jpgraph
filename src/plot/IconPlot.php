@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -9,6 +9,10 @@ namespace Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
+use function imagesx;
+use function imagesy;
+use function in_array;
+use function round;
 
 /**
  * File:        JPGRAPH_ICONPLOT.PHP

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -10,6 +10,16 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
+use function ceil;
+use function floor;
+use function is_float;
+use function is_int;
+use function is_string;
+use function max;
+use function min;
+use function round;
+use function strpos;
+use function strtotime;
 
 /**
  * @class GanttBar
@@ -28,7 +38,7 @@ class GanttBar extends GanttPlotObject
     private $iShadowColor     = 'darkgray';
     private $iShadowWidth     = 1;
     private $iShadowFrame     = 'black';
-    private $iPattern         = GANTT_RDIAG;
+    private $iPattern         = Configs::GANTT_RDIAG;
     private $iPatternColor    = 'blue';
     private $iPatternDensity  = 95;
     private $iBreakStyle      = false;
@@ -36,8 +46,6 @@ class GanttBar extends GanttPlotObject
     private $iBreakLineWeight = 1;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $aPos
      * @param mixed $aLabel
      * @param mixed $aStart
@@ -54,12 +62,12 @@ class GanttBar extends GanttPlotObject
             // If end date has been specified without a time we will asssume
             // end date is at the end of that date
             if (strpos($aEnd, ':') === false) {
-                $this->iEnd = strtotime($aEnd) + SECPERDAY - 1;
+                $this->iEnd = strtotime($aEnd) + Configs::SECPERDAY - 1;
             } else {
                 $this->iEnd = $aEnd;
             }
         } elseif (is_int($aEnd) || is_float($aEnd)) {
-            $this->iEnd = strtotime($aStart) + round($aEnd * SECPERDAY);
+            $this->iEnd = strtotime($aStart) + round($aEnd * Configs::SECPERDAY);
         }
         $this->iVPos         = $aPos;
         $this->iHeightFactor = $aHeightFactor;
@@ -178,25 +186,27 @@ class GanttBar extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(safe_count($colwidth), safe_count($this->title->csimtarget));
+            $n = min(Configs::safe_count($colwidth), Configs::safe_count($this->title->csimtarget));
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
-                if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
-
-                    if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
-                    }
-
-                    if (!empty($this->title->csimalt[$i])) {
-                        $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
-                    }
-                    $this->csimarea .= " />\n";
+                if (empty($this->title->csimtarget[$i])) {
+                    continue;
                 }
+
+                $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
+
+                if (!empty($this->title->csimwintarget[$i])) {
+                    $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
+                }
+
+                if (!empty($this->title->csimalt[$i])) {
+                    $tmp = $this->title->csimalt[$i];
+                    $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                }
+                $this->csimarea .= " />\n";
             }
         }
 
@@ -290,27 +300,29 @@ class GanttBar extends GanttPlotObject
             // We treat the RIGHT and LEFT triangle mark a little bi
             // special so that these marks are placed right under the
             // bar.
-            if ($this->leftMark->GetType() == MARK_LEFTTRIANGLE) {
+            if ($this->leftMark->GetType() == Configs::MARK_LEFTTRIANGLE) {
                 $y = $yb;
             }
             $this->leftMark->Stroke($aImg, $xt, $y);
         }
-        if ($limen == $en) {
-            $y = $middle;
-            // We treat the RIGHT and LEFT triangle mark a little bi
-            // special so that these marks are placed right under the
-            // bar.
-            if ($this->rightMark->GetType() == MARK_RIGHTTRIANGLE) {
-                $y = $yb;
-            }
-            $this->rightMark->Stroke($aImg, $xb, $y);
-
-            $margin = $this->iCaptionMargin;
-            if ($this->rightMark->show) {
-                $margin += $this->rightMark->GetWidth();
-            }
-
-            $this->caption->Stroke($aImg, $xb + $margin, $middle);
+        if ($limen != $en) {
+            return;
         }
+
+        $y = $middle;
+        // We treat the RIGHT and LEFT triangle mark a little bi
+        // special so that these marks are placed right under the
+        // bar.
+        if ($this->rightMark->GetType() == Configs::MARK_RIGHTTRIANGLE) {
+            $y = $yb;
+        }
+        $this->rightMark->Stroke($aImg, $xb, $y);
+
+        $margin = $this->iCaptionMargin;
+        if ($this->rightMark->show) {
+            $margin += $this->rightMark->GetWidth();
+        }
+
+        $this->caption->Stroke($aImg, $xb + $margin, $middle);
     }
 }

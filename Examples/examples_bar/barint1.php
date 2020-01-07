@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
@@ -28,13 +28,12 @@ $graph->yaxis->scale->SetGrace(100);
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(FF_FONT2);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT2'));
 
-// Setup graph title ands fonts
-$graph->title->Set('Example of integer Y-scale');
-$graph->title->SetFont(FF_FONT2, FS_BOLD);
+// Setup graph title ands fonts$example_title='Example of integer Y-scale'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(FF_FONT2, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -45,7 +44,7 @@ $bplot->SetShadow();
 // Setup the values that are displayed on top of each bar
 $bplot->value->Show();
 // Must use TTF fonts if we want text at an arbitrary angle
-$bplot->value->SetFont(FF_ARIAL, FS_BOLD);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
 $bplot->value->SetAngle(45);
 // Black color for positive values and darkred for negative values
 $bplot->value->SetColor('black', 'darkred');

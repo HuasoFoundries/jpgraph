@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Illustration of the different patterns for bands
@@ -35,14 +35,15 @@ $graph->ygrid->Show(false);
 $graph->Add($bplot);
 
 // Add band
-$band = new Plot\PlotBand(HORIZONTAL, BAND_HVCROSS, 15, 35, 'khaki4');
+$band = new Plot\PlotBand(Graph\Configs::getConfig('HORIZONTAL'), Graph\Configs::getConfig('BAND_HVCROSS'), 15, 35, 'khaki4');
 $band->ShowFrame(true);
-$band->SetOrder(DEPTH_FRONT);
+$band->SetOrder(Graph\Configs::getConfig('DEPTH_FRONT'));
 $graph->Add($band);
 
 // Set title
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 10);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $graph->title->SetColor('darkred');
-$graph->title->Set('BAND_HVCROSS, In front');
+$example_title = 'BAND_HVCROSS, In front';
+$graph->title->set($example_title);
 
 $graph->Stroke();

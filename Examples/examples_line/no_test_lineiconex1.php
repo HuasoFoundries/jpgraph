@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -23,7 +23,7 @@ $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
 
 $graph->title->Set('Adding an icon ("tux") in the background');
-$graph->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 //$graph->SetBackgroundGradient('red','blue');
 

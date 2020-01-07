@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,8 +18,9 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Setup title
-$graph->title->Set('Example of pie plot with absolute labels');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'Example of pie plot with absolute labels';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // The pie plot
 $p1 = new Plot\PiePlot($data);
@@ -32,11 +33,11 @@ $p1->SetCenter(0.35, 0.5);
 $p1->ShowBorder(false);
 
 // Label font and color setup
-$p1->value->SetFont(FF_FONT1, FS_BOLD);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $p1->value->SetColor('darkred');
 
 // Use absolute values (type==1)
-$p1->SetLabelType(PIE_VALUE_ABS);
+$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_ABS'));
 
 // Label format
 $p1->value->SetFormat('$%d');

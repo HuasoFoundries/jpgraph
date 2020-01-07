@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,8 +19,8 @@ $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
-
-$graph->title->Set('Adding a country flag as a an icon');
+$example_title = 'Adding a country flag as a an icon';
+$graph->title->set($example_title);
 
 $p1 = new Plot\LinePlot($datay);
 $p1->SetColor('blue');

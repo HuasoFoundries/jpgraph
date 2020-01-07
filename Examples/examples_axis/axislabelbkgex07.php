@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,19 +19,21 @@ $graph->SetScale('intlin');
 $graph->SetMargin(30, 15, 40, 30);
 $graph->SetMarginColor('white');
 $graph->SetFrame(true, 'blue', 3);
+$example_title = 'Label background';
+$example_title = $example_title;
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
-$graph->title->Set('Label background');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-
-$graph->subtitle->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $graph->subtitle->SetColor('darkred');
-$graph->subtitle->Set('"LABELBKG_XY"');
+$subtitle_text = 'LABELBKG_XY';
+$graph->subtitle->Set($subtitle_text);
 
-$graph->SetAxisLabelBackground(LABELBKG_XY, 'orange', 'red', 'lightblue', 'red');
+$graph->SetAxisLabelBackground(Graph\Configs::getConfig('LABELBKG_XY'), 'orange', 'red', 'lightblue', 'red');
 
 // Use Ariel font
-$graph->xaxis->SetFont(FF_ARIAL, FS_NORMAL, 9);
-$graph->yaxis->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $graph->xgrid->Show();
 
 // Create the plot line

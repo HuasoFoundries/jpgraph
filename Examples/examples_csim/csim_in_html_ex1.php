@@ -3,7 +3,7 @@
 
 <?php
 $_graphfilename = 'csim_in_html_graph_ex1.php';
-// This is the filename of this HTML file
+// This is the filename of this Graph\Configs::getConfig('HTML') file
 global $_wrapperfilename;
 $_wrapperfilename = basename(__FILE__);
 
@@ -19,7 +19,7 @@ echo $imgmap;
 
 ?>
 
-<h2>This is an example page with CSIM graphs with arbitrary HTML text</h2>
+<h2>This is an example page with Graph\Configs::getConfig('CSIM') graphs with arbitrary Graph\Configs::getConfig('HTML') text</h2>
 
 <?php
 if (empty($_GET['clickedon'])) {
@@ -30,7 +30,7 @@ if (empty($_GET['clickedon'])) {
 echo '<p />';
 ?>
 
-<p>First we need to get hold of the image map and include it in the HTML
+<p>First we need to get hold of the image map and include it in the Graph\Configs::getConfig('HTML')
   page.</p>
 <p>For this graph it is:</p>
 <?php
@@ -53,7 +53,7 @@ $imgtag = $graph->GetCSIMImgHTML($_mapname, $_graphfilename);
 <?php
 echo $imgtag;
 ?>
-<br><b>Figure 1. </b>The included CSIM graph.
+<br><b>Figure 1. </b>The included Graph\Configs::getConfig('CSIM') graph.
 </p>
 
 </body>

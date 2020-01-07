@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -36,10 +36,12 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(80, 30, 50, 40);
 $graph->SetMarginColor('white');
 $graph->SetScale('dateint');
-$graph->title->Set('Current Bids');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->subtitle->Set('(Updated every 5 minutes)');
-$graph->subtitle->SetFont(FF_ARIAL, FS_ITALIC, 10);
+$example_title = 'Current Bids';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$subtitle_text = '(Updated every 5 minutes)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 
 // Enable antialias
 $graph->img->SetAntiAliasing();
@@ -55,13 +57,13 @@ $graph->xaxis->scale->SetDateFormat('H:i');
 $graph->xaxis->scale->ticks->Set($INTERVAL);
 
 // Adjust the start time for an "even" 5 minute, i.e. 5,10,15,20,25, ...
-$graph->xaxis->scale->SetTimeAlign(MINADJ_5);
+$graph->xaxis->scale->SetTimeAlign(Graph\Configs::getConfig('MINADJ_5'));
 
 // Create the plots using the dummy data created at the beginning
 $line = [];
 for ($i = 0; $i < $m; ++$i) {
     $line[$i] = new Plot\LinePlot($bids[$i], $times);
-    $line[$i]->mark->SetType(MARK_SQUARE);
+    $line[$i]->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 }
 $graph->Add($line);
 

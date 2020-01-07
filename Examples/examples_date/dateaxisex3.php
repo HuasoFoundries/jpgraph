@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -31,20 +31,21 @@ $graph->SetMargin(40, 40, 30, 130);
 
 // Fix the Y-scale to go between [0,100] and use date for the x-axis
 $graph->SetScale('datlin', 0, 100);
-$graph->title->Set('Example on Date scale');
+$example_title = 'Example on Date scale';
+$graph->title->set($example_title);
 
 // Set the angle for the labels to 90 degrees
 $graph->xaxis->SetLabelAngle(90);
 
 // It is possible to adjust the density for the X-axis as well
 // The following call makes the dates a little more sparse
-// $graph->SetTickDensity(TICKD_NORMAL,TICKD_SPARSE);
+// $graph->SetTickDensity(Graph\Configs::getConfig('TICKD_NORMAL'),TICKD_SPARSE);
 
 // The automatic format string for dates can be overridden
 // $graph->xaxis->scale->SetDateFormat('h:i');
 
 // Adjust the start/end to a specific alignment
-$graph->xaxis->scale->SetTimeAlign(MINADJ_15);
+$graph->xaxis->scale->SetTimeAlign(Graph\Configs::getConfig('MINADJ_15'));
 
 $line = new Plot\LinePlot($data, $xdata);
 $line->SetLegend('Year 2005');

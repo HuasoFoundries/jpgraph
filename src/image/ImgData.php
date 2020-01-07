@@ -1,12 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
+use function base64_decode;
+use function in_array;
+use function is_integer;
+use function is_string;
 
 /**
  * @class ImgData

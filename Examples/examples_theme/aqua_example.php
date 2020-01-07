@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -56,9 +56,10 @@ for ($i = 4; $i < 8; ++$i) {
 $graph->Add($gbplot);
 $graph->Add($plot[4]);
 
-$title = 'AquaTheme Example';
-$title = mb_convert_encoding($title, 'UTF-8');
-$graph->title->Set($title);
+$title         = 'AquaTheme Example';
+$title         = mb_convert_encoding($title, 'UTF-8');
+$example_title = $title;
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

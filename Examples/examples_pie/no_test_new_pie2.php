@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,7 +21,8 @@ $theme_class = new UniversalTheme();
 //$graph->SetTheme($theme_class);
 
 // Set A title for the plot
-$graph->title->Set('Multiple - Pie plot');
+$example_title = 'Multiple - Pie plot';
+$graph->title->set($example_title);
 
 // Create plots
 $size = 0.13;
@@ -31,7 +32,8 @@ $graph->Add($p1);
 $p1->SetSize($size);
 $p1->SetCenter(0.25, 0.32);
 $p1->SetSliceColors(['#1E90FF', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3']);
-$p1->title->Set('2005');
+$example_title = '2005';
+$p1->title->set($example_title);
 
 $p2 = new Plot\PiePlot($data);
 $graph->Add($p2);
@@ -39,7 +41,8 @@ $graph->Add($p2);
 $p2->SetSize($size);
 $p2->SetCenter(0.65, 0.32);
 $p2->SetSliceColors(['#1E90FF', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3']);
-$p2->title->Set('2006');
+$example_title = '2006';
+$p2->title->set($example_title);
 
 $p3 = new Plot\PiePlot($data);
 $graph->Add($p3);
@@ -47,7 +50,8 @@ $graph->Add($p3);
 $p3->SetSize($size);
 $p3->SetCenter(0.25, 0.75);
 $p3->SetSliceColors(['#6495ED', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3']);
-$p3->title->Set('2007');
+$example_title = '2007';
+$p3->title->set($example_title);
 
 $p4 = new Plot\PiePlot($data);
 $graph->Add($p4);
@@ -55,6 +59,7 @@ $graph->Add($p4);
 $p4->SetSize($size);
 $p4->SetCenter(0.65, 0.75);
 $p4->SetSliceColors(['#6495ED', '#2E8B57', '#ADFF2F', '#DC143C', '#BA55D3']);
-$p4->title->Set('2008');
+$example_title = '2008';
+$p4->title->set($example_title);
 
 $graph->Stroke();

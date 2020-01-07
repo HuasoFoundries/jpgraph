@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,9 +25,8 @@ $icon = new IconPlot('tornado.jpg', 10, 10, 1.3, 50);
 $icon->SetAnchor('left', 'top');
 $graph->Add($icon);
 
-// Setup title
-$graph->title->Set('Windrose icon example');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+// Setup title$example_title='Windrose icon example'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.

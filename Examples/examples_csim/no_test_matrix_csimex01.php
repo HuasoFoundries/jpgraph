@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -44,8 +44,9 @@ $__height = 350;
 $graph    = new MatrixGraph($__width, $__height);
 
 $graph->SetBackgroundGradient('lightsteelblue:0.8', 'lightsteelblue:0.3');
-$graph->title->Set('CSIM with matrix');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 16);
+$example_title = 'CSIM with matrix';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
 $graph->title->SetColor('white');
 
 // Create one matrix plot
@@ -57,13 +58,13 @@ $mp->colormap->SetNullColor('gray');
 // Setup column lablels
 $mp->collabel->Set($collabels);
 $mp->collabel->SetSide('top');
-$mp->collabel->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$mp->collabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $mp->collabel->SetFontColor('lightgray');
 
 // Setup row lablels
 $mp->rowlabel->Set($rowlabels);
 $mp->rowlabel->SetSide('right');
-$mp->rowlabel->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$mp->rowlabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $mp->rowlabel->SetFontColor('lightgray');
 
 $mp->rowlabel->SetCSIMTargets($rowlabeltargets);
@@ -72,7 +73,7 @@ $mp->collabel->SetCSIMTargets($collabeltargets);
 // Move the legend more to the right
 $mp->legend->SetMargin(90);
 $mp->legend->SetColor('white');
-$mp->legend->SetFont(FF_VERDANA, FS_BOLD, 10);
+$mp->legend->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 10);
 
 $mp->SetCSIMTargets($csimtargets);
 

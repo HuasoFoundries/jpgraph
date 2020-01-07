@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,9 +19,8 @@ $__width =300;
 $__height=200;
 $graph   = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
-$graph->img->SetMargin(40, 20, 30, 40);
-$graph->title->Set('CSIM example with bar and line');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->img->SetMargin(40, 20, 30, 40); $example_title='CSIM example with bar and line'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Setup axis titles
 $graph->xaxis->title->Set('X-title');
@@ -29,7 +28,7 @@ $graph->yaxis->title->Set('Y-title');
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);
-$lineplot->mark->SetType(MARK_FILLEDCIRCLE);
+$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $lineplot->mark->SetWidth(5);
 $lineplot->mark->SetColor('black');
 $lineplot->mark->SetFillColor('red');

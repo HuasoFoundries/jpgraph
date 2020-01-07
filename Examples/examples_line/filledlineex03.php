@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,7 +15,8 @@ $__width  = 400;
 $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
-$graph->title->Set('Filled line with NULL values');
+$example_title = 'Filled line with NULL values';
+$graph->title->set($example_title);
 //Make sure data starts from Zero whatever data we have
 $graph->yscale->SetAutoMin(0);
 

@@ -10,7 +10,7 @@ $data = 'PDF-417';
 
 try {
     // Create a new encoder and backend to generate PNG images
-    $backend = PDF417BackendFactory::Create(BACKEND_IMAGE, new PDF417Barcode());
+    $backend = Graph\Configs::getConfig('PDF417B')ackendFactory::Create(Graph\Configs::getConfig('BACKEND_IMAGE'), new Graph\Configs::getConfig('PDF417B')arcode());
     $backend->Stroke($data);
 } catch (JpGraphException $e) {
     echo 'PDF417 Error: ' . $e->GetMessage();

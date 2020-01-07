@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Example on how to treat and format timestamp as human readable labels
@@ -34,15 +34,15 @@ $data     = [];
 $xdata    = [];
 $data[0]  = rand(20, 100);
 $xdata[0] = $adjstart;
-for ($i = 1; $i < NDATAPOINTS; ++$i) {
+for ($i = 1; $i < Graph\Configs::getConfig('NDATAPOINTS'); ++$i) {
     $data[$i]  = rand(20, 100) * 0.2 + $data[$i - 1] * 0.8;
-    $xdata[$i] = $adjstart + $i * SAMPLERATE;
+    $xdata[$i] = $adjstart + $i * Graph\Configs::getConfig('SAMPLERATE');
 }
 
 // Assume that the data points represents data that is sampled every 10s
 // when determing the end value on the scale. We also add some extra
 // length to end on an even label tick.
-$adjend = $adjstart + (NDATAPOINTS + 10) * 10;
+$adjend = $adjstart + (Graph\Configs::getConfig('NDATAPOINTS') + 10) * 10;
 
 $__width  = 500;
 $__height = 250;
@@ -51,7 +51,8 @@ $graph->SetMargin(40, 20, 30, 50);
 
 // Now specify the X-scale explicit but let the Y-scale be auto-scaled
 $graph->SetScale('intlin', 0, 0, $adjstart, $adjend);
-$graph->title->Set('Example on TimeStamp Callback');
+$example_title = 'Example on TimeStamp Callback';
+$graph->title->set($example_title);
 
 // Setup the callback and adjust the angle of the labels
 $graph->xaxis->SetLabelFormatCallback('TimeCallback');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Gantt example with sunday week start and only shows a partial graph
@@ -21,20 +21,21 @@ $graph->SetDateRange('2001-11-22', '2002-1-24');
 
 // Weeks start on Sunday
 $graph->scale->SetWeekStart(0);
+$example_title = 'General conversion plan';
+$graph->title->set($example_title);
+$subtitle_text = '(Slice between 2001-11-22 to 2002-01-24)';
+$graph->subtitle->Set($subtitle_text);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 20);
 
-$graph->title->Set('General conversion plan');
-$graph->subtitle->Set('(Slice between 2001-11-22 to 2002-01-24)');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 20);
-
-$graph->ShowHeaders(GANTT_HYEAR | GANTT_HMONTH | GANTT_HDAY | GANTT_HWEEK);
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
-$graph->scale->week->SetFont(FF_FONT1);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAY'));
+$graph->scale->week->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 
 $data = [
-    [0, "Group 1\tJohan", '2002-1-23', '2002-01-28', FF_FONT1, FS_BOLD, 8],
+    [0, "Group 1\tJohan", '2002-1-23', '2002-01-28', Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 8],
     [1, '  Label 2', '2001-10-26', '2001-11-16'],
     [2, '  Label 3', '2001-11-30', '2001-12-01'],
-    [4, 'Group 2', '2001-11-30', '2001-12-22', FF_FONT1, FS_BOLD, 8],
+    [4, 'Group 2', '2001-11-30', '2001-12-22', Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 8],
     [5, '  Label 4', '2001-11-30', '2001-12-1'],
     [6, '  Label 5', '2001-12-6', '2001-12-8'],
     [8, '    Label 8', '2001-11-30', '2002-01-02'],
@@ -48,31 +49,32 @@ for ($i = 0; $i < count($data); ++$i) {
     }
 
     $bar->rightMark->Show();
-    $bar->rightMark->SetType(MARK_FILLEDCIRCLE);
+    $bar->rightMark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
     $bar->rightMark->SetWidth(8);
     $bar->rightMark->SetColor('red');
     $bar->rightMark->SetFillColor('red');
     $bar->rightMark->title->Set($i + 1);
-    $bar->rightMark->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+    $bar->rightMark->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
     $bar->rightMark->title->SetColor('white');
 
-    $bar->SetPattern(BAND_RDIAG, 'yellow');
+    $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');
     $bar->SetFillColor('red');
     $bar->progress->Set($i / 10);
-    $bar->progress->SetPattern(GANTT_SOLID, 'darkgreen');
+    $bar->progress->SetPattern(Graph\Configs::getConfig('GANTT_SOLID'), 'darkgreen');
 
     $graph->Add($bar);
 }
 
 // The line will NOT be shown since it is outside the specified slice
-$vline = new Plot\GanttVLine('2002-02-28');
-$vline->title->Set('2002-02-28');
-$vline->title->SetFont(FF_FONT1, FS_BOLD, 10);
+$vline         = new Plot\GanttVLine('2002-02-28');
+$example_title = '2002-02-28';
+$vline->title->set($example_title);
+$vline->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $graph->Add($vline);
 
 // The milestone will NOT be shown since it is outside the specified slice
 $ms = new Plot\MileStone(7, 'M5', '2002-01-28', '28/1');
-$ms->title->SetFont(FF_FONT1, FS_BOLD);
+$ms->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->Add($ms);
 
 $graph->Stroke();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -24,11 +24,11 @@ $table->Init();
 $table->Set($data);
 
 // Setup row and column headers
-$table->SetRowFont(0, FF_TIMES, FS_BOLD, 11);
+$table->SetRowFont(0, Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $table->SetRowAlign(0, 'left', 'bottom');
 $table->SetRowColor(0, 'navy');
 $table->SetRowFillColor(0, 'lightgray');
-$table->SetColFont(0, FF_ARIAL, FS_BOLD, 11);
+$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 // Basic contour plot example
@@ -31,9 +31,8 @@ $graph->SetScale('intint');
 // Adjust the margins to fit the margin
 $graph->SetMargin(30, 100, 40, 30);
 
-// Setup
-$graph->title->Set('Basic contour plot');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+// Setup$example_title='Basic contour plot'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 // A simple contour plot with default arguments (e.g. 10 isobar lines)
 $cp = new Plot\ContourPlot($data);

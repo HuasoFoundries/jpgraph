@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
-// File:    ODOEX05.PHP
+// File:    Graph\Configs::getConfig('ODOEX05').PHP
 // Description: Example 1 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -39,10 +39,10 @@ $graph->SetColor('lightyellow');
 // Specify title and subtitle using default fonts
 // * Note each title may be multilines by using a '\n' as a line
 // divider.
-//---------------------------------------------------------------------
-$graph->title->Set('Odometer title');
+//---------------------------------------------------------------------$example_title='Odometer title'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->subtitle->Set('2002-02-13');
+$subtitle_text = '2002-02-13';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('white');
 
 //---------------------------------------------------------------------
@@ -87,7 +87,7 @@ $odo->scale->SetTickWeight(2);
 //---------------------------------------------------------------------
 // Use a bold font for tick labels
 //---------------------------------------------------------------------
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 //---------------------------------------------------------------------
 // Set display value for the odometer
@@ -103,7 +103,7 @@ $odo->label->Set('% Passed');
 //---------------------------------------------------------------------
 // Set a new style for the needle
 //---------------------------------------------------------------------
-$odo->needle->SetStyle(NEEDLE_STYLE_MEDIUM_TRIANGLE);
+$odo->needle->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_MEDIUM_TRIANGLE'));
 $odo->needle->SetLength(0.7); // Length as 70% of the radius
 $odo->needle->SetFillColor('orange');
 
@@ -111,7 +111,7 @@ $odo->needle->SetFillColor('orange');
 // Setup the second indicator needle
 //---------------------------------------------------------------------
 $odo->needle2->Set(24);
-$odo->needle2->SetStyle(NEEDLE_STYLE_SMALL_TRIANGLE);
+$odo->needle2->SetStyle(Graph\Configs::getConfig('NEEDLE_STYLE_SMALL_TRIANGLE'));
 $odo->needle2->SetLength(0.55); // Length as 70% of the radius
 $odo->needle2->SetFillColor('lightgray');
 $odo->needle2->Show();

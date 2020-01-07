@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,11 +18,13 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 30, 30);
 
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->title->Set('The Title');
-$graph->subtitle->SetFont(FF_ARIAL, FS_BOLD, 10);
-$graph->subtitle->Set('The Subtitle');
-$graph->subsubtitle->SetFont(FF_ARIAL, FS_ITALIC, 9);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$example_title = 'The Title';
+$graph->title->set($example_title);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$subtitle_text = 'The Subtitle';
+$graph->subtitle->Set($subtitle_text);
+$graph->subsubtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 9);
 $graph->subsubtitle->Set('The Subsubitle');
 
 // Create the linear plot

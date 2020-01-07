@@ -1,10 +1,22 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
+
+use function array_keys;
+use function explode;
+use function in_array;
+use function is_array;
+use const LC_TIME;
+use function setlocale;
+use function settype;
+use function strftime;
+use function strtotime;
+use function strtoupper;
+use function ucfirst;
 
 /**
  * @class DateLocale
@@ -65,9 +77,9 @@ class DateLocale
         }
 
         for ($i = 1; $i <= 12; ++$i) {
-            list($short, $full)            = explode('|', strftime('%b|%B', strtotime("2001-${i}-01")));
-            $this->iShortMonth[$aLocale][] = ucfirst($short);
-            $this->iMonthName[$aLocale][]  = ucfirst($full);
+            list($short, $full)                = explode('|', strftime('%b|%B', strtotime("2001-${i}-01")));
+            $this->iShortMonth[$aLocale][]     = ucfirst($short);
+            $this->iMonthName[$aLocale][]      = ucfirst($full);
         }
 
         setlocale(LC_TIME, $pLocale);

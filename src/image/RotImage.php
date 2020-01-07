@@ -1,10 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
+
+use function cos;
+use const M_PI;
+use function round;
+use function sin;
 
 /**
  * @class RotImage
@@ -20,7 +25,7 @@ class RotImage extends Image
     public $transy = 0;
     private $m     = [];
 
-    public function __construct($aWidth, $aHeight, $a = 0, $aFormat = DEFAULT_GFORMAT, $aSetAutoMargin = true)
+    public function __construct($aWidth, $aHeight, $a = 0, $aFormat = Configs::DEFAULT_GFORMAT, $aSetAutoMargin = true)
     {
         parent::__construct($aWidth, $aHeight, $aFormat, $aSetAutoMargin);
         $this->dx = $this->left_margin + $this->plotwidth / 2;
@@ -128,7 +133,7 @@ class RotImage extends Image
 
     public function ArrRotate($pnts)
     {
-        $n = safe_count($pnts) - 1;
+        $n = Configs::safe_count($pnts) - 1;
         for ($i = 0; $i < $n; $i += 2) {
             list($x, $y)  = $this->Rotate($pnts[$i], $pnts[$i + 1]);
             $pnts[$i]     = $x;

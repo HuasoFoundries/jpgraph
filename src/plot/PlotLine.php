@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -93,27 +93,31 @@ class PlotLine
      */
     public function DoLegend($graph)
     {
-        if (!$this->hidelegend) {
-            $this->Legend($graph);
+        if ($this->hidelegend) {
+            return;
         }
+
+        $this->Legend($graph);
     }
 
     // Framework function the chance for each plot class to set a legend
     public function Legend($aGraph)
     {
-        if ($this->legend != '') {
-            $dummyPlotMark = new PlotMark();
-            $lineStyle     = 1;
-            $aGraph->legend->Add(
-                $this->legend,
-                $this->color,
-                $dummyPlotMark,
-                $lineStyle,
-                $this->legendcsimtarget,
-                $this->legendcsimalt,
-                $this->legendcsimwintarget
-            );
+        if ($this->legend == '') {
+            return;
         }
+
+        $dummyPlotMark = new PlotMark();
+        $lineStyle     = 1;
+        $aGraph->legend->Add(
+            $this->legend,
+            $this->color,
+            $dummyPlotMark,
+            $lineStyle,
+            $this->legendcsimtarget,
+            $this->legendcsimalt,
+            $this->legendcsimwintarget
+        );
     }
 
     public function PreStrokeAdjust($aGraph)
@@ -149,12 +153,12 @@ class PlotLine
         $aImg->SetColor($this->color);
         $aImg->SetLineWeight($this->weight);
         $oldStyle = $aImg->SetLineStyle($this->iLineStyle);
-        if ($this->direction == VERTICAL) {
+        if ($this->direction == Configs::VERTICAL) {
             $ymin_abs = $aMinY;
             $ymax_abs = $aMaxY;
             $xpos_abs = $aXPos;
             $aImg->StyleLine($xpos_abs, $ymin_abs, $xpos_abs, $ymax_abs);
-        } elseif ($this->direction == HORIZONTAL) {
+        } elseif ($this->direction == Configs::HORIZONTAL) {
             $xmin_abs = $aMinX;
             $xmax_abs = $aMaxX;
             $ypos_abs = $aYPos;

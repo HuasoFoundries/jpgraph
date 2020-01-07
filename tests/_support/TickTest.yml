@@ -1,0 +1,4 @@
+testExampleWithManualTickLabels:
+    manualtickex2.php: { width: 400, height: 200, title: 'Example with manual tick labels', filename: manualtickex2.php }
+    manualtickex3.php: { width: 400, height: 200, title: 'Example with manual tick labels', filename: manualtickex3.php }
+    manualtickex4.php: { width: 400, height: 200, title: 'Example with manual tick labels', filename: manualtickex4.php }

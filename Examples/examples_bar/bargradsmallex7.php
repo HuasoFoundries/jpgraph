@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,20 +17,20 @@ $__height = 150;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(25, 15, 25, 25);
-
-$graph->title->Set('"GRAD_CENTER"');
+$example_title = 'GRAD_CENTER';
+$graph->title->set($example_title);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(FF_FONT1);
-$graph->yaxis->SetFont(FF_FONT1);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
 
 // Create the bar pot
 $bplot = new Plot\BarPlot($datay);
 $bplot->SetWidth(0.6);
 
 // Setup color for gradient fill style
-$bplot->SetFillGradient('navy', 'lightsteelblue', GRAD_CENTER);
+$bplot->SetFillGradient('navy', 'lightsteelblue', Graph\Configs::getConfig('GRAD_CENTER'));
 
 // Set color for the frame of each bar
 $bplot->SetColor('navy');

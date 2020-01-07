@@ -1,10 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
+
+use function array_fill;
+use function pow;
 
 /**
  * File:        JPGRAPH_MESHINTERPOLATE.INC.PHP
@@ -92,8 +95,8 @@ class MeshInterpolate
     {
         $step = pow(2, $aIntFactor - 1);
 
-        $orig_cols = safe_count($aData[0]);
-        $orig_rows = safe_count($aData);
+        $orig_cols = Configs::safe_count($aData[0]);
+        $orig_rows = Configs::safe_count($aData);
         // Number of new columns/rows
         // N = (a-1) * 2^(f-1) + 1
         $p        = pow(2, $aIntFactor - 1);

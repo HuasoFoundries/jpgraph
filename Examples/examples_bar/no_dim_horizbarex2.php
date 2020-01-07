@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -27,14 +27,14 @@ $graph->Set90AndMargin($left, $right, $top, $bottom);
 // Nice shadow
 $graph->SetShadow();
 
-// Setup title
-$graph->title->Set('Horizontal bar graph ex 2');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
-$graph->subtitle->Set('(Axis at top)');
+// Setup title$example_title='Horizontal bar graph ex 2'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$subtitle_text = '(Axis at top)';
+$graph->subtitle->Set($subtitle_text);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 12);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Some extra margin looks nicer
 $graph->xaxis->SetLabelMargin(5);
@@ -48,7 +48,7 @@ $graph->yaxis->scale->SetGrace(20);
 $graph->yaxis->SetLabelAlign('center', 'bottom');
 $graph->yaxis->SetLabelAngle(45);
 $graph->yaxis->SetLabelFormat('%d');
-$graph->yaxis->SetFont(FF_VERDANA, FS_NORMAL, 12);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // We don't want to display Y-axis
 //$graph->yaxis->Hide();
@@ -63,7 +63,7 @@ $bplot->SetShadow();
 
 // We want to display the value of each bar at the top
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL, FS_BOLD, 12);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $bplot->value->SetAlign('left', 'center');
 $bplot->value->SetColor('black', 'darkred');
 $bplot->value->SetFormat('%.1f mkr');

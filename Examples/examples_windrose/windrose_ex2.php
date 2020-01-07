@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,23 +21,22 @@ $__width  = 400;
 $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup title
-$graph->title->Set('Windrose example 2');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+// Setup title$example_title='Windrose example 2'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.
 $wp = new Plot\WindrosePlot($data);
 
 // Make it have 8 compass direction
-$wp->SetType(WINDROSE_TYPE8);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
 
 // Setup the weight of the laegs for the different ranges
 $weights = array_fill(0, 8, 10);
 $wp->SetRangeWeights($weights);
 
 // Adjust the font and font color for scale labels
-$wp->scale->SetFont(FF_TIMES, FS_NORMAL, 11);
+$wp->scale->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 11);
 $wp->scale->SetFontColor('navy');
 
 // Set the diametr for the plot to 160 pixels
@@ -47,7 +46,7 @@ $wp->SetSize(200);
 $wp->SetZCircleSize(0.2);
 
 // Adjust the font and font color for compass directions
-$wp->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$wp->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $wp->SetFontColor('darkgreen');
 
 // Add and send back the graph to the client

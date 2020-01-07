@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,8 +16,9 @@ $__height = 250;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(30, 90, 40, 50);
-$graph->xaxis->SetFont(FF_FONT1, FS_BOLD);
-$graph->title->Set('Example 1.1 same y-values');
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$example_title = 'Example 1.1 same y-values';
+$graph->title->set($example_title);
 
 // Create the linear plot
 $lineplot = new Plot\LinePlot($ydata);

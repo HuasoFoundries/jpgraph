@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,21 +20,21 @@ $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
 
 $graph->SetMargin(40, 40, 50, 40);
-
-$graph->title->Set('Inverted Y-axis');
+$example_title = 'Inverted Y-axis';
+$graph->title->set($example_title);
 $graph->SetBox(false);
 $graph->yaxis->HideLine(false);
 $graph->yaxis->HideTicks(false, false);
 
 // For background to be gradient, setfill is needed first.
 $graph->ygrid->SetFill(true, '#FFFFFF@0.5', '#FFFFFF@0.5');
-$graph->SetBackgroundGradient('#FFFFFF', '#00FF7F', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('#FFFFFF', '#00FF7F', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
 $graph->xaxis->SetTickLabels(['G', 'F', 'E', 'D', 'C', 'B', 'A']);
 $graph->xaxis->SetLabelMargin(20);
 $graph->yaxis->SetLabelMargin(20);
 
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 $graph->img->SetAngle(180);
 
 // Create the line

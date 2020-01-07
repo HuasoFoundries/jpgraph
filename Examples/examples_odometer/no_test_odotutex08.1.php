@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,8 @@ $__width  = 250;
 $__height = 140;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup a title
-$graph->title->Set('An example with thick border');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 11);
+// Setup a title$example_title='An example with thick border'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 // Add drop shadow for graph
 $graph->SetShadow();
@@ -32,7 +31,7 @@ $odo = new Odometer();
 $odo->SetColor('white');
 $odo->SetBorder('darkgreen:0.8', 5);
 
-$odo->scale->label->SetFont(FF_ARIAL, FS_BOLD, 10);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 $odo->scale->label->SetColor('brown:0.6');
 
 // Set display value for the odometer

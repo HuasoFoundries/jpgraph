@@ -1,0 +1,4 @@
+testAntispamfileiterator:
+    antispamex01.php: { title: antispamFileIterator, filename: antispamex01.php }
+testImgmarkerfileiterator:
+    imgmarkerex1.php: { title: imgmarkerFileIterator, filename: imgmarkerex1.php }
