@@ -784,7 +784,9 @@ class Configs
         return $args && is_scalar($args) ? self::setConfig($const_name, $args) : self::getConfig($const_name);
     }
 
-    public function __get($config_key) {}
+    public function __get($config_key)
+    {
+    }
 
     public static function getInstance()
     {

@@ -16,32 +16,32 @@ class DateTest extends \Codeception\Test\Unit
     public static $debugFileGroups;
 
     protected function _before()
-    {self::$debugFileGroups = true;}
+    {
+        self::$debugFileGroups = true;
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testExampleOnDateScale()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testCurrentBids()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testDevelopmentSince()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testAccumulatedValuesWithSpecifiedXAxisScale()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
     }
 
     public function testFileIterator()
