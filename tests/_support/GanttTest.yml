@@ -1,21 +1,21 @@
-test200:
-    ganttex_slice.php: { title: '2002-02-28', filename: ganttex_slice.php }
-    gantthgridex1.php: { title: '2001-11-01', filename: gantthgridex1.php }
-testGanttChartWithTitleColumnsAndIcons:
-    gantticonex1.php: { title: 'Gantt chart with title columns and icons', filename: gantticonex1.php }
-testExampleWithMultipleConstrains:
-    multconstganttex01.php: { title: 'Example with multiple constrains', filename: multconstganttex01.php }
-testExampleOfHoursInScale:
-    gantthourex1.php: { title: 'Example of hours in scale', filename: gantthourex1.php }
 testExampleWithGroupingAndConstrains:
     ganttconstrainex0.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex0.php }
     ganttconstrainex1.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex1.php }
     ganttconstrainex2.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex2.php }
-testAddingASpaningTitle:
-    ganttmonthyearex4.php: { title: 'Adding a spaning title', filename: ganttmonthyearex4.php }
+test200:
+    ganttex_slice.php: { title: '2002-02-28', filename: ganttex_slice.php }
+    gantthgridex1.php: { title: '2001-11-01', filename: gantthgridex1.php }
 testOnlyMonthYearScale:
     ganttmonthyearex1.php: { title: 'Only month & year scale', filename: ganttmonthyearex1.php }
     ganttmonthyearex2.php: { title: 'Only month & year scale', filename: ganttmonthyearex2.php }
     ganttmonthyearex3.php: { title: 'Only month & year scale', filename: ganttmonthyearex3.php }
+testGanttChartWithTitleColumnsAndIcons:
+    gantticonex1.php: { title: 'Gantt chart with title columns and icons', filename: gantticonex1.php }
+testAddingASpaningTitle:
+    ganttmonthyearex4.php: { title: 'Adding a spaning title', filename: ganttmonthyearex4.php }
 test271:
     gantthourminex1.php: { title: '27/11 9:00', filename: gantthourminex1.php }
+testExampleWithMultipleConstrains:
+    multconstganttex01.php: { title: 'Example with multiple constrains', filename: multconstganttex01.php }
+testExampleOfHoursInScale:
+    gantthourex1.php: { title: 'Example of hours in scale', filename: gantthourex1.php }

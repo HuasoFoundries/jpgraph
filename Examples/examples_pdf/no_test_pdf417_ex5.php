@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.2
+ * JPGraph v4.0.3
  */
 
 require_once 'jpgraph/pdf417/jpgraph_pdf417.php';

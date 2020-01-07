@@ -1,7 +1,3 @@
-testUsingMultipleYAxis:
-    mulyaxisex1.php: { width: 450, height: 250, title: 'Using multiple Y-axis', filename: mulyaxisex1.php }
-testDuplicatingYAxis:
-    dupyaxisex1.php: { width: 300, height: 200, title: 'Duplicating Y-axis', filename: dupyaxisex1.php }
 testDepthcurvedive:
     inyaxisex1.php: { width: 400, height: 300, title: 'Depth curve. Dive #2', filename: inyaxisex1.php }
     inyaxisex2.php: { width: 400, height: 300, title: 'Depth curve. Dive #2', filename: inyaxisex2.php }

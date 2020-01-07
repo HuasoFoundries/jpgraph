@@ -1,13 +1,8 @@
-testDateaxisfileiterator:
-    dateaxisex1.php: { width: 324, height: 250, title: dateaxisFileIterator, filename: dateaxisex1.php }
-testDevelopmentsince:
-    dateutilex01.php: { width: 500, height: 300, title: 'Development since 1984', filename: dateutilex01.php }
-    dateutilex02.php: { width: 500, height: 300, title: 'Development since 1984', filename: dateutilex02.php }
 testAccumulatedValuesWithSpecifiedXAxisScale:
     prepaccdata_example.php: { width: 600, height: 350, title: 'Accumulated values with specified X-axis scale', filename: prepaccdata_example.php }
-testCurrentBids:
-    datescaleticksex01.php: { width: 600, height: 250, title: 'Current Bids', filename: datescaleticksex01.php }
 testExampleOnDateScale:
     dateaxisex2.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex2.php }
     dateaxisex3.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex3.php }
     dateaxisex4.php: { width: 540, height: 300, title: 'Example on Date scale', filename: dateaxisex4.php }
+testCurrentBids:
+    datescaleticksex01.php: { width: 600, height: 250, title: 'Current Bids', filename: datescaleticksex01.php }
