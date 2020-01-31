@@ -25,7 +25,9 @@ if (!class_exists('\Kint')) {
         public static $enabled_mode     = true;
         public static $aliases          = [];
         public static $mode_default_cli = false;
-        public static function dump() {}
+        public static function dump()
+        {
+        }
     }
 }
 if (class_exists('\Kint\Renderer\RichRenderer')) {
@@ -43,7 +45,9 @@ if (!class_exists('\PhpConsole\Handler')) {
      */
     class PC
     {
-        public static function debug() {}
+        public static function debug()
+        {
+        }
     }
 }
 function ddd(...$vars)
