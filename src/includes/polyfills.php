@@ -22,9 +22,9 @@ if (!class_exists('\Kint')) {
      */
     class Kint
     {
-        public static $enabled_mode = true;
-        public static $aliases      = [];
-
+        public static $enabled_mode     = true;
+        public static $aliases          = [];
+        public static $mode_default_cli = false;
         public static function dump() {}
     }
 }
