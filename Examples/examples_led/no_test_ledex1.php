@@ -6,7 +6,7 @@
 
 require_once __DIR__ . '/../../src/config.inc.php';
 
-require_once 'jpgraph/jpgraph_led.php';
+use Amenadiel\JpGraph\Image\DigitalLED74;
 
 // By default each "LED" circle has a radius of 3 pixels
 $led = new DigitalLED74();
