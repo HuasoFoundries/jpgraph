@@ -3,7 +3,7 @@ checks:
 build:
     environment:
           php:
-            version: '7.1'
+            version: '7.4'
             ini:
                 'zend_extension': 'xdebug.so'
     nodes:
