@@ -11,6 +11,13 @@ use Amenadiel\JpGraph\Text\TTF;
 use Amenadiel\JpGraph\Util;
 use Amenadiel\JpGraph\Util\ErrMsgText;
 
+// load fonts only once, and define a constant for them
+define("GD_FF_FONT0", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf'));
+define("GD_FF_FONT1", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf'));
+define("GD_FF_FONT2", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf'));
+define("GD_FF_FONT1_BOLD", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf'));
+define("GD_FF_FONT2_BOLD", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf'));
+
 /**
  * File:        GD_IMAGE.INC.PHP
  * // Description: PHP Graph Plotting library. Low level image drawing routines
@@ -101,11 +108,11 @@ class Image
         $this->ttf      = new TTF();
         $this->langconv = new LanguageConv();
 
-        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf');
-        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf');
-        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf');
-        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf');
-        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf');
+        $this->ff_font0 =  GD_FF_FONT0;
+        $this->ff_font1 =  GD_FF_FONT1;
+        $this->ff_font2 =  GD_FF_FONT2;
+        $this->ff_font1_bold =  GD_FF_FONT1_BOLD;
+        $this->ff_font2_bold =  GD_FF_FONT2_BOLD;
     }
 
     // Enable interlacing in images
