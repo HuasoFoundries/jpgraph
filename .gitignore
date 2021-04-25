@@ -38,6 +38,7 @@ src/fonts/simsun.ttc
 
 tools
 .phive
+.vscode
 
 .phpunit.result.cache
 template.php
