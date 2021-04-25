@@ -31,7 +31,6 @@
   },
   "autoload": {
     "psr-4": {
-      "Amenadiel\\JpGraph\\UnitTest\\": "tests",
       "Amenadiel\\JpGraph\\": "src/",
       "Amenadiel\\JpGraph\\Graph\\": "src/graph",
       "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
@@ -42,6 +41,11 @@
       "Amenadiel\\JpGraph\\Text\\": "src/text",
       "Amenadiel\\JpGraph\\Themes\\": "src/themes",
       "Amenadiel\\JpGraph\\Util\\": "src/util"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Amenadiel\\JpGraph\\UnitTest\\": "tests"
     }
   },
   "scripts": {
