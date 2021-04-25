@@ -111,10 +111,10 @@ class TestCase    extends \Codeception\Test\Unit
                 Debug::debug(static::$genericFixtures['testFileIterator']);
             }
             $yaml = Yaml::dump(static::$genericFixtures);
-            if (static::$persistYaml) {
+            /*if (static::$persistYaml) {
 
                 file_put_contents(sprintf('%s/_support/%s.yml', __DIR__, $className), $yaml);
-            }
+            }*/
             fwrite(STDOUT, $className . "\n");
         }
     }

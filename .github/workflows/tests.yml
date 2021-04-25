@@ -1,0 +1,34 @@
+name: Tests
+
+on: ['push', 'pull_request']
+
+jobs:
+  ci:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        php: [ '7.4', '8.0']
+
+    name: PHP ${{ matrix.php }} - 'ubuntu-latest' - 'prefer-stable'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        tools: composer:v2
+        coverage: none
+
+    - name: Setup Problem Matches
+      run: |
+        echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+        echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+    - name: Install PHP 7 dependencies
+      run: composer update --'prefer-stable' --no-interaction --no-progress
+    
+
+    - name: Unit Tests
+      run: vendor/bin/pest --colors=always 

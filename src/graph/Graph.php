@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-require_once __DIR__ . '/../config.inc.php';
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
@@ -164,6 +163,9 @@ class Graph
     //   If false the image is just created in the cache
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeout = 0, $aInline = true)
     {
+        // Bootstrap configs repository if it hasn't bootstrapped already
+        Util\Helper::bootstrapLibrary();
+
         $this->gDateLocale    = new Util\DateLocale();
         $this->gJpgDateLocale = new Util\DateLocale();
         if (!is_numeric($aWidth) || !is_numeric($aHeight)) {
@@ -471,7 +473,8 @@ class Graph
 
         if (($cl instanceof Text\Text) ||
             ($cl instanceof Plot\PlotLine) ||
-            ($cl instanceof Plot\PlotBand)) {
+            ($cl instanceof Plot\PlotBand)
+        ) {
             Util\JpGraphError::RaiseL(25013); //('You can only add standard plots to multiple Y-axis');
         } else {
             $this->ynplots[$aN][] = $aPlot;
@@ -1070,7 +1073,7 @@ class Graph
                 // to be converted to real arguments.
                 $tmp      = str_replace('?', '%3f', $baseimg);
                 $htmlwrap = $this->GetHTMLImageMap($aCSIMName) . "\n" .
-                '<img src="' . Configs::getConfig('CSIMCACHE_HTTP_DIR') . $tmp . '" ismap="ismap" usemap="#' . $aCSIMName . ' width="' . $this->img->width . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
+                    '<img src="' . Configs::getConfig('CSIMCACHE_HTTP_DIR') . $tmp . '" ismap="ismap" usemap="#' . $aCSIMName . ' width="' . $this->img->width . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
 
                 if ($fh = @fopen($basecsim, 'w')) {
                     fwrite($fh, $htmlwrap);
@@ -1224,14 +1227,14 @@ class Graph
     {
         $totrequired =
             ($this->title->t != ''
-            ? $this->title->GetTextHeight($this->img) + $this->title->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
-            : 0) +
+                ? $this->title->GetTextHeight($this->img) + $this->title->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
+                : 0) +
             ($this->subtitle->t != ''
-            ? $this->subtitle->GetTextHeight($this->img) + $this->subtitle->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
-            : 0) +
+                ? $this->subtitle->GetTextHeight($this->img) + $this->subtitle->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
+                : 0) +
             ($this->subsubtitle->t != ''
-            ? $this->subsubtitle->GetTextHeight($this->img) + $this->subsubtitle->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
-            : 0);
+                ? $this->subsubtitle->GetTextHeight($this->img) + $this->subsubtitle->margin + 5 * Configs::getConfig('SUPERSAMPLING_SCALE')
+                : 0);
 
         $btotrequired = 0;
         if ($this->xaxis != null && !$this->xaxis->hide && !$this->xaxis->hide_labels) {
@@ -1391,8 +1394,10 @@ class Graph
             if (!is_numeric($this->yaxis->pos) && !is_string($this->yaxis->pos)) {
                 $this->yaxis->SetPos($this->xscale->GetMinVal());
             }
-        } elseif ($this->xscale->IsSpecified() &&
-            ($this->xscale->auto_ticks || !$this->xscale->ticks->IsSpecified())) {
+        } elseif (
+            $this->xscale->IsSpecified() &&
+            ($this->xscale->auto_ticks || !$this->xscale->ticks->IsSpecified())
+        ) {
             // The tick calculation will use the user suplied min/max values to determine
             // the ticks. If auto_ticks is false the exact user specifed min and max
             // values will be used for the scale.
@@ -1734,7 +1739,8 @@ class Graph
         // no other scale was given so we can't possible draw anything). If you use manual
         // scaling you also have to supply the tick steps as well.
         if ((!$this->yscale->IsSpecified() && Configs::safe_count($this->plots) == 0) ||
-            ($this->y2scale != null && !$this->y2scale->IsSpecified() && Configs::safe_count($this->y2plots) == 0)) {
+            ($this->y2scale != null && !$this->y2scale->IsSpecified() && Configs::safe_count($this->y2plots) == 0)
+        ) {
             //$e = "n=". Configs::safe_count($this->y2plots)."\n";
             // $e = "Can't draw unspecified Y-scale.<br>\nYou have either:<br>\n";
             // $e .= "1. Specified an Y axis for autoscaling but have not supplied any plots<br>\n";
@@ -1768,7 +1774,8 @@ class Graph
         // for 'text'
         if (($this->yaxis->pos == $this->xscale->GetMinVal() || (is_string($this->yaxis->pos) && $this->yaxis->pos == 'min')) &&
             !is_numeric($this->xaxis->pos) && $this->yscale->GetMinVal() < 0 &&
-            substr($this->axtype, 0, 4) != 'text' && $this->xaxis->pos != 'min') {
+            substr($this->axtype, 0, 4) != 'text' && $this->xaxis->pos != 'min'
+        ) {
             //$this->yscale->ticks->SupressZeroLabel(false);
             $this->xscale->ticks->SupressFirst();
             if ($this->y2axis != null) {
@@ -2188,7 +2195,8 @@ class Graph
             ($ext == 'gif' && !($supported & IMG_GIF)) ||
             ($ext == 'png' && !($supported & IMG_PNG)) ||
             ($ext == 'bmp' && !($supported & IMG_WBMP)) ||
-            ($ext == 'xpm' && !($supported & IMG_XPM))) {
+            ($ext == 'xpm' && !($supported & IMG_XPM))
+        ) {
             Util\JpGraphError::RaiseL(25037, $aFile); //('The image format of your background image ('.$aFile.') is not supported in your system configuration. ');
         }
 
@@ -2593,12 +2601,12 @@ class Graph
             $h = $this->title->GetTextHeight($this->img) + $this->title->margin + $margin;
             if ($this->subtitle->t != '' && !$this->subtitle->hide) {
                 $h += $this->subtitle->GetTextHeight($this->img) + $margin +
-                $this->subtitle->margin;
+                    $this->subtitle->margin;
                 $h += 2;
             }
             if ($this->subsubtitle->t != '' && !$this->subsubtitle->hide) {
                 $h += $this->subsubtitle->GetTextHeight($this->img) + $margin +
-                $this->subsubtitle->margin;
+                    $this->subsubtitle->margin;
                 $h += 2;
             }
             $this->img->PushColor($this->titlebackground_color);
@@ -3017,7 +3025,7 @@ class Graph
     {
         if ($do) {
             Configs::setConfig('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             Configs::setConfig('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

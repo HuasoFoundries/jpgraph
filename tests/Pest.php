@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\Yaml\Yaml;
 use Tests\SizeFixture;
 
@@ -74,8 +75,8 @@ function getMergedFixturesArray($testClass)
         dump(['not a folder' => $exampleRoot]);
     }
     sort($fileArray);
-    if (count($fileArray) === 0) {
-        dump([$testClass => count($totalData)]);
+    if (count($fileArray) > 0) {
+        //dump([$testClass => ($fileArray)]);
     }
 
 
@@ -111,7 +112,7 @@ expect()->extend('toBeOne', function () {
 });
 
 
-expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture) {
+expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture, array  $options = ['copyOnFail' => false]) {
 
 
     $__width = $sizeFixture->width;
@@ -133,10 +134,16 @@ expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture) {
     if ($example_title === 'file_iterator' && $subtitle_text) {
         $example_title = $subtitle_text;
     }
+    try {
 
-
-    return expect($size[0])->toEqual($__width)
-        ->and($size[1])->toEqual($__height);
+        return expect($size[0])->toEqual($sizeFixture->width)
+            ->and($size[1])->toEqual($sizeFixture->height);
+    } catch (ExpectationFailedException $err) {
+        $size['expected'] = [$__width, $__height];
+        dump([$filename => $size]);
+        file_put_contents(__DIR__ . '/_support/_generated/' . $filename . '.jpg', $img);
+        throw $err;
+    }
 });
 /*
 |--------------------------------------------------------------------------

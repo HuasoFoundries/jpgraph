@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-require_once __DIR__ . '/../config.inc.php';
 
 use Amenadiel\JpGraph\Util;
 use function is_array;
@@ -43,6 +42,8 @@ class Plot
 
     public function __construct($aDatay, $aDatax = false)
     {
+        // Bootstrap configs repository if it hasn't bootstrapped already
+        Util\Helper::bootstrapLibrary();
         $this->numpoints = Configs::safe_count($aDatay);
         if ($this->numpoints == 0) {
             Util\JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");

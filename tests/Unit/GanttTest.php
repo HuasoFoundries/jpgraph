@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+
 use Tests\UnitTestTrait;
 
 
@@ -9,19 +10,23 @@ use Tests\UnitTestTrait;
  */
 class GanttTest extends \Tests\TestCase
 {
-    
+
 
     public static $fixTures    = [];
     public static $files       = null;
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
-    private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
+    protected function _fileCheck($filename, &$ownFixtures = [], $debug = false)
     {
         if (is_array($filename)) {
             $filename = $filename['filename'];
@@ -36,45 +41,6 @@ class GanttTest extends \Tests\TestCase
         return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug);
     }
 
-    public function testExampleWithGroupingAndConstrains()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function test200()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testExampleOfHoursInScale()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function test271()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testGanttChartWithTitleColumnsAndIcons()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testOnlyMonthYearScale()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testAddingASpaningTitle()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testExampleWithMultipleConstrains()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
 
     public function testFileIterator()
     {

@@ -10,7 +10,6 @@ use Exception;
 
 defined('DEFAULT_ERR_LOCALE') || define('DEFAULT_ERR_LOCALE', 'en');
 
-require_once __DIR__ . '/../config.inc.php';
 
 if (!function_exists('\is_countable')) {
     function is_countable($c)

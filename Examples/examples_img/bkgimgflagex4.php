@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -24,7 +25,7 @@ $graph->SetColor('white');
 $graph->SetShadow();
 
 // Apply a perspective transformation at the end
-$graph->Set3DPerspective(Graph\Configs::getConfig('SKEW3D_LEFT'), 350, 320, true);
+$graph->Set3DPerspective(Graph\Configs::getConfig('SKEW3D_LEFT'), 300, 320, true);
 
 // Adjust the position of the legend box
 $graph->legend->Pos(0.03, 0.10);

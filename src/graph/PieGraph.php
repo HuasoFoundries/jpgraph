@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-require_once __DIR__ . '/../config.inc.php';
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
