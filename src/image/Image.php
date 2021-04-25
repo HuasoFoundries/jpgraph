@@ -840,7 +840,7 @@ class Image
         // we calculate this manually by getting the bounding box at
         // angle = 0 and then rotate the bounding box manually
         $bbox = @imagettfbbox($size, 0, $fontfile, $text);
-        if ($bbox === false) {
+        if ($bbox === false && !is_readable($this->font_file)) {
             Util\JpGraphError::RaiseL(25092, $this->font_file);
             //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
         }
