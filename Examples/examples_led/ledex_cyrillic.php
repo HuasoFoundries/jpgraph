@@ -1,15 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
-use Amenadiel\JpGraph\Image\DigitalLED74;
-
 require_once __DIR__ . '/../../src/config.inc.php';
-
 // By default each "LED" circle has a radius of 3 pixels. Change to 5 and slghtly smaller margin
-$led = new DigitalLED74(3);
+use Amenadiel\JpGraph\Image;
+
+$led = new Image\DigitalLED74(3);
 $led->SetSupersampling(2);
 $text = 'А' .
     'Б' .
@@ -27,4 +26,4 @@ $text = 'А' .
     'Н' .
     'О' .
     'П';
-$led->StrokeNumber($text, LEDC_RED);
+$led->StrokeNumber($text, Image\Configs::getConfig('LEDC_RED'));
