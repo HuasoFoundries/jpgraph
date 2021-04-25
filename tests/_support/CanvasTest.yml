@@ -1,6 +1,2 @@
 testBezierLineWithControlPoints:
     canvasbezierex1.php: 'Bezier line with control points'
-testfileIterator:
-    canvasex05.php: file_iterator
-    canvasex06.php: file_iterator
-    canvaspiralex1.php: file_iterator
