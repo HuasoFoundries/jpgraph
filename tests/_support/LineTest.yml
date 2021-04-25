@@ -37,7 +37,6 @@ testFunctionPlot:
     funcex3.php: { width: 350, height: 430, title: 'Function plot', filename: funcex3.php, example_root: ./Examples/examples_line/ }
 testFunctionPlotWithMarker:
     funcex2.php: { width: 380, height: 450, title: 'Function plot with marker', filename: funcex2.php, example_root: ./Examples/examples_line/ }
-testGradbkgfileiterator:
     gradbkgex1.php: { width: 300, height: 200, title: gradbkgFileIterator, filename: gradbkgex1.php, example_root: ./Examples/examples_line/ }
 testGradientFilledLinePlot:
     gradlinefillex1.php: { width: 400, height: 200, title: 'Gradient filled line plot', filename: gradlinefillex1.php, example_root: ./Examples/examples_line/ }

@@ -40,9 +40,9 @@ class PiePlot
     protected $explode_radius        = [];
     protected $explode_all           = false;
     protected $explode_r             = 20;
-    protected $labels;
-    protected $legends;
-    protected $csimtargets;
+    protected array $labels = [];
+    protected array $legends = [];
+    protected array $csimtargets = [];
     protected $csimwintargets; // Array of targets for CSIM
     protected $csimareas = ''; // Generated CSIM text
     protected $csimalts; // ALT tags for corresponding target
@@ -289,7 +289,7 @@ class PiePlot
     }
 
     // Set label arrays
-    public function SetLegends($aLegend)
+    public function SetLegends(array $aLegend)
     {
         $this->legends = $aLegend;
     }
@@ -331,7 +331,7 @@ class PiePlot
     }
 
     // Setup the legends
-    public function Legend($graph)
+    public function Legend(Graph\Graph $graph)
     {
         $colors = array_keys($graph->img->rgb->rgb_table);
         sort($colors);
@@ -394,7 +394,7 @@ class PiePlot
             }
 
             if ($this->setslicecolors == null) {
-                $graph->legend->Add(
+                $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
                     $l,
                     $colors[$ta[$i % $numcolors]],
                     '',
@@ -404,7 +404,7 @@ class PiePlot
                     $wintarg
                 );
             } else {
-                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $this->csimtargets[$i], $alt, $wintarg);
+                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
             }
         }
     }

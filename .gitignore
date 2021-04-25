@@ -19,6 +19,13 @@ nbproject
 .pmd.log
 psalm.xml
 # ignore huge fonts
+.churn.yml
+.php_cs.cache
+.phpcs.config.xml
+.phpmd.xml
+.pmd.log
+psalm.xml
+# ignore huge fonts
 tests/_output/coverage
 Examples/assets/bkai00mp.ttf
 Examples/assets/simsun.ttc
