@@ -1,8 +1,8 @@
-namespace: Amenadiel\JpGraph\UnitTest
+namespace: Tests
 suites:
   unit:
-    path: .
-bootstrap: _bootstrap.php
+    path: Unit
+bootstrap: ./Pest.php
 
 settings:
   shuffle: true

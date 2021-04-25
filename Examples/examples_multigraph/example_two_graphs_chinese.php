@@ -39,7 +39,7 @@ $bar1->value->Show();
 $graph->Add($bar1);
 
 /**
- * Add second graph, pie plot
+ * Add second graph, pie plot.
  *
  * @var array
  */
@@ -60,7 +60,7 @@ $p2 = new Plot\PiePlot($data2);
 $graph2->Add($p2);
 
 /**
- * Adds a third graph (Impulse plot, scatter)
+ * Adds a third graph (Impulse plot, scatter).
  *
  * @var Graph
  */

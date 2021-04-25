@@ -1,29 +1,5 @@
 testPiefileiterator:
     pieex8.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex8.php }
     pieex9.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex9.php }
-testExampleOfPiePlotWithAbsoluteLabels:
-    pieex6.php: { width: 350, height: 200, title: 'Example of pie plot with absolute labels', filename: pieex6.php }
 testStringLabelsWithValues:
     pielabelsex5.php: { width: 300, height: 300, title: 'String labels with values', filename: pielabelsex5.php }
-test3dPiePlotExample:
-    pie3dex1.php: { width: 350, height: 200, title: '3D Pie plot Example ', filename: pie3dex1.php }
-    pie3dex2.php: { width: 350, height: 200, title: '3D Pie plot Example ', filename: pie3dex2.php }
-    pie3dex3.php: { width: 350, height: 200, title: '3D Pie plot Example ', filename: pie3dex3.php }
-    pie3dex4.php: { width: 350, height: 200, title: '3D Pie plot Example ', filename: pie3dex4.php }
-    pie3dex5.php: { width: 350, height: 200, title: '3D Pie plot Example ', filename: pie3dex5.php }
-testPiePlotExample:
-    pieex1.php: { width: 300, height: 200, title: 'Pie plot Example ', filename: pieex1.php }
-    pieex2.php: { width: 300, height: 200, title: 'Pie plot Example ', filename: pieex2.php }
-testExample5OfPiePlot:
-    pieex5.php: { width: 300, height: 200, title: 'Example 5 of pie plot', filename: pieex5.php }
-test200:
-    pieex3.php: { width: 350, height: 300, title: '2004', filename: pieex3.php }
-testExample4OfPiePlot:
-    pieex4.php: { width: 300, height: 200, title: 'Example 4 of pie plot', filename: pieex4.php }
-testPiePlotWithAbsoluteLabels:
-    pieex7.php: { width: 350, height: 200, title: 'Pie plot with absolute labels', filename: pieex7.php }
-testLabelGuideLines:
-    pielabelsex1.php: { width: 300, height: 350, title: 'Label guide lines', filename: pielabelsex1.php }
-    pielabelsex2.php: { width: 300, height: 350, title: 'Label guide lines', filename: pielabelsex2.php }
-    pielabelsex3.php: { width: 300, height: 350, title: 'Label guide lines', filename: pielabelsex3.php }
-    pielabelsex4.php: { width: 300, height: 350, title: 'Label guide lines', filename: pielabelsex4.php }

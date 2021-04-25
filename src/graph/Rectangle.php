@@ -4,6 +4,9 @@
  * JPGraph v4.1.0-beta.01
  */
 
+/**
+ * JPGraph v4.1.0-beta.01.
+ */
 class Rectangle
 {
     public $x;

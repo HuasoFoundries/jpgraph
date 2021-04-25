@@ -133,6 +133,7 @@ class SuperScriptText extends Text
                 break;
             default:
                 Util\JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
+
                 break;
         }
 
@@ -151,6 +152,7 @@ class SuperScriptText extends Text
                 break;
             default:
                 Util\JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
+
                 break;
         }
 

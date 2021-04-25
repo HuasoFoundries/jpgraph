@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Util;
  * File:           JPGRAPH_PLOTLINE.PHP
  * // Description: PlotLine extension for JpGraph
  * // Created:       2009-03-24
- * // Ver:           $Id: jpgraph_plotline.php 1931 2010-03-22 15:05:48Z ljp $
+ * // Ver:           $Id: jpgraph_plotline.php 1931 2010-03-22 15:05:48Z ljp $.
  * //
  * // @class PlotLine
  * // Data container class to hold properties for a static

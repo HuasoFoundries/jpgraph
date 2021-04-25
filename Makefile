@@ -6,7 +6,7 @@ XDSWI := $(shell command -v xd_swi 2> /dev/null)
 XDSWI_STATUS:=$(shell command xd_swi stat 2> /dev/null)
 CURRENT_FOLDER:=$(shell command pwd 2> /dev/null)
 HAS_PHPMD := $(shell command -v phpmd 2> /dev/null)
-HAS_CSFIXER:= $(shell command -v php-cs-fixer 2> /dev/null)
+HAS_CSFIXER:= $(shell command -v tools/php-cs-fixer 2> /dev/null)
 HAS_PSALM:=$(shell command -v psalm stat 2> /dev/null)
 HAS_PHPCPD:=$(shell command -v phpcpd 2> /dev/null)
 YELLOW=\033[0;33m
@@ -78,7 +78,7 @@ runcsfixer:
         echo -e "$(GREEN)php-cs-fixer$(WHITE) is $(RED)NOT$(WHITE) installed. " ;\
         echo -e "Install it with $(GREEN)phive install php-cs-fixer$(WHITE)" ;\
     else \
-	    php-cs-fixer --verbose fix --using-cache no;\
+	    tools/php-cs-fixer --verbose fix --using-cache no;\
     fi 
 
 csfixer:

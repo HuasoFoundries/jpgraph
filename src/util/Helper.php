@@ -28,8 +28,9 @@ require_once __DIR__ . '/Configs.php';
  */
 class Helper
 {
-    private static $__jpg_err_locale = DEFAULT_ERR_LOCALE;
+    private static $__jpg_err_locale = 'en';
     private static $initialized      = false;
+    private static array $_jpg_messages = [];
     /**
      * Keeps a reference of the library related
      * constants to verify their existance.
@@ -47,18 +48,23 @@ class Helper
         if (self::$initialized) {
             return;
         }
-        //Configs::setGeneralConfigs();
-        //Configs::verifyFontConfigs();
-        //Configs::verifyCacheSettings();
-        //Configs::verifyTTFSettings();
-        //Configs::verifyMBTTFSettings();
-        //Configs::verifyFormatSettings();
+        if (defined('DEFAULT_ERR_LOCALE')) {
+            self::$__jpg_err_locale = DEFAULT_ERR_LOCALE;
+        }
+
         $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), self::$__jpg_err_locale);
 
         // If the chosen locale doesn't exist try english
         if (!file_exists($locale_messages_file)) {
-            self::$__jpg_err_locale = 'en';
+            self::SetErrLocale('en');
+            $locale_messages_file = sprintf('%s/lang/%s.inc.php', dirname(__DIR__), self::getErrLocale());
         }
+
+
+
+        require $locale_messages_file;
+
+        self::$_jpg_messages = $_jpg_messages;
         // Make sure PHP version is high enough
         if (version_compare(PHP_VERSION, Configs::getConfig('MIN_PHPVERSION')) < 0) {
             JpGraphError::RaiseL(13, PHP_VERSION, Configs::getConfig('MIN_PHPVERSION'));
@@ -92,7 +98,10 @@ class Helper
 
         return self::$initialized;
     }
-
+    public static function getErrorMessage(int $errCode): ?array
+    {
+        return self::$_jpg_messages[$errCode] ?? null;
+    }
     /**
      * Sets the error locale.
      *

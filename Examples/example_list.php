@@ -4,6 +4,9 @@
  * JPGraph v4.1.0-beta.01
  */
 
+/**
+ * JPGraph v4.1.0-beta.01.
+ */
 function GetFiles()
 {
     $d = dir(__DIR__);

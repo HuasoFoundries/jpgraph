@@ -18,6 +18,7 @@ class TTF
     private $font_files;
     private $style_names;
     public static $FONT_BASEPATH;
+
     public function __construct()
     {
         self::$FONT_BASEPATH = getenv('JPGRAPH_FONT_BASEPATH') ?
@@ -320,6 +321,7 @@ class TTF
         if (file_exists($full_path) && is_readable($full_path)) {
             return $full_path;
         }
+
         return false;
     }
 
@@ -341,14 +343,14 @@ class TTF
             array_key_exists($style, Configs::$font_dict)
             // && !array_key_exists($family,$this->font_files)
         ) {
-            $font_translation = sprintf('%s::%s',
+            $font_translation = sprintf(
+                '%s::%s',
                 Configs::$font_dict[$family],
                 Configs::$font_dict[$style]
             );
             if (array_key_exists($font_translation, Configs::$FOUND_FONTS)) {
                 return Configs::$FOUND_FONTS[$font_translation];
             }
-
         }
         if (!$fam) {
             Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
@@ -416,6 +418,7 @@ class TTF
         'FOUND_FONTS' => Configs::$FOUND_FONTS,
         ]);*/
         }
+
         return $font_file;
     }
 

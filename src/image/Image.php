@@ -15,7 +15,7 @@ use Amenadiel\JpGraph\Util\ErrMsgText;
  * File:        GD_IMAGE.INC.PHP
  * // Description: PHP Graph Plotting library. Low level image drawing routines
  * // Created:     2001-01-08, refactored 2008-03-29
- * // Ver:         $Id: gd_image.inc.php 1922 2010-01-11 11:42:50Z ljp $
+ * // Ver:         $Id: gd_image.inc.php 1922 2010-01-11 11:42:50Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -335,7 +335,7 @@ class Image
         if (!function_exists('imagettfbbox')) {
             // use internal font when php is configured without '--with-ttf'
             $this->font_family = Configs::FF_FONT1;
-            //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+        //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
         } else {
             $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
         }
@@ -1562,6 +1562,7 @@ class Image
                     break;
                 default:
                     Util\JpGraphError::RaiseL(25104, $this->line_style); //(" Unknown line style: $this->line_style ");
+
                     break;
             }
             if ($oldaa) {

@@ -1,9 +1,3 @@
-testPolarclockfileiterator:
-    polarclockex2.php: { width: 350, height: 350, title: polarclockFileIterator, filename: polarclockex2.php }
-testPolarfileiterator:
-    polarex0-180.php: { width: 250, height: 250, title: polarFileIterator, filename: polarex0-180.php }
-    polarex0.php: { width: 250, height: 250, title: polarFileIterator, filename: polarex0.php }
-    polarex1.php: { width: 600, height: 500, title: polarFileIterator, filename: polarex1.php }
 testClockwisePolarPlot:
     polarclockex1.php: { width: 350, height: 350, title: 'Clockwise polar plot', filename: polarclockex1.php }
 testPolarplot:

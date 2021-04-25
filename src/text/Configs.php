@@ -133,7 +133,7 @@ class Configs extends Util\Configs
     const GOTHIC_TTF_FONT  = 'ipag.ttf';
     const PGOTHIC_TTF_FONT = 'ipagp.ttf';
     /**
-     * I had to do this because it's impossible to debug otherwise
+     * I had to do this because it's impossible to debug otherwise.
      *
      * @var array
      */
@@ -179,6 +179,7 @@ class Configs extends Util\Configs
         Configs::FS_ITALIC           => 'FS_ITALIC',
         Configs::FS_NORMAL           => 'FS_NORMAL',
     ];
+
     public function __construct()
     {
         parent::__construct();

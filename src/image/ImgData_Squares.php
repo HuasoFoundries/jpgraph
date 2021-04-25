@@ -8,7 +8,7 @@
  * // File:        IMGDATA_SQUARES.INC
  * // Description: Base64 encoded images for squares
  * // Created:     2003-03-20
- * // Ver:         $Id: imgdata_squares.inc.php 1106 2009-02-22 20:16:35Z ljp $
+ * // Ver:         $Id: imgdata_squares.inc.php 1106 2009-02-22 20:16:35Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */

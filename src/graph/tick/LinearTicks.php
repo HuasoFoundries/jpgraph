@@ -70,6 +70,7 @@ class LinearTicks extends Ticks
     {
         if (!is_array($aMajPos) || ($aMinPos !== null && !is_array($aMinPos))) {
             Util\JpGraphError::RaiseL(25065); //('Tick positions must be specifued as an array()');
+
             return;
         }
         $n = Configs::safe_count($aMajPos);

@@ -2108,6 +2108,7 @@ class Graph
                     break;
                 default:
                     Util\JpGraphError::RaiseL(25036, $this->iAxisStyle); //('Unknown AxisStyle() : '.$this->iAxisStyle);
+
                     break;
             }
 
@@ -2399,6 +2400,7 @@ class Graph
                     $this->background_image_mix
                 );
                 $this->StrokeFrame(); // New
+
                 break;
             default:
                 Util\JpGraphError::RaiseL(25042); //(" Unknown background image layout");

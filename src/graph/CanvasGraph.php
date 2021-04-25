@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Image;
  * File:        JPGRAPH_CANVAS.PHP
  * // Description: Canvas drawing extension for JpGraph
  * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $
+ * // Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */

@@ -25,3 +25,13 @@ Examples/assets/simsun.ttc
 src/fonts/bkai00mp.ttf
 src/fonts/simsun.ttc
 
+
+*.code-workspace
+.build
+
+tools
+.phive
+
+.phpunit.result.cache
+template.php
+

@@ -51,12 +51,10 @@ $graph3->SetShadow();
 $example_title3 = 'Using Lato';
 $graph3->title->set($example_title3);
 $graph3->SetUserFont2(
-
     '/usr/share/fonts/truetype/lato/Lato-Regular.ttf',
     '/usr/share/fonts/truetype/lato/Lato-Bold.ttf',
     '/usr/share/fonts/truetype/lato/Lato-Italic.ttf',
     '/usr/share/fonts/truetype/lato/Lato-BoldItalic.ttf'
-
 );
 $graph3->title->SetFont(
     Graph\Configs::FF_USERFONT2,

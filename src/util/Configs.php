@@ -159,7 +159,7 @@ class Configs
     const BAND_HVCROSS   = 7; // Vertical/Hor crosses
     const BAND_DIAGCROSS = 8; // Diagonal crosses
 
-//const CACHE_DIR=CACHE_DIR;
+    //const CACHE_DIR=CACHE_DIR;
     //const TTF_DIR=TTF_DIR;
     //const MBTTF_DIR=MBTTF_DIR;
     const CSIMCACHE_DIR      = CSIMCACHE_DIR;
@@ -773,8 +773,7 @@ class Configs
         /*
          * Not a constant/static that we know of
          */
-        if (!array_key_exists($const_name, self::$lazy_statics)
-        ) {
+        if (!array_key_exists($const_name, self::$lazy_statics)) {
             throw new Exception(sprintf('You requested an unknown constant "%s"', $const_name));
         }
         /*
@@ -784,7 +783,9 @@ class Configs
         return $args && is_scalar($args) ? self::setConfig($const_name, $args) : self::getConfig($const_name);
     }
 
-    public function __get($config_key) {}
+    public function __get($config_key)
+    {
+    }
 
     public static function getInstance()
     {
@@ -859,11 +860,11 @@ class Configs
             throw new Exception(sprintf('You requested an unknown config_key "%s"', $config_key));
         }
         // If found, and not set, use the default value
-        if (!array_key_exists($const_name, static::$active_lazy_statics)) {
-            static::$active_lazy_statics[$const_name] = static::$lazy_statics[$const_name];
+        if (!array_key_exists($config_key, static::$active_lazy_statics)) {
+            static::$active_lazy_statics[$config_key] = static::$lazy_statics[$config_key];
         }
         // Finally, return said static
-        return static::$active_lazy_statics[$const_name];
+        return static::$active_lazy_statics[$config_key];
     }
 
     /**

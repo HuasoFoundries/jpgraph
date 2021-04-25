@@ -1,21 +1,59 @@
-testExampleWithGroupingAndConstrains:
-    ganttconstrainex0.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex0.php }
-    ganttconstrainex1.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex1.php }
-    ganttconstrainex2.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex2.php }
+testActivitiesOnSameRow:
+    gantt_samerowex1.php: { title: 'Activities on same row', filename: gantt_samerowex1.php }
+    gantt_samerowex2.php: { title: 'Activities on same row', filename: gantt_samerowex2.php }
+testExampleWithAddedTexts:
+    gantt_textex1.php: { title: 'Example with added texts', filename: gantt_textex1.php }
+testGanttcolumnfontsfileiterator:
+    ganttcolumnfontsex01.php: { title: ganttcolumnfontsFileIterator, filename: ganttcolumnfontsex01.php }
+testGanttfileiterator:
+    ganttex00.php: { title: ganttFileIterator, filename: ganttex00.php }
+    ganttex30.php: { title: ganttFileIterator, filename: ganttex30.php }
+testAMainTitle:
+    ganttex01.php: { title: 'A main title', filename: ganttex01.php }
+testMainTitle:
+    ganttex02.php: { title: 'Main title', filename: ganttex02.php }
+testANiceMainTitle:
+    ganttex03.php: { title: 'A nice main title', filename: ganttex03.php }
+    ganttex04.php: { title: 'A nice main title', filename: ganttex04.php }
+    ganttex05.php: { title: 'A nice main title', filename: ganttex05.php }
+    ganttex06.php: { title: 'A nice main title', filename: ganttex06.php }
+    ganttex07.php: { title: 'A nice main title', filename: ganttex07.php }
+    ganttex08.php: { title: 'A nice main title', filename: ganttex08.php }
+    ganttex09.php: { title: 'A nice main title', filename: ganttex09.php }
+    ganttex10.php: { title: 'A nice main title', filename: ganttex10.php }
+    ganttex11.php: { title: 'A nice main title', filename: ganttex11.php }
+    ganttex12.php: { title: 'A nice main title', filename: ganttex12.php }
+testZoomingAGraph:
+    ganttex13-zoom1.php: { title: 'Zooming a graph', filename: ganttex13-zoom1.php }
+    ganttex13-zoom2.php: { title: 'Zooming a graph', filename: ganttex13-zoom2.php }
+testExampleOfCaptions:
+    ganttex13.php: { title: 'Example of captions', filename: ganttex13.php }
+    ganttex14.php: { title: 'Example of captions', filename: ganttex14.php }
+    ganttex15.php: { title: 'Example of captions', filename: ganttex15.php }
+    ganttex16.php: { title: 'Example of captions', filename: ganttex16.php }
+    ganttex17-flag.php: { title: 'Example of captions', filename: ganttex17-flag.php }
+    ganttex17.php: { title: 'Example of captions', filename: ganttex17.php }
+    ganttex18.php: { title: 'Example of captions', filename: ganttex18.php }
+testGanttsimplefileiterator:
+    ganttsimpleex1.php: { title: ganttsimpleFileIterator, filename: ganttsimpleex1.php }
+testExampleWithMultipleConstrains:
+    multconstganttex01.php: { title: 'Example with multiple constrains', filename: multconstganttex01.php }
 test200:
     ganttex_slice.php: { title: '2002-02-28', filename: ganttex_slice.php }
     gantthgridex1.php: { title: '2001-11-01', filename: gantthgridex1.php }
-testExampleWithMultipleConstrains:
-    multconstganttex01.php: { title: 'Example with multiple constrains', filename: multconstganttex01.php }
-testExampleOfHoursInScale:
-    gantthourex1.php: { title: 'Example of hours in scale', filename: gantthourex1.php }
-test271:
-    gantthourminex1.php: { title: '27/11 9:00', filename: gantthourminex1.php }
-testGanttChartWithTitleColumnsAndIcons:
-    gantticonex1.php: { title: 'Gantt chart with title columns and icons', filename: gantticonex1.php }
 testAddingASpaningTitle:
     ganttmonthyearex4.php: { title: 'Adding a spaning title', filename: ganttmonthyearex4.php }
 testOnlyMonthYearScale:
     ganttmonthyearex1.php: { title: 'Only month & year scale', filename: ganttmonthyearex1.php }
     ganttmonthyearex2.php: { title: 'Only month & year scale', filename: ganttmonthyearex2.php }
     ganttmonthyearex3.php: { title: 'Only month & year scale', filename: ganttmonthyearex3.php }
+testExampleWithGroupingAndConstrains:
+    ganttconstrainex0.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex0.php }
+    ganttconstrainex1.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex1.php }
+    ganttconstrainex2.php: { title: 'Example with grouping and constrains', filename: ganttconstrainex2.php }
+testGanttChartWithTitleColumnsAndIcons:
+    gantticonex1.php: { title: 'Gantt chart with title columns and icons', filename: gantticonex1.php }
+test271:
+    gantthourminex1.php: { title: '27/11 9:00', filename: gantthourminex1.php }
+testExampleOfHoursInScale:
+    gantthourex1.php: { title: 'Example of hours in scale', filename: gantthourex1.php }
