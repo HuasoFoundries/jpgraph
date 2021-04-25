@@ -30,7 +30,7 @@ class Helper
 {
     private static $__jpg_err_locale = 'en';
     private static $initialized      = false;
-    private static array $_jpg_messages = [];
+    private static  $_jpg_messages = [];
     /**
      * Keeps a reference of the library related
      * constants to verify their existance.

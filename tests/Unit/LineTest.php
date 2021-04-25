@@ -2,16 +2,13 @@
 
 namespace Tests\Unit;
 
-use Tests\UnitTestTrait;
-
 
 /**
  * @group ready
  */
 class LineTest extends \Tests\TestCase
 {
-
-
+    public static $persistYaml = false;
     public static $fixTures    = [];
     public static $files       = null;
     public static $exampleRoot = null;
@@ -168,5 +165,13 @@ class LineTest extends \Tests\TestCase
     public function testTheTitle()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
+    }
+
+    public function testFileIterator()
+    {
+        self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
+            $carry = $this->_fileCheck($file, $carry);
+            return $carry;
+        }, self::$genericFixtures);
     }
 }

@@ -38,7 +38,7 @@ class ImgTest extends \Tests\TestCase
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    public static function xsetUpBeforeClass(): void
+    public static function setUpBeforeClass(): void
     {
         $className = str_replace('test', '', strtolower(__CLASS__));
 
@@ -55,7 +55,6 @@ class ImgTest extends \Tests\TestCase
 
     protected function _before()
     {
-        self::$persistYaml = true;
     }
 
     protected function _after()
@@ -85,14 +84,11 @@ class ImgTest extends \Tests\TestCase
         }
     }
 
-    private function _fileCheck($filename, &$ownFixtures = [], $debug = false, $dims = [])
+    protected function _fileCheck($filename, &$ownFixtures = [], $debug = false, $dims = [])
     {
 
         $example_title = 'file_iterator';
-        $filePath = tap(
-            self::$exampleRoot . $filename,
-            fn ($path) => strlen($path)
-        );
+        $filePath =             self::$exampleRoot . $filename;
         ob_start();
 
         include $filePath;

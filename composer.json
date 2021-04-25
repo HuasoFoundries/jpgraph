@@ -17,9 +17,8 @@
   },
   "require": {
     "php": ">=7.3.0",
-    "ext-gd": "*",
-    "codeception/codeception": "^4.1",
-    "codeception/module-asserts": "^1.3"
+    "ext-gd": "*"
+    
   },
   "require-dev": {
     "kint-php/kint": "^3.3",
@@ -33,8 +32,9 @@
     "overtrue/phplint": "^2.3",
     "phpunit/phpunit": "^9.5",
     "vimeo/psalm": "^4.7",
-    "maglnet/composer-require-checker": "^3.2",
-    "pestphp/pest": "^1.0"
+    
+    "codeception/codeception": "^4.1",
+    "codeception/module-asserts": "^1.3"
     
   },
   "autoload": {
@@ -58,6 +58,8 @@
     },"files":["tests/polyfills.php"]
   },
   "scripts": {
-    "start": "php -S localhost:8000 -t Examples"
+    "act": "act -P ubuntu-latest=shivammathur/node:latest",
+    "start": "php -S localhost:8000 -t Examples",
+    "test": "php vendor/bin/codecept run unit "
   }
 }

@@ -9,8 +9,8 @@ use Exception;
 
 class TestCase    extends \Codeception\Test\Unit
 {
-    public static $persistYaml     = true;
     public static $genericFixtures = [];
+    public static $persistYaml = false;
     public static $files       = null;
     public static $exampleRoot = null;
     public static $ranTests    = [];
@@ -277,7 +277,7 @@ class TestCase    extends \Codeception\Test\Unit
             );
             //$this->assertEquals('image/jpeg', $size['mime'], 'image should have mime image/jpeg for ' . $filename);
         }
-        return tap($this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug, $size), fn ($normalized) => dump($normalized));
+        return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug, $size);
     }
 
     /**

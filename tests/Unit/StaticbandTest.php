@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Unit;
+
 use Tests\UnitTestTrait;
 
 
@@ -8,8 +10,8 @@ use Tests\UnitTestTrait;
  */
 class StaticbandTest extends \Tests\TestCase
 {
-    
 
+    public static $persistYaml = false;
     public static $files       = null;
     public static $exampleRoot = null;
     public static $ranTests    = [];
@@ -17,10 +19,11 @@ class StaticbandTest extends \Tests\TestCase
 
     protected function _before()
     {
-        //self::$persistYaml = false;
     }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     public function testBandRdiag()
     {
@@ -74,8 +77,8 @@ class StaticbandTest extends \Tests\TestCase
     {
         self::$genericFixtures =
             array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
-        }, self::$genericFixtures);
+                $carry = $this->_fileCheck($file, $carry);
+                return $carry;
+            }, self::$genericFixtures);
     }
 }

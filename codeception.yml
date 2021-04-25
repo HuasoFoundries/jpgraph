@@ -2,7 +2,7 @@ namespace: Tests
 suites:
   unit:
     path: Unit
-bootstrap: ./Pest.php
+bootstrap: ./_bootstrap.php
 
 settings:
   shuffle: true

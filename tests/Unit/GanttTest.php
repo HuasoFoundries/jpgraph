@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+
 use Tests\UnitTestTrait;
 
 
@@ -9,19 +10,23 @@ use Tests\UnitTestTrait;
  */
 class GanttTest extends \Tests\TestCase
 {
-    
 
+    public static $persistYaml = false;
     public static $fixTures    = [];
     public static $files       = null;
     public static $exampleRoot = null;
     public static $ranTests    = [];
 
-    protected function _before() {}
+    protected function _before()
+    {
+    }
 
-    protected function _after() {}
+    protected function _after()
+    {
+    }
 
     // tests
-    private function _fileCheck($filename, &$ownFixtures = [], $debug = false)
+    protected function _fileCheck($filename, &$ownFixtures = [], $debug = false)
     {
         if (is_array($filename)) {
             $filename = $filename['filename'];

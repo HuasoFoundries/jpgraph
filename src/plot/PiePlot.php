@@ -40,9 +40,9 @@ class PiePlot
     protected $explode_radius        = [];
     protected $explode_all           = false;
     protected $explode_r             = 20;
-    protected array $labels = [];
-    protected array $legends = [];
-    protected array $csimtargets = [];
+    protected $labels = [];
+    protected $legends = [];
+    protected $csimtargets = [];
     protected $csimwintargets; // Array of targets for CSIM
     protected $csimareas = ''; // Generated CSIM text
     protected $csimalts; // ALT tags for corresponding target
@@ -395,14 +395,6 @@ class PiePlot
 
             if ($this->setslicecolors == null) {
                 $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
-                    $l,
-                    $colors[$ta[$i % $numcolors]],
-                    '',
-                    0,
-                    $this->csimtargets[$i],
-                    $alt,
-                    $wintarg
-                );
             } else {
                 $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
             }
