@@ -39,7 +39,6 @@ testGanttsimplefileiterator:
 testExampleWithMultipleConstrains:
     multconstganttex01.php: { title: 'Example with multiple constrains', filename: multconstganttex01.php }
 test200:
-    ganttex_slice.php: { title: '2002-02-28', filename: ganttex_slice.php }
     gantthgridex1.php: { title: '2001-11-01', filename: gantthgridex1.php }
 testAddingASpaningTitle:
     ganttmonthyearex4.php: { title: 'Adding a spaning title', filename: ganttmonthyearex4.php }

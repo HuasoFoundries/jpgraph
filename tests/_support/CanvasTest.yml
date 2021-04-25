@@ -1,2 +1,7 @@
 testBezierLineWithControlPoints:
-    canvasbezierex1.php: 'Bezier line with control points'
+    canvasbezierex1.php: {  width: 400, height: 300,  filename: canvasbezierex1.php, title: 'Bezier line with control points'}
+testfileIterator:
+    canvasex05.php: {  width: 400, height: 200,  filename: canvasex05.php, title: file_iterator }
+    canvasex06.php: {  width: 400, height: 200,  filename: canvasex06.php, title: file_iterator }
+    canvaspiralex1.php: {  width: 150, height: 240,  filename: canvaspiralex1.php, title: file_iterator }
+    

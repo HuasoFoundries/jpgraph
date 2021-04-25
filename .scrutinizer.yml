@@ -3,7 +3,7 @@ checks:
 build:
   environment:
     php:
-      version: "7.2"
+      version: "7.3"
       ini:
         "zend_extension": "xdebug.so"
   nodes:
@@ -11,9 +11,7 @@ build:
     analysis:
       tests:
         override:
-          - command: phpcs-run
-            use_website_config: true
-          - command: make test_coverage
+          - command: XDEBUG_MODE=coverage vendor/bin/pest --coverage
             coverage:
               file: "tests/_output/coverage.xml"
               format: "clover"

@@ -5,9 +5,8 @@ SHELL = /usr/bin/env bash
 XDSWI := $(shell command -v xd_swi 2> /dev/null)
 XDSWI_STATUS:=$(shell command xd_swi stat 2> /dev/null)
 CURRENT_FOLDER:=$(shell command pwd 2> /dev/null)
-HAS_PHPMD := $(shell command -v phpmd 2> /dev/null)
-HAS_CSFIXER:= $(shell command -v tools/php-cs-fixer 2> /dev/null)
-HAS_PSALM:=$(shell command -v psalm stat 2> /dev/null)
+
+
 HAS_PHPCPD:=$(shell command -v phpcpd 2> /dev/null)
 YELLOW=\033[0;33m
 RED=\033[0;31m
@@ -22,7 +21,7 @@ ifeq ($(target),)
 	target=src
 endif
 default: clean
-.PHONY: version install test tag start csfixer
+.PHONY: version install test tag start 
 
 version:
 	@echo $(VERSION)
@@ -37,7 +36,7 @@ test:
 		echo -e "$(WHITE)XDebug state is$(RESET) $(XDSWI_STATUS)" ;\
 	fi ;\
 	xd_swi off ;\
-	php vendor/bin/codecept run unit $(test) $(groups) $(g) --debug ;\
+	composer pest ;\
 	echo seting XDebug to initial state $(XDSWI_STATUS)  ;\
 	xd_swi $(XDSWI_STATUS)
 
@@ -46,7 +45,7 @@ test_coverage:
 		echo -e "$(WHITE)XDebug state is$(RESET) $(XDSWI_STATUS)" ;\
 	fi ;\
 	xd_swi on ;\
-	php vendor/bin/codecept run unit $(test)     --coverage-html  ;\
+	XDEBUG_MODE=coverage vendor/bin/pest --coverage  --coverage-html tests/_output/coverage  ;\
 	echo seting XDebug to initial state $(XDSWI_STATUS)  ;\
 	xd_swi $(XDSWI_STATUS)
 
@@ -55,6 +54,7 @@ update_version:
 	@echo "Next version is " $(v)
 	@sed -i s/'"$(VERSION)"'/'"$(v)"'/ composer.json
 	@sed -i s/'"$(VERSION)"'/'"$(v)"'/ README.md
+	@composer csfixer
 	composer update nothing --lock --root-reqs
 
 tag_and_push:
@@ -64,7 +64,7 @@ tag_and_push:
 		git push
 		git push --tags
 
-tag: test update_version csfixer tag_and_push	
+tag: test update_version tag_and_push	
 
 delete_tag:
 	git tag -d $(v)
@@ -73,23 +73,7 @@ delete_tag:
 start:
 	php -S localhost:8000 -t Examples
 
-runcsfixer:
-		@if [[ "$(HAS_CSFIXER)" == "" ]]; then \
-        echo -e "$(GREEN)php-cs-fixer$(WHITE) is $(RED)NOT$(WHITE) installed. " ;\
-        echo -e "Install it with $(GREEN)phive install php-cs-fixer$(WHITE)" ;\
-    else \
-	    tools/php-cs-fixer --verbose fix --using-cache no;\
-    fi 
 
-csfixer:
-	@if [[ "$(XDSWI)" == "" ]]; then \
-	     ${MAKE} runcsfixer --no-print-directory ;\
-    else \
-        xd_swi off ;\
-		${MAKE} runcsfixer --no-print-directory ;\
-		xd_swi $(XDSWI_STATUS)	;\
-    fi
-	
 phpmd:
 	@if [ "$(HAS_PHPMD)" == "" ]; then \
         echo -e "$(GREEN)phpmd$(WHITE) is $(RED)NOT$(WHITE) installed. " ;\

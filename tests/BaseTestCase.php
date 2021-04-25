@@ -2,13 +2,17 @@
 
 namespace Tests;
 
-use Codeception\Exception\ParseException;
-use Symfony\Component\Yaml\Yaml;
-use \Codeception\Util\Debug;
-use Exception;
 
-class TestCase    extends \Codeception\Test\Unit
+use Symfony\Component\Yaml\Yaml;
+use Exception;
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+
+use \Pest\Concerns\TestCase;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+class BaseTestCase extends PHPUnitTestCase
 {
+    const TEST_FOLDER = __DIR__;
     public static $persistYaml     = true;
     public static $genericFixtures = [];
     public static $files       = null;
@@ -31,19 +35,40 @@ class TestCase    extends \Codeception\Test\Unit
 
         //$this->_setUp();
     }
-    public function traverseFixtureGroup($fixTures)
+    private static ?ConsoleOutput $output = null;
+    public static function getOutput(): ConsoleOutput
     {
-        self::$genericFixtures =
-            array_reduce($fixTures, function ($carry, $fixTure) {
-
-                $carry = is_array($fixTure) ? $this->_fixtureCheck($fixTure, $carry) : $this->_fileCheck($fixTure, $carry);
-                return $carry;
-            }, self::$genericFixtures);
+        if (null === self::$output) {
+            self::$output = new ConsoleOutput();
+        }
+        return self::$output;
     }
 
+    /**
+     * Write a string as standard output.
+     *
+     * @param  string  $string
+     * @param  string|null  $style
+     * @param  int|string|null  $verbosity
+     * @return void
+     */
+    public static function line($string, $style = null)
+    {
+        $styled = $style ? "<$style>$string</$style>" : $string;
+        self::getOutput()->writeln($styled);
+    }
+    /**
+     * Given the test className (fileName, TBH), figure out the folder 
+     * (inside Examples folder) that should be traversed to populate the
+     * fixture list
+     * 
+     * @param string $class 
+     * @return array 
+     * @throws Exception 
+     */
     public static function getFiles($class = '')
     {
-        $arr       = explode('\\', static::class);
+        $arr       = explode('\\', str_replace('Pending', '', static::class));
         $className = array_pop($arr);
 
         $folder = self::getRoot($className);
@@ -82,7 +107,7 @@ class TestCase    extends \Codeception\Test\Unit
         static::$files   = static::getFiles(strtolower($className));
         try {
             static::$fixTures = Yaml::parseFile(sprintf('%s/_support/%s.yml', __DIR__, $className));
-        } catch (ParseException $exception) {
+        } catch (Exception $exception) {
             printf('Unable to parse the YAML string: %s', $exception->getMessage());
         }
         if (is_array(static::$fixTures)) {
@@ -101,36 +126,19 @@ class TestCase    extends \Codeception\Test\Unit
         ]);*/
     }
 
-    public static function tearDownAfterClass(): void
-    {
-        $arr       = explode('\\', static::class);
-        $className = array_pop($arr);
-        if (count(static::$genericFixtures) > 0) {
-            if (isset(static::$debugFileGroups) && static::$debugFileGroups && array_key_exists('testFileIterator', static::$genericFixtures)) {
-                Debug::debug('non grouped fixtures:');
-                Debug::debug(static::$genericFixtures['testFileIterator']);
-            }
-            $yaml = Yaml::dump(static::$genericFixtures);
-            /*if (static::$persistYaml) {
-
-                file_put_contents(sprintf('%s/_support/%s.yml', __DIR__, $className), $yaml);
-            }*/
-            fwrite(STDOUT, $className . "\n");
-        }
-    }
 
     public static function getRoot($class)
     {
         if (!static::$exampleRoot) {
-            static::$exampleRoot = PROJECT_ROOT . '/Examples/examples_' . str_replace('test', '', strtolower($class)) . '/';
+            static::$exampleRoot = dirname(BaseTestCase::TEST_FOLDER) . '/Examples/examples_' . str_replace('test', '', strtolower($class)) . '/';
         }
         return static::$exampleRoot;
     }
 
     /**
-     * 
-     * @param array $fixTureArray 
-     * @return array 
+     *
+     * @param array $fixTureArray
+     * @return array
      */
     public static function getShallowFixtureArray(array $fixTureArray): array
     {
@@ -203,7 +211,6 @@ class TestCase    extends \Codeception\Test\Unit
         $test_title    = $camelCased;
         $withoutSuffix = preg_match('/(\w(\s|\w)+\w)\s*(?:(ex|v))?\s*([\.\d]+)$/iU', $test_title, $matches);
         if ($matches) {
-
             $test_title = self::camelCase($matches[1]);
         }
 
@@ -211,7 +218,7 @@ class TestCase    extends \Codeception\Test\Unit
         $matches    = null;
 
         if ($debug) {
-            Debug::debug([
+            dump([
                 'withoutSuffix' => $withoutSuffix,
                 'example_title' => $example_title === 'file_iterator' ? 'No Title' : $example_title,
                 'camelCased'    => $camelCased,
@@ -233,12 +240,12 @@ class TestCase    extends \Codeception\Test\Unit
 
     /**
      * Given a filename (whose full path is based on test name)
-     * render the container graph and check if the image matches the 
+     * render the container graph and check if the image matches the
      * expeted dimensions.
-     * @param string $filename 
-     * @param array $ownFixtures 
-     * @param bool $debug 
-     * @return array 
+     * @param string $filename
+     * @param array $ownFixtures
+     * @param bool $debug
+     * @return array
      */
     protected function _fileCheck(string $filename, array &$ownFixtures = [], bool $debug = false)
     {
@@ -266,12 +273,11 @@ class TestCase    extends \Codeception\Test\Unit
         }
 
         if (isset($__width) && isset($__height)) {
-
             self::renameIfDimensionsDontMatch(static::$exampleRoot, $filename, $__width, $__height, $size);
             $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
             $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
         } else {
-            Debug::debug(
+            dump(
                 'testing ' . $filename .
                     ' for image/jpeg headers '
             );
@@ -282,12 +288,12 @@ class TestCase    extends \Codeception\Test\Unit
 
     /**
      * Given a filename (whose full path is based on test name)
-     * render the container graph and check if the image matches the 
+     * render the container graph and check if the image matches the
      * expeted dimensions.
-     * @param string $filename 
-     * @param array $ownFixtures 
-     * @param bool $debug 
-     * @return array 
+     * @param string $filename
+     * @param array $ownFixtures
+     * @param bool $debug
+     * @return array
      */
     protected function _fixtureCheck(array $fixTure, array &$ownFixtures = [], bool $debug = false)
     {
@@ -315,7 +321,6 @@ class TestCase    extends \Codeception\Test\Unit
         }
 
         if (isset($__width) && isset($__height)) {
-
             self::renameIfDimensionsDontMatch(static::$exampleRoot, $filename, $__width, $__height, $size);
             $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
             $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);

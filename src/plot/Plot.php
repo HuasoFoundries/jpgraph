@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Plot;
 
-
 use Amenadiel\JpGraph\Util;
 use function is_array;
 use function is_numeric;

@@ -5,6 +5,7 @@
  */
 
 use Kint\Kint;
+use Tests\BaseTestCase;
 
 if (!\function_exists('tap')) {
     /**
@@ -23,7 +24,6 @@ if (!\function_exists('tap')) {
         return $value;
     }
 }
-
 /*
  * Unless there's a dump function declared already, declare
  * one so we can use it safely elsewhere. Mostly used while developing
@@ -50,6 +50,47 @@ if (!\function_exists('dump')) {
         }
     }
 }
+function examples_path(string $path = ''): string
+{
+    return sprintf('%s/Examples/%s', dirname(BaseTestCase::TEST_FOLDER), ($path ? DIRECTORY_SEPARATOR . $path : $path));
+}
+if (!function_exists('getExampleSubfolderFolderFromTestClassName')) {
+    function getExampleSubfolderFolderFromTestClassName(string $testClass, bool $absolute = true): string
+    {
+        return ('examples_' . str_replace('test', '', strtolower($testClass)));
+    }
+}
+
+if (!function_exists('getTestableExampleFiles')) {
+    function getTestableExampleFiles(string $testClass = 'GeneralTest', array $skippedFixtures = []): array
+    {
+        $exampleRoot = getExampleSubfolderFolderFromTestClassName($testClass);
+        if (!is_dir(examples_path($exampleRoot))) {
+            BaseTestCase::line(sprintf('Folder <warn>%s</warn> for testClass <warn>%s</warn> does not exist', $exampleRoot, $testClass));
+            return [];
+        }
+        $d = @dir(examples_path($exampleRoot));
+
+        while ($entry = $d->Read()) {
+            if (
+                !array_key_exists($entry, $skippedFixtures) &&
+                is_file(examples_path(implode('/', [$exampleRoot, $entry]))) &&
+                strpos($entry, '.php') !== false &&
+                strpos($entry, 'ex') !== false
+                && strpos($entry, 'no_test') === false
+                && strpos($entry, 'no_dim') === false
+            ) {
+                $fileArray[] = $entry;
+            }
+        }
+        $d->Close();
+
+
+
+        return   tap($fileArray, fn (&$arr) => sort($arr));
+    }
+}
+
 
 /*
  * Dump to stderr and exit

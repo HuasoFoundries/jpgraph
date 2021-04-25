@@ -6,7 +6,6 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
-
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;

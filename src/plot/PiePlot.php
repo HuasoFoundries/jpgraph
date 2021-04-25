@@ -828,8 +828,7 @@ class PiePlot
                     // have a cluster of one in quadrant 0 we just extend that
                     // cluster. If we don't do this then we risk that the label
                     // for the cluster of one will cross the guide-line
-                    if (
-                        $q1 == 0 && $cidx > -1 &&
+                    if ($q1 == 0 && $cidx > -1 &&
                         $clusters[$cidx][1] == 1 &&
                         $this->Quadrant($this->la[$clusters[$cidx][0]]) == 0
                     ) {

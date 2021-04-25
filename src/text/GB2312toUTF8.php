@@ -7478,7 +7478,6 @@ class GB2312toUTF8
                 $gb         = substr($gb, 2);
                 $char_index = hexdec(bin2hex($t)) - 0x8080;
                 if (array_key_exists($char_index, $this->codetable)) {
-
                     $utf8 .= $this->u2utf8($this->codetable[$char_index]);
                 }
             } else {

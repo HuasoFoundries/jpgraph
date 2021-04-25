@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.0@d4377c0baf3ffbf0b1ec6998e8d1be2a40971005">
+  <file src="tests/Feature/AxisTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/BackgroundTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/BarTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/CanvasTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/ContourTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/DateTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/GanttTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/GeneralTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/ImgTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/LedTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/LineTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/PieTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/PolarTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/RadarTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/RotateTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/ScatterTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/StaticbandTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/ThemeTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/TickTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Feature/WindroseTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/BarTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/CanvasTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/GanttTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/PieTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/PolarTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+  <file src="tests/Unit/WindroseTest.php">
+    <InternalMethod occurrences="1">
+      <code>with</code>
+    </InternalMethod>
+  </file>
+</files>
