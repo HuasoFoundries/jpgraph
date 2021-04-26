@@ -143,7 +143,6 @@ class SoftyTheme extends Theme
     {
         switch (get_class($plot)) {
             case 'BarPlot':
-
                     $plot->Clear();
 
                     $color = $this->GetNextColor();
@@ -152,45 +151,39 @@ class SoftyTheme extends Theme
                     $plot->SetShadow('red', 3, 4, false);
                     $plot->value->SetAlign('center', 'center');
 
-                    break;
+                break;
             case 'LinePlot':
-
                     $plot->Clear();
 
                     $plot->SetColor($this->GetNextColor());
                     $plot->SetWeight(2);
                     //                $plot->SetBarCenter();
-                    break;
+                break;
             case 'PiePlot':
-
                     $plot->ShowBorder(false);
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'GroupBarPlot':
-
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
+					$this->ApplyPlot($_plot);
                     }
 
-                    break;
+                break;
             case 'AccBarPlot':
-
                     $plot->value->SetAlign('center', 'center');
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
-                        $_plot->SetValuePos('center');
+					$this->ApplyPlot($_plot);
+					$_plot->SetValuePos('center');
                     }
 
-                    break;
+                break;
             case 'ScatterPlot':
-
-                    break;
+                break;
             case 'PiePlot3D':
-
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

@@ -146,47 +146,41 @@ class AquaTheme extends Theme
     {
         switch (get_class($plot)) {
             case 'GroupBarPlot':
-
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
+					$this->ApplyPlot($_plot);
                     }
 
-                    break;
+                break;
             case 'AccBarPlot':
-
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
+					$this->ApplyPlot($_plot);
                     }
 
-                    break;
+                break;
             case 'BarPlot':
-
                     $plot->Clear();
 
                     $color = $this->GetNextColor();
                     $plot->SetColor($color);
                     $plot->SetFillColor($color);
                     //$plot->SetShadow();
-                    break;
+                break;
             case 'LinePlot':
-
                     $plot->Clear();
                     $plot->SetColor($this->GetNextColor());
                     $plot->SetWeight(2);
                     //                $plot->SetBarCenter();
-                    break;
+                break;
             case 'PiePlot':
-
                     $plot->SetCenter(0.5, 0.45);
                     $plot->ShowBorder(false);
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'PiePlot3D':
-
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

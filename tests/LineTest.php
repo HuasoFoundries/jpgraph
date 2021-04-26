@@ -1,20 +1,26 @@
 <?php
 
 /**
+ * JPGraph - Community Edition
+ */
+
+/**
  * @group ready
+ *
+ * @internal
+ * @coversNothing
  */
 class LineTest extends \Codeception\Test\Unit
 {
     use Amenadiel\JpGraph\UnitTest\UnitTestTrait;
 
-    public static $fixTures    = [];
-    public static $files       = null;
+    public static $fixTures = [];
+
+    public static $files = null;
+
     public static $exampleRoot = null;
-    public static $ranTests    = [];
 
-    protected function _before() {}
-
-    protected function _after() {}
+    public static $ranTests = [];
 
     public function testAddingalineplottoabargraph()
     {
@@ -163,9 +169,16 @@ class LineTest extends \Codeception\Test\Unit
 
     public function testFileIterator()
     {
-        self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
+        self::$genericFixtures = \array_reduce(self::$files, function ($carry, $file) {
+            return $this->_fileCheck($file, $carry);
         }, self::$genericFixtures);
+    }
+
+    protected function _before()
+    {
+    }
+
+    protected function _after()
+    {
     }
 }

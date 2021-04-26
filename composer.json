@@ -1,7 +1,7 @@
 {
     "name": "amenadiel/jpgraph",
     "type": "library",
-    "description": "jpGraph, library to make graphs and charts",
+    "description": "Composer Friendly, full refactor of JpGraph, library to make graphs and charts",
     "keywords": [
         "graph",
         "chart",

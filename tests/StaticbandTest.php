@@ -1,23 +1,26 @@
 <?php
 
 /**
+ * JPGraph - Community Edition
+ */
+
+/**
  * @group ready
+ *
+ * @internal
+ * @coversNothing
  */
 class StaticbandTest extends \Codeception\Test\Unit
 {
     use Amenadiel\JpGraph\UnitTest\UnitTestTrait;
 
-    public static $files       = null;
+    public static $files = null;
+
     public static $exampleRoot = null;
-    public static $ranTests    = [];
-    public static $fixTures    = [];
 
-    protected function _before()
-    {
-        //self::$persistYaml = false;
-    }
+    public static $ranTests = [];
 
-    protected function _after() {}
+    public static $fixTures = [];
 
     public function testBandRdiag()
     {
@@ -41,7 +44,6 @@ class StaticbandTest extends \Codeception\Test\Unit
 
     public function testBandHvcross()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
@@ -57,22 +59,28 @@ class StaticbandTest extends \Codeception\Test\Unit
 
     public function testBand3dplane()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
     public function testCashFlow()
     {
-
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));
     }
 
     public function testFileIterator()
     {
         self::$genericFixtures =
-            array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
-        }, self::$genericFixtures);
+            \array_reduce(self::$files, function ($carry, $file) {
+                return $this->_fileCheck($file, $carry);
+            }, self::$genericFixtures);
+    }
+
+    protected function _before()
+    {
+        //self::$persistYaml = false;
+    }
+
+    protected function _after()
+    {
     }
 }

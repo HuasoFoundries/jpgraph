@@ -125,21 +125,18 @@ class OrangeTheme extends Theme
     {
         switch (get_class($plot)) {
             case 'GroupBarPlot':
-
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
+					$this->ApplyPlot($_plot);
                     }
 
-                    break;
+                break;
             case 'AccBarPlot':
-
                     foreach ($plot->plots as $_plot) {
-                        $this->ApplyPlot($_plot);
+					$this->ApplyPlot($_plot);
                     }
 
-                    break;
+                break;
             case 'BarPlot':
-
                     $plot->Clear();
 
                     $color = $this->GetNextColor();
@@ -147,26 +144,23 @@ class OrangeTheme extends Theme
                     $plot->SetFillColor($color);
                     $plot->SetShadow('red', 3, 4, false);
 
-                    break;
+                break;
             case 'LinePlot':
-
                     $plot->Clear();
 
                     $plot->SetColor($this->GetNextColor() . '@0.4');
                     $plot->SetWeight(2);
 
-                    break;
+                break;
             case 'PiePlot':
-
                     $plot->ShowBorder(false);
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             case 'PiePlot3D':
-
                     $plot->SetSliceColors($this->GetThemeColors());
 
-                    break;
+                break;
             default:
         }
     }

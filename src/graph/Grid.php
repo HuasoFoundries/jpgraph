@@ -121,16 +121,20 @@ class Grid
 
             // Draw grid lines
             switch ($aType) {
-                case 'solid':$style = LINESTYLE_SOLID;
+                case 'solid':
+                    $style = LINESTYLE_SOLID;
 
                     break;
-                case 'dotted':$style = LINESTYLE_DOTTED;
+                case 'dotted':
+                    $style = LINESTYLE_DOTTED;
 
                     break;
-                case 'dashed':$style = LINESTYLE_DASHED;
+                case 'dashed':
+                    $style = LINESTYLE_DASHED;
 
                     break;
-                case 'longdashed':$style = LINESTYLE_LONGDASH;
+                case 'longdashed':
+                    $style = LINESTYLE_LONGDASH;
 
                     break;
                 default:

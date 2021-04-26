@@ -48,7 +48,7 @@ class Helper
         }
 
         if (!isset($_SERVER['PHP_SELF'])) {
-            Amenadiel\JpGraph\Util\JpGraphError::RaiseL(25005);
+            JpGraphError::RaiseL(25005);
             //(" Can't access PHP_SELF, PHP global variable. You can't run PHP from command line if you want to use the 'auto' naming of cache or image files.");
         }
         $fname = basename($_SERVER['PHP_SELF']);

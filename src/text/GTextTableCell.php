@@ -305,13 +305,16 @@ class GTextTableCell
     {
         if ($this->iCol > 0) {
             switch ($this->iGridStyle[0]) {
-                case TGRID_SINGLE:$wf = 1;
+                case TGRID_SINGLE:
+                    $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case TGRID_DOUBLE:
+                    $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case TGRID_DOUBLE2:
+                    $wf = 4;
 
                     break;
             }
@@ -319,13 +322,16 @@ class GTextTableCell
         }
         if ($this->iRow > 0) {
             switch ($this->iGridStyle[1]) {
-                case TGRID_SINGLE:$wf = 1;
+                case TGRID_SINGLE:
+                    $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case TGRID_DOUBLE:
+                    $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case TGRID_DOUBLE2:
+                    $wf = 4;
 
                     break;
             }
@@ -333,13 +339,16 @@ class GTextTableCell
         }
         if ($this->iRow + $this->iRowSpan - 1 < $this->iTable->iSize[0] - 1) {
             switch ($this->iGridStyle[2]) {
-                case TGRID_SINGLE:$wf = 1;
+                case TGRID_SINGLE:
+                    $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case TGRID_DOUBLE:
+                    $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case TGRID_DOUBLE2:
+                    $wf = 4;
 
                     break;
             }
@@ -347,13 +356,16 @@ class GTextTableCell
         }
         if ($this->iCol + $this->iColSpan - 1 < $this->iTable->iSize[1] - 1) {
             switch ($this->iGridStyle[3]) {
-                case TGRID_SINGLE:$wf = 1;
+                case TGRID_SINGLE:
+                    $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:$wf = 3;
+                case TGRID_DOUBLE:
+                    $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:$wf = 4;
+                case TGRID_DOUBLE2:
+                    $wf = 4;
 
                     break;
             }
