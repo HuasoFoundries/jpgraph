@@ -1,8 +1,7 @@
-## JPGRAPH Community Edition
+## JPGRAPH Community Edition v4.1.0 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-*v4.1.0* [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
 
 First things first: This version requires PHP v7.2.0+. If you need to run this package in older versions please try
 - Upgrading your PHP installation. No, really, even PHP 7.2 is past its EOL and we need to move forware to take advantage of state-of-the-art PHP 
@@ -21,7 +20,11 @@ As can be seen in [JPGraph's releases section](https://jpgraph.net/download/rele
 --------------------
 ### What's different between the official edition and yours?
 
-This library is a full refactor of the official code (as of v3.5, there are no ongoing efforts to keep any kind of feature parity). Notable changes include: 
+We have badges
+[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/build.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+
+But the important part is: This library is a full refactor of the official code (as of v3.5, there are no ongoing efforts to keep any kind of feature parity). Notable changes include: 
 
 - It's distributed through PHP's popular [Packagist Registry](https://packagist.org/packages/amenadiel/jpgraph) 
 - It's meant to be installed and updated with [Composer](https://getcomposer.org/) as any regular dependency. Deploys and updates will pull the dependency without ever needing you to actually download or copy anything.
@@ -33,8 +36,7 @@ This library is a full refactor of the official code (as of v3.5, there are no o
 - Runs integration pipelines performing unit / integration testing as well as static analysis
 - As you can see in the following badges, we suck at code quality 
 
-[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/build.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+
 
  
 

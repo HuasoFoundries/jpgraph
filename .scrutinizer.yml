@@ -7,15 +7,13 @@ build:
             ini:
                 'zend_extension': 'xdebug.so'
     nodes:
-        tests: true
+        tests: false
         analysis:
             tests:
                 override:
                     -
                         command: phpcs-run
                         use_website_config: true
-                    -
-                        command: composer test
 
                     - php-scrutinizer-run
 
