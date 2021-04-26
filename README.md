@@ -106,7 +106,7 @@ See [.env.example](.env.example) as a reference.
 # Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -119,6 +119,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/zhangsean"><img src="https://avatars.githubusercontent.com/u/2536402?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Sean Zhang</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=zhangsean" title="Code">💻</a></td>
     <td align="center"><a href="http://shawnmc.cool"><img src="https://avatars.githubusercontent.com/u/560749?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Shawn McCool</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=ShawnMcCool" title="Code">💻</a></td>
     <td align="center"><a href="https://youtube.com/c/DiasDeDev?sub_confirmation=1"><img src="https://avatars.githubusercontent.com/u/6991415?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Vinicius Dias</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=CViniciusSDias" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/PauluzzNL"><img src="https://avatars.githubusercontent.com/u/5946360?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Paul van der Knaap</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=PauluzzNL" title="Code">💻</a></td>
   </tr>
 </table>
 
