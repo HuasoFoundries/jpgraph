@@ -13,6 +13,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Spomky",
+      "name": "Florent Morselli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1091072?v=4",
+      "profile": "https://morselli.fr",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
