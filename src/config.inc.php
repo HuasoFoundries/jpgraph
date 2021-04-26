@@ -8,7 +8,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Amenadiel\JpGraph\Util;
 
-
 Util\Helper::bootstrapLibrary();
 
 // global variables I won't use anymore but maybe you do.

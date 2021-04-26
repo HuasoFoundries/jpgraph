@@ -1,65 +1,74 @@
 {
-  "name": "amenadiel/jpgraph",
-  "type": "library",
-  "description": "jpGraph, library to make graphs and charts",
-  "version": "4.1.0-beta.01",
-  "keywords": [
-    "graph",
-    "chart",
-    "pie",
-    "jpgraph",
-    "data"
-  ],
-  "homepage": "http://jpgraph.net/",
-  "license": "QPL-1.0",
-  "support": {
-    "issues": "https://github.com/huasofoundries/jpgraph/issues"
-  },
-  "require": {
-    "php": ">=7.3.0",
-    "ext-gd": "*"
-    
-  },
-  "require-dev": {
-    "kint-php/kint": "^3.3",
-    "symfony/event-dispatcher": "^4.0 || ^5.0",
-    "symfony/yaml": "^4.0 || ^5.0",
-    "squizlabs/php_codesniffer": "^3.5",
-    "symfony/dotenv": "^4.0 || ^5.0",
-    "phpstan/phpstan": "^0.12.84",
-    "ergebnis/composer-normalize": "^2.13",
-    "ergebnis/php-cs-fixer-config": "^2.13",
-    "overtrue/phplint": "^2.3",
-    "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^4.7",
-    
-    "codeception/codeception": "^4.1",
-    "codeception/module-asserts": "^1.3"
-    
-  },
-  "autoload": {
-    "psr-4": {
-     
-      "Amenadiel\\JpGraph\\": "src/",
-      "Amenadiel\\JpGraph\\Graph\\": "src/graph",
-      "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
-      "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
-      "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
-      "Amenadiel\\JpGraph\\Image\\": "src/image",
-      "Amenadiel\\JpGraph\\Plot\\": "src/plot",
-      "Amenadiel\\JpGraph\\Text\\": "src/text",
-      "Amenadiel\\JpGraph\\Themes\\": "src/themes",
-      "Amenadiel\\JpGraph\\Util\\": "src/util"
+    "name": "amenadiel/jpgraph",
+    "type": "library",
+    "description": "jpGraph, library to make graphs and charts",
+    "keywords": [
+        "graph",
+        "chart",
+        "pie",
+        "jpgraph",
+        "data"
+    ],
+    "homepage": "http://jpgraph.net/",
+    "version": "4.1.0-beta.01",
+    "license": "QPL-1.0",
+    "require": {
+        "php": ">=7.3.0",
+        "ext-gd": "*"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^1.3",
+        "ergebnis/composer-normalize": "^2.13",
+        "ergebnis/php-cs-fixer-config": "^2.13",
+        "kint-php/kint": "^3.3",
+        "overtrue/phplint": "^2.3",
+        "phpstan/phpstan": "^0.12.84",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/dotenv": "^4.0 || ^5.0",
+        "symfony/event-dispatcher": "^4.0 || ^5.0",
+        "symfony/yaml": "^4.0 || ^5.0",
+        "vimeo/psalm": "^4.7"
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
+        "version": "4.1.0-beta.01"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amenadiel\\JpGraph\\": "src/",
+            "Amenadiel\\JpGraph\\Graph\\": "src/graph",
+            "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
+            "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
+            "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
+            "Amenadiel\\JpGraph\\Image\\": "src/image",
+            "Amenadiel\\JpGraph\\Plot\\": "src/plot",
+            "Amenadiel\\JpGraph\\Text\\": "src/text",
+            "Amenadiel\\JpGraph\\Themes\\": "src/themes",
+            "Amenadiel\\JpGraph\\Util\\": "src/util"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        },
+        "files": [
+            "tests/polyfills.php"
+        ]
+    },
+    "scripts": {
+        "act": "act -P ubuntu-latest=shivammathur/node:latest",
+        "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
+        "lint":"vendor/bin/phplint",
+
+        "start": "php -S localhost:8000 -t Examples",
+        "test": "php vendor/bin/codecept run unit "
+    },
+    "support": {
+        "issues": "https://github.com/huasofoundries/jpgraph/issues"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-    "Tests\\":"tests"
-    },"files":["tests/polyfills.php"]
-  },
-  "scripts": {
-    "act": "act -P ubuntu-latest=shivammathur/node:latest",
-    "start": "php -S localhost:8000 -t Examples",
-    "test": "php vendor/bin/codecept run unit "
-  }
 }
