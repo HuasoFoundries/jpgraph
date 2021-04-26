@@ -67,6 +67,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "CorWatts",
+      "name": "Corey Watts",
+      "avatar_url": "https://avatars.githubusercontent.com/u/220260?v=4",
+      "profile": "https://corwatts.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
