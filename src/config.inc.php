@@ -793,8 +793,7 @@ if (!class_exists('\PhpConsole\Handler')) {
         {
         }
     }
-} elseif (
-    getenv('JPGRAPH_USE_PHPCONSOLE') &&
+} elseif (getenv('JPGRAPH_USE_PHPCONSOLE') &&
     isset($_SERVER['HTTP_USER_AGENT']) &&
     strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false
 ) {

@@ -1,54 +1,67 @@
 {
-  "name": "amenadiel/jpgraph",
-  "type": "library",
-  "description": "jpGraph, library to make graphs and charts",
-  "version": "4.0.3",
-  "keywords": [
-    "graph",
-    "chart",
-    "pie",
-    "jpgraph",
-    "data"
-  ],
-  "homepage": "http://jpgraph.net/",
-  "license": "QPL-1.0",
-  "support": {
-    "issues": "https://github.com/huasofoundries/jpgraph/issues"
-  },
-  "require": {
-    "php": ">=7.0.0",
-    "ext-gd": "*"
-  },
-  "require-dev": {
-    "kint-php/kint": "^3.3",
-    "symfony/event-dispatcher": "~4.2",
-    "symfony/yaml": "4.*",
-    "codeception/codeception": "^4.0",
-    "codeception/module-asserts": "^1.1",
-    "squizlabs/php_codesniffer": "^3.5",
-    "symfony/dotenv": "~4.2.0",
-    "monolog/monolog": "^2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Amenadiel\\JpGraph\\": "src/",
-      "Amenadiel\\JpGraph\\Graph\\": "src/graph",
-      "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
-      "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
-      "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
-      "Amenadiel\\JpGraph\\Image\\": "src/image",
-      "Amenadiel\\JpGraph\\Plot\\": "src/plot",
-      "Amenadiel\\JpGraph\\Text\\": "src/text",
-      "Amenadiel\\JpGraph\\Themes\\": "src/themes",
-      "Amenadiel\\JpGraph\\Util\\": "src/util"
+    "name": "amenadiel/jpgraph",
+    "type": "library",
+    "description": "jpGraph, library to make graphs and charts",
+    "keywords": [
+        "graph",
+        "chart",
+        "pie",
+        "jpgraph",
+        "data"
+    ],
+    "homepage": "http://jpgraph.net/",
+    "license": "QPL-1.0",
+    "require": {
+        "php": ">=7.2.0",
+        "ext-gd": "*"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.0",
+        "codeception/module-asserts": "^1.1",
+        "ergebnis/composer-normalize": "^2.13",
+        "ergebnis/php-cs-fixer-config": "^2.13",
+        "kint-php/kint": "^3.3",
+        "monolog/monolog": "^2.0",
+        "overtrue/phplint": "^2.3",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/dotenv": "^4.0 || ^5.0",
+        "symfony/event-dispatcher": "^4.0 || ^5.0",
+        "symfony/yaml": "^4.0 || ^5.0"
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
+        "version": "4.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amenadiel\\JpGraph\\": "src/",
+            "Amenadiel\\JpGraph\\Graph\\": "src/graph",
+            "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
+            "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
+            "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
+            "Amenadiel\\JpGraph\\Image\\": "src/image",
+            "Amenadiel\\JpGraph\\Plot\\": "src/plot",
+            "Amenadiel\\JpGraph\\Text\\": "src/text",
+            "Amenadiel\\JpGraph\\Themes\\": "src/themes",
+            "Amenadiel\\JpGraph\\Util\\": "src/util"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Amenadiel\\JpGraph\\UnitTest\\": "tests"
+        }
+    },
+    "scripts": {
+        "act": "act -P ubuntu-latest=shivammathur/node:latest",
+        "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
+        "lint": "vendor/bin/phplint",
+        "start": "php -S localhost:8000 -t Examples",
+        "test": "php vendor/bin/codecept run unit "
+    },
+    "support": {
+        "issues": "https://github.com/huasofoundries/jpgraph/issues"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Amenadiel\\JpGraph\\UnitTest\\": "tests"
-    }
-  },
-  "scripts": {
-    "start": "php -S localhost:8000 -t Examples"
-  }
 }
