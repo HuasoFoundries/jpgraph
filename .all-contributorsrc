@@ -76,6 +76,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "eisberg",
+      "name": "Alexander Rakushin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9015003?v=4",
+      "profile": "https://github.com/eisberg",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
