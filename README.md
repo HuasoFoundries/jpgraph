@@ -1,30 +1,47 @@
-## JPGRAPH v4.0.0 Community Edition
+# JPGRAPH v4.1.0 Community Edition   [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
 
-You're seeing the README for version ^4, which requires PHP v7.0 or newer. If you need to run under PHP 5.6, please check [release v3.6](https://github.com/HuasoFoundries/jpgraph/tree/v3.6.21)
+First things first: This version requires PHP v7.2.0+. If you need to run this package in older versions please try
+- Upgrading your PHP installation. No, really, even PHP 7.2 is past its EOL and we need to move forware to take advantage of state-of-the-art PHP 
+- Otherwise, please try [release v4.0](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.0.3) for PHP 7+ support
+- And if you're stuck with 5.6, please check our [release v3.6](https://github.com/HuasoFoundries/jpgraph/tree/v3.6.21)
+---------
 
-[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
+### Is this an official JPGraph package?
 
-[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/build.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/build-status/master)
-[![StyleCI](https://styleci.io/repos/39590412/shield?branch=master)](https://styleci.io/repos/39590412)
-[![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
+**No, it isn't**. The offcial package can be downloaded at [JPGraph's downloads section of their website](https://jpgraph.net/download/). They have a full featured free version with support for current and olver PHP versions.
 
-For a long time, [JpGraph](http://jpgraph.net/) got stalled at version 3.5.x (see its [README](README.3.5.md)), so we decided to refactor and release a **Community Edition** with a few improvements:
+### So, what's the point of a Community Edition?
 
--  The app was fully refactored adding namespaces, proper folder hierarchy, separating each class in its own file and stripping the use of `require` and `include` to the bare minimum
--  It requires PHP 7.0 or newer
--  it provides full composer compatibility
--  it has PSR-4 autoloading
--  it makes requirement checks so you can't go wrong
--  it has release tags, to let `composer install` use your cached packages instead of pulling from github every time
+As can be seen in [JPGraph's releases section](https://jpgraph.net/download/release.php), there was a six year pause in the release cycle of the library, during which some of us had no choice but to code our way out of PHP 5.x. And thus "Community Edition" was born.
+
+--------------------
+### What's different between the official edition and yours?
+
+This library is a full refactor of the official code (as of v3.5, there are no ongoing efforts to keep any kind of feature parity). Notable changes include: 
+
+- It's distributed through PHP's popular [Packagist Registry](https://packagist.org/packages/amenadiel/jpgraph) 
+- It's meant to be installed and updated with [Composer](https://getcomposer.org/) as any regular dependency. Deploys and updates will pull the dependency without ever needing you to actually download or copy anything.
+- It manages its own dependencies through Composer too, which means it's not your problem whatsoever and that requirement checks are performed to ensure your platform has the needed extensions
+- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) compliant structuring of namespaces and proper folder hierarchy
+- Each class goes in a file by itself, as stated in [PSR-1](https://www.php-fig.org/psr/psr-1/)
+- We stripped usage of `require` and `include` to the bare minimum. Let's have the autoloader do its job
+- Adheres to well known coding standards as stated in [PSR-2](https://www.php-fig.org/psr/psr-2/), eventually [PSR-12](https://www.php-fig.org/psr/psr-12/) 
+- Runs integration pipelines performing unit / integration testing as well as static analysis
+- As you can see in the following badges, we suck at code quality 
+
+[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/build.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+
+ 
+
+-  Internal error handling that will make educate guesses to try and generate a graph even if warnings or notices are thrown elsewhere:
+   -  If the chosen font isn't found, it falls back to existing fonts instead of crashing
+   -  If you try to use antialiasing functions not present in your current GD installation, it disables them instead of crashing
+
+
+
 -  I stripped the docs because they are useless weight in a dependency. [You can find them here](http://jpgraph.net/doc/)
--  The Examples folder were moved upwards, althought they are now in categories. Not all of them work at this point
 -  Examples pointing to features not present in the free tool were stripped from said folder (e.g. Barcodes)
--  If the chosen font isn't found, it falls back to existing fonts instead of crashing
--  If you try to use antialiasing functions not present in your current GD installation, it disables them instead of crashing
 
 ## How to install
 
