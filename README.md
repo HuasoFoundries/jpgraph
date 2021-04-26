@@ -1,4 +1,5 @@
-# JPGRAPH v4.1.0 Community Edition   [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
+## JPGRAPH Community Edition
+*v4.1.0* [![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield)
 
 First things first: This version requires PHP v7.2.0+. If you need to run this package in older versions please try
 - Upgrading your PHP installation. No, really, even PHP 7.2 is past its EOL and we need to move forware to take advantage of state-of-the-art PHP 
