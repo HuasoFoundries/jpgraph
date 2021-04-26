@@ -106,7 +106,7 @@ See [.env.example](.env.example) as a reference.
 # Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -123,6 +123,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://morselli.fr"><img src="https://avatars.githubusercontent.com/u/1091072?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Florent Morselli</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=Spomky" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/murrant"><img src="https://avatars.githubusercontent.com/u/39462?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Tony Murray</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=murrant" title="Code">💻</a></td>
     <td align="center"><a href="https://incoherent.ch"><img src="https://avatars.githubusercontent.com/u/973653?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Andreas</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=iquito" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://corwatts.com"><img src="https://avatars.githubusercontent.com/u/220260?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Corey Watts</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=CorWatts" title="Code">💻</a></td>
   </tr>
 </table>
 
