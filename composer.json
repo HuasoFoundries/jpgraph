@@ -47,9 +47,8 @@
             "Amenadiel\\JpGraph\\Text\\": "src/text",
             "Amenadiel\\JpGraph\\Themes\\": "src/themes",
             "Amenadiel\\JpGraph\\Util\\": "src/util"
-    }
-  },
-   
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "Amenadiel\\JpGraph\\UnitTest\\": "tests"
