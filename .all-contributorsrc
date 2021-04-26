@@ -13,6 +13,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "iquito",
+      "name": "Andreas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/973653?v=4",
+      "profile": "https://incoherent.ch",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
