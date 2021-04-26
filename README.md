@@ -106,7 +106,7 @@ See [.env.example](.env.example) as a reference.
 # Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -117,6 +117,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/zhangsean"><img src="https://avatars.githubusercontent.com/u/2536402?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Sean Zhang</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=zhangsean" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/murrant"><img src="https://avatars.githubusercontent.com/u/39462?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Tony Murray</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=murrant" title="Code">💻</a></td>
   </tr>
 </table>
 
