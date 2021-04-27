@@ -3,7 +3,7 @@ checks:
 build:
   environment:
     php:
-            version: '7.2'
+            version: '7.4'
 
 
   nodes:
@@ -11,16 +11,11 @@ build:
     analysis:
       tests:
         override:
-                    - phpcs-run
+          - phpcs-run
 
-                        command: composer coverage
-            coverage:
-              file: "tests/_output/coverage.xml"
-              format: "clover"
           - php-scrutinizer-run
 
-tools:
-  php_code_coverage: true
+
 
 filter:
   excluded_paths:
