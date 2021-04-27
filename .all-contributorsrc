@@ -94,6 +94,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "formikaio",
+      "name": "WhileTrue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/683688?v=4",
+      "profile": "http://www.whiletrue.it",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
