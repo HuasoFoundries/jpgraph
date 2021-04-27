@@ -15,7 +15,7 @@ paths:
   data: tests
 
 coverage:
-  enabled: true
+  enabled: false
   include:
     - src/*.php
   exclude:

@@ -14,7 +14,7 @@ use Tests\UnitTestTrait;
  */
 class BackgroundTest extends \Tests\TestCase
 {
-    
+
 
     public static $fixTures = [
         'testUsingBackgroundImage' => [
@@ -42,11 +42,8 @@ class BackgroundTest extends \Tests\TestCase
         $className = \str_replace('test', '', \mb_strtolower(__CLASS__));
 
         self::$files = self::getFiles($className);
-        $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
 
         dump(__CLASS__ . ' has ' . count(self::$files) . ' files');
-            return !\array_key_exists($filename, $knownFixtures);
-        });
     }
 
     protected function _before()
@@ -70,13 +67,5 @@ class BackgroundTest extends \Tests\TestCase
         self::$genericFixtures = \array_reduce(self::$files, function ($carry, $file) {
             return $this->_fileCheck($file, $carry);
         }, self::$genericFixtures);
-    }
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
     }
 }
