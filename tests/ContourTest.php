@@ -10,7 +10,7 @@ use Codeception\Util\Debug;
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class ContourTest extends \Codeception\Test\Unit
 {

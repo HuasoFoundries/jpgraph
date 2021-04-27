@@ -13,7 +13,7 @@ trait UnitTestTrait
 {
     public static $exampleRoot;
 
-    public static $persistYaml = true;
+    public static $persistYaml = false;
 
     public static $genericFixtures = [];
 
@@ -38,10 +38,8 @@ trait UnitTestTrait
         }
         self::$files = \array_filter(self::$files, function ($filename) use ($knownFixtures) {
             return !\array_key_exists($filename, $knownFixtures)
-                || (
-                    \array_key_exists('testFileIterator', self::$fixTures)
-                && \array_key_exists($filename, self::$fixTures['testFileIterator'])
-                );
+                || (\array_key_exists('testFileIterator', self::$fixTures)
+                    && \array_key_exists($filename, self::$fixTures['testFileIterator']));
         });
         Debug::debug(__CLASS__ . ' has ' . \count(self::$files) . ' ungrouped files. knownFixtures are:');
         Debug::debug($knownFixtures);
@@ -97,11 +95,13 @@ trait UnitTestTrait
         $a = [];
 
         while ($entry = $d->Read()) {
-            if (\is_file($folder . $entry)
+            if (
+                \is_file($folder . $entry)
                 && \mb_strstr($entry, '.php')
                 && \mb_strstr($entry, 'ex')
                 && !\mb_strstr($entry, 'no_test')
-                && !\mb_strstr($entry, 'no_dim')) {
+                && !\mb_strstr($entry, 'no_dim')
+            ) {
                 $a[] = $entry;
             }
         }
@@ -257,7 +257,7 @@ trait UnitTestTrait
         } else {
             Debug::debug(
                 'testing ' . $filename .
-                ' for image/jpeg headers '
+                    ' for image/jpeg headers '
             );
             //$this->assertEquals('image/jpeg', $size['mime'], 'image should have mime image/jpeg for ' . $filename);
         }

@@ -1,13 +1,13 @@
-name: Tests
+name: coverage
 
-on: ['push', 'pull_request']
+on: ['pull_request']
 
 jobs:
-  ci:
+  coverage:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
-        php: ['7.2', '7.3', '7.4', '8.0']
+        php: ['7.4']
 
     name: PHP ${{ matrix.php }} - 'ubuntu-latest' - 'prefer-stable'
 
@@ -20,8 +20,18 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         tools: composer:v2
-        extensions: gd, pcov
-        coverage: none
+        extensions:
+          gd
+          pcov
+        coverage: pcov
+
+    - name: Cache dependencies installed with composer
+      uses: actions/cache@v2
+      with:
+        path: "~/.composer/cache"
+        key: php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
+        restore-keys: |
+          php${{ matrix.php-version }}-composer-
 
     - name: Setup Problem Matches
       run: |
@@ -30,5 +40,6 @@ jobs:
     - name: Install PHP dependencies
       run: composer update --'prefer-stable' --no-interaction --no-progress
 
-    - name: Unit Tests
-      run: composer test
+    - name: Coverage
+      run: composer coverage
+      if: "matrix.php == 7.4"

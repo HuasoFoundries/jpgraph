@@ -10,7 +10,7 @@ namespace Amenadiel\JpGraph\UnitTest;
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class AxisTest extends \Codeception\Test\Unit
 {

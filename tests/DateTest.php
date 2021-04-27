@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class DateTest extends \Codeception\Test\Unit
 {

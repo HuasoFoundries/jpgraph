@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class BarTest extends \Codeception\Test\Unit
 {

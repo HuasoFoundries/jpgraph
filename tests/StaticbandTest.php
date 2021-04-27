@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class StaticbandTest extends \Codeception\Test\Unit
 {

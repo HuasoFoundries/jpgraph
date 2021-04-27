@@ -59,7 +59,8 @@
         "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
         "lint": "vendor/bin/phplint",
         "start": "php -S localhost:8000 -t Examples",
-        "test": "php vendor/bin/codecept run unit "
+        "test": "php vendor/bin/codecept run unit ",
+        "coverage": "XDEBUG_MODE=coverage php vendor/bin/codecept run unit --coverage --coverage-xml"
     },
     "support": {
         "issues": "https://github.com/huasofoundries/jpgraph/issues"

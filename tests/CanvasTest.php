@@ -9,7 +9,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class CanvasTest extends \Codeception\Test\Unit
 {

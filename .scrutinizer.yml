@@ -11,16 +11,19 @@ build:
         analysis:
             tests:
                 override:
-                    -
-                        command: phpcs-run
-                        use_website_config: false
+                    - phpcs-run
 
+                    -
+                        command: composer coverage
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
                     - php-scrutinizer-run
 
 
 
 tools:
-    php_code_coverage: false
+    php_code_coverage: true
 
 filter:
     excluded_paths:
