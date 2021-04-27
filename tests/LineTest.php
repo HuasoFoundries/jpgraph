@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class LineTest extends \Codeception\Test\Unit
 {

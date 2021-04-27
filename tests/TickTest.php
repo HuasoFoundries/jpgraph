@@ -10,7 +10,7 @@ use Codeception\Util\Debug;
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class TickTest extends \Codeception\Test\Unit
 {

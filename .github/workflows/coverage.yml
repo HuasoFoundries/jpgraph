@@ -1,0 +1,67 @@
+name: coverage
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
+  coverage:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: PHP ${{ matrix.php }} - 'ubuntu-latest' - 'prefer-stable'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        tools: composer:v2
+        extensions:
+          gd
+          pcov
+        coverage: pcov
+
+    - name: Cache dependencies installed with composer
+      uses: actions/cache@v2
+      with:
+        path: "~/.composer/cache"
+        key: php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
+        restore-keys: |
+          php${{ matrix.php-version }}-composer-
+
+    - name: Setup Problem Matches
+      run: |
+        echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+        echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+    - name: Install PHP dependencies
+      run: composer update --'prefer-stable' --no-interaction --no-progress
+
+    - name: Coverage
+      run: composer coverage
+      if: "matrix.php == 7.4"
+
+
+    - uses: codecov/codecov-action@v1
+      with:
+        files: ./tests/_output/coverage.xml
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)

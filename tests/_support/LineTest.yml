@@ -1,21 +1,63 @@
+testTabtitlefileiterator:
+    tabtitleex1.php: { width: 300, height: 200, title: tabtitleFileIterator, filename: tabtitleex1.php }
+testBuiltinplotmarksfileiterator:
+    builtinplotmarksex1.php: { width: 350, height: 200, title: builtinplotmarksFileIterator, filename: builtinplotmarksex1.php }
+testFuncfileiterator:
+    funcex3.php: { width: 350, height: 430, title: funcFileIterator, filename: funcex3.php }
+    funcex2.php: { width: 380, height: 450, title: funcFileIterator, filename: funcex2.php }
+    funcex1.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex1.php }
+    funcex4.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex4.php }
 testNullvaluefileiterator:
     nullvalueex01.php: { width: 400, height: 250, title: nullvalueFileIterator, filename: nullvalueex01.php }
+testLinlogfileiterator:
+    linlogex1.php: { width: 500, height: 300, title: linlogFileIterator, filename: linlogex1.php }
 testLinebarfileiterator:
     linebarex2.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex2.php }
     linebarex3.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex3.php }
     linebarex1.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex1.php }
 testPartiallyfilledlinefileiterator:
     partiallyfilledlineex1.php: { width: 400, height: 300, title: partiallyfilledlineFileIterator, filename: partiallyfilledlineex1.php }
-testBuiltinplotmarksfileiterator:
-    builtinplotmarksex1.php: { width: 350, height: 200, title: builtinplotmarksFileIterator, filename: builtinplotmarksex1.php }
-testTabtitlefileiterator:
-    tabtitleex1.php: { width: 300, height: 200, title: tabtitleFileIterator, filename: tabtitleex1.php }
-testLinlogfileiterator:
-    linlogex1.php: { width: 500, height: 300, title: linlogFileIterator, filename: linlogex1.php }
-testFuncfileiterator:
-    funcex3.php: { width: 350, height: 430, title: funcFileIterator, filename: funcex3.php }
-    funcex2.php: { width: 380, height: 450, title: funcFileIterator, filename: funcex2.php }
-    funcex1.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex1.php }
-    funcex4.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex4.php }
+testCenteredlinefileiterator:
+    centeredlineex01.php: { width: 300, height: 200, title: centeredlineFileIterator, filename: centeredlineex01.php }
+    centeredlineex02.php: { width: 300, height: 200, title: centeredlineFileIterator, filename: centeredlineex02.php }
+    centeredlineex03.php: { width: 300, height: 250, title: centeredlineFileIterator, filename: centeredlineex03.php }
+testCenterlinebarfileiterator:
+    centerlinebarex1.php: { width: 400, height: 200, title: centerlinebarFileIterator, filename: centerlinebarex1.php }
+testClippingfileiterator:
+    clipping_ex1.php: { width: 300, height: 250, title: clippingFileIterator, filename: clipping_ex1.php }
+    clipping_ex2.php: { width: 300, height: 250, title: clippingFileIterator, filename: clipping_ex2.php }
+testFilledgridfileiterator:
+    filledgridex1.php: { width: 300, height: 200, title: filledgridFileIterator, filename: filledgridex1.php }
+testFilledlinefileiterator:
+    filledlineex01.1.php: { width: 300, height: 200, title: filledlineFileIterator, filename: filledlineex01.1.php }
+    filledlineex01.php: { width: 300, height: 200, title: filledlineFileIterator, filename: filledlineex01.php }
+    filledlineex02.php: { width: 300, height: 200, title: filledlineFileIterator, filename: filledlineex02.php }
+    filledlineex03.php: { width: 400, height: 250, title: filledlineFileIterator, filename: filledlineex03.php }
+testFilledstepstylefileiterator:
+    filledstepstyleex1.php: { width: 400, height: 250, title: filledstepstyleFileIterator, filename: filledstepstyleex1.php }
+testGradlinefillfileiterator:
+    gradlinefillex1.php: { width: 400, height: 200, title: gradlinefillFileIterator, filename: gradlinefillex1.php }
+    gradlinefillex2.php: { width: 400, height: 200, title: gradlinefillFileIterator, filename: gradlinefillex2.php }
+    gradlinefillex3.php: { width: 400, height: 200, title: gradlinefillFileIterator, filename: gradlinefillex3.php }
+    gradlinefillex4.php: { width: 400, height: 200, title: gradlinefillFileIterator, filename: gradlinefillex4.php }
+testLinebarcentfileiterator:
+    linebarcentex1.php: { width: 400, height: 200, title: linebarcentFileIterator, filename: linebarcentex1.php }
+testLinegracefileiterator:
+    linegraceex.php: { width: 300, height: 200, title: linegraceFileIterator, filename: linegraceex.php }
+testLineimagefillfileiterator:
+    lineimagefillex1.php: { width: 320, height: 200, title: lineimagefillFileIterator, filename: lineimagefillex1.php }
+testManscalefileiterator:
+    manscaleex1.php: { width: 220, height: 170, title: manscaleFileIterator, filename: manscaleex1.php }
+    manscaleex2.php: { width: 220, height: 170, title: manscaleFileIterator, filename: manscaleex2.php }
+    manscaleex3.php: { width: 250, height: 170, title: manscaleFileIterator, filename: manscaleex3.php }
+    manscaleex4.php: { width: 220, height: 200, title: manscaleFileIterator, filename: manscaleex4.php }
+testSplinefileiterator:
+    splineex1.php: { width: 300, height: 200, title: splineFileIterator, filename: splineex1.php }
+testStaticlinebarfileiterator:
+    staticlinebarex1.php: { width: 400, height: 300, title: staticlinebarFileIterator, filename: staticlinebarex1.php }
+testTimestampfileiterator:
+    timestampex01.php: { width: 500, height: 250, title: timestampFileIterator, filename: timestampex01.php }
+testTitlefileiterator:
+    titleex1.php: { width: 200, height: 150, title: titleFileIterator, filename: titleex1.php }
 testGradbkgfileiterator:
     gradbkgex1.php: { width: 300, height: 200, title: gradbkgFileIterator, filename: gradbkgex1.php }

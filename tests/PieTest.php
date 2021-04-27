@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class PieTest extends \Codeception\Test\Unit
 {

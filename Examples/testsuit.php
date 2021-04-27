@@ -1,5 +1,5 @@
 <?php
-
+require __DIR__ . '/../vendor/autoload.php';
 /**
  * JPGraph v4.0.3
  */
@@ -26,11 +26,11 @@ class TestDriver
     private $iDir;
     private $exampleDir;
 
-    public function __construct($aType = 1, $folder = 'examples_axis', $aDir = '')
+    public function __construct($aType = 1, $folder = 'examples_axis', $aDir = __DIR__)
     {
         $this->iType = $aType;
         if ($aDir == '') {
-            $aDir = getcwd();
+            $aDir = __DIR__;
         }
         if (!chdir($aDir)) {
             die("PANIC: Can't access directory : ${aDir}");

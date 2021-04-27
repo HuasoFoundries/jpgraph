@@ -1,5 +1,8 @@
 testDateaxisfileiterator:
-    dateaxisex1.php: { width: 324, height: 250, title: dateaxisFileIterator, filename: dateaxisex1.php }
-testDateutilfileiterator:
-    dateutilex01.php: { width: 500, height: 300, title: dateutilFileIterator, filename: dateutilex01.php }
-    dateutilex02.php: { width: 500, height: 300, title: dateutilFileIterator, filename: dateutilex02.php }
+    dateaxisex2.php: { width: 540, height: 300, title: dateaxisFileIterator, filename: dateaxisex2.php }
+    dateaxisex3.php: { width: 540, height: 300, title: dateaxisFileIterator, filename: dateaxisex3.php }
+    dateaxisex4.php: { width: 540, height: 300, title: dateaxisFileIterator, filename: dateaxisex4.php }
+testDatescaleticksfileiterator:
+    datescaleticksex01.php: { width: 600, height: 250, title: datescaleticksFileIterator, filename: datescaleticksex01.php }
+testPrepaccdatafileiterator:
+    prepaccdata_example.php: { width: 600, height: 350, title: prepaccdataFileIterator, filename: prepaccdata_example.php }

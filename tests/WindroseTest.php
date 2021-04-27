@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class WindroseTest extends \Codeception\Test\Unit
 {

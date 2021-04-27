@@ -20,7 +20,7 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         tools: composer:v2
-        extensions: gd
+        extensions: gd, pcov
         coverage: none
 
     - name: Setup Problem Matches

@@ -8,7 +8,7 @@
  * @group ready
  *
  * @internal
- * @coversNothing
+ * 
  */
 class GanttTest extends \Codeception\Test\Unit
 {
