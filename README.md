@@ -1,7 +1,8 @@
 # JpGraph Community Edition v4.1.0
 
 ![Packagist Version](https://img.shields.io/packagist/v/amenadiel/jpgraph)
-[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml)
+[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4)](https://codecov.io/gh/HuasoFoundries/jpgraph)
+
 
 **JpGraph Community Edition** was created as a [Composer](https://getcomposer.org/) friendly port of [JpGraph v3.5](README.3.5.md). With time and through incremental refactorings, it became a whole different library, with [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) compliant codebase, namespaces and folder hierarchy enabling [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloading, and more.
 

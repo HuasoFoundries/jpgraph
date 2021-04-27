@@ -4,8 +4,8 @@ build:
     environment:
           php:
             version: '7.4'
-            ini:
-                'zend_extension': 'xdebug.so'
+
+
     nodes:
         tests: true
         analysis:
