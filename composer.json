@@ -33,7 +33,7 @@
             "indent-size": 4,
             "indent-style": "space"
         },
-        "version": "4.1.0"
+        "version": "4.1.1"
     },
     "autoload": {
         "psr-4": {
