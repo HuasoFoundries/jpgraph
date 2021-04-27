@@ -1,7 +1,7 @@
 # JpGraph Community Edition v4.1.0
 
 ![Packagist Version](https://img.shields.io/packagist/v/amenadiel/jpgraph)
-[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml) [![codecov](https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4)](https://codecov.io/gh/HuasoFoundries/jpgraph)
+[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml) 
 
 
 **JpGraph Community Edition** was created as a [Composer](https://getcomposer.org/) friendly port of [JpGraph v3.5](README.3.5.md). With time and through incremental refactorings, it became a whole different library, with [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) compliant codebase, namespaces and folder hierarchy enabling [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloading, and more.
@@ -10,8 +10,8 @@ We are now, at most, distant cousins with the current official release.
 
 Refactoring is an ongoing effort and we ensure editions and additions don't hurt our (already poor) metrics
 
-[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/eb29aeb298ea4379a281db35d55ddeb1)](https://www.codacy.com/gh/HuasoFoundries/jpgraph/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HuasoFoundries/jpgraph&amp;utm_campaign=Badge_Grade)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) [![codecov](https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4)](https://codecov.io/gh/HuasoFoundries/jpgraph)
 
 ---------
 
