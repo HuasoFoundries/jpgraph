@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JPGraph 3.6</title>
+    <link href="/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="/favicon.png" rel="apple-touch-icon">
+    <link href="/favicon.png" rel="icon" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.min.js" integrity="sha256-Q+4FYyw42bZJQS9v3+BXNtPLNxKqDLKIEPt50Z4fiYw=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/example_list.php"></script>
+    <script type="text/javascript" src="/example_parser.js"></script>
+    <style>
+    #accordion {
+        max-height: 100vh;
+        overflow-y: auto;
+        border-right: 1px solid #AAA;
+        width: 300px;
+        float-left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #accordion h5 {
+        text-transform: capitalize;
+        font-size: 17px;
+    }
+
+
+    #graph_iframe {
+        border: 1px solid #BBB;
+        min-height: 95vh;
+        position: absolute;
+        right: 0;
+        top: 5vh;
+        width: 100%;
+    }
+
+    #filepath {
+        height: 4vh;
+        position: absolute;
+        top: 0;
+        width: 95%;
+        padding: 1vh;
+        box-sizing: content-box;
+    }
+
+    .invisible {
+        display: none;
+    }
+
+    .active {
+        font-weight: bold;
+        color: #004a9a;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 col-md-4  col-xl-2" id="accordion" role="tablist">
+            </div>
+            <div class="col-6 col-md-8  col-xl-10" id="iframe_container">
+                <pre id="filepath"></pre>
+                <iframe src="/intro.html" name="graph_iframe" id="graph_iframe" frameborder="0" />
+                <p>Your browser does not support iframes.</p>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
