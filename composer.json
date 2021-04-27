@@ -10,7 +10,7 @@
         "data"
     ],
     "homepage": "http://jpgraph.net/",
-    "version": "4.1.0-beta.01",
+    
     "license": "QPL-1.0",
     "require": {
         "php": ">=7.3.0",
@@ -36,11 +36,7 @@
             "indent-size": 4,
             "indent-style": "space"
         },
-        "version": "4.1.0-beta.01"
-        "composer-normalize": {
-            "indent-size": 4,
-            "indent-style": "space"
-        },
+        
         "version": "4.1.0"
     },
     "autoload": {
