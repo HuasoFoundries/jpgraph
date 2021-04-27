@@ -1,7 +1,20 @@
-# JpGraph Community Edition v4.1.0
 
-![Packagist Version](https://img.shields.io/packagist/v/amenadiel/jpgraph)
-[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml)
+<h1 align="center">JpGraph Community Edition v4.2.0</h1>
+
+<p align="center">
+<a href="https://packagist.org/packages/amenadiel/jpgraph">
+<img src="https://img.shields.io/packagist/v/amenadiel/jpgraph">
+</a>
+<a href="https://packagist.org/packages/amenadiel/jpgraph">
+<img src="https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg">
+</a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield">
+<img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield">
+</a>
+<a href="https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml">
+<img src="https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg">
+</a>
+</p> 
 
 **JpGraph Community Edition** was created as a [Composer](https://getcomposer.org/) friendly port of [JpGraph v3.5](README.3.5.md). With time and through incremental refactorings, it became a whole different library, with [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) compliant codebase, namespaces and folder hierarchy enabling [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloading, and more.
 
@@ -9,8 +22,13 @@ We are now, at most, distant cousins with the current official release.
 
 Refactoring is an ongoing effort and we ensure editions and additions don't hurt our (already poor) metrics
 
-[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/eb29aeb298ea4379a281db35d55ddeb1)](https://www.codacy.com/gh/HuasoFoundries/jpgraph/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HuasoFoundries/jpgraph&amp;utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master) [![codecov](https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4)](https://codecov.io/gh/HuasoFoundries/jpgraph)
+<p align="center">
+<a href="https://codeclimate.com/github/HuasoFoundries/jpgraph/maintainability"><img src="https://api.codeclimate.com/v1/badges/f85b91e9a85eb4b43059/maintainability" /></a> <a href="https://www.codacy.com/gh/HuasoFoundries/jpgraph/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HuasoFoundries/jpgraph&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/eb29aeb298ea4379a281db35d55ddeb1"/></a>
+<a href="https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master"><img src="https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" /></a>
+      <a href="https://codecov.io/gh/HuasoFoundries/jpgraph">
+        <img src="https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4"/>
+      </a>
+    </p>
 
 ---------
 
@@ -42,9 +60,10 @@ Comparing against the original v3.5 codebase, we also stripped examples or incom
 
 ## Requirements And Installation
 
-This version requires PHP v7.2.0+. If you need to install this library package in older PHP environments please try
+This version requires PHP v7.4.0+. If you need to install this library package in older PHP environments please try
 
-- Upgrading your PHP installation. (No, really, even PHP 7.2 is past its EOL)
+- Upgrading your PHP installation. (No, really, even PHP 7.3 is approaching EOL, and PHP 7.4 brings a lot of enhancements we need to take advantage of)
+- for PHP v7.2+  please try [release v4.1.x](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.1.0)
 - for PHP v7.0+  please try [release v4.0.x](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.0.3)
 - for PHP v5.6+ please check [release v3.6.x](https://github.com/HuasoFoundries/jpgraph/tree/v3.6.21)
 

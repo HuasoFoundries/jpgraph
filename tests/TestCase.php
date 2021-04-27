@@ -106,10 +106,7 @@ class TestCase    extends \Codeception\Test\Unit
         $arr       = explode('\\', static::class);
         $className = array_pop($arr);
         if (count(static::$genericFixtures) > 0) {
-            if (isset(static::$debugFileGroups) && static::$debugFileGroups && array_key_exists('testFileIterator', static::$genericFixtures)) {
-                Debug::debug('non grouped fixtures:');
-                Debug::debug(static::$genericFixtures['testFileIterator']);
-            }
+
             $yaml = Yaml::dump(static::$genericFixtures);
             if (static::$persistYaml) {
 
@@ -319,13 +316,6 @@ class TestCase    extends \Codeception\Test\Unit
             self::renameIfDimensionsDontMatch(static::$exampleRoot, $filename, $__width, $__height, $size);
             $this->assertEquals($__width, $size[0], 'width should match the one declared for ' . $filename);
             $this->assertEquals($__height, $size[1], 'height should match the one declared for ' . $filename);
-        } else {
-            dump(
-                'testing ' . $filename .
-                    ' for image/jpeg headers ',
-                $size
-            );
-            //$this->assertEquals('image/jpeg', $size['mime'], 'image should have mime image/jpeg for ' . $filename);
         }
         //  tap(
         return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug, $size);

@@ -37,7 +37,7 @@
             "indent-style": "space"
         },
         
-        "version": "4.1.0"
+        "version": "4.2.0"
     },
     "autoload": {
         "psr-4": {
@@ -67,6 +67,9 @@
         "lint": "vendor/bin/phplint",
         "start": "php -S localhost:8000 -t Examples",
         "test": "php vendor/bin/codecept run unit ",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
+        "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
+        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --issues=all --allow-backwards-incompatible-changes=false  --safe-types --dry-run",
         "coverage": "XDEBUG_MODE=coverage php vendor/bin/codecept run unit --coverage --coverage-xml"
     },
     "support": {

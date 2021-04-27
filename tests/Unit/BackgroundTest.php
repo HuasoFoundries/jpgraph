@@ -42,8 +42,6 @@ class BackgroundTest extends \Tests\TestCase
         $className = \str_replace('test', '', \mb_strtolower(__CLASS__));
 
         self::$files = self::getFiles($className);
-
-        dump(__CLASS__ . ' has ' . count(self::$files) . ' files');
     }
 
     protected function _before()
