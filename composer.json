@@ -1,7 +1,7 @@
 {
     "name": "amenadiel/jpgraph",
     "type": "library",
-    "description": "jpGraph, library to make graphs and charts",
+    "description": "Composer Friendly, full refactor of JpGraph, library to make graphs and charts",
     "keywords": [
         "graph",
         "chart",
@@ -37,6 +37,11 @@
             "indent-style": "space"
         },
         "version": "4.1.0-beta.01"
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
+        "version": "4.1.0"
     },
     "autoload": {
         "psr-4": {
@@ -63,10 +68,10 @@
     "scripts": {
         "act": "act -P ubuntu-latest=shivammathur/node:latest",
         "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
-        "lint":"vendor/bin/phplint",
-
+        "lint": "vendor/bin/phplint",
         "start": "php -S localhost:8000 -t Examples",
-        "test": "php vendor/bin/codecept run unit "
+        "test": "php vendor/bin/codecept run unit ",
+        "coverage": "XDEBUG_MODE=coverage php vendor/bin/codecept run unit --coverage --coverage-xml"
     },
     "support": {
         "issues": "https://github.com/huasofoundries/jpgraph/issues"

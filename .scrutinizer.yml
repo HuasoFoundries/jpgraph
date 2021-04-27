@@ -3,17 +3,17 @@ checks:
 build:
   environment:
     php:
-      version: "7.2"
-      ini:
-        "zend_extension": "xdebug.so"
+            version: '7.2'
+
+
   nodes:
     tests: true
     analysis:
       tests:
         override:
-          - command: phpcs-run
-            use_website_config: true
-          - command: make test_coverage
+                    - phpcs-run
+
+                        command: composer coverage
             coverage:
               file: "tests/_output/coverage.xml"
               format: "clover"

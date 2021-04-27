@@ -1,15 +1,3 @@
-testPie3dfileiterator:
-    pie3dex1.php: { width: 350, height: 200, title: pie3dFileIterator, filename: pie3dex1.php }
-    pie3dex2.php: { width: 350, height: 200, title: pie3dFileIterator, filename: pie3dex2.php }
-    pie3dex3.php: { width: 350, height: 200, title: pie3dFileIterator, filename: pie3dex3.php }
-    pie3dex4.php: { width: 350, height: 200, title: pie3dFileIterator, filename: pie3dex4.php }
-    pie3dex5.php: { width: 350, height: 200, title: pie3dFileIterator, filename: pie3dex5.php }
-testPielabelsfileiterator:
-    pielabelsex1.php: { width: 300, height: 350, title: pielabelsFileIterator, filename: pielabelsex1.php }
-    pielabelsex2.php: { width: 300, height: 350, title: pielabelsFileIterator, filename: pielabelsex2.php }
-    pielabelsex3.php: { width: 300, height: 350, title: pielabelsFileIterator, filename: pielabelsex3.php }
-    pielabelsex4.php: { width: 300, height: 350, title: pielabelsFileIterator, filename: pielabelsex4.php }
-    pielabelsex5.php: { width: 300, height: 300, title: pielabelsFileIterator, filename: pielabelsex5.php }
 testPiefileiterator:
     pieex8.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex8.php }
     pieex9.php: { width: 250, height: 200, title: pieFileIterator, filename: pieex9.php }

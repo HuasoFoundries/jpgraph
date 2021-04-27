@@ -8,3 +8,7 @@ testBackgroundImage:
     backgroundex01.php: { width: 400, height: 200, title: 'Background image', filename: backgroundex01.php, example_root: ./Examples/examples_background/ }
     backgroundex02.php: { width: 400, height: 200, title: 'Background image', filename: backgroundex02.php, example_root: ./Examples/examples_background/ }
     backgroundex03.php: { width: 400, height: 200, title: 'Background image', filename: backgroundex03.php, example_root: ./Examples/examples_background/ }
+testBackgroundfileiterator:
+    backgroundex01.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex01.php }
+    backgroundex02.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex02.php }
+    backgroundex03.php: { width: 400, height: 200, title: backgroundFileIterator, filename: backgroundex03.php }

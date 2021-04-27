@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * JPGraph - Community Edition
+ */
+
 namespace Amenadiel\JpGraph\UnitTest\Helper;
 
 // here you can define custom actions
@@ -6,5 +11,4 @@ namespace Amenadiel\JpGraph\UnitTest\Helper;
 
 class Unit extends \Codeception\Module
 {
-
 }

@@ -7,7 +7,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
-        php: ['7.3', '7.4', '8.0']
+        php: ['7.2', '7.3', '7.4', '8.0']
 
     name: PHP ${{ matrix.php }} - 'ubuntu-latest' - 'prefer-stable'
 
@@ -20,7 +20,7 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         tools: composer:v2
-        extensions: gd
+        extensions: gd, pcov
         coverage: none
 
     - name: Setup Problem Matches

@@ -1,10 +1,19 @@
 <?php
 
+<<<<<<< HEAD:tests/Unit/BackgroundTest.php
 namespace Tests\Unit;
 
 use Tests\UnitTestTrait;
 
 
+use \Codeception\Util\Debug;
+=======
+/**
+ * JPGraph - Community Edition
+ */
+
+use Codeception\Util\Debug;
+>>>>>>> master:tests/BackgroundTest.php
 
 /**
  * @group ready
@@ -44,17 +53,30 @@ class BackgroundTest extends \Tests\TestCase
         self::$files = self::getFiles($className);
         $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
 
+<<<<<<< HEAD:tests/Unit/BackgroundTest.php
         dump(__CLASS__ . ' has ' . count(self::$files) . ' files');
-            return !\array_key_exists($filename, $knownFixtures);
+        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
+            return !array_key_exists($filename, $knownFixtures);
         });
     }
 
     protected function _before()
     {
     }
+
     protected function _after()
     {
     }
+
+=======
+        self::$files = \array_filter(self::$files, function ($filename) use ($knownFixtures) {
+            return !\array_key_exists($filename, $knownFixtures);
+        });
+
+        Debug::debug(__CLASS__ . ' has ' . \count(self::$files) . ' files');
+    }
+
+>>>>>>> master:tests/BackgroundTest.php
     public function testUsingBackgroundImage()
     {
         $this->traverseFixtureGroup($this->fixTures(__METHOD__));

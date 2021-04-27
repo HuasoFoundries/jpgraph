@@ -57,8 +57,7 @@ class PiePlot
         'earth'  => [136, 34, 40, 45, 46, 62, 63, 134, 74, 10, 120, 136, 141, 168, 180, 77, 209, 218, 346, 395, 89, 430],
         'pastel' => [27, 415, 128, 59, 66, 79, 105, 110, 42, 147, 152, 230, 236, 240, 331, 337, 405, 38],
         'water'  => [8, 370, 24, 40, 335, 56, 213, 237, 268, 14, 326, 387, 10, 388],
-        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393],
-    ];
+        'sand'   => [27, 168, 34, 170, 19, 50, 65, 72, 131, 209, 46, 393], ];
     protected $setslicecolors      = [];
     protected $labeltype           = 0; // Default to percentage
     protected $pie_border          = true;
@@ -289,7 +288,7 @@ class PiePlot
     }
 
     // Set label arrays
-    public function SetLegends(array $aLegend)
+    public function SetLegends($aLegend)
     {
         $this->legends = $aLegend;
     }
@@ -331,7 +330,7 @@ class PiePlot
     }
 
     // Setup the legends
-    public function Legend(Graph\Graph $graph)
+    public function Legend($graph)
     {
         $colors = array_keys($graph->img->rgb->rgb_table);
         sort($colors);
@@ -393,10 +392,11 @@ class PiePlot
                 $wintarg = $this->csimwintargets[$i];
             }
 
+            $imageMapTarget = $this->csimtargets[$i] ?? '';
             if ($this->setslicecolors == null) {
-                $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
+                $graph->legend->Add($l, $colors[$ta[$i % $numcolors]], '', 0, $imageMapTarget, $alt, $wintarg);
             } else {
-                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $this->csimtargets[$i] ?? '', $alt, $wintarg);
+                $graph->legend->Add($l, $this->setslicecolors[$i % $numcolors], '', 0, $imageMapTarget, $alt, $wintarg);
             }
         }
     }
@@ -828,11 +828,9 @@ class PiePlot
                     // have a cluster of one in quadrant 0 we just extend that
                     // cluster. If we don't do this then we risk that the label
                     // for the cluster of one will cross the guide-line
-                    if (
-                        $q1 == 0 && $cidx > -1 &&
+                    if ($q1 == 0 && $cidx > -1 &&
                         $clusters[$cidx][1] == 1 &&
-                        $this->Quadrant($this->la[$clusters[$cidx][0]]) == 0
-                    ) {
+                        $this->Quadrant($this->la[$clusters[$cidx][0]]) == 0) {
                         ++$clusters[$cidx][1];
                     } else {
                         ++$cidx;
