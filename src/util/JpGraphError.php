@@ -26,7 +26,7 @@ class JpGraphError
      *
      * @throws JpGraphException (description)
      */
-    public static function Raise($aMsg)
+    public static function Raise(string $aMsg = 'Generic Exception')
     {
         throw new JpGraphException($aMsg);
     }

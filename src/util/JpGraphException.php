@@ -13,6 +13,7 @@ use Throwable;
 
 class JpGraphException extends Exception
 {
+    private $iDest = null; // 'php://stderr';
     public static $previous_exception_handler;
 
     // Redefine the exception so message isn't optional
@@ -27,8 +28,8 @@ class JpGraphException extends Exception
     {
         return sprintf(
             '[%s : %s]: %s ' . PHP_EOL . // class and error code, plus error message
-            ' %s  %s' . PHP_EOL . // filename and line number
-            '%s ' . PHP_EOL, // Trace
+                ' %s  %s' . PHP_EOL . // filename and line number
+                '%s ' . PHP_EOL, // Trace
             __CLASS__,
             $this->code,
             $this->message,
@@ -44,7 +45,7 @@ class JpGraphException extends Exception
     public function Stroke()
     {
         //$sent_headers = headers_list();
-
+        dump($this->_toString());
         if (JpGraphError::GetImageFlag()) {
             $this->handleImgException();
         } else {
@@ -91,6 +92,7 @@ class JpGraphException extends Exception
                 echo $aMsg;
             }
         } elseif ($this->iDest == 'syslog') {
+
             error_log($this->iTitle . $aMsg);
         } else {
             $str = '[' . date('r') . '] ' . $this->iTitle . ', ' . $aMsg . "\n";
@@ -139,11 +141,11 @@ class JpGraphException extends Exception
             // Special case for headers already sent or that the installation doesn't support
             // the PNG format (which the error icon is encoded in).
             // Dont return an image since it can't be displayed
-            die($this->iTitle . ' ' . $aMsg);
+            die($this->iTitle . ' ' . $this->getMessage());
         }
 
-        $aMsg  = wordwrap($aMsg, 55);
-        $lines = substr_count($aMsg, "\n");
+        $aMsg  = wordwrap($this->getMessage(), 55);
+        $lines = substr_count($this->getMessage(), "\n");
 
         // Create the error icon GD
         $erricon = Image\Image::CreateFromString(base64_decode($img_iconerror, true));
