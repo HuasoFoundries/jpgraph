@@ -50,28 +50,26 @@ if (!class_exists('\PhpConsole\Handler')) {
         }
     }
 }
-function ddd(...$vars)
-{
-    Kint::dump(...$vars);
-    exit;
+
+if (!function_exists('kdump')) {
+    function kdump(...$vars)
+    {
+        ob_start();
+
+        d(...$vars);
+
+        $kintdump = (ob_get_clean());
+
+        //dump($kintdump);
+        fwrite(STDERR, $kintdump);
+    }
+
+
+
+    \Kint::$aliases[] = 'kdump';
 }
-
-function kdump(...$vars)
-{
-    ob_start();
-
-    d(...$vars);
-
-    $kintdump = (ob_get_clean());
-
-    //dump($kintdump);
-    fwrite(STDERR, $kintdump);
-}
-
-\Kint::$aliases[] = 'ddd';
-\Kint::$aliases[] = 'kdump';
-
-if (getenv('JPGRAPH_USE_PHPCONSOLE') &&
+if (
+    getenv('JPGRAPH_USE_PHPCONSOLE') &&
     isset($_SERVER['HTTP_USER_AGENT']) &&
     strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false
 ) {
