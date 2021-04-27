@@ -107,7 +107,7 @@ See [.env.example](.env.example) as a reference.
 # Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -129,6 +129,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://corwatts.com"><img src="https://avatars.githubusercontent.com/u/220260?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Corey Watts</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=CorWatts" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/eisberg"><img src="https://avatars.githubusercontent.com/u/9015003?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Alexander Rakushin</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=eisberg" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/abidaks"><img src="https://avatars.githubusercontent.com/u/20839618?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Muhammad Abid</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=abidaks" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.whiletrue.it"><img src="https://avatars.githubusercontent.com/u/683688?v=4?s=50" width="50px;" alt=""/><br /><sub><b>WhileTrue</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/issues?q=author%3Aformikaio" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
