@@ -1,12 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
-
-use function round;
 
 /**
  * @class CanvasScale
@@ -16,18 +14,24 @@ use function round;
 class CanvasScale
 {
     private $g;
+
     private $w;
+
     private $h;
+
     private $ixmin = 0;
+
     private $ixmax = 10;
+
     private $iymin = 0;
+
     private $iymax = 10;
 
     public function __construct($graph, $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10)
     {
-        $this->g     = $graph;
-        $this->w     = $graph->img->width;
-        $this->h     = $graph->img->height;
+        $this->g = $graph;
+        $this->w = $graph->img->width;
+        $this->h = $graph->img->height;
         $this->ixmin = $xmin;
         $this->ixmax = $xmax;
         $this->iymin = $ymin;
@@ -49,23 +53,19 @@ class CanvasScale
 
     public function Translate($x, $y)
     {
-        $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
-        $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
+        $xp = \round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
+        $yp = \round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
 
         return [$xp, $yp];
     }
 
     public function TranslateX($x)
     {
-        $xp = round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
-
-        return $xp;
+        return \round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
     }
 
     public function TranslateY($y)
     {
-        $yp = round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
-
-        return $yp;
+        return \round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);
     }
 }

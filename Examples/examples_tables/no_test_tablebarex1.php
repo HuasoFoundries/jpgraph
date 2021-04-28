@@ -1,31 +1,32 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 include '../jpgraph.php';
+
 include '../jpgraph_bar.php';
+
 include '../jpgraph_table.php';
 
 $datay = [
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     [12, 18, 19, 7, 17, 6],
     [3, 5, 2, 7, 5, 25],
-    [6, 1.5, 2.4, 2.1, 6.9, 12.3], ]
-;
+    [6, 1.5, 2.4, 2.1, 6.9, 12.3], ];
 
 // Some basic defines to specify the shape of the bar+table
-$nbrbar      = 6;
-$cellwidth   = 50;
-$tableypos   = 200;
-$tablexpos   = 60;
-$tablewidth  = $nbrbar * $cellwidth;
+$nbrbar = 6;
+$cellwidth = 50;
+$tableypos = 200;
+$tablexpos = 60;
+$tablewidth = $nbrbar * $cellwidth;
 $rightmargin = 30;
 
 // Overall graph size
 $height = 320;
-$width  = $tablexpos + $tablewidth + $rightmargin;
+$width = $tablexpos + $tablewidth + $rightmargin;
 
 // Create the basic graph.
 $graph = new Graph\Graph($width, $height);

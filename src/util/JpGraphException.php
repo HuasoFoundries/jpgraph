@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -13,8 +13,9 @@ use Throwable;
 
 class JpGraphException extends Exception
 {
-    private $iDest = null; // 'php://stderr';
     public static $previous_exception_handler;
+
+    private $iDest; // 'php://stderr';
 
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0)
@@ -26,10 +27,10 @@ class JpGraphException extends Exception
     // custom string representation of object
     public function _toString()
     {
-        return sprintf(
-            '[%s : %s]: %s ' . PHP_EOL . // class and error code, plus error message
-                ' %s  %s' . PHP_EOL . // filename and line number
-                '%s ' . PHP_EOL, // Trace
+        return \sprintf(
+            '[%s : %s]: %s ' . \PHP_EOL . // class and error code, plus error message
+                ' %s  %s' . \PHP_EOL . // filename and line number
+                '%s ' . \PHP_EOL, // Trace
             __CLASS__,
             $this->code,
             $this->message,
@@ -46,6 +47,7 @@ class JpGraphException extends Exception
     {
         //$sent_headers = headers_list();
         dump($this->_toString());
+
         if (JpGraphError::GetImageFlag()) {
             $this->handleImgException();
         } else {
@@ -55,10 +57,10 @@ class JpGraphException extends Exception
 
     public static function defaultHandler(Throwable $exception)
     {
-        if (!($exception instanceof JpGraphException)) {
+        if (!($exception instanceof self)) {
             // Restore old handler
-            if (self::$previous_exception_handler !== null) {
-                set_exception_handler(self::$previous_exception_handler);
+            if (null !== self::$previous_exception_handler) {
+                \set_exception_handler(self::$previous_exception_handler);
             }
 
             throw $exception;
@@ -72,34 +74,35 @@ class JpGraphException extends Exception
      */
     public static function registerHandler()
     {
-        self::$previous_exception_handler = set_exception_handler([__CLASS__, 'defaultHandler']);
+        self::$previous_exception_handler = \set_exception_handler([__CLASS__, 'defaultHandler']);
     }
 
     // If aHalt is true then execution can't continue. Typical used for fatal errors
     public function handleTextException($aHalt = HALT_ON_ERRORS)
     {
         $logDestination = JpGraphError::GetLogFile();
-        $aMsg           = JpGraphError::GetTitle() . $this->getMessage();
+        $aMsg = JpGraphError::GetTitle() . $this->getMessage();
 
         if (!$logDestination) {
             // Check SAPI and if we are called from the command line
             // send the error to STDERR instead
-            if (PHP_SAPI == 'cli' || PHP_SAPI === 'cli-server') {
-                fwrite(STDOUT, $aMsg);
+            if (\PHP_SAPI === 'cli' || \PHP_SAPI === 'cli-server') {
+                \fwrite(\STDOUT, $aMsg);
             }
-            error_log($aMsg);
-            if (ini_get('display_errors')) {
+            \error_log($aMsg);
+
+            if (\ini_get('display_errors')) {
                 echo $aMsg;
             }
-        } elseif ($this->iDest == 'syslog') {
-
-            error_log($this->iTitle . $aMsg);
+        } elseif ('syslog' === $this->iDest) {
+            \error_log($this->iTitle . $aMsg);
         } else {
-            $str = '[' . date('r') . '] ' . $this->iTitle . ', ' . $aMsg . "\n";
-            $f   = @fopen($this->iDest, 'a');
+            $str = '[' . \date('r') . '] ' . $this->iTitle . ', ' . $aMsg . "\n";
+            $f = \fopen($this->iDest, 'ab');
+
             if ($f) {
-                @fwrite($f, $str);
-                @fclose($f);
+                \fwrite($f, $str);
+                \fclose($f);
             }
         }
 
@@ -127,32 +130,32 @@ class JpGraphException extends Exception
             'vd69OLMddVOPCGVnmrFD8bVYd3JXfxXPtLR/+mtv59/ALWiiMx' .
             'qL72fwAAAABJRU5ErkJggg==';
 
-        if (function_exists('imagetypes')) {
-            $supported = imagetypes();
+        if (\function_exists('imagetypes')) {
+            $supported = \imagetypes();
         } else {
             $supported = 0;
         }
 
-        if (!function_exists('imagecreatefromstring')) {
+        if (!\function_exists('imagecreatefromstring')) {
             $supported = 0;
         }
 
-        if (ob_get_length() || headers_sent() || !($supported & IMG_PNG)) {
+        if (\ob_get_length() || \headers_sent() || !($supported & \IMG_PNG)) {
             // Special case for headers already sent or that the installation doesn't support
             // the PNG format (which the error icon is encoded in).
             // Dont return an image since it can't be displayed
-            die($this->iTitle . ' ' . $this->getMessage());
+            exit($this->iTitle . ' ' . $this->getMessage());
         }
 
-        $aMsg  = wordwrap($this->getMessage(), 55);
-        $lines = substr_count($this->getMessage(), "\n");
+        $aMsg = \wordwrap($this->getMessage(), 55);
+        $lines = \mb_substr_count($this->getMessage(), "\n");
 
         // Create the error icon GD
-        $erricon = Image\Image::CreateFromString(base64_decode($img_iconerror, true));
+        $erricon = Image\Image::CreateFromString(\base64_decode($img_iconerror, true));
 
         // Create an image that contains the error text.
         $w = 400;
-        $h = 100 + 15 * max(0, $lines - 3);
+        $h = 100 + 15 * \max(0, $lines - 3);
 
         $img = new Image\Image($w, $h);
 
@@ -174,7 +177,8 @@ class JpGraphException extends Exception
 
         // Window top row
         $img->SetColor('darkred');
-        for ($y = 3; $y < 18; $y += 2) {
+
+        for ($y = 3; 18 > $y; $y += 2) {
             $img->Line(1, $y, $w - 6, $y);
         }
 
@@ -193,7 +197,7 @@ class JpGraphException extends Exception
         $img->Line(3, $h - 7, $w - 5, $h - 7);
 
         // Window title
-        $m = floor($w / 2 - 5);
+        $m = \floor($w / 2 - 5);
         $l = 110;
         $img->SetColor('lightgray:1.3');
         $img->FilledRectangle($m - $l, 2, $m + $l, 16);
@@ -208,14 +212,16 @@ class JpGraphException extends Exception
         $txt->SetFont(Configs::FF_FONT1);
         $txt->Align('left', 'top');
         $txt->Stroke($img);
+
         if ($this->iDest) {
             $img->Stream($this->iDest);
         } else {
             $img->Headers();
             $img->Stream();
         }
+
         if ($aHalt) {
-            die;
+            exit;
         }
     }
 }

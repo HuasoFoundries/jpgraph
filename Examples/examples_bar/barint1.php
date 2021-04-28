@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
@@ -13,9 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [1, 1, 0.5];
 
 // Create the graph and setup the basic parameters
-$__width  = 460;
+$__width = 460;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 30, 40);
 $graph->SetScale('textint');
 $graph->SetShadow();

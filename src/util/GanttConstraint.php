@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -13,9 +13,13 @@ namespace Amenadiel\JpGraph\Util;
 class GanttConstraint
 {
     public $iConstrainRow;
+
     public $iConstrainType;
+
     public $iConstrainColor;
+
     public $iConstrainArrowSize;
+
     public $iConstrainArrowType;
 
     /**
@@ -27,9 +31,9 @@ class GanttConstraint
      */
     public function __construct($aRow, $aType, $aColor, $aArrowSize, $aArrowType)
     {
-        $this->iConstrainType      = $aType;
-        $this->iConstrainRow       = $aRow;
-        $this->iConstrainColor     = $aColor;
+        $this->iConstrainType = $aType;
+        $this->iConstrainRow = $aRow;
+        $this->iConstrainColor = $aColor;
         $this->iConstrainArrowSize = $aArrowSize;
         $this->iConstrainArrowType = $aArrowType;
     }

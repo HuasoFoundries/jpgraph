@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -22,7 +22,8 @@ class RectPatternHor extends RectPattern
     {
         $x0 = $this->rect->x;
         $x1 = $this->rect->xe;
-        $y  = $this->rect->y;
+        $y = $this->rect->y;
+
         while ($y < $this->rect->ye) {
             $aImg->Line($x0, $y, $x1, $y);
             $y += $this->linespacing;

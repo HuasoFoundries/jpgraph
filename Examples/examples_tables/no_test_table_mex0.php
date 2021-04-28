@@ -1,17 +1,19 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 require_once 'jpgraph/jpgraph_canvas.php';
+
 require_once 'jpgraph/jpgraph_table.php';
 
 // Setup graph context
-$__width  = 430;
+$__width = 430;
 $__height = 150;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 // Setup the basic table
 $data = [

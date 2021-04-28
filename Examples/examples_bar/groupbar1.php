@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: groupbarex1.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
@@ -13,9 +13,9 @@ $datay1 = [35, 160, 0, 0, 0, 0];
 $datay2 = [35, 190, 190, 190, 190, 190];
 $datay3 = [20, 70, 70, 140, 230, 260];
 
-$__width  = 450;
+$__width = 450;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 40, 40);

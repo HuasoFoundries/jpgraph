@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Basic contour plot example
@@ -23,9 +23,9 @@ $data = [
     [1.0, 1.5, 3.0, 4, 6.0, 5, 2, 1, 0.5, 0.2], ];
 
 // Basic contour graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intint');
 
 // Adjust the margins to fit the margin

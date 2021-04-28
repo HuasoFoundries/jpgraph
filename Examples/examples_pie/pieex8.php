@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,9 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 60, 31, 35];
 
 // A new pie graph
-$__width  = 250;
+$__width = 250;
 $__height = 200;
-$graph    = new Graph\PieGraph($__width, $__height);
+$graph = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Title setup$example_title='Adjusting the label pos'; $graph->title->set($example_title);

@@ -1,22 +1,22 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$__width  = 600;
+$__width = 600;
 $__height = 400;
-$graph    = new Graph\CCBPGraph($__width, $__height);
+$graph = new Graph\CCBPGraph($__width, $__height);
 $graph->SetTitle('Buffer penetration', '(history added)');
 $graph->SetColorMap(1);
 
 // Two "fake tasks with hostory
-$datax  = [75, 83];
-$datay  = [110, 64];
+$datax = [75, 83];
+$datay = [110, 64];
 $datax1 = [33, 50, 67, 83];
 $datay1 = [86, 76, 80, 64];
 $datax2 = [18, 47, 58, 75];
@@ -27,7 +27,7 @@ $sp->mark->SetType(Graph\Configs::getConfig('MARK_DIAMOND'));
 $sp->mark->SetFillColor('white');
 $sp->mark->SetSize(12);
 
-$sp_hist    = [];
+$sp_hist = [];
 $sp_hist[0] = new Plot\LinePlot($datay1, $datax1);
 $sp_hist[0]->SetWeight(1);
 $sp_hist[0]->SetColor('white');

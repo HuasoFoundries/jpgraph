@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Gantt example
@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the basic graph
-$graph         = new Graph\GanttGraph();
+$graph = new Graph\GanttGraph();
 $example_title = 'Example with multiple constrains';
 $graph->title->set($example_title);
 

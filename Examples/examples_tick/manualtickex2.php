@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 //
@@ -17,16 +17,18 @@ use Amenadiel\JpGraph\Util;
 // Create some random data for the plot. We use the current time for the
 // first X-position
 //
-$f                   = new Util\FuncGenerator('cos($x)+1.5*cos(2*$x)');
-list($datax, $datay) = $f->E(0, 10);
+$f = new Util\FuncGenerator('cos($x)+1.5*cos(2*$x)');
+[$datax, $datay] = $f->E(0, 10);
 
 // Now get labels at 1/2 PI intervall
-$tickPositions    = [];
-$tickLabels       = [];
+$tickPositions = [];
+$tickLabels = [];
 $tickPositions[0] = 0;
-$tickLabels[0]    = '0';
-for ($i = 1; $i / 2 * M_PI < 11; ++$i) {
-    $tickPositions[$i] = $i / 2 * M_PI;
+$tickLabels[0] = '0';
+
+for ($i = 1; $i / 2 * \M_PI < 11; ++$i) {
+    $tickPositions[$i] = $i / 2 * \M_PI;
+
     if ($i % 2) {
         $tickLabels[$i] = $i . '/2' . Graph\SymChar::Get('pi');
     } else {
@@ -34,16 +36,16 @@ for ($i = 1; $i / 2 * M_PI < 11; ++$i) {
     }
 }
 
-$n    = count($datax);
+$n = \count($datax);
 $xmin = $datax[0];
 $xmax = $datax[$n - 1];
 
 //
 // The code to setup a very basic graph
 //
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 //
 // We use an integer scale on the X-axis since the positions on the X axis

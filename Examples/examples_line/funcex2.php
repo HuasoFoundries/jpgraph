@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,12 +9,12 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
 
-$f                   = new Util\FuncGenerator('cos($i)', '$i*$i*$i');
-list($xdata, $ydata) = $f->E(-M_PI, M_PI, 25);
+$f = new Util\FuncGenerator('cos($i)', '$i*$i*$i');
+[$xdata, $ydata] = $f->E(-\M_PI, \M_PI, 25);
 
-$__width  = 380;
+$__width = 380;
 $__height = 450;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetShadow();
 $graph->img->SetMargin(50, 50, 60, 40);

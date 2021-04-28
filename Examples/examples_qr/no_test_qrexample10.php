@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Include the library
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
-$data      = 'ABCDEFGH01234567'; // Data to be encoded
-$version   = -1; // -1 = Let the library decide version (same as default)
+$data = 'ABCDEFGH01234567'; // Data to be encoded
+$version = -1; // -1 = Let the library decide version (same as default)
 $corrlevel = QRCapacity::ErrH; // Error correction level H (Highest possible)
 
 // Create a new instance of the encoder using the specified

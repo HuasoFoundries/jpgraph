@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-defined('WORLDMAP') || define('WORLDMAP', __DIR__ . '/../assets/worldmap1.jpg');
+\defined('WORLDMAP') || \define('WORLDMAP', __DIR__ . '/../assets/worldmap1.jpg');
 
 $markCallback = function ($y, $x) {
     // Return array width
@@ -16,7 +16,7 @@ $markCallback = function ($y, $x) {
     // any value can be false, in that case the default value will
     // be used.
     // We only make one pushpin another color
-    if ($x == 54) {
+    if (54 === $x) {
         return [false, false, false, 'red', 0.8];
     }
 
@@ -28,9 +28,9 @@ $datax = [10, 20, 30, 40, 54, 60, 70, 80];
 $datay = [12, 23, 65, 18, 84, 28, 86, 44];
 
 // Setup the graph
-$__width  = 400;
+$__width = 400;
 $__height = 270;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 // We add a small 1pixel left,right,bottom margin so the plot area
 // doesn't cover the frame around the graph.

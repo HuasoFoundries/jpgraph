@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,22 +13,23 @@ $month = [
 
 // Create datapoints where every point
 $steps = 100;
+
 for ($i = 0; $i < $steps; ++$i) {
-    $datay[$i]  = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
-    $databarx[] = sprintf('198%d %s', floor($i / 12), $month[$i % 12]);
+    $datay[$i] = \log($i ** ($i / 10) + 1) * \sin($i / 15) + 35;
+    $databarx[] = \sprintf('198%d %s', \floor($i / 12), $month[$i % 12]);
 
     // Simulate an accumulated value for every 5:th data point
-    if ($i % 6 == 0) {
-        $databary[] = abs(25 * sin($i) + 5);
+    if ($i % 6 === 0) {
+        $databary[] = \abs(25 * \sin($i) + 5);
     } else {
         $databary[] = 0;
     }
 }
 
 // new Graph\Graph with a background image and drop shadow
-$__width  = 450;
+$__width = 450;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetShadow();
 

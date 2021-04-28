@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Basic contour plot example
@@ -18,9 +18,9 @@ $data = [
     [1, 8, 5, 7], ];
 
 // Basic contour graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intint');
 
 // Show axis on all sides

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,20 +12,20 @@ use Amenadiel\JpGraph\Plot;
 function numberToRoman($aNum)
 {
     // Make sure that we only use the integer portion of the value
-    $n      = (int) $aNum;
+    $n = (int) $aNum;
     $result = '';
 
     // Declare a lookup array that we will use to traverse the number:
-    $lookup = ['M'     => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
-        'C'            => 100, 'XC'  => 90, 'L'  => 50, 'XL'  => 40,
-        'X'            => 10, 'IX'   => 9, 'V'   => 5, 'IV'   => 4, 'I' => 1, ];
+    $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+        'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40,
+        'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1, ];
 
     foreach ($lookup as $roman => $value) {
         // Determine the number of matches
         $matches = (int) ($n / $value);
 
         // Store that many characters
-        $result .= str_repeat($roman, $matches);
+        $result .= \str_repeat($roman, $matches);
 
         // Substract that from the number
         $n = $n % $value;
@@ -44,7 +44,7 @@ function formatCallback($aVal)
 $ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 
 // Size of the overall graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
 
 // Create the graph and set a scale.

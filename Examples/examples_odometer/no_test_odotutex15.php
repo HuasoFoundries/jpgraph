@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,9 +10,9 @@ use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
-$__width  = 250;
+$__width = 250;
 $__height = 170;
-$graph    = new OdoGraph($__width, $__height);
+$graph = new OdoGraph($__width, $__height);
 
 // Setup graph titles$example_title='Custom formatting'; $graph->title->set($example_title);
 $graph->title->SetColor('white');

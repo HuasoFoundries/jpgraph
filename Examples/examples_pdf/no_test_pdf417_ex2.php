@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once 'jpgraph/pdf417/jpgraph_pdf417.php';
@@ -10,10 +10,10 @@ $data = 'PDF-417';
 
 // Setup some symbolic names for barcode specification
 
-$columns  = 8;   // Use 8 data (payload) columns
+$columns = 8;   // Use 8 data (payload) columns
 $errlevel = 2;  // Use error level 2 (minimum recommended)
 $modwidth = 2;  // Setup module width (in pixels)
-$height   = 3;    // Height factor
+$height = 3;    // Height factor
 
 // Create a new encoder and backend to generate PNG images
 try {

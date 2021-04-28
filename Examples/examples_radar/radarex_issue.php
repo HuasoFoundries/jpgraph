@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $titles = ['N', '', 'NW', '', 'W', '', 'SW', '', 'S', '', 'SE', '', 'E', '', 'NE', ''];
-$data   = [
+$data = [
     0, 0,
     0.8,
     0.10,
@@ -25,7 +25,7 @@ $data   = [
     0.30,
     0.40,
     0.378,
-    0.72
+    0.72,
 ];
 
 $graph = new Graph\RadarGraph(1140, 850);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,9 +21,9 @@ $data = [
 
 doMeshInterpolate($data, 4);
 
-$__width       = 850;
-$__height      = 580;
-$graph         = new MatrixGraph($__width, $__height);
+$__width = 850;
+$__height = 580;
+$graph = new MatrixGraph($__width, $__height);
 $example_title = 'Matrix example 00';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
@@ -31,11 +31,13 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getC
 //$graph->SetColor('darkgreen@0.8');
 
 $mp = [];
-$n  = 5;
+$n = 5;
+
 for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);
     $mp[$i]->colormap->SetMap($i);
-    if ($i < 2) {
+
+    if (2 > $i) {
         $mp[$i]->SetSize(0.35);
     } else {
         $mp[$i]->SetSize(0.21);

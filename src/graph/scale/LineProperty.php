@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
@@ -13,15 +13,18 @@ namespace Amenadiel\JpGraph\Graph\Scale;
 class LineProperty
 {
     public $iWeight = 1;
-    public $iColor  = 'black';
-    public $iStyle  = 'solid';
-    public $iShow   = false;
+
+    public $iColor = 'black';
+
+    public $iStyle = 'solid';
+
+    public $iShow = false;
 
     public function __construct($aWeight = 1, $aColor = 'black', $aStyle = 'solid')
     {
         $this->iWeight = $aWeight;
-        $this->iColor  = $aColor;
-        $this->iStyle  = $aStyle;
+        $this->iColor = $aColor;
+        $this->iStyle = $aStyle;
     }
 
     public function SetColor($aColor)
@@ -57,7 +60,7 @@ class LineProperty
         $aImg->SetLineStyle($this->iStyle);
         $aImg->StyleLine($aX1, $aY1, $aX2, $aY2);
         $aImg->PopColor($this->iColor);
-        $aImg->line_style  = $oldls;
+        $aImg->line_style = $oldls;
         $aImg->line_weight = $oldlw;
     }
 }

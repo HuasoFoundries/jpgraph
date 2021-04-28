@@ -10,10 +10,9 @@
         "data"
     ],
     "homepage": "http://jpgraph.net/",
-    
     "license": "QPL-1.0",
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "ext-gd": "*"
     },
     "require-dev": {
@@ -36,7 +35,6 @@
             "indent-size": 4,
             "indent-style": "space"
         },
-        
         "version": "4.2.0"
     },
     "autoload": {
@@ -63,14 +61,14 @@
     },
     "scripts": {
         "act": "act -P ubuntu-latest=shivammathur/node:latest",
+        "coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage --coverage-clover tests/_output/coverage.xml",
         "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
         "lint": "vendor/bin/phplint",
-        "start": "php -S localhost:8000 -t Examples",
-        "test": "vendor/bin/pest",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
         "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
         "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --issues=all --allow-backwards-incompatible-changes=false  --safe-types --dry-run",
-        "coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage --coverage-clover tests/_output/coverage.xml"
+        "start": "php -S localhost:8000 -t Examples",
+        "test": "vendor/bin/pest"
     },
     "support": {
         "issues": "https://github.com/huasofoundries/jpgraph/issues"

@@ -1,23 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
-
-use function basename;
-use function set_error_handler;
 
 // A wrapper class that is used to access the specified error object
 // (to hide the global error parameter and avoid having a GLOBAL directive
 // in all methods.
 class JpGraphError
 {
-    private static $__iImgFlg  = true;
-    private static $__iLogFile = '';
-    private static $__iTitle   = 'JpGraph Error: ';
     public static $previous_handler;
+
+    private static $__iImgFlg = true;
+
+    private static $__iLogFile = '';
+
+    private static $__iTitle = 'JpGraph Error: ';
 
     /**
      * Generic error or exception messages.
@@ -86,17 +86,17 @@ class JpGraphError
     public static function phpErrorHandler(int $errno, string $errmsg, string $filename = '', int $errline = 0, array $errcontext = [])
     {
         // Respect current error level
-        if (!($errno & error_reporting())) {
+        if (!($errno & \error_reporting())) {
             // Respect current error level
             return;
             // Respect current error level
         }
 
-        self::RaiseL(25003, basename($filename), $errline, $errmsg);
+        self::RaiseL(25003, \basename($filename), $errline, $errmsg);
     }
 
     public static function registerHandler()
     {
-        self::$previous_handler = set_error_handler([__CLASS__, 'phpErrorHandler']);
+        self::$previous_handler = \set_error_handler([__CLASS__, 'phpErrorHandler']);
     }
 }

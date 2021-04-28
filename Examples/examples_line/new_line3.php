@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ $datay1 = [15, 21, 24, 10, 37, 29, 47];
 $datay2 = [8, 6, 11, 26, 10, 4, 2];
 
 // Setup the graph
-$__width  = 300;
+$__width = 300;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 $graph->SetScale('textlin', 0, 50);
 

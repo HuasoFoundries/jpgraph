@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
@@ -9,92 +9,107 @@ namespace Amenadiel\JpGraph\Graph\Scale;
 use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function array_sum;
-use function ceil;
-use function cos;
 use const M_PI;
 use function max;
-use function round;
-use function sin;
-use function sprintf;
 
 /**
  * @class WindrosePlotScale
  */
 class WindrosePlotScale
 {
+    public $iMaxNum = 0;
+
+    public $iFontFamily = Configs::FF_VERDANA;
+
+    public $iFontStyle = Configs::FS_NORMAL;
+
+    public $iFontSize = 10;
+
+    public $iZFontFamily = Configs::FF_ARIAL;
+
+    public $iZFontStyle = Configs::FS_NORMAL;
+
+    public $iZFontSize = 10;
+
+    public $iFontColor = 'black';
+
+    public $iZFontColor = 'black';
+
+    public $iAngle = 'auto';
+
     private $iMax;
-    private $iDelta          = 5;
-    private $iNumCirc        = 3;
-    public $iMaxNum          = 0;
-    private $iLblFmt         = '%.0f%%';
-    public $iFontFamily      = Configs::FF_VERDANA;
-    public $iFontStyle       = Configs::FS_NORMAL;
-    public $iFontSize        = 10;
-    public $iZFontFamily     = Configs::FF_ARIAL;
-    public $iZFontStyle      = Configs::FS_NORMAL;
-    public $iZFontSize       = 10;
-    public $iFontColor       = 'black';
-    public $iZFontColor      = 'black';
+
+    private $iDelta = 5;
+
+    private $iNumCirc = 3;
+
+    private $iLblFmt = '%.0f%%';
+
     private $iFontFrameColor = false;
-    private $iFontBkgColor   = false;
+
+    private $iFontBkgColor = false;
+
     private $iLblZeroTxt;
-    private $iLblAlign    = Configs::LBLALIGN_CENTER;
-    public $iAngle        = 'auto';
+
+    private $iLblAlign = Configs::LBLALIGN_CENTER;
+
     private $iManualScale = false;
-    private $iHideLabels  = false;
+
+    private $iHideLabels = false;
 
     public function __construct($aData)
     {
-        $max            = 0;
-        $totlegsum      = 0;
-        $maxnum         = 0;
+        $max = 0;
+        $totlegsum = 0;
+        $maxnum = 0;
         $this->iZeroSum = 0;
+
         foreach ($aData as $idx => $legdata) {
-            $legsum = array_sum($legdata);
-            $maxnum = max($maxnum, Configs::safe_count($legdata) - 1);
-            $max    = max($legsum - $legdata[0], $max);
+            $legsum = \array_sum($legdata);
+            $maxnum = \max($maxnum, Configs::safe_count($legdata) - 1);
+            $max = \max($legsum - $legdata[0], $max);
             $totlegsum += $legsum;
             $this->iZeroSum += $legdata[0];
         }
-        if (round($totlegsum) > 100) {
+
+        if (\round($totlegsum) > 100) {
             Util\JpGraphError::RaiseL(22001, $legsum);
             //("Total percentage for all windrose legs in a windrose plot can not exceed  100% !\n(Current max is: ".$legsum.')');
         }
-        $this->iMax     = $max;
-        $this->iMaxNum  = $maxnum;
+        $this->iMax = $max;
+        $this->iMaxNum = $maxnum;
         $this->iNumCirc = $this->GetNumCirc();
-        $this->iMaxVal  = $this->iNumCirc * $this->iDelta;
+        $this->iMaxVal = $this->iNumCirc * $this->iDelta;
     }
 
     // Return number of grid circles
     public function GetNumCirc()
     {
         // Never return less than 1 circles
-        $num = ceil($this->iMax / $this->iDelta);
+        $num = \ceil($this->iMax / $this->iDelta);
 
-        return max(1, $num);
+        return \max(1, $num);
     }
 
     public function SetMaxValue($aMax)
     {
-        $this->iMax     = $aMax;
+        $this->iMax = $aMax;
         $this->iNumCirc = $this->GetNumCirc();
-        $this->iMaxVal  = $this->iNumCirc * $this->iDelta;
+        $this->iMaxVal = $this->iNumCirc * $this->iDelta;
     }
 
     // Set step size for circular grid
     public function Set($aMax, $aDelta = null)
     {
-        if ($aDelta == null) {
+        if (null === $aDelta) {
             $this->SetMaxValue($aMax);
 
             return;
         }
-        $this->iDelta   = $aDelta;
-        $this->iNumCirc = ceil($aMax / $aDelta); //$this->GetNumCirc();
-        $this->iMaxVal  = $this->iNumCirc * $this->iDelta;
-        $this->iMax     = $aMax;
+        $this->iDelta = $aDelta;
+        $this->iNumCirc = \ceil($aMax / $aDelta); //$this->GetNumCirc();
+        $this->iMaxVal = $this->iNumCirc * $this->iDelta;
+        $this->iMax = $aMax;
         // Remember that user has specified interval so don't
         // do autoscaling
         $this->iManualScale = true;
@@ -108,34 +123,34 @@ class WindrosePlotScale
 
         // Make sure distance (in pixels) between two circles
         // is never less than $aMinDist pixels
-        $tst = ceil($aRadius / $this->iNumCirc);
+        $tst = \ceil($aRadius / $this->iNumCirc);
 
-        while ($tst <= $aMinDist && $this->iDelta < 100) {
+        while ($tst <= $aMinDist && 100 > $this->iDelta) {
             $this->iDelta += 5;
-            $tst = ceil($aRadius / $this->GetNumCirc());
+            $tst = \ceil($aRadius / $this->GetNumCirc());
         }
 
-        if ($this->iDelta >= 100) {
+        if (100 <= $this->iDelta) {
             Util\JpGraphError::RaiseL(22002); //('Graph is too small to have a scale. Please make the graph larger.');
         }
 
         // If the distance is to large try with multiples of 2 instead
-        if ($tst > $aMinDist * 3) {
+        if ($aMinDist * 3 < $tst) {
             $this->iDelta = 2;
-            $tst          = ceil($aRadius / $this->iNumCirc);
+            $tst = \ceil($aRadius / $this->iNumCirc);
 
-            while ($tst <= $aMinDist && $this->iDelta < 100) {
+            while ($tst <= $aMinDist && 100 > $this->iDelta) {
                 $this->iDelta += 2;
-                $tst = ceil($aRadius / $this->GetNumCirc());
+                $tst = \ceil($aRadius / $this->GetNumCirc());
             }
 
-            if ($this->iDelta >= 100) {
+            if (100 <= $this->iDelta) {
                 Util\JpGraphError::RaiseL(22002); //('Graph is too small to have a scale. Please make the graph larger.');
             }
         }
 
         $this->iNumCirc = $this->GetNumCirc();
-        $this->iMaxVal  = $this->iNumCirc * $this->iDelta;
+        $this->iMaxVal = $this->iNumCirc * $this->iDelta;
     }
 
     // Return max of all leg values
@@ -157,9 +172,7 @@ class WindrosePlotScale
     // Translate a Leg value to radius distance
     public function RelTranslate($aVal, $r, $ri)
     {
-        $tv = round($aVal / $this->iMaxVal * ($r - $ri));
-
-        return $tv;
+        return \round($aVal / $this->iMaxVal * ($r - $ri));
     }
 
     public function SetLabelAlign($aAlign)
@@ -175,7 +188,8 @@ class WindrosePlotScale
     public function SetLabelFillColor($aBkgColor, $aBorderColor = false)
     {
         $this->iFontBkgColor = $aBkgColor;
-        if ($aBorderColor === false) {
+
+        if (false === $aBorderColor) {
             $this->iFontFrameColor = $aBkgColor;
         } else {
             $this->iFontFrameColor = $aBorderColor;
@@ -184,23 +198,23 @@ class WindrosePlotScale
 
     public function SetFontColor($aColor)
     {
-        $this->iFontColor  = $aColor;
+        $this->iFontColor = $aColor;
         $this->iZFontColor = $aColor;
     }
 
     public function SetFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iFontFamily = $aFontFamily;
-        $this->iFontStyle  = $aFontStyle;
-        $this->iFontSize   = $aFontSize;
+        $this->iFontStyle = $aFontStyle;
+        $this->iFontSize = $aFontSize;
         $this->SetZFont($aFontFamily, $aFontStyle, $aFontSize);
     }
 
     public function SetZFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iZFontFamily = $aFontFamily;
-        $this->iZFontStyle  = $aFontStyle;
-        $this->iZFontSize   = $aFontSize;
+        $this->iZFontStyle = $aFontStyle;
+        $this->iZFontSize = $aFontSize;
     }
 
     public function SetZeroLabel($aTxt)
@@ -229,38 +243,39 @@ class WindrosePlotScale
         $val->SetFont($this->iFontFamily, $this->iFontStyle, $this->iFontSize);
         $val->SetColor($this->iFontColor);
 
-        if ($this->iFontBkgColor !== false) {
+        if (false !== $this->iFontBkgColor) {
             $val->SetBox($this->iFontBkgColor, $this->iFontFrameColor);
         }
 
         // Position the labels relative to the radiant circles
-        if ($this->iLblAlign == Configs::LBLALIGN_TOP) {
-            if ($a > 0 && $a <= M_PI / 2) {
+        if (Configs::LBLALIGN_TOP === $this->iLblAlign) {
+            if (0 < $a && M_PI / 2 >= $a) {
                 $val->SetAlign('left', 'bottom');
-            } elseif ($a > M_PI / 2 && $a <= M_PI) {
+            } elseif (M_PI / 2 < $a && M_PI >= $a) {
                 $val->SetAlign('right', 'bottom');
             }
-        } elseif ($this->iLblAlign == Configs::LBLALIGN_CENTER) {
+        } elseif (Configs::LBLALIGN_CENTER === $this->iLblAlign) {
             $val->SetAlign('center', 'center');
         }
 
         // Stroke the labels close to each circle
-        $v  = $d;
-        $si = sin($a);
-        $co = cos($a);
+        $v = $d;
+        $si = \sin($a);
+        $co = \cos($a);
+
         for ($i = 0; $i < $n; ++$i, $v += $d) {
             $r = $ri + ($i + 1) * $rr;
             $x = $xc + $co * $r;
             $y = $yc - $si * $r;
-            $val->Set(sprintf($this->iLblFmt, $v));
+            $val->Set(\sprintf($this->iLblFmt, $v));
             $val->Stroke($aImg, $x, $y);
         }
 
         // Print the text in the zero circle
-        if ($this->iLblZeroTxt === null) {
-            $this->iLblZeroTxt = sprintf($this->iLblFmt, $this->iZeroSum);
+        if (null === $this->iLblZeroTxt) {
+            $this->iLblZeroTxt = \sprintf($this->iLblFmt, $this->iZeroSum);
         } else {
-            $this->iLblZeroTxt = sprintf($this->iLblZeroTxt, $this->iZeroSum);
+            $this->iLblZeroTxt = \sprintf($this->iLblZeroTxt, $this->iZeroSum);
         }
 
         $val->Set($this->iLblZeroTxt);

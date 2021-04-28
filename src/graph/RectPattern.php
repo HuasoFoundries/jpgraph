@@ -1,14 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
-use function floor;
-use function is_numeric;
 
 /**
  * @class RectPattern
@@ -20,15 +18,20 @@ use function is_numeric;
 class RectPattern
 {
     protected $color;
+
     protected $weight;
+
     protected $rect;
+
     protected $doframe = true;
+
     protected $linespacing; // Line spacing in pixels
+
     protected $iBackgroundColor = -1; // Default is no background fill
 
     public function __construct($aColor, $aWeight = 1)
     {
-        $this->color  = $aColor;
+        $this->color = $aColor;
         $this->weight = $aWeight;
     }
 
@@ -49,25 +52,25 @@ class RectPattern
 
     public function SetDensity($aDens)
     {
-        if ($aDens < 1 || $aDens > 100) {
+        if (1 > $aDens || 100 < $aDens) {
             Util\JpGraphError::RaiseL(16001, $aDens);
         }
 
         //(" Desity for pattern must be between 1 and 100. (You tried $aDens)");
         // 1% corresponds to linespacing=50
         // 100 % corresponds to linespacing 1
-        $this->linespacing = floor(((100 - $aDens) / 100.0) * 50) + 1;
+        $this->linespacing = \floor(((100 - $aDens) / 100.0) * 50) + 1;
     }
 
     public function Stroke($aImg)
     {
-        if ($this->rect == null) {
+        if (null === $this->rect) {
             Util\JpGraphError::RaiseL(16002);
         }
 
         //(" No positions specified for pattern.");
 
-        if (!(is_numeric($this->iBackgroundColor) && $this->iBackgroundColor == -1)) {
+        if (!(\is_numeric($this->iBackgroundColor) && -1 === $this->iBackgroundColor)) {
             $aImg->SetColor($this->iBackgroundColor);
             $aImg->FilledRectangle($this->rect->x, $this->rect->y, $this->rect->xe, $this->rect->ye);
         }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,9 +9,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // new Graph\Graph with a drop shadow
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetShadow();
 
 $databary = [];
@@ -19,9 +19,10 @@ $databarx = [];
 
 // Some data
 $months = $graph->gDateLocale->GetShortMonth();
-srand((float) microtime() * 1000000);
-for ($i = 0; $i < 25; ++$i) {
-    $databary[] = rand(1, 50);
+\mt_srand((float) \microtime() * 1000000);
+
+for ($i = 0; 25 > $i; ++$i) {
+    $databary[] = \mt_rand(1, 50);
     $databarx[] = $months[$i % 12];
 }
 

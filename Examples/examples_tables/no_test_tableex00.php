@@ -1,13 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_canvas.php';
+
 require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
@@ -17,9 +18,9 @@ $data = [['', 'Jan', 'Feb', 'Mar', 'Apr'],
     ['Max', '23.9', '14.2', '18.6', '71.3'], ];
 
 // Create a basic graph context
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 // Create a basic table
 $table = new GTextTable($cols, $rows);

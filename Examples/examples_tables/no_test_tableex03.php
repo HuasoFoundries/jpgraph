@@ -1,11 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 require_once 'jpgraph/jpgraph_canvas.php';
+
 require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
@@ -18,9 +20,9 @@ $data = [['2007'],
 
 $q = 1;
 
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 $table = new GTextTable($cols, $rows);
 $table->Init();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Tick;
@@ -15,16 +15,26 @@ use Amenadiel\JpGraph\Util;
  */
 class LinearTicks extends Ticks
 {
-    public $minor_step    = 1;
-    public $major_step    = 2;
+    public $minor_step = 1;
+
+    public $major_step = 2;
+
     public $xlabel_offset = 0;
-    public $xtick_offset  = 0;
-    public $label_offset  = 0; // What offset should the displayed label have
+
+    public $xtick_offset = 0;
+
+    public $label_offset = 0;
+
+    // What offset should the displayed label have
     // i.e should we display 0,1,2 or 1,2,3,4 or 2,3,4 etc
     protected $text_label_start = 0;
+
     protected $iManualTickPos;
+
     protected $iManualMinTickPos;
+
     protected $iManualTickLabels;
+
     protected $iAdjustForDST = false; // If a date falls within the DST period add one hour to the diaplyed time
 
     public function __construct()
@@ -47,18 +57,18 @@ class LinearTicks extends Ticks
     // Set Minor and Major ticks (in world coordinates)
     public function Set($aMajStep, $aMinStep = false)
     {
-        if ($aMinStep == false) {
+        if (false === $aMinStep) {
             $aMinStep = $aMajStep;
         }
 
-        if ($aMajStep <= 0 || $aMinStep <= 0) {
+        if (0 >= $aMajStep || 0 >= $aMinStep) {
             Util\JpGraphError::RaiseL(25064);
             //(" Minor or major step size is 0. Check that you haven't got an accidental SetTextTicks(0) in your code. If this is not the case you might have stumbled upon a bug in JpGraph. Please report this and if possible include the data that caused the problem.");
         }
 
         $this->major_step = $aMajStep;
         $this->minor_step = $aMinStep;
-        $this->is_set     = true;
+        $this->is_set = true;
     }
 
     public function SetMajTickPositions($aMajPos, $aLabels = null)
@@ -68,16 +78,17 @@ class LinearTicks extends Ticks
 
     public function SetTickPositions($aMajPos, $aMinPos = null, $aLabels = null)
     {
-        if (!is_array($aMajPos) || ($aMinPos !== null && !is_array($aMinPos))) {
+        if (!\is_array($aMajPos) || (null !== $aMinPos && !\is_array($aMinPos))) {
             Util\JpGraphError::RaiseL(25065); //('Tick positions must be specifued as an array()');
 
             return;
         }
         $n = Configs::safe_count($aMajPos);
-        if (is_array($aLabels) && (Configs::safe_count($aLabels) != $n)) {
+
+        if (\is_array($aLabels) && (Configs::safe_count($aLabels) !== $n)) {
             Util\JpGraphError::RaiseL(25066); //('When manually specifying tick positions and labels the number of labels must be the same as the number of specified ticks.');
         }
-        $this->iManualTickPos    = $aMajPos;
+        $this->iManualTickPos = $aMajPos;
         $this->iManualMinTickPos = $aMinPos;
         $this->iManualTickLabels = $aLabels;
     }
@@ -95,12 +106,12 @@ class LinearTicks extends Ticks
     // Draw linear ticks
     public function Stroke($aImg, $aScale, $aPos)
     {
-        if ($this->iManualTickPos != null) {
+        if (null !== $this->iManualTickPos) {
             $this->_doManualTickPos($aScale);
         } else {
             $this->_doAutoTickPos($aScale);
         }
-        $this->_StrokeTicks($aImg, $aScale, $aPos, $aScale->type == 'x');
+        $this->_StrokeTicks($aImg, $aScale, $aPos, 'x' === $aScale->type);
     }
 
     /**
@@ -118,13 +129,15 @@ class LinearTicks extends Ticks
     public function SetXLabelOffset($aLabelOff, $aTickOff = -1)
     {
         $this->xlabel_offset = $aLabelOff;
-        if ($aTickOff == -1) {
+
+        if (-1 === $aTickOff) {
             // Same as label offset
             $this->xtick_offset = $aLabelOff;
         } else {
             $this->xtick_offset = $aTickOff;
         }
-        if ($aLabelOff <= 0) {
+
+        if (0 >= $aLabelOff) {
             return;
         }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $titles = ['Planning', 'Quality', 'Time', 'RR', 'CR', 'DR'];
-$data   = [18, 40, 70, 90, 42, 66];
+$data = [18, 40, 70, 90, 42, 66];
 
-$__width       = 300;
-$__height      = 280;
-$graph         = new Graph\RadarGraph($__width, $__height);
+$__width = 300;
+$__height = 280;
+$graph = new Graph\RadarGraph($__width, $__height);
 $example_title = 'Radar with marks';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);

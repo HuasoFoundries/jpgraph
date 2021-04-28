@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,9 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [0, 25, 12, 47, 27, 27, 0];
 
 // Setup the graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, $aYMax = 50);
 
 $theme_class = new UniversalTheme();

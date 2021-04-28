@@ -1,11 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 require_once 'jpgraph/jpgraph_canvas.php';
+
 require_once 'jpgraph/jpgraph_table.php';
 
 $data = [['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -14,20 +16,21 @@ $data = [['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     ['Sum:'],
 ];
 
-$r = count($data);
+$r = \count($data);
 $c = 7;
 
 for ($i = 1; $i < $c; ++$i) {
     $tmp = 0;
-    for ($j = 1; $j < $r - 1; ++$j) {
+
+    for ($j = 1; $r - 1 > $j; ++$j) {
         $tmp += $data[$j][$i];
     }
-    $data[3][$i] = sprintf('%2.1f', $tmp);
+    $data[3][$i] = \sprintf('%2.1f', $tmp);
 }
 
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 $table = new GTextTable();
 $table->Init();

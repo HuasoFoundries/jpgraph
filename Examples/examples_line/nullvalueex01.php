@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,14 +9,14 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data
-$datax  = ['2001-04-01', '2001-04-02', '2001-04-03', '2001-04-04', '2001-04-05', '2001-04-06'];
-$datay  = [28, 13, 24, '', 90, 11];
+$datax = ['2001-04-01', '2001-04-02', '2001-04-03', '2001-04-04', '2001-04-05', '2001-04-06'];
+$datay = [28, 13, 24, '', 90, 11];
 $data2y = [11, 41, '-', 33, '-', 63];
 
 // Setup graph
-$__width  = 400;
+$__width = 400;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 150, 40, 80);
 $graph->SetScale('textlin');
 $graph->SetShadow();

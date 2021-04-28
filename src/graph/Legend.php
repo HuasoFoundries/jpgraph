@@ -1,25 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
-use function array_reverse;
-use function ceil;
-use function define;
 use function defined;
-use function htmlentities;
-use function is_array;
-use function is_string;
 use function max;
-use function min;
-use function preg_match;
 use function round;
-use function sprintf;
 
 /*
  * File:        ..self::PHP
@@ -31,7 +22,7 @@ use function sprintf;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
-defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
+\defined('_DEFAULT_LPM_SIZE') || \define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 /**
  * @class Legend
@@ -40,41 +31,70 @@ defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legen
  */
 class Legend extends Configs
 {
-    public $txtcol          = [];
-    public $font_family     = Configs::FF_DEFAULT;
-    public $font_style      = Configs::FS_NORMAL;
-    public $font_size       = 8; // old. 12
-    private $color          = [120, 120, 120]; // Default frame color
-    private $fill_color     = [245, 245, 245]; // Default fill color
-    private $shadow         = false; // Shadow around legend "box"
-    private $shadow_color   = 'darkgray';
+    public $txtcol = [];
+
+    public $font_family = Configs::FF_DEFAULT;
+
+    public $font_style = Configs::FS_NORMAL;
+
+    public $font_size = 8; // old. 12
+
+    private $color = [120, 120, 120]; // Default frame color
+
+    private $fill_color = [245, 245, 245]; // Default fill color
+
+    private $shadow = false; // Shadow around legend "box"
+
+    private $shadow_color = 'darkgray';
+
     private $mark_abs_hsize = Configs::_DEFAULT_LPM_SIZE;
+
     private $mark_abs_vsize = Configs::_DEFAULT_LPM_SIZE;
-    private $xmargin        = 10;
-    private $ymargin        = 0;
-    private $shadow_width   = 2;
-    private $xlmargin       = 4;
-    private $ylinespacing   = 5;
+
+    private $xmargin = 10;
+
+    private $ymargin = 0;
+
+    private $shadow_width = 2;
+
+    private $xlmargin = 4;
+
+    private $ylinespacing = 5;
 
     // We need a separate margin since the baseline of the last text would coincide with the bottom otherwise
     private $ybottom_margin = 8;
 
-    private $xpos         = 0.05;
-    private $ypos         = 0.15;
-    private $xabspos      = -1;
-    private $yabspos      = -1;
-    private $halign       = 'right';
-    private $valign       = 'top';
-    private $font_color   = 'black';
-    private $hide         = false;
-    private $layout_n     = 1;
-    private $weight       = 1;
-    private $frameweight  = 1;
-    private $csimareas    = '';
-    private $reverse      = false;
+    private $xpos = 0.05;
+
+    private $ypos = 0.15;
+
+    private $xabspos = -1;
+
+    private $yabspos = -1;
+
+    private $halign = 'right';
+
+    private $valign = 'top';
+
+    private $font_color = 'black';
+
+    private $hide = false;
+
+    private $layout_n = 1;
+
+    private $weight = 1;
+
+    private $frameweight = 1;
+
+    private $csimareas = '';
+
+    private $reverse = false;
+
     private $bkg_gradtype = -1;
+
     private $bkg_gradfrom = 'lightgray';
-    private $bkg_gradto   = 'gray';
+
+    private $bkg_gradto = 'gray';
 
     /**
      * .
@@ -117,9 +137,9 @@ class Legend extends Configs
 
     public function SetShadow($aShow = 'gray', $aWidth = 4)
     {
-        if (is_string($aShow)) {
+        if (\is_string($aShow)) {
             $this->shadow_color = $aShow;
-            $this->shadow       = true;
+            $this->shadow = true;
         } else {
             $this->shadow = $aShow;
         }
@@ -154,7 +174,7 @@ class Legend extends Configs
 
     public function SetLayout($aDirection = Configs::LEGEND_VERT)
     {
-        $this->layout_n = $aDirection == Configs::getConfig('LEGEND_VERT') ? 1 : 99;
+        $this->layout_n = Configs::getConfig('LEGEND_VERT') === $aDirection ? 1 : 99;
     }
 
     public function SetColumns($aCols)
@@ -171,14 +191,14 @@ class Legend extends Configs
     public function SetColor($aFontColor, $aColor = 'black')
     {
         $this->font_color = $aFontColor;
-        $this->color      = $aColor;
+        $this->color = $aColor;
     }
 
     public function SetFont($aFamily, $aStyle = Configs::FS_NORMAL, $aSize = 10)
     {
         $this->font_family = $aFamily;
-        $this->font_style  = $aStyle;
-        $this->font_size   = $aSize;
+        $this->font_style = $aStyle;
+        $this->font_size = $aSize;
     }
 
     public function SetPos($aX, $aY, $aHAlign = 'right', $aVAlign = 'top')
@@ -190,17 +210,17 @@ class Legend extends Configs
     {
         $this->xabspos = $aX;
         $this->yabspos = $aY;
-        $this->halign  = $aHAlign;
-        $this->valign  = $aVAlign;
+        $this->halign = $aHAlign;
+        $this->valign = $aVAlign;
     }
 
     public function Pos($aX, $aY, $aHAlign = 'right', $aVAlign = 'top')
     {
-        if (!($aX < 1 && $aY < 1)) {
+        if (!(1 > $aX && 1 > $aY)) {
             Util\JpGraphError::RaiseL(25120); //(" Position for legend must be given as percentage in range 0-1");
         }
-        $this->xpos   = $aX;
-        $this->ypos   = $aY;
+        $this->xpos = $aX;
+        $this->ypos = $aY;
         $this->halign = $aHAlign;
         $this->valign = $aVAlign;
     }
@@ -229,7 +249,7 @@ class Legend extends Configs
     {
         $this->bkg_gradtype = $aGradType;
         $this->bkg_gradfrom = $aFrom;
-        $this->bkg_gradto   = $aTo;
+        $this->bkg_gradto = $aTo;
     }
 
     public function HasItems()
@@ -249,17 +269,19 @@ class Legend extends Configs
         $aImg->SetFont($this->font_family, $this->font_style, $this->font_size);
 
         if ($this->reverse) {
-            $this->txtcol = array_reverse($this->txtcol);
+            $this->txtcol = \array_reverse($this->txtcol);
         }
 
         $n = Configs::safe_count($this->txtcol);
-        if ($n == 0) {
+
+        if (0 === $n) {
             return;
         }
 
         // Find out the max width and height of each column to be able
         // to size the legend box.
         $numcolumns = ($n > $this->layout_n ? $this->layout_n : $n);
+
         for ($i = 0; $i < $numcolumns; ++$i) {
             $colwidth[$i] = $aImg->GetTextWidth($this->txtcol[$i][0]) +
             2 * $this->xmargin + 2 * $this->mark_abs_hsize;
@@ -267,35 +289,37 @@ class Legend extends Configs
         }
 
         // Find our maximum height in each row
-        $rows         = 0;
+        $rows = 0;
         $rowheight[0] = 0;
+
         for ($i = 0; $i < $n; ++$i) {
-            $h = max($this->mark_abs_vsize, $aImg->GetTextHeight($this->txtcol[$i][0])) + $this->ylinespacing;
+            $h = \max($this->mark_abs_vsize, $aImg->GetTextHeight($this->txtcol[$i][0])) + $this->ylinespacing;
 
             // Makes sure we always have a minimum of 1/4 (1/2 on each side) of the mark as space
             // between two vertical legend entries
             //$h = round(max($h,$this->mark_abs_vsize+$this->ymargin));
             //echo "Textheight #$i: tetxheight=".$aImg->GetTextHeight($this->txtcol[$i][0]).', ';
             //echo "h=$h ({$this->mark_abs_vsize},{$this->ymargin})<br>";
-            if ($i % $numcolumns == 0) {
+            if ($i % $numcolumns === 0) {
                 ++$rows;
                 $rowheight[$rows - 1] = 0;
             }
-            $rowheight[$rows - 1] = max($rowheight[$rows - 1], $h) + 1;
+            $rowheight[$rows - 1] = \max($rowheight[$rows - 1], $h) + 1;
         }
 
         $abs_height = 0;
+
         for ($i = 0; $i < $rows; ++$i) {
             $abs_height += $rowheight[$i];
         }
 
         // Make sure that the height is at least as high as mark size + ymargin
-        $abs_height = max($abs_height, $this->mark_abs_vsize);
+        $abs_height = \max($abs_height, $this->mark_abs_vsize);
         $abs_height += $this->ybottom_margin;
 
         // Find out the maximum width in each column
         for ($i = $numcolumns; $i < $n; ++$i) {
-            $colwidth[$i % $numcolumns] = max(
+            $colwidth[$i % $numcolumns] = \max(
                 $aImg->GetTextWidth($this->txtcol[$i][0]) + 2 * $this->xmargin + 2 * $this->mark_abs_hsize,
                 $colwidth[$i % $numcolumns]
             );
@@ -303,6 +327,7 @@ class Legend extends Configs
 
         // Get the total width
         $mtw = 0;
+
         for ($i = 0; $i < $numcolumns; ++$i) {
             $mtw += $colwidth[$i];
         }
@@ -313,24 +338,25 @@ class Legend extends Configs
         // Find out maximum width we need for legend box
         $abs_width = $mtw + $this->xlmargin + ($numcolumns - 1) * $this->mark_abs_hsize;
 
-        if ($this->xabspos === -1 && $this->yabspos === -1) {
+        if (-1 === $this->xabspos && -1 === $this->yabspos) {
             $this->xabspos = $this->xpos * $aImg->width;
             $this->yabspos = $this->ypos * $aImg->height;
         }
 
         // Positioning of the legend box
-        if ($this->halign == 'left') {
+        if ('left' === $this->halign) {
             $xp = $this->xabspos;
-        } elseif ($this->halign == 'center') {
+        } elseif ('center' === $this->halign) {
             $xp = $this->xabspos - $abs_width / 2;
         } else {
             $xp = $aImg->width - $this->xabspos - $abs_width;
         }
 
         $yp = $this->yabspos;
-        if ($this->valign == 'center') {
+
+        if ('center' === $this->valign) {
             $yp -= $abs_height / 2;
-        } elseif ($this->valign == 'bottom') {
+        } elseif ('bottom' === $this->valign) {
             $yp -= $abs_height;
         }
 
@@ -356,7 +382,7 @@ class Legend extends Configs
             $aImg->Rectangle($xp, $yp, $xp + $abs_width, $yp + $abs_height);
         }
 
-        if ($this->bkg_gradtype >= 0) {
+        if (0 <= $this->bkg_gradtype) {
             $grad = new Plot\Gradient($aImg);
             $grad->FilledRectangle(
                 $xp + 1,
@@ -381,7 +407,7 @@ class Legend extends Configs
         // Now, y1 is the bottom vertical position of the first legend, i.e if
         // the legend has multiple lines it is the bottom line.
 
-        $grad           = new Plot\Gradient($aImg);
+        $grad = new Plot\Gradient($aImg);
         $patternFactory = null;
 
         // Now stroke each legend in turn
@@ -392,8 +418,9 @@ class Legend extends Configs
         // p[3] = For lines the line style, for gradient the negative gradient style
         // p[4] = Configs::getConfig('CSIM') target
         // p[5] = Configs::getConfig('CSIM') Alt text
-        $i   = 1;
+        $i = 1;
         $row = 0;
+
         foreach ($this->txtcol as $p) {
             // Configs::getConfig('STROKE') Configs::getConfig('DEBUG') self::BOX
             if (Configs::_JPG_DEBUG) {
@@ -404,8 +431,8 @@ class Legend extends Configs
             }
 
             $aImg->SetLineWeight($this->weight);
-            $x1 = round($x1) + 1; // We add one to not collide with the border
-            $y1 = round($y1);
+            $x1 = \round($x1) + 1; // We add one to not collide with the border
+            $y1 = \round($y1);
 
             // This is the center offset up from the baseline which is
             // considered the "center" of the marks. This gets slightly complicated since
@@ -414,9 +441,9 @@ class Legend extends Configs
             // and that is fine. However for a multiline paragraph there is no single baseline
             // and in that case the y1 corresponds to the lowest y for the bounding box. In that
             // case we center the mark in the middle of the paragraph
-            if (!preg_match('/\n/', $p[0])) {
+            if (!\preg_match('/\n/', $p[0])) {
                 // Single line
-                $marky = ceil($y1 - $this->mark_abs_vsize / 2) - 1;
+                $marky = \ceil($y1 - $this->mark_abs_vsize / 2) - 1;
             } else {
                 // Paragraph
                 $marky = $y1 - $aImg->GetTextHeight($p[0]) / 2;
@@ -435,36 +462,37 @@ class Legend extends Configs
                 // First construct a bit of the line that looks exactly like the
                 // line in the plot
                 $aImg->SetColor($p[1]);
-                if (is_string($p[3]) || $p[3] > 0) {
+
+                if (\is_string($p[3]) || 0 < $p[3]) {
                     $aImg->SetLineStyle($p[3]);
                     $aImg->StyleLine($x1 - $this->mark_abs_hsize, $marky, $x1 + $this->mark_abs_hsize, $marky);
                 }
 
                 // Stroke a mark using image
-                if ($p[2]->GetType() == Configs::getConfig('MARK_IMG')) {
+                if ($p[2]->GetType() === Configs::getConfig('MARK_IMG')) {
                     $p[2]->Stroke($aImg, $x1, $marky);
                 }
 
                 // Stroke a mark with the standard size
                 // (As long as it is not an image mark )
-                if ($p[2]->GetType() != Configs::getConfig('MARK_IMG')) {
+                if ($p[2]->GetType() !== Configs::getConfig('MARK_IMG')) {
                     // Clear any user callbacks since we ont want them called for
                     // the legend marks
-                    $p[2]->iFormatCallback  = '';
+                    $p[2]->iFormatCallback = '';
                     $p[2]->iFormatCallback2 = '';
 
                     // Since size for circles is specified as the radius
                     // this means that we must half the size to make the total
                     // width behave as the other marks
-                    if ($p[2]->GetType() == Configs::getConfig('MARK_FILLEDCIRCLE') || $p[2]->GetType() == Configs::getConfig('MARK_CIRCLE')) {
-                        $p[2]->SetSize(min($this->mark_abs_vsize, $this->mark_abs_hsize) / 2);
+                    if ($p[2]->GetType() === Configs::getConfig('MARK_FILLEDCIRCLE') || $p[2]->GetType() === Configs::getConfig('MARK_CIRCLE')) {
+                        $p[2]->SetSize(\min($this->mark_abs_vsize, $this->mark_abs_hsize) / 2);
                         $p[2]->Stroke($aImg, $x1, $marky);
                     } else {
-                        $p[2]->SetSize(min($this->mark_abs_vsize, $this->mark_abs_hsize));
+                        $p[2]->SetSize(\min($this->mark_abs_vsize, $this->mark_abs_hsize));
                         $p[2]->Stroke($aImg, $x1, $marky);
                     }
                 }
-            } elseif (!empty($p[2]) && (is_string($p[3]) || $p[3] > 0)) {
+            } elseif (!empty($p[2]) && (\is_string($p[3]) || 0 < $p[3])) {
                 // Draw a styled line
                 $aImg->SetColor($p[1]);
                 $aImg->SetLineStyle($p[3]);
@@ -475,16 +503,16 @@ class Legend extends Configs
                 $color = $p[1];
 
                 // We make boxes slightly larger to better show
-                $boxsize = max($this->mark_abs_vsize, $this->mark_abs_hsize) + 2;
+                $boxsize = \max($this->mark_abs_vsize, $this->mark_abs_hsize) + 2;
 
-                $ym = $marky - ceil($boxsize / 2); // Marker y-coordinate
+                $ym = $marky - \ceil($boxsize / 2); // Marker y-coordinate
 
                 // We either need to plot a gradient or a
                 // pattern. To differentiate we use a kludge.
                 // Patterns have a p[3] value of < -100
-                if ($p[3] < -100) {
+                if (-100 > $p[3]) {
                     // p[1][0] == iPattern, p[1][1] == iPatternColor, p[1][2] == iPatternDensity
-                    if ($patternFactory == null) {
+                    if (null === $patternFactory) {
                         $patternFactory = new RectPatternFactory();
                     }
                     $prect = $patternFactory->Create($p[1][0], $p[1][1], 1);
@@ -494,7 +522,7 @@ class Legend extends Configs
                     $prect->Stroke($aImg);
                     $prect = null;
                 } else {
-                    if (is_array($color) && Configs::safe_count($color) == 2) {
+                    if (\is_array($color) && Configs::safe_count($color) === 2) {
                         // The client want a gradient color
                         $grad->FilledRectangle(
                             $x1 - $boxsize / 2,
@@ -537,21 +565,22 @@ class Legend extends Configs
 
             // Add Configs::getConfig('CSIM') for Legend if defined
             if (!empty($p[4])) {
-                $xs     = $x1 - $this->mark_abs_hsize;
-                $ys     = $y1 + 1;
-                $xe     = $x1 + $aImg->GetTextWidth($p[0]) + $this->mark_abs_hsize + $this->xmargin;
-                $ye     = $y1 - $rowheight[$row] + 1;
-                $coords = "${xs},${ys},${xe},${y1},${xe},${ye},${xs},${ye}";
+                $xs = $x1 - $this->mark_abs_hsize;
+                $ys = $y1 + 1;
+                $xe = $x1 + $aImg->GetTextWidth($p[0]) + $this->mark_abs_hsize + $this->xmargin;
+                $ye = $y1 - $rowheight[$row] + 1;
+                $coords = "{$xs},{$ys},{$xe},{$y1},{$xe},{$ye},{$xs},{$ye}";
+
                 if (!empty($p[4])) {
-                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($p[4]) . '"';
+                    $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . \htmlentities($p[4]) . '"';
 
                     if (!empty($p[6])) {
                         $this->csimareas .= ' target="' . $p[6] . '"';
                     }
 
                     if (!empty($p[5])) {
-                        $tmp = sprintf($p[5], $p[0]);
-                        $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                        $tmp = \sprintf($p[5], $p[0]);
+                        $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                     }
                     $this->csimareas .= " />\n";
                 }
@@ -560,6 +589,7 @@ class Legend extends Configs
             if ($i >= $this->layout_n) {
                 $x1 = $xp + $this->xlmargin;
                 ++$row;
+
                 if (!empty($rowheight[$row])) {
                     $y1 += $rowheight[$row];
                 }

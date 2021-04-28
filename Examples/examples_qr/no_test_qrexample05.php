@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Include the library
@@ -14,7 +14,7 @@ $data = [
     [QREncoder::MODE_ALPHANUM, '01234567'],
 ];
 
-$version   = 3; // Use QR version 3
+$version = 3; // Use QR version 3
 $corrlevel = QRCapacity::ErrH; // Level H error correction (the highest possible)
 
 // Create a new instance of the encoder using the specified

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,20 +12,20 @@ use Amenadiel\JpGraph\Plot;
 // as the direction label
 $data2 = [
     'vsv' => [12, 8, 2, 3],
-    6     => [5, 4, 4, 5, 4],
+    6 => [5, 4, 4, 5, 4],
 ];
 
 $se_CompassLbl = ['O', 'ONO', 'NO', 'NNO', 'N', 'NNV', 'NV', 'VNV', 'V', 'VSV', 'SV', 'SSV', 'S', 'SSO', 'SO', 'OSO'];
 
 // Create a new small windrose graph
-$__width  = 400;
+$__width = 400;
 $__height = 400;
-$graph    = new Graph\WindroseGraph($__width, $__height);
+$graph = new Graph\WindroseGraph($__width, $__height);
 $graph->SetMargin(25, 25, 25, 25);
 $graph->SetFrame();
 $example_title = 'Example with background flag';
 $graph->title->set($example_title);
-#$graph->title->SetFont(Graph\Configs::getConfig('FF_VERA'),FS_BOLD,14);
+//$graph->title->SetFont(Graph\Configs::getConfig('FF_VERA'),FS_BOLD,14);
 
 //$graph->SetBackgroundImage(__DIR__.'/../assets/bkgimg.jpg',BGIMG_FILLFRAME);
 //$graph->SetBackgroundImageMix(90);

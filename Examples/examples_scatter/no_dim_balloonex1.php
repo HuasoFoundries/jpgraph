@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
@@ -19,21 +19,21 @@ $datay = [12, 23, 95, 18, 65, 28, 86, 44];
 $FCallback = function ($aVal) {
     // This callback will adjust the fill color and size of
     // the datapoint according to the data value according to
-    if ($aVal < 30) {
+    if (30 > $aVal) {
         $c = 'blue';
-    } elseif ($aVal < 70) {
+    } elseif (70 > $aVal) {
         $c = 'green';
     } else {
         $c = 'red';
     }
 
-    return [floor($aVal / 3), '', $c];
+    return [\floor($aVal / 3), '', $c];
 };
 
 // Setup a basic graph
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('linlin');
 $graph->img->SetMargin(40, 100, 40, 40);
 $graph->SetShadow();

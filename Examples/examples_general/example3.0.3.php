@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Plot;
 $ydata = [17, 3, '', 10, 7, '', 3, 19, 9, 7];
 
 // Size of the overall graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
 
 // Create the graph and set a scale.

@@ -1,15 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-define('DEBUGMODE', true);
-ini_set('display_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
-ini_set('display_startup_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+\define('DEBUGMODE', true);
+\ini_set('display_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+\ini_set('display_startup_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+
 if (Graph\Configs::getConfig('DEBUGMODE')) {
-    error_reporting(E_ALL);
+    \error_reporting(\E_ALL);
 }
 
 use Amenadiel\JpGraph\Graph;
@@ -19,11 +20,11 @@ use Amenadiel\JpGraph\Plot;
 $data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
-$__width  = 400;
+$__width = 400;
 $__height = 320;
 $piegraph = new Graph\PieGraph($__width, $__height);
 
-$n = count($data); // Number of slices
+$n = \count($data); // Number of slices
 
 // No border around graph
 $piegraph->SetFrame(false);
@@ -69,13 +70,14 @@ $p1->ExplodeAll(15);
 
 // Setup the Graph\Configs::getConfig('CSIM') targets
 global $_wrapperfilename;
-$targ  = [];
-$alt   = [];
+$targ = [];
+$alt = [];
 $wtarg = [];
+
 for ($i = 0; $i <= $n; ++$i) {
-    $urlarg  = 'pie_clickedon=' . ($i + 1);
-    $targ[]  = $_wrapperfilename . '?' . $urlarg;
-    $alt[]   = 'val=%d';
+    $urlarg = 'pie_clickedon=' . ($i + 1);
+    $targ[] = $_wrapperfilename . '?' . $urlarg;
+    $alt[] = 'val=%d';
     $wtarg[] = '';
 }
 $p1->SetCSIMTargets($targ, $alt, $wtarg);

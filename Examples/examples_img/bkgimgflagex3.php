@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ $datay2 = [35, 90, 190];
 $datay3 = [20, 60, 70];
 
 // Create the basic graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(40, 20, 20, 40);
 $graph->SetMarginColor('white:0.9');

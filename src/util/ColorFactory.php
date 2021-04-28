@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -10,7 +10,8 @@ namespace Amenadiel\JpGraph\Util;
 // is called. Used to automatically set colors of plots.
 class ColorFactory
 {
-    private static $iIdx       = 0;
+    private static $iIdx = 0;
+
     private static $iColorList = [
         'black',
         'blue',
@@ -46,7 +47,8 @@ class ColorFactory
         'yellow4',
         'springgreen2',
     ];
-    private static $iNum       = 33;
+
+    private static $iNum = 33;
 
     public static function getColor()
     {

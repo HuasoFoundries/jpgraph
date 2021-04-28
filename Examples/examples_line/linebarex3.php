@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,19 +10,22 @@ use Amenadiel\JpGraph\Plot;
 
 // Some data
 
-$steps         = 100; for ($i = 0; $i < $steps; ++$i) {
-    $datay[$i] = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
-    $datax[]   = $i;
-    if ($i % 10 == 0) {
+$steps = 100;
+
+for ($i = 0; $i < $steps; ++$i) {
+    $datay[$i] = \log($i ** ($i / 10) + 1) * \sin($i / 15) + 35;
+    $datax[] = $i;
+
+    if ($i % 10 === 0) {
         $databarx[] = $i;
         $databary[] = $datay[$i] / 2;
     }
 }
 
 // new Graph\Graph with a background image and drop shadow
-$__width  = 450;
+$__width = 450;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 180, 40, 40);
 $graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 

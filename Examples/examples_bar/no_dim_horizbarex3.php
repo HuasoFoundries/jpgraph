@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,17 +12,17 @@ $datay = [2, 3, -5, 8, 12, 6, 3];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
 
 // Size of graph
-$__width  = 400;
+$__width = 400;
 $__height = 500;
 
 // Set the basic parameters of the graph
 $graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
-$top    = 50;
+$top = 50;
 $bottom = 80;
-$left   = 50;
-$right  = 20;
+$left = 50;
+$right = 20;
 $graph->Set90AndMargin($left, $right, $top, $bottom);
 
 $graph->xaxis->SetPos('min');

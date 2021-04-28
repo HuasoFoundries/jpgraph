@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ $ymax = 24;
 $xmax = 20;
 
 // Setup the basic canvas
-$__width  = 700;
+$__width = 700;
 $__height = 650;
-$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
+$g = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(2, 3, 2, 3);
 $g->SetMarginColor('teal');
 $g->InitFrame();
@@ -29,8 +29,8 @@ $shape = new Graph\Shape($g, $g->scale);
 $shape->SetColor('black');
 
 // ... basic parameters for the overall image
-$l     = 2; // Left margin
-$r     = 18; // Row number to start the lowest line on
+$l = 2; // Left margin
+$r = 18; // Row number to start the lowest line on
 $width = 16; // Total width
 
 // Setup the two basic rectangle text object we  will use
@@ -155,7 +155,7 @@ $tt->Stroke($g->img, $g->scale);
 
 // Stroke footer
 $tt->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
-$tt->Set('Generated: ' . date('ymd H:m', time()), 0.1, $ymax * 0.95);
+$tt->Set('Generated: ' . \date('ymd H:m', \time()), 0.1, $ymax * 0.95);
 $tt->Stroke($g->img, $g->scale);
 
 // .. and stream it all back

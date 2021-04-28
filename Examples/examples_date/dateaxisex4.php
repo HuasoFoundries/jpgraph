@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,20 +10,21 @@ use Amenadiel\JpGraph\Plot;
 
 // Create a data set in range (50,70) and X-positions
 $NDATAPOINTS = 360;
-$SAMPLERATE  = 240;
-$start       = time();
-$end         = $start + $NDATAPOINTS * $SAMPLERATE;
-$data        = [];
-$xdata       = [];
+$SAMPLERATE = 240;
+$start = \time();
+$end = $start + $NDATAPOINTS * $SAMPLERATE;
+$data = [];
+$xdata = [];
+
 for ($i = 0; $i < $NDATAPOINTS; ++$i) {
-    $data[$i]  = rand(50, 70);
+    $data[$i] = \mt_rand(50, 70);
     $xdata[$i] = $start + $i * $SAMPLERATE;
 }
 
 // Create the new Graph\Graph
-$__width  = 540;
+$__width = 540;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 // Slightly larger than normal margins at the bottom to have room for
 // the x-axis labels

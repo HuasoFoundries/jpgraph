@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -54,6 +54,7 @@ class RectPatternFactory
                 $obj = new RectPatternDiagCross($aColor, $aWeight);
 
                 break;
+
             default:
                 Util\JpGraphError::RaiseL(16003, $aPattern);
                 //(" Unknown pattern specification ($aPattern)");

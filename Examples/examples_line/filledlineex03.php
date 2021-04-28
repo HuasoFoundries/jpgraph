@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,9 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [11, 30, 20, 13, 10, 'x', 16, 12, 'x', 15, 4, 9];
 
 // Setup the graph
-$__width  = 400;
+$__width = 400;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $example_title = 'Filled line with NULL values';
 $graph->title->set($example_title);

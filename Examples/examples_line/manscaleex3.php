@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,9 +10,9 @@ use Amenadiel\JpGraph\Plot;
 
 $ydata = [12, 17, 22, 19, 5, 15];
 
-$__width  = 250;
+$__width = 250;
 $__height = 170;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin', 3, 35);
 $graph->SetTickDensity(Graph\Configs::getConfig('TICKD_DENSE'));
 $graph->yscale->SetAutoTicks();

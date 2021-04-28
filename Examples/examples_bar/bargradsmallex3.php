@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [4, 8, 6];
 
 // Setup the graph.
-$__width  = 200;
+$__width = 200;
 $__height = 150;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->img->SetMargin(25, 15, 25, 25);
 $example_title = 'GRAD_HOR';

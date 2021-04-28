@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 21, 17, 14, 23];
 
 // Create the Pie Graph.
-$__width  = 350;
+$__width = 350;
 $__height = 300;
-$graph    = new Graph\PieGraph($__width, $__height);
+$graph = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot
@@ -24,7 +24,7 @@ $graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getC
 
 // Create plots
 $size = 0.13;
-$p1   = new Plot\PiePlot($data);
+$p1 = new Plot\PiePlot($data);
 $p1->SetLegends(['Jan', 'Feb', 'Mar', 'Apr', 'May']);
 $p1->SetSize($size);
 $p1->SetCenter(0.25, 0.32);

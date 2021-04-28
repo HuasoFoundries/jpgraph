@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,9 +19,9 @@ $rhos = [30.0, 31.0, 32.0, 34.0, 35.5, 37.5, 38.0, 39.5, 41.5,
     75.0, 81.0, 89.0, ];
 
 // Create the graph.
-$__width  = 500;
+$__width = 500;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('loglog');
 $graph->SetY2Scale('lin');
 $graph->y2axis->SetColor('blue', 'blue');

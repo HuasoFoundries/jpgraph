@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -9,16 +9,17 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function is_array;
 
 /**
  * @class WindroseGraph
  */
 class WindroseGraph extends Graph
 {
-    private $posx;
-    private $posy;
     public $plots = [];
+
+    private $posx;
+
+    private $posy;
 
     public function __construct($width = 300, $height = 200, $cachedName = '', $timeout = 0, $inline = 1)
     {
@@ -36,11 +37,12 @@ class WindroseGraph extends Graph
 
     public function StrokeTexts()
     {
-        if ($this->texts == null) {
+        if (null === $this->texts) {
             return;
         }
 
         $n = Configs::safe_count($this->texts);
+
         for ($i = 0; $i < $n; ++$i) {
             $this->texts[$i]->Stroke($this->img);
         }
@@ -48,11 +50,12 @@ class WindroseGraph extends Graph
 
     public function StrokeIcons()
     {
-        if ($this->iIcons == null) {
+        if (null === $this->iIcons) {
             return;
         }
 
         $n = Configs::safe_count($this->iIcons);
+
         for ($i = 0; $i < $n; ++$i) {
             // Since Windrose graphs doesn't have any linear scale the position of
             // each icon has to be given as absolute coordinates
@@ -67,11 +70,12 @@ class WindroseGraph extends Graph
      */
     public function Add($aObj)
     {
-        if (is_array($aObj) && Configs::safe_count($aObj) > 0) {
+        if (\is_array($aObj) && Configs::safe_count($aObj) > 0) {
             $cl = $aObj[0];
         } else {
             $cl = $aObj;
         }
+
         if ($cl instanceof Text\Text) {
             $this->AddText($aObj);
         } elseif ($cl instanceof Plot\IconPlot) {
@@ -103,7 +107,7 @@ class WindroseGraph extends Graph
         // to do to generate the image map to improve performance
         // as best we can. Therefore you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
+        $_csim = (Configs::getConfig('_CSIM_SPECIALFILE') === $aStrokeFileName);
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -111,7 +115,7 @@ class WindroseGraph extends Graph
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        if ($this->background_image != '' || $this->background_cflag != '') {
+        if ('' !== $this->background_image || '' !== $this->background_cflag) {
             $this->StrokeFrameBackground();
         } else {
             $this->StrokeFrame();
@@ -119,6 +123,7 @@ class WindroseGraph extends Graph
 
         // n holds number of plots
         $n = Configs::safe_count($this->plots);
+
         for ($i = 0; $i < $n; ++$i) {
             $this->plots[$i]->Stroke($this);
         }
@@ -131,7 +136,7 @@ class WindroseGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
             return $this->img->img;
         }
         // Finally stream the generated picture

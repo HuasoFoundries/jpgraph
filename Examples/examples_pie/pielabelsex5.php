@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,16 +9,16 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data and the labels
-$data   = [19, 12, 4, 7, 3, 12, 3];
+$data = [19, 12, 4, 7, 3, 12, 3];
 $labels = ["First\n(%.1f%%)",
     "Second\n(%.1f%%)", "Third\n(%.1f%%)",
     "Fourth\n(%.1f%%)", "Fifth\n(%.1f%%)",
     "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)", ];
 
 // Create the Pie Graph.
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\PieGraph($__width, $__height);
+$graph = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot

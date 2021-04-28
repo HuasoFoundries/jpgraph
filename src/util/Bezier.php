@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -18,24 +18,29 @@ class Bezier
      * http://local.wasp.uwa.edu.au/~pbourke/geometry/bezier/index2.html
      */
     private $datax = [];
+
     private $datay = [];
-    private $n     = 0;
+
+    private $n = 0;
 
     public function __construct($datax, $datay, $attraction_factor = 1)
     {
         // Adding control point multiple time will raise their attraction power over the curve
         $this->n = Configs::safe_count($datax);
-        if ($this->n !== Configs::safe_count($datay)) {
+
+        if (Configs::safe_count($datay) !== $this->n) {
             JpGraphError::RaiseL(19003);
             //('Bezier: Number of X and Y coordinates must be the same');
         }
         $idx = 0;
+
         foreach ($datax as $datumx) {
             for ($i = 0; $i < $attraction_factor; ++$i) {
                 $this->datax[$idx++] = $datumx;
             }
         }
         $idx = 0;
+
         foreach ($datay as $datumy) {
             for ($i = 0; $i < $attraction_factor; ++$i) {
                 $this->datay[$idx++] = $datumy;
@@ -55,14 +60,15 @@ class Bezier
     {
         $datax = [];
         $datay = [];
+
         for ($i = 0; $i < $steps; ++$i) {
-            list($datumx, $datumy) = $this->GetPoint((float) $i / (float) $steps);
-            $datax[$i]             = $datumx;
-            $datay[$i]             = $datumy;
+            [$datumx, $datumy] = $this->GetPoint((float) $i / (float) $steps);
+            $datax[$i] = $datumx;
+            $datay[$i] = $datumy;
         }
 
-        $datax[] = end($this->datax);
-        $datay[] = end($this->datay);
+        $datax[] = \end($this->datax);
+        $datay[] = \end($this->datay);
 
         return [$datax, $datay];
     }
@@ -78,33 +84,36 @@ class Bezier
      */
     public function GetPoint($mu)
     {
-        $n     = $this->n - 1;
-        $k     = 0;
-        $kn    = 0;
-        $nn    = 0;
-        $nkn   = 0;
+        $n = $this->n - 1;
+        $k = 0;
+        $kn = 0;
+        $nn = 0;
+        $nkn = 0;
         $blend = 0.0;
-        $newx  = 0.0;
-        $newy  = 0.0;
+        $newx = 0.0;
+        $newy = 0.0;
 
-        $muk  = 1.0;
-        $munk = (float) pow(1 - $mu, (float) $n);
+        $muk = 1.0;
+        $munk = (float) (1 - $mu) ** (float) $n;
 
         for ($k = 0; $k <= $n; ++$k) {
-            $nn    = $n;
-            $kn    = $k;
-            $nkn   = $n - $k;
+            $nn = $n;
+            $kn = $k;
+            $nkn = $n - $k;
             $blend = $muk * $munk;
             $muk *= $mu;
             $munk /= (1 - $mu);
-            while ($nn >= 1) {
+
+            while (1 <= $nn) {
                 $blend *= $nn;
                 --$nn;
-                if ($kn > 1) {
+
+                if (1 < $kn) {
                     $blend /= (float) $kn;
                     --$kn;
                 }
-                if ($nkn <= 1) {
+
+                if (1 >= $nkn) {
                     continue;
                 }
 

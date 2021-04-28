@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 
 // Basic Gantt graph
-$graph         = new Graph\GanttGraph();
+$graph = new Graph\GanttGraph();
 $example_title = 'Gantt chart with title columns and icons';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
@@ -51,9 +51,9 @@ $graph->scale->actinfo->vgrid->SetColor('gray');
 //$graph->scale->actinfo->Show(false);
 
 // Setup the icons we want to use
-$erricon      = new Image\IconImage(Graph\Configs::getConfig('GICON_FOLDER'), 0.6);
+$erricon = new Image\IconImage(Graph\Configs::getConfig('GICON_FOLDER'), 0.6);
 $startconicon = new Image\IconImage(Graph\Configs::getConfig('GICON_FOLDEROPEN'), 0.6);
-$endconicon   = new Image\IconImage(Graph\Configs::getConfig('GICON_TEXTIMPORTANT'), 0.5);
+$endconicon = new Image\IconImage(Graph\Configs::getConfig('GICON_TEXTIMPORTANT'), 0.5);
 
 // Store the icons in the first column and use plain text in the others
 $data = [
@@ -65,9 +65,10 @@ $data = [
 ];
 
 // Create the bars and add them to the gantt chart
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $bar = new Plot\GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 10);
-    if (count($data[$i]) > 4) {
+
+    if (\count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
     $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');

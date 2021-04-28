@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,9 +17,9 @@ $data = [
     [10, 8, 7, 8], ];
 
 // create a basic graph as a container
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 30, 40, 30);
 $graph->SetScale('intint');
 $graph->SetMarginColor('white');

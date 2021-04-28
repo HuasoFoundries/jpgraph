@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -14,7 +14,8 @@ use function round;
  */
 class RectPattern3DPlane extends RectPattern
 {
-    private $alpha = 50; // Parameter that specifies the distance
+    private $alpha = 50;
+    // Parameter that specifies the distance
     // to "simulated" horizon in pixel from the
     // top of the band. Specifies how fast the lines
     // converge.
@@ -33,10 +34,10 @@ class RectPattern3DPlane extends RectPattern
     public function DoPattern($aImg)
     {
         // "Fake" a nice 3D grid-effect.
-        $x0       = $this->rect->x + $this->rect->w / 2;
-        $y0       = $this->rect->y;
-        $x1       = $x0;
-        $y1       = $this->rect->ye;
+        $x0 = $this->rect->x + $this->rect->w / 2;
+        $y0 = $this->rect->y;
+        $x1 = $x0;
+        $y1 = $this->rect->ye;
         $x0_right = $x0;
         $x1_right = $x1;
 
@@ -54,13 +55,14 @@ class RectPattern3DPlane extends RectPattern
 
         // Endpoint falls on bottom line
         $middle = $this->rect->x + $this->rect->w / 2;
-        $dist   = $this->linespacing;
+        $dist = $this->linespacing;
         $factor = $this->alpha / ($apa);
+
         while ($x1 > $this->rect->x) {
             $aImg->Line($x0, $y0, $x1, $y1);
             $aImg->Line($x0_right, $y0, $x1_right, $y1);
-            $x1       = $middle - $dist;
-            $x0       = $middle - $dist * $factor;
+            $x1 = $middle - $dist;
+            $x0 = $middle - $dist * $factor;
             $x1_right = $middle + $dist;
             $x0_right = $middle + $dist * $factor;
             $dist += $this->linespacing;
@@ -68,16 +70,17 @@ class RectPattern3DPlane extends RectPattern
 
         // Endpoint falls on sides
         $dist -= $this->linespacing;
-        $d     = $this->rect->w / 2;
-        $c     = $apa - $d * $apa / $dist;
+        $d = $this->rect->w / 2;
+        $c = $apa - $d * $apa / $dist;
+
         while ($x0 > $this->rect->x) {
             $aImg->Line($x0, $y0, $this->rect->x, $this->rect->ye - $c);
             $aImg->Line($x0_right, $y0, $this->rect->xe, $this->rect->ye - $c);
             $dist += $this->linespacing;
-            $x0       = $middle - $dist * $factor;
-            $x1       = $middle - $dist;
+            $x0 = $middle - $dist * $factor;
+            $x1 = $middle - $dist;
             $x0_right = $middle + $dist * $factor;
-            $c        = $apa - $d * $apa / $dist;
+            $c = $apa - $d * $apa / $dist;
         }
 
         // Horizontal lines
@@ -85,7 +88,7 @@ class RectPattern3DPlane extends RectPattern
         // of perspective depth (alpha) and density (linespacing)
         $x0 = $this->rect->x;
         $x1 = $this->rect->xe;
-        $y  = $this->rect->ye;
+        $y = $this->rect->ye;
 
         // The first line is drawn directly. Makes the loop below slightly
         // more readable.
@@ -117,16 +120,18 @@ class RectPattern3DPlane extends RectPattern
          */
 
         $y -= $vls;
-        $k    = ($this->rect->ye - ($this->rect->ye - $vls)) / ($middle - ($middle - $ds));
+        $k = ($this->rect->ye - ($this->rect->ye - $vls)) / ($middle - ($middle - $ds));
         $dist = $hls;
+
         while ($y > $this->rect->y) {
             $aImg->Line($this->rect->x, $y, $this->rect->xe, $y);
             $adj = $k * $dist / (1 + $dist * $k / $apa);
-            if ($adj < 2) {
+
+            if (2 > $adj) {
                 $adj = 1;
             }
 
-            $y     = $this->rect->ye - round($adj);
+            $y = $this->rect->ye - \round($adj);
             $dist += $hls;
         }
     }

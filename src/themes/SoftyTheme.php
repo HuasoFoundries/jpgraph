@@ -1,22 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Themes;
-
-use function get_class;
 
 /**
  * Softy Theme class.
  */
 class SoftyTheme extends Theme
 {
-    protected $font_color       = '#000000';
+    protected $font_color = '#000000';
+
     protected $background_color = '#F7F8F4';
-    protected $axis_color       = '#000000';
-    protected $grid_color       = '#CCCCCC';
+
+    protected $axis_color = '#000000';
+
+    protected $grid_color = '#CCCCCC';
 
     public function GetColorList()
     {
@@ -31,7 +32,7 @@ class SoftyTheme extends Theme
             '#9AB67C',
             '#D1CC66',
 
-/*
+            /*
 
 '#AFD8F8',
 '#F6BD0F',
@@ -47,7 +48,7 @@ class SoftyTheme extends Theme
 
 '#9D080D',
 '#A186BE',
- */
+             */
         ];
     }
 
@@ -145,7 +146,7 @@ class SoftyTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-        switch (get_class($plot)) {
+        switch (\get_class($plot)) {
             case 'BarPlot':
                 $plot->Clear();
 
@@ -176,6 +177,7 @@ class SoftyTheme extends Theme
                 break;
             case 'AccBarPlot':
                 $plot->value->SetAlign('center', 'center');
+
                 foreach ($plot->plots as $_plot) {
                     $this->ApplyPlot($_plot);
                     $_plot->SetValuePos('center');
@@ -188,6 +190,7 @@ class SoftyTheme extends Theme
                 $plot->SetSliceColors($this->GetThemeColors());
 
                 break;
+
             default:
         }
     }

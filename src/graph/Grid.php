@@ -1,13 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
-use function min;
 
 /**
  * @class Grid
@@ -16,28 +15,40 @@ use function min;
 class Grid
 {
     protected $img;
+
     protected $scale;
-    protected $majorcolor  = '#CCCCCC';
-    protected $minorcolor  = '#DDDDDD';
-    protected $majortype   = 'solid';
-    protected $minortype   = 'solid';
-    protected $show        = false;
-    protected $showMinor   = false;
+
+    protected $majorcolor = '#CCCCCC';
+
+    protected $minorcolor = '#DDDDDD';
+
+    protected $majortype = 'solid';
+
+    protected $minortype = 'solid';
+
+    protected $show = false;
+
+    protected $showMinor = false;
+
     protected $majorweight = 1;
+
     protected $minorweight = 1;
-    protected $fill        = false;
-    protected $fillcolor   = ['#EFEFEF', '#BBCCFF'];
+
+    protected $fill = false;
+
+    protected $fillcolor = ['#EFEFEF', '#BBCCFF'];
 
     public function __construct($aAxis)
     {
         $this->scale = $aAxis->scale;
-        $this->img   = $aAxis->img;
+        $this->img = $aAxis->img;
     }
 
     public function SetColor($aMajColor, $aMinColor = false)
     {
         $this->majorcolor = $aMajColor;
-        if ($aMinColor === false) {
+
+        if (false === $aMinColor) {
             $aMinColor = $aMajColor;
         }
         $this->minorcolor = $aMinColor;
@@ -64,13 +75,13 @@ class Grid
     // Decide if both major and minor grid should be displayed
     public function Show($aShowMajor = true, $aShowMinor = false)
     {
-        $this->show      = $aShowMajor;
+        $this->show = $aShowMajor;
         $this->showMinor = $aShowMinor;
     }
 
     public function SetFill($aFlg = true, $aColor1 = 'lightgray', $aColor2 = 'lightblue')
     {
-        $this->fill      = $aFlg;
+        $this->fill = $aFlg;
         $this->fillcolor = [$aColor1, $aColor2];
     }
 
@@ -97,18 +108,20 @@ class Grid
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {
         $nbrgrids = Configs::safe_count($aTicksPos);
-        if (!$this->show || $nbrgrids === 0) {
+
+        if (!$this->show || 0 === $nbrgrids) {
             return;
         }
 
-        if ($this->scale->type == 'y') {
+        if ('y' === $this->scale->type) {
             $xl = $this->img->left_margin;
             $xr = $this->img->width - $this->img->right_margin;
 
             if ($this->fill) {
                 // Draw filled areas
                 $y2 = $aTicksPos[0];
-                $i  = 1;
+                $i = 1;
+
                 while ($i < $nbrgrids) {
                     $y1 = $y2;
                     $y2 = $aTicksPos[$i++];
@@ -138,6 +151,7 @@ class Grid
                     $style = Configs::getConfig('LINESTYLE_LONGDASH');
 
                     break;
+
                 default:
                     $style = Configs::getConfig('LINESTYLE_SOLID');
 
@@ -148,18 +162,19 @@ class Grid
                 $y = $aTicksPos[$i];
                 $this->img->StyleLine($xl, $y, $xr, $y, $style, true);
             }
-        } elseif ($this->scale->type == 'x') {
-            $yu    = $this->img->top_margin;
-            $yl    = $this->img->height - $this->img->bottom_margin;
+        } elseif ('x' === $this->scale->type) {
+            $yu = $this->img->top_margin;
+            $yl = $this->img->height - $this->img->bottom_margin;
             $limit = $this->img->width - $this->img->right_margin;
 
             if ($this->fill) {
                 // Draw filled areas
                 $x2 = $aTicksPos[0];
-                $i  = 1;
+                $i = 1;
+
                 while ($i < $nbrgrids) {
                     $x1 = $x2;
-                    $x2 = min($aTicksPos[$i++], $limit);
+                    $x2 = \min($aTicksPos[$i++], $limit);
                     $this->img->SetColor($this->fillcolor[$i & 1]);
                     $this->img->FilledRectangle($x1, $yu, $x2, $yl);
                 }
@@ -174,14 +189,15 @@ class Grid
             // to many gridlines
             $i = 0;
             $x = $aTicksPos[$i];
-            while ($i < Configs::safe_count($aTicksPos) && ($x = $aTicksPos[$i]) <= $limit) {
-                if ($aType == 'solid') {
+
+            while (Configs::safe_count($aTicksPos) > $i && ($x = $aTicksPos[$i]) <= $limit) {
+                if ('solid' === $aType) {
                     $this->img->Line($x, $yl, $x, $yu);
-                } elseif ($aType == 'dotted') {
+                } elseif ('dotted' === $aType) {
                     $this->img->DashedLineForGrid($x, $yl, $x, $yu, 1, 6);
-                } elseif ($aType == 'dashed') {
+                } elseif ('dashed' === $aType) {
                     $this->img->DashedLineForGrid($x, $yl, $x, $yu, 2, 4);
-                } elseif ($aType == 'longdashed') {
+                } elseif ('longdashed' === $aType) {
                     $this->img->DashedLineForGrid($x, $yl, $x, $yu, 8, 6);
                 }
 

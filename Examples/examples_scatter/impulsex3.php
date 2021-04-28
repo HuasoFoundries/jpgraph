@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,23 +9,23 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $numpoints = 50;
-$k         = 0.05;
+$k = 0.05;
 
 // Create some data points
 for ($i = 0; $i < $numpoints; ++$i) {
-    $datay[$i] = exp(-$k * $i) * cos(2 * M_PI / 10 * $i);
+    $datay[$i] = \exp(-$k * $i) * \cos(2 * \M_PI / 10 * $i);
 }
 
 // A format callbakc function
 function mycallback($l)
 {
-    return sprintf('%02.2f', $l);
+    return \sprintf('%02.2f', $l);
 }
 
 // Setup the basic parameters for the graph
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 $graph->SetBox();

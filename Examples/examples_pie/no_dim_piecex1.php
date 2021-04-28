@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id
@@ -14,9 +14,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\PieGraph($__width, $__height, 'auto');
+$graph = new Graph\PieGraph($__width, $__height, 'auto');
 
 // Setup title
 $example_title = 'Pie plot with center circle';

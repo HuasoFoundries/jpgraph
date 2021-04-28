@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -10,15 +10,9 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function ceil;
 use function date;
-use function is_array;
 use function max;
-use function min;
 use function round;
-use function strlen;
-use function strpos;
-use function strtotime;
 
 /**
  * @class GanttGraph
@@ -27,20 +21,34 @@ use function strtotime;
 class GanttGraph extends Graph
 {
     public $scale; // Public accessible
+
     public $hgrid;
-    private $iObj                    = []; // Gantt objects
-    private $iLabelHMarginFactor     = 0.2; // 10% margin on each side of the labels
-    private $iLabelVMarginFactor     = 0.4; // 40% margin on top and bottom of label
-    private $iLayout                 = Configs::GANTT_FROMTOP; // Could also be Configs::GANTT_EVEN
-    private $iSimpleFont             = Configs::FF_FONT1;
-    private $iSimpleFontSize         = 11;
-    private $iSimpleStyle            = Configs::GANTT_RDIAG;
-    private $iSimpleColor            = 'yellow';
-    private $iSimpleBkgColor         = 'red';
+
+    private $iObj = []; // Gantt objects
+
+    private $iLabelHMarginFactor = 0.2; // 10% margin on each side of the labels
+
+    private $iLabelVMarginFactor = 0.4; // 40% margin on top and bottom of label
+
+    private $iLayout = Configs::GANTT_FROMTOP; // Could also be Configs::GANTT_EVEN
+
+    private $iSimpleFont = Configs::FF_FONT1;
+
+    private $iSimpleFontSize = 11;
+
+    private $iSimpleStyle = Configs::GANTT_RDIAG;
+
+    private $iSimpleColor = 'yellow';
+
+    private $iSimpleBkgColor = 'red';
+
     private $iSimpleProgressBkgColor = 'gray';
-    private $iSimpleProgressColor    = 'darkgreen';
-    private $iSimpleProgressStyle    = Configs::GANTT_SOLID;
-    private $iZoomFactor             = 1.0;
+
+    private $iSimpleProgressColor = 'darkgreen';
+
+    private $iSimpleProgressStyle = Configs::GANTT_SOLID;
+
+    private $iZoomFactor = 1.0;
 
     /**
      * Configs::getConfig('CONSTRUCTOR')
@@ -55,15 +63,15 @@ class GanttGraph extends Graph
     public function __construct($aWidth = 0, $aHeight = 0, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         // Backward compatibility
-        if ($aWidth == -1) {
+        if (-1 === $aWidth) {
             $aWidth = 0;
         }
 
-        if ($aHeight == -1) {
+        if (-1 === $aHeight) {
             $aHeight = 0;
         }
 
-        if ($aWidth < 0 || $aHeight < 0) {
+        if (0 > $aWidth || 0 > $aHeight) {
             Util\JpGraphError::RaiseL(6002);
             //("You can't specify negative sizes for Gantt graph dimensions. Use 0 to indicate that you want the library to automatically determine a dimension.");
         }
@@ -87,14 +95,14 @@ class GanttGraph extends Graph
      */
     public function SetSimpleFont($aFont, $aSize)
     {
-        $this->iSimpleFont     = $aFont;
+        $this->iSimpleFont = $aFont;
         $this->iSimpleFontSize = $aSize;
     }
 
     public function SetSimpleStyle($aBand, $aColor, $aBkgColor)
     {
-        $this->iSimpleStyle    = $aBand;
-        $this->iSimpleColor    = $aColor;
+        $this->iSimpleStyle = $aBand;
+        $this->iSimpleColor = $aColor;
         $this->iSimpleBkgColor = $aBkgColor;
     }
 
@@ -102,6 +110,7 @@ class GanttGraph extends Graph
     public function CreateSimple($data, $constrains = [], $progress = [])
     {
         $num = Configs::safe_count($data);
+
         for ($i = 0; $i < $num; ++$i) {
             switch ($data[$i][1]) {
                 case Configs::getConfig('ACTYPE_GROUP'):
@@ -132,12 +141,14 @@ class GanttGraph extends Graph
                     $a->SetFillColor($this->iSimpleBkgColor);
                     // Check if this activity should have a constrain line
                     $n = Configs::safe_count($constrains);
+
                     for ($j = 0; $j < $n; ++$j) {
-                        if (empty($constrains[$j]) || (Configs::safe_count($constrains[$j]) != 3)) {
+                        if (empty($constrains[$j]) || (Configs::safe_count($constrains[$j]) !== 3)) {
                             Util\JpGraphError::RaiseL(6003, $j);
                             //("Invalid format for Constrain parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)");
                         }
-                        if ($constrains[$j][0] != $data[$i][0]) {
+
+                        if ($constrains[$j][0] !== $data[$i][0]) {
                             continue;
                         }
 
@@ -146,12 +157,14 @@ class GanttGraph extends Graph
 
                     // Check if this activity have a progress bar
                     $n = Configs::safe_count($progress);
+
                     for ($j = 0; $j < $n; ++$j) {
-                        if (empty($progress[$j]) || (Configs::safe_count($progress[$j]) != 2)) {
+                        if (empty($progress[$j]) || (Configs::safe_count($progress[$j]) !== 2)) {
                             Util\JpGraphError::RaiseL(6004, $j);
                             //("Invalid format for Progress parameter at index=$j in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Progress)");
                         }
-                        if ($progress[$j][0] == $data[$i][0]) {
+
+                        if ($progress[$j][0] === $data[$i][0]) {
                             $a->progress->Set($progress[$j][1]);
                             $a->progress->SetPattern(
                                 $this->iSimpleProgressStyle,
@@ -172,8 +185,9 @@ class GanttGraph extends Graph
                     $csimpos = 5;
 
                     break;
+
                 default:
-                    die('Unknown activity type');
+                    exit('Unknown activity type');
 
                     break;
             }
@@ -186,6 +200,7 @@ class GanttGraph extends Graph
                 $a->SetCSIMTarget($data[$i][$csimpos]);
                 $a->SetCSIMAlt($data[$i][$csimpos + 1]);
             }
+
             if (!empty($data[$i][$csimpos + 2])) {
                 $a->title->SetCSIMTarget($data[$i][$csimpos + 2]);
                 $a->title->SetCSIMAlt($data[$i][$csimpos + 3]);
@@ -223,14 +238,16 @@ class GanttGraph extends Graph
     // Add a new Gantt object
     public function Add($aObject)
     {
-        if (is_array($aObject) && Configs::safe_count($aObject) > 0) {
+        if (\is_array($aObject) && Configs::safe_count($aObject) > 0) {
             $cl = $aObject[0];
+
             if (($cl instanceof Plot\IconPlot)) {
                 $this->AddIcon($aObject);
             } elseif (($cl instanceof Text\Text)) {
                 $this->AddText($aObject);
             } else {
                 $n = Configs::safe_count($aObject);
+
                 for ($i = 0; $i < $n; ++$i) {
                     $this->iObj[] = $aObject[$i];
                 }
@@ -249,15 +266,16 @@ class GanttGraph extends Graph
     public function StrokeTexts()
     {
         // Stroke any user added text objects
-        if ($this->texts == null) {
+        if (null === $this->texts) {
             // Stroke any user added text objects
             return;
             // Stroke any user added text objects
         }
 
         $n = Configs::safe_count($this->texts);
+
         for ($i = 0; $i < $n; ++$i) {
-            if ($this->texts[$i]->iScalePosX !== null && $this->texts[$i]->iScalePosY !== null) {
+            if (null !== $this->texts[$i]->iScalePosX && null !== $this->texts[$i]->iScalePosY) {
                 $x = $this->scale->TranslateDate($this->texts[$i]->iScalePosX);
                 $y = $this->scale->TranslateVertPos($this->texts[$i]->iScalePosY);
                 $y -= $this->scale->GetVertSpacing() / 2;
@@ -281,12 +299,12 @@ class GanttGraph extends Graph
     {
         // Adjust the start and end so that the indicate the
         // begining and end of respective start and end days
-        if (strpos($aStart, ':') === false) {
-            $aStart = date('Y-m-d 00:00', strtotime($aStart));
+        if (\mb_strpos($aStart, ':') === false) {
+            $aStart = \date('Y-m-d 00:00', \strtotime($aStart));
         }
 
-        if (strpos($aEnd, ':') === false) {
-            $aEnd = date('Y-m-d 23:59', strtotime($aEnd));
+        if (\mb_strpos($aEnd, ':') === false) {
+            $aEnd = \date('Y-m-d 23:59', \strtotime($aEnd));
         }
 
         $this->scale->SetRange($aStart, $aEnd);
@@ -299,19 +317,21 @@ class GanttGraph extends Graph
     public function GetMaxLabelWidth()
     {
         $m = 10;
-        if ($this->iObj != null) {
+
+        if (null !== $this->iObj) {
             $marg = $this->scale->actinfo->iLeftColMargin + $this->scale->actinfo->iRightColMargin;
-            $n    = Configs::safe_count($this->iObj);
+            $n = Configs::safe_count($this->iObj);
+
             for ($i = 0; $i < $n; ++$i) {
                 if (empty($this->iObj[$i]->title)) {
                     continue;
                 }
 
                 if ($this->iObj[$i]->title->HasTabs()) {
-                    list($tot, $w) = $this->iObj[$i]->title->GetWidth($this->img, true);
-                    $m             = max($m, $tot);
+                    [$tot, $w] = $this->iObj[$i]->title->GetWidth($this->img, true);
+                    $m = \max($m, $tot);
                 } else {
-                    $m = max($m, $this->iObj[$i]->title->GetWidth($this->img));
+                    $m = \max($m, $this->iObj[$i]->title->GetWidth($this->img));
                 }
             }
         }
@@ -323,7 +343,8 @@ class GanttGraph extends Graph
     public function GetMaxLabelHeight()
     {
         $m = 10;
-        if ($this->iObj != null) {
+
+        if (null !== $this->iObj) {
             $n = Configs::safe_count($this->iObj);
             // We can not include the title of GnttVLine since that title is stroked at the bottom
             // of the Gantt bar and not in the activity title columns
@@ -332,7 +353,7 @@ class GanttGraph extends Graph
                     continue;
                 }
 
-                $m = max($m, $this->iObj[$i]->title->GetHeight($this->img));
+                $m = \max($m, $this->iObj[$i]->title->GetHeight($this->img));
             }
         }
 
@@ -342,11 +363,13 @@ class GanttGraph extends Graph
     public function GetMaxBarAbsHeight()
     {
         $m = 0;
-        if ($this->iObj != null) {
+
+        if (null !== $this->iObj) {
             $m = $this->iObj[0]->GetAbsHeight($this->img);
             $n = Configs::safe_count($this->iObj);
+
             for ($i = 1; $i < $n; ++$i) {
-                $m = max($m, $this->iObj[$i]->GetAbsHeight($this->img));
+                $m = \max($m, $this->iObj[$i]->GetAbsHeight($this->img));
             }
         }
 
@@ -357,11 +380,13 @@ class GanttGraph extends Graph
     public function GetBarMaxLineNumber()
     {
         $m = 1;
-        if ($this->iObj != null) {
+
+        if (null !== $this->iObj) {
             $m = $this->iObj[0]->GetLineNbr();
             $n = Configs::safe_count($this->iObj);
+
             for ($i = 1; $i < $n; ++$i) {
-                $m = max($m, $this->iObj[$i]->GetLineNbr());
+                $m = \max($m, $this->iObj[$i]->GetLineNbr());
             }
         }
 
@@ -372,7 +397,8 @@ class GanttGraph extends Graph
     public function GetBarMinMax()
     {
         $start = 0;
-        $n     = Configs::safe_count($this->iObj);
+        $n = Configs::safe_count($this->iObj);
+
         while ($start < $n && $this->iObj[$start]->GetMaxDate() === false) {
             ++$start;
         }
@@ -387,21 +413,23 @@ class GanttGraph extends Graph
 
         for ($i = $start + 1; $i < $n; ++$i) {
             $rmax = $this->scale->NormalizeDate($this->iObj[$i]->GetMaxDate());
-            if ($rmax != false) {
-                $max = max($max, $rmax);
+
+            if (false !== $rmax) {
+                $max = \max($max, $rmax);
             }
 
             $rmin = $this->scale->NormalizeDate($this->iObj[$i]->GetMinDate());
-            if ($rmin == false) {
+
+            if (false === $rmin) {
                 continue;
             }
 
-            $min = min($min, $rmin);
+            $min = \min($min, $rmin);
         }
-        $minDate = date('Y-m-d', $min);
-        $min     = strtotime($minDate);
-        $maxDate = date('Y-m-d 23:59', $max);
-        $max     = strtotime($maxDate);
+        $minDate = \date('Y-m-d', $min);
+        $min = \strtotime($minDate);
+        $maxDate = \date('Y-m-d 23:59', $max);
+        $max = \strtotime($maxDate);
 
         return [$min, $max];
     }
@@ -412,7 +440,7 @@ class GanttGraph extends Graph
     // also added to make it better looking.
     public function AutoSize()
     {
-        if ($this->img->img != null) {
+        if (null !== $this->img->img) {
             return;
         }
 
@@ -420,6 +448,7 @@ class GanttGraph extends Graph
         // Note that the top margin might incease depending on
         // the title.
         $hadj = $vadj = 0;
+
         if ($this->doshadow) {
             $hadj = $this->shadow_width;
             $vadj = $this->shadow_width + 5;
@@ -435,17 +464,18 @@ class GanttGraph extends Graph
         // If there are any added Plot\GanttVLine we must make sure that the
         // bottom margin is wide enough to hold a title.
         $n = Configs::safe_count($this->iObj);
+
         for ($i = 0; $i < $n; ++$i) {
             if (!($this->iObj[$i] instanceof Plot\GanttVLine)) {
                 continue;
             }
 
-            $bm = max($bm, $this->iObj[$i]->title->GetHeight($this->img) + 10);
+            $bm = \max($bm, $this->iObj[$i]->title->GetHeight($this->img) + 10);
         }
 
         // First find out the height
-        $n      = $this->GetBarMaxLineNumber() + 1;
-        $m      = max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
+        $n = $this->GetBarMaxLineNumber() + 1;
+        $m = \max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
         $height = $n * ((1 + $this->iLabelVMarginFactor) * $m);
 
         // Add the height of the scale titles
@@ -453,10 +483,11 @@ class GanttGraph extends Graph
         $height += $h;
 
         // Calculate the top margin needed for title and subtitle
-        if ($this->title->t != '') {
+        if ('' !== $this->title->t) {
             $tm += $this->title->GetFontHeight($this->img);
         }
-        if ($this->subtitle->t != '') {
+
+        if ('' !== $this->subtitle->t) {
             $tm += $this->subtitle->GetFontHeight($this->img);
         }
 
@@ -530,7 +561,7 @@ class GanttGraph extends Graph
 
                     break;
                 case Configs::DAYSTYLE_CUSTOM:
-                    $txt = date($this->scale->day->iLabelFormStr, strtotime('2003-12-20 18:00'));
+                    $txt = \date($this->scale->day->iLabelFormStr, \strtotime('2003-12-20 18:00'));
 
                     break;
                 case Configs::DAYSTYLE_ONELETTER:
@@ -563,7 +594,7 @@ class GanttGraph extends Graph
 
                     break;
                 case Configs::HOURSTYLE_CUSTOM:
-                    $txt = date($this->scale->hour->iLabelFormStr, strtotime('2003-12-20 18:00'));
+                    $txt = \date($this->scale->hour->iLabelFormStr, \strtotime('2003-12-20 18:00'));
 
                     break;
                 case Configs::HOURSTYLE_HM24:
@@ -574,14 +605,15 @@ class GanttGraph extends Graph
             }
 
             $hfw = $this->scale->hour->GetStrWidth($this->img, $txt) + 6;
-            $mw  = $hfw;
+            $mw = $hfw;
+
             if ($this->scale->IsDisplayMinute()) {
                 // Depending on what format the user has choose we need different amount
                 // of space. We therefore create a typical string for the choosen format
                 // and determine the length of that string.
                 switch ($this->scale->minute->iStyle) {
                     case Configs::HOURSTYLE_CUSTOM:
-                        $txt2 = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
+                        $txt2 = \date($this->scale->minute->iLabelFormStr, \strtotime('2005-05-15 18:55'));
 
                         break;
                     case Configs::getConfig('MINUTESTYLE_MM'):
@@ -592,13 +624,13 @@ class GanttGraph extends Graph
                 }
 
                 $mfw = $this->scale->minute->GetStrWidth($this->img, $txt2) + 6;
-                $n2  = ceil(60 / $this->scale->minute->GetIntervall());
-                $mw  = $n2 * $mfw;
+                $n2 = \ceil(60 / $this->scale->minute->GetIntervall());
+                $mw = $n2 * $mfw;
             }
             $hfw = $hfw < $mw ? $mw : $hfw;
-            $n   = ceil(24 * 60 / $this->scale->TimeToMinutes($this->scale->hour->GetIntervall()));
-            $hw  = $n * $hfw;
-            $fw  = $fw < $hw ? $hw : $fw;
+            $n = \ceil(24 * 60 / $this->scale->TimeToMinutes($this->scale->hour->GetIntervall()));
+            $hw = $n * $hfw;
+            $fw = $fw < $hw ? $hw : $fw;
         }
 
         // We need to repeat this code block here as well.
@@ -612,7 +644,7 @@ class GanttGraph extends Graph
             // and determine the length of that string.
             switch ($this->scale->minute->iStyle) {
                 case Configs::HOURSTYLE_CUSTOM:
-                    $txt = date($this->scale->minute->iLabelFormStr, strtotime('2005-05-15 18:55'));
+                    $txt = \date($this->scale->minute->iLabelFormStr, \strtotime('2005-05-15 18:55'));
 
                     break;
                 case Configs::getConfig('MINUTESTYLE_MM'):
@@ -623,9 +655,9 @@ class GanttGraph extends Graph
             }
 
             $mfw = $this->scale->minute->GetStrWidth($this->img, $txt) + 6;
-            $n   = ceil(60 / $this->scale->TimeToMinutes($this->scale->minute->GetIntervall()));
-            $mw  = $n * $mfw;
-            $fw  = $fw < $mw ? $mw : $fw;
+            $n = \ceil(60 / $this->scale->TimeToMinutes($this->scale->minute->GetIntervall()));
+            $mw = $n * $mfw;
+            $fw = $fw < $mw ? $mw : $fw;
         }
 
         // If we display week we must make sure that 7*$fw is enough
@@ -633,24 +665,26 @@ class GanttGraph extends Graph
         if ($this->scale->IsDisplayWeek()) {
             // Depending on what format the user has choose we need different amount
             // of space
-            $fsw = strlen($this->scale->week->iLabelFormStr);
-            if ($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAY2WNBR) {
+            $fsw = \mb_strlen($this->scale->week->iLabelFormStr);
+
+            if (Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->scale->week->iStyle) {
                 $fsw += 8;
-            } elseif ($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAYWNBR) {
+            } elseif (Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->scale->week->iStyle) {
                 $fsw += 7;
             } else {
                 $fsw += 4;
             }
 
             $ww = $fsw * $this->scale->week->GetFontWidth($this->img);
+
             if (7 * $fw < $ww) {
-                $fw = ceil($ww / 7);
+                $fw = \ceil($ww / 7);
             }
         }
 
-        if (!$this->scale->IsDisplayDay() && !$this->scale->IsDisplayHour() &&
-            !(($this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAYWNBR ||
-                $this->scale->week->iStyle == Configs::WEEKSTYLE_FIRSTDAY2WNBR) && $this->scale->IsDisplayWeek())) {
+        if (!$this->scale->IsDisplayDay() && !$this->scale->IsDisplayHour()
+            && !((Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->scale->week->iStyle
+                || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->scale->week->iStyle) && $this->scale->IsDisplayWeek())) {
             // If we don't display the individual days we can shrink the
             // scale a little bit. This is a little bit pragmatic at the
             // moment and should be re-written to take into account
@@ -658,6 +692,7 @@ class GanttGraph extends Graph
             // b) what format do they use so we know how wide we need to
             // make each scale text space at minimum.
             $fw /= 2;
+
             if (!$this->scale->IsDisplayWeek()) {
                 $fw /= 1.8;
             }
@@ -665,12 +700,13 @@ class GanttGraph extends Graph
 
         $cw = $this->GetMaxActInfoColWidth();
         $this->scale->actinfo->SetMinColWidth($cw);
-        if ($this->img->width <= 0) {
+
+        if (0 >= $this->img->width) {
             // Now determine the width for the activity titles column
 
             // Firdst find out the maximum width of each object column
-            $titlewidth = max(
-                max(
+            $titlewidth = \max(
+                \max(
                     $this->GetMaxLabelWidth(),
                     $this->scale->tableTitle->GetWidth($this->img)
                 ),
@@ -691,10 +727,10 @@ class GanttGraph extends Graph
             $width = $this->img->width;
         }
 
-        $width  = round($width);
-        $height = round($height);
+        $width = \round($width);
+        $height = \round($height);
         // Make a sanity check on image size
-        if ($width > Configs::MAX_GANTTIMG_SIZE_W || $height > Configs::MAX_GANTTIMG_SIZE_H) {
+        if (Configs::MAX_GANTTIMG_SIZE_W < $width || Configs::MAX_GANTTIMG_SIZE_H < $height) {
             Util\JpGraphError::RaiseL(6007, $width, $height);
             //("Sanity check for automatic Gantt chart size failed. Either the width (=$width) or height (=$height) is larger than Configs::getConfig('MAX_GANTTIMG_SIZE') . This could potentially be caused by a wrong date in one of the activities.");
         }
@@ -709,7 +745,8 @@ class GanttGraph extends Graph
     public function GetMaxActInfoColWidth()
     {
         $n = Configs::safe_count($this->iObj);
-        if ($n == 0) {
+
+        if (0 === $n) {
             return;
         }
 
@@ -718,12 +755,13 @@ class GanttGraph extends Graph
 
         for ($i = 0; $i < $n; ++$i) {
             $tmp = $this->iObj[$i]->title->GetColWidth($this->img, $m);
-            $nn  = Configs::safe_count($tmp);
+            $nn = Configs::safe_count($tmp);
+
             for ($j = 0; $j < $nn; ++$j) {
                 if (empty($w[$j])) {
                     $w[$j] = $tmp[$j];
                 } else {
-                    $w[$j] = max($w[$j], $tmp[$j]);
+                    $w[$j] = \max($w[$j], $tmp[$j]);
                 }
             }
         }
@@ -741,12 +779,12 @@ class GanttGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
+        $_csim = (Configs::getConfig('_CSIM_SPECIALFILE') === $aStrokeFileName);
 
         // Should we autoscale dates?
 
         if (!$this->scale->IsRangeSet()) {
-            list($min, $max) = $this->GetBarMinMax();
+            [$min, $max] = $this->GetBarMinMax();
             $this->scale->SetRange($min, $max);
         }
 
@@ -758,18 +796,19 @@ class GanttGraph extends Graph
         // Should we start from the top or just spread the bars out even over the
         // available height
         $this->scale->SetVertLayout($this->iLayout);
-        if ($this->iLayout == Configs::GANTT_FROMTOP) {
-            $maxheight = max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
+
+        if (Configs::GANTT_FROMTOP === $this->iLayout) {
+            $maxheight = \max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
             $this->scale->SetVertSpacing($maxheight * (1 + $this->iLabelVMarginFactor));
         }
         // If it hasn't been set find out the maximum line number
-        if ($this->scale->iVertLines == -1) {
+        if (-1 === $this->scale->iVertLines) {
             $this->scale->iVertLines = $this->GetBarMaxLineNumber() + 1;
         }
 
-        $maxwidth = max(
+        $maxwidth = \max(
             $this->scale->actinfo->GetWidth($this->img),
-            max(
+            \max(
                 $this->GetMaxLabelWidth(),
                 $this->scale->tableTitle->GetWidth($this->img)
             )
@@ -779,7 +818,8 @@ class GanttGraph extends Graph
 
         if (!$_csim) {
             $this->StrokePlotArea();
-            if ($this->iIconDepth == Configs::getConfig('DEPTH_BACK')) {
+
+            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth) {
                 $this->StrokeIcons();
             }
         }
@@ -797,6 +837,7 @@ class GanttGraph extends Graph
         $this->hgrid->Stroke($this->img, $this->scale);
 
         $n = Configs::safe_count($this->iObj);
+
         for ($i = 0; $i < $n; ++$i) {
             //$this->iObj[$i]->SetLabelLeftMargin(round($maxwidth*$this->iLabelHMarginFactor/2));
             $this->iObj[$i]->Stroke($this->img, $this->scale);
@@ -811,7 +852,7 @@ class GanttGraph extends Graph
         $this->StrokeConstrains();
         $this->footer->Stroke($this->img);
 
-        if ($this->iIconDepth == Configs::getConfig('DEPTH_FRONT')) {
+        if (Configs::getConfig('DEPTH_FRONT') === $this->iIconDepth) {
             $this->StrokeIcons();
         }
 
@@ -820,7 +861,7 @@ class GanttGraph extends Graph
 
         // Should we do any final image transformation
         if ($this->iImgTrans) {
-            $tform          = new Image\ImgTrans($this->img->img);
+            $tform = new Image\ImgTrans($this->img->img);
             $this->img->img = $tform->Skew3D(
                 $this->iImgTransHorizon,
                 $this->iImgTransSkewDist,
@@ -835,7 +876,7 @@ class GanttGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
             return $this->img->img;
         }
         // Finally stream the generated picture
@@ -863,7 +904,8 @@ class GanttGraph extends Graph
 
             for ($k = 0; $k < $numConstrains; ++$k) {
                 $vpos = $this->iObj[$i]->constraints[$k]->iConstrainRow;
-                if ($vpos < 0) {
+
+                if (0 > $vpos) {
                     continue;
                 }
 
@@ -871,19 +913,22 @@ class GanttGraph extends Graph
 
                 // Find out which object is on the target row
                 $targetobj = -1;
-                for ($j = 0; $j < $n && $targetobj == -1; ++$j) {
-                    if ($this->iObj[$j]->iVPos != $vpos) {
+
+                for ($j = 0; $j < $n && -1 === $targetobj; ++$j) {
+                    if ($this->iObj[$j]->iVPos !== $vpos) {
                         continue;
                     }
 
                     $targetobj = $j;
                 }
-                if ($targetobj == -1) {
+
+                if (-1 === $targetobj) {
                     Util\JpGraphError::RaiseL(6008, $this->iObj[$i]->iVPos, $vpos);
                     //('You have specifed a constrain from row='.$this->iObj[$i]->iVPos.' to row='.$vpos.' which does not have any activity.');
                 }
                 $c2 = $this->iObj[$targetobj]->iConstrainPos;
-                if (Configs::safe_count($c1) != 4 || Configs::safe_count($c2) != 4) {
+
+                if (Configs::safe_count($c1) !== 4 || Configs::safe_count($c2) !== 4) {
                     continue;
                 }
 
@@ -924,6 +969,7 @@ class GanttGraph extends Graph
                         $link->SetPath(3);
 
                         break;
+
                     default:
                         Util\JpGraphError::RaiseL(6009, $this->iObj[$i]->iVPos, $vpos);
                         //('Unknown constrain type specified from row='.$this->iObj[$i]->iVPos.' to row='.$vpos);
@@ -952,7 +998,8 @@ class GanttGraph extends Graph
         $csim .= $this->subsubtitle->GetCSIMAreas();
 
         $n = Configs::safe_count($this->iObj);
-        for ($i = $n - 1; $i >= 0; --$i) {
+
+        for ($i = $n - 1; 0 <= $i; --$i) {
             $csim .= $this->iObj[$i]->GetCSIMArea();
         }
 

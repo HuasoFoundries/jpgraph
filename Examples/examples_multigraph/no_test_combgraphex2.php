@@ -1,13 +1,17 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once '../jpgraph.php';
+
 require_once '../jpgraph_mgraph.php';
+
 require_once '../jpgraph_line.php';
+
 require_once '../jpgraph_bar.php';
+
 require_once '../jpgraph_utils.inc.php';
 
 //------------------------------------------------------------------
@@ -16,16 +20,17 @@ require_once '../jpgraph_utils.inc.php';
 //------------------------------------------------------------------
 $datay = [];
 $datax = [];
-$ts    = time();
-$n     = 70; // Number of data points
+$ts = \time();
+$n = 70; // Number of data points
+
 for ($i = 0; $i < $n; ++$i) {
-    $datax[$i]  = $ts + $i * 150000;
-    $datay[$i]  = rand(5, 60);
-    $datay2[$i] = rand(1, 8);
+    $datax[$i] = $ts + $i * 150000;
+    $datay[$i] = \mt_rand(5, 60);
+    $datay2[$i] = \mt_rand(1, 8);
 }
 
 // Now get labels at the start of each month
-list($tickPositions, $minTickPositions) = DateScaleUtils::getTicks($datax, DSUTILS_MONTH1);
+[$tickPositions, $minTickPositions] = DateScaleUtils::getTicks($datax, DSUTILS_MONTH1);
 
 // Now create the real graph
 // Combine a line and a bar graph
@@ -33,8 +38,8 @@ list($tickPositions, $minTickPositions) = DateScaleUtils::getTicks($datax, DSUTI
 // We add some grace to the end of the X-axis scale so that the first and last
 // data point isn't exactly at the very end or beginning of the scale
 $grace = 400000;
-$xmin  = $datax[0] - $grace;
-$xmax  = $datax[$n - 1] + $grace;
+$xmin = $datax[0] - $grace;
+$xmax = $datax[$n - 1] + $grace;
 
 // Overall width of graphs
 $w = 450;

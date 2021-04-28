@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -22,10 +22,13 @@ namespace Amenadiel\JpGraph\Graph;
 class RadarGrid
 {
     //extends Grid {
-    private $type       = 'solid';
+    private $type = 'solid';
+
     private $grid_color = '#DDDDDD';
-    private $show       = false;
-    private $weight     = 1;
+
+    private $show = false;
+
+    private $weight = 1;
 
     public function __construct()
     {
@@ -61,24 +64,26 @@ class RadarGrid
         }
 
         $nbrticks = Configs::safe_count($grid[0]) / 2;
-        $nbrpnts  = Configs::safe_count($grid);
+        $nbrpnts = Configs::safe_count($grid);
         $img->SetColor($this->grid_color);
         $img->SetLineWeight($this->weight);
 
         for ($i = 0; $i < $nbrticks; ++$i) {
             for ($j = 0; $j < $nbrpnts; ++$j) {
-                $pnts[$j * 2]     = $grid[$j][$i * 2];
+                $pnts[$j * 2] = $grid[$j][$i * 2];
                 $pnts[$j * 2 + 1] = $grid[$j][$i * 2 + 1];
             }
+
             for ($k = 0; $k < $nbrpnts; ++$k) {
                 $l = ($k + 1) % $nbrpnts;
-                if ($this->type == 'solid') {
+
+                if ('solid' === $this->type) {
                     $img->Line($pnts[$k * 2], $pnts[$k * 2 + 1], $pnts[$l * 2], $pnts[$l * 2 + 1]);
-                } elseif ($this->type == 'dotted') {
+                } elseif ('dotted' === $this->type) {
                     $img->DashedLine($pnts[$k * 2], $pnts[$k * 2 + 1], $pnts[$l * 2], $pnts[$l * 2 + 1], 1, 6);
-                } elseif ($this->type == 'dashed') {
+                } elseif ('dashed' === $this->type) {
                     $img->DashedLine($pnts[$k * 2], $pnts[$k * 2 + 1], $pnts[$l * 2], $pnts[$l * 2 + 1], 2, 4);
-                } elseif ($this->type == 'longdashed') {
+                } elseif ('longdashed' === $this->type) {
                     $img->DashedLine($pnts[$k * 2], $pnts[$k * 2 + 1], $pnts[$l * 2], $pnts[$l * 2 + 1], 8, 6);
                 }
             }

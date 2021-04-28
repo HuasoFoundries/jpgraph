@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 //
@@ -18,29 +18,30 @@ use Amenadiel\JpGraph\Plot;
 //
 $datay = [];
 $datax = [];
-$ts    = time();
-$n     = 15; // Number of data points
+$ts = \time();
+$n = 15; // Number of data points
+
 for ($i = 0; $i < $n; ++$i) {
     $datax[$i] = $ts + $i * 700000;
-    $datay[$i] = rand(5, 60);
+    $datay[$i] = \mt_rand(5, 60);
 }
 
 // Now get labels at the start of each month
-$dateUtils                              = new DateScaleUtils();
-list($tickPositions, $minTickPositions) = $dateUtils->GetTicks($datax);
+$dateUtils = new DateScaleUtils();
+[$tickPositions, $minTickPositions] = $dateUtils->GetTicks($datax);
 
 // We add some grace to the end of the X-axis scale so that the first and last
 // data point isn't exactly at the very end or beginning of the scale
 $grace = 400000;
-$xmin  = $datax[0] - $grace;
-$xmax  = $datax[$n - 1] + $grace;
+$xmin = $datax[0] - $grace;
+$xmax = $datax[$n - 1] + $grace;
 
 //
 // The code to setup a very basic graph
 //
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 //
 // We use an integer scale on the X-axis since the positions on the X axis

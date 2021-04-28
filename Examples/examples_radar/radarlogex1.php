@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,13 +9,13 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data to plot
-$data  = [242, 58, 1500, 12, 1397, 810, 373];
+$data = [242, 58, 1500, 12, 1397, 810, 373];
 $data2 = [447, 176, 1472, 191, 1616, 42, 46];
 
 // Create the graph
-$__width  = 300;
+$__width = 300;
 $__height = 350;
-$graph    = new Graph\RadarGraph($__width, $__height);
+$graph = new Graph\RadarGraph($__width, $__height);
 
 // Use logarithmic scale (If you don't use any SetScale()
 // the radar graph will default to linear scale

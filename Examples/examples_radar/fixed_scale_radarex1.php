@@ -1,16 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\RadarGraph($__width, $__height);
+$graph = new Graph\RadarGraph($__width, $__height);
 $graph->SetScale('lin', 0, 50);
 $graph->yscale->ticks->Set(25, 5);
 $graph->SetColor('white');

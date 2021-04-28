@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,13 +9,13 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 
 // Create the graph. These two calls are always required
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlog');
 $graph->SetY2Scale('log');
 

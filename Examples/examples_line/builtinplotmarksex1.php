@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ $datay1 = [2, 6, 7, 12, 13, 18];
 $datay2 = [5, 12, 12, 19, 25, 20];
 
 // Setup the graph
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 20, 60, 20);
 $graph->SetMarginColor('white');
 $graph->SetScale('linlin');

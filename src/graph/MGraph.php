@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -9,16 +9,6 @@ namespace Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function count;
-use function explode;
-use function imagecopymerge;
-use function imagesx;
-use function imagesy;
-use function in_array;
-use function is_numeric;
-use function max;
-use function round;
-use function strtolower;
 
 /**
  * File:        JPGRAPH_MGRAPH.PHP
@@ -36,58 +26,91 @@ use function strtolower;
 class MGraph
 {
     public $title;
+
     public $subtitle;
+
     public $subsubtitle;
 
-    protected $img;
-    protected $iCnt          = 0;
-    protected $iGraphs       = []; // image_handle, x, y, fx, fy, sizex, sizey
-    protected $iFillColor    = 'white';
-    protected $iCurrentColor = 0;
-    protected $lm            = 4;
-    protected $rm            = 4;
-    protected $tm            = 4;
-    protected $bm            = 4;
-    protected $iDoFrame      = false;
-    protected $iFrameColor   = 'black';
-    protected $iFrameWeight  = 1;
-    protected $iLineWeight   = 1;
-    protected $expired       = false;
-    protected $cache;
-    protected $cache_name    = '';
-    protected $inline        = true;
-    protected $image_format  = 'png';
-    protected $image_quality = 75;
-    protected $iWidth;
-    protected $iHeight;
-    protected $background_image        = '';
-    protected $background_image_center = true;
-    protected $backround_image_format  = '';
-    protected $background_image_mix    = 100;
-    protected $background_image_y;
-    protected $background_image_x;
-    private $doshadow     = false;
-    private $shadow_width = 4;
-    private $shadow_color = 'gray@0.5';
     public $footer;
+
+    protected $img;
+
+    protected $iCnt = 0;
+
+    protected $iGraphs = []; // image_handle, x, y, fx, fy, sizex, sizey
+
+    protected $iFillColor = 'white';
+
+    protected $iCurrentColor = 0;
+
+    protected $lm = 4;
+
+    protected $rm = 4;
+
+    protected $tm = 4;
+
+    protected $bm = 4;
+
+    protected $iDoFrame = false;
+
+    protected $iFrameColor = 'black';
+
+    protected $iFrameWeight = 1;
+
+    protected $iLineWeight = 1;
+
+    protected $expired = false;
+
+    protected $cache;
+
+    protected $cache_name = '';
+
+    protected $inline = true;
+
+    protected $image_format = 'png';
+
+    protected $image_quality = 75;
+
+    protected $iWidth;
+
+    protected $iHeight;
+
+    protected $background_image = '';
+
+    protected $background_image_center = true;
+
+    protected $backround_image_format = '';
+
+    protected $background_image_mix = 100;
+
+    protected $background_image_y;
+
+    protected $background_image_x;
+
+    private $doshadow = false;
+
+    private $shadow_width = 4;
+
+    private $shadow_color = 'gray@0.5';
 
     // Create a new instane of the combined graph
     public function __construct($aWidth = null, $aHeight = null, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
-        $this->iWidth  = $aWidth;
+        $this->iWidth = $aWidth;
         $this->iHeight = $aHeight;
 
         // If the cached version exist just read it directly from the
         // cache, stream it back to browser and exit
-        if ($aCachedName != '' && Configs::READ_CACHE && $aInline) {
+        if ('' !== $aCachedName && Configs::READ_CACHE && $aInline) {
             $this->cache = new Image\ImgStreamCache();
             $this->cache->SetTimeOut($aTimeOut);
             $image = new Image\Image();
+
             if ($this->cache->GetAndStream($image, $aCachedName)) {
                 exit;
             }
         }
-        $this->inline     = $aInline;
+        $this->inline = $aInline;
         $this->cache_name = $aCachedName;
 
         $this->title = new Text\Text();
@@ -120,8 +143,8 @@ class MGraph
     // Add a frame around the combined graph
     public function SetFrame($aFlg, $aColor = 'black', $aWeight = 1)
     {
-        $this->iDoFrame     = $aFlg;
-        $this->iFrameColor  = $aColor;
+        $this->iDoFrame = $aFlg;
+        $this->iFrameColor = $aColor;
         $this->iFrameWeight = $aWeight;
     }
 
@@ -137,61 +160,63 @@ class MGraph
         // Second argument can be either a boolean value or
         // a numeric
         $aCenter = true;
-        $aX      = null;
+        $aX = null;
 
-        if (is_numeric($aCenter_aX)) {
+        if (\is_numeric($aCenter_aX)) {
             $aX = $aCenter_aX;
         }
 
         // Get extension to determine image type
-        $e = explode('.', $aFileName);
+        $e = \explode('.', $aFileName);
+
         if (!$e) {
             Util\JpGraphError::RaiseL(12002, $aFileName);
             //('Incorrect file name for MGraph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
         }
 
         $valid_formats = ['png', 'jpg', 'gif'];
-        $aImgFormat    = strtolower($e[count($e) - 1]);
-        if ($aImgFormat == 'jpeg') {
+        $aImgFormat = \mb_strtolower($e[\count($e) - 1]);
+
+        if ('jpeg' === $aImgFormat) {
             $aImgFormat = 'jpg';
-        } elseif (!in_array($aImgFormat, $valid_formats, true)) {
+        } elseif (!\in_array($aImgFormat, $valid_formats, true)) {
             Util\JpGraphError::RaiseL(12003, $aImgFormat, $aFileName);
             //('Unknown file extension ($aImgFormat) in MGraph::SetBackgroundImage() for filename: '.$aFileName);
         }
 
-        $this->background_image        = $aFileName;
+        $this->background_image = $aFileName;
         $this->background_image_center = $aCenter;
         $this->background_image_format = $aImgFormat;
-        $this->background_image_x      = $aX;
-        $this->background_image_y      = $aY;
+        $this->background_image_x = $aX;
+        $this->background_image_y = $aY;
     }
 
     public function _strokeBackgroundImage()
     {
-        if ($this->background_image == '') {
+        if ('' === $this->background_image) {
             return;
         }
 
         $bkgimg = Graph::LoadBkgImage('', $this->background_image);
 
         // Background width & Heoght
-        $bw = imagesx($bkgimg);
-        $bh = imagesy($bkgimg);
+        $bw = \imagesx($bkgimg);
+        $bh = \imagesy($bkgimg);
 
         // Canvas width and height
-        $cw = imagesx($this->img);
-        $ch = imagesy($this->img);
+        $cw = \imagesx($this->img);
+        $ch = \imagesy($this->img);
 
         if ($this->doshadow) {
             $cw -= $this->shadow_width;
             $ch -= $this->shadow_width;
         }
 
-        if ($this->background_image_x === null || $this->background_image_y === null) {
+        if (null === $this->background_image_x || null === $this->background_image_y) {
             if ($this->background_image_center) {
                 // Center original image in the plot area
-                $x = round($cw / 2 - $bw / 2);
-                $y = round($ch / 2 - $bh / 2);
+                $x = \round($cw / 2 - $bw / 2);
+                $y = \round($ch / 2 - $bh / 2);
             } else {
                 // Just copy the image from left corner, no resizing
                 $x = 0;
@@ -201,7 +226,7 @@ class MGraph
             $x = $this->background_image_x;
             $y = $this->background_image_y;
         }
-        imagecopymerge($this->img, $bkgimg, $x, $y, 0, 0, $bw, $bh, $this->background_image_mix);
+        \imagecopymerge($this->img, $bkgimg, $x, $y, 0, 0, $bw, $bh, $this->background_image_mix);
     }
 
     public function AddMix($aGraph, $x = 0, $y = 0, $mix = 100, $fx = 0, $fy = 0, $w = 0, $h = 0)
@@ -216,16 +241,18 @@ class MGraph
 
     public function _gdImgHandle($agdCanvas, $x, $y, $fx = 0, $fy = 0, $w = 0, $h = 0, $mix = 100)
     {
-        if ($w == 0) {
-            $w = @imagesx($agdCanvas);
+        if (0 === $w) {
+            $w = \imagesx($agdCanvas);
         }
-        if ($w === null) {
+
+        if (null === $w) {
             Util\JpGraphError::RaiseL(12007);
             //('Argument to MGraph::Add() is not a valid GD image handle.');
             return;
         }
-        if ($h == 0) {
-            $h = @imagesy($agdCanvas);
+
+        if (0 === $h) {
+            $h = \imagesy($agdCanvas);
         }
         $this->iGraphs[$this->iCnt++] = [$agdCanvas, $x, $y, $fx, $fy, $w, $h, $mix];
     }
@@ -245,16 +272,16 @@ class MGraph
 
     public function SetImgFormat($aFormat, $aQuality = 75)
     {
-        $this->image_format  = $aFormat;
+        $this->image_format = $aFormat;
         $this->image_quality = $aQuality;
     }
 
     // Set the shadow around the whole image
     public function SetShadow($aShowShadow = true, $aShadowWidth = 4, $aShadowColor = 'gray@0.3')
     {
-        $this->doshadow               = $aShowShadow;
-        $this->shadow_color           = $aShadowColor;
-        $this->shadow_width           = $aShadowWidth;
+        $this->doshadow = $aShowShadow;
+        $this->shadow_color = $aShadowColor;
+        $this->shadow_width = $aShadowWidth;
         $this->footer->iBottomMargin += $aShadowWidth;
         $this->footer->iRightMargin += $aShadowWidth;
     }
@@ -262,7 +289,7 @@ class MGraph
     public function StrokeTitle($image, $w, $h)
     {
         // Stroke title
-        if ($this->title->t === '') {
+        if ('' === $this->title->t) {
             // Stroke title
             return;
             // Stroke title
@@ -271,12 +298,14 @@ class MGraph
         $margin = 3;
 
         $y = $this->title->margin;
-        if ($this->title->halign == 'center') {
+
+        if ('center' === $this->title->halign) {
             $this->title->Center(0, $w, $y);
-        } elseif ($this->title->halign == 'left') {
+        } elseif ('left' === $this->title->halign) {
             $this->title->SetPos($this->title->margin + 2, $y);
-        } elseif ($this->title->halign == 'right') {
+        } elseif ('right' === $this->title->halign) {
             $indent = 0;
+
             if ($this->doshadow) {
                 $indent = $this->shadow_width + 2;
             }
@@ -286,12 +315,14 @@ class MGraph
 
         // ... and subtitle
         $y += $this->title->GetTextHeight($image) + $margin + $this->subtitle->margin;
-        if ($this->subtitle->halign == 'center') {
+
+        if ('center' === $this->subtitle->halign) {
             $this->subtitle->Center(0, $w, $y);
-        } elseif ($this->subtitle->halign == 'left') {
+        } elseif ('left' === $this->subtitle->halign) {
             $this->subtitle->SetPos($this->subtitle->margin + 2, $y);
-        } elseif ($this->subtitle->halign == 'right') {
+        } elseif ('right' === $this->subtitle->halign) {
             $indent = 0;
+
             if ($this->doshadow) {
                 $indent = $this->shadow_width + 2;
             }
@@ -301,12 +332,14 @@ class MGraph
 
         // ... and subsubtitle
         $y += $this->subtitle->GetTextHeight($image) + $margin + $this->subsubtitle->margin;
-        if ($this->subsubtitle->halign == 'center') {
+
+        if ('center' === $this->subsubtitle->halign) {
             $this->subsubtitle->Center(0, $w, $y);
-        } elseif ($this->subsubtitle->halign == 'left') {
+        } elseif ('left' === $this->subsubtitle->halign) {
             $this->subsubtitle->SetPos($this->subsubtitle->margin + 2, $y);
-        } elseif ($this->subsubtitle->halign == 'right') {
+        } elseif ('right' === $this->subsubtitle->halign) {
             $indent = 0;
+
             if ($this->doshadow) {
                 $indent = $this->shadow_width + 2;
             }
@@ -320,21 +353,22 @@ class MGraph
         // Find out the necessary size for the container image
         $w = 0;
         $h = 0;
+
         for ($i = 0; $i < $this->iCnt; ++$i) {
             $maxw = $this->iGraphs[$i][1] + $this->iGraphs[$i][5];
             $maxh = $this->iGraphs[$i][2] + $this->iGraphs[$i][6];
-            $w    = max($w, $maxw);
-            $h    = max($h, $maxh);
+            $w = \max($w, $maxw);
+            $h = \max($h, $maxh);
         }
         $w += $this->lm + $this->rm;
         $h += $this->tm + $this->bm;
 
         // User specified width,height overrides
-        if ($this->iWidth !== null && $this->iWidth !== 0) {
+        if (null !== $this->iWidth && 0 !== $this->iWidth) {
             $w = $this->iWidth;
         }
 
-        if ($this->iHeight !== null && $this->iHeight !== 0) {
+        if (null !== $this->iHeight && 0 !== $this->iHeight) {
             $h = $this->iHeight;
         }
 
@@ -386,7 +420,7 @@ class MGraph
         $this->footer->Stroke($image);
 
         // Output image
-        if ($aFileName == Configs::getConfig('_IMG_HANDLER')) {
+        if (Configs::getConfig('_IMG_HANDLER') === $aFileName) {
             return $image->img;
         }
         //Finally stream the generated picture

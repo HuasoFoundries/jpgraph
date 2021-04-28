@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,7 +17,7 @@ function FldCallback($x, $y, $a)
     $maxr = 3000;
 
     // Size and arrow size is constant
-    $size      = '';
+    $size = '';
     $arrowsize = '';
 
     // Since we have different scales we need the data points
@@ -28,12 +28,13 @@ function FldCallback($x, $y, $a)
     // Colors gets colder the further out we go from the center
     $r = ($x - $polex * 10) * ($x - $polex * 10) + ($y - $poley) * ($y - $poley);
     $f = $r / $maxr;
-    if ($f > 1) {
+
+    if (1 < $f) {
         $f = 1;
     }
 
-    $red   = floor((1 - $f) * 255);
-    $blue  = floor($f * 255);
+    $red = \floor((1 - $f) * 255);
+    $blue = \floor($f * 255);
     $color = [$red, 0, $blue];
     //echo "x=$x, y=$y, blue=$blue, red=$red<br>";
     return [$color, $size, $arrowsize];
@@ -43,42 +44,48 @@ function FldCallback($x, $y, $a)
 $datax = [];
 $datay = [];
 $angle = [];
-for ($x = 1; $x < 10; ++$x) {
-    for ($y = 10; $y < 100; $y += 10) {
+
+for ($x = 1; 10 > $x; ++$x) {
+    for ($y = 10; 100 > $y; $y += 10) {
         $a = -1;
-        if ($x == $polex && $y == $poley) {
+
+        if ($x === $polex && $y === $poley) {
             continue;
         }
 
-        if ($x == $polex) {
+        if ($x === $polex) {
             if ($y > $poley) {
                 $a = 90;
             } else {
                 $a = 270;
             }
         }
-        if ($y == $poley) {
+
+        if ($y === $poley) {
             if ($x > $polex) {
                 $a = 0;
             } else {
                 $a = 180;
             }
         }
-        if ($a == -1) {
+
+        if (-1 === $a) {
             $d1 = $y - $poley;
             $d2 = ($polex - $x) * 20;
+
             if ($y < $poley) {
                 $d2 *= -1;
             }
 
-            $h  = sqrt($d1 * $d1 + $d2 * $d2);
-            $t  = -$d2 / $h;
-            $ac = acos($t);
+            $h = \sqrt($d1 * $d1 + $d2 * $d2);
+            $t = -$d2 / $h;
+            $ac = \acos($t);
+
             if ($y < $poley) {
-                $ac += M_PI;
+                $ac += \M_PI;
             }
 
-            $a = $ac * 180 / M_PI;
+            $a = $ac * 180 / \M_PI;
         }
         $datax[] = $x;
         $datay[] = $y;
@@ -87,9 +94,9 @@ for ($x = 1; $x < 10; ++$x) {
 }
 
 // Setup the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, 100, 0, 10);
 $graph->SetMarginColor('lightblue');
 

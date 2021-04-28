@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // File:    Graph\Configs::getConfig('ODOEX012').PHP
@@ -23,9 +23,9 @@ require_once 'jpgraph/jpgraph_odo.php';
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=400, height=400 pixels)
 //---------------------------------------------------------------------
-$__width  = 400;
+$__width = 400;
 $__height = 370;
-$graph    = new OdoGraph($__width, $__height);
+$graph = new OdoGraph($__width, $__height);
 $graph->SetShadow();
 
 //---------------------------------------------------------------------

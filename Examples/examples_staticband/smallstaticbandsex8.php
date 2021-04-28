@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Illustration of the different patterns for bands
@@ -13,9 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [10, 29, 3, 6];
 
 // Create the graph.
-$__width  = 200;
+$__width = 200;
 $__height = 150;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 20, 20);
 

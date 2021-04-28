@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 require_once 'jpgraph/jpgraph_gantt.php';
 
 $data = [
@@ -23,7 +24,7 @@ $constrains = [[1, 2, Graph\Configs::getConfig('CONSTRAIN_ENDSTART')],
 
 $progress = [[1, 0.4]];
 
-$graph         = new GanttGraph(500);
+$graph = new GanttGraph(500);
 $example_title = 'Example with image map';
 $graph->title->set($example_title);
 $graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));

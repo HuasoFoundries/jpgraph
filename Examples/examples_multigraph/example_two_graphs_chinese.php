@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Text;
 
 $data = [40, 60, 21, 33];
 
-$__width  = 300;
+$__width = 300;
 $__height = 250;
 
 $data = [0.1235, 0.4567, 0.67, 0.45, 0.832];

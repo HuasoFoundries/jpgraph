@@ -1,19 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 include '../jpgraph.php';
+
 include '../jpgraph_canvas.php';
+
 include '../jpgraph_table.php';
+
 include '../jpgraph_iconplot.php';
+
 include '../jpgraph_flags.php';
 
 // Setup a basic canvas to use as graph to add the table
-$__width  = 500;
+$__width = 500;
 $__height = 200;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 // Setup the basic table
 $data = [
@@ -61,7 +65,8 @@ $table->SetRowFillColor(0, 'lightgray@0.5');
 $table->SetColFillColor(0, 'lightgray@0.5');
 
 // Add the country flags in row 1
-$n = count($countries);
+$n = \count($countries);
+
 for ($i = 0; $i < $n; ++$i) {
     $table->SetCellCountryFlag(1, $i + 1, $countries[$i], 0.5);
     $table->SetCellImageConstrain(1, $i + 1, Graph\Configs::getConfig('TIMG_HEIGHT'), 20);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Themes;
@@ -11,10 +11,13 @@ namespace Amenadiel\JpGraph\Themes;
  */
 class UniversalTheme extends Theme
 {
-    protected $font_color       = '#444444';
+    protected $font_color = '#444444';
+
     protected $background_color = '#F4F4F4';
-    protected $axis_color       = '#888888';
-    protected $grid_color       = '#E3E3E3';
+
+    protected $axis_color = '#888888';
+
+    protected $grid_color = '#E3E3E3';
 
     public function GetColorList()
     {
@@ -93,7 +96,7 @@ class UniversalTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-        switch (get_class($plot)) {
+        switch (\get_class($plot)) {
             case 'GroupBarPlot':
                 foreach ($plot->plots as $_plot) {
                     $this->ApplyPlot($_plot);
@@ -132,6 +135,7 @@ class UniversalTheme extends Theme
                 $plot->SetSliceColors($this->GetThemeColors());
 
                 break;
+
             default:
         }
     }

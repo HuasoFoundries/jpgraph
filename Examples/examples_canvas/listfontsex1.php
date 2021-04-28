@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,9 +9,9 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 
-$__width  = 700;
+$__width = 700;
 $__height = 800;
-$g        = new Graph\CanvasGraph($__width, $__height);
+$g = new Graph\CanvasGraph($__width, $__height);
 
 $g->SetScale('canvas', 0, 27, 0, 85);
 $g->SetMargin(5, 6, 5, 6);
@@ -131,10 +131,10 @@ $fonts = [
     ['DejaVuCond sans serif', Graph\Configs::getConfig('FF_DV_SANSSERIFCOND'), Graph\Configs::getConfig('FS_BOLD')],
 ];
 
-$n = count($fonts);
+$n = \count($fonts);
 
 for ($i = 0; $i < $n; ++$i) {
-    if ($i == 9) {
+    if (9 === $i) {
         $r += 3;
     }
 
@@ -146,7 +146,8 @@ for ($i = 0; $i < $n; ++$i) {
     }
 
     $c += $w + 1;
-    if ($c > 30 - $w - 2) {
+
+    if (30 - $w - 2 < $c) {
         $c = 1;
         $r += 4;
     }

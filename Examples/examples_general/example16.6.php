@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,28 +13,29 @@ use Amenadiel\JpGraph\Util;
 // Create some "fake" regression data
 $datay = [];
 $datax = [];
-$a     = 3.2;
-$b     = 2.5;
-for ($x = 0; $x < 20; ++$x) {
+$a = 3.2;
+$b = 2.5;
+
+for ($x = 0; 20 > $x; ++$x) {
     $datax[$x] = $x;
-    $datay[$x] = $a + $b * $x + rand(-20, 20);
+    $datay[$x] = $a + $b * $x + \mt_rand(-20, 20);
 }
 
 // Create the graph
-$__width  = 300;
+$__width = 300;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 
-$lr                  = new Util\LinearRegression($datax, $datay);
-list($stderr, $corr) = $lr->GetStat();
-list($xd, $yd)       = $lr->GetY(0, 19);
+$lr = new Util\LinearRegression($datax, $datay);
+[$stderr, $corr] = $lr->GetStat();
+[$xd, $yd] = $lr->GetY(0, 19);
 // Setup title
 $example_title = 'Linear regression';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
-$graph->subtitle->Set('(stderr=' . sprintf('%.2f', $stderr) . ', corr=' . sprintf('%.2f', $corr) . ')');
+$graph->subtitle->Set('(stderr=' . \sprintf('%.2f', $stderr) . ', corr=' . \sprintf('%.2f', $corr) . ')');
 $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // make sure that the X-axis is always at the

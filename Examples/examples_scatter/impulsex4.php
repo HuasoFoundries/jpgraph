@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,25 +10,25 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $numpoints = 50;
-$k         = 0.05;
+$k = 0.05;
 
 // Create some data points
-for ($i = -$numpoints + 1; $i < 0; ++$i) {
-    $datay[$i + $numpoints - 1]    = exp($k * $i) * cos(2 * M_PI / 10 * $i) * 14;
-    $datayenv[$i + $numpoints - 1] = exp($k * $i) * 14;
-    $datax[$i + $numpoints - 1]    = $i;
+for ($i = -$numpoints + 1; 0 > $i; ++$i) {
+    $datay[$i + $numpoints - 1] = \exp($k * $i) * \cos(2 * \M_PI / 10 * $i) * 14;
+    $datayenv[$i + $numpoints - 1] = \exp($k * $i) * 14;
+    $datax[$i + $numpoints - 1] = $i;
 }
 
 for ($i = 0; $i < $numpoints; ++$i) {
-    $datay[$i + $numpoints - 1]    = exp(-$k * $i) * cos(2 * M_PI / 10 * $i) * 14;
-    $datayenv[$i + $numpoints - 1] = exp(-$k * $i) * 14;
-    $datax[$i + $numpoints - 1]    = $i;
+    $datay[$i + $numpoints - 1] = \exp(-$k * $i) * \cos(2 * \M_PI / 10 * $i) * 14;
+    $datayenv[$i + $numpoints - 1] = \exp(-$k * $i) * 14;
+    $datax[$i + $numpoints - 1] = $i;
 }
 
 // Setup the basic parameters for the graph
-$__width  = 500;
+$__width = 500;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 
 $graph->SetShadow();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: horizbarex4.php,v 1.4 2002/11/17 23:59:27 aditus Exp $
@@ -12,17 +12,17 @@ use Amenadiel\JpGraph\Plot;
 $datay = [1992, 1993, 1995, 1996, 1997, 1998, 2001];
 
 // Size of graph
-$__width  = 400;
+$__width = 400;
 $__height = 500;
 
 // Set the basic parameters of the graph
 $graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
-$top    = 60;
+$top = 60;
 $bottom = 30;
-$left   = 80;
-$right  = 30;
+$left = 80;
+$right = 30;
 $graph->Set90AndMargin($left, $right, $top, $bottom);
 
 // Nice shadow

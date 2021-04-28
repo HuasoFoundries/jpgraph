@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,20 +9,20 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 70, 265, 29, 111, 91, 198, 225, 593, 251];
 
 // Create the graph.
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetY2Scale('log');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 110, 20, 40);
 
 // Create the linear plot
-$lineplot  = new Plot\LinePlot($ydata);
+$lineplot = new Plot\LinePlot($ydata);
 $lineplot2 = new Plot\LinePlot($y2data);
 
 // Add the plot to the graph

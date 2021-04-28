@@ -1,26 +1,25 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
 
 use Amenadiel\JpGraph\Graph\Configs;
-use function cos;
-use function log10;
 use const M_PI;
-use function sin;
 
 class PolarLogScale extends LogScale
 {
-    private $graph;
     public $clockwise = false;
+
+    private $graph;
 
     public function __construct($aMax, $graph, $aClockwise = false)
     {
         parent::__construct(0, $aMax, 'x');
         $this->graph = $graph;
+
         if ($this->ticks instanceof LogTicks) {
             $this->ticks->SetLabelLogType(Configs::LOGLABELS_MAGNITUDE);
         }
@@ -34,25 +33,27 @@ class PolarLogScale extends LogScale
 
     public function PTranslate($aAngle, $aRad)
     {
-        if ($aRad == 0) {
+        if (0 === $aRad) {
             $aRad = 1;
         }
 
-        $aRad = log10($aRad);
-        $m    = $this->scale[1];
-        $w    = $this->graph->img->plotwidth / 2;
+        $aRad = \log10($aRad);
+        $m = $this->scale[1];
+        $w = $this->graph->img->plotwidth / 2;
         $aRad = $aRad / $m * $w;
 
         $a = $aAngle / 180 * M_PI;
+
         if ($this->clockwise) {
             $a = 2 * M_PI - $a;
         }
 
-        $x = cos($a) * $aRad;
-        $y = sin($a) * $aRad;
+        $x = \cos($a) * $aRad;
+        $y = \sin($a) * $aRad;
 
         $x += $w + $this->graph->img->left_margin; //$this->_Translate(0);
-        if ($this->graph->iType == Configs::POLAR_360) {
+
+        if (Configs::POLAR_360 === $this->graph->iType) {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight / 2) - $y;
         } else {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight) - $y;

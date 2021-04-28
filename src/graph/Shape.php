@@ -1,12 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
-
-use function define;
 
 /*
  * File:        JPGRAPH_CANVTOOLS.PHP
@@ -16,10 +14,10 @@ use function define;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
-define('CORNER_TOPLEFT', 0);
-define('CORNER_TOPRIGHT', 1);
-define('CORNER_BOTTOMRIGHT', 2);
-define('CORNER_BOTTOMLEFT', 3);
+\define('CORNER_TOPLEFT', 0);
+\define('CORNER_TOPRIGHT', 1);
+\define('CORNER_BOTTOMRIGHT', 2);
+\define('CORNER_BOTTOMLEFT', 3);
 
 /**
  * @class Shape
@@ -28,6 +26,7 @@ define('CORNER_BOTTOMLEFT', 3);
 class Shape
 {
     private $img;
+
     private $scale;
 
     public function __construct($aGraph, $scale)
@@ -44,8 +43,8 @@ class Shape
 
     public function Line($x1, $y1, $x2, $y2)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
         $this->img->Line($x1, $y1, $x2, $y2);
     }
 
@@ -57,8 +56,9 @@ class Shape
     public function Polygon($p, $aClosed = false)
     {
         $n = Configs::safe_count($p);
+
         for ($i = 0; $i < $n; $i += 2) {
-            $p[$i]     = $this->scale->TranslateX($p[$i]);
+            $p[$i] = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
         }
         $this->img->Polygon($p, $aClosed);
@@ -67,8 +67,9 @@ class Shape
     public function FilledPolygon($p)
     {
         $n = Configs::safe_count($p);
+
         for ($i = 0; $i < $n; $i += 2) {
-            $p[$i]     = $this->scale->TranslateX($p[$i]);
+            $p[$i] = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
         }
         $this->img->FilledPolygon($p);
@@ -97,11 +98,12 @@ class Shape
 
         $x_old = $x0;
         $y_old = $y0;
-        for ($t = $delta; $t <= 1.0; $t += $delta) {
-            $tt  = $t * $t;
+
+        for ($t = $delta; 1.0 >= $t; $t += $delta) {
+            $tt = $t * $t;
             $ttt = $tt * $t;
-            $x   = $ax * $ttt + $bx * $tt + $cx * $t + $x0;
-            $y   = $ay * $ttt + $by * $tt + $cy * $t + $y0;
+            $x = $ax * $ttt + $bx * $tt + $cx * $t + $x0;
+            $y = $ay * $ttt + $by * $tt + $cy * $t + $y0;
             $this->Line($x_old, $y_old, $x, $y);
             $x_old = $x;
             $y_old = $y;
@@ -111,22 +113,23 @@ class Shape
 
     public function Rectangle($x1, $y1, $x2, $y2)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
         $this->img->Rectangle($x1, $y1, $x2, $y2);
     }
 
     public function FilledRectangle($x1, $y1, $x2, $y2)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
         $this->img->FilledRectangle($x1, $y1, $x2, $y2);
     }
 
     public function Circle($x1, $y1, $r)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        if ($r >= 0) {
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+
+        if (0 <= $r) {
             $r = $this->scale->TranslateX($r);
         } else {
             $r = -$r;
@@ -137,8 +140,9 @@ class Shape
 
     public function FilledCircle($x1, $y1, $r)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        if ($r >= 0) {
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+
+        if (0 <= $r) {
             $r = $this->scale->TranslateX($r);
         } else {
             $r = -$r;
@@ -149,12 +153,12 @@ class Shape
 
     public function RoundedRectangle($x1, $y1, $x2, $y2, $r = null)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
 
-        if ($r == null) {
+        if (null === $r) {
             $r = 5;
-        } elseif ($r >= 0) {
+        } elseif (0 <= $r) {
             $r = $this->scale->TranslateX($r);
         } else {
             $r = -$r;
@@ -165,12 +169,12 @@ class Shape
 
     public function FilledRoundedRectangle($x1, $y1, $x2, $y2, $r = null)
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
 
-        if ($r == null) {
+        if (null === $r) {
             $r = 5;
-        } elseif ($r > 0) {
+        } elseif (0 < $r) {
             $r = $this->scale->TranslateX($r);
         } else {
             $r = -$r;
@@ -181,9 +185,10 @@ class Shape
 
     public function ShadowRectangle($x1, $y1, $x2, $y2, $fcolor = false, $shadow_width = null, $shadow_color = [102, 102, 102])
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
-        list($x2, $y2) = $this->scale->Translate($x2, $y2);
-        if ($shadow_width == null) {
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
+        [$x2, $y2] = $this->scale->Translate($x2, $y2);
+
+        if (null === $shadow_width) {
             $shadow_width = 4;
         } else {
             $shadow_width = $this->scale->TranslateX($shadow_width);
@@ -199,7 +204,7 @@ class Shape
 
     public function StrokeText($x1, $y1, $txt, $dir = 0, $paragraph_align = 'left')
     {
-        list($x1, $y1) = $this->scale->Translate($x1, $y1);
+        [$x1, $y1] = $this->scale->Translate($x1, $y1);
         $this->img->StrokeText($x1, $y1, $txt, $dir, $paragraph_align);
     }
 
@@ -208,9 +213,9 @@ class Shape
     // 0=Top left, 1=top right, 2=bottom right, 3=bottom left
     public function IndentedRectangle($xt, $yt, $w, $h, $iw = 0, $ih = 0, $aCorner = 3, $aFillColor = '', $r = 4)
     {
-        list($xt, $yt) = $this->scale->Translate($xt, $yt);
-        list($w, $h)   = $this->scale->Translate($w, $h);
-        list($iw, $ih) = $this->scale->Translate($iw, $ih);
+        [$xt, $yt] = $this->scale->Translate($xt, $yt);
+        [$w, $h] = $this->scale->Translate($w, $h);
+        [$iw, $ih] = $this->scale->Translate($iw, $ih);
 
         $xr = $xt + $w - 0;
         $yl = $yt + $h - 0;
@@ -241,7 +246,7 @@ class Shape
                 $this->img->Line($xt + $iw, $yt + $r, $xt + $iw, $yt + $ih - $r);
                 $this->img->Arc($xt + $iw - $r, $yt + $ih - $r, $r * 2, $r * 2, 0, 90);
 
-                if ($aFillColor != '') {
+                if ('' !== $aFillColor) {
                     $bc = $this->img->current_color_name;
                     $this->img->PushColor($aFillColor);
                     $this->img->FillToBorder($xr - $r, $yl - $r, $bc);
@@ -274,7 +279,7 @@ class Shape
                 $this->img->Line($xr - $iw, $yt + $r, $xr - $iw, $yt + $ih - $r);
                 $this->img->Arc($xr - $iw + $r, $yt + $ih - $r, $r * 2, $r * 2, 90, 180);
 
-                if ($aFillColor != '') {
+                if ('' !== $aFillColor) {
                     $bc = $this->img->current_color_name;
                     $this->img->PushColor($aFillColor);
                     $this->img->FillToBorder($xt + $r, $yl - $r, $bc);
@@ -307,7 +312,7 @@ class Shape
                 $this->img->Line($xr - $iw, $yl - $r, $xr - $iw, $yl - $ih + $r);
                 $this->img->Arc($xr - $iw + $r, $yl - $ih + $r, $r * 2, $r * 2, 180, 270);
 
-                if ($aFillColor != '') {
+                if ('' !== $aFillColor) {
                     $bc = $this->img->current_color_name;
                     $this->img->PushColor($aFillColor);
                     $this->img->FillToBorder($xt + $r, $yt + $r, $bc);
@@ -340,7 +345,7 @@ class Shape
                 $this->img->Line($xt + $iw, $yl - $ih + $r, $xt + $iw, $yl - $r);
                 $this->img->Arc($xt + $iw - $r, $yl - $ih + $r, $r * 2, $r * 2, 270, 360);
 
-                if ($aFillColor != '') {
+                if ('' !== $aFillColor) {
                     $bc = $this->img->current_color_name;
                     $this->img->PushColor($aFillColor);
                     $this->img->FillToBorder($xr - $r, $yt + $r, $bc);

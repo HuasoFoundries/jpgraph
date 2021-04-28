@@ -1,20 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $y2data = [354, 200, 265, 99, 111, 91, 198, 225, 293, 251];
 
 // Create the graph and specify the scale for both Y-axis
-$__width  = 300;
+$__width = 300;
 $__height = 240;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetY2Scale('lin');
 $graph->SetShadow();
@@ -23,7 +23,7 @@ $graph->SetShadow();
 $graph->img->SetMargin(40, 40, 20, 70);
 
 // Create the two linear plot
-$lineplot  = new Plot\LinePlot($ydata);
+$lineplot = new Plot\LinePlot($ydata);
 $lineplot2 = new Plot\LinePlot($y2data);
 
 // Add the plot to the graph

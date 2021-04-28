@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [7, 19, 11, 4, 20];
 
 // Create the graph and setup the basic parameters
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 40, 50);
 $graph->SetScale('textint');
 $graph->SetFrame(true, 'blue', 1);

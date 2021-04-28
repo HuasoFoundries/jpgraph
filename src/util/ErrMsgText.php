@@ -1,16 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
-
-use function define;
-use function defined;
-use function dirname;
-use function file_exists;
-use function sprintf;
 
 /*
  * File:        JPGRAPH_ERRHANDLER.PHP
@@ -23,25 +17,20 @@ use function sprintf;
  * // Copyright 2006 (c) Aditus Consulting. All rights reserved.
  */
 
-
-
 class ErrMsgText
 {
-
     public function Get($errnbr, ...$args)
     {
         if (!$errorMessageStr = Helper::getErrorMessage($errnbr)) {
-            return sprintf(
+            return \sprintf(
                 'Internal error: The specified error message (%s) does not exist in the chosen locale (%s)',
                 $errnbr,
                 Helper::getErrLocale()
             );
         }
 
-
-
         try {
-            return vsprintf($errorMessageStr[0], $args);
+            return \vsprintf($errorMessageStr[0], $args);
         } catch (\Exception $e) {
             return $errorMessageStr[0];
         }

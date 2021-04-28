@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,7 +14,7 @@ $datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x10
     '1600x1200(32)', ];
 
 // Size of graph
-$__width  = 300;
+$__width = 300;
 $__height = 400;
 
 // Set the basic parameters of the graph

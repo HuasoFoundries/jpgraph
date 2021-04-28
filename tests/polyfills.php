@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 use Kint\Kint;
@@ -30,16 +30,16 @@ if (!\function_exists('tap')) {
  */
 if (!\function_exists('dump')) {
     // I'm sure this can be improved... just not today
-    if (class_exists(Kint::class)) {
+    if (\class_exists(Kint::class)) {
         function dump(...$vars)
         {
             Kint::$enabled_mode = Kint::MODE_CLI;
-            $return             = Kint::$return;
-            Kint::$return       = true;
-            $fp                 = \fopen('php://stderr', 'ab');
+            $return = Kint::$return;
+            Kint::$return = true;
+            $fp = \fopen('php://stderr', 'ab');
             \fwrite($fp, Kint::dump(...$vars));
             \fclose($fp);
-            $return       = Kint::$return;
+            $return = Kint::$return;
             Kint::$return = $return;
         }
 
@@ -52,45 +52,44 @@ if (!\function_exists('dump')) {
 }
 function examples_path(string $path = ''): string
 {
-    return sprintf('%s/Examples/%s', dirname(BaseTestCase::TEST_FOLDER), ($path ? DIRECTORY_SEPARATOR . $path : $path));
+    return \sprintf('%s/Examples/%s', \dirname(BaseTestCase::TEST_FOLDER), ($path ? \DIRECTORY_SEPARATOR . $path : $path));
 }
-if (!function_exists('getExampleSubfolderFolderFromTestClassName')) {
+
+if (!\function_exists('getExampleSubfolderFolderFromTestClassName')) {
     function getExampleSubfolderFolderFromTestClassName(string $testClass, bool $absolute = true): string
     {
-        return ('examples_' . str_replace('test', '', strtolower($testClass)));
+        return 'examples_' . \str_replace('test', '', \mb_strtolower($testClass));
     }
 }
 
-if (!function_exists('getTestableExampleFiles')) {
+if (!\function_exists('getTestableExampleFiles')) {
     function getTestableExampleFiles(string $testClass = 'GeneralTest', array $skippedFixtures = []): array
     {
         $exampleRoot = getExampleSubfolderFolderFromTestClassName($testClass);
-        if (!is_dir(examples_path($exampleRoot))) {
-            BaseTestCase::line(sprintf('Folder <warn>%s</warn> for testClass <warn>%s</warn> does not exist', $exampleRoot, $testClass));
+
+        if (!\is_dir(examples_path($exampleRoot))) {
+            BaseTestCase::line(\sprintf('Folder <warn>%s</warn> for testClass <warn>%s</warn> does not exist', $exampleRoot, $testClass));
+
             return [];
         }
-        $d = @dir(examples_path($exampleRoot));
+        $d = \dir(examples_path($exampleRoot));
 
         while ($entry = $d->Read()) {
-            if (
-                !array_key_exists($entry, $skippedFixtures) &&
-                is_file(examples_path(implode('/', [$exampleRoot, $entry]))) &&
-                strpos($entry, '.php') !== false &&
-                strpos($entry, 'ex') !== false
-                && strpos($entry, 'no_test') === false
-                && strpos($entry, 'no_dim') === false
+            if (!\array_key_exists($entry, $skippedFixtures)
+                && \is_file(examples_path(\implode('/', [$exampleRoot, $entry])))
+                && \mb_strpos($entry, '.php') !== false
+                && \mb_strpos($entry, 'ex') !== false
+                && \mb_strpos($entry, 'no_test') === false
+                && \mb_strpos($entry, 'no_dim') === false
             ) {
                 $fileArray[] = $entry;
             }
         }
         $d->Close();
 
-
-
-        return   tap($fileArray, fn (&$arr) => sort($arr));
+        return tap($fileArray, fn (&$arr) => \sort($arr));
     }
 }
-
 
 /*
  * Dump to stderr and exit
@@ -102,7 +101,8 @@ if (!\function_exists('dd')) {
 
         exit();
     }
-    if (class_exists(Kint::class)) {
+
+    if (\class_exists(Kint::class)) {
         Kint::$aliases[] = 'dd';
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Contour example 05
@@ -31,9 +31,9 @@ $data = [
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$__width  = 480;
+$__width = 480;
 $__height = 390;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 120, 60, 50);
 $example_title = 'Contour plot, high contrast color';
 $graph->title->set($example_title);

@@ -1,18 +1,18 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$labels   = ['Oct 2000', 'Nov 2000', 'Dec 2000', 'Jan 2001', 'Feb 2001', 'Mar 2001', 'Apr 2001', 'May 2001'];
-$datay    = [1.23, 1.9, 1.6, 3.1, 3.4, 2.8, 2.1, 1.9];
-$__width  = 300;
+$labels = ['Oct 2000', 'Nov 2000', 'Dec 2000', 'Jan 2001', 'Feb 2001', 'Mar 2001', 'Apr 2001', 'May 2001'];
+$datay = [1.23, 1.9, 1.6, 3.1, 3.4, 2.8, 2.1, 1.9];
+$__width = 300;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 40, 40, 80);
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');

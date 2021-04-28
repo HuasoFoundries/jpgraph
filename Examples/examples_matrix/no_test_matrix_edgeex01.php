@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,17 +19,18 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, null, 8, 6, 4, 2],
 ];
 
-for ($i = 0; $i < count($data[0]); ++$i) {
-    $xlabels[$i] = sprintf('xlabel: %02d', $i);
+for ($i = 0; \count($data[0]) > $i; ++$i) {
+    $xlabels[$i] = \sprintf('xlabel: %02d', $i);
 }
-for ($i = 0; $i < count($data); ++$i) {
-    $ylabels[$i] = sprintf('ylabel: %02d', $i);
+
+for ($i = 0; \count($data) > $i; ++$i) {
+    $ylabels[$i] = \sprintf('ylabel: %02d', $i);
 }
 
 // Setup a nasic matrix graph
-$__width  = 400;
+$__width = 400;
 $__height = 250;
-$graph    = new Graph\MatrixGraph($__width, $__height);
+$graph = new Graph\MatrixGraph($__width, $__height);
 $graph->SetMarginColor('white');
 $example_title = 'Adding labels on the edges';
 $graph->title->set($example_title);

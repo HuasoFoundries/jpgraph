@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ include __DIR__ . '/../assets/dataset01.inc.php';
 $dateUtils = new Graph\Scale\DateScaleUtils();
 
 // Setup a basic graph
-$__width  = 500;
+$__width = 500;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('datlin');
 $graph->SetMargin(60, 20, 40, 60);
 

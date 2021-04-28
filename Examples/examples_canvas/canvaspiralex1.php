@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -26,16 +26,17 @@ if (empty($_GET['h'])) {
     $h = $_GET['h'];
 }
 
-if ($w < 60) {
+if (60 > $w) {
     $w = 60;
 }
-if ($h < 60) {
+
+if (60 > $h) {
     $h = 60;
 }
-$__width  = $w;
+$__width = $w;
 $__height = $h;
 
-if (!function_exists('SeaShell')) {
+if (!\function_exists('SeaShell')) {
     function SeaShell($img, $x, $y, $w, $h, $r, $n = 12, $color1 = 'navy', $color2 = 'red')
     {
         $x += $w;
@@ -44,14 +45,16 @@ if (!function_exists('SeaShell')) {
         $sa = 0;
         $ea = 90;
 
-        $s1    = 1;
-        $s2    = -1;
+        $s1 = 1;
+        $s2 = -1;
         $x_old = $x;
         $y_old = $y;
+
         for ($i = 1; $i < $n; ++$i) {
             $sa += 90;
             $ea += 90;
-            if ($i % 2 == 1) {
+
+            if ($i % 2 === 1) {
                 $y = $y + $s1 * $h * $r;
                 $h = (1 - $r) * $h;
                 $w = $w / (1 - $r) * $r;

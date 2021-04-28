@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -25,9 +25,10 @@ class RectPatternVert extends RectPattern
      */
     public function DoPattern($aImg)
     {
-        $x  = $this->rect->x;
+        $x = $this->rect->x;
         $y0 = $this->rect->y;
         $y1 = $this->rect->ye;
+
         while ($x < $this->rect->xe) {
             $aImg->Line($x, $y0, $x, $y1);
             $x += $this->linespacing;

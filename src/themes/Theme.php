@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 /**
@@ -19,12 +19,12 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
 use Amenadiel\JpGraph\Util\Configs;
 
-require_once sprintf(
+require_once \sprintf(
     '%s%s..%sutil%sConfigs.php',
     __DIR__,
-    DIRECTORY_SEPARATOR,
-    DIRECTORY_SEPARATOR,
-    DIRECTORY_SEPARATOR
+    \DIRECTORY_SEPARATOR,
+    \DIRECTORY_SEPARATOR,
+    \DIRECTORY_SEPARATOR
 );
 
 /**
@@ -34,18 +34,18 @@ require_once sprintf(
 abstract class Theme
 {
     // Side for ticks and labels.
-    const SIDE_LEFT   = -1;
-    const SIDE_RIGHT  = 1;
-    const SIDE_DOWN   = -1;
+    const SIDE_LEFT = -1;
+    const SIDE_RIGHT = 1;
+    const SIDE_DOWN = -1;
     const SIDE_BOTTOM = -1;
-    const SIDE_UP     = 1;
-    const SIDE_TOP    = 1;
-    const GRAD_HOR    = Configs::GRAD_HOR;
-    const BGRAD_PLOT  = Configs::BGRAD_PLOT;
-    const LEGEND_HOR  = Configs::LEGEND_HOR;
+    const SIDE_UP = 1;
+    const SIDE_TOP = 1;
+    const GRAD_HOR = Configs::GRAD_HOR;
+    const BGRAD_PLOT = Configs::BGRAD_PLOT;
+    const LEGEND_HOR = Configs::LEGEND_HOR;
 
     // Legend type stacked vertical or horizontal
-    const LEGEND_VERT   = 0;
+    const LEGEND_VERT = 0;
     const LEGLEGEND_HOR = 1;
 
     protected $color_index;
@@ -133,14 +133,14 @@ abstract class Theme
             return;
         }
 
-        $img    = $graph->img;
+        $img = $graph->img;
         $height = $img->height;
         $graph->SetMargin($img->left_margin, $img->right_margin, $img->top_margin, $height * 0.25);
     }
 
     public function ApplyPlot($plot)
     {
-        switch (get_class($plot)) {
+        switch (\get_class($plot)) {
             case 'GroupBarPlot':
                 foreach ($plot->plots as $_plot) {
                     $this->ApplyPlot($_plot);
@@ -178,13 +178,14 @@ abstract class Theme
                 $plot->SetSliceColors($this->GetThemeColors());
 
                 break;
+
             default:
         }
     }
 
     public function SetupPlot($plot)
     {
-        if (is_array($plot)) {
+        if (\is_array($plot)) {
             foreach ($plot as $obj) {
                 $this->ApplyPlot($obj);
             }
@@ -197,16 +198,16 @@ abstract class Theme
     {
         $this->graph = $graph;
         $method_name = '';
-        $graphClass  = explode('\\', get_class($graph));
-        $classname   = end($graphClass);
+        $graphClass = \explode('\\', \get_class($graph));
+        $classname = \end($graphClass);
 
-        if ($classname == 'Graph') {
+        if ('Graph' === $classname) {
             $method_name = 'SetupGraph';
         } else {
             $method_name = 'Setup' . $classname;
         }
 
-        if (method_exists($this, $method_name)) {
+        if (\method_exists($this, $method_name)) {
             $this->{$method_name}($graph);
         } else {
             Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
@@ -217,13 +218,14 @@ abstract class Theme
     {
         $result_list = [];
 
-        $old_index         = $this->color_index;
+        $old_index = $this->color_index;
         $this->color_index = 0;
-        $count             = 0;
+        $count = 0;
 
         $i = 0;
+
         while (true) {
-            for ($j = 0; $j < Util\Configs::safe_count($this->GetColorList()); ++$j) {
+            for ($j = 0; Util\Configs::safe_count($this->GetColorList()) > $j; ++$j) {
                 if (++$count > $num) {
                     break 2;
                 }
@@ -242,18 +244,21 @@ abstract class Theme
         $color_list = $this->GetColorList();
 
         $color = null;
+
         if (isset($color_list[$this->color_index])) {
             $color = $color_list[$this->color_index];
         } else {
             $color_count = Util\Configs::safe_count($color_list);
+
             if ($color_count <= $this->color_index) {
-                $color_tmp  = $color_list[$this->color_index % $color_count];
+                $color_tmp = $color_list[$this->color_index % $color_count];
                 $brightness = 1.0 - (int) ($this->color_index / $color_count) * 0.2;
-                $rgb        = new Image\RGB();
-                $color      = $color_tmp . ':' . $brightness;
-                $color      = $rgb->Color($color);
-                $alpha      = array_pop($color);
-                $color      = $rgb->tryHexConversion($color);
+                $rgb = new Image\RGB();
+                $color = $color_tmp . ':' . $brightness;
+                $color = $rgb->Color($color);
+                $alpha = \array_pop($color);
+                $color = $rgb->tryHexConversion($color);
+
                 if ($alpha) {
                     $color .= '@' . $alpha;
                 }

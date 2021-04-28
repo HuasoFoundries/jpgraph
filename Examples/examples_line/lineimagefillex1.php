@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,9 +11,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [0, 3, 5, 12, 15, 18, 22, 36, 37, 41];
 
 // Setup the graph
-$__width       = 320;
-$__height      = 200;
-$graph         = new Graph\Graph($__width, $__height);
+$__width = 320;
+$__height = 200;
+$graph = new Graph\Graph($__width, $__height);
 $example_title = 'Education growth';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);

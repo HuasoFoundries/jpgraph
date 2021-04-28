@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: bar_csimex3.php,v 1.3 2002/08/31 20:03:46 aditus Exp $
@@ -14,9 +14,9 @@ $data1y = [5, 8, 19, 3, 10, 5];
 $data2y = [12, 2, 12, 7, 14, 4];
 
 // Setup the basic parameters for the graph
-$__width  = 400;
+$__width = 400;
 $__height = 700;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetAngle(90);
 $graph->SetScale('textlin');
 

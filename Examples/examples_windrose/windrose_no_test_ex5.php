@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,7 +16,7 @@ $data = [
     5 => [2, 7, 1, 2], ];
 
 // Text to be added.
-$txt    = [];
+$txt = [];
 $txt[0] = 'It is possible to add arbitrary,multi line, text to a graph. ';
 $txt[0] .= "Such a paragraph can have it's text be left, right or center ";
 $txt[0] .= 'aligned.';
@@ -27,9 +27,9 @@ $txt[2] = 'Finally we can show a center aligned paragraph without box.';
 $rangeColors = ['silver', 'khaki', 'orange', 'brown', 'blue', 'navy', 'maroon', 'red'];
 
 // First create a new windrose graph with a title
-$__width       = 570;
-$__height      = 430;
-$graph         = new Graph\WindroseGraph($__width, $__height);
+$__width = 570;
+$__height = 430;
+$graph = new Graph\WindroseGraph($__width, $__height);
 $example_title = 'Windrose example 5';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
@@ -47,7 +47,8 @@ $txtlayout = [
 $graph->SetColor('darkgreen@0.7');
 
 // Setup all the defined text boxes
-$n = count($txt);
+$n = \count($txt);
+
 for ($i = 0; $i < $n; ++$i) {
     $txtbox[$i] = new Text($txt[$i]);
     $txtbox[$i]->SetPos($txtlayout[$i][0], $txtlayout[$i][1], 'right');
@@ -55,7 +56,8 @@ for ($i = 0; $i < $n; ++$i) {
     $txtbox[$i]->SetParagraphAlign($txtlayout[$i][3]);
     $txtbox[$i]->SetColor($txtlayout[$i][4]);
     $txtbox[$i]->SetBox($txtlayout[$i][5]);
-    if (count($txtlayout[$i]) > 6) {
+
+    if (\count($txtlayout[$i]) > 6) {
         $txtbox[$i]->SetFont($txtlayout[$i][6], $txtlayout[$i][7], $txtlayout[$i][8]);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: piecex2.php,v 1.3.2.1 2003/08/19 20:40:12 aditus Exp $
@@ -14,9 +14,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [50, 28, 25, 27, 31, 20];
 
 // A new pie graph
-$__width  = 400;
+$__width = 400;
 $__height = 400;
-$graph    = new Graph\PieGraph($__width, $__height, 'auto');
+$graph = new Graph\PieGraph($__width, $__height, 'auto');
 
 // Don't display the border
 $graph->SetFrame(false);

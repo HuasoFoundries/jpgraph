@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,13 +9,13 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some random data
-$ydata  = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
+$ydata = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
 $ydata2 = [10, 70, 40, 120, 200, 60, 80, 40, 20, 5];
 
 // Create the graph.
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 

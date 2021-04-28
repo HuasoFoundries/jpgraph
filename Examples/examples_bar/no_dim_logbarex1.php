@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
@@ -13,9 +13,9 @@ $datay = [4, 13, 30, 28, 12, 45, 30, 12, 55, 3, 0.5];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 
 // Create the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 220;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 //$graph->img->SetMargin(50,30,50,50);
 $graph->SetScale('textlog');
 //$graph->SetShadow();

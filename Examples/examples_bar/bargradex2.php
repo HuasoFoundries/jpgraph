@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Example for use of JpGraph,
@@ -15,9 +15,9 @@ $datay = [-0.13, 0.25, -0.21, 0.35, 0.31, 0.04];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'];
 
 // Setup the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 20, 30, 50);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('silver');

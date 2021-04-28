@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,9 +22,9 @@ $data = [
 
 $data2 = [0, 0, 34, 56, 90, 90, 170, 65, 220, 90, 270, 120, 300, 60, 355, 10];
 
-$__width  = 350;
+$__width = 350;
 $__height = 350;
-$graph    = new Graph\PolarGraph($__width, $__height);
+$graph = new Graph\PolarGraph($__width, $__height);
 $graph->SetScale('lin', 150);
 
 $graph->SetMarginColor('#FFE6C0');

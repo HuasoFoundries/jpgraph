@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
@@ -9,8 +9,6 @@ namespace Amenadiel\JpGraph\Graph\Scale;
 use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function max;
-use function min;
 
 /**
  * File:        JPGRAPH_GANTT.PHP
@@ -27,24 +25,41 @@ use function min;
  */
 class GanttActivityInfo
 {
-    public $iShow            = true;
-    public $iLeftColMargin   = 4;
-    public $iRightColMargin  = 1;
-    public $iTopColMargin    = 1;
+    public $iShow = true;
+
+    public $iLeftColMargin = 4;
+
+    public $iRightColMargin = 1;
+
+    public $iTopColMargin = 1;
+
     public $iBottomColMargin = 3;
+
     public $vgrid;
-    private $iColor           = 'black';
+
+    private $iColor = 'black';
+
     private $iBackgroundColor = 'lightgray';
-    private $iFFamily         = Configs::FF_FONT1;
-    private $iFStyle          = Configs::FS_NORMAL;
-    private $iFSize           = 10;
-    private $iFontColor       = 'black';
-    private $iTitles          = [];
-    private $iWidth           = [];
-    private $iHeight          = -1;
+
+    private $iFFamily = Configs::FF_FONT1;
+
+    private $iFStyle = Configs::FS_NORMAL;
+
+    private $iFSize = 10;
+
+    private $iFontColor = 'black';
+
+    private $iTitles = [];
+
+    private $iWidth = [];
+
+    private $iHeight = -1;
+
     private $iTopHeaderMargin = 4;
-    private $iStyle           = 1;
-    private $iHeaderAlign     = 'center';
+
+    private $iStyle = 1;
+
+    private $iHeaderAlign = 'center';
 
     public function __construct()
     {
@@ -65,8 +80,8 @@ class GanttActivityInfo
     public function SetFont($aFFamily, $aFStyle = Configs::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
-        $this->iFStyle  = $aFStyle;
-        $this->iFSize   = $aFSize;
+        $this->iFStyle = $aFStyle;
+        $this->iFSize = $aFSize;
     }
 
     public function SetStyle($aStyle)
@@ -76,7 +91,7 @@ class GanttActivityInfo
 
     public function SetColumnMargin($aLeft, $aRight)
     {
-        $this->iLeftColMargin  = $aLeft;
+        $this->iLeftColMargin = $aLeft;
         $this->iRightColMargin = $aRight;
     }
 
@@ -98,12 +113,13 @@ class GanttActivityInfo
     public function SetColTitles($aTitles, $aWidth = null)
     {
         $this->iTitles = $aTitles;
-        $this->iWidth  = $aWidth;
+        $this->iWidth = $aWidth;
     }
 
     public function SetMinColWidth($aWidths)
     {
-        $n = min(Configs::safe_count($this->iTitles), Configs::safe_count($aWidths));
+        $n = \min(Configs::safe_count($this->iTitles), Configs::safe_count($aWidths));
+
         for ($i = 0; $i < $n; ++$i) {
             if (empty($aWidths[$i])) {
                 continue;
@@ -112,7 +128,7 @@ class GanttActivityInfo
             if (empty($this->iWidth[$i])) {
                 $this->iWidth[$i] = $aWidths[$i];
             } else {
-                $this->iWidth[$i] = max($this->iWidth[$i], $aWidths[$i]);
+                $this->iWidth[$i] = \max($this->iWidth[$i], $aWidths[$i]);
             }
         }
     }
@@ -121,32 +137,35 @@ class GanttActivityInfo
     {
         $txt = new Text\TextProperty();
         $txt->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-        $n  = Configs::safe_count($this->iTitles);
+        $n = Configs::safe_count($this->iTitles);
         $rm = $this->iRightColMargin;
-        $w  = 0;
+        $w = 0;
+
         for ($h = 0, $i = 0; $i < $n; ++$i) {
             $w += $this->iLeftColMargin;
             $txt->Set($this->iTitles[$i]);
+
             if (!empty($this->iWidth[$i])) {
-                $w1 = max($txt->GetWidth($aImg) + $rm, $this->iWidth[$i]);
+                $w1 = \max($txt->GetWidth($aImg) + $rm, $this->iWidth[$i]);
             } else {
                 $w1 = $txt->GetWidth($aImg) + $rm;
             }
             $this->iWidth[$i] = $w1;
             $w += $w1;
-            $h = max($h, $txt->GetHeight($aImg));
+            $h = \max($h, $txt->GetHeight($aImg));
         }
         $this->iHeight = $h + $this->iTopHeaderMargin;
-        $txt           = '';
+        $txt = '';
 
         return $w;
     }
 
     public function GetColStart($aImg, &$aStart, $aAddLeftMargin = false)
     {
-        $n      = Configs::safe_count($this->iTitles);
-        $adj    = $aAddLeftMargin ? $this->iLeftColMargin : 0;
+        $n = Configs::safe_count($this->iTitles);
+        $adj = $aAddLeftMargin ? $this->iLeftColMargin : 0;
         $aStart = [$aImg->left_margin + $adj];
+
         for ($i = 1; $i < $n; ++$i) {
             $aStart[$i] = $aStart[$i - 1] + $this->iLeftColMargin + $this->iWidth[$i - 1];
         }
@@ -170,15 +189,15 @@ class GanttActivityInfo
         $txt->SetAlign($this->iHeaderAlign, 'top');
         $n = Configs::safe_count($this->iTitles);
 
-        if ($n == 0) {
+        if (0 === $n) {
             return;
         }
 
-        $x    = $aXLeft;
-        $h    = $this->iHeight;
+        $x = $aXLeft;
+        $h = $this->iHeight;
         $yTop = $aUseTextHeight ? $aYBottom - $h - $this->iTopColMargin - $this->iBottomColMargin : $aYTop;
 
-        if ($h < 0) {
+        if (0 > $h) {
             Util\JpGraphError::RaiseL(6001);
             //('Internal error. Height for ActivityTitles is < 0');
         }
@@ -188,14 +207,14 @@ class GanttActivityInfo
         $aImg->SetColor($this->iBackgroundColor);
         $aImg->FilledRectangle($aXLeft, $yTop, $aXRight, $aYBottom - 1);
 
-        if ($this->iStyle == 1) {
+        if (1 === $this->iStyle) {
             // Make a 3D effect
             $aImg->SetColor('white');
             $aImg->Line($aXLeft, $yTop + 1, $aXRight, $yTop + 1);
         }
 
         for ($i = 0; $i < $n; ++$i) {
-            if ($this->iStyle == 1) {
+            if (1 === $this->iStyle) {
                 // Make a 3D effect
                 $aImg->SetColor('white');
                 $aImg->Line($x + 1, $yTop, $x + 1, $aYBottom);
@@ -205,15 +224,17 @@ class GanttActivityInfo
 
             // Adjust the text anchor position according to the choosen alignment
             $xp = $x;
-            if ($this->iHeaderAlign == 'center') {
+
+            if ('center' === $this->iHeaderAlign) {
                 $xp = (($x - $this->iLeftColMargin) + ($x + $this->iWidth[$i])) / 2;
-            } elseif ($this->iHeaderAlign == 'right') {
+            } elseif ('right' === $this->iHeaderAlign) {
                 $xp = $x + $this->iWidth[$i] - $this->iRightColMargin;
             }
 
             $txt->Stroke($aImg, $xp, $yTop + $this->iTopHeaderMargin);
             $x += $this->iWidth[$i];
-            if ($i >= $n - 1) {
+
+            if ($n - 1 <= $i) {
                 continue;
             }
 
@@ -228,6 +249,7 @@ class GanttActivityInfo
         $cols = [];
         $this->GetColStart($aImg, $cols);
         $n = Configs::safe_count($cols);
+
         for ($i = 1; $i < $n; ++$i) {
             $this->vgrid->Stroke(
                 $aImg,

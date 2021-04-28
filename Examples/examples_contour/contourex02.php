@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Contour plot example 02
@@ -20,9 +20,9 @@ $data = [
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$__width  = 500;
+$__width = 500;
 $__height = 380;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 140, 60, 40);
 $example_title = 'Example of contour plot';
 $graph->title->set($example_title);

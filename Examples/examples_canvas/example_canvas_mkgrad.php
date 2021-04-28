@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 //=======================================================================
@@ -19,7 +19,7 @@ use Amenadiel\JpGraph\Plot;
 // Must have a global comparison method for usort()
 function _cmp($a, $b)
 {
-    return strcmp($a, $b);
+    return \strcmp($a, $b);
 }
 
 $example_title = 'Generate gradient background';
@@ -27,13 +27,14 @@ $example_title = 'Generate gradient background';
 class Form
 {
     public $iColors;
+
     public $iGradstyles;
 
     public function __construct()
     {
-        $rgb           = new Image\RGB();
-        $this->iColors = array_keys($rgb->rgb_table);
-        usort($this->iColors, '_cmp');
+        $rgb = new Image\RGB();
+        $this->iColors = \array_keys($rgb->rgb_table);
+        \usort($this->iColors, '_cmp');
 
         $this->iGradstyles = [
             'Vertical', 2,
@@ -47,7 +48,7 @@ class Form
 
     public function Run($example_title)
     {
-        echo "<h3>${example_title}</h3>";
+        echo "<h3>{$example_title}</h3>";
         echo '<form METHOD=POST action=""><table style="border:blue solid 1;">';
         echo '<tr><td>Width:<br>' . $this->GenHTMLInput('w', 8, 4, 300) . '</td>';
         echo "\n";
@@ -81,14 +82,16 @@ class Form
 
     public function GenHTMLSelect($name, $option, $selected = '', $size = 0)
     {
-        $txt = "<select name=${name}";
-        if ($size > 0) {
-            $txt .= " size=${size} >";
+        $txt = "<select name={$name}";
+
+        if (0 < $size) {
+            $txt .= " size={$size} >";
         } else {
             $txt .= '>';
         }
-        for ($i = 0; $i < count($option); ++$i) {
-            if ($selected == $option[$i]) {
+
+        for ($i = 0; \count($option) > $i; ++$i) {
+            if ($selected === $option[$i]) {
                 $txt = $txt . "<option selected value=\"{$option[$i]}\">{$option[$i]}</option>\n";
             } else {
                 $txt = $txt . '<option value="' . $option[$i] . "\">{$option[$i]}</option>\n";
@@ -100,14 +103,16 @@ class Form
 
     public function GenHTMLSelectCode($name, $option, $selected = '', $size = 0)
     {
-        $txt = "<select name=${name}";
-        if ($size > 0) {
-            $txt .= " size=${size} >";
+        $txt = "<select name={$name}";
+
+        if (0 < $size) {
+            $txt .= " size={$size} >";
         } else {
             $txt .= '>';
         }
-        for ($i = 0; $i < count($option); $i += 2) {
-            if ($selected == $option[($i + 1)]) {
+
+        for ($i = 0; \count($option) > $i; $i += 2) {
+            if ($option[($i + 1)] === $selected) {
                 $txt = $txt . '<option selected value=' . $option[($i + 1)] . ">{$option[$i]}</option>\n";
             } else {
                 $txt = $txt . '<option value="' . $option[($i + 1)] . "\">{$option[$i]}</option>\n";
@@ -123,12 +128,19 @@ class Form
 class Driver
 {
     public $iGraph;
+
     public $iGrad;
+
     public $iWidth;
+
     public $iHeight;
+
     public $iFromColor;
+
     public $iToColor;
+
     public $iStyle;
+
     public $iForm;
 
     public function __construct()
@@ -138,21 +150,21 @@ class Driver
 
     public function GenGradImage($aWidth = null, $aHeight = null)
     {
-        $aWidth    = $aWidth ? $aWidth : (int) @$_POST['w'];
-        $aHeight   = $aHeight ? $aHeight : (int) @$_POST['h'];
-        $aFrom     = isset($_POST['fc']) ? @$_POST['fc'] : $this->iForm->iColors[0];
-        $aTo       = isset($_POST['tc']) ? @$_POST['tc'] : $this->iForm->iColors[0];
-        $aStyle    = isset($_POST['s']) ? @$_POST['s'] : '2';
-        $aFileName = isset($_POST['fn']) ? @$_POST['fn'] : '';
+        $aWidth = $aWidth ?: (int) $_POST['w'];
+        $aHeight = $aHeight ?: (int) $_POST['h'];
+        $aFrom = $_POST['fc'] ?? $this->iForm->iColors[0];
+        $aTo = $_POST['tc'] ?? $this->iForm->iColors[0];
+        $aStyle = $_POST['s'] ?? '2';
+        $aFileName = $_POST['fn'] ?? '';
 
-        $this->iWidth     = $aWidth;
-        $this->iHeight    = $aHeight;
+        $this->iWidth = $aWidth;
+        $this->iHeight = $aHeight;
         $this->iFromColor = $aFrom;
-        $this->iToColor   = $aTo;
-        $this->iStyle     = $aStyle;
+        $this->iToColor = $aTo;
+        $this->iStyle = $aStyle;
 
         $this->graph = new Graph\CanvasGraph($aWidth, $aHeight);
-        $this->grad  = new Plot\Gradient($this->graph->img);
+        $this->grad = new Plot\Gradient($this->graph->img);
         $this->grad->FilledRectangle(
             0,
             0,
@@ -163,9 +175,9 @@ class Driver
             $this->iStyle
         );
 
-        if ($aFileName != '') {
+        if ('' !== $aFileName) {
             $this->graph->Stroke($aFileName);
-            echo "Image file '${aFileName}' created.";
+            echo "Image file '{$aFileName}' created.";
         } else {
             $this->graph->Stroke();
         }
@@ -182,15 +194,15 @@ class Driver
         // we are called to do the image.
         if ($inmediate) {
             $this->GenGradImage($aWidth, $aHeight);
-        } elseif (@$_POST['ok'] === ' Ok ') {
+        } elseif (' Ok ' === $_POST['ok']) {
             $this->GenGradImage($aWidth, $aHeight);
         } else {
             $this->iForm->Run($example_title);
         }
     }
 }
-defined('TEST_INMEDIATE') || define('TEST_INMEDIATE', true);
-$driver   = new Driver();
-$__width  = 300;
+\defined('TEST_INMEDIATE') || \define('TEST_INMEDIATE', true);
+$driver = new Driver();
+$__width = 300;
 $__height = 300;
 $driver->Run($example_title, TEST_INMEDIATE, $__width, $__height);

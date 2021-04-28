@@ -1,21 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Scale;
 
-use function abs;
 use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Util;
-use function assert;
-use function ceil;
-use function floor;
-use function is_numeric;
-use function log10;
+use function abs;
 use function pow;
-use function round;
 
 /**
  * @class LinearScale
@@ -23,54 +17,88 @@ use function round;
  */
 class Scale extends Configs
 {
-    public $textscale = false; // Just a flag to let the Plot class find out if
+    public $textscale = false;
+
+    // Just a flag to let the Plot class find out if
     // we are a textscale or not. This is a cludge since
     // this information is available in Graph::axtype but
     // we don't have access to the graph object in the Plots
     // stroke method. So we let graph store the status here
     // when the linear scale is created. A real cludge...
     public $type; // is this x or y scale ?
+
     public $ticks; // Store ticks
+
     public $text_scale_off = 0;
-    public $scale_abs      = [0, 0];
+
+    public $scale_abs = [0, 0];
+
     public $scale_factor; // Scale factor between world and screen
+
     public $off; // Offset between image edge and plot area
-    public $scale      = [0, 0];
-    public $name       = 'lin';
+
+    public $scale = [0, 0];
+
+    public $name = 'lin';
+
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
+
     public $world_abs_size; // Plot area size in pixels (Needed public in jpgraph_radar.php)
-    public $intscale         = false; // Restrict autoscale to integers
+
+    public $intscale = false; // Restrict autoscale to integers
+
     protected $autoscale_min = false; // Forced minimum value, auto determine max
+
     protected $autoscale_max = false; // Forced maximum value, auto determine min
-    private $gracetop        = 0;
-    private $gracebottom     = 0;
+
+    private $gracetop = 0;
+
+    private $gracebottom = 0;
 
     private $_world_size; // Plot area size in world coordinates
 
     public function __construct($aMin = 0, $aMax = 0, $aType = 'y')
     {
-        assert($aType == 'x' || $aType == 'y');
-        assert($aMin <= $aMax);
+        \assert('x' === $aType || 'y' === $aType);
+        \assert($aMin <= $aMax);
 
-        $this->type       = $aType;
-        $this->scale      = [$aMin, $aMax];
+        $this->type = $aType;
+        $this->scale = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
     }
+
+    public function __get($name)
+    {
+        $variable_name = '_' . $name;
+
+        if (isset($this->{$variable_name})) {
+            return $this->{$variable_name} * Configs::getConfig('SUPERSAMPLING_SCALE');
+        }
+        Util\JpGraphError::RaiseL('25132', $name);
+    }
+
+    public function __set($name, $value)
+    {
+        $this->{'_' . $name} = $value;
+    }
+
     // get maximum value for scale
     public function GetMaxVal()
     {
         return $this->scale[1];
     }
+
     // Get the minimum value in the scale
     public function GetMinVal()
     {
         return $this->scale[0];
     }
+
     // Check if scale is set or if we should autoscale
     // We should do this is either scale or ticks has not been set
     public function IsSpecified()
     {
-        if ($this->GetMinVal() == $this->GetMaxVal()) {
+        if ($this->GetMinVal() === $this->GetMaxVal()) {
             // Scale not set
             return false;
         }
@@ -87,9 +115,9 @@ class Scale extends Configs
     public function SetConstants($aStart, $aLen)
     {
         $this->world_abs_size = $aLen;
-        $this->off            = $aStart;
+        $this->off = $aStart;
 
-        if ($this->world_size <= 0) {
+        if (0 >= $this->world_size) {
             // This should never ever happen !!
             Util\JpGraphError::RaiseL(25074);
             //("You have unfortunately stumbled upon a bug in JpGraph. It seems like the scale range is ".$this->world_size." [for ".$this->type." scale] <br> Please report Bug #01 to info@jpgraph.net and include the script that gave this error. This problem could potentially be caused by trying to use \"illegal\" values in the input data arrays (like trying to send in strings or only NULL values) which causes the autoscaling to fail.");
@@ -106,31 +134,35 @@ class Scale extends Configs
     public function IntAutoScale($img, $min, $max, $maxsteps, $majend = true)
     {
         // Make sure limits are integers
-        $min = floor($min);
-        $max = ceil($max);
-        if (abs($min - $max) == 0) {
+        $min = \floor($min);
+        $max = \ceil($max);
+
+        if (\abs($min - $max) === 0) {
             --$min;
             ++$max;
         }
-        $maxsteps = floor($maxsteps);
+        $maxsteps = \floor($maxsteps);
 
-        $gracetop    = round(($this->gracetop / 100.0) * abs($max - $min));
-        $gracebottom = round(($this->gracebottom / 100.0) * abs($max - $min));
-        if (is_numeric($this->autoscale_min)) {
-            $min = ceil($this->autoscale_min);
+        $gracetop = \round(($this->gracetop / 100.0) * \abs($max - $min));
+        $gracebottom = \round(($this->gracebottom / 100.0) * \abs($max - $min));
+
+        if (\is_numeric($this->autoscale_min)) {
+            $min = \ceil($this->autoscale_min);
+
             if ($min >= $max) {
                 Util\JpGraphError::RaiseL(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
             }
         }
 
-        if (is_numeric($this->autoscale_max)) {
-            $max = ceil($this->autoscale_max);
+        if (\is_numeric($this->autoscale_max)) {
+            $max = \ceil($this->autoscale_max);
+
             if ($min >= $max) {
                 Util\JpGraphError::RaiseL(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
             }
         }
 
-        if (abs($min - $max) == 0) {
+        if (\abs($min - $max) === 0) {
             ++$max;
             --$min;
         }
@@ -140,34 +172,34 @@ class Scale extends Configs
 
         // First get tickmarks as multiples of 1, 10, ...
         if ($majend) {
-            list($num1steps, $adj1min, $adj1max, $maj1step) = $this->IntCalcTicks($maxsteps, $min, $max, 1);
+            [$num1steps, $adj1min, $adj1max, $maj1step] = $this->IntCalcTicks($maxsteps, $min, $max, 1);
         } else {
-            $adj1min                    = $min;
-            $adj1max                    = $max;
-            list($num1steps, $maj1step) = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 1);
+            $adj1min = $min;
+            $adj1max = $max;
+            [$num1steps, $maj1step] = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 1);
         }
 
-        if (abs($min - $max) > 2) {
+        if (\abs($min - $max) > 2) {
             // Then get tick marks as 2:s 2, 20, ...
             if ($majend) {
-                list($num2steps, $adj2min, $adj2max, $maj2step) = $this->IntCalcTicks($maxsteps, $min, $max, 5);
+                [$num2steps, $adj2min, $adj2max, $maj2step] = $this->IntCalcTicks($maxsteps, $min, $max, 5);
             } else {
-                $adj2min                    = $min;
-                $adj2max                    = $max;
-                list($num2steps, $maj2step) = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 5);
+                $adj2min = $min;
+                $adj2max = $max;
+                [$num2steps, $maj2step] = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 5);
             }
         } else {
             $num2steps = 10000; // Dummy high value so we don't choose this
         }
 
-        if (abs($min - $max) > 5) {
+        if (\abs($min - $max) > 5) {
             // Then get tickmarks as 5:s 5, 50, 500, ...
             if ($majend) {
-                list($num5steps, $adj5min, $adj5max, $maj5step) = $this->IntCalcTicks($maxsteps, $min, $max, 2);
+                [$num5steps, $adj5min, $adj5max, $maj5step] = $this->IntCalcTicks($maxsteps, $min, $max, 2);
             } else {
-                $adj5min                    = $min;
-                $adj5max                    = $max;
-                list($num5steps, $maj5step) = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 2);
+                $adj5min = $min;
+                $adj5max = $max;
+                [$num5steps, $maj5step] = $this->IntCalcTicksFreeze($maxsteps, $min, $max, 2);
             }
         } else {
             $num5steps = 10000; // Dummy high value so we don't choose this
@@ -175,10 +207,11 @@ class Scale extends Configs
 
         // Check to see whichof 1:s, 2:s or 5:s fit better with
         // the requested number of major ticks
-        $match1 = abs($num1steps - $maxsteps);
-        $match2 = abs($num2steps - $maxsteps);
-        if (!empty($maj5step) && $maj5step > 1) {
-            $match5 = abs($num5steps - $maxsteps);
+        $match1 = \abs($num1steps - $maxsteps);
+        $match2 = \abs($num2steps - $maxsteps);
+
+        if (!empty($maj5step) && 1 < $maj5step) {
+            $match5 = \abs($num5steps - $maxsteps);
         } else {
             $match5 = 10000; // Dummy high value
         }
@@ -215,6 +248,7 @@ class Scale extends Configs
                 $this->Update($img, $adj5min, $adj5max);
 
                 break;
+
             default:
                 Util\JpGraphError::RaiseL(25073, $r); //('Internal error. Integer scale algorithm comparison out of bound (r=$r)');
         }
@@ -223,10 +257,11 @@ class Scale extends Configs
     // Specify a new min/max value for sclae
     public function Update($aImg, $aMin, $aMax)
     {
-        $this->scale      = [$aMin, $aMax];
+        $this->scale = [$aMin, $aMax];
         $this->world_size = $aMax - $aMin;
         $this->InitConfigs($aImg);
     }
+
     /**
      * PRIVATE METHODS.
      *
@@ -239,23 +274,25 @@ class Scale extends Configs
     // that image. Should really be installed as an observer of that image.
     public function InitConfigs($img)
     {
-        if ($this->type == 'x') {
+        if ('x' === $this->type) {
             $this->world_abs_size = $img->width - $img->left_margin - $img->right_margin;
-            $this->off            = $img->left_margin;
-            $this->scale_factor   = 0;
-            if ($this->world_size > 0) {
+            $this->off = $img->left_margin;
+            $this->scale_factor = 0;
+
+            if (0 < $this->world_size) {
                 $this->scale_factor = $this->world_abs_size / ($this->world_size * 1.0);
             }
         } else {
             // y scale
             $this->world_abs_size = $img->height - $img->top_margin - $img->bottom_margin;
-            $this->off            = $img->top_margin + $this->world_abs_size;
-            $this->scale_factor   = 0;
-            if ($this->world_size > 0) {
+            $this->off = $img->top_margin + $this->world_abs_size;
+            $this->scale_factor = 0;
+
+            if (0 < $this->world_size) {
                 $this->scale_factor = -$this->world_abs_size / ($this->world_size * 1.0);
             }
         }
-        $size            = $this->world_size * $this->scale_factor;
+        $size = $this->world_size * $this->scale_factor;
         $this->scale_abs = [$this->off, $this->off + $size];
     }
 
@@ -268,9 +305,9 @@ class Scale extends Configs
     public function SetConfigs($aStart, $aLen)
     {
         $this->world_abs_size = $aLen;
-        $this->off            = $aStart;
+        $this->off = $aStart;
 
-        if ($this->world_size <= 0) {
+        if (0 >= $this->world_size) {
             // This should never ever happen !!
             Util\JpGraphError::RaiseL(25074);
             //("You have unfortunately stumbled upon a bug in JpGraph. It seems like the scale range is ".$this->world_size." [for ".$this->type." scale] <br> Please report Bug #01 to info@jpgraph.net and include the script that gave this error. This problem could potentially be caused by trying to use \"illegal\" values in the input data arrays (like trying to send in strings or only NULL values) which causes the autoscaling to fail.");
@@ -295,41 +332,43 @@ class Scale extends Configs
     public function CalcTicks($maxsteps, $min, $max, $a, $b, $majend = true)
     {
         $diff = $max - $min;
-        if ($diff == 0) {
+
+        if (0 === $diff) {
             $ld = 0;
         } else {
-            $ld = floor(log10($diff));
+            $ld = \floor(\log10($diff));
         }
 
         // Gravitate min towards zero if we are close
-        if ($min > 0 && $min < pow(10, $ld)) {
+        if (0 < $min && 10 ** $ld > $min) {
             $min = 0;
         }
 
         //$majstep=pow(10,$ld-1)/$a;
-        $majstep = pow(10, $ld) / $a;
+        $majstep = 10 ** $ld / $a;
         $minstep = $majstep / $b;
 
-        $adjmax   = ceil($max / $minstep) * $minstep;
-        $adjmin   = floor($min / $minstep) * $minstep;
-        $adjdiff  = $adjmax - $adjmin;
+        $adjmax = \ceil($max / $minstep) * $minstep;
+        $adjmin = \floor($min / $minstep) * $minstep;
+        $adjdiff = $adjmax - $adjmin;
         $numsteps = $adjdiff / $majstep;
 
         while ($numsteps > $maxsteps) {
-            $majstep  = pow(10, $ld) / $a;
+            $majstep = 10 ** $ld / $a;
             $numsteps = $adjdiff / $majstep;
             ++$ld;
         }
 
         $minstep = $majstep / $b;
-        $adjmin  = floor($min / $minstep) * $minstep;
+        $adjmin = \floor($min / $minstep) * $minstep;
         $adjdiff = $adjmax - $adjmin;
+
         if ($majend) {
-            $adjmin  = floor($min / $majstep) * $majstep;
+            $adjmin = \floor($min / $majstep) * $majstep;
             $adjdiff = $adjmax - $adjmin;
-            $adjmax  = ceil($adjdiff / $majstep) * $majstep + $adjmin;
+            $adjmax = \ceil($adjdiff / $majstep) * $majstep + $adjmin;
         } else {
-            $adjmax = ceil($max / $minstep) * $minstep;
+            $adjmax = \ceil($max / $minstep) * $minstep;
         }
 
         return [$numsteps, $adjmin, $adjmax, $minstep, $majstep];
@@ -339,20 +378,21 @@ class Scale extends Configs
     {
         // Same as CalcTicks but don't adjust min/max values
         $diff = $max - $min;
-        if ($diff == 0) {
+
+        if (0 === $diff) {
             $ld = 0;
         } else {
-            $ld = floor(log10($diff));
+            $ld = \floor(\log10($diff));
         }
 
         //$majstep=pow(10,$ld-1)/$a;
-        $majstep  = pow(10, $ld) / $a;
-        $minstep  = $majstep / $b;
-        $numsteps = floor($diff / $majstep);
+        $majstep = 10 ** $ld / $a;
+        $minstep = $majstep / $b;
+        $numsteps = \floor($diff / $majstep);
 
         while ($numsteps > $maxsteps) {
-            $majstep  = pow(10, $ld) / $a;
-            $numsteps = floor($diff / $majstep);
+            $majstep = 10 ** $ld / $a;
+            $numsteps = \floor($diff / $majstep);
             ++$ld;
         }
         $minstep = $majstep / $b;
@@ -363,43 +403,48 @@ class Scale extends Configs
     public function IntCalcTicks($maxsteps, $min, $max, $a, $majend = true)
     {
         $diff = $max - $min;
-        if ($diff == 0) {
+
+        if (0 === $diff) {
             Util\JpGraphError::RaiseL(25075); //('Can\'t automatically determine ticks since min==max.');
         } else {
-            $ld = floor(log10($diff));
+            $ld = \floor(\log10($diff));
         }
 
         // Gravitate min towards zero if we are close
-        if ($min > 0 && $min < pow(10, $ld)) {
+        if (0 < $min && 10 ** $ld > $min) {
             $min = 0;
         }
-        if ($ld == 0) {
+
+        if (0 === $ld) {
             $ld = 1;
         }
-        if ($a == 1) {
+
+        if (1 === $a) {
             $majstep = 1;
         } else {
-            $majstep = pow(10, $ld) / $a;
+            $majstep = 10 ** $ld / $a;
         }
-        $adjmax = ceil($max / $majstep) * $majstep;
+        $adjmax = \ceil($max / $majstep) * $majstep;
 
-        $adjmin   = floor($min / $majstep) * $majstep;
-        $adjdiff  = $adjmax - $adjmin;
+        $adjmin = \floor($min / $majstep) * $majstep;
+        $adjdiff = $adjmax - $adjmin;
         $numsteps = $adjdiff / $majstep;
+
         while ($numsteps > $maxsteps) {
-            $majstep  = pow(10, $ld) / $a;
+            $majstep = 10 ** $ld / $a;
             $numsteps = $adjdiff / $majstep;
             ++$ld;
         }
 
-        $adjmin  = floor($min / $majstep) * $majstep;
+        $adjmin = \floor($min / $majstep) * $majstep;
         $adjdiff = $adjmax - $adjmin;
+
         if ($majend) {
-            $adjmin  = floor($min / $majstep) * $majstep;
+            $adjmin = \floor($min / $majstep) * $majstep;
             $adjdiff = $adjmax - $adjmin;
-            $adjmax  = ceil($adjdiff / $majstep) * $majstep + $adjmin;
+            $adjmax = \ceil($adjdiff / $majstep) * $majstep + $adjmin;
         } else {
-            $adjmax = ceil($max / $majstep) * $majstep;
+            $adjmax = \ceil($max / $majstep) * $majstep;
         }
 
         return [$numsteps, $adjmin, $adjmax, $majstep];
@@ -409,42 +454,31 @@ class Scale extends Configs
     {
         // Same as IntCalcTick but don't change min/max values
         $diff = $max - $min;
-        if ($diff == 0) {
+
+        if (0 === $diff) {
             Util\JpGraphError::RaiseL(25075); //('Can\'t automatically determine ticks since min==max.');
         } else {
-            $ld = floor(log10($diff));
-        }
-        if ($ld == 0) {
-            $ld = 1;
-        }
-        if ($a == 1) {
-            $majstep = 1;
-        } else {
-            $majstep = pow(10, $ld) / $a;
+            $ld = \floor(\log10($diff));
         }
 
-        $numsteps = floor($diff / $majstep);
+        if (0 === $ld) {
+            $ld = 1;
+        }
+
+        if (1 === $a) {
+            $majstep = 1;
+        } else {
+            $majstep = 10 ** $ld / $a;
+        }
+
+        $numsteps = \floor($diff / $majstep);
+
         while ($numsteps > $maxsteps) {
-            $majstep  = pow(10, $ld) / $a;
-            $numsteps = floor($diff / $majstep);
+            $majstep = 10 ** $ld / $a;
+            $numsteps = \floor($diff / $majstep);
             ++$ld;
         }
 
         return [$numsteps, $majstep];
-    }
-
-    public function __get($name)
-    {
-        $variable_name = '_' . $name;
-
-        if (isset($this->{$variable_name})) {
-            return $this->{$variable_name} * Configs::getConfig('SUPERSAMPLING_SCALE');
-        }
-        Util\JpGraphError::RaiseL('25132', $name);
-    }
-
-    public function __set($name, $value)
-    {
-        $this->{'_' . $name} = $value;
     }
 } // @class

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,12 +19,12 @@ $spline = new Util\Spline($xdata, $ydata);
 
 // For the new data set we want 40 points to
 // get a smooth curve.
-list($newx, $newy) = $spline->Get(50);
+[$newx, $newy] = $spline->Get(50);
 
 // Create the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$g        = new Graph\Graph($__width, $__height);
+$g = new Graph\Graph($__width, $__height);
 $g->SetMargin(30, 20, 40, 30);
 $example_title = 'Natural cubic splines';
 $g->title->set($example_title);

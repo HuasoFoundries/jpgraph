@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // A simple Polar graph,
@@ -16,16 +16,16 @@ $data = [5, 1, 20, 5, 30, 25, 40, 60,
     95, 370, 100, 260, 105, 230,
     110, 210, 120, 160, 130, 110, 140, 60,
     150, 25, 160, 5, 175, 1, ];
-$n = count($data);
+$n = \count($data);
 /*
 for($i=0; $i < $n; $i+=2 ) {
 $data[$n+$i] = 360-$data[$i];
 $data[$n+$i+1] = $data[$i+1];
 }
  */
-$__width  = 350;
+$__width = 350;
 $__height = 480;
-$graph    = new Graph\PolarGraph($__width, $__height);
+$graph = new Graph\PolarGraph($__width, $__height);
 $graph->SetScale('log', 100);
 $graph->SetType(Graph\Configs::getConfig('POLAR_360'));
 

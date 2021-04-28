@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,7 +19,8 @@ $data = [
 
 // We need to create X,Y data vectors suitable for the
 // library from the above raw data.
-$n = count($data);
+$n = \count($data);
+
 for ($i = 0; $i < $n; ++$i) {
     $datax[$i] = $data[$i][0];
     $datay[$i] = $data[$i][1];
@@ -41,9 +42,9 @@ $FCallback = function ($aYVal, $aXVal) {
 };
 
 // Setup a basic graph
-$__width  = 450;
+$__width = 450;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('intlin');
 $graph->SetMargin(40, 40, 40, 40);
 $graph->SetMarginColor('wheat');

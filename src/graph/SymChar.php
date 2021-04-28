@@ -1,14 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
-
-use function hexdec;
-use function sprintf;
-use function strtolower;
 
 /**
  * @class SymChar
@@ -69,22 +65,25 @@ class SymChar
             ['gte', '2265'], /* Greater than or equal */
         ];
 
-        $n     = Configs::safe_count($iSymbols);
-        $i     = 0;
+        $n = Configs::safe_count($iSymbols);
+        $i = 0;
         $found = false;
-        $aSymb = strtolower($aSymb);
+        $aSymb = \mb_strtolower($aSymb);
+
         while ($i < $n && !$found) {
             $found = $aSymb === $iSymbols[$i++][0];
         }
+
         if ($found) {
             $ca = $iSymbols[--$i];
-            if ($aCapital && Configs::safe_count($ca) == 3) {
+
+            if ($aCapital && Configs::safe_count($ca) === 3) {
                 $s = $ca[2];
             } else {
                 $s = $ca[1];
             }
 
-            return sprintf('&#%04d;', hexdec($s));
+            return \sprintf('&#%04d;', \hexdec($s));
         }
 
         return '';

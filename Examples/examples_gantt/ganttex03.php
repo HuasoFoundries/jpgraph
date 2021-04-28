@@ -1,16 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$__width  = 0;
+$__width = 0;
 $__height = 0;
-$graph    = new Graph\GanttGraph($__width, $__height);
+$graph = new Graph\GanttGraph($__width, $__height);
 $graph->SetShadow();
 
 // Add title and subtitle

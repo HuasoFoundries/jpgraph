@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,13 +18,13 @@ $data = [
 $piepos = [0.2, 0.4, 0.65, 0.28, 0.25, 0.75, 0.8, 0.75];
 $titles = ['USA', 'Sweden', 'South America', 'Australia'];
 
-$n = count($piepos) / 2;
+$n = \count($piepos) / 2;
 
-defined('DEFAULT_THEME_CLASS') || define('DEFAULT_THEME_CLASS', 'NoTheme');
+\defined('DEFAULT_THEME_CLASS') || \define('DEFAULT_THEME_CLASS', 'NoTheme');
 // A new Graph\Graph
-$__width  = 550;
+$__width = 550;
 $__height = 400;
-$graph    = new Graph\PieGraph($__width, $__height, 'auto');
+$graph = new Graph\PieGraph($__width, $__height, 'auto');
 
 // Specify margins since we put the image in the plot area
 $graph->SetMargin(1, 1, 40, 1);
@@ -43,7 +43,7 @@ $graph->title->SetColor('white');
 $p = [];
 // Create the plots
 for ($i = 0; $i < $n; ++$i) {
-    $d   = "data${i}";
+    $d = "data{$i}";
     $p[] = new Plot\PiePlot3D($data[$i]);
 }
 

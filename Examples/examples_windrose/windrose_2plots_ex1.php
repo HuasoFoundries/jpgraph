@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,9 +22,9 @@ $data2 = [
 ];
 
 // Create a new small windrose graph
-$__width  = 660;
+$__width = 660;
 $__height = 400;
-$graph    = new Graph\WindroseGraph($__width, $__height);
+$graph = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow();
 $example_title = 'Two windrose plots in one graph';
 $graph->title->set($example_title);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -19,9 +19,9 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
 ];
 
-$width         = 400;
-$height        = 350;
-$graph         = new MatrixGraph($width, $height);
+$width = 400;
+$height = 350;
+$graph = new MatrixGraph($width, $height);
 $example_title = 'Using a circular module type';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);

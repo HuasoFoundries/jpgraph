@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
@@ -18,9 +18,9 @@ $datay = [
     40, 29, 22, 45, ];
 
 // Setup basic graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 $graph->SetFrame(false);
@@ -32,7 +32,7 @@ $graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::g
 
 // Get week days in curent locale
 $days = $graph->gDateLocale->GetShortDay();
-array_shift($days); // Start on monday
+\array_shift($days); // Start on monday
 $graph->xaxis->SetTickLabels($days);
 
 // Create stock plot

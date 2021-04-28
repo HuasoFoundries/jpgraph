@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Themes;
@@ -11,10 +11,13 @@ namespace Amenadiel\JpGraph\Themes;
  */
 class GreenTheme extends Theme
 {
-    protected $font_color       = '#009900';
+    protected $font_color = '#009900';
+
     protected $background_color = '#EEFFDD';
-    protected $axis_color       = '#00CC00';
-    protected $grid_color       = '#33CC33';
+
+    protected $axis_color = '#00CC00';
+
+    protected $grid_color = '#33CC33';
 
     public function GetColorList()
     {

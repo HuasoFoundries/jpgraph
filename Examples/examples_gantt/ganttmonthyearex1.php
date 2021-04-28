@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$graph         = new Graph\GanttGraph();
+$graph = new Graph\GanttGraph();
 $example_title = 'Only month & year scale';
 $graph->title->set($example_title);
 
@@ -36,9 +36,10 @@ $data = [
     [1, '  Label 2', '2001-10-26', '2001-11-16'], ];
 
 // Create the bars and add them to the gantt chart
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $bar = new Plot\GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 10);
-    if (count($data[$i]) > 4) {
+
+    if (\count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
     $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');

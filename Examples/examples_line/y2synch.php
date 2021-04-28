@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,20 +10,20 @@ use Amenadiel\JpGraph\Plot;
 
 function toFahrenheit($aVal)
 {
-    return round(($aVal * 9 / 5) + 32, 2);
+    return \round(($aVal * 9 / 5) + 32, 2);
 }
 
 function toCelcius($aVal)
 {
-    return round(($aVal - 32) * 5 / 9, 2);
+    return \round(($aVal - 32) * 5 / 9, 2);
 }
 
 $datay = [2, 3, 8, 19, 7, 17, 6, 22];
 
 // Create the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 280;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 // Slightly bigger margins than default to make room for titles
 $graph->SetMargin(50, 60, 40, 45);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,11 +9,11 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 // Setup canvas graph
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$g        = new Graph\CanvasGraph($__width, $__height);
+$g = new Graph\CanvasGraph($__width, $__height);
 $g->SetScale();
-$shape         = new Graph\Shape($g, $g->scale);
+$shape = new Graph\Shape($g, $g->scale);
 $example_title = 'Bezier line with control points';
 $g->title->set($example_title);
 

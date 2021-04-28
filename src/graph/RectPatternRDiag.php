@@ -1,12 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
-
-use function round;
 
 /**
  * @class RectPatternRDiag
@@ -29,10 +27,10 @@ class RectPatternRDiag extends RectPattern
         //  --------------------
         $xe = $this->rect->xe;
         $ye = $this->rect->ye;
-        $x0 = $this->rect->x + round($this->linespacing / 2);
+        $x0 = $this->rect->x + \round($this->linespacing / 2);
         $y0 = $this->rect->y;
         $x1 = $this->rect->x;
-        $y1 = $this->rect->y + round($this->linespacing / 2);
+        $y1 = $this->rect->y + \round($this->linespacing / 2);
 
         while ($x0 <= $xe && $y1 <= $ye) {
             $aImg->Line($x0, $y0, $x1, $y1);
@@ -45,6 +43,7 @@ class RectPatternRDiag extends RectPattern
             $x1 = $this->rect->x + ($y1 - $ye);
             $y1 = $ye;
             $y0 = $this->rect->y;
+
             while ($x0 <= $xe) {
                 $aImg->Line($x0, $y0, $x1, $y1);
                 $x0 += $this->linespacing;
@@ -56,9 +55,10 @@ class RectPatternRDiag extends RectPattern
         } else {
             // Height larger than width
             $diff = $x0 - $xe;
-            $y0   = $diff + $this->rect->y;
-            $x0   = $xe;
-            $x1   = $this->rect->x;
+            $y0 = $diff + $this->rect->y;
+            $x0 = $xe;
+            $x1 = $this->rect->x;
+
             while ($y1 <= $ye) {
                 $aImg->Line($x0, $y0, $x1, $y1);
                 $y1 += $this->linespacing;
@@ -66,8 +66,8 @@ class RectPatternRDiag extends RectPattern
             }
 
             $diff = $y1 - $ye;
-            $y1   = $ye;
-            $x1   = $diff + $this->rect->x;
+            $y1 = $ye;
+            $x1 = $diff + $this->rect->x;
         }
 
         while ($y0 <= $ye) {

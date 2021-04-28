@@ -1,15 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
-define('DEBUGMODE', true);
-ini_set('display_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
-ini_set('display_startup_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+\define('DEBUGMODE', true);
+\ini_set('display_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+\ini_set('display_startup_errors', (int) Graph\Configs::getConfig('DEBUGMODE'));
+
 if (Graph\Configs::getConfig('DEBUGMODE')) {
-    error_reporting(E_ALL);
+    \error_reporting(\E_ALL);
 }
 
 use Amenadiel\JpGraph\Graph;
@@ -19,9 +20,9 @@ use Amenadiel\JpGraph\Text;
 $datay = [12, 26, 9, 17, 31];
 
 // Create the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(50, 80, 20, 40);
 $graph->yaxis->SetTitleMargin(30);

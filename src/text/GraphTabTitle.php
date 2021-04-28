@@ -1,12 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Text;
-
-use function round;
 
 /**
  * @class GraphTabTitle
@@ -14,26 +12,32 @@ use function round;
  */
 class GraphTabTitle extends Text
 {
-    private $corner      = 6;
-    private $posx        = 7;
-    private $posy        = 4;
-    private $fillcolor   = 'lightyellow';
+    private $corner = 6;
+
+    private $posx = 7;
+
+    private $posy = 4;
+
+    private $fillcolor = 'lightyellow';
+
     private $bordercolor = 'black';
-    private $align       = 'left';
-    private $width       = self::TABTITLE_WIDTHFIT;
+
+    private $align = 'left';
+
+    private $width = self::TABTITLE_WIDTHFIT;
 
     public function __construct()
     {
-        $this->t          = '';
+        $this->t = '';
         $this->font_style = self::FS_BOLD;
-        $this->hide       = true;
-        $this->color      = 'darkred';
+        $this->hide = true;
+        $this->color = 'darkred';
     }
 
     public function SetColor($aTxtColor, $aFillColor = 'lightyellow', $aBorderColor = 'black')
     {
-        $this->color       = $aTxtColor;
-        $this->fillcolor   = $aFillColor;
+        $this->color = $aTxtColor;
+        $this->fillcolor = $aFillColor;
         $this->bordercolor = $aBorderColor;
     }
 
@@ -54,7 +58,7 @@ class GraphTabTitle extends Text
 
     public function Set($t)
     {
-        $this->t    = $t;
+        $this->t = $t;
         $this->hide = false;
     }
 
@@ -70,14 +74,14 @@ class GraphTabTitle extends Text
         }
 
         $this->boxed = false;
-        $w           = $this->GetWidth($aImg) + 2 * $this->posx;
-        $h           = $this->GetTextHeight($aImg) + 2 * $this->posy;
+        $w = $this->GetWidth($aImg) + 2 * $this->posx;
+        $h = $this->GetTextHeight($aImg) + 2 * $this->posy;
 
         $x = $aImg->left_margin;
         $y = $aImg->top_margin;
 
-        if ($this->width === self::TABTITLE_WIDTHFIT) {
-            if ($this->align == 'left') {
+        if (self::TABTITLE_WIDTHFIT === $this->width) {
+            if ('left' === $this->align) {
                 $p = [
                     $x,
                     $y,
@@ -92,9 +96,9 @@ class GraphTabTitle extends Text
                     $x + $w,
                     $y,
                 ];
-            } elseif ($this->align == 'center') {
-                $x += round($aImg->plotwidth / 2) - round($w / 2);
-                $p  = [
+            } elseif ('center' === $this->align) {
+                $x += \round($aImg->plotwidth / 2) - \round($w / 2);
+                $p = [
                     $x,
                     $y,
                     $x,
@@ -110,7 +114,7 @@ class GraphTabTitle extends Text
                 ];
             } else {
                 $x += $aImg->plotwidth - $w;
-                $p  = [
+                $p = [
                     $x,
                     $y,
                     $x,
@@ -126,7 +130,7 @@ class GraphTabTitle extends Text
                 ];
             }
         } else {
-            if ($this->width === self::TABTITLE_WIDTHFULL) {
+            if (self::TABTITLE_WIDTHFULL === $this->width) {
                 $w = $aImg->plotwidth;
             } else {
                 $w = $this->width;
@@ -148,11 +152,12 @@ class GraphTabTitle extends Text
                 $y,
             ];
         }
-        if ($this->halign == 'left') {
+
+        if ('left' === $this->halign) {
             $aImg->SetTextAlign('left', 'bottom');
             $x += $this->posx;
             $y -= $this->posy;
-        } elseif ($this->halign == 'center') {
+        } elseif ('center' === $this->halign) {
             $aImg->SetTextAlign('center', 'bottom');
             $x += $w / 2;
             $y -= $this->posy;

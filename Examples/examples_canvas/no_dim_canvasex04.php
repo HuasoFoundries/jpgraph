@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $xmax = 20;
 $ymax = 20;
 
 // Setup a basic canvas we can work
-$__width  = 200;
+$__width = 200;
 $__height = 100;
-$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
+$g = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');

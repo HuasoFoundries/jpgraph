@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -52,13 +52,14 @@ class CanvasGraph extends Graph
     // Method description
     public function Stroke($aStrokeFileName = '')
     {
-        if ($this->texts != null) {
-            for ($i = 0; $i < Configs::safe_count($this->texts); ++$i) {
+        if (null !== $this->texts) {
+            for ($i = 0; Configs::safe_count($this->texts) > $i; ++$i) {
                 $this->texts[$i]->Stroke($this->img);
             }
         }
-        if ($this->iTables !== null) {
-            for ($i = 0; $i < Configs::safe_count($this->iTables); ++$i) {
+
+        if (null !== $this->iTables) {
+            for ($i = 0; Configs::safe_count($this->iTables) > $i; ++$i) {
                 $this->iTables[$i]->Stroke($this->img);
             }
         }
@@ -71,7 +72,7 @@ class CanvasGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
+        $_csim = (Configs::getConfig('_CSIM_SPECIALFILE') === $aStrokeFileName);
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -82,7 +83,7 @@ class CanvasGraph extends Graph
         if (!$_csim) {
             // Should we do any final image transformation
             if ($this->iImgTrans) {
-                $tform          = new Image\ImgTrans($this->img->img);
+                $tform = new Image\ImgTrans($this->img->img);
                 $this->img->img = $tform->Skew3D(
                     $this->iImgTransHorizon,
                     $this->iImgTransSkewDist,
@@ -97,7 +98,7 @@ class CanvasGraph extends Graph
             // If the filename is given as the special Configs::getConfig('_IMG_HANDLER')
             // then the image handler is returned and the image is NOT
             // streamed back
-            if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
                 return $this->img->img;
             }
             // Finally stream the generated picture

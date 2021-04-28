@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -22,10 +22,10 @@ class FlagCache
 
     public static function GetFlagImgByName($aSize, $aName)
     {
-        if (self::$_gFlagCache[$aSize] === null) {
+        if (null === self::$_gFlagCache[$aSize]) {
             self::$_gFlagCache[$aSize] = new Image\FlagImages($aSize);
         }
-        $f   = self::$_gFlagCache[$aSize];
+        $f = self::$_gFlagCache[$aSize];
         $idx = $f->GetIdxByName($aName, $aFullName);
 
         return $f->GetImgByIdx($idx);

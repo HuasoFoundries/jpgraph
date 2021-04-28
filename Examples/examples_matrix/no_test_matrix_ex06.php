@@ -1,13 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_matrix.php';
+
 require_once 'jpgraph/jpgraph_plotline.php';
 
 $data = [
@@ -21,20 +22,21 @@ $data = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, null, 8, 6, 4, 2],
 ];
 
-$nx = count($data[0]);
-$ny = count($data);
+$nx = \count($data[0]);
+$ny = \count($data);
 
 for ($i = 0; $i < $nx; ++$i) {
-    $collabels[$i] = sprintf('column label: %02d', $i);
+    $collabels[$i] = \sprintf('column label: %02d', $i);
 }
+
 for ($i = 0; $i < $ny; ++$i) {
-    $rowlabels[$i] = sprintf('row label: %02d', $i);
+    $rowlabels[$i] = \sprintf('row label: %02d', $i);
 }
 
 // Setup a nasic matrix graph
-$__width  = 400;
+$__width = 400;
 $__height = 350;
-$graph    = new MatrixGraph($__width, $__height);
+$graph = new MatrixGraph($__width, $__height);
 
 $graph->SetBackgroundGradient('lightsteelblue:0.8', 'lightsteelblue:0.3');
 $example_title = 'Matrix with lines';

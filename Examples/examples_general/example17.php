@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $datay2 = [4, 5, 4, 5, 6, 5, 7, 4, 7, 4, 4, 3, 2, 4, 1, 2, 2, 1];
 $datay3 = [4, 5, 7, 10, 13, 15, 15, 22, 26, 26, 30, 34, 40, 43, 47, 55, 60, 62];
 
 // Create the graph. These two calls are always required
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 20, 40);

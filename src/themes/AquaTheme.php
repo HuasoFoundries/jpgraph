@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Themes;
@@ -11,10 +11,13 @@ namespace Amenadiel\JpGraph\Themes;
  */
 class AquaTheme extends Theme
 {
-    protected $font_color       = '#0044CC';
+    protected $font_color = '#0044CC';
+
     protected $background_color = '#DDFFFF';
-    protected $axis_color       = '#0066CC';
-    protected $grid_color       = '#3366CC';
+
+    protected $axis_color = '#0066CC';
+
+    protected $grid_color = '#3366CC';
 
     public function GetColorList()
     {
@@ -64,7 +67,7 @@ class AquaTheme extends Theme
             return;
         }
 
-        $img    = $graph->img;
+        $img = $graph->img;
         $height = $img->height;
         $graph->SetMargin(
             $img->raw_left_margin,
@@ -76,7 +79,7 @@ class AquaTheme extends Theme
 
     public function ApplyPlot($plot)
     {
-        switch (get_class($plot)) {
+        switch (\get_class($plot)) {
             case 'GroupBarPlot':
                 foreach ($plot->plots as $_plot) {
                     $this->ApplyPlot($_plot);
@@ -113,6 +116,7 @@ class AquaTheme extends Theme
                 $plot->SetSliceColors($this->GetThemeColors());
 
                 break;
+
             default:
         }
     }

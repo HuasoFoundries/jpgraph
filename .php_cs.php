@@ -12,7 +12,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $version = $composerinfo->extra->version;
 $header = "JPGraph - Community Edition";
 
-$config = Config\Factory::fromRuleSet(new Config\RuleSet\Php73($header), [
+$config = Config\Factory::fromRuleSet(new Config\RuleSet\Php74($header), [
 	'declare_strict_types' => false,
 	'void_return' => false,
 	'static_lambda' => false,

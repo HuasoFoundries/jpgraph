@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,27 +10,29 @@ use Amenadiel\JpGraph\Plot;
 
 // The callback that converts timestamp to minutes and seconds
 $TimeCallback = function ($aVal) {
-    return date('H:i:s', $aVal);
+    return \date('H:i:s', $aVal);
 };
 
 // Fake some suitable random data
-$now   = time();
+$now = \time();
 $datax = [$now];
-for ($i = 0; $i < 360; $i += 10) {
+
+for ($i = 0; 360 > $i; $i += 10) {
     $datax[] = $now + $i;
 }
-$n     = count($datax);
+$n = \count($datax);
 $datay = [];
+
 for ($i = 0; $i < $n; ++$i) {
-    $datay[] = rand(30, 150);
+    $datay[] = \mt_rand(30, 150);
 }
 
 // Setup the basic graph
-$__width  = 324;
+$__width = 324;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 30, 70);
-$graph->title->Set('Date: ' . date('Y-m-d', $now));
+$graph->title->Set('Date: ' . \date('Y-m-d', $now));
 $graph->SetAlphaBlending();
 
 // Setup a manual x-scale (We leave the sentinels for the

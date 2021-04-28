@@ -1,19 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Graph\Axis;
 
 use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Text;
-use function cos;
-use function floor;
 use const M_PI;
-use function round;
-use function sin;
-use function wordwrap;
 
 /**
  * @class RadarAxis
@@ -22,13 +17,15 @@ use function wordwrap;
 class RadarAxis extends AxisPrototype
 {
     public $title;
+
     private $title_color = 'navy';
-    private $len         = 0;
+
+    private $len = 0;
 
     public function __construct($img, $aScale, $color = [0, 0, 0])
     {
         parent::__construct($img, $aScale, $color);
-        $this->len   = $img->plotheight;
+        $this->len = $img->plotheight;
         $this->title = new Text\Text();
         $this->title->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->color = [0, 0, 0];
@@ -44,18 +41,20 @@ class RadarAxis extends AxisPrototype
         $this->img->SetColor($this->color);
 
         // Determine end points for the axis
-        $x = round($this->scale->world_abs_size * cos($aAxisAngle) + $this->scale->scale_abs[0]);
-        $y = round($pos - $this->scale->world_abs_size * sin($aAxisAngle));
+        $x = \round($this->scale->world_abs_size * \cos($aAxisAngle) + $this->scale->scale_abs[0]);
+        $y = \round($pos - $this->scale->world_abs_size * \sin($aAxisAngle));
 
         // Draw axis
         $this->img->SetColor($this->color);
         $this->img->SetLineWeight($this->weight);
+
         if (!$this->hide) {
             $this->img->Line($this->scale->scale_abs[0], $pos, $x, $y);
         }
 
         $this->scale->ticks->Stroke($this->img, $grid, $pos, $aAxisAngle, $this->scale, $majpos, $majlabel);
         $ncolor = 0;
+
         if (isset($this->ticks_label_colors)) {
             $ncolor = Configs::safe_count($this->ticks_label_colors);
         }
@@ -68,14 +67,15 @@ class RadarAxis extends AxisPrototype
 
             // majpos contains (x,y) coordinates for labels
             if (!$this->hide_labels) {
-                $n = floor(Configs::safe_count($majpos) / 2);
+                $n = \floor(Configs::safe_count($majpos) / 2);
+
                 for ($i = 0; $i < $n; ++$i) {
                     // Set specific label color if specified
-                    if ($ncolor > 0) {
+                    if (0 < $ncolor) {
                         $this->img->SetColor($this->ticks_label_colors[$i % $ncolor]);
                     }
 
-                    if ($this->ticks_label != null && isset($this->ticks_label[$i])) {
+                    if (null !== $this->ticks_label && isset($this->ticks_label[$i])) {
                         $this->img->StrokeText($majpos[$i * 2], $majpos[$i * 2 + 1], $this->ticks_label[$i]);
                     } else {
                         $this->img->StrokeText($majpos[$i * 2], $majpos[$i * 2 + 1], $majlabel[$i]);
@@ -90,67 +90,67 @@ class RadarAxis extends AxisPrototype
     {
         $this->title->Set($title);
         $marg = 6 + $this->title->margin;
-        $xt   = round(($this->scale->world_abs_size + $marg) * cos($aAxisAngle) + $this->scale->scale_abs[0]);
-        $yt   = round($pos - ($this->scale->world_abs_size + $marg) * sin($aAxisAngle));
+        $xt = \round(($this->scale->world_abs_size + $marg) * \cos($aAxisAngle) + $this->scale->scale_abs[0]);
+        $yt = \round($pos - ($this->scale->world_abs_size + $marg) * \sin($aAxisAngle));
 
         // Position the axis title.
         // dx, dy is the offset from the top left corner of the bounding box that sorrounds the text
         // that intersects with the extension of the corresponding axis. The code looks a little
         // bit messy but this is really the only way of having a reasonable position of the
         // axis titles.
-        if ($this->title->iWordwrap > 0) {
-            $title = wordwrap($title, $this->title->iWordwrap, "\n");
+        if (0 < $this->title->iWordwrap) {
+            $title = \wordwrap($title, $this->title->iWordwrap, "\n");
         }
 
         $h = $this->img->GetTextHeight($title) * 1.2;
         $w = $this->img->GetTextWidth($title) * 1.2;
 
-        while ($aAxisAngle > 2 * M_PI) {
+        while (2 * M_PI < $aAxisAngle) {
             $aAxisAngle -= 2 * M_PI;
         }
 
         // Around 3 a'clock
-        if ($aAxisAngle >= 7 * M_PI / 4 || $aAxisAngle <= M_PI / 4) {
+        if (7 * M_PI / 4 <= $aAxisAngle || M_PI / 4 >= $aAxisAngle) {
             $dx = -0.15;
         }
         // Small trimming to make the dist to the axis more even
 
         // Around 12 a'clock
-        if ($aAxisAngle >= M_PI / 4 && $aAxisAngle <= 3 * M_PI / 4) {
+        if (M_PI / 4 <= $aAxisAngle && 3 * M_PI / 4 >= $aAxisAngle) {
             $dx = ($aAxisAngle - M_PI / 4) * 2 / M_PI;
         }
 
         // Around 9 a'clock
-        if ($aAxisAngle >= 3 * M_PI / 4 && $aAxisAngle <= 5 * M_PI / 4) {
+        if (3 * M_PI / 4 <= $aAxisAngle && 5 * M_PI / 4 >= $aAxisAngle) {
             $dx = 1;
         }
 
         // Around 6 a'clock
-        if ($aAxisAngle >= 5 * M_PI / 4 && $aAxisAngle <= 7 * M_PI / 4) {
+        if (5 * M_PI / 4 <= $aAxisAngle && 7 * M_PI / 4 >= $aAxisAngle) {
             $dx = (1 - ($aAxisAngle - M_PI * 5 / 4) * 2 / M_PI);
         }
 
-        if ($aAxisAngle >= 7 * M_PI / 4) {
+        if (7 * M_PI / 4 <= $aAxisAngle) {
             $dy = (($aAxisAngle - M_PI) - 3 * M_PI / 4) * 2 / M_PI;
         }
 
-        if ($aAxisAngle <= M_PI / 12) {
+        if (M_PI / 12 >= $aAxisAngle) {
             $dy = (0.5 - $aAxisAngle * 2 / M_PI);
         }
 
-        if ($aAxisAngle <= M_PI / 4 && $aAxisAngle > M_PI / 12) {
+        if (M_PI / 4 >= $aAxisAngle && M_PI / 12 < $aAxisAngle) {
             $dy = (1 - $aAxisAngle * 2 / M_PI);
         }
 
-        if ($aAxisAngle >= M_PI / 4 && $aAxisAngle <= 3 * M_PI / 4) {
+        if (M_PI / 4 <= $aAxisAngle && 3 * M_PI / 4 >= $aAxisAngle) {
             $dy = 1;
         }
 
-        if ($aAxisAngle >= 3 * M_PI / 4 && $aAxisAngle <= 5 * M_PI / 4) {
+        if (3 * M_PI / 4 <= $aAxisAngle && 5 * M_PI / 4 >= $aAxisAngle) {
             $dy = (1 - ($aAxisAngle - 3 * M_PI / 4) * 2 / M_PI);
         }
 
-        if ($aAxisAngle >= 5 * M_PI / 4 && $aAxisAngle <= 7 * M_PI / 4) {
+        if (5 * M_PI / 4 <= $aAxisAngle && 7 * M_PI / 4 >= $aAxisAngle) {
             $dy = 0;
         }
 

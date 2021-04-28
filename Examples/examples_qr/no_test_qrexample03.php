@@ -1,15 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Include the library
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Data to be encoded
-$data     = '01234567';
-$version  = 3; // Use QR version 3
+$data = '01234567';
+$version = 3; // Use QR version 3
 $fileName = 'qrexample03.png';
 
 // Create a new instance of the encoder and let the library
@@ -24,6 +24,6 @@ $backend->SetModuleWidth(5);
 
 // Store the barcode in the specifed file
 $backend->Stroke($data, $fileName);
-list($version, $errorcorrection) = $backend->GetQRInfo();
+[$version, $errorcorrection] = $backend->GetQRInfo();
 
-echo "QR Barcode, (<b>Version: ${version}-${errorcorrection}</b>), image stored in file ${fileName}";
+echo "QR Barcode, (<b>Version: {$version}-{$errorcorrection}</b>), image stored in file {$fileName}";

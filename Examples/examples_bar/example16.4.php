@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,9 +15,9 @@ Util\JpGraphError::SetImageFlag(false);
 Util\JpGraphError::SetLogFile('syslog');
 
 // Create the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 
 $graph->img->SetMargin(40, 130, 20, 40);

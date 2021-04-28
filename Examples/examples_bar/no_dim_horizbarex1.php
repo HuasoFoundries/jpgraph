@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,7 +12,7 @@ $datay = [2, 3, 5, 8, 12, 6, 3];
 $datax = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
 
 // Size of graph
-$__width  = 400;
+$__width = 400;
 $__height = 500;
 
 // Set the basic parameters of the graph

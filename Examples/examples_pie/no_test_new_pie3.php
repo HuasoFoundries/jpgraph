@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 60, 21, 33];
 
 // Create the Pie Graph.
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\PieGraph($__width, $__height);
+$graph = new Graph\PieGraph($__width, $__height);
 
 $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);

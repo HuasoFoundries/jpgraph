@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 //
@@ -15,13 +15,14 @@ use Amenadiel\JpGraph\Plot;
 // for a set of values and ocurrences
 function accfreq($data)
 {
-    rsort($data);
-    $s   = array_sum($data);
-    $as  = [$data[0]];
+    \rsort($data);
+    $s = \array_sum($data);
+    $as = [$data[0]];
     $asp = [100 * $as[0] / $s];
-    $n   = count($data);
+    $n = \count($data);
+
     for ($i = 1; $i < $n; ++$i) {
-        $as[$i]  = $as[$i - 1] + $data[$i];
+        $as[$i] = $as[$i - 1] + $data[$i];
         $asp[$i] = 100.0 * $as[$i] / $s;
     }
 
@@ -29,13 +30,13 @@ function accfreq($data)
 }
 
 // some data
-$data_freq    = [22, 20, 12, 10, 5, 4, 2];
+$data_freq = [22, 20, 12, 10, 5, 4, 2];
 $data_accfreq = accfreq($data_freq);
 
 // Create the graph.
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 // Setup some basic graph parameters
 $graph->SetScale('textlin');
