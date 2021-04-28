@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 // Create a canvas graph where the table can be added
 $__width = 70;

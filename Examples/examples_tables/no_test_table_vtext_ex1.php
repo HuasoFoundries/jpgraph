@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 // Setup a basic canvas graph context
 $__width = 430;
@@ -27,13 +27,13 @@ $data = [
 // Setup the basic table and default font
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$table->SetFont(Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_NORMAL'), 11);
 
 // Default table alignment
 $table->SetAlign('right');
 
 // Adjust font in (0,0)
-$table->SetCellFont(0, 0, Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$table->SetCellFont(0, 0, Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_BOLD'), 14);
 
 // Rotate all textxs in row  0
 $table->SetRowTextOrientation(0, 90);

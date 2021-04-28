@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 // Create a canvas graph where the table can be added
 $__width = 70;
@@ -24,7 +24,7 @@ $table->Set($data);
 $table->MergeRow(0);
 
 // Adjust font in cell (0,0)
-$table->SetCellFont(0, 0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$table->SetCellFont(0, 0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 14);
 
 // Set left align for all cells in rectangle (0,0) - (0,3)
 $table->SetAlign(0, 0, 0, 3, 'Left');

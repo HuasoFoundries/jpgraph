@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 $data = [['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     ['Team 1', '15.2', '12.5', '9.9', '70.0', '22.4', '21.5'],
@@ -42,15 +42,15 @@ $table->SetRowFillColor($r - 1, 'yellow');
 $table->SetCellAlign($r - 1, 0, 'right');
 
 // Setup row and column headers
-$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$table->SetRowFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 10);
 $table->SetRowColor(0, 'navy');
 $table->SetRowFillColor(0, 'lightgray');
 
-$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$table->SetColFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 10);
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 
-$table->SetRowGrid($r - 1, 1, 'black', Graph\Configs::getConfig('TGRID_DOUBLE'));
+$table->SetRowGrid($r - 1, 1, 'black', Configs::getConfig('TGRID_DOUBLE'));
 
 $graph->Add($table);
 $graph->Stroke();

@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
 $rows = 3;
@@ -25,11 +25,11 @@ $table->Init();
 $table->Set($data);
 
 // Setup row and column headers
-$table->SetRowFont(0, Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetRowFont(0, Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_BOLD'), 11);
 $table->SetRowAlign(0, 'left', 'bottom');
 $table->SetRowColor(0, 'navy');
 $table->SetRowFillColor(0, 'lightgray');
-$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetColFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 

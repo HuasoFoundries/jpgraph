@@ -3,12 +3,12 @@
 /**
  * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 // Setup graph context
 $__width = 430;
@@ -27,7 +27,7 @@ $data = [
 // Setup the basic table and font
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$table->SetFont(Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
 
 // Set default minimum color width
 $table->SetMinColWidth(40);
@@ -42,14 +42,14 @@ $table->setGrid(0);
 $table->SetBorder(2);
 
 // Setup font
-$table->SetRowFont(4, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
-$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
-$table->SetFont(1, 2, 1, 3, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$table->SetRowFont(4, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);
+$table->SetRowFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);
+$table->SetFont(1, 2, 1, 3, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);
 
 // Setup grids
-$table->SetRowGrid(4, 2, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
-$table->SetColGrid(1, 1, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
-$table->SetRowGrid(1, 1, 'black', Graph\Configs::getConfig('TGRID_SINGLE'));
+$table->SetRowGrid(4, 2, 'black', Configs::getConfig('TGRID_SINGLE'));
+$table->SetColGrid(1, 1, 'black', Configs::getConfig('TGRID_SINGLE'));
+$table->SetRowGrid(1, 1, 'black', Configs::getConfig('TGRID_SINGLE'));
 
 // Setup colors
 $table->SetFillColor(0, 1, 0, 6, 'black');
