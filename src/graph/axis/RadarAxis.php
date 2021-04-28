@@ -16,8 +16,14 @@ use const M_PI;
  */
 class RadarAxis extends AxisPrototype
 {
+    /**
+     * @var Text\Text
+     */
     public $title;
 
+    /**
+     * @var string
+     */
     private $title_color = 'navy';
 
     private $len = 0;
@@ -36,6 +42,11 @@ class RadarAxis extends AxisPrototype
     // $aAxisAngle = Axis angle
     // $grid   = Returns an array with positions used to draw the grid
     // $lf   = Label flag, TRUE if the axis should have labels
+    /**
+     * @param float $aAxisAngle
+     * @param empty $grid
+     * @param bool $lf
+     */
     public function Stroke($pos, $aAxisAngle, &$grid, $title, $lf)
     {
         $this->img->SetColor($this->color);

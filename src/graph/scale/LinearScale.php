@@ -15,6 +15,9 @@ use Amenadiel\JpGraph\Util;
  */
 class LinearScale extends Scale
 {
+    /**
+     * @var false
+     */
     public $textscale = false;
 
     // Just a flag to let the Plot class find out if
@@ -23,20 +26,42 @@ class LinearScale extends Scale
     // we don't have access to the graph object in the Plots
     // stroke method. So we let graph store the status here
     // when the linear scale is created. A real cludge...
+    /**
+     * @var string
+     */
     public $type; // is this x or y scale ?
 
+    /**
+     * @var Tick\LinearTicks|Tick\RadarLinearTicks
+     */
     public $ticks; // Store ticks
 
+    /**
+     * @var int
+     */
     public $text_scale_off = 0;
 
+    /**
+     * @var int[]
+     *
+     * @psalm-var array{0: int, 1: int}
+     */
     public $scale_abs = [0, 0];
 
     public $scale_factor; // Scale factor between world and screen
 
     public $off; // Offset between image edge and plot area
 
+    /**
+     * @var (int|mixed)[]
+     *
+     * @psalm-var array{0: int|mixed, 1: int|mixed}
+     */
     public $scale = [0, 0];
 
+    /**
+     * @var string
+     */
     public $name = 'lin';
 
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
@@ -267,6 +292,12 @@ class LinearScale extends Scale
     }
 
     // Determine the minimum of three values witha  weight for last value
+    /**
+     * @param float|int $a
+     * @param float|int $b
+     * @param float|int $c
+     * @param float $weight
+     */
     public function MatchMin3($a, $b, $c, $weight)
     {
         if ($a < $b) {

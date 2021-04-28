@@ -36,6 +36,11 @@ class Grid
 
     protected $fill = false;
 
+    /**
+     * @var (mixed|string)[]
+     *
+     * @psalm-var array{0: mixed|string, 1: mixed|string}
+     */
     protected $fillcolor = ['#EFEFEF', '#BBCCFF'];
 
     public function __construct($aAxis)

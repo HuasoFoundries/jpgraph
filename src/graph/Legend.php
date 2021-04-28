@@ -45,6 +45,9 @@ class Legend extends Configs
 
     private $shadow = false; // Shadow around legend "box"
 
+    /**
+     * @var string
+     */
     private $shadow_color = 'darkgray';
 
     private $mark_abs_hsize = Configs::_DEFAULT_LPM_SIZE;
@@ -53,6 +56,9 @@ class Legend extends Configs
 
     private $xmargin = 10;
 
+    /**
+     * @var int
+     */
     private $ymargin = 0;
 
     private $shadow_width = 2;
@@ -62,6 +68,9 @@ class Legend extends Configs
     private $ylinespacing = 5;
 
     // We need a separate margin since the baseline of the last text would coincide with the bottom otherwise
+    /**
+     * @var int
+     */
     private $ybottom_margin = 8;
 
     private $xpos = 0.05;
@@ -86,6 +95,9 @@ class Legend extends Configs
 
     private $frameweight = 1;
 
+    /**
+     * @var string
+     */
     private $csimareas = '';
 
     private $reverse = false;

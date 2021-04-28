@@ -26,6 +26,9 @@ class PieGraph extends Graph
 
     private $radius;
 
+    /**
+     * @var array
+     */
     private $legends = [];
 
     /**
@@ -119,6 +122,9 @@ class PieGraph extends Graph
         $this->pieaa = $aFlg;
     }
 
+    /**
+     * @param int[] $c
+     */
     public function SetColor($c)
     {
         $this->SetMarginColor($c);

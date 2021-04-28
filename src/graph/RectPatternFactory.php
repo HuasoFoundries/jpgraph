@@ -19,6 +19,9 @@ class RectPatternFactory
         // Empty
     }
 
+    /**
+     * @param int $aWeight
+     */
     public function Create($aPattern, $aColor, $aWeight = 1)
     {
         switch ($aPattern) {

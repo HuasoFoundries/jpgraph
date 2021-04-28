@@ -17,6 +17,9 @@ use function pow;
  */
 class Scale extends Configs
 {
+    /**
+     * @var false
+     */
     public $textscale = false;
 
     // Just a flag to let the Plot class find out if
@@ -25,34 +28,71 @@ class Scale extends Configs
     // we don't have access to the graph object in the Plots
     // stroke method. So we let graph store the status here
     // when the linear scale is created. A real cludge...
+    /**
+     * @var string
+     */
     public $type; // is this x or y scale ?
 
     public $ticks; // Store ticks
 
+    /**
+     * @var int
+     */
     public $text_scale_off = 0;
 
+    /**
+     * @var (int|mixed)[]
+     *
+     * @psalm-var array{0: int|mixed, 1: int|mixed}
+     */
     public $scale_abs = [0, 0];
 
     public $scale_factor; // Scale factor between world and screen
 
     public $off; // Offset between image edge and plot area
 
+    /**
+     * @var (int|mixed)[]
+     *
+     * @psalm-var array{0: int|mixed, 1: int|mixed}
+     */
     public $scale = [0, 0];
 
+    /**
+     * @var string
+     */
     public $name = 'lin';
 
+    /**
+     * @var false
+     */
     public $auto_ticks = false; // When using manual scale should the ticks be automatically set?
 
     public $world_abs_size; // Plot area size in pixels (Needed public in jpgraph_radar.php)
 
+    /**
+     * @var false
+     */
     public $intscale = false; // Restrict autoscale to integers
 
+    /**
+     * @var false
+     */
     protected $autoscale_min = false; // Forced minimum value, auto determine max
 
+    /**
+     * @var false
+     */
     protected $autoscale_max = false; // Forced maximum value, auto determine min
 
+    /**
+     * @var int
+     */
     private $gracetop = 0;
 
+    /**
+     * @var int
+     */
     private $gracebottom = 0;
 
     private $_world_size; // Plot area size in world coordinates
@@ -255,6 +295,10 @@ class Scale extends Configs
     }
 
     // Specify a new min/max value for sclae
+    /**
+     * @param float $aMin
+     * @param float $aMax
+     */
     public function Update($aImg, $aMin, $aMax)
     {
         $this->scale = [$aMin, $aMax];
@@ -329,6 +373,10 @@ class Scale extends Configs
     //  [$numsteps,$adjmin,$adjmax,$minstep,$majstep]
     // If $majend==true then the first and last marks on the axis will be major
     // labeled tick marks otherwise it will be adjusted to the closest min tick mark
+    /**
+     * @param int $a
+     * @param int $b
+     */
     public function CalcTicks($maxsteps, $min, $max, $a, $b, $majend = true)
     {
         $diff = $max - $min;
@@ -374,6 +422,10 @@ class Scale extends Configs
         return [$numsteps, $adjmin, $adjmax, $minstep, $majstep];
     }
 
+    /**
+     * @param int $a
+     * @param int $b
+     */
     public function CalcTicksFreeze($maxsteps, $min, $max, $a, $b)
     {
         // Same as CalcTicks but don't adjust min/max values
@@ -400,6 +452,12 @@ class Scale extends Configs
         return [$numsteps, $minstep, $majstep];
     }
 
+    /**
+     * @param float $maxsteps
+     * @param float $min
+     * @param float $max
+     * @param int $a
+     */
     public function IntCalcTicks($maxsteps, $min, $max, $a, $majend = true)
     {
         $diff = $max - $min;
@@ -450,6 +508,12 @@ class Scale extends Configs
         return [$numsteps, $adjmin, $adjmax, $majstep];
     }
 
+    /**
+     * @param float $maxsteps
+     * @param float $min
+     * @param float $max
+     * @param int $a
+     */
     public function IntCalcTicksFreeze($maxsteps, $min, $max, $a)
     {
         // Same as IntCalcTick but don't change min/max values

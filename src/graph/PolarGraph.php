@@ -11,12 +11,21 @@ use function max;
 
 class PolarGraph extends Graph
 {
+    /**
+     * @var Scale\PolarLogScale|Scale\PolarScale|null
+     */
     public $scale;
 
+    /**
+     * @var Axis\PolarAxis|null
+     */
     public $axis;
 
     public $iType = Configs::POLAR_360;
 
+    /**
+     * @var false
+     */
     private $iClockwise = false;
 
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeOut = 0, $aInline = true)
@@ -27,6 +36,9 @@ class PolarGraph extends Graph
         $this->SetMarginColor('white');
     }
 
+    /**
+     * @param int $aDense
+     */
     public function SetDensity($aDense)
     {
         $this->SetTickDensity(Configs::TICKD_NORMAL, $aDense);

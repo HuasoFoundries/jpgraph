@@ -25,6 +25,9 @@ class RectPattern
 
     protected $doframe = true;
 
+    /**
+     * @var float|null
+     */
     protected $linespacing; // Line spacing in pixels
 
     protected $iBackgroundColor = -1; // Default is no background fill

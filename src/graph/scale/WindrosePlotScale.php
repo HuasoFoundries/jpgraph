@@ -53,6 +53,9 @@ class WindrosePlotScale
 
     private $iLblAlign = Configs::LBLALIGN_CENTER;
 
+    /**
+     * @var bool
+     */
     private $iManualScale = false;
 
     private $iHideLabels = false;
@@ -115,6 +118,9 @@ class WindrosePlotScale
         $this->iManualScale = true;
     }
 
+    /**
+     * @param float|int $aMinDist
+     */
     public function AutoScale($aRadius, $aMinDist = 30)
     {
         if ($this->iManualScale) {
@@ -227,6 +233,11 @@ class WindrosePlotScale
         $this->iZFontColor = $aColor;
     }
 
+    /**
+     * @param float $xc
+     * @param float $yc
+     * @param float $rr
+     */
     public function StrokeLabels($aImg, $xc, $yc, $ri, $rr)
     {
         if ($this->iHideLabels) {

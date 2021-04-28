@@ -15,10 +15,16 @@ use Amenadiel\JpGraph\Graph\Configs;
  */
 class HeaderProperty extends Configs
 {
+    /**
+     * @var LineProperty
+     */
     public $grid;
 
     public $iShowLabels = true;
 
+    /**
+     * @var true
+     */
     public $iShowGrid = true;
 
     public $iTitleVertMargin = 3;
@@ -62,6 +68,9 @@ class HeaderProperty extends Configs
         $this->iShowLabels = $aShow;
     }
 
+    /**
+     * @param int $aInt
+     */
     public function SetIntervall($aInt)
     {
         $this->iIntervall = $aInt;
@@ -77,6 +86,10 @@ class HeaderProperty extends Configs
         return $this->iIntervall;
     }
 
+    /**
+     * @param int $aFFamily
+     * @param int $aFStyle
+     */
     public function SetFont($aFFamily, $aFStyle = Configs::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
@@ -110,6 +123,9 @@ class HeaderProperty extends Configs
         return $aImg->GetTextWidth($aStr);
     }
 
+    /**
+     * @param int $aStyle
+     */
     public function SetStyle($aStyle)
     {
         $this->iStyle = $aStyle;
@@ -147,6 +163,9 @@ class HeaderProperty extends Configs
         $this->iTitleVertMargin = $aMargin;
     }
 
+    /**
+     * @param string $aStr
+     */
     public function SetLabelFormatString($aStr)
     {
         $this->iLabelFormStr = $aStr;

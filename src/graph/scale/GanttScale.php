@@ -19,22 +19,49 @@ use Amenadiel\JpGraph\Util;
  */
 class GanttScale
 {
+    /**
+     * @var HeaderProperty
+     */
     public $minute;
 
+    /**
+     * @var HeaderProperty
+     */
     public $hour;
 
+    /**
+     * @var HeaderProperty
+     */
     public $day;
 
+    /**
+     * @var HeaderProperty
+     */
     public $week;
 
+    /**
+     * @var HeaderProperty
+     */
     public $month;
 
+    /**
+     * @var HeaderProperty
+     */
     public $year;
 
+    /**
+     * @var LineProperty
+     */
     public $divider;
 
+    /**
+     * @var LineProperty
+     */
     public $dividerh;
 
+    /**
+     * @var Text\TextProperty
+     */
     public $tableTitle;
 
     public $iStartDate = -1;
@@ -44,12 +71,24 @@ class GanttScale
     // Number of gantt bar position (n.b not necessariliy the same as the number of bars)
     // we could have on bar in position 1, and one bar in position 5 then there are two
     // bars but the number of bar positions is 5
+    /**
+     * @var GanttActivityInfo
+     */
     public $actinfo;
 
+    /**
+     * @var int
+     */
     public $iTopPlotMargin = 10;
 
+    /**
+     * @var int
+     */
     public $iBottomPlotMargin = 15;
 
+    /**
+     * @var int
+     */
     public $iVertLines = -1;
 
     public $iVertHeaderSize = -1;
@@ -62,14 +101,23 @@ class GanttScale
 
     private $iTableHeaderBackgroundColor = 'white';
 
+    /**
+     * @var string
+     */
     private $iTableHeaderFrameColor = 'black';
 
+    /**
+     * @var int
+     */
     private $iTableHeaderFrameWeight = 1;
 
     private $iAvailableHeight = -1;
 
     private $iVertSpacing = -1;
 
+    /**
+     * @var Util\DateLocale
+     */
     private $iDateLocale;
 
     private $iVertLayout = Configs::GANTT_EVEN;
@@ -375,6 +423,9 @@ class GanttScale
     }
 
     // Get week number
+    /**
+     * @param false|int $aDate
+     */
     public function GetWeekNbr($aDate, $aSunStart = true)
     {
         // We can't use the internal strftime() since it gets the weeknumber
@@ -433,6 +484,9 @@ class GanttScale
     }
 
     // Return number of days in a year
+    /**
+     * @param float|int $aYear
+     */
     public function GetNumDaysInMonth($aMonth, $aYear)
     {
         $days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -570,6 +624,9 @@ class GanttScale
     }
 
     // Stroke the day scale (including gridlines)
+    /**
+     * @param bool $getHeight
+     */
     public function StrokeMinutes($aYCoord, $getHeight = false)
     {
         $img = $this->iImg;
@@ -691,6 +748,9 @@ class GanttScale
     }
 
     // Stroke the day scale (including gridlines)
+    /**
+     * @param bool $getHeight
+     */
     public function StrokeHours($aYCoord, $getHeight = false)
     {
         $img = $this->iImg;
@@ -797,6 +857,9 @@ class GanttScale
     }
 
     // Stroke the day scale (including gridlines)
+    /**
+     * @param bool $getHeight
+     */
     public function StrokeDays($aYCoord, $getHeight = false)
     {
         $img = $this->iImg;
@@ -950,6 +1013,9 @@ class GanttScale
     }
 
     // Stroke week header and grid
+    /**
+     * @param bool $getHeight
+     */
     public function StrokeWeeks($aYCoord, $getHeight = false)
     {
         if ($this->week->iShowLabels) {
@@ -1032,6 +1098,9 @@ class GanttScale
     }
 
     // Format the mont scale header string
+    /**
+     * @param float|int $year
+     */
     public function GetMonthLabel($aMonthNbr, $year)
     {
         $sn = $this->iDateLocale->GetShortMonthName($aMonthNbr);
@@ -1072,6 +1141,9 @@ class GanttScale
     }
 
     // Stroke month scale and gridlines
+    /**
+     * @param bool $getHeight
+     */
     public function StrokeMonths($aYCoord, $getHeight = false)
     {
         if ($this->month->iShowLabels) {
@@ -1154,6 +1226,10 @@ class GanttScale
     }
 
     // Stroke year scale and gridlines
+    /**
+     * @param int $aYCoord
+     * @param bool $getHeight
+     */
     public function StrokeYears($aYCoord, $getHeight = false)
     {
         if ($this->year->iShowLabels) {

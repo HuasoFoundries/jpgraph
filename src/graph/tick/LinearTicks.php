@@ -23,14 +23,23 @@ class LinearTicks extends Ticks
 
     public $xtick_offset = 0;
 
+    /**
+     * @var int
+     */
     public $label_offset = 0;
 
     // What offset should the displayed label have
     // i.e should we display 0,1,2 or 1,2,3,4 or 2,3,4 etc
     protected $text_label_start = 0;
 
+    /**
+     * @var array|null
+     */
     protected $iManualTickPos;
 
+    /**
+     * @var array|null
+     */
     protected $iManualMinTickPos;
 
     protected $iManualTickLabels;

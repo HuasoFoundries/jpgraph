@@ -25,6 +25,9 @@ class HorizontalGridLine
 
     private $iShow = false;
 
+    /**
+     * @var LineProperty
+     */
     private $line;
 
     private $iStart = 0; // 0=from left margin, 1=just along header

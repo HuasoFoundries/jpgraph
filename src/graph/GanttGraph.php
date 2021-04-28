@@ -20,12 +20,21 @@ use function round;
  */
 class GanttGraph extends Graph
 {
+    /**
+     * @var Scale\GanttScale
+     */
     public $scale; // Public accessible
 
+    /**
+     * @var Scale\HorizontalGridLine
+     */
     public $hgrid;
 
     private $iObj = []; // Gantt objects
 
+    /**
+     * @var float
+     */
     private $iLabelHMarginFactor = 0.2; // 10% margin on each side of the labels
 
     private $iLabelVMarginFactor = 0.4; // 40% margin on top and bottom of label
@@ -42,8 +51,14 @@ class GanttGraph extends Graph
 
     private $iSimpleBkgColor = 'red';
 
+    /**
+     * @var string
+     */
     private $iSimpleProgressBkgColor = 'gray';
 
+    /**
+     * @var string
+     */
     private $iSimpleProgressColor = 'darkgreen';
 
     private $iSimpleProgressStyle = Configs::GANTT_SOLID;
@@ -236,6 +251,9 @@ class GanttGraph extends Graph
     }
 
     // Add a new Gantt object
+    /**
+     * @param Plot\GanttBar|Plot\MileStone $aObject
+     */
     public function Add($aObject)
     {
         if (\is_array($aObject) && Configs::safe_count($aObject) > 0) {

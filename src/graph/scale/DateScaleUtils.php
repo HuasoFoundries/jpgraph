@@ -18,18 +18,39 @@ class DateScaleUtils
 
     public static $iMax = 0;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $starthour;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $startmonth;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $startday;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $startyear;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $endmonth;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $endyear;
 
+    /**
+     * @var null|numeric-string
+     */
     private static $endday;
 
     private static $tickPositions = [];
@@ -383,6 +404,9 @@ class DateScaleUtils
         }
     }
 
+    /**
+     * @param int|string $aType
+     */
     public static function GetTicksFromMinMax($aMin, $aMax, $aType, $aMinor = false, $aEndPoints = false)
     {
         self::$starthour = \date('G', $aMin);

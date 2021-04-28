@@ -12,8 +12,14 @@ namespace Amenadiel\JpGraph\Graph;
  */
 class RectPatternCross extends RectPattern
 {
+    /**
+     * @var RectPatternVert
+     */
     private $vert;
 
+    /**
+     * @var RectPatternHor
+     */
     private $hor;
 
     public function __construct($aColor = 'black', $aWeight = 1)

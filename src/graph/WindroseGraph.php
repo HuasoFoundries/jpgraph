@@ -92,6 +92,9 @@ class WindroseGraph extends Graph
         parent::AddText($aTxt);
     }
 
+    /**
+     * @param string $c
+     */
     public function SetColor($c)
     {
         $this->SetMarginColor($c);

@@ -31,10 +31,19 @@ class GanttActivityInfo
 
     public $iRightColMargin = 1;
 
+    /**
+     * @var int
+     */
     public $iTopColMargin = 1;
 
+    /**
+     * @var int
+     */
     public $iBottomColMargin = 3;
 
+    /**
+     * @var LineProperty
+     */
     public $vgrid;
 
     private $iColor = 'black';
@@ -55,6 +64,9 @@ class GanttActivityInfo
 
     private $iHeight = -1;
 
+    /**
+     * @var int
+     */
     private $iTopHeaderMargin = 4;
 
     private $iStyle = 1;
@@ -160,6 +172,9 @@ class GanttActivityInfo
         return $w;
     }
 
+    /**
+     * @param array $aStart
+     */
     public function GetColStart($aImg, &$aStart, $aAddLeftMargin = false)
     {
         $n = Configs::safe_count($this->iTitles);

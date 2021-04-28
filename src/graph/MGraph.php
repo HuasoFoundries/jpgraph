@@ -25,12 +25,24 @@ use Amenadiel\JpGraph\Util;
  */
 class MGraph
 {
+    /**
+     * @var Text\Text
+     */
     public $title;
 
+    /**
+     * @var Text\Text
+     */
     public $subtitle;
 
+    /**
+     * @var Text\Text
+     */
     public $subsubtitle;
 
+    /**
+     * @var Image\Footer
+     */
     public $footer;
 
     protected $img;
@@ -41,6 +53,9 @@ class MGraph
 
     protected $iFillColor = 'white';
 
+    /**
+     * @var int
+     */
     protected $iCurrentColor = 0;
 
     protected $lm = 4;
@@ -57,10 +72,16 @@ class MGraph
 
     protected $iFrameWeight = 1;
 
+    /**
+     * @var int
+     */
     protected $iLineWeight = 1;
 
     protected $expired = false;
 
+    /**
+     * @var Image\ImgStreamCache|null
+     */
     protected $cache;
 
     protected $cache_name = '';
@@ -77,14 +98,23 @@ class MGraph
 
     protected $background_image = '';
 
+    /**
+     * @var true
+     */
     protected $background_image_center = true;
 
+    /**
+     * @var string
+     */
     protected $backround_image_format = '';
 
     protected $background_image_mix = 100;
 
     protected $background_image_y;
 
+    /**
+     * @var null|numeric
+     */
     protected $background_image_x;
 
     private $doshadow = false;
@@ -239,6 +269,10 @@ class MGraph
         $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h);
     }
 
+    /**
+     * @param int $fx
+     * @param int $fy
+     */
     public function _gdImgHandle($agdCanvas, $x, $y, $fx = 0, $fy = 0, $w = 0, $h = 0, $mix = 100)
     {
         if (0 === $w) {
@@ -286,6 +320,9 @@ class MGraph
         $this->footer->iRightMargin += $aShadowWidth;
     }
 
+    /**
+     * @param Image\Image $image
+     */
     public function StrokeTitle($image, $w, $h)
     {
         // Stroke title

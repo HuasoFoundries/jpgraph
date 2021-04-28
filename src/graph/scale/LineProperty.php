@@ -27,16 +27,25 @@ class LineProperty
         $this->iStyle = $aStyle;
     }
 
+    /**
+     * @param string $aColor
+     */
     public function SetColor($aColor)
     {
         $this->iColor = $aColor;
     }
 
+    /**
+     * @param int $aWeight
+     */
     public function SetWeight($aWeight)
     {
         $this->iWeight = $aWeight;
     }
 
+    /**
+     * @param string $aStyle
+     */
     public function SetStyle($aStyle)
     {
         $this->iStyle = $aStyle;

@@ -18,8 +18,14 @@ class RadarLinearTicks extends Ticks
 
     private $major_step = 2;
 
+    /**
+     * @var int
+     */
     private $xlabel_offset = 0;
 
+    /**
+     * @var int
+     */
     private $xtick_offset = 0;
 
     public function __construct()

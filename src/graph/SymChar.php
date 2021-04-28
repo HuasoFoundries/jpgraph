@@ -14,6 +14,9 @@ namespace Amenadiel\JpGraph\Graph;
  */
 class SymChar
 {
+    /**
+     * @param string $aSymb
+     */
     public static function Get($aSymb, $aCapital = false)
     {
         $iSymbols = [

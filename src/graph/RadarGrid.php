@@ -57,6 +57,9 @@ class RadarGrid
         $this->show = $aShowMajor;
     }
 
+    /**
+     * @param array $grid
+     */
     public function Stroke($img, $grid)
     {
         if (!$this->show) {

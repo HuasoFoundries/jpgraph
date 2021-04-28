@@ -28,6 +28,9 @@ class AxisPrototype extends Configs
 
     public $hide_labels = false;
 
+    /**
+     * @var Text\Text
+     */
     public $title;
 
     public $font_family = Configs::FF_DEFAULT;
@@ -226,6 +229,9 @@ class AxisPrototype extends Configs
     }
 
     // Which side of the axis should the axis title be?
+    /**
+     * @param array $aSideOfAxis
+     */
     public function SetTitleSide($aSideOfAxis)
     {
         $this->title_side = $aSideOfAxis;
@@ -271,6 +277,9 @@ class AxisPrototype extends Configs
         $this->label_step = $aStep;
     }
 
+    /**
+     * @param array $aSidePos
+     */
     public function SetLabelSide($aSidePos)
     {
         $this->labelPos = $aSidePos;
@@ -285,6 +294,9 @@ class AxisPrototype extends Configs
     }
 
     // Position for axis line on the "other" scale
+    /**
+     * @param string $aPosOnOtherScale
+     */
     public function SetPos($aPosOnOtherScale)
     {
         $this->pos = $aPosOnOtherScale;

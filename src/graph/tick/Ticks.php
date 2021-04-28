@@ -38,6 +38,9 @@ class Ticks
 
     public $maj_ticks_label = [];
 
+    /**
+     * @var int
+     */
     public $precision;
 
     protected $minor_abs_size = 3;
@@ -46,6 +49,9 @@ class Ticks
 
     public $scale;
 
+    /**
+     * @var false
+     */
     protected $is_set = false;
 
     protected $supress_zerolabel = false;
@@ -60,6 +66,9 @@ class Ticks
 
     protected $label_usedateformat = false;
 
+    /**
+     * @var int
+     */
     protected $text_label_start = 0;
 
     protected $iManualTickPos;
@@ -68,6 +77,9 @@ class Ticks
 
     protected $iManualTickLabels;
 
+    /**
+     * @var false
+     */
     protected $iAdjustForDST = false;
 
     public function __construct($aScale)
@@ -327,6 +339,10 @@ class Ticks
         }
     }
 
+    /**
+     * @param int $aIdx
+     * @param float $aNbrTicks
+     */
     protected function _doLabelFormat($aVal, $aIdx, $aNbrTicks)
     {
         // If precision hasn't been specified set it to a sensible value

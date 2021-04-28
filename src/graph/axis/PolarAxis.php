@@ -21,6 +21,9 @@ class PolarAxis extends Axis
 
     private $angle_color = 'lightgray';
 
+    /**
+     * @var string
+     */
     private $angle_label_color = 'black';
 
     private $angle_fontfam = Configs::FF_FONT1;
@@ -45,12 +48,21 @@ class PolarAxis extends Axis
 
     private $show_angle_label = true;
 
+    /**
+     * @var int
+     */
     private $angle_tick_len = 3;
 
+    /**
+     * @var int
+     */
     private $angle_tick_len2 = 3;
 
     private $angle_tick_color = 'black';
 
+    /**
+     * @var bool
+     */
     private $show_angle_tick = true;
 
     private $radius_tick_color = 'black';

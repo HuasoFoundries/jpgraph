@@ -54,6 +54,9 @@ class RadarGraph extends Graph
         $this->yscale->ticks->SupressMinorTickMarks(!$aFlag);
     }
 
+    /**
+     * @param string $axtype
+     */
     public function SetScale($axtype, $ymin = 1, $ymax = 1, $dummy1 = null, $dumy2 = null)
     {
         if ('lin' !== $axtype && 'log' !== $axtype) {
@@ -85,6 +88,9 @@ class RadarGraph extends Graph
         $this->SetSize($aSize);
     }
 
+    /**
+     * @param int $densy
+     */
     public function SetTickDensity($densy = Configs::TICKD_NORMAL, $dummy1 = null)
     {
         $this->ytick_factor = 25;
@@ -133,6 +139,9 @@ class RadarGraph extends Graph
         }
     }
 
+    /**
+     * @param int[] $aColor
+     */
     public function SetColor($aColor)
     {
         $this->SetMarginColor($aColor);

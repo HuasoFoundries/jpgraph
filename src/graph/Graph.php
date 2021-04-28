@@ -18,10 +18,19 @@ use function count;
  */
 class Graph
 {
+    /**
+     * @var Util\DateLocale
+     */
     public $gDateLocale;
 
+    /**
+     * @var Util\DateLocale
+     */
     public $gJpgDateLocale;
 
+    /**
+     * @var Image\ImgStreamCache
+     */
     public $cache; // Cache object (singleton)
 
     public $img; // Img object (singleton)
@@ -32,11 +41,20 @@ class Graph
 
     public $ynplots = [];
 
+    /**
+     * @var Scale\DateScale|Scale\LinearScale|Scale\LogScale|null
+     */
     public $xscale; // X Scale object (could be instance of LinearScale or LogScale
     public $scale;
 
+    /**
+     * @var Scale\LinearScale|Scale\LogScale|null
+     */
     public $yscale;
 
+    /**
+     * @var Scale\LinearScale|Scale\LogScale|null
+     */
     public $y2scale;
 
     public $ynscale = [];
@@ -45,10 +63,19 @@ class Graph
 
     public $cache_name; // File name to be used for the current graph in the cache directory
 
+    /**
+     * @var Grid|null
+     */
     public $xgrid; // X Grid object (linear or logarithmic)
 
+    /**
+     * @var Grid|null
+     */
     public $ygrid;
 
+    /**
+     * @var Grid|null
+     */
     public $y2grid; //dito for Y
 
     public $doframe;
@@ -71,8 +98,14 @@ class Graph
 
     public $xaxis; // X-axis (instane of Axis class)
 
+    /**
+     * @var Axis\Axis|null
+     */
     public $yaxis;
 
+    /**
+     * @var Axis\Axis|null
+     */
     public $y2axis;
 
     public $ynaxis = []; // Y axis (instance of Axis class)
@@ -81,16 +114,35 @@ class Graph
 
     public $plotarea_color = [255, 255, 255]; // Plot area color
 
+    /**
+     * @var Text\Text
+     */
     public $title;
 
+    /**
+     * @var Text\Text
+     */
     public $subtitle;
 
+    /**
+     * @var Text\Text
+     */
     public $subsubtitle; // Title and subtitle(s) text object
 
     public $axtype = 'linlin'; // Type of axis
 
+    /**
+     * @var int
+     *
+     * @psalm-var 15|30|45|60
+     */
     public $xtick_factor;
 
+    /**
+     * @var int
+     *
+     * @psalm-var 12|25|40|100
+     */
     public $ytick_factor; // Factor to determine the maximum number of ticks depending on the plot width
 
     public $texts;
@@ -115,38 +167,74 @@ class Graph
 
     public $background_image_format = 'png';
 
+    /**
+     * @var int
+     */
     public $background_image_bright = 0;
 
+    /**
+     * @var int
+     */
     public $background_image_contr = 0;
 
+    /**
+     * @var int
+     */
     public $background_image_sat = 0;
 
     public $background_image_xpos = 0;
 
     public $background_image_ypos = 0;
 
+    /**
+     * @var int
+     */
     public $image_bright = 0;
 
+    /**
+     * @var int
+     */
     public $image_contr = 0;
 
+    /**
+     * @var int
+     */
     public $image_sat = 0;
 
     public $inline;
 
+    /**
+     * @var int
+     */
     public $showcsim = 0;
 
+    /**
+     * @var string
+     */
     public $csimcolor = 'red'; //debug stuff, draw the csim boundaris on the image if <>0
 
     public $grid_depth = Configs::DEPTH_BACK; // Draw grid under all plots as default
 
     public $iAxisStyle = Configs::AXSTYLE_SIMPLE;
 
+    /**
+     * @var false
+     */
     public $iCSIMdisplay = false;
 
+    /**
+     * @var bool
+     */
     public $iHasStroked = false;
 
+    /**
+     * @var Image\Footer
+     */
     public $footer;
 
+    /**
+     * @var string
+     */
     public $csimcachename = '';
 
     public $csimcachetimeout = 0;
@@ -157,6 +245,9 @@ class Graph
 
     public $y2orderback = true;
 
+    /**
+     * @var Text\GraphTabTitle
+     */
     public $tabtitle;
 
     public $bkg_gradtype = -1;
@@ -215,6 +306,9 @@ class Graph
 
     public $background_cflag_mix = 100;
 
+    /**
+     * @var bool
+     */
     public $iImgTrans = false;
 
     public $iImgTransHorizon = 100;
@@ -233,6 +327,9 @@ class Graph
 
     public $iImgTransHorizonPos = 0.5;
 
+    /**
+     * @var Legend
+     */
     public $legend;
 
     public $graph_theme;
@@ -253,10 +350,16 @@ class Graph
 
     protected $iTables;
 
+    /**
+     * @var bool
+     */
     protected $isRunningClear = false;
 
     protected $inputValues;
 
+    /**
+     * @var bool
+     */
     protected $isAfterSetScale = false;
 
     // aWIdth   Width in pixels of image
@@ -370,6 +473,9 @@ class Graph
         $this->margin_color = [250, 250, 250];
     }
 
+    /**
+     * @param string $aFilename
+     */
     public function SetupCache($aFilename, $aTimeout = 60)
     {
         $this->cache_name = $aFilename;
@@ -417,6 +523,9 @@ class Graph
     }
 
     // Should the grid be in front or back of the plot?
+    /**
+     * @param int $aDepth
+     */
     public function SetGridDepth($aDepth)
     {
         $this->grid_depth = $aDepth;
@@ -428,6 +537,9 @@ class Graph
     }
 
     // Specify graph angle 0-360 degrees.
+    /**
+     * @param int $aAngle
+     */
     public function SetAngle($aAngle)
     {
         $this->img->SetAngle($aAngle);
@@ -439,6 +551,12 @@ class Graph
     }
 
     // Shortcut to image margin
+    /**
+     * @param int $lm
+     * @param int $rm
+     * @param int $tm
+     * @param int $bm
+     */
     public function SetMargin($lm, $rm, $tm, $bm)
     {
         $this->img->SetMargin($lm, $rm, $tm, $bm);
@@ -476,6 +594,9 @@ class Graph
     }
 
     // Add a plot object to the graph
+    /**
+     * @param (Plot\LinePlot|mixed)[]|Text\Text $aPlot
+     */
     public function Add($aPlot)
     {
         if (null === $aPlot) {
@@ -524,6 +645,9 @@ class Graph
         }
     }
 
+    /**
+     * @param Plot\IconPlot|array $aIcon
+     */
     public function AddIcon($aIcon)
     {
         if (\is_array($aIcon)) {
@@ -595,6 +719,10 @@ class Graph
     }
 
     // Add text object to the graph
+    /**
+     * @param Text\Text|array $aTxt
+     * @param bool $aToY2
+     */
     public function AddText($aTxt, $aToY2 = false)
     {
         if (null === $aTxt) {
@@ -621,6 +749,9 @@ class Graph
     }
 
     // Add a line object (class PlotLine) to the graph
+    /**
+     * @param bool $aToY2
+     */
     public function AddLine($aLine, $aToY2 = false)
     {
         if (null === $aLine) {
@@ -651,6 +782,9 @@ class Graph
     }
 
     // Add vertical or horizontal band
+    /**
+     * @param bool $aToY2
+     */
     public function AddBand($aBand, $aToY2 = false)
     {
         if (null === $aBand) {
@@ -752,6 +886,10 @@ class Graph
     }
 
     // Set a frame around the plot area
+    /**
+     * @param true $aDrawPlotFrame
+     * @param int[]|string $aPlotFrameColor
+     */
     public function SetBox($aDrawPlotFrame = true, $aPlotFrameColor = [0, 0, 0], $aPlotFrameWeight = 1)
     {
         $this->boxed = $aDrawPlotFrame;
@@ -766,6 +904,9 @@ class Graph
     }
 
     // Specify color for the margins (all areas outside the plotarea)
+    /**
+     * @param string $aColor
+     */
     public function SetMarginColor($aColor)
     {
         $this->margin_color = $aColor;
@@ -803,6 +944,13 @@ class Graph
 
     // Specify x,y scale. Note that if you manually specify the scale
     // you must also specify the tick distance with a call to Ticks::Set()
+    /**
+     * @param string $aAxisType
+     * @param float|int $aYMin
+     * @param float|int $aYMax
+     * @param float|int $aXMin
+     * @param float|int $aXMax
+     */
     public function SetScale($aAxisType, $aYMin = 1, $aYMax = 1, $aXMin = 1, $aXMax = 1)
     {
         $this->axtype = $aAxisType;
@@ -925,6 +1073,9 @@ class Graph
     // Specify density of ticks when autoscaling 'normal', 'dense', 'sparse', 'verysparse'
     // The dividing factor have been determined heuristically according to my aesthetic
     // sense (or lack off) y.m.m.v !
+    /**
+     * @param int $aYDensity
+     */
     public function SetTickDensity($aYDensity = Configs::TICKD_NORMAL, $aXDensity = Configs::TICKD_NORMAL)
     {
         $this->xtick_factor = 30;
@@ -1105,6 +1256,9 @@ class Graph
     }
 
     // Build the argument string to be used with the csim images
+    /**
+     * @param bool $aAddRecursiveBlocker
+     */
     public static function GetURLArguments($aAddRecursiveBlocker = false)
     {
         if ($aAddRecursiveBlocker) {
@@ -1239,6 +1393,9 @@ class Graph
         return '<img src="' . $aScriptName . '?' . $urlarg . '" ismap="ismap" usemap="#' . $aCSIMName . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
     }
 
+    /**
+     * @param bool $aY2
+     */
     public function GetTextsYMinMax($aY2 = false)
     {
         if ($aY2) {
@@ -1270,6 +1427,9 @@ class Graph
         return null;
     }
 
+    /**
+     * @param bool $aY2
+     */
     public function GetTextsXMinMax($aY2 = false)
     {
         if ($aY2) {
@@ -1796,6 +1956,10 @@ public function getScale()  {
         }
     }
 
+    /**
+     * @param array $aDepth
+     * @param bool $aCSIM
+     */
     public function StrokeBands($aDepth, $aCSIM)
     {
         // Stroke bands
@@ -1831,6 +1995,9 @@ public function getScale()  {
     // Stroke the graph
     // $aStrokeFileName If != "" the image will be written to this file and NOT
     // streamed back to the browser
+    /**
+     * @param array|string $aStrokeFileName
+     */
     public function Stroke($aStrokeFileName = '')
     {
         // Fist make a sanity check that user has specified a scale
@@ -2240,6 +2407,9 @@ public function getScale()  {
         $this->img->PopColor();
     }
 
+    /**
+     * @param bool $aStrokeLabels
+     */
     public function StrokeAxis($aStrokeLabels = true)
     {
         if ($aStrokeLabels) {
@@ -2331,6 +2501,10 @@ public function getScale()  {
     }
 
     // Private helper function for backgound image
+    /**
+     * @param string $aImgFormat
+     * @param string $aFile
+     */
     public static function LoadBkgImage($aImgFormat = '', $aFile = '', $aImgStr = '')
     {
         if ('' !== $aImgStr) {

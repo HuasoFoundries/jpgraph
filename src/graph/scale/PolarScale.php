@@ -27,6 +27,9 @@ class PolarScale extends LinearScale
         $this->clockwise = $aFlg;
     }
 
+    /**
+     * @param int $v
+     */
     public function _Translate($v)
     {
         return parent::Translate($v);
