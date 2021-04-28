@@ -580,7 +580,6 @@ class RGB
         if ($a > 0) {
             $aAlpha = $a;
         }
-        dump($r, $g, $b, $aAlpha);
         if ($aAlpha < 0 || $aAlpha > 1) {
             Util\JpGraphError::RaiseL(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
         }
@@ -600,8 +599,7 @@ class RGB
                 if (is_numeric($aColor[0]) && is_numeric($aColor[1]) && is_numeric($aColor[2])) {
                     if (($aColor[0] >= 0 && $aColor[0] <= 255) &&
                         ($aColor[1] >= 0 && $aColor[1] <= 255) &&
-                        ($aColor[2] >= 0 && $aColor[2] <= 255)
-                    ) {
+                        ($aColor[2] >= 0 && $aColor[2] <= 255)) {
                         return sprintf('#%02x%02x%02x', $aColor[0], $aColor[1], $aColor[2]);
                     }
                 }

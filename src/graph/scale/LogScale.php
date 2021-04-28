@@ -25,6 +25,7 @@ use function round;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 define('LOGLABELS_PLAIN', 0);
 define('LOGLABELS_MAGNITUDE', 1);
 
@@ -32,7 +33,7 @@ define('LOGLABELS_MAGNITUDE', 1);
  * @class LogScale
  * // Description: Logarithmic scale between world and screen
  */
-class LogScale extends LinearScale
+class LogScale extends  Scale
 {
     /**
      * @param mixed      $min
