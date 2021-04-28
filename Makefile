@@ -1,4 +1,4 @@
-VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)",/\1/p')
+VERSION = $(shell cat composer.json | sed -n 's/.*"version": "\([^"]*\)"/\1/p')
 
 SHELL = /usr/bin/env bash
 
