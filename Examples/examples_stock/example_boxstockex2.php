@@ -8,15 +8,14 @@
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 
-require_once 'jpgraph/jpgraph_stock.php';
-
-// Data must be in the format : open,close,min,max
+use Amenadiel\JpGraph\Plot\BoxPlot;
+// Data must be in the format : open,close,min,max,median
 $datay = [
-    34, 42, 27, 45,
-    55, 25, 14, 59,
-    15, 40, 12, 47,
-    62, 38, 25, 65,
-    38, 49, 32, 64, ];
+    34, 42, 27, 45, 36,
+    55, 25, 14, 59, 40,
+    15, 40, 12, 47, 23,
+    62, 38, 25, 65, 57,
+    38, 49, 32, 64, 45, ];
 
 // Setup a simple graph
 $__width = 300;
@@ -24,14 +23,20 @@ $__height = 200;
 $graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
-$example_title = 'Stockchart example';
+$example_title = 'Box Stock chart example';
 $graph->title->set($example_title);
+$subtitle_text = '(Indented X-axis)';
+$graph->subtitle->Set($subtitle_text);
 
 // Create a new stock plot
-$p1 = new StockPlot($datay);
+$p1 = new BoxPlot($datay);
 
 // Width of the bars (in pixels)
 $p1->SetWidth(9);
+
+// Indent bars so they dont start and end at the edge of the
+// plot area
+$p1->SetCenter();
 
 // Uncomment the following line to hide the horizontal end lines
 //$p1->HideEndLines();

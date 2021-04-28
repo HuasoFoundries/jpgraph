@@ -7,9 +7,9 @@
 // Example of a stock chart
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Plot\BoxPlot;
 
-require_once 'jpgraph/jpgraph_stock.php';
-
+ 
 // Data must be in the format : open,close,min,max,median
 $datay = [
     34, 42, 27, 45, 36,
