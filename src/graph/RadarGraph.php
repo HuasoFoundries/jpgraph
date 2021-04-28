@@ -21,8 +21,8 @@ use function min;
  */
 class RadarGraph extends Graph
 {
-    public $grid;
-    public $axis;
+    public  RadarGrid $grid;
+    public Axis\RadarAxis $axis;
     private $posx;
     private $posy;
     private $len;
@@ -219,8 +219,10 @@ class RadarGraph extends Graph
         if (!$this->yscale->IsSpecified() && Configs::safe_count($this->plots) > 0) {
             list($min, $max) = $this->GetPlotsYMinMax($this->plots);
             $this->yscale->AutoScale($this->img, 0, $max, $this->len / $this->ytick_factor);
-        } elseif ($this->yscale->IsSpecified() &&
-            ($this->yscale->auto_ticks || !$this->yscale->ticks->IsSpecified())) {
+        } elseif (
+            $this->yscale->IsSpecified() &&
+            ($this->yscale->auto_ticks || !$this->yscale->ticks->IsSpecified())
+        ) {
             // The tick calculation will use the user suplied min/max values to determine
             // the ticks. If auto_ticks is false the exact user specifed min and max
             // values will be used for the scale.
@@ -283,7 +285,7 @@ class RadarGraph extends Graph
             $this->legend->Stroke($this->img);
             $this->footer->Stroke($this->img);
         }
-
+        $grid = [];
         if (!$_csim) {
             if ($this->grid_depth == Configs::getConfig('DEPTH_BACK')) {
                 // Draw axis and grid

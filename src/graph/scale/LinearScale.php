@@ -103,25 +103,116 @@ class LinearScale extends Scale
         $this->gracebottom = $aGraceBottom;
     }
 
-    // Get the minimum value in the scale
-    public function GetMinVal()
+
+
+    // Calculate autoscale. Used if user hasn't given a scale and ticks
+    // $maxsteps is the maximum number of major tickmarks allowed.
+    public function AutoScale($img, $min, $max, $maxsteps, $majend = true)
     {
-        return $this->scale[0];
+        if (!is_numeric($min) || !is_numeric($max)) {
+            Util\JpGraphError::Raise(25044);
+        }
+
+        if ($this->intscale) {
+            $this->IntAutoScale($img, $min, $max, $maxsteps, $majend);
+
+            return;
+        }
+        if (abs($min - $max) < 0.00001) {
+            // We need some difference to be able to autoscale
+            // make it 5% above and 5% below value
+            if ($min == 0 && $max == 0) {
+                // Special case
+                $min = -1;
+                $max = 1;
+            } else {
+                $delta = (abs($max) + abs($min)) * 0.005;
+                $min -= $delta;
+                $max += $delta;
+            }
+        }
+
+        $gracetop    = ($this->gracetop / 100.0) * abs($max - $min);
+        $gracebottom = ($this->gracebottom / 100.0) * abs($max - $min);
+        if (is_numeric($this->autoscale_min)) {
+            $min = $this->autoscale_min;
+            if ($min >= $max) {
+                Util\JpGraphError::RaiseL(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
+            }
+            if (abs($min - $max) < 0.001) {
+                $max *= 1.2;
+            }
+        }
+
+        if (is_numeric($this->autoscale_max)) {
+            $max = $this->autoscale_max;
+            if ($min >= $max) {
+                Util\JpGraphError::RaiseL(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
+            }
+            if (abs($min - $max) < 0.001) {
+                $min *= 0.8;
+            }
+        }
+
+        $min -= $gracebottom;
+        $max += $gracetop;
+
+        // First get tickmarks as multiples of 0.1, 1, 10, ...
+        if ($majend) {
+            list($num1steps, $adj1min, $adj1max, $min1step, $maj1step) = $this->CalcTicks($maxsteps, $min, $max, 1, 2);
+        } else {
+            $adj1min                               = $min;
+            $adj1max                               = $max;
+            list($num1steps, $min1step, $maj1step) = $this->CalcTicksFreeze($maxsteps, $min, $max, 1, 2, false);
+        }
+
+        // Then get tick marks as 2:s 0.2, 2, 20, ...
+        if ($majend) {
+            list($num2steps, $adj2min, $adj2max, $min2step, $maj2step) = $this->CalcTicks($maxsteps, $min, $max, 5, 2);
+        } else {
+            $adj2min                               = $min;
+            $adj2max                               = $max;
+            list($num2steps, $min2step, $maj2step) = $this->CalcTicksFreeze($maxsteps, $min, $max, 5, 2, false);
+        }
+
+        // Then get tickmarks as 5:s 0.05, 0.5, 5, 50, ...
+        if ($majend) {
+            list($num5steps, $adj5min, $adj5max, $min5step, $maj5step) = $this->CalcTicks($maxsteps, $min, $max, 2, 5);
+        } else {
+            $adj5min                               = $min;
+            $adj5max                               = $max;
+            list($num5steps, $min5step, $maj5step) = $this->CalcTicksFreeze($maxsteps, $min, $max, 2, 5, false);
+        }
+
+        // Check to see whichof 1:s, 2:s or 5:s fit better with
+        // the requested number of major ticks
+        $match1 = abs($num1steps - $maxsteps);
+        $match2 = abs($num2steps - $maxsteps);
+        $match5 = abs($num5steps - $maxsteps);
+
+        // Compare these three values and see which is the closest match
+        // We use a 0.8 weight to gravitate towards multiple of 5:s
+        $r = $this->MatchMin3($match1, $match2, $match5, 0.8);
+        switch ($r) {
+            case 1:
+                $this->Update($img, $adj1min, $adj1max);
+                $this->ticks->Set($maj1step, $min1step);
+
+                break;
+            case 2:
+                $this->Update($img, $adj2min, $adj2max);
+                $this->ticks->Set($maj2step, $min2step);
+
+                break;
+            case 3:
+                $this->Update($img, $adj5min, $adj5max);
+                $this->ticks->Set($maj5step, $min5step);
+
+                break;
+        }
     }
 
-    // get maximum value for scale
-    public function GetMaxVal()
-    {
-        return $this->scale[1];
-    }
 
-    // Specify a new min/max value for sclae
-    public function Update($aImg, $aMin, $aMax)
-    {
-        $this->scale      = [$aMin, $aMax];
-        $this->world_size = $aMax - $aMin;
-        $this->InitConfigs($aImg);
-    }
 
     // Translate between world and screen
     public function Translate($aCoord)

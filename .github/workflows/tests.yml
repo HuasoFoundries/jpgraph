@@ -20,16 +20,18 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         tools: composer:v2
-        extensions: gd
+        extensions: gd, pcov
         coverage: none
 
     - name: Setup Problem Matches
       run: |
         echo "::add-matcher::${{ runner.tool_cache }}/php.json"
         echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-    - name: Install PHP 7 dependencies
-      run: composer update --'prefer-stable' --no-interaction --no-progress
-    
+    - name: Install PHP dependencies
+      run: composer update --'prefer-stable' --no-interaction --no-progress --ignore-platform-reqs
+
+    - name: PHPLint
+      run: composer lint    
 
     - name: Unit Tests
-      run: vendor/bin/pest --colors=always 
+      run: composer test

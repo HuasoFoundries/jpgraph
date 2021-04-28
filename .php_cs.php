@@ -1,8 +1,6 @@
 <?php
 
-/**
- * CTOhm - SII Async Clients
- */
+
 
 use Ergebnis\PhpCsFixer\Config;
 
@@ -17,7 +15,8 @@ $header = "JPGraph - Community Edition";
 $config = Config\Factory::fromRuleSet(new Config\RuleSet\Php73($header), [
 	'declare_strict_types' => false,
 	'void_return' => false,
-	'static_lambda' => false,	'escape_implicit_backslashes' => false,
+	'static_lambda' => false,
+	'escape_implicit_backslashes' => false,
 	'final_class' => false,
 	'final_internal_class' => false,
 	'final_public_method_for_abstract_class' => false,

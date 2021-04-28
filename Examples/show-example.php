@@ -1,40 +1,34 @@
 <?php
-if (!isset($_GET['target'])) {
-    $_GET['target'] = 'axislabelbkgex01.php';
-}
-if (!isset($_GET['folder'])) {
-    $_GET['folder'] = 'examples_axis';
-}
 
-$target = basename(urldecode($_GET['target']));
-$folder = basename(urldecode($_GET['folder']));
+$target = basename(urldecode($_GET['target'] ?? 'axislabelbkgex01.php'));
+$folder = basename(urldecode($_GET['folder'] ?? 'examples_axis'));
 
-?>
-<!doctype html public "-//W3C//DTD Graph\Configs::getConfig('HTML') 4.0 Frameset//EN">
-<html>
-<head>
-<title> Test suite for JpGraph - <?php echo $target; ?></title>
-<script type="text/javascript" language="javascript">
-<!--
-function resize()
-{
-	return true;
-}
-//-->
-</script>
-</head>
+echo "<html>";
+echo '<head>';
+echo '<title> Image ' . $target . '</title>';
 
-	<?php
+
 if (!strstr($target, 'csim')) {
-    echo '<frameset rows="*,*" onLoad="resize()">';
-    echo '<frame src="show-image.php?' . 'folder=' . ($folder) . '&target=' . ($target) . '" name="image">';
-    echo '<frame src="show-source.php?folder=' . ($folder) . '&target=' . ($target) . '" name="source">';
+    $highlighted =    highlight_file(($folder ? $folder . '/' : '') . $target, true);
+
+    echo '</head>';
+    echo '<body>';
+    echo '<div style="float:right;"><img src="' . ($folder ? $folder . '/' : '') . ($target) . '" border=0 alt="' . $target . '" align="left"></div>';
+    echo $highlighted;
+    echo '</body>';
 } else {
+
+    echo '<script type="text/javascript" language="javascript">';
+    echo '<!--';
+    echo 'function resize() {';
+    echo 'return true;';
+    echo '}';
+    echo '//';
+    echo '-->';
+    echo '</script>';
+    echo '</head>';
     echo '<frameset rows="*" onLoad="resize()">';
     echo '<frame src="' . ($folder) . '/' . ($target) . '" name="image">';
+    echo '</frameset>';
 }
-?>
-
-
-</frameset>
-</html>
+echo '</html>';

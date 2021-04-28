@@ -3,22 +3,18 @@ checks:
 build:
   environment:
     php:
-      version: "7.3"
-      ini:
-        "zend_extension": "xdebug.so"
+            version: '7.4'
+
+
   nodes:
-    tests: true
     analysis:
       tests:
         override:
-          - command: XDEBUG_MODE=coverage vendor/bin/pest --coverage
-            coverage:
-              file: "tests/_output/coverage.xml"
-              format: "clover"
+          - phpcs-run
+
           - php-scrutinizer-run
 
-tools:
-  php_code_coverage: true
+
 
 filter:
   excluded_paths:

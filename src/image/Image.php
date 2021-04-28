@@ -11,6 +11,13 @@ use Amenadiel\JpGraph\Text\TTF;
 use Amenadiel\JpGraph\Util;
 use Amenadiel\JpGraph\Util\ErrMsgText;
 
+// load fonts only once, and define a constant for them
+define("GD_FF_FONT0", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf'));
+define("GD_FF_FONT1", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf'));
+define("GD_FF_FONT2", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf'));
+define("GD_FF_FONT1_BOLD", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf'));
+define("GD_FF_FONT2_BOLD", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf'));
+
 /**
  * File:        GD_IMAGE.INC.PHP
  * // Description: PHP Graph Plotting library. Low level image drawing routines
@@ -99,11 +106,11 @@ class Image
         $this->ttf      = new TTF();
         $this->langconv = new LanguageConv();
 
-        $this->ff_font0      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf');
-        $this->ff_font1      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1.gdf');
-        $this->ff_font2      = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2.gdf');
-        $this->ff_font1_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT1-Bold.gdf');
-        $this->ff_font2_bold = imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT2-Bold.gdf');
+        $this->ff_font0 =  GD_FF_FONT0;
+        $this->ff_font1 =  GD_FF_FONT1;
+        $this->ff_font2 =  GD_FF_FONT2;
+        $this->ff_font1_bold =  GD_FF_FONT1_BOLD;
+        $this->ff_font2_bold =  GD_FF_FONT2_BOLD;
     }
 
     // Enable interlacing in images
@@ -138,7 +145,7 @@ class Image
         }
 
         $this->img = @imagecreatetruecolor((int) $aWidth, (int) $aHeight);
-        if ($this->img < 1) {
+        if ($this->img === false) {
             Util\JpGraphError::RaiseL(25126);
             //die("Can't create truecolor image. Check that you really have GD2 library installed.");
         }
@@ -858,7 +865,7 @@ class Image
         // we calculate this manually by getting the bounding box at
         // angle = 0 and then rotate the bounding box manually
         $bbox = @imagettfbbox($size, 0, $fontfile, $text);
-        if ($bbox === false) {
+        if ($bbox === false && !is_readable($this->font_file)) {
             Util\JpGraphError::RaiseL(25092, $this->font_file);
             //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
         }

@@ -1,0 +1,114 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 50,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "zhangsean",
+      "name": "Sean Zhang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2536402?v=4",
+      "profile": "https://github.com/zhangsean",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ShawnMcCool",
+      "name": "Shawn McCool",
+      "avatar_url": "https://avatars.githubusercontent.com/u/560749?v=4",
+      "profile": "http://shawnmc.cool",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "CViniciusSDias",
+      "name": "Vinicius Dias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6991415?v=4",
+      "profile": "https://youtube.com/c/DiasDeDev?sub_confirmation=1",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "PauluzzNL",
+      "name": "Paul van der Knaap",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5946360?v=4",
+      "profile": "https://github.com/PauluzzNL",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Spomky",
+      "name": "Florent Morselli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1091072?v=4",
+      "profile": "https://morselli.fr",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "murrant",
+      "name": "Tony Murray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39462?v=4",
+      "profile": "https://github.com/murrant",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "iquito",
+      "name": "Andreas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/973653?v=4",
+      "profile": "https://incoherent.ch",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "CorWatts",
+      "name": "Corey Watts",
+      "avatar_url": "https://avatars.githubusercontent.com/u/220260?v=4",
+      "profile": "https://corwatts.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "eisberg",
+      "name": "Alexander Rakushin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9015003?v=4",
+      "profile": "https://github.com/eisberg",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "abidaks",
+      "name": "Muhammad Abid",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20839618?v=4",
+      "profile": "https://github.com/abidaks",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "formikaio",
+      "name": "WhileTrue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/683688?v=4",
+      "profile": "http://www.whiletrue.it",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "jpgraph",
+  "projectOwner": "HuasoFoundries",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
