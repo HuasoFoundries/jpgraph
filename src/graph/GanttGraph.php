@@ -16,7 +16,7 @@ use function round;
 
 /**
  * @class GanttGraph
- * // Description: Main class to handle gantt graphs
+  *  Description: Main class to handle gantt graphs
  */
 class GanttGraph extends Graph
 {
@@ -52,7 +52,7 @@ class GanttGraph extends Graph
 
     /**
      * Configs::getConfig('CONSTRUCTOR')
-     * // Create a new gantt graph.
+      *  Create a new gantt graph.
      *
      * @param mixed $aWidth
      * @param mixed $aHeight

@@ -14,7 +14,7 @@ use function count;
 
 /**
  * @class Graph
- * // Description: Main class to handle graphs
+  *  Description: Main class to handle graphs
  */
 class Graph
 {

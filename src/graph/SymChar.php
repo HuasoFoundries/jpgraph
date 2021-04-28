@@ -8,9 +8,9 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class SymChar
- * // Description: Code values for some commonly used characters that
- * //              normally isn't available directly on the keyboard, for example
- * //              mathematical and greek symbols.
+  *  Description: Code values for some commonly used characters that
+  *               normally isn't available directly on the keyboard, for example
+  *               mathematical and greek symbols.
  */
 class SymChar
 {

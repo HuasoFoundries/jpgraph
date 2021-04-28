@@ -13,7 +13,7 @@ use function round;
 
 /**
  * @class HorizontalGridLine
- * // Responsible for drawinf horizontal gridlines and filled alternatibg rows
+  *  Responsible for drawinf horizontal gridlines and filled alternatibg rows
  */
 class HorizontalGridLine
 {

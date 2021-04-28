@@ -13,7 +13,7 @@ use function pow;
 
 /**
  * @class LinearScale
- * // Description: Handle linear scaling between screen and world
+  *  Description: Handle linear scaling between screen and world
  */
 class Scale extends Configs
 {

@@ -16,11 +16,11 @@ use function mktime;
 
 /**
  * File:        JPGRAPH_DATE.PHP
- * // Description: Classes to handle Date scaling
- * // Created:     2005-05-02
- * // Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $.
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+  *  Description: Classes to handle Date scaling
+  *  Created:     2005-05-02
+  *  Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $.
+  * 
+  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 class DateScale extends LinearScale
 {
@@ -53,8 +53,8 @@ class DateScale extends LinearScale
 
     /**
      * Utility Function AdjDate()
-     * // Description: Will round a given time stamp to an even year, month or day
-     * // argument.
+      *  Description: Will round a given time stamp to an even year, month or day
+      *  argument.
      *
      * @param mixed $aTime
      * @param mixed $aRound
@@ -128,7 +128,7 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjDate that will round a timestamp to an even date rounding
-     * // it downwards.
+      *  it downwards.
      *
      * @param mixed $aTime
      * @param mixed $aYearType
@@ -142,7 +142,7 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjDate that will round a timestamp to an even date rounding
-     * // it upwards.
+      *  it upwards.
      *
      * @param mixed $aTime
      * @param mixed $aYearType
@@ -156,8 +156,8 @@ class DateScale extends LinearScale
 
     /**
      * Utility Function AdjTime()
-     * // Description: Will round a given time stamp to an even time according to
-     * // argument.
+      *  Description: Will round a given time stamp to an even time according to
+      *  argument.
      *
      * @param mixed $aTime
      * @param mixed $aRound
@@ -244,8 +244,8 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjTime that will round a timestamp to an even time rounding
-     * // it downwards.
-     * // Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20.
+      *  it downwards.
+      *  Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20.
      *
      * @param mixed $aTime
      * @param mixed $aHourType
@@ -259,8 +259,8 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjTime that will round a timestamp to an even time rounding
-     * // it upwards
-     * // Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30.
+      *  it upwards
+      *  Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30.
      *
      * @param mixed $aTime
      * @param mixed $aHourType
@@ -274,8 +274,8 @@ class DateScale extends LinearScale
 
     /**
      * DateAutoScale
-     * // Autoscale a date axis given start and end time
-     * // Returns an array ($start,$end,$major,$minor,$format).
+      *  Autoscale a date axis given start and end time
+      *  Returns an array ($start,$end,$major,$minor,$format).
      *
      * @param mixed $aStartTime
      * @param mixed $aEndTime

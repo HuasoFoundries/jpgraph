@@ -35,7 +35,7 @@ class PlotLine
     private $iLineStyle          = 'solid';
     public $numpoints            = 0; // Needed since the framework expects this property
 
-    public function __construct($aDir = HORIZONTAL, $aPos = 0, $aColor = 'black', $aWeight = 1)
+    public function __construct($aDir = Configs::HORIZONTAL, $aPos = 0, $aColor = 'black', $aWeight = 1)
     {
         $this->direction     = $aDir;
         $this->color         = $aColor;

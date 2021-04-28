@@ -33,7 +33,8 @@ $config = Config\Factory::fromRuleSet(new Config\RuleSet\Php74($header), [
 $project_path = getcwd();
 $config->getFinder()
 	->in([
-		__DIR__
+		__DIR__.'/src',
+		__DIR__.'/tests'
 	])
 	->name('*.php')
 	->exclude([

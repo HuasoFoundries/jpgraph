@@ -8,11 +8,11 @@ namespace Amenadiel\JpGraph\Graph;
 
 /*
  * File:        JPGRAPH_CANVTOOLS.PHP
- * // Description: Some utilities for text and shape drawing on a canvas
- * // Created:     2002-08-23
- * // Ver:         $Id: jpgraph_canvtools.php 1857 2009-09-28 14:38:14Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+  *  Description: Some utilities for text and shape drawing on a canvas
+  *  Created:     2002-08-23
+  *  Ver:         $Id: jpgraph_canvtools.php 1857 2009-09-28 14:38:14Z ljp $
+  * 
+  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 \define('CORNER_TOPLEFT', 0);
 \define('CORNER_TOPRIGHT', 1);
@@ -21,7 +21,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class Shape
- * // Description: Methods to draw shapes on canvas
+  *  Description: Methods to draw shapes on canvas
  */
 class Shape
 {

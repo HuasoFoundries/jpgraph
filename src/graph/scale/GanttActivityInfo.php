@@ -12,16 +12,16 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_GANTT.PHP
- * // Description: JpGraph Gantt plot extension
- * // Created:     2001-11-12
- * // Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $.
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+  *  Description: JpGraph Gantt plot extension
+  *  Created:     2001-11-12
+  *  Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $.
+  * 
+  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class GanttActivityInfo
- * // Description:
+  *  Description:
  */
 class GanttActivityInfo
 {

@@ -10,10 +10,10 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class RectPattern
- * // Base class for pattern hierarchi that is used to display patterned
- * // bands on the graph. Any subclass that doesn't override Stroke()
- * // must at least implement method DoPattern($aImg) which is responsible
- * // for drawing the pattern onto the graph.
+ *  Base class for pattern hierarchi that is used to display patterned
+ *  bands on the graph. Any subclass that doesn't override Stroke()
+ *  must at least implement method DoPattern($aImg) which is responsible
+ *  for drawing the pattern onto the graph.
  */
 class RectPattern
 {
@@ -49,16 +49,18 @@ class RectPattern
     {
         $this->doframe = $aShow;
     }
-
-    public function SetDensity($aDens)
+    /**
+* 1% corresponds to linespacing=50
+ * 100 % corresponds to linespacing 1
+ */
+    public function SetDensity(float $aDens)
     {
         if (1 > $aDens || 100 < $aDens) {
             Util\JpGraphError::RaiseL(16001, $aDens);
         }
 
         //(" Desity for pattern must be between 1 and 100. (You tried $aDens)");
-        // 1% corresponds to linespacing=50
-        // 100 % corresponds to linespacing 1
+        
         $this->linespacing = \floor(((100 - $aDens) / 100.0) * 50) + 1;
     }
 

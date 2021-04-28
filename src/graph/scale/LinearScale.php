@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LinearScale
- * // Description: Handle linear scaling between screen and world
+  *  Description: Handle linear scaling between screen and world
  */
 class LinearScale extends Scale
 {

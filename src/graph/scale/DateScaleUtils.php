@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Graph\Configs;
 
 /**
  * @class DateScaleUtils
- * // Description: Help to create a manual date scale
+  *  Description: Help to create a manual date scale
  */
 class DateScaleUtils
 {

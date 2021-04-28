@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPatternHor
- * // Implements horizontal line pattern
+  *  Implements horizontal line pattern
  */
 class RectPatternHor extends RectPattern
 {

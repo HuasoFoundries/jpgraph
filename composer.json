@@ -28,7 +28,8 @@
         "symfony/dotenv": "^4.0 || ^5.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0",
         "symfony/yaml": "^4.0 || ^5.0",
-        "vimeo/psalm": "^4.7"
+        "vimeo/psalm": "^4.7",
+        "rector/rector": "^0.10.11"
     },
     "extra": {
         "composer-normalize": {

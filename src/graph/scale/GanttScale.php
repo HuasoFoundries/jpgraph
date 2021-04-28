@@ -12,10 +12,10 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttScale
- * // Description: Responsible for calculating and showing
- * // the scale in a gantt chart. This includes providing methods for
- * // converting dates to position in the chart as well as stroking the
- * // date headers (days, week, etc).
+  *  Description: Responsible for calculating and showing
+  *  the scale in a gantt chart. This includes providing methods for
+  *  converting dates to position in the chart as well as stroking the
+  *  date headers (days, week, etc).
  */
 class GanttScale
 {
@@ -127,7 +127,7 @@ class GanttScale
 
     /**
      * PUBLIC METHODS
-     * // Specify what headers should be visible.
+      *  Specify what headers should be visible.
      *
      * @param mixed $aFlg
      */

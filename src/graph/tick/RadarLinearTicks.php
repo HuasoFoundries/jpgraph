@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class RadarLinear
- * // Description: Linear ticks
+  *  Description: Linear ticks
  */
 class RadarLinearTicks extends Ticks
 {

@@ -8,16 +8,16 @@ namespace Amenadiel\JpGraph\Graph;
 
 /*
  * File:        JPGRAPH_RADAR.PHP
- * // Description: Radar plot extension for JpGraph
- * // Created:     2001-02-04
- * // Ver:         $Id: jpgraph_radar.php 1783 2009-08-25 11:41:01Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+  *  Description: Radar plot extension for JpGraph
+  *  Created:     2001-02-04
+  *  Ver:         $Id: jpgraph_radar.php 1783 2009-08-25 11:41:01Z ljp $
+  * 
+  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class RadarGrid
- * // Description: Draws grid for the radar graph
+  *  Description: Draws grid for the radar graph
  */
 class RadarGrid
 {

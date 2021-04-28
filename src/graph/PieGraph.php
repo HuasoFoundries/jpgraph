@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Text;
 
 /**
  * @class PieGraph
- * // Description:
+  *  Description:
  */
 class PieGraph extends Graph
 {

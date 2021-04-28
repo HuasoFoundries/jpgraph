@@ -11,11 +11,11 @@ use Amenadiel\JpGraph\Util;
 
 /*
  * File:        JPGRAPH_LOG.PHP
- * // Description: Log scale plot extension for JpGraph
- * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_log.php 1106 2009-02-22 20:16:35Z ljp $
- * //
- * // Copyright (c) Asial Corporation. All rights reserved.
+  *  Description: Log scale plot extension for JpGraph
+  *  Created:     2001-01-08
+  *  Ver:         $Id: jpgraph_log.php 1106 2009-02-22 20:16:35Z ljp $
+  * 
+  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 \define('LOGLABELS_PLAIN', 0);
@@ -23,7 +23,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LogScale
- * // Description: Logarithmic scale between world and screen
+  *  Description: Logarithmic scale between world and screen
  */
 class LogScale extends Scale
 {

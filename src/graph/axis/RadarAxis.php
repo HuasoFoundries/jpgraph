@@ -12,7 +12,7 @@ use const M_PI;
 
 /**
  * @class RadarAxis
- * // Description: Implements axis for the radar graph
+  *  Description: Implements axis for the radar graph
  */
 class RadarAxis extends AxisPrototype
 {

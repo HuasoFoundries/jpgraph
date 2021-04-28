@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph;
 
 /**
  * @class RectPatternCross
- * // Vert/Hor crosses
+  *  Vert/Hor crosses
  */
 class RectPatternCross extends RectPattern
 {

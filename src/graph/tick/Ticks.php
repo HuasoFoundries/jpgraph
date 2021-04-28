@@ -11,8 +11,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Ticks
- * // Description: Abstract base class for drawing linear and logarithmic
- * // tick marks on axis
+  *  Description: Abstract base class for drawing linear and logarithmic
+  *  tick marks on axis
  */
 class Ticks
 {

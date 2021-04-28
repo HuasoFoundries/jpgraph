@@ -7,6 +7,7 @@
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
+use Amenadiel\JpGraph\Graph\Scale\WindrosePlotScale;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
@@ -62,6 +63,7 @@ class WindrosePlot
     private $iBoxStyle           = 'solid';
     private $iOrdinalEncoding    = Configs::KEYENCODING_ANTICLOCKWISE;
     public $legend;
+    public WindrosePlotScale $scale;
 
     public function __construct($aData)
     {
@@ -515,7 +517,7 @@ class WindrosePlot
                     abs($kj - $try_a);
                 } else {
                     --$j;
-                    $kj = $keys[$j];
+                    $kj =(int) $keys[$j];
                     $d1 = abs($kj - $try_a);
                 }
 
@@ -526,11 +528,11 @@ class WindrosePlot
                 }
 
                 if ($l == $n - 1) {
-                    $kl = $keys[0];
+                    $kl =(int)  $keys[0];
                     $d2 = abs($kl - $try_a);
                 } else {
                     ++$l;
-                    $kl = $keys[$l];
+                    $kl =(int)  $keys[$l];
                     $d2 = abs($kl - $try_a);
                 }
 

@@ -8,7 +8,7 @@ namespace Amenadiel\JpGraph\Graph\Tick;
 
 /**
  * @class RadarLogTicks
- * // Description: Logarithmic ticks
+  *  Description: Logarithmic ticks
  */
 class RadarLogTicks extends Ticks
 {
