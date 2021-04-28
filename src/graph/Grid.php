@@ -16,7 +16,7 @@ class Grid
 {
     protected $img;
 
-    protected $scale;
+    public $scale;
 
     protected $majorcolor = '#CCCCCC';
 

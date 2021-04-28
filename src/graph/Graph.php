@@ -33,6 +33,7 @@ class Graph
     public $ynplots = [];
 
     public $xscale; // X Scale object (could be instance of LinearScale or LogScale
+    public $scale;
 
     public $yscale;
 
@@ -948,7 +949,7 @@ class Graph
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25025, $densy); //("JpGraph: Unsupported Tick density: $densy");
+                Util\JpGraphError::RaiseL(25025, $aYDensity); //("JpGraph: Unsupported Tick density: $densy");
         }
 
         switch ($aXDensity) {
@@ -970,7 +971,7 @@ class Graph
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25025, $densx); //("JpGraph: Unsupported Tick density: $densx");
+                Util\JpGraphError::RaiseL(25025, $aXDensity); //("JpGraph: Unsupported Tick density: $densx");
         }
     }
 
@@ -1424,7 +1425,9 @@ class Graph
             }
         }
     }
-
+public function getScale()  {
+    return $this->scale;
+}
     public function StrokeStore($aStrokeFileName)
     {
         // Get the handler to prevent the library from sending the
@@ -2331,7 +2334,7 @@ class Graph
     public static function LoadBkgImage($aImgFormat = '', $aFile = '', $aImgStr = '')
     {
         if ('' !== $aImgStr) {
-            return Image::CreateFromString($aImgStr);
+            return Image\Image::CreateFromString($aImgStr);
         }
 
         // Remove case sensitivity and setup appropriate function to create image

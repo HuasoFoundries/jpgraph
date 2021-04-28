@@ -16,7 +16,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::DEAD_CODE,
         SetList::PRIVATIZATION,
         SetList::NAMING,
-        SetList::TYPE_DECLARATION
+        SetList::TYPE_DECLARATION,
+        SetList::CODE_QUALITY_STRICT
     ]);
 
     // get services (needed for register a single rule)

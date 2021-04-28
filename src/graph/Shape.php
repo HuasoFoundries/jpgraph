@@ -27,7 +27,7 @@ class Shape
 {
     private $img;
 
-    private $scale;
+    public $scale;
 
     public function __construct($aGraph, $scale)
     {

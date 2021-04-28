@@ -79,6 +79,7 @@ class AxisPrototype extends Configs
     protected $hide_line = false;
 
     protected $iDeltaAbsPos = 0;
+   
 
     public function __construct($img, $aScale, $color = [0, 0, 0])
     {
@@ -102,7 +103,9 @@ class AxisPrototype extends Configs
             $this->title_side = Configs::getConfig('SIDE_DOWN');
         }
     }
-
+    public function getScale() {
+        return $this->scale;
+    }
     public function SetLabelFormat($aFormStr)
     {
         $this->scale->ticks->SetLabelFormat($aFormStr);

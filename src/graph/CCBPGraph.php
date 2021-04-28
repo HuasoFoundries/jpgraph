@@ -14,47 +14,94 @@ use Amenadiel\JpGraph\Util;
  * Class CCBPGraph
  * Utility class to create Critical Chain Buffer penetration charts.
  */
-class CCBPGraph
+final class CCBPGraph
 {
     public const TickStep = 25;
     public const YTitle = '% Buffer used';
     public const XTitle = '% CC Completed';
     public const NColorMaps = 2;
 
+    /**
+     * @var \Amenadiel\JpGraph\Graph\Graph|null
+     */
     private $graph;
 
+    /**
+     * @var int
+     */
     private $iWidth;
 
+    /**
+     * @var int
+     */
     private $iHeight;
 
+    /**
+     * @var mixed[]
+     */
     private $iPlots = [];
 
+    /**
+     * @var int|float
+     */
     private $iXMin = -50;
 
+    /**
+     * @var int|float
+     */
     private $iXMax = 100;
 
+    /**
+     * @var int|float
+     */
     private $iYMin = -50;
 
+    /**
+     * @var int|float
+     */
     private $iYMax = 150;
 
+    /**
+     * @var array<int, array<int>>|mixed[]
+     */
     private $iColorInd = [
         [5, 75], /* Green */
         [25, 85], /* Yellow */
         [50, 100],
     ]; /* Red */
-
+    /**
+     * @var int
+     */
     private $iColorMap = 0;
 
+    /**
+     * @var array<int, array<string>>|mixed[]
+     */
     private $iColorSpec = [
         ['darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'],
         ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'],
     ];
 
-    private $iMarginColor = ['darkgreen@0.7', 'darkgreen@0.9'];
+    private const I_MARGIN_COLOR = ['darkgreen@0.7', 'darkgreen@0.9'];
 
+    /**
+     * @var string
+     */
     private $iSubTitle = '';
 
+    /**
+     * @var string
+     */
     private $iTitle = 'CC Buffer penetration';
+    /**
+     * @var string
+     */
+    private const DARKGRAY = 'darkgray';
+    // Use an accumulated fille line graph to create the colored bands
+    /**
+     * @var int
+     */
+    private const N = 3;
 
     /**
      * Construct a new instance of CCBPGraph.
@@ -72,11 +119,8 @@ class CCBPGraph
 
     /**
      * Set the title and subtitle for the graph.
-     *
-     * @param string $aTitle
-     * @param string $aSubTitle
      */
-    public function SetTitle($aTitle, $aSubTitle)
+    public function SetTitle(string $aTitle, string $aSubTitle): void
     {
         $this->iTitle = $aTitle;
         $this->iSubTitle = $aSubTitle;
@@ -84,11 +128,8 @@ class CCBPGraph
 
     /**
      * Set the x-axis min and max values.
-     *
-     * @param int $aMin
-     * @param int $aMax
      */
-    public function SetXMinMax($aMin, $aMax)
+    public function SetXMinMax(int $aMin, int $aMax): void
     {
         $this->iXMin = \floor($aMin / self::TickStep) * self::TickStep;
         $this->iXMax = \ceil($aMax / self::TickStep) * self::TickStep;
@@ -96,21 +137,16 @@ class CCBPGraph
 
     /**
      * Specify what color map to use.
-     *
-     * @param int $aMap
      */
-    public function SetColorMap($aMap)
+    public function SetColorMap(int $aMap): void
     {
         $this->iColorMap = $aMap % self::NColorMaps;
     }
 
     /**
      * Set the y-axis min and max values.
-     *
-     * @param int $aMin
-     * @param int $aMax
      */
-    public function SetYMinMax($aMin, $aMax)
+    public function SetYMinMax(int $aMin, int $aMax): void
     {
         $this->iYMin = \floor($aMin / self::TickStep) * self::TickStep;
         $this->iYMax = \ceil($aMax / self::TickStep) * self::TickStep;
@@ -125,7 +161,7 @@ class CCBPGraph
      * @param mixed $aColors An array with four elements specifying the colors
      *                       of each color indicator
      */
-    public function SetColorIndication(array $aSpec, ?array $aColors = null)
+    public function SetColorIndication(array $aSpec, ?array $aColors = null): void
     {
         if (Configs::safe_count($aSpec) !== 3) {
             Util\JpGraphError::Raise('Specification of scale values for background indicators must be an array with three elements.');
@@ -148,7 +184,7 @@ class CCBPGraph
      *
      * @param mixed $aPlots
      */
-    public function Add($aPlots)
+    public function Add($aPlots): void
     {
         if (\is_array($aPlots)) {
             $this->iPlots = \array_merge($this->iPlots, $aPlots);
@@ -162,7 +198,7 @@ class CCBPGraph
      *
      * @param mixed $aFile
      */
-    public function Stroke($aFile = '')
+    public function Stroke($aFile = ''): void
     {
         $this->Init();
 
@@ -175,7 +211,7 @@ class CCBPGraph
     /**
      * Construct the graph.
      */
-    private function Init()
+    private function Init(): void
     {
         // Setup limits for color indications
         $lowx = $this->iXMin;
@@ -217,7 +253,7 @@ class CCBPGraph
         $graph->clearTheme();
         $graph->SetScale('intint', $lowy, $highy, $lowx, $highx);
         $graph->SetMargin($lm, $rm, $tm, $bm);
-        $graph->SetMarginColor($this->iMarginColor[$this->iColorMap]);
+        $graph->SetMarginColor(self::I_MARGIN_COLOR[$this->iColorMap]);
         $graph->SetClipping();
 
         $graph->title->Set($this->iTitle);
@@ -257,8 +293,8 @@ class CCBPGraph
             $graph->xaxis->SetColor('gray', $xlcolors);
             $graph->yaxis->SetColor('gray', 'lightgray:1.5');
         } else {
-            $graph->xaxis->SetColor('darkgray', 'darkgray:0.8');
-            $graph->yaxis->SetColor('darkgray', 'darkgray:0.8');
+            $graph->xaxis->SetColor(self::DARKGRAY, 'darkgray:0.8');
+            $graph->yaxis->SetColor(self::DARKGRAY, 'darkgray:0.8');
         }
         $graph->SetGridDepth(Configs::DEPTH_FRONT);
         $graph->ygrid->SetColor('gray@0.6');
@@ -289,14 +325,10 @@ class CCBPGraph
         $time = new Text\Text(\date($df), $width - 10, $height - 10);
         $time->SetAlign('right', 'bottom');
         // $time->SetFont(Configs::FF_VERA,Configs::getConfig('FS_NORMAL'),$labelsize-1);
-        $time->SetColor('darkgray');
+        $time->SetColor(self::DARKGRAY);
         $graph->Add($time);
 
-        // Use an accumulated fille line graph to create the colored bands
-
-        $n = 3;
-
-        for ($i = 0; $i < $n; ++$i) {
+        for ($i = 0; $i < self::N; ++$i) {
             $b = $this->iColorInd[$i][0];
             $k = ($this->iColorInd[$i][1] - $this->iColorInd[$i][0]) / $this->iXMax;
             $colarea[$i] = [[$lowx, $lowx * $k + $b], [$highx, $highx * $k + $b]];

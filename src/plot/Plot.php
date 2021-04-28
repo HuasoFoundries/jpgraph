@@ -95,8 +95,9 @@ class Plot
     {
         $this->value->Stroke($img, $aVal, $x, $y);
     }
-
-    // Set href targets for CSIM
+    public function getScale() {
+        return $this->scale;
+    }    // Set href targets for CSIM
     public function SetCSIMTargets($aTargets, $aAlts = '', $aWinTargets = '')
     {
         $this->csimtargets    = $aTargets;

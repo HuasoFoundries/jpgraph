@@ -25,8 +25,11 @@ use Amenadiel\JpGraph\Image;
   *  graphic which benefits from all the functionality in the
   *  graph liek caching for example.
  */
-class CanvasGraph extends Graph
+final class CanvasGraph extends Graph
 {
+    /**
+     * @var \Amenadiel\JpGraph\Graph\Scale\CanvasScale|null
+     */
     public $scale;
 
     /**
@@ -40,16 +43,21 @@ class CanvasGraph extends Graph
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $timeout, $inline);
     }
-
+    public function getScale()  {
+        return $this->scale;
+    }
     /**
      * PUBLIC METHODS.
      */
-    public function InitFrame()
+    public function InitFrame(): void
     {
         $this->StrokePlotArea();
     }
 
     // Method description
+    /**
+     * @return mixed|bool|void
+     */
     public function Stroke($aStrokeFileName = '')
     {
         if (null !== $this->texts) {
@@ -83,8 +91,8 @@ class CanvasGraph extends Graph
         if (!$_csim) {
             // Should we do any final image transformation
             if ($this->iImgTrans) {
-                $tform = new Image\ImgTrans($this->img->img);
-                $this->img->img = $tform->Skew3D(
+                $imgTrans = new Image\ImgTrans($this->img->img);
+                $this->img->img = $imgTrans->Skew3D(
                     $this->iImgTransHorizon,
                     $this->iImgTransSkewDist,
                     $this->iImgTransDirection,
@@ -108,7 +116,7 @@ class CanvasGraph extends Graph
         }
     }
 
-    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10)
+    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10): void
     {
         $this->scale = new Scale\CanvasScale($this, $xmin, $xmax, $ymin, $ymax);
         $this->scale->Set($xmin, $xmax, $ymin, $ymax);

@@ -13,7 +13,7 @@ $__width = 400;
 $__height = 300;
 $g = new Graph\CanvasGraph($__width, $__height);
 $g->SetScale();
-$shape = new Graph\Shape($g, $g->scale);
+$shape = new Graph\Shape($g, $g->getScale());
 $example_title = 'Bezier line with control points';
 $g->title->set($example_title);
 

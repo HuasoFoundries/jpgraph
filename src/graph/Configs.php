@@ -101,9 +101,4 @@ class Configs extends Util\Configs
     const TITLEBKG_FILLSTYLE_HSTRIPED = 1;
     const TITLEBKG_FILLSTYLE_VSTRIPED = 2;
     const TITLEBKG_FILLSTYLE_SOLID = 3;
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 }

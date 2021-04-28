@@ -25,11 +25,11 @@ $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_N
 $t->SetFillColor('lemonchiffon2');
 $t->SetFontColor('black');
 $t->Set("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTTF Fonts (11pt)", 0.5, 19.5, 26, 64.5);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->SetFillColor('lemonchiffon3');
 $t->Set("\n\n\n\nBitmap Fonts", 0.5, 5, 26, 13.5);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t = new Text\CanvasRectangleText();
 $t->SetFillColor('');
@@ -39,13 +39,13 @@ $t->SetShadow('');
 
 $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $t->Set('Normal', 1, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->Set('Italic style', 9, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->Set('Bold style', 17.5, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->SetFillColor('yellow');
 $t->SetFontColor('black');
@@ -142,7 +142,7 @@ for ($i = 0; $i < $n; ++$i) {
         $t->SetTxt($fonts[$i][0]);
         $t->SetPos($c, $r, $w, $h);
         $t->SetFont($fonts[$i][1], $fonts[$i][2], 11);
-        $t->Stroke($g->img, $g->scale);
+        $t->Stroke($g->img, $g->getScale());
     }
 
     $c += $w + 1;

@@ -29,7 +29,7 @@ $g->SetScale('canvas', 0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Graph\Shape($g, $g->scale);
+$shape = new Graph\Shape($g, $g->getScale());
 $shape->SetColor('black');
 
 // Add a black line

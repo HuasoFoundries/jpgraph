@@ -29,7 +29,7 @@ $g->SetScale('canvas', 0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Graph\Shape($g, $g->scale);
+$shape = new Graph\Shape($g, $g->getScale());
 $shape->SetColor('black');
 
 $shape->IndentedRectangle(1, 2, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_TOPLEFT'), 'khaki');

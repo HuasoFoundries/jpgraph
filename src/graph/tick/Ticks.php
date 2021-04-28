@@ -44,7 +44,7 @@ class Ticks
 
     protected $major_abs_size = 5;
 
-    protected $scale;
+    public $scale;
 
     protected $is_set = false;
 
