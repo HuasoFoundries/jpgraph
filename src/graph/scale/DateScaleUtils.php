@@ -59,11 +59,19 @@ class DateScaleUtils
 
     private static $iUseWeeks = true;
 
+    /**
+     * @return void
+     */
     public static function UseWeekFormat($aFlg)
     {
         self::$iUseWeeks = $aFlg;
     }
 
+    /**
+     * @param int|string $aType
+     *
+     * @return void
+     */
     public static function doYearly($aType, $aMinor = false)
     {
         $i = 0;
@@ -133,6 +141,11 @@ class DateScaleUtils
         }
     }
 
+    /**
+     * @param int|string $aType
+     *
+     * @return void
+     */
     public static function doDaily($aType, $aMinor = false)
     {
         $m = self::$startmonth;
@@ -192,6 +205,11 @@ class DateScaleUtils
         }
     }
 
+    /**
+     * @param int|string $aType
+     *
+     * @return void
+     */
     public static function doWeekly($aType, $aMinor = false)
     {
         $hpd = 3600 * 24;
@@ -251,6 +269,13 @@ class DateScaleUtils
         }
     }
 
+    /**
+     * @param int|string $aType
+     *
+     * @return ((false|int)[]|mixed)[]
+     *
+     * @psalm-return array{0: array<positive-int, false|int>|mixed, 1: array<positive-int, false|int>|mixed}
+     */
     public static function doMonthly($aType, $aMinor = false)
     {
         $monthcount = 0;
@@ -357,6 +382,11 @@ class DateScaleUtils
         return self::GetTicksFromMinMax($aData[0], $aData[$n - 1], $aType, $aMinor, $aEndPoints);
     }
 
+    /**
+     * @return (int|mixed|string)[]|null
+     *
+     * @psalm-return array{0: -1|1|2|3|4|5|6|7|8|9|10|11|12|13|14|30|60|90|180|352|704|string, 1: mixed, 2: mixed, 3: -1|1|2|3|4|5|6|7|8|9|10|11|12|13|14|30|60|90|180|352|704|string}|null
+     */
     public static function GetAutoTicks($aMin, $aMax, $aMaxTicks = 10, $aMinor = false)
     {
         $diff = $aMax - $aMin;
@@ -406,6 +436,10 @@ class DateScaleUtils
 
     /**
      * @param int|string $aType
+     *
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed}
      */
     public static function GetTicksFromMinMax($aMin, $aMax, $aType, $aMinor = false, $aEndPoints = false)
     {

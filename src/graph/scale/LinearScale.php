@@ -99,6 +99,9 @@ class LinearScale extends Scale
 
     // Check if scale is set or if we should autoscale
     // We should do this is either scale or ticks has not been set
+    /**
+     * @return bool
+     */
     public function IsSpecified()
     {
         if ($this->GetMinVal() === $this->GetMaxVal()) {
@@ -112,6 +115,9 @@ class LinearScale extends Scale
     // Set the minimum data value when the autoscaling is used.
     // Usefull if you want a fix minimum (like 0) but have an
     // automatic maximum
+    /**
+     * @return void
+     */
     public function SetAutoMin($aMin)
     {
         $this->autoscale_min = $aMin;
@@ -120,6 +126,9 @@ class LinearScale extends Scale
     // Set the minimum data value when the autoscaling is used.
     // Usefull if you want a fix minimum (like 0) but have an
     // automatic maximum
+    /**
+     * @return void
+     */
     public function SetAutoMax($aMax)
     {
         $this->autoscale_max = $aMax;
@@ -127,12 +136,18 @@ class LinearScale extends Scale
 
     // If the user manually specifies a scale should the ticks
     // still be set automatically?
+    /**
+     * @return void
+     */
     public function SetAutoTicks($aFlag = true)
     {
         $this->auto_ticks = $aFlag;
     }
 
     // Specify scale "grace" value (top and bottom)
+    /**
+     * @return void
+     */
     public function SetGrace($aGraceTop, $aGraceBottom = 0)
     {
         if (0 > $aGraceTop || 0 > $aGraceBottom) {
@@ -144,6 +159,13 @@ class LinearScale extends Scale
 
     // Calculate autoscale. Used if user hasn't given a scale and ticks
     // $maxsteps is the maximum number of major tickmarks allowed.
+    /**
+     * @param float $maxsteps
+     * @param bool $majend
+     * @param int $min
+     *
+     * @return void
+     */
     public function AutoScale($img, $min, $max, $maxsteps, $majend = true)
     {
         if (!\is_numeric($min) || !\is_numeric($max)) {
@@ -257,6 +279,11 @@ class LinearScale extends Scale
     }
 
     // Translate between world and screen
+    /**
+     * @param int|numeric-string $aCoord
+     *
+     * @return float|int
+     */
     public function Translate($aCoord)
     {
         if (!\is_numeric($aCoord)) {
@@ -286,6 +313,9 @@ class LinearScale extends Scale
     }
 
     // Restrict autoscaling to only use integers
+    /**
+     * @return void
+     */
     public function SetIntScale($aIntScale = true)
     {
         $this->intscale = $aIntScale;
@@ -297,6 +327,10 @@ class LinearScale extends Scale
      * @param float|int $b
      * @param float|int $c
      * @param float $weight
+     *
+     * @return int
+     *
+     * @psalm-return 1|2|3
      */
     public function MatchMin3($a, $b, $c, $weight)
     {

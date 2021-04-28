@@ -4,11 +4,13 @@
  * JPGraph - Community Edition
  */
 
-include '../jpgraph.php';
+use  Amenadiel\JpGraph\Plot;
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
-include '../jpgraph_bar.php';
-
-include '../jpgraph_table.php';
+require_once __DIR__ . '/../../src/config.inc.php';
 
 $datay = [
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],

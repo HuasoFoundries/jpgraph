@@ -78,17 +78,26 @@ class GanttActivityInfo
         $this->vgrid = new LineProperty();
     }
 
+    /**
+     * @return void
+     */
     public function Hide($aF = true)
     {
         $this->iShow = !$aF;
     }
 
+    /**
+     * @return void
+     */
     public function Show($aF = true)
     {
         $this->iShow = $aF;
     }
 
     // Specify font
+    /**
+     * @return void
+     */
     public function SetFont($aFFamily, $aFStyle = Configs::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
@@ -96,38 +105,59 @@ class GanttActivityInfo
         $this->iFSize = $aFSize;
     }
 
+    /**
+     * @return void
+     */
     public function SetStyle($aStyle)
     {
         $this->iStyle = $aStyle;
     }
 
+    /**
+     * @return void
+     */
     public function SetColumnMargin($aLeft, $aRight)
     {
         $this->iLeftColMargin = $aLeft;
         $this->iRightColMargin = $aRight;
     }
 
+    /**
+     * @return void
+     */
     public function SetFontColor($aFontColor)
     {
         $this->iFontColor = $aFontColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetColor($aColor)
     {
         $this->iColor = $aColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetBackgroundColor($aColor)
     {
         $this->iBackgroundColor = $aColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetColTitles($aTitles, $aWidth = null)
     {
         $this->iTitles = $aTitles;
         $this->iWidth = $aWidth;
     }
 
+    /**
+     * @return void
+     */
     public function SetMinColWidth($aWidths)
     {
         $n = \min(Configs::safe_count($this->iTitles), Configs::safe_count($aWidths));
@@ -174,6 +204,8 @@ class GanttActivityInfo
 
     /**
      * @param array $aStart
+     *
+     * @return void
      */
     public function GetColStart($aImg, &$aStart, $aAddLeftMargin = false)
     {
@@ -187,11 +219,17 @@ class GanttActivityInfo
     }
 
     // Adjust headers left, right or centered
+    /**
+     * @return void
+     */
     public function SetHeaderAlign($aAlign)
     {
         $this->iHeaderAlign = $aAlign;
     }
 
+    /**
+     * @return void
+     */
     public function Stroke($aImg, $aXLeft, $aYTop, $aXRight, $aYBottom, $aUseTextHeight = false)
     {
         if (!$this->iShow) {

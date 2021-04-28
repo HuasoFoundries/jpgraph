@@ -53,14 +53,16 @@ class DateScale extends LinearScale
 
     /**
      * Utility Function AdjDate()
-      *  Description: Will round a given time stamp to an even year, month or day
-      *  argument.
+     *  Description: Will round a given time stamp to an even year, month or day
+     *  argument.
      *
      * @param mixed $aTime
      * @param mixed $aRound
      * @param mixed $aYearType
      * @param mixed $aMonthType
      * @param mixed $aDayType
+     *
+     * @return false|int
      */
     public function AdjDate($aTime, $aRound = 0, $aYearType = false, $aMonthType = false, $aDayType = false)
     {
@@ -156,14 +158,16 @@ class DateScale extends LinearScale
 
     /**
      * Utility Function AdjTime()
-      *  Description: Will round a given time stamp to an even time according to
-      *  argument.
+     *  Description: Will round a given time stamp to an even time according to
+     *  argument.
      *
      * @param mixed $aTime
      * @param mixed $aRound
      * @param mixed $aHourType
      * @param mixed $aMinType
      * @param mixed $aSecType
+     *
+     * @return false|int
      */
     public function AdjTime($aTime, $aRound = 0, $aHourType = false, $aMinType = false, $aSecType = false)
     {
@@ -274,13 +278,17 @@ class DateScale extends LinearScale
 
     /**
      * DateAutoScale
-      *  Autoscale a date axis given start and end time
-      *  Returns an array ($start,$end,$major,$minor,$format).
+     *  Autoscale a date axis given start and end time
+     *  Returns an array ($start,$end,$major,$minor,$format).
      *
      * @param mixed $aStartTime
      * @param mixed $aEndTime
      * @param mixed $aDensity
      * @param mixed $aAdjust
+     *
+     * @return array|false
+     *
+     * @psalm-return array{0: mixed, 1: mixed, 2: mixed, 3: mixed, 4: mixed}|false
      */
     public function DoDateAutoScale($aStartTime, $aEndTime, $aDensity = 0, $aAdjust = true)
     {
@@ -650,17 +658,26 @@ class DateScale extends LinearScale
     }
 
     // Overrides the automatic determined date format. Must be a valid date() format string
+    /**
+     * @return void
+     */
     public function SetDateFormat($aFormat)
     {
         $this->date_format = $aFormat;
         $this->ticks->SetLabelDateFormat($this->date_format);
     }
 
+    /**
+     * @return void
+     */
     public function AdjustForDST($aFlg = true)
     {
         $this->ticks->AdjustForDST($aFlg);
     }
 
+    /**
+     * @return void
+     */
     public function SetDateAlign($aStartAlign, $aEndAlign = false)
     {
         if (false === $aEndAlign) {
@@ -670,6 +687,9 @@ class DateScale extends LinearScale
         $this->iEndAlign = $aEndAlign;
     }
 
+    /**
+     * @return void
+     */
     public function SetTimeAlign($aStartAlign, $aEndAlign = false)
     {
         if (false === $aEndAlign) {
@@ -679,6 +699,12 @@ class DateScale extends LinearScale
         $this->iEndTimeAlign = $aEndAlign;
     }
 
+    /**
+     * @param float $aNumSteps
+     * @param false $_adummy
+     *
+     * @return void
+     */
     public function AutoScale($img, $aStartTime, $aEndTime, $aNumSteps, $_adummy = false)
     {
         // We need to have one dummy argument to make the signature of AutoScale()

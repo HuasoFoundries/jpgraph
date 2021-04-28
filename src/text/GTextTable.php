@@ -220,7 +220,7 @@ class GTextTable
 
                 $t .= 'val=' . $this->iCells[$i][$j]->iVal->t;
                 $t .= ' (cs=' . $this->iCells[$i][$j]->iColSpan .
-                ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
+                    ', rs=' . $this->iCells[$i][$j]->iRowSpan . ')';
                 $t .= '</td>';
             }
             $t .= '</tr>';
@@ -761,7 +761,7 @@ class GTextTable
      * @param mixed $aColor
      * @param mixed $aStyle
      */
-    public function SetGrid($aWeight = 1, $aColor = 'black', $aStyle = TGRID_SINGLE)
+    public function SetGrid($aWeight = 1, $aColor = 'black', $aStyle = Configs::TGRID_SINGLE)
     {
         $rc = $this->iSize[0];
         $cc = $this->iSize[1];
@@ -775,7 +775,7 @@ class GTextTable
         }
     }
 
-    public function SetColGrid($aCol, $aWeight = 1, $aColor = 'black', $aStyle = TGRID_SINGLE)
+    public function SetColGrid($aCol, $aWeight = 1, $aColor = 'black', $aStyle = Configs::TGRID_SINGLE)
     {
         $this->_chkC($aCol);
 
@@ -786,7 +786,7 @@ class GTextTable
         }
     }
 
-    public function SetRowGrid($aRow, $aWeight = 1, $aColor = 'black', $aStyle = TGRID_SINGLE)
+    public function SetRowGrid($aRow, $aWeight = 1, $aColor = 'black', $aStyle = Configs::TGRID_SINGLE)
     {
         $this->_chkR($aRow);
 

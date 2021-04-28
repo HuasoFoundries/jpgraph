@@ -136,6 +136,9 @@ class Scale extends Configs
 
     // Check if scale is set or if we should autoscale
     // We should do this is either scale or ticks has not been set
+    /**
+     * @return bool
+     */
     public function IsSpecified()
     {
         if ($this->GetMinVal() === $this->GetMaxVal()) {
@@ -152,6 +155,9 @@ class Scale extends Configs
     // $start =scale start in absolute pixels (for x-scale this is an y-position
     //     and for an y-scale this is an x-position
     // $len   =absolute length in pixels of scale
+    /**
+     * @return void
+     */
     public function SetConstants($aStart, $aLen)
     {
         $this->world_abs_size = $aLen;
@@ -171,6 +177,9 @@ class Scale extends Configs
     }
 
     // Calculate an integer autoscale
+    /**
+     * @return void
+     */
     public function IntAutoScale($img, $min, $max, $maxsteps, $majend = true)
     {
         // Make sure limits are integers
@@ -298,6 +307,8 @@ class Scale extends Configs
     /**
      * @param float $aMin
      * @param float $aMax
+     *
+     * @return void
      */
     public function Update($aImg, $aMin, $aMax)
     {
@@ -310,12 +321,9 @@ class Scale extends Configs
      * PRIVATE METHODS.
      *
      * @param mixed $img
+     *
+     * @return void
      */
-
-    // This method recalculates all constants that are depending on the
-    // margins in the image. If the margins in the image are changed
-    // this method should be called for every scale that is registred with
-    // that image. Should really be installed as an observer of that image.
     public function InitConfigs($img)
     {
         if ('x' === $this->type) {
@@ -346,6 +354,9 @@ class Scale extends Configs
     // $start =scale start in absolute pixels (for x-scale this is an y-position
     //     and for an y-scale this is an x-position
     // $len   =absolute length in pixels of scale
+    /**
+     * @return void
+     */
     public function SetConfigs($aStart, $aLen)
     {
         $this->world_abs_size = $aLen;
@@ -376,6 +387,10 @@ class Scale extends Configs
     /**
      * @param int $a
      * @param int $b
+     *
+     * @return (float|int)[]
+     *
+     * @psalm-return array{0: float, 1: float, 2: float, 3: float|int, 4: float|int}
      */
     public function CalcTicks($maxsteps, $min, $max, $a, $b, $majend = true)
     {
@@ -425,6 +440,10 @@ class Scale extends Configs
     /**
      * @param int $a
      * @param int $b
+     *
+     * @return (float|int)[]
+     *
+     * @psalm-return array{0: float, 1: float|int, 2: float|int}
      */
     public function CalcTicksFreeze($maxsteps, $min, $max, $a, $b)
     {
@@ -457,6 +476,10 @@ class Scale extends Configs
      * @param float $min
      * @param float $max
      * @param int $a
+     *
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed, 2: mixed, 3: mixed}
      */
     public function IntCalcTicks($maxsteps, $min, $max, $a, $majend = true)
     {
@@ -513,6 +536,10 @@ class Scale extends Configs
      * @param float $min
      * @param float $max
      * @param int $a
+     *
+     * @return (float|mixed)[]
+     *
+     * @psalm-return array{0: float, 1: mixed}
      */
     public function IntCalcTicksFreeze($maxsteps, $min, $max, $a)
     {

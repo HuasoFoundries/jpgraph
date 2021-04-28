@@ -39,22 +39,36 @@ class HorizontalGridLine
         $this->line->SetStyle('dashed');
     }
 
+    /**
+     * @return void
+     */
     public function Show($aShow = true)
     {
         $this->iShow = $aShow;
     }
 
+    /**
+     * @return void
+     */
     public function SetRowFillColor($aColor1, $aColor2 = '')
     {
         $this->iRowColor1 = $aColor1;
         $this->iRowColor2 = $aColor2;
     }
 
+    /**
+     * @return void
+     */
     public function SetStart($aStart)
     {
         $this->iStart = $aStart;
     }
 
+    /**
+     * @param GanttScale $aScale
+     *
+     * @return void
+     */
     public function Stroke($aImg, $aScale)
     {
         if (!$this->iShow) {

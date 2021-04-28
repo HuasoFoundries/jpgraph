@@ -38,6 +38,14 @@ class CanvasScale
         $this->iymax = $ymax;
     }
 
+    /**
+     * @param float|int $xmin
+     * @param float|int $xmax
+     * @param float|int $ymin
+     * @param float|int $ymax
+     *
+     * @return void
+     */
     public function Set($xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10)
     {
         $this->ixmin = $xmin;
@@ -46,11 +54,21 @@ class CanvasScale
         $this->iymax = $ymax;
     }
 
+    /**
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed, 2: mixed, 3: mixed}
+     */
     public function Get()
     {
         return [$this->ixmin, $this->ixmax, $this->iymin, $this->iymax];
     }
 
+    /**
+     * @return float[]
+     *
+     * @psalm-return array{0: float, 1: float}
+     */
     public function Translate($x, $y)
     {
         $xp = \round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
@@ -59,11 +77,17 @@ class CanvasScale
         return [$xp, $yp];
     }
 
+    /**
+     * @return float
+     */
     public function TranslateX($x)
     {
         return \round(($x - $this->ixmin) / ($this->ixmax - $this->ixmin) * $this->w);
     }
 
+    /**
+     * @return float
+     */
     public function TranslateY($y)
     {
         return \round(($y - $this->iymin) / ($this->iymax - $this->iymin) * $this->h);

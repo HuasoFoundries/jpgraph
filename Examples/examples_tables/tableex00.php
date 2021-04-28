@@ -4,12 +4,13 @@
  * JPGraph - Community Edition
  */
 
+
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
+
 require_once __DIR__ . '/../../src/config.inc.php';
-use Amenadiel\JpGraph\Graph;
-
-require_once 'jpgraph/jpgraph_canvas.php';
-
-require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
 $rows = 3;

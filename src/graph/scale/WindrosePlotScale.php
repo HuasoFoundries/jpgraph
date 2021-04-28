@@ -86,6 +86,9 @@ class WindrosePlotScale
     }
 
     // Return number of grid circles
+    /**
+     * @return float|int
+     */
     public function GetNumCirc()
     {
         // Never return less than 1 circles
@@ -94,6 +97,9 @@ class WindrosePlotScale
         return \max(1, $num);
     }
 
+    /**
+     * @return void
+     */
     public function SetMaxValue($aMax)
     {
         $this->iMax = $aMax;
@@ -102,6 +108,9 @@ class WindrosePlotScale
     }
 
     // Set step size for circular grid
+    /**
+     * @return void
+     */
     public function Set($aMax, $aDelta = null)
     {
         if (null === $aDelta) {
@@ -120,6 +129,8 @@ class WindrosePlotScale
 
     /**
      * @param float|int $aMinDist
+     *
+     * @return void
      */
     public function AutoScale($aRadius, $aMinDist = 30)
     {
@@ -165,32 +176,50 @@ class WindrosePlotScale
         return $this->iMax;
     }
 
+    /**
+     * @return void
+     */
     public function Hide($aFlg = true)
     {
         $this->iHideLabels = $aFlg;
     }
 
+    /**
+     * @return void
+     */
     public function SetAngle($aAngle)
     {
         $this->iAngle = $aAngle;
     }
 
     // Translate a Leg value to radius distance
+    /**
+     * @return float
+     */
     public function RelTranslate($aVal, $r, $ri)
     {
         return \round($aVal / $this->iMaxVal * ($r - $ri));
     }
 
+    /**
+     * @return void
+     */
     public function SetLabelAlign($aAlign)
     {
         $this->iLblAlign = $aAlign;
     }
 
+    /**
+     * @return void
+     */
     public function SetLabelFormat($aFmt)
     {
         $this->iLblFmt = $aFmt;
     }
 
+    /**
+     * @return void
+     */
     public function SetLabelFillColor($aBkgColor, $aBorderColor = false)
     {
         $this->iFontBkgColor = $aBkgColor;
@@ -202,12 +231,18 @@ class WindrosePlotScale
         }
     }
 
+    /**
+     * @return void
+     */
     public function SetFontColor($aColor)
     {
         $this->iFontColor = $aColor;
         $this->iZFontColor = $aColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iFontFamily = $aFontFamily;
@@ -216,6 +251,9 @@ class WindrosePlotScale
         $this->SetZFont($aFontFamily, $aFontStyle, $aFontSize);
     }
 
+    /**
+     * @return void
+     */
     public function SetZFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iZFontFamily = $aFontFamily;
@@ -223,11 +261,17 @@ class WindrosePlotScale
         $this->iZFontSize = $aFontSize;
     }
 
+    /**
+     * @return void
+     */
     public function SetZeroLabel($aTxt)
     {
         $this->iLblZeroTxt = $aTxt;
     }
 
+    /**
+     * @return void
+     */
     public function SetZFontColor($aColor)
     {
         $this->iZFontColor = $aColor;
@@ -237,6 +281,8 @@ class WindrosePlotScale
      * @param float $xc
      * @param float $yc
      * @param float $rr
+     *
+     * @return void
      */
     public function StrokeLabels($aImg, $xc, $yc, $ri, $rr)
     {

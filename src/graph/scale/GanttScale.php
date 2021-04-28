@@ -175,9 +175,11 @@ class GanttScale
 
     /**
      * PUBLIC METHODS
-      *  Specify what headers should be visible.
+     *  Specify what headers should be visible.
      *
      * @param mixed $aFlg
+     *
+     * @return void
      */
     public function ShowHeaders($aFlg)
     {
@@ -202,30 +204,45 @@ class GanttScale
     }
 
     // Should the weekend background stretch all the way down in the plotarea
+    /**
+     * @return void
+     */
     public function UseWeekendBackground($aShow)
     {
         $this->iUsePlotWeekendBackground = $aShow;
     }
 
     // Have a range been specified?
+    /**
+     * @return bool
+     */
     public function IsRangeSet()
     {
         return -1 !== $this->iStartDate && -1 !== $this->iEndDate;
     }
 
     // Should the layout be from top or even?
+    /**
+     * @return void
+     */
     public function SetVertLayout($aLayout)
     {
         $this->iVertLayout = $aLayout;
     }
 
     // Which locale should be used?
+    /**
+     * @return void
+     */
     public function SetDateLocale($aLocale)
     {
         $this->iDateLocale->Set($aLocale);
     }
 
     // Number of days we are showing
+    /**
+     * @return float
+     */
     public function GetNumberOfDays()
     {
         return \round(($this->iEndDate - $this->iStartDate) / Configs::SECPERDAY);
@@ -242,6 +259,9 @@ class GanttScale
     // Specify the width of the titles(labels) for the activities
     // (This is by default set to the minimum width enought for the
     // widest title)
+    /**
+     * @return void
+     */
     public function SetLabelWidth($aLabelWidth)
     {
         $this->iLabelWidth = $aLabelWidth;
@@ -249,6 +269,9 @@ class GanttScale
 
     // Which day should the week start?
     // 0==Sun, 1==Monday, 2==Tuesday etc
+    /**
+     * @return void
+     */
     public function SetWeekStart($aStartDay)
     {
         $this->iWeekStart = $aStartDay % 7;
@@ -294,6 +317,9 @@ class GanttScale
     }
 
     // Specify spacing (in percent of bar height) between activity bars
+    /**
+     * @return void
+     */
     public function SetVertSpacing($aSpacing)
     {
         $this->iVertSpacing = $aSpacing;
@@ -301,6 +327,9 @@ class GanttScale
 
     // Specify scale min and max date either as timestamp or as date strings
     // Always round to the nearest week boundary
+    /**
+     * @return void
+     */
     public function SetRange($aMin, $aMax)
     {
         $this->iStartDate = $this->NormalizeDate($aMin);
@@ -309,6 +338,9 @@ class GanttScale
 
     // Adjust the start and end date so they fit to beginning/ending
     // of the week taking the specified week start day into account.
+    /**
+     * @return void
+     */
     public function AdjustStartEndDay()
     {
         if (!($this->IsDisplayYear() || $this->IsDisplayMonth() || $this->IsDisplayWeek())) {
@@ -348,6 +380,9 @@ class GanttScale
     }
 
     // Specify background for the table title area (upper left corner of the table)
+    /**
+     * @return void
+     */
     public function SetTableTitleBackground($aColor)
     {
         $this->iTableHeaderBackgroundColor = $aColor;
@@ -413,6 +448,11 @@ class GanttScale
     }
 
     // Nuber of days in a year
+    /**
+     * @return int
+     *
+     * @psalm-return 365|366
+     */
     public function GetNumDaysInYear($aYear)
     {
         if ($this->IsLeap($aYear)) {
@@ -425,6 +465,8 @@ class GanttScale
     // Get week number
     /**
      * @param false|int $aDate
+     *
+     * @return float|int
      */
     public function GetWeekNbr($aDate, $aSunStart = true)
     {
@@ -464,6 +506,11 @@ class GanttScale
     }
 
     // Is year a leap year?
+    /**
+     * @param float|int $aYear
+     *
+     * @return bool
+     */
     public function IsLeap($aYear)
     {
         // Is the year a leap year?
@@ -478,6 +525,9 @@ class GanttScale
     }
 
     // Get current year
+    /**
+     * @return float|int
+     */
     public function GetYear($aDate)
     {
         return 0 + \date('Y', $aDate);
@@ -486,6 +536,10 @@ class GanttScale
     // Return number of days in a year
     /**
      * @param float|int $aYear
+     *
+     * @return int
+     *
+     * @psalm-return 28|29|30|31
      */
     public function GetNumDaysInMonth($aMonth, $aYear)
     {
@@ -500,18 +554,27 @@ class GanttScale
     }
 
     // Get day in month
+    /**
+     * @return float|int
+     */
     public function GetMonthDayNbr($aDate)
     {
         return 0 + \strftime('%d', $aDate);
     }
 
     // Get day in year
+    /**
+     * @return float|int
+     */
     public function GetYearDayNbr($aDate)
     {
         return 0 + \strftime('%j', $aDate);
     }
 
     // Get month number
+    /**
+     * @return float|int
+     */
     public function GetMonthNbr($aDate)
     {
         return 0 + \strftime('%m', $aDate);
@@ -578,6 +641,11 @@ class GanttScale
     }
 
     // Convert a date to timestamp
+    /**
+     * @param false|int $aDate
+     *
+     * @return false|float|int|null
+     */
     public function NormalizeDate($aDate)
     {
         if (false === $aDate) {
@@ -1302,6 +1370,9 @@ class GanttScale
     }
 
     // Stroke table title (upper left corner)
+    /**
+     * @return void
+     */
     public function StrokeTableHeaders($aYBottom)
     {
         $img = $this->iImg;
@@ -1358,6 +1429,9 @@ class GanttScale
     }
 
     // Main entry point to stroke scale
+    /**
+     * @return void
+     */
     public function Stroke()
     {
         if (!$this->IsRangeSet()) {

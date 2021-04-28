@@ -46,7 +46,7 @@ class JpGraphException extends Exception
     public function Stroke()
     {
         //$sent_headers = headers_list();
-        dump($this->_toString());
+        kdump($this->_toString());
 
         if (JpGraphError::GetImageFlag()) {
             $this->handleImgException();
@@ -68,6 +68,7 @@ class JpGraphException extends Exception
 
         $exception->Stroke();
     }
+    private   $__iTitle = 'JpGraph Error: ';
 
     /**
      * Register exception handler for JpGraphException.
@@ -95,9 +96,9 @@ class JpGraphException extends Exception
                 echo $aMsg;
             }
         } elseif ('syslog' === $this->iDest) {
-            \error_log($this->iTitle . $aMsg);
+            \error_log($this->__iTitle . $aMsg);
         } else {
-            $str = '[' . \date('r') . '] ' . $this->iTitle . ', ' . $aMsg . "\n";
+            $str = '[' . \date('r') . '] ' . $this->__iTitle . ', ' . $aMsg . "\n";
             $f = \fopen($this->iDest, 'ab');
 
             if ($f) {
@@ -144,7 +145,7 @@ class JpGraphException extends Exception
             // Special case for headers already sent or that the installation doesn't support
             // the PNG format (which the error icon is encoded in).
             // Dont return an image since it can't be displayed
-            exit($this->iTitle . ' ' . $this->getMessage());
+            exit($this->__iTitle . ' ' . $this->getMessage());
         }
 
         $aMsg = \wordwrap($this->getMessage(), 55);

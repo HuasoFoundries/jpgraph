@@ -29,6 +29,8 @@ class LineProperty
 
     /**
      * @param string $aColor
+     *
+     * @return void
      */
     public function SetColor($aColor)
     {
@@ -37,6 +39,8 @@ class LineProperty
 
     /**
      * @param int $aWeight
+     *
+     * @return void
      */
     public function SetWeight($aWeight)
     {
@@ -45,17 +49,30 @@ class LineProperty
 
     /**
      * @param string $aStyle
+     *
+     * @return void
      */
     public function SetStyle($aStyle)
     {
         $this->iStyle = $aStyle;
     }
 
+    /**
+     * @param bool $aShow
+     *
+     * @return void
+     */
     public function Show($aShow = true)
     {
         $this->iShow = $aShow;
     }
 
+    /**
+     * @param float $aY1
+     * @param float $aY2
+     *
+     * @return void
+     */
     public function Stroke($aImg, $aX1, $aY1, $aX2, $aY2)
     {
         if (!$this->iShow) {

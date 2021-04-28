@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Util;
 
+use Exception;
+
 // A wrapper class that is used to access the specified error object
 // (to hide the global error parameter and avoid having a GLOBAL directive
 // in all methods.
@@ -28,7 +30,7 @@ class JpGraphError
      */
     public static function Raise(string $aMsg = 'Generic Exception')
     {
-        throw new JpGraphException($aMsg);
+        throw new Exception($aMsg);
     }
 
     /**

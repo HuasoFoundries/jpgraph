@@ -1,0 +1,25 @@
+testExampleTableHowto:
+    example_table_howto1.php: { width: 70, height: 50, title: 'example_table_howto1 ', filename: example_table_howto1.php }
+    example_table_howto2.php: { width: 70, height: 50, title: 'example_table_howto2 ', filename: example_table_howto2.php }
+    example_table_howto3.php: { width: 70, height: 50, title: 'example_table_howto3 ', filename: example_table_howto3.php }
+    example_table_howto4.php: { width: 70, height: 50, title: 'example_table_howto4 ', filename: example_table_howto4.php }
+    example_table_howto5.php: { width: 70, height: 60, title: 'example_table_howto5 ', filename: example_table_howto5.php }
+    example_table_howto6.php: { width: 150, height: 60, title: 'example_table_howto6 ', filename: example_table_howto6.php }
+    example_table_howto7.1.php: { width: 150, height: 90, title: 'example_table_howto7.1 ', filename: example_table_howto7.1.php }
+    example_table_howto7.2.php: { width: 150, height: 90, title: 'example_table_howto7.2 ', filename: example_table_howto7.2.php }
+    example_table_howto7.php: { width: 150, height: 90, title: 'example_table_howto7 ', filename: example_table_howto7.php }
+    example_table_howto8.php: { width: 150, height: 90, title: 'example_table_howto8 ', filename: example_table_howto8.php }
+    example_table_howto9.php: { width: 165, height: 90, title: 'example_table_howto9 ', filename: example_table_howto9.php }
+    
+
+
+
+
+
+
+
+
+
+
+
+

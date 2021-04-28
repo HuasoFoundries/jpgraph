@@ -50,8 +50,9 @@ class LogScale extends Scale
      * PUBLIC METHODS.
      *
      * @param mixed $a
+     *
+     * @return float|int
      */
-    // Translate between world and screen
     public function Translate($a)
     {
         if (!\is_numeric($a)) {
@@ -80,6 +81,9 @@ class LogScale extends Scale
 
     // Relative translate (don't include offset) usefull when we just want
     // to know the relative position (in pixels) on the axis
+    /**
+     * @return float|int
+     */
     public function RelTranslate($a)
     {
         if (!\is_numeric($a)) {
@@ -100,6 +104,9 @@ class LogScale extends Scale
     }
 
     // Use bcpow() for increased precision
+    /**
+     * @return float
+     */
     public function GetMinVal()
     {
         if (\function_exists('bcpow')) {
@@ -109,6 +116,9 @@ class LogScale extends Scale
         return \round(10 ** $this->scale[0], 14);
     }
 
+    /**
+     * @return float
+     */
     public function GetMaxVal()
     {
         if (\function_exists('bcpow')) {
@@ -123,6 +133,13 @@ class LogScale extends Scale
     // Note that for log autoscale the "maxstep" the fourth argument
     // isn't used. This is just included to give the method the same
     // signature as the linear counterpart.
+    /**
+     * @param float $maxsteps
+     * @param bool $majend
+     * @param int $min
+     *
+     * @return void
+     */
     public function AutoScale($img, $min, $max, $maxsteps, $majend = true)
     {
         if (0 === $min) {

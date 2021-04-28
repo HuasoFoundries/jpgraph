@@ -26,11 +26,19 @@ class PolarLogScale extends LogScale
         $this->clockwise = $aClockwise;
     }
 
+    /**
+     * @return void
+     */
     public function SetClockwise($aFlg)
     {
         $this->clockwise = $aFlg;
     }
 
+    /**
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed}
+     */
     public function PTranslate($aAngle, $aRad)
     {
         if (0 === $aRad) {

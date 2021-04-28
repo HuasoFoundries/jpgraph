@@ -22,6 +22,9 @@ class PolarScale extends LinearScale
         $this->clockwise = $aClockwise;
     }
 
+    /**
+     * @return void
+     */
     public function SetClockwise($aFlg)
     {
         $this->clockwise = $aFlg;
@@ -35,6 +38,11 @@ class PolarScale extends LinearScale
         return parent::Translate($v);
     }
 
+    /**
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed}
+     */
     public function PTranslate($aAngle, $aRad)
     {
         $m = $this->scale[1];

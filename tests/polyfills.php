@@ -24,14 +24,15 @@ if (!\function_exists('tap')) {
         return $value;
     }
 }
+
 /*
  * Unless there's a dump function declared already, declare
  * one so we can use it safely elsewhere. Mostly used while developing
  */
-if (!\function_exists('dump')) {
+if (!\function_exists('kdump')) {
     // I'm sure this can be improved... just not today
     if (\class_exists(Kint::class)) {
-        function dump(...$vars)
+        function kdump(...$vars)
         {
             Kint::$enabled_mode = Kint::MODE_CLI;
             $return = Kint::$return;
@@ -43,9 +44,9 @@ if (!\function_exists('dump')) {
             Kint::$return = $return;
         }
 
-        Kint::$aliases[] = 'dump';
+        Kint::$aliases[] = 'kdump';
     } else {
-        function dump(...$vars)
+        function kdump(...$vars)
         {
         }
     }
@@ -97,7 +98,7 @@ if (!\function_exists('getTestableExampleFiles')) {
 if (!\function_exists('dd')) {
     function dd(...$vars): void
     {
-        dump(...$vars);
+        kdump(...$vars);
 
         exit();
     }
