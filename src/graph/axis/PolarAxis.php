@@ -72,27 +72,42 @@ class PolarAxis extends Axis
         parent::__construct($img, $aScale);
     }
 
+    /**
+     * @return void
+     */
     public function ShowAngleDegreeMark($aFlg = true)
     {
         $this->show_angle_mark = $aFlg;
     }
 
+    /**
+     * @return void
+     */
     public function SetAngleStep($aStep)
     {
         $this->angle_step = $aStep;
     }
 
+    /**
+     * @return void
+     */
     public function HideTicks($aFlg = true, $aAngleFlg = true)
     {
         parent::HideTicks($aFlg, $aFlg);
         $this->show_angle_tick = !$aAngleFlg;
     }
 
+    /**
+     * @return void
+     */
     public function ShowAngleLabel($aFlg = true)
     {
         $this->show_angle_label = $aFlg;
     }
 
+    /**
+     * @return void
+     */
     public function ShowGrid($aMajor = true, $aMinor = false, $aAngle = true)
     {
         $this->show_minor_grid = $aMinor;
@@ -100,6 +115,9 @@ class PolarAxis extends Axis
         $this->show_angle_grid = $aAngle;
     }
 
+    /**
+     * @return void
+     */
     public function SetAngleFont($aFontFam, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->angle_fontfam = $aFontFam;
@@ -107,6 +125,9 @@ class PolarAxis extends Axis
         $this->angle_fontsize = $aFontSize;
     }
 
+    /**
+     * @return void
+     */
     public function SetColor($aColor, $aRadColor = '', $aAngleColor = '')
     {
         if ('' === $aAngleColor) {
@@ -117,6 +138,9 @@ class PolarAxis extends Axis
         $this->angle_fontcolor = $aAngleColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetGridColor($aMajorColor, $aMinorColor = '', $aAngleColor = '')
     {
         if ('' === $aMinorColor) {
@@ -132,6 +156,9 @@ class PolarAxis extends Axis
         $this->angle_color = $aAngleColor;
     }
 
+    /**
+     * @return void
+     */
     public function SetTickColors($aRadColor, $aAngleColor = '')
     {
         $this->radius_tick_color = $aRadColor;
@@ -139,6 +166,9 @@ class PolarAxis extends Axis
     }
 
     // Private methods
+    /**
+     * @return void
+     */
     public function StrokeGrid($pos)
     {
         $x = \round($this->img->left_margin + $this->img->plotwidth / 2);
@@ -244,6 +274,9 @@ class PolarAxis extends Axis
         }
     }
 
+    /**
+     * @return void
+     */
     public function StrokeAngleLabels($pos, $type)
     {
         if (!$this->show_angle_label) {
@@ -440,6 +473,9 @@ class PolarAxis extends Axis
         }
     }
 
+    /**
+     * @return void
+     */
     public function Stroke($pos, $dummy = true)
     {
         $this->img->SetLineWeight($this->weight);

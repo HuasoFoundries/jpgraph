@@ -37,7 +37,7 @@ if (!\function_exists('dump')) {
             $return = Kint::$return;
             Kint::$return = true;
             $fp = \fopen('php://stderr', 'ab');
-            \fwrite($fp, Kint::dump(...$vars));
+            \fwrite($fp,(string) Kint::dump(...$vars));
             \fclose($fp);
             $return = Kint::$return;
             Kint::$return = $return;

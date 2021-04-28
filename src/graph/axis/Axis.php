@@ -25,6 +25,12 @@ class Axis extends AxisPrototype
     }
 
     // Stroke the axis.
+    /**
+     * @param \Amenadiel\JpGraph\Graph\Scale\LinearScale|\Amenadiel\JpGraph\Graph\Scale\LogScale|null $aOtherAxisScale
+     * @param bool $aStrokeLabels
+     *
+     * @return void
+     */
     public function Stroke($aOtherAxisScale, $aStrokeLabels = true)
     {
         if ($this->hide) {
@@ -136,11 +142,13 @@ class Axis extends AxisPrototype
 
     /**
      * PRIVATE METHODS
-      *  Draw all the tick labels on major tick marks.
+     *  Draw all the tick labels on major tick marks.
      *
      * @param mixed $aPos
      * @param mixed $aMinor
      * @param mixed $aAbsLabel
+     *
+     * @return void
      */
     public function StrokeLabels($aPos, $aMinor = false, $aAbsLabel = false)
     {

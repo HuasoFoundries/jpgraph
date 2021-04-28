@@ -67,7 +67,8 @@
         "lint": "vendor/bin/phplint",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
         "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
-        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --issues=all --allow-backwards-incompatible-changes=false  --safe-types --dry-run",
+        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --allow-backwards-incompatible-changes=false  --safe-types --issues=all  --dry-run",
+        "psalm_baseline":"vendor/bin/psalm --config=psalm.xml --update-baseline --ignore-baseline  --set-baseline=psalm-baseline.xml",
         "start": "php -S localhost:8000 -t Examples",
         "test": "vendor/bin/pest"
     },

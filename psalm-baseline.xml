@@ -1,133 +1,937 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.0@d4377c0baf3ffbf0b1ec6998e8d1be2a40971005">
-  <file src="tests/Feature/AxisTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+<files psalm-version="4.7.1@cd53e047a58f71f646dd6bf45476076ab07b5d44">
+  <file src="src/graph/CCBPGraph.php">
+    <InvalidArrayOffset occurrences="1">
+      <code>$xlcolors[$n1 + $i]</code>
+    </InvalidArrayOffset>
   </file>
-  <file src="tests/Feature/BackgroundTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/CanvasGraph.php">
+    <ParamNameMismatch occurrences="4">
+      <code>$xmax</code>
+      <code>$xmin</code>
+      <code>$ymax</code>
+      <code>$ymin</code>
+    </ParamNameMismatch>
   </file>
-  <file src="tests/Feature/BarTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/GanttGraph.php">
+    <ImplementedParamTypeMismatch occurrences="1">
+      <code>$aObject</code>
+    </ImplementedParamTypeMismatch>
+    <InvalidScalarArgument occurrences="4">
+      <code>$height</code>
+      <code>$j</code>
+      <code>$j</code>
+      <code>$width</code>
+    </InvalidScalarArgument>
+    <UndefinedConstant occurrences="1">
+      <code>_CSIM_SPECIALFILE</code>
+    </UndefinedConstant>
   </file>
-  <file src="tests/Feature/CanvasTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/Graph.php">
+    <InaccessibleProperty occurrences="1">
+      <code>$this-&gt;xscale-&gt;ticks-&gt;minor_step</code>
+    </InaccessibleProperty>
+    <InvalidArrayOffset occurrences="2">
+      <code>$_GET[Configs::getConfig('_CSIM_DISPLAY')]</code>
+      <code>$_GET[Configs::getConfig('_CSIM_DISPLAY')]</code>
+    </InvalidArrayOffset>
+    <InvalidOperand occurrences="7">
+      <code>5</code>
+      <code>5</code>
+      <code>5</code>
+      <code>Configs::getConfig('CSIMCACHE_DIR')</code>
+      <code>Configs::getConfig('CSIMCACHE_HTTP_DIR')</code>
+      <code>Configs::getConfig('DEFAULT_THEME_CLASS')</code>
+      <code>Configs::getConfig('_CSIM_DISPLAY')</code>
+    </InvalidOperand>
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>'tex' === $xt</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidScalarArgument occurrences="2">
+      <code>$aYDensity</code>
+      <code>$i</code>
+    </InvalidScalarArgument>
+    <RedundantCondition occurrences="3">
+      <code>!\is_numeric($max)</code>
+      <code>!\is_numeric($min)</code>
+      <code>\is_numeric($ymin)</code>
+    </RedundantCondition>
+    <TypeDoesNotContainNull occurrences="2">
+      <code>'' === $max</code>
+      <code>'' === $min</code>
+    </TypeDoesNotContainNull>
+    <TypeDoesNotContainType occurrences="3">
+      <code>Configs::_JPG_DEBUG</code>
+      <code>\is_numeric($ymax)</code>
+      <code>empty($e)</code>
+    </TypeDoesNotContainType>
   </file>
-  <file src="tests/Feature/ContourTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/Legend.php">
+    <TypeDoesNotContainType occurrences="1">
+      <code>Configs::_JPG_DEBUG</code>
+    </TypeDoesNotContainType>
   </file>
-  <file src="tests/Feature/DateTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/MGraph.php">
+    <InvalidScalarArgument occurrences="2">
+      <code>$x</code>
+      <code>$y</code>
+    </InvalidScalarArgument>
+    <TypeDoesNotContainType occurrences="1">
+      <code>$e</code>
+    </TypeDoesNotContainType>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;background_image_format</code>
+    </UndefinedThisPropertyAssignment>
   </file>
-  <file src="tests/Feature/GanttTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/PieGraph.php">
+    <InvalidArgument occurrences="1">
+      <code>$c</code>
+    </InvalidArgument>
+    <TypeDoesNotContainType occurrences="1">
+      <code>Configs::_JPG_DEBUG</code>
+    </TypeDoesNotContainType>
   </file>
-  <file src="tests/Feature/GeneralTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/PolarGraph.php">
+    <ParamNameMismatch occurrences="5">
+      <code>$aScale</code>
+      <code>$dummy1</code>
+      <code>$dummy2</code>
+      <code>$dummy3</code>
+      <code>$rmax</code>
+    </ParamNameMismatch>
+    <RedundantCondition occurrences="2">
+      <code>$this-&gt;iDoClipping</code>
+      <code>$this-&gt;iDoClipping</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="1">
+      <code>Configs::_JPG_DEBUG</code>
+    </TypeDoesNotContainType>
   </file>
-  <file src="tests/Feature/ImgTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/RadarGraph.php">
+    <InvalidArgument occurrences="1">
+      <code>$aColor</code>
+    </InvalidArgument>
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>70</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidScalarArgument occurrences="1">
+      <code>$densy</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="7">
+      <code>$axtype</code>
+      <code>$densy</code>
+      <code>$dummy1</code>
+      <code>$dummy1</code>
+      <code>$dumy2</code>
+      <code>$ymax</code>
+      <code>$ymin</code>
+    </ParamNameMismatch>
   </file>
-  <file src="tests/Feature/LedTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/RectPattern.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$aDens</code>
+    </InvalidScalarArgument>
+    <UndefinedMethod occurrences="1">
+      <code>DoPattern</code>
+    </UndefinedMethod>
   </file>
-  <file src="tests/Feature/LineTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/RectPatternCross.php">
+    <UndefinedMethod occurrences="2">
+      <code>SetOrder</code>
+      <code>SetOrder</code>
+    </UndefinedMethod>
   </file>
-  <file src="tests/Feature/PieTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/RectPatternDiagCross.php">
+    <UndefinedMethod occurrences="2">
+      <code>SetOrder</code>
+      <code>SetOrder</code>
+    </UndefinedMethod>
   </file>
-  <file src="tests/Feature/PolarTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/axis/PolarAxis.php">
+    <ParamNameMismatch occurrences="5">
+      <code>$aAngleFlg</code>
+      <code>$aFlg</code>
+      <code>$aRadColor</code>
+      <code>$dummy</code>
+      <code>$pos</code>
+    </ParamNameMismatch>
   </file>
-  <file src="tests/Feature/RadarTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/axis/RadarAxis.php">
+    <TooManyArguments occurrences="1">
+      <code>Stroke</code>
+    </TooManyArguments>
   </file>
-  <file src="tests/Feature/RotateTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/DateScale.php">
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>true</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidScalarArgument occurrences="5">
+      <code>$h</code>
+      <code>$i</code>
+      <code>$m</code>
+      <code>$s</code>
+      <code>$y</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="4">
+      <code>$_adummy</code>
+      <code>$aEndTime</code>
+      <code>$aNumSteps</code>
+      <code>$aStartTime</code>
+    </ParamNameMismatch>
   </file>
-  <file src="tests/Feature/ScatterTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/DateScaleUtils.php">
+    <InvalidScalarArgument occurrences="47">
+      <code>$d</code>
+      <code>$d</code>
+      <code>$d</code>
+      <code>$d</code>
+      <code>$d</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$m</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>$y</code>
+      <code>\date('Y', $thursday)</code>
+      <code>self::$startmonth + 1</code>
+      <code>self::$startyear</code>
+    </InvalidScalarArgument>
+    <UndefinedClass occurrences="1">
+      <code>JpGraphError</code>
+    </UndefinedClass>
   </file>
-  <file src="tests/Feature/StaticbandTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/GanttActivityInfo.php">
+    <LoopInvalidation occurrences="1">
+      <code>$h</code>
+    </LoopInvalidation>
   </file>
-  <file src="tests/Feature/ThemeTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/GanttScale.php">
+    <InvalidOperand occurrences="4">
+      <code>\strftime('%Y', $this-&gt;iStartDate)</code>
+      <code>\strftime('%d', $aDate)</code>
+      <code>\strftime('%j', $aDate)</code>
+      <code>\strftime('%m', $aDate)</code>
+    </InvalidOperand>
+    <InvalidScalarArgument occurrences="10">
+      <code>\date('H', $datestamp)</code>
+      <code>\date('Y', $datestamp)</code>
+      <code>\date('Y', $datestamp)</code>
+      <code>\date('Y', $thursday)</code>
+      <code>\date('d', $datestamp) + 1</code>
+      <code>\date('d', $datestamp) + 1</code>
+      <code>\date('m', $datestamp)</code>
+      <code>\date('m', $datestamp)</code>
+      <code>\mb_substr($aTimeString, $pos + 1)</code>
+      <code>\mb_substr($aTimeString, 0, $pos)</code>
+    </InvalidScalarArgument>
   </file>
-  <file src="tests/Feature/TickTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/LinearScale.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>25044</code>
+    </InvalidScalarArgument>
+    <TooManyArguments occurrences="3">
+      <code>CalcTicksFreeze</code>
+      <code>CalcTicksFreeze</code>
+      <code>CalcTicksFreeze</code>
+    </TooManyArguments>
   </file>
-  <file src="tests/Feature/WindroseTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/LogScale.php">
+    <InvalidScalarArgument occurrences="8">
+      <code>$a</code>
+      <code>$a</code>
+      <code>$this-&gt;scale[0]</code>
+      <code>$this-&gt;scale[1]</code>
+      <code>10</code>
+      <code>10</code>
+      <code>\bcpow(10, $this-&gt;scale[0], 15)</code>
+      <code>\bcpow(10, $this-&gt;scale[1], 15)</code>
+    </InvalidScalarArgument>
   </file>
-  <file src="tests/Unit/BarTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/PolarLogScale.php">
+    <UndefinedClass occurrences="1">
+      <code>LogTicks</code>
+    </UndefinedClass>
   </file>
-  <file src="tests/Unit/CanvasTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/Scale.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>'25132'</code>
+    </InvalidScalarArgument>
+    <ParadoxicalCondition occurrences="1"/>
+    <TypeDoesNotContainType occurrences="4">
+      <code>0 === $diff</code>
+      <code>0 === $diff</code>
+      <code>0 === $diff</code>
+      <code>0 === $diff</code>
+    </TypeDoesNotContainType>
   </file>
-  <file src="tests/Unit/GanttTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/scale/WindrosePlotScale.php">
+    <UndefinedThisPropertyAssignment occurrences="5">
+      <code>$this-&gt;iMaxVal</code>
+      <code>$this-&gt;iMaxVal</code>
+      <code>$this-&gt;iMaxVal</code>
+      <code>$this-&gt;iMaxVal</code>
+      <code>$this-&gt;iZeroSum</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="3">
+      <code>$this-&gt;iMaxVal</code>
+      <code>$this-&gt;iZeroSum</code>
+      <code>$this-&gt;iZeroSum</code>
+    </UndefinedThisPropertyFetch>
   </file>
-  <file src="tests/Unit/PieTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/tick/LinearTicks.php">
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>true</code>
+    </InvalidPropertyAssignmentValue>
+    <TooManyArguments occurrences="1">
+      <code>_StrokeTicks</code>
+    </TooManyArguments>
   </file>
-  <file src="tests/Unit/PolarTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/tick/LogTicks.php">
+    <UndefinedConstant occurrences="2">
+      <code>LOGLABELS_MAGNITUDE</code>
+      <code>LOGLABELS_PLAIN</code>
+    </UndefinedConstant>
   </file>
-  <file src="tests/Unit/WindroseTest.php">
-    <InternalMethod occurrences="1">
-      <code>with</code>
-    </InternalMethod>
+  <file src="src/graph/tick/RadarLinearTicks.php">
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>true</code>
+    </InvalidPropertyAssignmentValue>
+    <RedundantCondition occurrences="1">
+      <code>$this-&gt;supress_tickmarks</code>
+    </RedundantCondition>
+  </file>
+  <file src="src/graph/tick/Ticks.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$precision</code>
+    </InvalidScalarArgument>
+    <TypeDoesNotContainType occurrences="5">
+      <code>$nbrmajticks - 1 === $i</code>
+      <code>0 === $step</code>
+      <code>0 === $step</code>
+      <code>0 === $step</code>
+      <code>0 === $step</code>
+    </TypeDoesNotContainType>
+    <UndefinedConstant occurrences="1">
+      <code>SIDE_RIGHT</code>
+    </UndefinedConstant>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;ticks_label</code>
+      <code>$this-&gt;ticks_label</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="10">
+      <code>$this-&gt;label_offset</code>
+      <code>$this-&gt;major_step</code>
+      <code>$this-&gt;major_step</code>
+      <code>$this-&gt;minor_step</code>
+      <code>$this-&gt;minor_step</code>
+      <code>$this-&gt;ticks_label</code>
+      <code>$this-&gt;ticks_label</code>
+      <code>$this-&gt;xlabel_offset</code>
+      <code>$this-&gt;xtick_offset</code>
+      <code>$this-&gt;xtick_offset</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/image/Image.php">
+    <InvalidScalarArgument occurrences="56">
+      <code>$e</code>
+      <code>$e</code>
+      <code>$p1x</code>
+      <code>$p1y</code>
+      <code>$p2x</code>
+      <code>$p2y</code>
+      <code>$p3x</code>
+      <code>$p3y</code>
+      <code>$p4x</code>
+      <code>$p4y</code>
+      <code>$s</code>
+      <code>$s</code>
+      <code>$s</code>
+      <code>$x1</code>
+      <code>$x1</code>
+      <code>$x1</code>
+      <code>$x2</code>
+      <code>$x2</code>
+      <code>$x2</code>
+      <code>$xc</code>
+      <code>$xc</code>
+      <code>$xc</code>
+      <code>$y1</code>
+      <code>$y1</code>
+      <code>$y1</code>
+      <code>$y2</code>
+      <code>$y2</code>
+      <code>$y2</code>
+      <code>$yc</code>
+      <code>$yc</code>
+      <code>$yc</code>
+      <code>'25132'</code>
+      <code>2 * $h</code>
+      <code>2 * $h</code>
+      <code>2 * $h</code>
+      <code>2 * $w</code>
+      <code>2 * $w</code>
+      <code>2 * $w</code>
+      <code>round($cx)</code>
+      <code>round($cy)</code>
+      <code>round($h)</code>
+      <code>round($h)</code>
+      <code>round($w)</code>
+      <code>round($w)</code>
+      <code>round($x)</code>
+      <code>round($x)</code>
+      <code>round($x)</code>
+      <code>round($xc)</code>
+      <code>round($xc)</code>
+      <code>round($xc)</code>
+      <code>round($y)</code>
+      <code>round($y)</code>
+      <code>round($y)</code>
+      <code>round($yc)</code>
+      <code>round($yc)</code>
+      <code>round($yc)</code>
+    </InvalidScalarArgument>
+    <InvalidScope occurrences="2">
+      <code>$this</code>
+      <code>$this</code>
+    </InvalidScope>
+    <RedundantCondition occurrences="1">
+      <code>$debug</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="9">
+      <code>$aFormat == 'wbmp'</code>
+      <code>$aFormat == 'wbmp'</code>
+      <code>$aFormat == 'xpm'</code>
+      <code>$aFormat == 'xpm'</code>
+      <code>$h === false</code>
+      <code>$h === false</code>
+      <code>$tst</code>
+      <code>$w === false</code>
+      <code>$w === false</code>
+    </TypeDoesNotContainType>
+    <UndefinedMethod occurrences="7">
+      <code>SetAngle</code>
+      <code>SetAngle</code>
+      <code>SetAngle</code>
+      <code>SetAngle</code>
+      <code>SetAngle</code>
+      <code>SetCenter</code>
+      <code>SetCenter</code>
+    </UndefinedMethod>
+  </file>
+  <file src="src/image/ImgData.php">
+    <RedundantCondition occurrences="1">
+      <code>is_integer($aIdx)</code>
+    </RedundantCondition>
+  </file>
+  <file src="src/image/ImgData_Balls.php">
+    <DuplicateArrayKey occurrences="1">
+      <code>Configs::MARK_IMG_BALL  =&gt; 'imgdata_xsmall'</code>
+    </DuplicateArrayKey>
+  </file>
+  <file src="src/image/ImgData_PushPins.php">
+    <DuplicateArrayKey occurrences="1">
+      <code>Configs::MARK_IMG_SPUSHPIN =&gt; 'imgdata_small'</code>
+    </DuplicateArrayKey>
+  </file>
+  <file src="src/image/ImgStreamCache.php">
+    <InvalidArgument occurrences="3">
+      <code>Configs::getConfig('CACHE_FILE_GROUP')</code>
+      <code>Configs::getConfig('CACHE_FILE_GROUP')</code>
+      <code>Configs::getConfig('CACHE_FILE_MOD')</code>
+    </InvalidArgument>
+    <TypeDoesNotContainType occurrences="1">
+      <code>Configs::_FORCE_IMGTOFILE</code>
+    </TypeDoesNotContainType>
+    <UndefinedVariable occurrences="1">
+      <code>$aFile</code>
+    </UndefinedVariable>
+  </file>
+  <file src="src/image/ImgTrans.php">
+    <InvalidScalarArgument occurrences="20">
+      <code>$hh</code>
+      <code>$hh - 1</code>
+      <code>$hh - 1</code>
+      <code>$sxt</code>
+      <code>$sxt</code>
+      <code>$syt</code>
+      <code>$syt</code>
+      <code>$ww</code>
+      <code>$ww - 1</code>
+      <code>$ww - 1</code>
+      <code>$xt</code>
+      <code>$xt</code>
+      <code>$yt</code>
+      <code>$yt</code>
+      <code>floor(($b + $nb) / 2)</code>
+      <code>floor(($b + $nb) / 2)</code>
+      <code>floor(($g + $ng) / 2)</code>
+      <code>floor(($g + $ng) / 2)</code>
+      <code>floor(($r + $nr) / 2)</code>
+      <code>floor(($r + $nr) / 2)</code>
+    </InvalidScalarArgument>
+  </file>
+  <file src="src/image/RotImage.php">
+    <ParamNameMismatch occurrences="11">
+      <code>$pnts</code>
+      <code>$x1</code>
+      <code>$x1</code>
+      <code>$x2</code>
+      <code>$x2</code>
+      <code>$xc</code>
+      <code>$y1</code>
+      <code>$y1</code>
+      <code>$y2</code>
+      <code>$y2</code>
+      <code>$yc</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/lang/prod.inc.php">
+    <DuplicateArrayKey occurrences="2">
+      <code>24003 =&gt; [DEFAULT_ERROR_MESSAGE . '24003', 0]</code>
+      <code>24004 =&gt; [DEFAULT_ERROR_MESSAGE . '24004', 0]</code>
+    </DuplicateArrayKey>
+  </file>
+  <file src="src/plot/AccBarPlot.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$i</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/AccLinePlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/BarPlot.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$i</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/Contour.php">
+    <InvalidDocblock occurrences="2">
+      <code>public function getIsobars()</code>
+      <code>public function getMinMaxVal()</code>
+    </InvalidDocblock>
+    <InvalidReturnStatement occurrences="3">
+      <code>($aIsobar - $v1) * ($aIsobar - $v2) &lt; 0</code>
+      <code>($aIsobar - $v1) * ($aIsobar - $v2) &lt; 0</code>
+      <code>[$xcoord, $ycoord]</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="4">
+      <code>true</code>
+      <code>true</code>
+      <code>unknown_type</code>
+      <code>unknown_type</code>
+    </InvalidReturnType>
+    <UndefinedDocblockClass occurrences="3">
+      <code>an</code>
+      <code>unknown_type</code>
+      <code>unknown_type</code>
+    </UndefinedDocblockClass>
+    <UndefinedThisPropertyAssignment occurrences="5">
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="5">
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+      <code>$this-&gt;edges</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/plot/ContourPlot.php">
+    <InvalidReturnType occurrences="1">
+      <code>unknown_type</code>
+    </InvalidReturnType>
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+    <UndefinedClass occurrences="2">
+      <code>Util\JpGraphError</code>
+      <code>Util\JpGraphError</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="2">
+      <code>an</code>
+      <code>unknown_type</code>
+    </UndefinedDocblockClass>
+    <UndefinedThisPropertyFetch occurrences="3">
+      <code>$this-&gt;nbrContours</code>
+      <code>$this-&gt;nbrContours</code>
+      <code>$this-&gt;nbrContours</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/plot/ErrorLinePlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/ErrorPlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/FieldPlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;mark</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/plot/GroupBarPlot.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$i</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/LineErrorPlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/LinePlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/MeshInterpolate.php">
+    <MissingDocblockType occurrences="1">
+      <code>public function Linear(&amp;$aData, $aIntFactor)</code>
+    </MissingDocblockType>
+  </file>
+  <file src="src/plot/PiePlot.php">
+    <RedundantCondition occurrences="1"/>
+  </file>
+  <file src="src/plot/Plot.php">
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;scale</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/plot/PlotMark.php">
+    <InvalidOperand occurrences="1">
+      <code>1</code>
+    </InvalidOperand>
+  </file>
+  <file src="src/plot/ScatterPlot.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/StockPlot.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$this-&gt;iTupleSize</code>
+    </InvalidScalarArgument>
+    <ParamNameMismatch occurrences="3">
+      <code>$img</code>
+      <code>$xscale</code>
+      <code>$yscale</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/plot/WindrosePlot.php">
+    <InvalidScalarArgument occurrences="3">
+      <code>1</code>
+      <code>1</code>
+      <code>round($a * 180 / M_PI)</code>
+    </InvalidScalarArgument>
+    <TypeDoesNotContainType occurrences="4">
+      <code>Configs::__DEBUG</code>
+      <code>Configs::__DEBUG</code>
+      <code>Configs::__DEBUG</code>
+      <code>Configs::__DEBUG</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/polyfills.php">
+    <DuplicateFunction occurrences="3">
+      <code>function dd(...$vars): void</code>
+      <code>function dump(...$vars)</code>
+      <code>function tap($value, ?callable $callback = null)</code>
+    </DuplicateFunction>
+    <InvalidScalarArgument occurrences="1">
+      <code>Kint::dump(...$vars)</code>
+    </InvalidScalarArgument>
+  </file>
+  <file src="src/text/Configs.php">
+    <DuplicateArrayKey occurrences="1">
+      <code>self::FF_USERFONT1 =&gt; 'FF_USERFONT1'</code>
+    </DuplicateArrayKey>
+  </file>
+  <file src="src/text/GTextTable.php">
+    <InvalidScalarArgument occurrences="2">
+      <code>27014</code>
+      <code>27014</code>
+    </InvalidScalarArgument>
+    <UndefinedConstant occurrences="3">
+      <code>TGRID_SINGLE</code>
+      <code>TGRID_SINGLE</code>
+      <code>TGRID_SINGLE</code>
+    </UndefinedConstant>
+    <UndefinedVariable occurrences="7">
+      <code>$aArgR1</code>
+      <code>$aArgR1</code>
+      <code>$aC1</code>
+      <code>$aC1</code>
+      <code>$aPad</code>
+      <code>$aR2</code>
+      <code>$aR2</code>
+    </UndefinedVariable>
+  </file>
+  <file src="src/text/GraphTabTitle.php">
+    <ParamNameMismatch occurrences="3">
+      <code>$aDummy1</code>
+      <code>$aDummy2</code>
+      <code>$aTxtColor</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/text/LanguageConv.php">
+    <InvalidArgument occurrences="3">
+      <code>Configs::getConfig('LANGUAGE_CHARSET')</code>
+      <code>Configs::getConfig('LANGUAGE_CHARSET')</code>
+      <code>Configs::getConfig('LANGUAGE_CHARSET')</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/text/SuperScriptText.php">
+    <InvalidOperand occurrences="1">
+      <code>$a</code>
+    </InvalidOperand>
+    <ParamNameMismatch occurrences="2">
+      <code>$ax</code>
+      <code>$ay</code>
+    </ParamNameMismatch>
+    <TypeDoesNotContainType occurrences="2">
+      <code>1 === $neg</code>
+      <code>1 === $neg</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/text/TTF.php">
+    <InvalidReturnStatement occurrences="1">
+      <code>$full_path</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>bool</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/text/Text.php">
+    <InvalidScalarArgument occurrences="3">
+      <code>$x</code>
+      <code>$y</code>
+      <code>'25132'</code>
+    </InvalidScalarArgument>
+  </file>
+  <file src="src/text/TextProperty.php">
+    <UndefinedConstant occurrences="1">
+      <code>self::FS_NORMAL</code>
+    </UndefinedConstant>
+  </file>
+  <file src="src/themes/AquaTheme.php">
+    <TypeDoesNotContainType occurrences="6">
+      <code>'AccBarPlot'</code>
+      <code>'BarPlot'</code>
+      <code>'GroupBarPlot'</code>
+      <code>'LinePlot'</code>
+      <code>'PiePlot'</code>
+      <code>'PiePlot3D'</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/themes/SoftyTheme.php">
+    <TypeDoesNotContainType occurrences="7">
+      <code>'AccBarPlot'</code>
+      <code>'BarPlot'</code>
+      <code>'GroupBarPlot'</code>
+      <code>'LinePlot'</code>
+      <code>'PiePlot'</code>
+      <code>'PiePlot3D'</code>
+      <code>'ScatterPlot'</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/themes/Theme.php">
+    <TypeDoesNotContainType occurrences="6">
+      <code>'AccBarPlot'</code>
+      <code>'BarPlot'</code>
+      <code>'GroupBarPlot'</code>
+      <code>'LinePlot'</code>
+      <code>'PiePlot'</code>
+      <code>'PiePlot3D'</code>
+    </TypeDoesNotContainType>
+    <UndefinedMethod occurrences="2">
+      <code>GetColorList</code>
+      <code>GetColorList</code>
+    </UndefinedMethod>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;graph</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="5">
+      <code>$this-&gt;axis_color</code>
+      <code>$this-&gt;background_color</code>
+      <code>$this-&gt;font_color</code>
+      <code>$this-&gt;font_color</code>
+      <code>$this-&gt;grid_color</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/themes/UniversalTheme.php">
+    <TypeDoesNotContainType occurrences="6">
+      <code>'AccBarPlot'</code>
+      <code>'BarPlot'</code>
+      <code>'GroupBarPlot'</code>
+      <code>'LinePlot'</code>
+      <code>'PiePlot'</code>
+      <code>'PiePlot3D'</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/util/Bezier.php">
+    <InvalidDocblock occurrences="2">
+      <code>public function Get($steps)</code>
+      <code>public function GetPoint($mu)</code>
+    </InvalidDocblock>
+  </file>
+  <file src="src/util/Configs.php">
+    <DuplicateArrayKey occurrences="3">
+      <code>'CSIMCACHE_DIR' =&gt; null</code>
+      <code>'CSIMCACHE_HTTP_DIR' =&gt; null</code>
+      <code>'MBTTF_DIR' =&gt; null</code>
+    </DuplicateArrayKey>
+    <FalsableReturnStatement occurrences="1">
+      <code>\getenv(\sprintf('JPGRAPH_%s', $config_key))</code>
+    </FalsableReturnStatement>
+    <InvalidDocblock occurrences="1">
+      <code>protected static function setConfig(string $config_key, $config_value)</code>
+    </InvalidDocblock>
+    <InvalidReturnStatement occurrences="1">
+      <code>\getenv(\sprintf('JPGRAPH_%s', $config_key))</code>
+    </InvalidReturnStatement>
+    <TypeDoesNotContainType occurrences="2">
+      <code>$args &amp;&amp; \is_scalar($args)</code>
+      <code>\is_scalar($args)</code>
+    </TypeDoesNotContainType>
+    <UndefinedVariable occurrences="6">
+      <code>$file</code>
+      <code>$file</code>
+      <code>$file</code>
+      <code>$lineno</code>
+      <code>$lineno</code>
+      <code>$lineno</code>
+    </UndefinedVariable>
+  </file>
+  <file src="src/util/DateLocale.php">
+    <InvalidOperand occurrences="1">
+      <code>\strftime('%w')</code>
+    </InvalidOperand>
+  </file>
+  <file src="src/util/Helper.php">
+    <InvalidArgument occurrences="2">
+      <code>Configs::getConfig('MIN_PHPVERSION')</code>
+      <code>Configs::getConfig('MIN_PHPVERSION')</code>
+    </InvalidArgument>
+    <InvalidDocblock occurrences="2">
+      <code>&lt;type&gt;</code>
+      <code>public static function getErrLocale()</code>
+    </InvalidDocblock>
+    <UndefinedVariable occurrences="1">
+      <code>$_jpg_messages</code>
+    </UndefinedVariable>
+  </file>
+  <file src="src/util/JpGraphError.php">
+    <InvalidDocblock occurrences="1">
+      <code>&lt;type&gt;</code>
+    </InvalidDocblock>
+    <InvalidScalarArgument occurrences="1">
+      <code>$errline</code>
+    </InvalidScalarArgument>
+    <UndefinedDocblockClass occurrences="1">
+      <code>JpGraphExceptionL</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/util/JpGraphException.php">
+    <TooManyArguments occurrences="2">
+      <code>FilledRectangle</code>
+      <code>FilledRectangle</code>
+    </TooManyArguments>
+    <UndefinedConstant occurrences="2">
+      <code>HALT_ON_ERRORS</code>
+      <code>HALT_ON_ERRORS</code>
+    </UndefinedConstant>
+    <UndefinedThisPropertyFetch occurrences="3">
+      <code>$this-&gt;iTitle</code>
+      <code>$this-&gt;iTitle</code>
+      <code>$this-&gt;iTitle</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/util/JpgTimer.php">
+    <InvalidOperand occurrences="4">
+      <code>$ms</code>
+      <code>$ms</code>
+      <code>$s</code>
+      <code>$s</code>
+    </InvalidOperand>
+  </file>
+  <file src="src/util/LinearRegression.php">
+    <UndefinedClass occurrences="1">
+      <code>JpGraph</code>
+    </UndefinedClass>
   </file>
 </files>

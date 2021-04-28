@@ -46,6 +46,8 @@ class RadarAxis extends AxisPrototype
      * @param float $aAxisAngle
      * @param empty $grid
      * @param bool $lf
+     *
+     * @return void
      */
     public function Stroke($pos, $aAxisAngle, &$grid, $title, $lf)
     {
@@ -97,6 +99,11 @@ class RadarAxis extends AxisPrototype
         $this->_StrokeAxisTitle($pos, $aAxisAngle, $title);
     }
 
+    /**
+     * @param float $aAxisAngle
+     *
+     * @return void
+     */
     public function _StrokeAxisTitle($pos, $aAxisAngle, $title)
     {
         $this->title->Set($title);
