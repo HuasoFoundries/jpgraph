@@ -1,12 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
+use function max;
+use function min;
 
 /**
  * @class AccLinePlot
@@ -19,21 +21,21 @@ class AccLinePlot extends Plot
     private $iStartEndZero = true;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $plots
      */
     public function __construct($plots)
     {
         $this->plots     = $plots;
-        $this->nbrplots  = safe_count($plots);
+        $this->nbrplots  = Configs::safe_count($plots);
         $this->numpoints = $plots[0]->numpoints;
 
         // Verify that all plots have the same number of data points
         for ($i = 1; $i < $this->nbrplots; ++$i) {
-            if ($plots[$i]->numpoints != $this->numpoints) {
-                Util\JpGraphError::RaiseL(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
+            if ($plots[$i]->numpoints == $this->numpoints) {
+                continue;
             }
+
+            Util\JpGraphError::RaiseL(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
         }
 
         for ($i = 0; $i < $this->nbrplots; ++$i) {
@@ -57,9 +59,9 @@ class AccLinePlot extends Plot
     {
         list($xmax) = $this->plots[0]->Max();
         $nmax       = 0;
-        $n          = safe_count($this->plots);
+        $n          = Configs::safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
-            $nc      = safe_count($this->plots[$i]->coords[0]);
+            $nc      = Configs::safe_count($this->plots[$i]->coords[0]);
             $nmax    = max($nmax, $nc);
             list($x) = $this->plots[$i]->Max();
             $xmax    = max($xmax, $x);
@@ -85,9 +87,9 @@ class AccLinePlot extends Plot
     {
         $nmax                 = 0;
         list($xmin, $ysetmin) = $this->plots[0]->Min();
-        $n                    = safe_count($this->plots);
+        $n                    = Configs::safe_count($this->plots);
         for ($i = 0; $i < $n; ++$i) {
-            $nc          = safe_count($this->plots[$i]->coords[0]);
+            $nc          = Configs::safe_count($this->plots[$i]->coords[0]);
             $nmax        = max($nmax, $nc);
             list($x, $y) = $this->plots[$i]->Min();
             $xmin        = min($xmin, $x);
@@ -118,20 +120,22 @@ class AccLinePlot extends Plot
         // (We check for empty in case the scale is  a log scale
         // and hence doesn't contain any xlabel_offset)
 
-        if (empty($graph->xaxis->scale->ticks->xlabel_offset) ||
-            $graph->xaxis->scale->ticks->xlabel_offset == 0) {
-            if ($this->center) {
-                ++$this->numpoints;
-                $a = 0.5;
-                $b = 0.5;
-            } else {
-                $a = 0;
-                $b = 0;
-            }
-            $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-            $graph->SetTextScaleOff($b);
-            $graph->xaxis->scale->ticks->SupressMinorTickMarks();
+        if (!empty($graph->xaxis->scale->ticks->xlabel_offset) &&
+            $graph->xaxis->scale->ticks->xlabel_offset != 0) {
+            return;
         }
+
+        if ($this->center) {
+            ++$this->numpoints;
+            $a = 0.5;
+            $b = 0.5;
+        } else {
+            $a = 0;
+            $b = 0;
+        }
+        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $graph->SetTextScaleOff($b);
+        $graph->xaxis->scale->ticks->SupressMinorTickMarks();
     }
 
     public function SetInterpolateMode($aIntMode)
@@ -144,7 +148,7 @@ class AccLinePlot extends Plot
     // will be replaced by the the first valid data point
     public function LineInterpolate(&$aData)
     {
-        $n = safe_count($aData);
+        $n = Configs::safe_count($aData);
         $i = 0;
 
         // If first point is undefined we will set it to the same as the first
@@ -154,17 +158,17 @@ class AccLinePlot extends Plot
             while ($i < $n && $aData[$i] === '-') {
                 ++$i;
             }
-            if ($i < $n) {
-                for ($j = 0; $j < $i; ++$j) {
-                    if ($this->iStartEndZero) {
-                        $aData[$i] = 0;
-                    } else {
-                        $aData[$j] = $aData[$i];
-                    }
-                }
-            } else {
+            if ($i >= $n) {
                 // All '-' => Error
                 return false;
+            }
+
+            for ($j = 0; $j < $i; ++$j) {
+                if ($this->iStartEndZero) {
+                    $aData[$i] = 0;
+                } else {
+                    $aData[$j] = $aData[$i];
+                }
             }
         }
 
@@ -172,31 +176,33 @@ class AccLinePlot extends Plot
             while ($i < $n && $aData[$i] !== '-') {
                 ++$i;
             }
-            if ($i < $n) {
-                $pstart = $i - 1;
+            if ($i >= $n) {
+                continue;
+            }
 
-                // Now see how long this segment of '-' are
-                while ($i < $n && $aData[$i] === '-') {
-                    ++$i;
+            $pstart = $i - 1;
+
+            // Now see how long this segment of '-' are
+            while ($i < $n && $aData[$i] === '-') {
+                ++$i;
+            }
+            if ($i < $n) {
+                $pend = $i;
+                $size = $pend - $pstart;
+                $k    = ($aData[$pend] - $aData[$pstart]) / $size;
+                // Replace the segment of '-' with a linear interpolated value.
+                for ($j = 1; $j < $size; ++$j) {
+                    $aData[$pstart + $j] = $aData[$pstart] + $j * $k;
                 }
-                if ($i < $n) {
-                    $pend = $i;
-                    $size = $pend - $pstart;
-                    $k    = ($aData[$pend] - $aData[$pstart]) / $size;
-                    // Replace the segment of '-' with a linear interpolated value.
-                    for ($j = 1; $j < $size; ++$j) {
-                        $aData[$pstart + $j] = $aData[$pstart] + $j * $k;
-                    }
-                } else {
-                    // There are no valid end point. The '-' goes all the way to the end
-                    // In that case we just set all the remaining values the the same as the
-                    // last valid data point.
-                    for ($j = $pstart + 1; $j < $n; ++$j) {
-                        if ($this->iStartEndZero) {
-                            $aData[$j] = 0;
-                        } else {
-                            $aData[$j] = $aData[$pstart];
-                        }
+            } else {
+                // There are no valid end point. The '-' goes all the way to the end
+                // In that case we just set all the remaining values the the same as the
+                // last valid data point.
+                for ($j = $pstart + 1; $j < $n; ++$j) {
+                    if ($this->iStartEndZero) {
+                        $aData[$j] = 0;
+                    } else {
+                        $aData[$j] = $aData[$pstart];
                     }
                 }
             }
@@ -214,7 +220,7 @@ class AccLinePlot extends Plot
     public function Stroke($img, $xscale, $yscale)
     {
         $img->SetLineWeight($this->weight);
-        $this->numpoints = safe_count($this->plots[0]->coords[0]);
+        $this->numpoints = Configs::safe_count($this->plots[0]->coords[0]);
         // Allocate array
         $coords[$this->nbrplots][$this->numpoints] = 0;
         for ($i = 0; $i < $this->numpoints; ++$i) {
@@ -238,4 +244,5 @@ class AccLinePlot extends Plot
             $p->coords[0][] = $tmp;
         }
     }
-} // @class
+}
+// @class

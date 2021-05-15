@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -26,9 +26,11 @@ $__width  = 300;
 $__height = 200;
 $g        = new Graph\Graph($__width, $__height);
 $g->SetMargin(30, 20, 40, 30);
-$g->title->Set('Natural cubic splines');
-$g->title->SetFont(FF_ARIAL, FS_NORMAL, 12);
-$g->subtitle->Set('(Control points shown in red)');
+$example_title = 'Natural cubic splines';
+$g->title->set($example_title);
+$g->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$subtitle_text = '(Control points shown in red)';
+$g->subtitle->Set($subtitle_text);
 $g->subtitle->SetColor('darkred');
 $g->SetMarginColor('lightblue');
 

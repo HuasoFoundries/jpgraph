@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -44,13 +44,15 @@ class ReadFileData
 
         // Now make sure that all data is numeric. By default
         // all data is read as strings
-        $n     = safe_count($tmp);
+        $n     = Configs::safe_count($tmp);
         $aData = [];
         $cnt   = 0;
         for ($i = 0; $i < $n; ++$i) {
-            if ($tmp[$i] !== '') {
-                $aData[$cnt++] = (float) ($tmp[$i]);
+            if ($tmp[$i] === '') {
+                continue;
             }
+
+            $aData[$cnt++] = (float) ($tmp[$i]);
         }
 
         return $cnt;
@@ -123,10 +125,10 @@ class ReadFileData
         }
 
         $num_lines = 0;
-        $num_cols  = safe_count($aLine);
+        $num_cols  = Configs::safe_count($aLine);
 
         while ($aLine !== false) {
-            if (is_array($aLine) && safe_count($aLine) != $num_cols) {
+            if (is_array($aLine) && Configs::safe_count($aLine) != $num_cols) {
                 JpGraphError::RaiseL(24004);
                 // 'ReadCSV2: Column count mismatch in %s line %d'
             }
@@ -179,7 +181,7 @@ class ReadFileData
             $aCol2[] = (float) (trim($split[1]));
         }
 
-        return safe_count($lines);
+        return Configs::safe_count($lines);
     }
 
     // Read data from one columns in a plain text file
@@ -193,7 +195,7 @@ class ReadFileData
             $aCol1[] = (float) (trim($datarow));
         }
 
-        return safe_count($lines);
+        return Configs::safe_count($lines);
     }
 
     public static function FromMatrix($aFile, $aSepChar = ' ')

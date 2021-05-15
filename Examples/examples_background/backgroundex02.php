@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,15 +18,16 @@ $__width  = 400;
 $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 180, 40, 40);
-$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 
 $graph->img->SetAntiAliasing();
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Background image');
+$example_title = 'Background image';
+$graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Slightly adjust the legend from it's default position in the
 // top right corner.
@@ -34,7 +35,7 @@ $graph->legend->Pos(0.05, 0.5, 'right', 'center');
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay);
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $p1->SetColor('blue');
@@ -44,7 +45,7 @@ $graph->Add($p1);
 
 // ... and the second
 $p2 = new Plot\LinePlot($data2y);
-$p2->mark->SetType(MARK_STAR);
+$p2->mark->SetType(Graph\Configs::getConfig('MARK_STAR'));
 $p2->mark->SetFillColor('red');
 $p2->mark->SetWidth(4);
 $p2->SetColor('red');

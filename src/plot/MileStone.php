@@ -1,10 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
+
+use function max;
+use function min;
+use function round;
 
 /**
  * @class MileStone
@@ -15,8 +19,6 @@ class MileStone extends GanttPlotObject
     public $mark;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $aVPos
      * @param mixed $aLabel
      * @param mixed $aDate
@@ -27,12 +29,12 @@ class MileStone extends GanttPlotObject
         parent::__construct();
         $this->caption->Set($aCaption);
         $this->caption->Align('left', 'center');
-        $this->caption->SetFont(FF_FONT1, FS_BOLD);
+        $this->caption->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
         $this->title->Set($aLabel);
         $this->title->SetColor('darkred');
         $this->mark = new PlotMark();
         $this->mark->SetWidth(10);
-        $this->mark->SetType(MARK_DIAMOND);
+        $this->mark->SetType(Configs::MARK_DIAMOND);
         $this->mark->SetColor('darkred');
         $this->mark->SetFillColor('darkred');
         $this->iVPos  = $aVPos;
@@ -52,7 +54,7 @@ class MileStone extends GanttPlotObject
     public function Stroke($aImg, $aScale)
     {
         // Put the mark in the middle at the middle of the day
-        $d = $aScale->NormalizeDate($this->iStart) + SECPERDAY / 2;
+        $d = $aScale->NormalizeDate($this->iStart) + Configs::SECPERDAY / 2;
         $x = $aScale->TranslateDate($d);
         $y = $aScale->TranslateVertPos($this->iVPos) - ($aScale->GetVertSpacing() / 2);
 
@@ -66,25 +68,27 @@ class MileStone extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(safe_count($colwidth), safe_count($this->title->csimtarget));
+            $n = min(Configs::safe_count($colwidth), Configs::safe_count($this->title->csimtarget));
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
                 $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
 
-                if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
-
-                    if (!empty($this->title->csimwintarget[$i])) {
-                        $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '"';
-                    }
-
-                    if (!empty($this->title->csimalt[$i])) {
-                        $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
-                    }
-                    $this->csimarea .= " />\n";
+                if (empty($this->title->csimtarget[$i])) {
+                    continue;
                 }
+
+                $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
+
+                if (!empty($this->title->csimwintarget[$i])) {
+                    $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '"';
+                }
+
+                if (!empty($this->title->csimalt[$i])) {
+                    $tmp = $this->title->csimalt[$i];
+                    $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                }
+                $this->csimarea .= " />\n";
             }
         }
 

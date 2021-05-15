@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,12 +18,12 @@ $graph->SetScale('linlin');
 
 $graph->img->SetMargin(40, 40, 40, 40);
 $graph->SetShadow();
-
-$graph->title->Set('A simple scatter plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'A simple scatter plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(MARK_FILLEDCIRCLE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $sp1->mark->SetFillColor('red');
 $sp1->mark->SetWidth(8);
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,9 +15,9 @@ $__height = 220;
 $graph    = new OdoGraph($__width, $__height);
 
 $nstyle = [
-    NEEDLE_STYLE_SIMPLE, NEEDLE_STYLE_STRAIGHT, NEEDLE_STYLE_ENDARROW,
-    NEEDLE_STYLE_SMALL_TRIANGLE, NEEDLE_STYLE_MEDIUM_TRIANGLE,
-    NEEDLE_STYLE_LARGE_TRIANGLE,
+    Graph\Configs::getConfig('NEEDLE_STYLE_SIMPLE'), Graph\Configs::getConfig('NEEDLE_STYLE_STRAIGHT'), Graph\Configs::getConfig('NEEDLE_STYLE_ENDARROW'),
+    Graph\Configs::getConfig('NEEDLE_STYLE_SMALL_TRIANGLE'), Graph\Configs::getConfig('NEEDLE_STYLE_MEDIUM_TRIANGLE'),
+    Graph\Configs::getConfig('NEEDLE_STYLE_LARGE_TRIANGLE'),
 ];
 
 $captions = [
@@ -34,7 +34,7 @@ for ($i = 0; $i < 6; ++$i) {
     $odo[$i]->needle->Set(80);
     $odo[$i]->needle->SetStyle($nstyle[$i]);
     $odo[$i]->caption->Set($captions[$i]);
-    $odo[$i]->caption->SetFont(FF_FONT1);
+    $odo[$i]->caption->SetFont(Graph\Configs::getConfig('FF_FONT1'));
     $odo[$i]->caption->SetMargin(3);
 }
 

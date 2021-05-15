@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -45,8 +45,6 @@ class LinePlot extends Plot
     protected $iFastStroke        = false;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $datay
      * @param mixed $datax
      */
@@ -116,40 +114,42 @@ class LinePlot extends Plot
 
     public function Legend($graph)
     {
-        if ($this->legend != '') {
-            if ($this->filled && !$this->fillgrad) {
-                $graph->legend->Add(
-                    $this->legend,
-                    $this->fill_color,
-                    $this->mark,
-                    0,
-                    $this->legendcsimtarget,
-                    $this->legendcsimalt,
-                    $this->legendcsimwintarget
-                );
-            } elseif ($this->fillgrad) {
-                $color = [$this->fillgrad_fromcolor, $this->fillgrad_tocolor];
-                // In order to differentiate between gradients and cooors specified as an Image\RGB triple
-                $graph->legend->Add(
-                    $this->legend,
-                    $color,
-                    '',
-                    -2/* -GRAD_HOR */,
-                    $this->legendcsimtarget,
-                    $this->legendcsimalt,
-                    $this->legendcsimwintarget
-                );
-            } else {
-                $graph->legend->Add(
-                    $this->legend,
-                    $this->color,
-                    $this->mark,
-                    $this->line_style,
-                    $this->legendcsimtarget,
-                    $this->legendcsimalt,
-                    $this->legendcsimwintarget
-                );
-            }
+        if ($this->legend == '') {
+            return;
+        }
+
+        if ($this->filled && !$this->fillgrad) {
+            $graph->legend->Add(
+                $this->legend,
+                $this->fill_color,
+                $this->mark,
+                0,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
+        } elseif ($this->fillgrad) {
+            $color = [$this->fillgrad_fromcolor, $this->fillgrad_tocolor];
+            // In order to differentiate between gradients and cooors specified as an Image\RGB triple
+            $graph->legend->Add(
+                $this->legend,
+                $color,
+                '',
+                -2/* -GRAD_HOR */,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
+        } else {
+            $graph->legend->Add(
+                $this->legend,
+                $this->color,
+                $this->mark,
+                $this->line_style,
+                $this->legendcsimtarget,
+                $this->legendcsimalt,
+                $this->legendcsimwintarget
+            );
         }
     }
 
@@ -171,19 +171,29 @@ class LinePlot extends Plot
         // offset we don't touch it.
         // (We check for empty in case the scale is  a log scale
         // and hence doesn't contain any xlabel_offset)
-        if (empty($graph->xaxis->scale->ticks->xlabel_offset) || $graph->xaxis->scale->ticks->xlabel_offset == 0) {
-            if ($this->center) {
-                ++$this->numpoints;
-                $a = 0.5;
-                $b = 0.5;
-            } else {
-                $a = 0;
-                $b = 0;
-            }
-            $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-            $graph->SetTextScaleOff($b);
-            //$graph->xaxis->scale->ticks->SupressMinorTickMarks();
+        if (!empty($graph->xaxis->scale->ticks->xlabel_offset) && $graph->xaxis->scale->ticks->xlabel_offset != 0) {
+            // If another plot type have already adjusted the
+            // offset we don't touch it.
+            // (We check for empty in case the scale is  a log scale
+            // and hence doesn't contain any xlabel_offset)
+            return;
+            // If another plot type have already adjusted the
+            // offset we don't touch it.
+            // (We check for empty in case the scale is  a log scale
+            // and hence doesn't contain any xlabel_offset)
         }
+
+        if ($this->center) {
+            ++$this->numpoints;
+            $a = 0.5;
+            $b = 0.5;
+        } else {
+            $a = 0;
+            $b = 0;
+        }
+        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $graph->SetTextScaleOff($b);
+        //$graph->xaxis->scale->ticks->SupressMinorTickMarks();
     }
 
     public function SetFastStroke($aFlg = true)
@@ -196,7 +206,7 @@ class LinePlot extends Plot
         // An optimized stroke for many data points with no extra
         // features but 60% faster. You can't have values or line styles, or null
         // values in plots.
-        $numpoints = safe_count($this->coords[0]);
+        $numpoints = Configs::safe_count($this->coords[0]);
         if ($this->barcenter) {
             $textadj = 0.5 - $xscale->text_scale_off;
         } else {
@@ -232,11 +242,11 @@ class LinePlot extends Plot
     public function Stroke($img, $xscale, $yscale)
     {
         $idx       = 0;
-        $numpoints = safe_count($this->coords[0]);
+        $numpoints = Configs::safe_count($this->coords[0]);
         if (isset($this->coords[1])) {
-            if (safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $numpoints);
-            //("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
+            if (Configs::safe_count($this->coords[1]) != $numpoints) {
+                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
+            //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -420,7 +430,7 @@ class LinePlot extends Plot
                 // Remove first and last coordinate before drawing the line
                 // sine we otherwise get the vertical start and end lines which
                 // doesn't look appropriate
-                $img->Polygon(array_slice($cord, 2, safe_count($cord) - 4));
+                $img->Polygon(array_slice($cord, 2, Configs::safe_count($cord) - 4));
             }
         }
 
@@ -428,7 +438,7 @@ class LinePlot extends Plot
             $minY   = $yscale->Translate($yscale->GetMinVal());
             $factor = ($this->step_style ? 4 : 2);
 
-            for ($i = 0; $i < safe_count($this->filledAreas); ++$i) {
+            for ($i = 0; $i < Configs::safe_count($this->filledAreas); ++$i) {
                 // go through all filled area elements ordered by insertion
                 // fill polygon array
                 $areaCoords[] = $cord[$this->filledAreas[$i][0] * $factor];
@@ -443,7 +453,7 @@ class LinePlot extends Plot
                             ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
                         )
                     );
-                $areaCoords[] = $areaCoords[safe_count($areaCoords) - 2]; // last x
+                $areaCoords[] = $areaCoords[Configs::safe_count($areaCoords) - 2]; // last x
                 $areaCoords[] = $minY; // last y
 
                 if ($this->filledAreas[$i][3]) {
@@ -478,24 +488,28 @@ class LinePlot extends Plot
             $xt = $xscale->Translate($x);
             $yt = $yscale->Translate($this->coords[0][$pnts]);
 
-            if (is_numeric($this->coords[0][$pnts])) {
-                if (!empty($this->csimtargets[$pnts])) {
-                    if (!empty($this->csimwintargets[$pnts])) {
-                        $this->mark->SetCSIMTarget($this->csimtargets[$pnts], $this->csimwintargets[$pnts]);
-                    } else {
-                        $this->mark->SetCSIMTarget($this->csimtargets[$pnts]);
-                    }
-                    $this->mark->SetCSIMAlt($this->csimalts[$pnts]);
-                }
-                if ($exist_x) {
-                    $x = $this->coords[1][$pnts];
-                } else {
-                    $x = $pnts;
-                }
-                $this->mark->SetCSIMAltVal($this->coords[0][$pnts], $x);
-                $this->mark->Stroke($img, $xt, $yt);
-                $this->csimareas .= $this->mark->GetCSIMAreas();
+            if (!is_numeric($this->coords[0][$pnts])) {
+                continue;
             }
+
+            if (!empty($this->csimtargets[$pnts])) {
+                if (!empty($this->csimwintargets[$pnts])) {
+                    $this->mark->SetCSIMTarget($this->csimtargets[$pnts], $this->csimwintargets[$pnts]);
+                } else {
+                    $this->mark->SetCSIMTarget($this->csimtargets[$pnts]);
+                }
+                $this->mark->SetCSIMAlt($this->csimalts[$pnts]);
+            }
+            if ($exist_x) {
+                $x = $this->coords[1][$pnts];
+            } else {
+                $x = $pnts;
+            }
+            $this->mark->SetCSIMAltVal($this->coords[0][$pnts], $x);
+            $this->mark->Stroke($img, $xt, $yt);
+            $this->csimareas .= $this->mark->GetCSIMAreas();
         }
     }
-} // @class
+}
+
+// @class

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -13,7 +13,7 @@ use Amenadiel\JpGraph\Util;
  * // Description: Class to handle RGb color space specification and
  * //              named colors
  * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
- * // Ver:         $Id: jpgraph_rgb.inc.php 1893 2009-10-02 23:15:25Z ljp $
+ * // Ver:         $Id: jpgraph_rgb.inc.php 1893 2009-10-02 23:15:25Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -473,7 +473,8 @@ class RGB
             'darkred'              => [139, 0, 0],
             'silver'               => [192, 192, 192],
             'eggplant'             => [144, 176, 168],
-            'lightgreen'           => [144, 238, 144], ];
+            'lightgreen'           => [144, 238, 144],
+        ];
     }
 
     /**
@@ -555,7 +556,7 @@ class RGB
 
             return $aColor;
         } else {
-            Util\JpGraphError::RaiseL(25079, $aColor, safe_count($aColor)); //(" Unknown color specification: $aColor , size=". safe_count($aColor));
+            Util\JpGraphError::RaiseL(25079, $aColor, Configs::safe_count($aColor)); //(" Unknown color specification: $aColor , size=". Configs::safe_count($aColor));
         }
     }
 
@@ -583,7 +584,7 @@ class RGB
             Util\JpGraphError::RaiseL(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
         }
 
-        return imagecolorresolvealpha($this->img, $r, $g, $b, round($aAlpha * 127));
+        return imagecolorresolvealpha($this->img, $r, $g, $b, (int) (round($aAlpha * 127)));
     }
 
     // Try to convert an array with three valid numbers to the corresponding hex array
@@ -594,7 +595,7 @@ class RGB
     public static function tryHexConversion($aColor)
     {
         if (is_array($aColor)) {
-            if (safe_count($aColor) == 3) {
+            if (Configs::safe_count($aColor) == 3) {
                 if (is_numeric($aColor[0]) && is_numeric($aColor[1]) && is_numeric($aColor[2])) {
                     if (($aColor[0] >= 0 && $aColor[0] <= 255) &&
                         ($aColor[1] >= 0 && $aColor[1] <= 255) &&
@@ -635,4 +636,5 @@ class RGB
 
         return [$sat, round($sat - $sat * ($aVal - 0.75) / $a), 0];
     }
-} // @class
+}
+// @class

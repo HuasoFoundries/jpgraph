@@ -7,6 +7,7 @@
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
+use Amenadiel\JpGraph\Text;
 
 $data = [40, 60, 21, 33];
 
@@ -23,8 +24,8 @@ $SIMSUN_PATH = __DIR__ . '/../../src/fonts/simsun.ttc';
 $graph->SetUserFont1($SIMSUN_PATH);
 
 $graph->title->SetFont(
-    FF_USERFONT1, //FF_SIMSUN,
-    FS_NORMAL,
+    Text\Configs::FF_USERFONT1, //FF_SIMSUN,
+    Text\Configs::FS_NORMAL,
     14
 );
 
@@ -38,7 +39,7 @@ $bar1->value->Show();
 $graph->Add($bar1);
 
 /**
- * Add second graph, pie plot
+ * Add second graph, pie plot.
  *
  * @var array
  */
@@ -50,21 +51,16 @@ $example_title2 = '中文翻译或图片就好了';
 $graph2->title->set($example_title2);
 
 $graph2->title->SetFont(
-    FF_CHINESE,
-    FS_NORMAL,
+    Text\Configs::FF_CHINESE,
+    Text\Configs::FS_NORMAL,
     14
 );
 
 $p2 = new Plot\PiePlot($data2);
 $graph2->Add($p2);
 
-$mgraph = new Graph\MGraph();
-$mgraph->SetMargin(2, 2, 2, 2);
-$mgraph->SetFrame(true, 'darkgray', 2);
-$mgraph->SetFillColor('lightgray');
-
 /**
- * Adds a third graph (Impulse plot, scatter)
+ * Adds a third graph (Impulse plot, scatter).
  *
  * @var Graph
  */
@@ -79,13 +75,13 @@ $example_title3 = '中示例能有对应的';
 $graph3->title->set($example_title3);
 
 $graph3->title->SetFont(
-    FF_SIMSUN, //FF_SIMSUN,
-    FS_NORMAL,
+    Text\Configs::FF_SIMSUN, //FF_SIMSUN,
+    Text\Configs::FS_NORMAL,
     14
 );
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(MARK_SQUARE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->SetImpuls();
 
 $graph3->Add($sp1);
@@ -93,9 +89,12 @@ $graph3->Add($sp1);
 //-----------------------
 // Create a multigraph
 //----------------------
-
+$mgraph = new Graph\MGraph();
+$mgraph->SetMargin(2, 2, 2, 2);
+$mgraph->SetFrame(true, 'darkgray', 2);
+$mgraph->SetFillColor('lightgray');
 $mgraph->Add($graph);
 $mgraph->Add($graph2, 300, 0);
-// $mgraph->Add($graph3, 0, 250);
+$mgraph->Add($graph3, 0, 250);
 
 $mgraph->Stroke();

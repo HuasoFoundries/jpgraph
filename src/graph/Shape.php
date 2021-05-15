@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
+
+use function define;
 
 /*
  * File:        JPGRAPH_CANVTOOLS.PHP
@@ -54,7 +56,7 @@ class Shape
 
     public function Polygon($p, $aClosed = false)
     {
-        $n = safe_count($p);
+        $n = Configs::safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);
@@ -64,7 +66,7 @@ class Shape
 
     public function FilledPolygon($p)
     {
-        $n = safe_count($p);
+        $n = Configs::safe_count($p);
         for ($i = 0; $i < $n; $i += 2) {
             $p[$i]     = $this->scale->TranslateX($p[$i]);
             $p[$i + 1] = $this->scale->TranslateY($p[$i + 1]);

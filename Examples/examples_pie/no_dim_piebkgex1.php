@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -32,11 +32,12 @@ $graph->SetMarginColor('navy');
 $graph->SetShadow(false);
 
 // Setup background
-$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', BGIMG_FILLPLOT);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
 
 // Setup title
-$graph->title->Set('Pie plots with background image');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 20);
+$example_title = 'Pie plots with background image';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 20);
 $graph->title->SetColor('white');
 
 $p = [];
@@ -55,12 +56,12 @@ for ($i = 0; $i < $n; ++$i) {
 for ($i = 0; $i < $n; ++$i) {
     $p[$i]->title->Set($titles[$i]);
     $p[$i]->title->SetColor('white');
-    $p[$i]->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+    $p[$i]->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 }
 
 // Label font and color setup
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->value->SetFont(FF_ARIAL, FS_BOLD);
+    $p[$i]->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
     $p[$i]->value->SetColor('white');
 }
 

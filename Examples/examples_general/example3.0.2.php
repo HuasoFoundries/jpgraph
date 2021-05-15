@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -23,12 +23,13 @@ $graph->SetShadow();
 
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Interpolated values');
+$example_title = 'Interpolated values';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('x-title');
 $graph->yaxis->title->Set('y-title');
 
-$graph->yaxis->title->SetFont(FF_ARIAL, FS_BOLD, 9);
-$graph->xaxis->title->SetFont(FF_ARIAL, FS_BOLD, 9);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 9);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 9);
 
 $graph->yaxis->SetColor('blue');
 

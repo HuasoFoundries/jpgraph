@@ -1,13 +1,19 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
+use function abs;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
+use function define;
+use function is_array;
+use function max;
+use function min;
+use function round;
 
 /*
  * File:        JPGRAPH_CONTOUR.PHP
@@ -56,13 +62,13 @@ class Contour
      */
     public function __construct($aMatrix, $aIsobars = 10, $aColors = null)
     {
-        $this->nbrRows    = safe_count($aMatrix);
-        $this->nbrCols    = safe_count($aMatrix[0]);
+        $this->nbrRows    = Configs::safe_count($aMatrix);
+        $this->nbrCols    = Configs::safe_count($aMatrix[0]);
         $this->dataPoints = $aMatrix;
 
         if (is_array($aIsobars)) {
             // use the isobar values supplied
-            $this->nbrIsobars   = safe_count($aIsobars);
+            $this->nbrIsobars   = Configs::safe_count($aIsobars);
             $this->isobarValues = $aIsobars;
         } else {
             // Determine the isobar values automatically
@@ -76,19 +82,21 @@ class Contour
             }
         }
 
-        if ($aColors !== null && safe_count($aColors) > 0) {
-            if (!is_array($aColors)) {
-                Util\JpGraphError::RaiseL(28001);
-                //'Third argument to Contour must be an array of colors.'
-            }
-
-            if (safe_count($aColors) != safe_count($this->isobarValues)) {
-                Util\JpGraphError::RaiseL(28002);
-                //'Number of colors must equal the number of isobar lines specified';
-            }
-
-            $this->isobarColors = $aColors;
+        if ($aColors === null || Configs::safe_count($aColors) <= 0) {
+            return;
         }
+
+        if (!is_array($aColors)) {
+            Util\JpGraphError::RaiseL(28001);
+            //'Third argument to Contour must be an array of colors.'
+        }
+
+        if (Configs::safe_count($aColors) != Configs::safe_count($this->isobarValues)) {
+            Util\JpGraphError::RaiseL(28002);
+            //'Number of colors must equal the number of isobar lines specified';
+        }
+
+        $this->isobarColors = $aColors;
     }
 
     /**
@@ -117,9 +125,11 @@ class Contour
                 $min = $mi;
             }
 
-            if (($ma = max($this->dataPoints[$i])) > $max) {
-                $max = $ma;
+            if (($ma = max($this->dataPoints[$i])) <= $max) {
+                continue;
             }
+
+            $max = $ma;
         }
 
         return [$min, $max];
@@ -267,14 +277,16 @@ class Contour
      */
     public function adjustDataPointValues()
     {
-        $ni = safe_count($this->isobarValues);
+        $ni = Configs::safe_count($this->isobarValues);
         for ($k = 0; $k < $ni; ++$k) {
             $ib = $this->isobarValues[$k];
             for ($row = 0; $row < $this->nbrRows - 1; ++$row) {
                 for ($col = 0; $col < $this->nbrCols - 1; ++$col) {
-                    if (abs($this->dataPoints[$row][$col] - $ib) < 0.0001) {
-                        $this->dataPoints[$row][$col] += $this->dataPoints[$row][$col] * 0.001;
+                    if (abs($this->dataPoints[$row][$col] - $ib) >= 0.0001) {
+                        continue;
                     }
+
+                    $this->dataPoints[$row][$col] += $this->dataPoints[$row][$col] * 0.001;
                 }
             }
         }
@@ -366,7 +378,8 @@ class Contour
                         $n2                                    = 1;
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib),
+                        ];
                     } elseif ($n == 4) {
                         // We must determine how to connect the edges either northwest->southeast or
                         // northeast->southwest. We do that by calculating the imaginary middle value of
@@ -396,17 +409,19 @@ class Contour
 
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n1][0], $neigh[$n1][1], $neigh[$n1][2], $ib),
-                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n2][0], $neigh[$n2][1], $neigh[$n2][2], $ib),
+                        ];
 
                         $this->isobarCoord[$isobar][$ncoord++] = [
                             $this->getCrossingCoord($neigh[$n3][0], $neigh[$n3][1], $neigh[$n3][2], $ib),
-                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib), ];
+                            $this->getCrossingCoord($neigh[$n4][0], $neigh[$n4][1], $neigh[$n4][2], $ib),
+                        ];
                     }
                 }
             }
         }
 
-        if (safe_count($this->isobarColors) == 0) {
+        if (Configs::safe_count($this->isobarColors) == 0) {
             // No manually specified colors. Calculate them automatically.
             $this->CalculateColors();
         }

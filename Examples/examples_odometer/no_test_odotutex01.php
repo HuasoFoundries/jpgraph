@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,7 +16,7 @@ $graph    = new OdoGraph($__width, $__height);
 
 // Now we need to create an odometer to add to the graph.
 // By default the scale will be 0 to 100
-$odo = new Odometer(ODO_FULL);
+$odo = new Odometer(Graph\Configs::getConfig('ODO_FULL'));
 
 // Set display value for the odometer
 $odo->needle->Set(30);

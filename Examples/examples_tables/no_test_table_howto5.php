@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,7 +22,7 @@ $table->Set($data);
 $table->MergeRow(0);
 
 // Adjust font in cell (0,0)
-$table->SetCellFont(0, 0, FF_ARIAL, FS_BOLD, 14);
+$table->SetCellFont(0, 0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Set left align for all cells in rectangle (0,0) - (0,3)
 $table->SetAlign(0, 0, 0, 3, 'Left');

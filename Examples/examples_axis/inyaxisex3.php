@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -40,13 +40,13 @@ $graph->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');
 $graph->SetColor('darkblue');
 
-// Setup titles
-$graph->title->Set('Inverting both Y-axis');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+// Setup titles$example_title = 'Inverting both Y-axis';$example_title=$example_title; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetColor('white');
 
-$graph->subtitle->Set('(Negated Y & Y2 axis)');
-$graph->subtitle->SetFont(FF_FONT1, FS_NORMAL);
+$subtitle_text = '(Negated Y & Y2 axis)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 $graph->subtitle->SetColor('white');
 
 // Setup axis

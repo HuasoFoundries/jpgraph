@@ -1,12 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
+use function base64_decode;
 
 /**
  * @class PredefIcons
@@ -310,6 +311,6 @@ class PredefIcons
             'bGUHIAIuydTIE5zfc5Wr4lJcahHnHTP3CVGm78DrgY38N+DEibp7dmYKdAQmBh1hjEFjis+9CTWYGK21H6PxPyOI0DobYwzZF/z7' .
             '7jadTvJtYG0kCD7lfwl49ijgT1gc0AH+dZSJA/xB+Mz/GSIvFoj/B7H1mAd8CO/zAAAAAElFTkSuQmCC';
 
-        $this->iLen = safe_count($this->iBuiltinIcon);
+        $this->iLen = Configs::safe_count($this->iBuiltinIcon);
     }
 }

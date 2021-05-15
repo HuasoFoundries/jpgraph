@@ -1,12 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Util;
+use function chr;
+use function convert_cyr_string;
+use function function_exists;
+use function hebrev;
+use function iconv;
+use function mb_convert_encoding;
+use function ord;
+use function stristr;
+use function strlen;
+use function substr;
+use function utf8_encode;
 
 /**
  * @class LanguageConv
@@ -21,29 +32,31 @@ class LanguageConv
 
     public function Convert($aTxt, $aFF)
     {
-        if (LANGUAGE_GREEK) {
-            if (GREEK_FROM_WINDOWS) {
-                $unistring = LanguageConv::gr_win2uni($aTxt);
+        if (Configs::getConfig('LANGUAGE_GREEK')) {
+            if (Configs::getConfig('GREEK_FROM_WINDOWS')) {
+                $unistring = self::gr_win2uni($aTxt);
             } else {
-                $unistring = LanguageConv::gr_iso2uni($aTxt);
+                $unistring = self::gr_iso2uni($aTxt);
             }
 
             return $unistring;
         }
-        if (LANGUAGE_CYRILLIC) {
-            if (CYRILLIC_FROM_WINDOWS && (!defined('LANGUAGE_CHARSET') || stristr(LANGUAGE_CHARSET, 'windows-1251'))) {
+        if (Configs::getConfig('LANGUAGE_CYRILLIC')) {
+            if (Configs::getConfig('CYRILLIC_FROM_WINDOWS') &&
+                stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
                 $aTxt = convert_cyr_string($aTxt, 'w', 'k');
             }
-            if (!defined('LANGUAGE_CHARSET') || stristr(LANGUAGE_CHARSET, 'koi8-r') || stristr(LANGUAGE_CHARSET, 'windows-1251')) {
+            if (stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'koi8-r') ||
+                stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
                 $isostring = convert_cyr_string($aTxt, 'k', 'i');
-                $unistring = LanguageConv::iso2uni($isostring);
+                $unistring = self::iso2uni($isostring);
             } else {
                 $unistring = $aTxt;
             }
 
             return $unistring;
         }
-        if ($aFF === FF_SIMSUN) {
+        if ($aFF === Configs::getConfig('FF_SIMSUN')) {
             // Do Chinese conversion
             if ($this->g2312 == null) {
                 $this->g2312 = new GB2312toUTF8();
@@ -51,24 +64,29 @@ class LanguageConv
 
             return $this->g2312->gb2utf8($aTxt);
         }
-        if ($aFF === FF_BIG5) {
+        if ($aFF === Configs::getConfig('FF_BIG5')) {
             if (!function_exists('iconv')) {
                 Util\JpGraphError::RaiseL(25006);
-                //('Usage of FF_CHINESE (FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).');
+                //('Usage of Configs::FF_CHINESE (Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).');
             }
 
             return iconv('BIG5', 'UTF-8', $aTxt);
         }
-        if (ASSUME_EUCJP_ENCODING &&
-            ($aFF == FF_MINCHO || $aFF == FF_GOTHIC || $aFF == FF_PMINCHO || $aFF == FF_PGOTHIC)) {
+        if (Configs::getConfig('ASSUME_EUCJP_ENCODING') &&
+            ($aFF == Configs::getConfig('FF_MINCHO') ||
+                $aFF == Configs::getConfig('FF_GOTHIC') ||
+                $aFF == Configs::getConfig('FF_PMINCHO') ||
+                $aFF == Configs::getConfig('FF_PGOTHIC'))) {
             if (!function_exists('mb_convert_encoding')) {
                 Util\JpGraphError::RaiseL(25127);
             }
 
             return mb_convert_encoding($aTxt, 'UTF-8', 'EUC-JP');
         }
-        if ($aFF == FF_DAVID || $aFF == FF_MIRIAM || $aFF == FF_AHRON) {
-            return LanguageConv::heb_iso2uni($aTxt);
+        if ($aFF == Configs::getConfig('FF_DAVID') ||
+            $aFF == Configs::getConfig('FF_MIRIAM') ||
+            $aFF == Configs::getConfig('FF_AHRON')) {
+            return self::heb_iso2uni($aTxt);
         }
 
         return $aTxt;
@@ -124,7 +142,7 @@ class LanguageConv
 
         $n = strlen($isoline);
         for ($i = 0; $i < $n; ++$i) {
-            $c = ord(substr($isoline, $i, 1));
+            $c  = ord(substr($isoline, $i, 1));
             $o .= ($c > 223) && ($c < 251) ? '&#' . (1264 + $c) . ';' : chr($c);
         }
 

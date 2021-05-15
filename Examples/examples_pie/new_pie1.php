@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,10 +9,11 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the Pie Graph.
-$__width  = 350;
-$__height = 250;
-$graph    = new Graph\PieGraph($__width, $__height);
-$graph->title->Set('A Simple Pie Plot');
+$__width       = 350;
+$__height      = 250;
+$graph         = new Graph\PieGraph($__width, $__height);
+$example_title = 'A Simple Pie Plot';
+$graph->title->set($example_title);
 $graph->SetBox(true);
 
 $data = [40, 21, 17, 14, 23];

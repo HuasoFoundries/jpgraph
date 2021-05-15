@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,13 +21,14 @@ $lineplot = new Plot\LinePlot($ydata);
 
 $lineplot->value->Show();
 $lineplot->value->SetColor('red');
-$lineplot->value->SetFont(FF_FONT1, FS_BOLD);
+$lineplot->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add the plot to the graph
 $graph->Add($lineplot);
 
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->Set('Example 2.1');
+$example_title = 'Example 2.1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 

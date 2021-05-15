@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -26,8 +26,8 @@ $data[1] = [
 // The format choosen for the layout data is
 // (type,x-pos,y-pos,size, z-circle size)
 $layout = [
-    [WINDROSE_TYPE8, 0.25, 0.55, 0.4, 0.25],
-    [WINDROSE_TYPE16, 0.75, 0.55, 0.4, 0.25], ];
+    [Plot\Configs::getConfig('WINDROSE_TYPE8'), 0.25, 0.55, 0.4, 0.25],
+    [Plot\Configs::getConfig('WINDROSE_TYPE16'), 0.75, 0.55, 0.4, 0.25], ];
 
 $legendtxt = ['(m/s) Station 7', '(m/s) Station 12'];
 
@@ -37,12 +37,12 @@ $__height = 350;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow('darkgray');
 
-// Setup titles
-$graph->title->Set('Windrose example 3');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+// Setup titles$example_title='Windrose example 3'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
-$graph->subtitle->Set('(Multiple plots in the same graph)');
-$graph->subtitle->SetFont(FF_VERDANA, FS_NORMAL, 9);
+$subtitle_text = '(Multiple plots in the same graph)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $graph->subtitle->SetColor('navy');
 
 // Create the two windrose plots.
@@ -53,7 +53,7 @@ for ($i = 0; $i < count($data); ++$i) {
     $wp[$i]->SetType($layout[$i][0]);
 
     // Adjust the font and font color for scale labels
-    $wp[$i]->scale->SetFont(FF_TIMES, FS_NORMAL, 10);
+    $wp[$i]->scale->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 10);
     $wp[$i]->scale->SetFontColor('navy');
 
     // Set the position of the plot
@@ -66,7 +66,7 @@ for ($i = 0; $i < count($data); ++$i) {
     $wp[$i]->SetZCircleSize($layout[$i][4]);
 
     // Adjust the font and font color for compass directions
-    $wp[$i]->SetFont(FF_ARIAL, FS_NORMAL, 10);
+    $wp[$i]->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
     $wp[$i]->SetFontColor('darkgreen');
 
     // Add legend text

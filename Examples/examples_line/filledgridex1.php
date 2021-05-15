@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,8 +20,8 @@ $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);
 $graph->SetMargin(30, 50, 30, 30);
-
-$graph->title->Set('Filled Y-grid');
+$example_title = 'Filled Y-grid';
+$graph->title->set($example_title);
 
 $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');

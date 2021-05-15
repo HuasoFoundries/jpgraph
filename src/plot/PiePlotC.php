@@ -1,12 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
+use function abs;
 use Amenadiel\JpGraph\Text;
+use function cos;
+use function floor;
+use const M_PI;
+use function min;
+use function round;
+use function sin;
+use function sprintf;
 
 /**
  * @class PiePlotC
@@ -92,8 +100,8 @@ class PiePlotC extends PiePlot
         // the fact that end angle is smaller than start
         if ($sa < $ea) {
             while ($a <= 2 * M_PI) {
-                $xp = floor($radius * cos($a) + $xc);
-                $yp = floor($yc - $radius * sin($a));
+                $xp      = floor($radius * cos($a) + $xc);
+                $yp      = floor($yc - $radius * sin($a));
                 $coords .= ", ${xp}, ${yp}";
                 $a += 0.25;
             }
@@ -101,53 +109,55 @@ class PiePlotC extends PiePlot
         }
 
         while ($a < $sa) {
-            $xp = floor(($this->imidsize * $radius * cos($a) + $xc));
-            $yp = floor($yc - ($this->imidsize * $radius * sin($a)));
+            $xp      = floor(($this->imidsize * $radius * cos($a) + $xc));
+            $yp      = floor($yc - ($this->imidsize * $radius * sin($a)));
             $coords .= ", ${xp}, ${yp}";
             $a += 0.25;
         }
 
         // Make sure we end at the last point
-        $xp = floor(($this->imidsize * $radius * cos($sa) + $xc));
-        $yp = floor($yc - ($this->imidsize * $radius * sin($sa)));
+        $xp      = floor(($this->imidsize * $radius * cos($sa) + $xc));
+        $yp      = floor($yc - ($this->imidsize * $radius * sin($sa)));
         $coords .= ", ${xp}, ${yp}";
 
         // Straight line to outer circle
-        $xp = floor($radius * cos($sa) + $xc);
-        $yp = floor($yc - $radius * sin($sa));
+        $xp      = floor($radius * cos($sa) + $xc);
+        $yp      = floor($yc - $radius * sin($sa));
         $coords .= ", ${xp}, ${yp}";
 
         //add coordinates every 0.25 radians
         $a = $sa - 0.25;
         while ($a > $ea) {
-            $xp = floor($radius * cos($a) + $xc);
-            $yp = floor($yc - $radius * sin($a));
+            $xp      = floor($radius * cos($a) + $xc);
+            $yp      = floor($yc - $radius * sin($a));
             $coords .= ", ${xp}, ${yp}";
             $a -= 0.25;
         }
 
         //Add the last point on the arc
-        $xp = floor($radius * cos($ea) + $xc);
-        $yp = floor($yc - $radius * sin($ea));
+        $xp      = floor($radius * cos($ea) + $xc);
+        $yp      = floor($yc - $radius * sin($ea));
         $coords .= ", ${xp}, ${yp}";
 
         // Close the arc
-        $xp = floor(($this->imidsize * $radius * cos($ea)) + $xc);
-        $yp = floor($yc - ($this->imidsize * $radius * sin($ea)));
+        $xp      = floor(($this->imidsize * $radius * cos($ea)) + $xc);
+        $yp      = floor($yc - ($this->imidsize * $radius * sin($ea)));
         $coords .= ", ${xp}, ${yp}";
 
-        if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" .
-            $this->csimtargets[$i] . '"';
-            if (!empty($this->csimwintargets[$i])) {
-                $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
-            }
-            if (!empty($this->csimalts[$i])) {
-                $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
-                $this->csimareas .= " title=\"${tmp}\"  alt=\"${tmp}\" ";
-            }
-            $this->csimareas .= " />\n";
+        if (empty($this->csimtargets[$i])) {
+            return;
         }
+
+        $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" .
+        $this->csimtargets[$i] . '"';
+        if (!empty($this->csimwintargets[$i])) {
+            $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
+        }
+        if (!empty($this->csimalts[$i])) {
+            $tmp              = sprintf($this->csimalts[$i], $this->data[$i]);
+            $this->csimareas .= " title=\"${tmp}\"  alt=\"${tmp}\" ";
+        }
+        $this->csimareas .= " />\n";
     }
 
     public function Stroke($img, $aaoption = 0)
@@ -186,25 +196,27 @@ class PiePlotC extends PiePlot
             }
         }
 
-        if ($this->value->show && $aaoption !== 1) {
-            $this->StrokeAllLabels($img, $xc, $yc, $radius);
-            $this->midtitle->SetPos($xc, $yc, 'center', 'center');
-            $this->midtitle->Stroke($img);
+        if (!$this->value->show || $aaoption === 1) {
+            return;
         }
+
+        $this->StrokeAllLabels($img, $xc, $yc, $radius);
+        $this->midtitle->SetPos($xc, $yc, 'center', 'center');
+        $this->midtitle->Stroke($img);
     }
 
     public function AddMiddleCSIM($xc, $yc, $r)
     {
-        $xc = round($xc);
-        $yc = round($yc);
-        $r  = round($r);
+        $xc               = round($xc);
+        $yc               = round($yc);
+        $r                = round($r);
         $this->csimareas .= "<area shape=\"circle\" coords=\"${xc},${yc},${r}\" href=\"" .
         $this->middlecsimtarget . '"';
         if (!empty($this->middlecsimwintarget)) {
             $this->csimareas .= ' target="' . $this->middlecsimwintarget . '"';
         }
         if (!empty($this->middlecsimalt)) {
-            $tmp = $this->middlecsimalt;
+            $tmp              = $this->middlecsimalt;
             $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
         }
         $this->csimareas .= " />\n";

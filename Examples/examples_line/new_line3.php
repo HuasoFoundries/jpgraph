@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,8 +20,8 @@ $graph->SetScale('textlin', 0, 50);
 
 //$theme_class=new DefaultTheme;
 //$graph->SetTheme($theme_class);
-
-$graph->title->Set('Filled Area');
+$example_title = 'Filled Area';
+$graph->title->set($example_title);
 
 $graph->SetBox(false);
 $graph->yaxis->HideLine(false);
@@ -38,11 +38,11 @@ $p2 = new Plot\LinePlot($datay2);
 $graph->Add($p2);
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/rose.gif', 1.0);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/rose.gif', 1.0);
 $p1->SetLegend('rose');
 $p1->SetColor('#CD5C5C');
 
-$p2->mark->SetType(MARK_IMG, __DIR__ . '/../assets/sunflower.gif', 1.0);
+$p2->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/sunflower.gif', 1.0);
 $p2->SetLegend('sunflower');
 $p2->SetColor('#CD5C5C');
 

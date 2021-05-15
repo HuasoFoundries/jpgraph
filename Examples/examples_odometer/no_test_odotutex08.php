@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,7 +15,8 @@ $__height = 140;
 $graph    = new OdoGraph($__width, $__height);
 
 // Setup a title
-$graph->title->Set('An example with drop shadows');
+$example_title = 'An example with drop shadows';
+$graph->title->set($example_title);
 
 // Add drop shadow for graph
 $graph->SetShadow();

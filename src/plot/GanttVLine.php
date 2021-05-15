@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -19,8 +19,6 @@ class GanttVLine extends GanttPlotObject
     private $iEndRow      = -1;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $aDate
      * @param mixed $aTitle
      * @param mixed $aColor
@@ -30,7 +28,7 @@ class GanttVLine extends GanttPlotObject
     public function __construct($aDate, $aTitle = '', $aColor = 'darkred', $aWeight = 2, $aStyle = 'solid')
     {
         parent::__construct();
-        $this->iLine = new Graph\LineProperty();
+        $this->iLine = new Graph\Scale\LineProperty();
         $this->iLine->SetColor($aColor);
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);

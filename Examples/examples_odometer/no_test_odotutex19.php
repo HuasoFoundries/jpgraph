@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -28,7 +28,7 @@ for ($i = 0; $i < 5; ++$i) {
     } else {
         $fsize = 8;
     }
-    $odo[$i]->scale->label->SetFont(FF_ARIAL, FS_NORMAL, $fsize);
+    $odo[$i]->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), $fsize);
     $odo[$i]->AddIndication(92, 100, 'red');
     $odo[$i]->AddIndication(80, 92, 'orange');
     $odo[$i]->AddIndication(60, 80, 'yellow');
@@ -49,7 +49,7 @@ $graph->Add($icon);
 
 $t = new Text('JpGraph', 250, 70);
 $t->SetAlign('center', 'top');
-#$t->SetFont(FF_VERA,FS_BOLD,11);
+#$t->SetFont(Graph\Configs::getConfig('FF_VERA'),FS_BOLD,11);
 $t->SetColor('darkgray');
 $graph->Add($t);
 

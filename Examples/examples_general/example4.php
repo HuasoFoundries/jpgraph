@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,12 +25,13 @@ $graph->SetShadow();
 // Setup margin and titles
 $graph->SetMargin(40, 20, 20, 40);
 $graph->title->Set('Calls per operator (June,July)');
-$graph->subtitle->Set('(March 12, 2008)');
+$subtitle_text = '(March 12, 2008)';
+$graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create the first data series
 $lineplot = new Plot\LinePlot($ydata);

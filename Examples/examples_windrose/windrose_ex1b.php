@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,11 +18,12 @@ $data = [
     15    => [2, 7, 12], ];
 
 // First create a new windrose graph with a title
-$__width  = 400;
-$__height = 400;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 1b');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$__width       = 400;
+$__height      = 400;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 1b';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.
@@ -33,7 +34,7 @@ $graph->Add($wp);
 
 // Setup the range so that the values do not touch eachother
 $wp->SetRanges([0, 1, 2, 3, 4, 5, 6, 7, 8, 10]);
-$wp->SetRangeStyle(RANGE_DISCRETE); // Cmp with RANGE_OVERLAPPING as default
+$wp->SetRangeStyle(Plot\Configs::getConfig('RANGE_DISCRETE')); // Cmp with Graph\Configs::getConfig('RANGE_OVERLAPPING') as default
 
 // Send the graph to the browser
 $graph->Stroke();

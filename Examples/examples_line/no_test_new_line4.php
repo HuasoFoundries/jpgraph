@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -20,8 +20,8 @@ $graph->SetScale('textlin', 0, 50);
 
 $theme_class = new UniversalTheme();
 $graph->SetTheme($theme_class);
-
-$graph->title->Set('Line Plots with Markers');
+$example_title = 'Line Plots with Markers';
+$graph->title->set($example_title);
 
 $graph->SetBox(false);
 $graph->ygrid->SetFill(false);
@@ -38,13 +38,13 @@ $p2 = new Plot\LinePlot($datay2);
 $graph->Add($p2);
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(MARK_IMG, __DIR__ . '/../assets/new1.gif', 0.8);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/new1.gif', 0.8);
 $p1->SetColor('#aadddd');
 $p1->value->SetFormat('%d');
 $p1->value->Show();
 $p1->value->SetColor('#55bbdd');
 
-$p2->mark->SetType(MARK_IMG, __DIR__ . '/../assets/new2.gif', 0.8);
+$p2->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/new2.gif', 0.8);
 $p2->SetColor('#ddaa99');
 $p2->value->SetFormat('%d');
 $p2->value->Show();

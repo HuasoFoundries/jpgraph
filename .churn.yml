@@ -1,0 +1,16 @@
+# The maximum number of files to display in the results table.
+# Default: 10
+filesToShow: 20
+
+# The minimum score a file need to display in the results table.
+# Default: 0.1
+minScoreToShow: 0
+
+# The number of parallel jobs to use when processing files.
+# Default: 10
+parallelJobs: 10
+
+# How far back in the git history to count the number of commits to a file
+# Can be a human readable date like 'One week ago' or a date like '2017-07-12'
+# Default: '10 Years ago'
+commitsSince: One year ago

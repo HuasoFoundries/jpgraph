@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -34,16 +34,18 @@ $graph->SetMarginColor('white');
 $graph->SetBox();
 
 // Use a gradient to fill the plot area
-$graph->SetBackgroundGradient('white', 'lightblue', GRAD_HOR, BGRAD_PLOT);
+$graph->SetBackgroundGradient('white', 'lightblue', Graph\Configs::getConfig('GRAD_HOR'), Graph\Configs::getConfig('BGRAD_PLOT'));
 
 // Setup title
-$graph->title->Set('Graphic card performance');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 11);
-$graph->subtitle->Set('(Non optimized)');
+$example_title = 'Graphic card performance';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$subtitle_text = '(Non optimized)';
+$graph->subtitle->Set($subtitle_text);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 8);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 
 // Some extra margin looks nicer
 $graph->xaxis->SetLabelMargin(10);
@@ -66,11 +68,11 @@ $bplot->SetShadow();
 //$bplot->SetWidth(0.5);
 
 // Set gradient fill for bars
-$bplot->SetFillGradient('darkred', 'yellow', GRAD_HOR);
+$bplot->SetFillGradient('darkred', 'yellow', Graph\Configs::getConfig('GRAD_HOR'));
 
 // We want to display the value of each bar at the top
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL, FS_BOLD, 10);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
 //$bplot->value->SetAlign('left','center');
 $bplot->value->SetColor('white');
 $bplot->value->SetFormat('%.1f');
@@ -82,7 +84,7 @@ $graph->Add($bplot);
 // Add some explanation text
 $txt = new Text\Text('Note: Higher value is better.');
 $txt->SetPos(190, 399, 'center', 'bottom');
-$txt->SetFont(FF_ARIAL, FS_NORMAL, 8);
+$txt->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
 $graph->Add($txt);
 
 // .. and stroke the graph

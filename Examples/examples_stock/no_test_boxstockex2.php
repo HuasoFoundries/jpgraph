@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // Example of a stock chart
@@ -24,8 +24,10 @@ $__height = 200;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
-$graph->title->Set('Box Stock chart example');
-$graph->subtitle->Set('(Indented X-axis)');
+$example_title = 'Box Stock chart example';
+$graph->title->set($example_title);
+$subtitle_text = '(Indented X-axis)';
+$graph->subtitle->Set($subtitle_text);
 
 // Create a new stock plot
 $p1 = new BoxPlot($datay);

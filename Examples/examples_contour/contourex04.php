@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // Contour plot example 04
@@ -24,9 +24,9 @@ $__width  = 500;
 $__height = 380;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 140, 60, 40);
-
-$graph->title->Set('Example of interpolated contour plot');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$example_title = 'Example of interpolated contour plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->title->SetMargin(10);
 
 // For contour plots it is custom to use a box style ofr the axis
@@ -34,7 +34,7 @@ $graph->legend->SetPos(0.05, 0.5, 'right', 'center');
 $graph->SetScale('intint');
 
 // Setup axis and grids
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 $graph->xgrid->SetLineStyle('dashed');
 $graph->xgrid->Show(true);
 $graph->ygrid->SetLineStyle('dashed');

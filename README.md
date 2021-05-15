@@ -1,5 +1,5 @@
 
-<h1 align="center">JpGraph Community Edition v4.1.0</h1>
+<h1 align="center">JpGraph Community Edition v4.2.0</h1>
 
 <p align="center">
 <a href="https://packagist.org/packages/amenadiel/jpgraph">
@@ -30,7 +30,9 @@ Refactoring is an ongoing effort and we ensure editions and additions don't hurt
       </a>
     </p>
 
---------
+---------
+
+
 ## What is JPGraph Community Edition?
 
 As can be seen in [their releases section](https://jpgraph.net/download/release.php), there was a six year pause in JPGraph release cycle, during which some of us had no choice but to code our way out of PHP 5.x. And thus "Community Edition" was born. From then on, this library evolved on its own and completely diverged from the official packages.
@@ -58,9 +60,10 @@ Comparing against the original v3.5 codebase, we also stripped examples or incom
 
 ## Requirements And Installation
 
-This version requires PHP v7.2.0+. If you need to install this library package in older PHP environments please try
+This version requires PHP v7.4.0+. If you need to install this library package in older PHP environments please try
 
-- Upgrading your PHP installation. (No, really, even PHP 7.2 is past its EOL)
+- Upgrading your PHP installation. (No, really, even PHP 7.3 is approaching EOL, and PHP 7.4 brings a lot of enhancements we need to take advantage of)
+- for PHP v7.2+  please try [release v4.1.x](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.1.0)
 - for PHP v7.0+  please try [release v4.0.x](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.0.3)
 - for PHP v5.6+ please check [release v3.6.x](https://github.com/HuasoFoundries/jpgraph/tree/v3.6.21)
 

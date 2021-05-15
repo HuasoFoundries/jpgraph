@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -35,29 +35,31 @@ $__height = 450;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title
-$graph->title->Set('Using chinese charecters');
-#$graph->title->SetFont(FF_VERDANA,FS_BOLD,12);
+$example_title = 'Using chinese charecters';
+$graph->title->set($example_title);
+#$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'),FS_BOLD,12);
 $graph->title->SetColor('navy');
-$graph->subtitle->Set('(Free type plot)');
-#$graph->subtitle->SetFont(FF_VERDANA,FS_ITALIC,10);
+$subtitle_text = '(Free type plot)';
+$graph->subtitle->Set($subtitle_text);
+#$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'),FS_ITALIC,10);
 $graph->subtitle->SetColor('navy');
 
 // Create the windrose plot.
 $wp = new Plot\WindrosePlot($data);
 
 // Setup a free plot
-$wp->SetType(WINDROSE_TYPEFREE);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPEFREE'));
 
 // Setup labels
 $wp->SetLabels($labels);
-$wp->SetLabelPosition(LBLPOSITION_CENTER);
+$wp->SetLabelPosition(Plot\Configs::getConfig('LBLPOSITION_CENTER'));
 $wp->SetLabelMargin(30);
 
 // Setup the colors for the ranges
 $wp->SetRangeColors($rangeColors);
 
 // Adjust the font and font color for scale labels
-#$wp->scale->SetFont(FF_ARIAL,FS_NORMAL,9);
+#$wp->scale->SetFont(Graph\Configs::getConfig('FF_ARIAL'),FS_NORMAL,9);
 
 // Set the diameter and position for plot
 #$wp->SetSize(240);
@@ -66,7 +68,7 @@ $wp->SetZCircleSize(30);
 $wp->SetPos(0.5, 0.5);
 
 // Adjust the font and font color for compass directions
-#$wp->SetFont(FF_CHINESE,FS_NORMAL,12);
+$wp->SetFont(Graph\Configs::getConfig('FF_CHINESE'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 $wp->SetFontColor('darkgreen');
 
 // Adjust grid colors
@@ -78,15 +80,15 @@ $wp->legend->SetTFontColor('blue');
 
 // Set legend label font color
 $wp->legend->SetLFontColor('orange:0.7');
-#$wp->legend->SetLFont(FF_ARIAL,FS_ITALIC,8);
+#$wp->legend->SetLFont(Graph\Configs::getConfig('FF_ARIAL'),FS_ITALIC,8);
 
 // Display legend values with no decimals
 $wp->legend->SetFormat('%d');
 
 // Set the circle font to use chinse character set
-// Note: When FF_CHINESE is used the input charectr data are
+// Note: When Graph\Configs::getConfig('FF_CHINESE') is used the input charectr data are
 // assumed to already be in utf-8 encoding
-#$wp->legend->SetCFont(FF_CHINESE,FS_NORMAL,14);
+#$wp->legend->SetCFont(Graph\Configs::getConfig('FF_CHINESE'),FS_NORMAL,14);
 $wp->legend->SetCircleText($ctxt);
 $wp->legend->SetCFontColor('red');
 

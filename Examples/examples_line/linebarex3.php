@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -24,17 +24,19 @@ $__width  = 450;
 $__height = 300;
 $graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 180, 40, 40);
-$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 
 //$graph->img->SetAntiAliasing();
 
 $graph->SetScale('intlin');
 $graph->SetShadow();
-$graph->title->Set('Combined bar and line plot');
-$graph->subtitle->Set('("center" aligned bars)');
+$example_title = 'Combined bar and line plot';
+$graph->title->set($example_title);
+$subtitle_text = 'center aligned bars';
+$graph->subtitle->Set($subtitle_text);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Slightly adjust the legend from it's default position in the
 // top right corner.

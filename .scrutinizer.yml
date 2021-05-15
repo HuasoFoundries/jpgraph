@@ -1,33 +1,24 @@
 checks:
-    php: true
+  php: true
 build:
-    environment:
-          php:
-            version: '7.2'
+  environment:
+    php:
+            version: '7.4'
 
 
-    nodes:
-        tests: true
-        analysis:
-            tests:
-                override:
-                    - phpcs-run
+  nodes:
+    analysis:
+      tests:
+        override:
+          - phpcs-run
 
-                    -
-                        command: composer coverage
-                        coverage:
-                            file: 'tests/_output/coverage.xml'
-                            format: 'clover'
-                    - php-scrutinizer-run
+          - php-scrutinizer-run
 
 
-
-tools:
-    php_code_coverage: true
 
 filter:
-    excluded_paths:
-        - 'Examples/'
-        - 'tests/'
-    dependency_paths:
-        - 'vendor/'
+  excluded_paths:
+    - "Examples/"
+    - "tests/"
+  dependency_paths:
+    - "vendor/"

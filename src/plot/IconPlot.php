@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -9,12 +9,16 @@ namespace Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
+use function imagesx;
+use function imagesy;
+use function in_array;
+use function round;
 
 /**
  * File:        JPGRAPH_ICONPLOT.PHP
  * // Description: Extension module to add icons to plots
  * // Created:     2004-02-18
- * // Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $
+ * // Ver:         $Id: jpgraph_iconplot.php 1404 2009-06-28 15:25:41Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */

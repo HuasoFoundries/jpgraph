@@ -1,13 +1,19 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
+use function in_array;
+use function is_numeric;
+use function max;
+use function round;
+use function sprintf;
+use function strtolower;
 
 /*
  * File:        JPGRAPH_TABLE.PHP
@@ -18,13 +24,6 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 // Style of grid lines in table
-define('TGRID_SINGLE', 1);
-define('TGRID_DOUBLE', 2);
-define('TGRID_DOUBLE2', 3);
-
-// Type of constrain for image constrain
-define('TIMG_WIDTH', 1);
-define('TIMG_HEIGHT', 2);
 
 /**
  * @class GTextTableCell
@@ -42,8 +41,8 @@ class GTextTableCell
     public $iVal;
     private $iBGColor   = '';
     private $iFontColor = 'black';
-    private $iFF        = FF_FONT1;
-    private $iFS        = FS_NORMAL;
+    private $iFF        = Configs::FF_FONT1;
+    private $iFS        = Configs::FS_NORMAL;
     private $iFSize     = 10;
     private $iRow       = 0;
     private $iCol       = 0;
@@ -55,7 +54,7 @@ class GTextTableCell
     private $iTable;
     private $iGridColor  = ['darkgray', 'darkgray', 'darkgray', 'darkgray'];
     private $iGridWeight = [1, 1, 0, 0]; // left,top,bottom,right;
-    private $iGridStyle  = [TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE, TGRID_SINGLE]; // left,top,bottom,right;
+    private $iGridStyle  = [Configs::TGRID_SINGLE, Configs::TGRID_SINGLE, Configs::TGRID_SINGLE, Configs::TGRID_SINGLE]; // left,top,bottom,right;
     private $iNumberFormat;
     private $iIcon;
     private $iIconConstrain = [];
@@ -97,7 +96,7 @@ class GTextTableCell
 
     public function SetImageConstrain($aType, $aVal)
     {
-        if (!in_array($aType, [TIMG_WIDTH, TIMG_HEIGHT], true)) {
+        if (!in_array($aType, [Configs::TIMG_WIDTH, Configs::TIMG_HEIGHT], true)) {
             Util\JpGraphError::RaiseL(27015);
         }
         $this->iIconConstrain = [$aType, $aVal];
@@ -181,9 +180,11 @@ class GTextTableCell
             $this->iGridColor[2] = $aBottom;
         }
 
-        if ($aRight !== null) {
-            $this->iGridColor[3] = $aRight;
+        if ($aRight === null) {
+            return;
         }
+
+        $this->iGridColor[3] = $aRight;
     }
 
     public function SetGridStyle($aLeft, $aTop = null, $aBottom = null, $aRight = null)
@@ -200,9 +201,11 @@ class GTextTableCell
             $this->iGridStyle[2] = $aBottom;
         }
 
-        if ($aRight !== null) {
-            $this->iGridStyle[3] = $aRight;
+        if ($aRight === null) {
+            return;
         }
+
+        $this->iGridStyle[3] = $aRight;
     }
 
     public function SetGridWeight($aLeft = null, $aTop = null, $aBottom = null, $aRight = null)
@@ -219,9 +222,11 @@ class GTextTableCell
             $this->iGridWeight[2] = $aBottom;
         }
 
-        if ($aRight !== null) {
-            $this->iGridWeight[3] = $aRight;
+        if ($aRight === null) {
+            return;
         }
+
+        $this->iGridWeight[3] = $aRight;
     }
 
     public function SetMargin($aLeft, $aRight, $aTop, $aBottom)
@@ -235,11 +240,11 @@ class GTextTableCell
     public function GetWidth($aImg)
     {
         if ($this->iIcon !== null) {
-            if ($this->iIconConstrain[0] == TIMG_WIDTH) {
+            if ($this->iIconConstrain[0] == Configs::TIMG_WIDTH) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif ($this->iIconConstrain[0] == TIMG_HEIGHT) {
+            } elseif ($this->iIconConstrain[0] == Configs::TIMG_HEIGHT) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -265,11 +270,11 @@ class GTextTableCell
     public function GetHeight($aImg)
     {
         if ($this->iIcon !== null) {
-            if ($this->iIconConstrain[0] == TIMG_WIDTH) {
+            if ($this->iIconConstrain[0] == Configs::TIMG_WIDTH) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif ($this->iIconConstrain[0] == TIMG_HEIGHT) {
+            } elseif ($this->iIconConstrain[0] == Configs::TIMG_HEIGHT) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -305,15 +310,15 @@ class GTextTableCell
     {
         if ($this->iCol > 0) {
             switch ($this->iGridStyle[0]) {
-                case TGRID_SINGLE:
+                case Configs::TGRID_SINGLE:
                     $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:
+                case Configs::TGRID_DOUBLE:
                     $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:
+                case Configs::TGRID_DOUBLE2:
                     $wf = 4;
 
                     break;
@@ -322,15 +327,15 @@ class GTextTableCell
         }
         if ($this->iRow > 0) {
             switch ($this->iGridStyle[1]) {
-                case TGRID_SINGLE:
+                case Configs::TGRID_SINGLE:
                     $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:
+                case Configs::TGRID_DOUBLE:
                     $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:
+                case Configs::TGRID_DOUBLE2:
                     $wf = 4;
 
                     break;
@@ -339,38 +344,40 @@ class GTextTableCell
         }
         if ($this->iRow + $this->iRowSpan - 1 < $this->iTable->iSize[0] - 1) {
             switch ($this->iGridStyle[2]) {
-                case TGRID_SINGLE:
+                case Configs::TGRID_SINGLE:
                     $wf = 1;
 
                     break;
-                case TGRID_DOUBLE:
+                case Configs::TGRID_DOUBLE:
                     $wf = 3;
 
                     break;
-                case TGRID_DOUBLE2:
+                case Configs::TGRID_DOUBLE2:
                     $wf = 4;
 
                     break;
             }
             $this->iMarginBottom += $this->iGridWeight[2] * $wf;
         }
-        if ($this->iCol + $this->iColSpan - 1 < $this->iTable->iSize[1] - 1) {
-            switch ($this->iGridStyle[3]) {
-                case TGRID_SINGLE:
-                    $wf = 1;
-
-                    break;
-                case TGRID_DOUBLE:
-                    $wf = 3;
-
-                    break;
-                case TGRID_DOUBLE2:
-                    $wf = 4;
-
-                    break;
-            }
-            $this->iMarginRight += $this->iGridWeight[3] * $wf;
+        if ($this->iCol + $this->iColSpan - 1 >= $this->iTable->iSize[1] - 1) {
+            return;
         }
+
+        switch ($this->iGridStyle[3]) {
+            case Configs::TGRID_SINGLE:
+                $wf = 1;
+
+                break;
+            case Configs::TGRID_DOUBLE:
+                $wf = 3;
+
+                break;
+            case Configs::TGRID_DOUBLE2:
+                $wf = 4;
+
+                break;
+        }
+        $this->iMarginRight += $this->iGridWeight[3] * $wf;
     }
 
     public function StrokeVGrid($aImg, $aX, $aY, $aWidth, $aHeight, $aDir = 1)
@@ -382,41 +389,47 @@ class GTextTableCell
 
         // We don't stroke the grid lines that are on the edge of the table since this is
         // the place of the border.
-        if ((($this->iCol > 0 && $idx == 0) || ($this->iCol + $this->iColSpan - 1 < $this->iTable->iSize[1] - 1 && $idx == 3))
-            && $this->iGridWeight[$idx] > 0) {
-            $x = $aDir == 1 ? $aX : $aX + $aWidth - 1;
-            $y = $aY + $aHeight - 1;
-            $aImg->SetColor($this->iGridColor[$idx]);
-            switch ($this->iGridStyle[$idx]) {
-                case TGRID_SINGLE:
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
-                    }
+        if ((($this->iCol <= 0 || $idx != 0) && ($this->iCol + $this->iColSpan - 1 >= $this->iTable->iSize[1] - 1 || $idx != 3))
+            || $this->iGridWeight[$idx] <= 0) {
+            // We don't stroke the grid lines that are on the edge of the table since this is
+            // the place of the border.
+            return;
+            // We don't stroke the grid lines that are on the edge of the table since this is
+        // the place of the border.
+        }
 
-                    break;
-                case TGRID_DOUBLE:
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
-                    }
+        $x = $aDir == 1 ? $aX : $aX + $aWidth - 1;
+        $y = $aY + $aHeight - 1;
+        $aImg->SetColor($this->iGridColor[$idx]);
+        switch ($this->iGridStyle[$idx]) {
+            case Configs::TGRID_SINGLE:
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
+                }
 
-                    $x += $this->iGridWeight[$idx] * 2;
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
-                    }
+                break;
+            case Configs::TGRID_DOUBLE:
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
+                }
 
-                    break;
-                case TGRID_DOUBLE2:
-                    for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
-                        $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
-                    }
+                $x += $this->iGridWeight[$idx] * 2;
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
+                }
 
-                    $x += $this->iGridWeight[$idx] * 3;
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
-                    }
+                break;
+            case Configs::TGRID_DOUBLE2:
+                for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
+                    $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
+                }
 
-                    break;
-            }
+                $x += $this->iGridWeight[$idx] * 3;
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($x + $i * $aDir, $aY, $x + $i * $aDir, $y);
+                }
+
+                break;
         }
     }
 
@@ -429,41 +442,47 @@ class GTextTableCell
 
         // We don't stroke the grid lines that are on the edge of the table since this is
         // the place of the border.
-        if ((($this->iRow > 0 && $idx == 1) || ($this->iRow + $this->iRowSpan - 1 < $this->iTable->iSize[0] - 1 && $idx == 2))
-            && $this->iGridWeight[$idx] > 0) {
-            $y = $aDir == 1 ? $aY : $aY + $aHeight - 1;
-            $x = $aX + $aWidth - 1;
-            $aImg->SetColor($this->iGridColor[$idx]);
-            switch ($this->iGridStyle[$idx]) {
-                case TGRID_SINGLE:
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($aX, $y + $i, $x, $y + $i);
-                    }
+        if ((($this->iRow <= 0 || $idx != 1) && ($this->iRow + $this->iRowSpan - 1 >= $this->iTable->iSize[0] - 1 || $idx != 2))
+            || $this->iGridWeight[$idx] <= 0) {
+            // We don't stroke the grid lines that are on the edge of the table since this is
+            // the place of the border.
+            return;
+            // We don't stroke the grid lines that are on the edge of the table since this is
+        // the place of the border.
+        }
 
-                    break;
-                case TGRID_DOUBLE:
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($aX, $y + $i, $x, $y + $i);
-                    }
+        $y = $aDir == 1 ? $aY : $aY + $aHeight - 1;
+        $x = $aX + $aWidth - 1;
+        $aImg->SetColor($this->iGridColor[$idx]);
+        switch ($this->iGridStyle[$idx]) {
+            case Configs::TGRID_SINGLE:
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($aX, $y + $i, $x, $y + $i);
+                }
 
-                    $y += $this->iGridWeight[$idx] * 2;
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($aX, $y + $i, $x, $y + $i);
-                    }
+                break;
+            case Configs::TGRID_DOUBLE:
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($aX, $y + $i, $x, $y + $i);
+                }
 
-                    break;
-                case TGRID_DOUBLE2:
-                    for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
-                        $aImg->Line($aX, $y + $i, $x, $y + $i);
-                    }
+                $y += $this->iGridWeight[$idx] * 2;
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($aX, $y + $i, $x, $y + $i);
+                }
 
-                    $y += $this->iGridWeight[$idx] * 3;
-                    for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
-                        $aImg->Line($aX, $y + $i, $x, $y + $i);
-                    }
+                break;
+            case Configs::TGRID_DOUBLE2:
+                for ($i = 0; $i < $this->iGridWeight[$idx] * 2; ++$i) {
+                    $aImg->Line($aX, $y + $i, $x, $y + $i);
+                }
 
-                    break;
-            }
+                $y += $this->iGridWeight[$idx] * 3;
+                for ($i = 0; $i < $this->iGridWeight[$idx]; ++$i) {
+                    $aImg->Line($aX, $y + $i, $x, $y + $i);
+                }
+
+                break;
         }
     }
 

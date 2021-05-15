@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,8 +17,8 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('intlin');
 $graph->SetMarginColor('darkgreen@0.8');
-
-$graph->title->Set('Gradient filled line plot');
+$example_title = 'Gradient filled line plot';
+$graph->title->set($example_title);
 $graph->yscale->SetAutoMin(0);
 
 // Create the line

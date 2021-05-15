@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -38,16 +38,16 @@ for ($i = 0; $i < $n; ++$i) {
 $bplot->SetCSIMTargets($targ, $alt, $wtarg);
 
 $graph->Add($bplot);
-
-$graph->title->Set('Multiple Image maps');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'Multiple Image maps';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->title->SetCSIMTarget('#45', 'Title for Bar', '_blank');
 
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->yaxis->title->SetCSIMTarget('#55', 'Y-axis title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->xaxis->title->SetCSIMTarget('#55', 'X-axis title');
 $graph->xaxis->title->Set('X-title');
 

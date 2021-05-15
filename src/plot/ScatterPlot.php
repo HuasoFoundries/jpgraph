@@ -1,13 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
+use function is_array;
 
 /**
  * @class ScatterPlot
@@ -20,23 +21,21 @@ class ScatterPlot extends Plot
     private $impuls = false;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $datay
      * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
-        if ((safe_count($datax) != safe_count($datay)) && is_array($datax)) {
+        if ((Configs::safe_count($datax) != Configs::safe_count($datay)) && is_array($datax)) {
             Util\JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
-        $this->mark->SetType(MARK_SQUARE);
+        $this->mark->SetType(Configs::MARK_SQUARE);
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link        = new Graph\LineProperty(1, 'black', 'solid');
+        $this->link        = new Graph\Scale\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 
@@ -130,17 +129,21 @@ class ScatterPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend != '') {
-            $aGraph->legend->Add(
-                $this->legend,
-                $this->mark->fill_color,
-                $this->mark,
-                0,
-                $this->legendcsimtarget,
-                $this->legendcsimalt,
-                $this->legendcsimwintarget
-            );
+        if ($this->legend == '') {
+            return;
         }
+
+        $aGraph->legend->Add(
+            $this->legend,
+            $this->mark->fill_color,
+            $this->mark,
+            0,
+            $this->legendcsimtarget,
+            $this->legendcsimalt,
+            $this->legendcsimwintarget
+        );
     }
-} // @class
+}
+
+// @class
 /* EOF */

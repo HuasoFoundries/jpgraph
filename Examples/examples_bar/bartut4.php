@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -26,20 +26,21 @@ for ($i = 0; $i < 25; ++$i) {
     $databarx[] = $months[$i % 12];
 }
 
-// Use a "text" X-scale
+// Use a text X-scale
 $graph->SetScale('textlin');
 
 // Specify X-labels
 //$databarx = array('tXi','','','xxx','','','iXii','','','OOO','','','tOO');
-$graph->xaxis->SetFont(FF_FONT1, FS_NORMAL);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
 $graph->xaxis->SetTickLabels($databarx);
 $graph->xaxis->SetTextLabelInterval(3);
 
 // Set title and subtitle
-$graph->title->Set('Displaying only every third label');
+$example_title = 'Displaying only every third label';
+$graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

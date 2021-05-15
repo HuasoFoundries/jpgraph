@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -30,38 +30,38 @@ $__width  = 400;
 $__height = 450;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
-// Setup titles
-$graph->title->Set('Windrose example 6');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+// Setup titles$example_title='Windrose example 6'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
-$graph->subtitle->Set('(Free type plot)');
-$graph->subtitle->SetFont(FF_VERDANA, FS_ITALIC, 10);
+$subtitle_text = '(Free type plot)';
+$graph->subtitle->Set($subtitle_text);
+$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
 $graph->subtitle->SetColor('navy');
 
 // Create the windrose plot.
 $wp = new Plot\WindrosePlot($data);
 
 // Setup a free plot
-$wp->SetType(WINDROSE_TYPEFREE);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPEFREE'));
 
 // Setup labels
 $wp->SetLabels($labels);
-$wp->SetLabelPosition(LBLPOSITION_CENTER);
+$wp->SetLabelPosition(Plot\Configs::getConfig('LBLPOSITION_CENTER'));
 $wp->SetLabelMargin(30);
 
 // Setup the colors for the ranges
 $wp->SetRangeColors($rangeColors);
 
 // Adjust the font and font color for scale labels
-$wp->scale->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$wp->scale->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 
 // Set the diameter and position for plot
 $wp->SetSize(230);
 $wp->SetZCircleSize(30);
 
 // Adjust the font and font color for compass directions
-$wp->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$wp->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 $wp->SetFontColor('darkgreen');
 
 // Adjust grid colors

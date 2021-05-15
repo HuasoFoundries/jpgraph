@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -14,7 +14,7 @@ use Amenadiel\JpGraph\Util;
  * // Description: Class to handle text as object in the graph.
  * //              The low level text layout engine is handled by the GD class
  * // Created:     2001-01-08 (Refactored to separate file 2008-08-01)
- * // Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $
+ * // Ver:         $Id: jpgraph_text.inc.php 1844 2009-09-26 17:05:31Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -23,7 +23,7 @@ use Amenadiel\JpGraph\Util;
  * @class Text
  * // Description: Arbitrary text object that can be added to the graph
  */
-class Text //extends Graph
+class Text extends Configs
 {
     public $t;
     public $x      = 0;
@@ -36,8 +36,8 @@ class Text //extends Graph
     public $iScalePosY;
     public $iScalePosX;
     public $iWordwrap          = 0;
-    public $font_family        = FF_DEFAULT;
-    public $font_style         = FS_NORMAL; // old. FF_FONT1
+    public $font_family        = self::FF_DEFAULT;
+    public $font_style         = self::FS_NORMAL; // old. self::FF_FONT1
     public $boxed              = false; // Should the text be boxed
     protected $paragraph_align = 'left';
     protected $icornerradius   = 0;
@@ -56,8 +56,6 @@ class Text //extends Graph
     private $_font_size = 8; // old. 12
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $aTxt
      * @param mixed $aXAbsPos
      * @param mixed $aYAbsPos
@@ -106,9 +104,11 @@ class Text //extends Graph
     {
         $this->halign = $aHAlign;
         $this->valign = $aVAlign;
-        if ($aParagraphAlign != '') {
-            $this->paragraph_align = $aParagraphAlign;
+        if ($aParagraphAlign == '') {
+            return;
         }
+
+        $this->paragraph_align = $aParagraphAlign;
     }
 
     // Alias
@@ -183,7 +183,7 @@ class Text //extends Graph
     }
 
     // Specify font
-    public function SetFont($aFamily, $aStyle = FS_NORMAL, $aSize = 10)
+    public function SetFont($aFamily, $aStyle = self::FS_NORMAL, $aSize = 10)
     {
         $this->font_family = $aFamily;
         $this->font_style  = $aStyle;
@@ -195,9 +195,11 @@ class Text //extends Graph
     {
         $this->x      = $aLeft + ($aRight - $aLeft) / 2;
         $this->halign = 'center';
-        if (is_numeric($aYAbsPos)) {
-            $this->y = $aYAbsPos;
+        if (!is_numeric($aYAbsPos)) {
+            return;
         }
+
+        $this->y = $aYAbsPos;
     }
 
     // Set text color
@@ -334,7 +336,7 @@ class Text //extends Graph
 
             $oldweight = $aImg->SetLineWeight(1);
 
-            if ($this->iBoxType == 2 && $this->font_family > FF_FONT2 + 2) {
+            if ($this->iBoxType == 2 && $this->font_family > self::FF_FONT2 + 2) {
                 $bbox = $aImg->StrokeBoxedText2(
                     $this->x,
                     $this->y,
@@ -374,7 +376,14 @@ class Text //extends Graph
 
         // Create CSIM targets
         $coords = implode(',', [
-            $bbox[0], $bbox[1], $bbox[2], $bbox[3], $bbox[4], $bbox[5], $bbox[6], $bbox[7],
+            $bbox[0],
+            $bbox[1],
+            $bbox[2],
+            $bbox[3],
+            $bbox[4],
+            $bbox[5],
+            $bbox[6],
+            $bbox[7],
         ]);
         $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
         $this->iCSIMarea .= htmlentities($this->iCSIMtarget) . '" ';
@@ -402,7 +411,7 @@ class Text //extends Graph
         $variable_name = '_' . $name;
 
         if (isset($this->{$variable_name})) {
-            return $this->{$variable_name} * SUPERSAMPLING_SCALE;
+            return $this->{$variable_name} * self::SUPERSAMPLING_SCALE;
         }
         Util\JpGraphError::RaiseL('25132', $name);
     }
@@ -411,4 +420,5 @@ class Text //extends Graph
     {
         $this->{'_' . $name} = $value;
     }
-} // @class
+}
+// @class

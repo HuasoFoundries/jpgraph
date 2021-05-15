@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,7 +16,7 @@ $__height = 220;
 $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
-//$theme_class="DefaultTheme";
+//$theme_class=DefaultTheme;
 //$graph->SetTheme(new $theme_class());
 
 // set major and minor tick positions manually
@@ -36,7 +36,7 @@ $b1plot = new Plot\BarPlot($datay);
 $graph->Add($b1plot);
 
 $b1plot->SetColor('white');
-$b1plot->SetFillGradient('#4B0082', 'white', GRAD_LEFT_REFLECTION);
+$b1plot->SetFillGradient('#4B0082', 'white', Graph\Configs::getConfig('GRAD_LEFT_REFLECTION'));
 $b1plot->SetWidth(45);
 $graph->title->Set('Bar Gradient(Left reflection)');
 

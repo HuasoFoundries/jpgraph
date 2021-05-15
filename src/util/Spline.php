@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -10,7 +10,7 @@ namespace Amenadiel\JpGraph\Util;
  * File:        JPGRAPH_REGSTAT.PHP
  * // Description: Regression and statistical analysis helper classes
  * // Created:     2002-12-01
- * // Ver:         $Id: jpgraph_regstat.php 1131 2009-03-11 20:08:24Z ljp $
+ * // Ver:         $Id: jpgraph_regstat.php 1131 2009-03-11 20:08:24Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -35,9 +35,9 @@ class Spline
         $this->xdata = $xdata;
         $this->ydata = $ydata;
 
-        $n       = safe_count($ydata);
+        $n       = Configs::safe_count($ydata);
         $this->n = $n;
-        if ($this->n !== safe_count($xdata)) {
+        if ($this->n !== Configs::safe_count($xdata)) {
             JpGraphError::RaiseL(19001);
             //('Spline: Number of X and Y coordinates must be the same');
         }

@@ -1,13 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
+use function call_user_func;
 
 /**
  * @class FieldPlot
@@ -21,11 +22,11 @@ class FieldPlot extends Plot
 
     public function __construct($datay, $datax, $angles)
     {
-        if ((safe_count($datax) != safe_count($datay))) {
+        if ((Configs::safe_count($datax) != Configs::safe_count($datay))) {
             Util\JpGraphError::RaiseL(20001);
         }
         //("Fieldplots must have equal number of X and Y points.");
-        if ((safe_count($datax) != safe_count($angles))) {
+        if ((Configs::safe_count($datax) != Configs::safe_count($angles))) {
             Util\JpGraphError::RaiseL(20002);
         }
         //("Fieldplots must have an angle specified for each X and Y points.");
@@ -88,16 +89,18 @@ class FieldPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend != '') {
-            $aGraph->legend->Add(
-                $this->legend,
-                $this->mark->fill_color,
-                $this->mark,
-                0,
-                $this->legendcsimtarget,
-                $this->legendcsimalt,
-                $this->legendcsimwintarget
-            );
+        if ($this->legend == '') {
+            return;
         }
+
+        $aGraph->legend->Add(
+            $this->legend,
+            $this->mark->fill_color,
+            $this->mark,
+            0,
+            $this->legendcsimtarget,
+            $this->legendcsimalt,
+            $this->legendcsimwintarget
+        );
     }
 }

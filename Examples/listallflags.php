@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: listallflags.php,v 1.1.2.1 2003/06/29 15:28:12 aditus Exp $
@@ -9,7 +9,7 @@ require_once 'jpgraph/jpgraph.php';
 require_once 'jpgraph/jpgraph_flags.php';
 
 // Flag size to use in table
-$s     = FLAGSIZE2;
+$s     = Graph\Configs::getConfig('FLAGSIZE2');
 $w     = 60;
 $flags = new FlagImages($s);
 

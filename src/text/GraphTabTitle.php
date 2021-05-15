@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
+
+use function round;
 
 /**
  * @class GraphTabTitle
@@ -18,12 +20,12 @@ class GraphTabTitle extends Text
     private $fillcolor   = 'lightyellow';
     private $bordercolor = 'black';
     private $align       = 'left';
-    private $width       = TABTITLE_WIDTHFIT;
+    private $width       = self::TABTITLE_WIDTHFIT;
 
     public function __construct()
     {
         $this->t          = '';
-        $this->font_style = FS_BOLD;
+        $this->font_style = self::FS_BOLD;
         $this->hide       = true;
         $this->color      = 'darkred';
     }
@@ -74,45 +76,77 @@ class GraphTabTitle extends Text
         $x = $aImg->left_margin;
         $y = $aImg->top_margin;
 
-        if ($this->width === TABTITLE_WIDTHFIT) {
+        if ($this->width === self::TABTITLE_WIDTHFIT) {
             if ($this->align == 'left') {
-                $p = [$x, $y,
-                    $x, $y - $h + $this->corner,
-                    $x + $this->corner, $y - $h,
-                    $x + $w - $this->corner, $y - $h,
-                    $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y, ];
+                $p = [
+                    $x,
+                    $y,
+                    $x,
+                    $y - $h + $this->corner,
+                    $x + $this->corner,
+                    $y - $h,
+                    $x + $w - $this->corner,
+                    $y - $h,
+                    $x + $w,
+                    $y - $h + $this->corner,
+                    $x + $w,
+                    $y,
+                ];
             } elseif ($this->align == 'center') {
                 $x += round($aImg->plotwidth / 2) - round($w / 2);
-                $p = [$x, $y,
-                    $x, $y - $h + $this->corner,
-                    $x + $this->corner, $y - $h,
-                    $x + $w - $this->corner, $y - $h,
-                    $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y, ];
+                $p  = [
+                    $x,
+                    $y,
+                    $x,
+                    $y - $h + $this->corner,
+                    $x + $this->corner,
+                    $y - $h,
+                    $x + $w - $this->corner,
+                    $y - $h,
+                    $x + $w,
+                    $y - $h + $this->corner,
+                    $x + $w,
+                    $y,
+                ];
             } else {
                 $x += $aImg->plotwidth - $w;
-                $p = [$x, $y,
-                    $x, $y - $h + $this->corner,
-                    $x + $this->corner, $y - $h,
-                    $x + $w - $this->corner, $y - $h,
-                    $x + $w, $y - $h + $this->corner,
-                    $x + $w, $y, ];
+                $p  = [
+                    $x,
+                    $y,
+                    $x,
+                    $y - $h + $this->corner,
+                    $x + $this->corner,
+                    $y - $h,
+                    $x + $w - $this->corner,
+                    $y - $h,
+                    $x + $w,
+                    $y - $h + $this->corner,
+                    $x + $w,
+                    $y,
+                ];
             }
         } else {
-            if ($this->width === TABTITLE_WIDTHFULL) {
+            if ($this->width === self::TABTITLE_WIDTHFULL) {
                 $w = $aImg->plotwidth;
             } else {
                 $w = $this->width;
             }
 
             // Make the tab fit the width of the plot area
-            $p = [$x, $y,
-                $x, $y - $h + $this->corner,
-                $x + $this->corner, $y - $h,
-                $x + $w - $this->corner, $y - $h,
-                $x + $w, $y - $h + $this->corner,
-                $x + $w, $y, ];
+            $p = [
+                $x,
+                $y,
+                $x,
+                $y - $h + $this->corner,
+                $x + $this->corner,
+                $y - $h,
+                $x + $w - $this->corner,
+                $y - $h,
+                $x + $w,
+                $y - $h + $this->corner,
+                $x + $w,
+                $y,
+            ];
         }
         if ($this->halign == 'left') {
             $aImg->SetTextAlign('left', 'bottom');

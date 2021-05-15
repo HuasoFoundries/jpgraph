@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ $__width  = 300;
 $__height = 200;
 $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
-
-$graph->title->Set('A simple Pie plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'A simple Pie plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $p1 = new Plot\PiePlot($data);
 $p1->SetLegends($graph->gDateLocale->GetShortMonth());

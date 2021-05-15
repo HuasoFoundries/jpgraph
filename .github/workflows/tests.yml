@@ -7,7 +7,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
-        php: ['7.2', '7.3', '7.4', '8.0']
+        php: ['7.4', '8.0']
 
     name: PHP ${{ matrix.php }} - 'ubuntu-latest' - 'prefer-stable'
 
@@ -28,7 +28,10 @@ jobs:
         echo "::add-matcher::${{ runner.tool_cache }}/php.json"
         echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
     - name: Install PHP dependencies
-      run: composer update --'prefer-stable' --no-interaction --no-progress
+      run: composer update --'prefer-stable' --no-interaction --no-progress --ignore-platform-reqs
+
+    - name: PHPLint
+      run: composer lint    
 
     - name: Unit Tests
       run: composer test

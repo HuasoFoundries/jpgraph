@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,8 +21,9 @@ $__height = 400;
 $graph    = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title
-$graph->title->Set('Windrose basic example');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 12);
+$example_title = 'Windrose basic example';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $graph->title->SetColor('navy');
 
 // Create the windrose plot.

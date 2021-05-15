@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
@@ -28,7 +28,7 @@ $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');
 $graph->SetBox();
 
 $graph->tabtitle->Set(' Week 34 ');
-$graph->tabtitle->SetFont(FF_ARIAL, FS_NORMAL, 12);
+$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
 
 // Get week days in curent locale
 $days = $graph->gDateLocale->GetShortDay();

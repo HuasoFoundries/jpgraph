@@ -1,0 +1,42 @@
+includes:
+    - ./phpstan-baseline.neon
+
+
+
+
+parameters:
+
+    paths:
+        - src
+
+
+    tmpDir: ./.build/phpstan
+
+    # The level 8 is the highest level
+    level: 5
+
+
+
+    excludes_analyse:
+        - .build/*
+        - Examples
+        - tests/*
+        - vendor/*
+        - node_modules/*
+    checkFunctionNameCase: true
+    checkMissingIterableValueType: false
+    checkInternalClassCaseSensitivity: true
+    universalObjectCratesClasses:
+        - SoapClient
+    earlyTerminatingMethodCalls:
+        Nette\Application\UI\Presenter:
+            - redirect
+            - redirectUrl
+            - sendJson
+            - sendResponse
+            - dd
+            - kdd
+            - ddh
+    earlyTerminatingFunctionCalls:
+            - redirect
+    ignoreErrors:

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,15 +25,17 @@ doMeshInterpolate($data, 4);
 $r = count($data);
 $c = count($data[0]);
 
-$width  = 300;
-$height = 300;
-$graph  = new MatrixGraph($width, $height);
-$graph->title->Set('Adding a background image');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
-$graph->subtitle->Set('Alphablending = 0.2');
+$width         = 300;
+$height        = 300;
+$graph         = new MatrixGraph($width, $height);
+$example_title = 'Adding a background image';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$subtitle_text = 'Alphablending = 0.2';
+$graph->subtitle->Set($subtitle_text);
 
 // Add a stretched background image
-$graph->SetBackgroundImage(__DIR__ . '/../assets/ironrod.jpg', BGIMG_FILLFRAME);
+$graph->SetBackgroundImage(__DIR__ . '/../assets/ironrod.jpg', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetBackgroundImageMix(50);
 
 $mp = new MatrixPlot($data, 1);

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -25,12 +25,11 @@ $g->SetMarginColor('teal');
 $g->InitFrame();
 
 // Create a new Graph\scale
-$scale = new Graph\CanvasScale($g);
-$scale->Set(0, $xmax, 0, $ymax);
+$g->SetScale('canvas', 0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Graph\Shape($g, $scale);
+$shape = new Graph\Shape($g, $g->scale);
 $shape->SetColor('black');
 
 // Add a black line

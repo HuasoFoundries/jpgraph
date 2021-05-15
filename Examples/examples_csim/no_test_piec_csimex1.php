@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: piec_csimex1.php,v 1.1.2.1 2003/10/09 21:05:39 aditus Exp $
@@ -25,8 +25,9 @@ $graph    = new Graph\PieGraph($__width, $__height);
 // $graph->SetShadow();
 
 // Setup title
-$graph->title->Set('CSIM Center Pie plot ex 1');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 18);
+$example_title = 'CSIM Center Pie plot ex 1';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
 $graph->title->SetMargin(8); // Add a little bit more margin from the top
 
 // Create the pie plot
@@ -39,18 +40,18 @@ $p1->SetSize(0.32);
 $p1->SetCenter(0.5, 0.45);
 
 // Label font and color setup
-$p1->value->SetFont(FF_ARIAL, FS_BOLD, 12);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $p1->value->SetColor('white');
 
 // Setup the title on the center circle
 $p1->midtitle->Set("Test mid\nRow 1\nRow 2");
-$p1->midtitle->SetFont(FF_ARIAL, FS_NORMAL, 14);
+$p1->midtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
 
 // Set color for mid circle
 $p1->SetMidColor('yellow');
 
 // Use percentage values in the legends values (This is also the default)
-$p1->SetLabelType(PIE_VALUE_PER);
+$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_PER'));
 
 // The label array values may have printf() formatting in them. The argument to the
 // form,at string will be the value of the slice (either the percetage or absolute
@@ -68,7 +69,7 @@ $p1->SetShadow();
 // Explode all slices 15 pixels
 $p1->ExplodeAll(15);
 
-// Setup the CSIM targets
+// Setup the Graph\Configs::getConfig('CSIM') targets
 $targ = ['piec_csimex1.php#1', 'piec_csimex1.php#2', 'piec_csimex1.php#3',
     'piec_csimex1.php#4', 'piec_csimex1.php#5', 'piec_csimex1.php#6', ];
 $alts = ['val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d', 'val=%d'];
@@ -77,7 +78,7 @@ $p1->SetMidCSIM('piec_csimex1.php#7', 'Center');
 
 // Setup a small help text in the image
 $txt = new Text("Note: This is an example of image map. Hold\nyour mouse over the slices to see the values.\nThe URL just points back to this page");
-$txt->SetFont(FF_FONT1, FS_BOLD);
+$txt->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $txt->SetPos(0.5, 0.97, 'center', 'bottom');
 $txt->SetBox('yellow', 'black');
 $txt->SetShadow();

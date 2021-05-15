@@ -1,10 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
+
+use function round;
 
 /**
  * @class RectangleText

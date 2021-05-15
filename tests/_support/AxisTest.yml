@@ -1,16 +1,17 @@
-testAxislabelbkgfileiterator:
-    axislabelbkgex01.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex01.php }
-    axislabelbkgex02.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex02.php }
-    axislabelbkgex03.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex03.php }
-    axislabelbkgex04.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex04.php }
-    axislabelbkgex05.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex05.php }
-    axislabelbkgex06.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex06.php }
-    axislabelbkgex07.php: { width: 200, height: 150, title: axislabelbkgFileIterator, filename: axislabelbkgex07.php }
-testDupyaxisfileiterator:
-    dupyaxisex1.php: { width: 300, height: 200, title: dupyaxisFileIterator, filename: dupyaxisex1.php }
-testMulyaxisfileiterator:
-    mulyaxisex1.php: { width: 450, height: 250, title: mulyaxisFileIterator, filename: mulyaxisex1.php }
-testInyaxisfileiterator:
-    inyaxisex1.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex1.php }
-    inyaxisex2.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex2.php }
-    inyaxisex3.php: { width: 400, height: 300, title: inyaxisFileIterator, filename: inyaxisex3.php }
+testDuplicatingYAxis:
+    dupyaxisex1.php: { width: 300, height: 200, title: 'Duplicating Y-axis', filename: dupyaxisex1.php }
+testLabelBackground:
+    axislabelbkgex01.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex01.php }
+    axislabelbkgex02.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex02.php }
+    axislabelbkgex03.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex03.php }
+    axislabelbkgex04.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex04.php }
+    axislabelbkgex05.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex05.php }
+    axislabelbkgex06.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex06.php }
+    axislabelbkgex07.php: { width: 200, height: 150, title: 'Label background', filename: axislabelbkgex07.php }
+testDepthcurvedive:
+    inyaxisex1.php: { width: 400, height: 300, title: 'Depth curve. Dive #2', filename: inyaxisex1.php }
+    inyaxisex2.php: { width: 400, height: 300, title: 'Depth curve. Dive #2', filename: inyaxisex2.php }
+testUsingMultipleYAxis:
+    mulyaxisex1.php: { width: 450, height: 250, title: 'Using multiple Y-axis', filename: mulyaxisex1.php }
+testNegatedYY2Axis):
+    inyaxisex3.php: { width: 400, height: 300, title: '(Negated Y & Y2 axis)', filename: inyaxisex3.php }

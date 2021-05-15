@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,10 +14,9 @@ $__width  = 300;
 $__height = 320;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup graph titles
-$graph->title->Set('Manual positioning');
+// Setup graph titles$example_title='Manual positioning'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Add drop shadow for graph
 $graph->SetShadow();

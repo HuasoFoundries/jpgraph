@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
-// File:    ODOEX010.PHP
+// File:    Graph\Configs::getConfig('ODOEX010').PHP
 // Description: Example 0 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -63,9 +63,9 @@ $odo1->scale->label->SetColor('navy');
 $odo2->scale->label->SetColor('blue');
 $odo3->scale->label->SetColor('darkred');
 
-$odo1->scale->label->SetFont(FF_FONT1);
-$odo2->scale->label->SetFont(FF_FONT2, FS_BOLD);
-$odo3->scale->label->SetFont(FF_ARIAL, FS_BOLD, 11);
+$odo1->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$odo2->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$odo3->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
 
 //---------------------------------------------------------------------
 // Add the odometers to the graph using a vertical layout

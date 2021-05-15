@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,7 +22,8 @@ $theme_class = new UniversalTheme();
 
 $graph->SetTheme($theme_class);
 $graph->img->SetAntiAliasing(false);
-$graph->title->Set('Filled Y-grid');
+$example_title = 'Filled Y-grid';
+$graph->title->set($example_title);
 $graph->SetBox(false);
 
 $graph->img->SetAntiAliasing();

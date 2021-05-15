@@ -1,14 +1,22 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
+use function abs;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
+use function array_merge;
+use function array_reverse;
+use function array_slice;
+use function ceil;
+use function date;
+use function floor;
+use function is_array;
 
 /**
  * Class CCBPGraph
@@ -16,10 +24,10 @@ use Amenadiel\JpGraph\Util;
  */
 class CCBPGraph
 {
-    const TickStep   = 25;
-    const YTitle     = '% Buffer used';
-    const XTitle     = '% CC Completed';
-    const NColorMaps = 2;
+    public const TickStep   = 25;
+    public const YTitle     = '% Buffer used';
+    public const XTitle     = '% CC Completed';
+    public const NColorMaps = 2;
     private $graph;
     private $iWidth;
     private $iHeight;
@@ -31,11 +39,13 @@ class CCBPGraph
     private $iColorInd = [
         [5, 75], /* Green */
         [25, 85], /* Yellow */
-        [50, 100], ]; /* Red */
+        [50, 100],
+    ]; /* Red */
     private $iColorMap  = 0;
     private $iColorSpec = [
         ['darkgreen:1.0', 'yellow:1.4', 'red:0.8', 'darkred:0.85'],
-        ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'], ];
+        ['#c6e9af', '#ffeeaa', '#ffaaaa', '#de8787'],
+    ];
     private $iMarginColor = ['darkgreen@0.7', 'darkgreen@0.9'];
     private $iSubTitle    = '';
     private $iTitle       = 'CC Buffer penetration';
@@ -74,8 +84,8 @@ class CCBPGraph
      */
     public function SetXMinMax($aMin, $aMax)
     {
-        $this->iXMin = floor($aMin / CCBPGraph::TickStep) * CCBPGraph::TickStep;
-        $this->iXMax = ceil($aMax / CCBPGraph::TickStep) * CCBPGraph::TickStep;
+        $this->iXMin = floor($aMin / self::TickStep) * self::TickStep;
+        $this->iXMax = ceil($aMax / self::TickStep) * self::TickStep;
     }
 
     /**
@@ -85,7 +95,7 @@ class CCBPGraph
      */
     public function SetColorMap($aMap)
     {
-        $this->iColorMap = $aMap % CCBPGraph::NColorMaps;
+        $this->iColorMap = $aMap % self::NColorMaps;
     }
 
     /**
@@ -96,8 +106,8 @@ class CCBPGraph
      */
     public function SetYMinMax($aMin, $aMax)
     {
-        $this->iYMin = floor($aMin / CCBPGraph::TickStep) * CCBPGraph::TickStep;
-        $this->iYMax = ceil($aMax / CCBPGraph::TickStep) * CCBPGraph::TickStep;
+        $this->iYMin = floor($aMin / self::TickStep) * self::TickStep;
+        $this->iYMax = ceil($aMax / self::TickStep) * self::TickStep;
     }
 
     /**
@@ -109,18 +119,20 @@ class CCBPGraph
      * @param mixed $aColors An array with four elements specifying the colors
      *                       of each color indicator
      */
-    public function SetColorIndication(array $aSpec, array $aColors = null)
+    public function SetColorIndication(array $aSpec, ?array $aColors = null)
     {
-        if (safe_count($aSpec) !== 3) {
+        if (Configs::safe_count($aSpec) !== 3) {
             Util\JpGraphError::Raise('Specification of scale values for background indicators must be an array with three elements.');
         }
         $this->iColorInd = $aSpec;
-        if ($aColors !== null) {
-            if (is_array($aColors) && safe_count($aColors) == 4) {
-                $this->iColorSpec = $aColors;
-            } else {
-                Util\JpGraphError::Raise('Color specification for background indication must have four colors.');
-            }
+        if ($aColors === null) {
+            return;
+        }
+
+        if (is_array($aColors) && Configs::safe_count($aColors) == 4) {
+            $this->iColorSpec = $aColors;
+        } else {
+            Util\JpGraphError::Raise('Color specification for background indication must have four colors.');
         }
     }
 
@@ -175,16 +187,16 @@ class CCBPGraph
         $graph->title->Set($this->iTitle);
         $graph->subtitle->Set($this->iSubTitle);
 
-        $graph->title->SetFont(FF_ARIAL, FS_BOLD, $labelsize + 4);
-        $graph->subtitle->SetFont(FF_ARIAL, FS_BOLD, $labelsize + 1);
+        $graph->title->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 4);
+        $graph->subtitle->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 1);
 
         $graph->SetBox(true, 'black@0.3');
 
-        $graph->xaxis->SetFont(FF_ARIAL, FS_BOLD, $labelsize);
-        $graph->yaxis->SetFont(FF_ARIAL, FS_BOLD, $labelsize);
+        $graph->xaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
+        $graph->yaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
 
-        $graph->xaxis->scale->ticks->Set(CCBPGraph::TickStep, CCBPGraph::TickStep);
-        $graph->yaxis->scale->ticks->Set(CCBPGraph::TickStep, CCBPGraph::TickStep);
+        $graph->xaxis->scale->ticks->Set(self::TickStep, self::TickStep);
+        $graph->yaxis->scale->ticks->Set(self::TickStep, self::TickStep);
 
         $graph->xaxis->HideZeroLabel();
         $graph->yaxis->HideZeroLabel();
@@ -209,7 +221,7 @@ class CCBPGraph
             $graph->xaxis->SetColor('darkgray', 'darkgray:0.8');
             $graph->yaxis->SetColor('darkgray', 'darkgray:0.8');
         }
-        $graph->SetGridDepth(DEPTH_FRONT);
+        $graph->SetGridDepth(Configs::DEPTH_FRONT);
         $graph->ygrid->SetColor('gray@0.6');
         $graph->ygrid->SetLineStyle('dotted');
 
@@ -218,14 +230,14 @@ class CCBPGraph
         $graph->xaxis->SetWeight(1);
         $graph->yaxis->SetWeight(1);
 
-        $ytitle = new Text\Text(CCBPGraph::YTitle, floor($lm * .75), ($height - $tm - $bm) / 2 + $tm);
-        #$ytitle->SetFont(FF_VERA,FS_BOLD,$labelsize+1);
+        $ytitle = new Text\Text(self::YTitle, floor($lm * .75), ($height - $tm - $bm) / 2 + $tm);
+        // $ytitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize+1);
         $ytitle->SetAlign('right', 'center');
         $ytitle->SetAngle(90);
         $graph->Add($ytitle);
 
-        $xtitle = new Text\Text(CCBPGraph::XTitle, ($width - $lm - $rm) / 2 + $lm, $height - 10);
-        #$xtitle->SetFont(FF_VERA,FS_BOLD,$labelsize);
+        $xtitle = new Text\Text(self::XTitle, ($width - $lm - $rm) / 2 + $lm, $height - 10);
+        // $xtitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize);
         $xtitle->SetAlign('center', 'bottom');
         $graph->Add($xtitle);
 
@@ -236,7 +248,7 @@ class CCBPGraph
 
         $time = new Text\Text(date($df), $width - 10, $height - 10);
         $time->SetAlign('right', 'bottom');
-        #$time->SetFont(FF_VERA,FS_NORMAL,$labelsize-1);
+        // $time->SetFont(Configs::FF_VERA,Configs::getConfig('FS_NORMAL'),$labelsize-1);
         $time->SetColor('darkgray');
         $graph->Add($time);
 
@@ -286,7 +298,7 @@ class CCBPGraph
     public function Stroke($aFile = '')
     {
         $this->Init();
-        if (safe_count($this->iPlots) > 0) {
+        if (Configs::safe_count($this->iPlots) > 0) {
             $this->graph->Add($this->iPlots);
         }
         $this->graph->Stroke($aFile);

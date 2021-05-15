@@ -1,18 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
+use function floor;
+use function round;
 
 /**
  * File:        JPGRAPH_STOCK.PHP
  * // Description: Stock plot extension for JpGraph
  * // Created:     2003-01-27
- * // Ver:         $Id: jpgraph_stock.php 1364 2009-06-24 07:07:44Z ljp $
+ * // Ver:         $Id: jpgraph_stock.php 1364 2009-06-24 07:07:44Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -30,14 +32,12 @@ class StockPlot extends Plot
     private $iStockColor3 = 'darkred';
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $datay
      * @param mixed $datax
      */
     public function __construct($datay, $datax = false)
     {
-        if (safe_count($datay) % $this->iTupleSize) {
+        if (Configs::safe_count($datay) % $this->iTupleSize) {
             Util\JpGraphError::RaiseL(21001, $this->iTupleSize);
             //('Data values for Stock charts must contain an even multiple of '.$this->iTupleSize.' data points.');
         }
@@ -96,9 +96,9 @@ class StockPlot extends Plot
         }
 
         if (isset($this->coords[1])) {
-            if (safe_count($this->coords[1]) != $n) {
-                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $n);
-            // ("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
+            if (Configs::safe_count($this->coords[1]) != $n) {
+                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $n);
+            // ("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -176,17 +176,21 @@ class StockPlot extends Plot
             $this->ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg);
 
             // Setup image maps
-            if (!empty($this->csimtargets[$i])) {
-                $this->csimareas .= '<area shape="rect" coords="' .
-                round($xl) . ',' . round($ytop) . ',' .
-                round($xr) . ',' . round($ybottom) . '" ';
-                $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
-                if (!empty($this->csimalts[$i])) {
-                    $sval = $this->csimalts[$i];
-                    $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
-                }
-                $this->csimareas .= "  />\n";
+            if (empty($this->csimtargets[$i])) {
+                // Setup image maps
+                continue;
+                // Setup image maps
             }
+
+            $this->csimareas .= '<area shape="rect" coords="' .
+            round($xl) . ',' . round($ytop) . ',' .
+            round($xr) . ',' . round($ybottom) . '" ';
+            $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
+            if (!empty($this->csimalts[$i])) {
+                $sval = $this->csimalts[$i];
+                $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
+            }
+            $this->csimareas .= "  />\n";
         }
 
         return true;
@@ -196,4 +200,6 @@ class StockPlot extends Plot
     public function ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg)
     {
     }
-} // @class
+}
+
+// @class

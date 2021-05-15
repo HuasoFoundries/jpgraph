@@ -1,12 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
 
 use Amenadiel\JpGraph\Util;
+use function array_key_exists;
+use function define;
+use function filesize;
+use function fopen;
+use function fread;
+use function is_integer;
+use function reset;
+use function strlen;
+use function strpos;
+use function strtolower;
+use function unserialize;
 
 /*
  * File:        JPGRAPH_FLAGS.PHP
@@ -262,7 +273,8 @@ class FlagImages
         'Bolivarian Republic of Venezuela'                        => 'venz',
         'Republic of Yemen'                                       => 'yemn',
         'Democratic Republic of Congo'                            => 'zare',
-        'Republic of Zimbabwe'                                    => 'zbwe', ];
+        'Republic of Zimbabwe'                                    => 'zbwe',
+    ];
 
     private $iFlagCount  = -1;
     private $iFlagSetMap = [
@@ -292,7 +304,7 @@ class FlagImages
                 Util\JpGraphError::RaiseL(5001, $aSize);
                 //('Unknown flag size. ('.$aSize.')');
         }
-        $this->iFlagCount = safe_count($this->iCountryNameMap);
+        $this->iFlagCount = Configs::safe_count($this->iCountryNameMap);
     }
 
     public function GetNum()
@@ -321,7 +333,7 @@ class FlagImages
     public function GetIdxByOrdinal($aOrd, &$outFullName)
     {
         --$aOrd;
-        $n = safe_count($this->iOrdIdx);
+        $n = Configs::safe_count($this->iOrdIdx);
         if ($n == 0) {
             reset($this->iCountryNameMap);
             $this->iOrdIdx = [];

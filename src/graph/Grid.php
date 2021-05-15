@@ -1,12 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
+use function min;
 
 /**
  * @class Grid
@@ -95,7 +96,7 @@ class Grid
      */
     public function DoStroke($aTicksPos, $aType, $aColor, $aWeight)
     {
-        $nbrgrids = safe_count($aTicksPos);
+        $nbrgrids = Configs::safe_count($aTicksPos);
         if (!$this->show || $nbrgrids === 0) {
             return;
         }
@@ -122,23 +123,23 @@ class Grid
             // Draw grid lines
             switch ($aType) {
                 case 'solid':
-                    $style = LINESTYLE_SOLID;
+                    $style = Configs::getConfig('LINESTYLE_SOLID');
 
                     break;
                 case 'dotted':
-                    $style = LINESTYLE_DOTTED;
+                    $style = Configs::getConfig('LINESTYLE_DOTTED');
 
                     break;
                 case 'dashed':
-                    $style = LINESTYLE_DASHED;
+                    $style = Configs::getConfig('LINESTYLE_DASHED');
 
                     break;
                 case 'longdashed':
-                    $style = LINESTYLE_LONGDASH;
+                    $style = Configs::getConfig('LINESTYLE_LONGDASH');
 
                     break;
                 default:
-                    $style = LINESTYLE_SOLID;
+                    $style = Configs::getConfig('LINESTYLE_SOLID');
 
                     break;
             }
@@ -173,7 +174,7 @@ class Grid
             // to many gridlines
             $i = 0;
             $x = $aTicksPos[$i];
-            while ($i < safe_count($aTicksPos) && ($x = $aTicksPos[$i]) <= $limit) {
+            while ($i < Configs::safe_count($aTicksPos) && ($x = $aTicksPos[$i]) <= $limit) {
                 if ($aType == 'solid') {
                     $this->img->Line($x, $yl, $x, $yu);
                 } elseif ($aType == 'dotted') {
@@ -192,4 +193,6 @@ class Grid
 
         return true;
     }
-} // @class
+}
+
+// @class

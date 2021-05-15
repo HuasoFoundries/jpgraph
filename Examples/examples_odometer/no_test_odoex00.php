@@ -1,10 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
-// File:    ODOEX00.PHP
+// File:    Graph\Configs::getConfig('ODOEX00').PHP
 // Description: Example 0 for odometer graphs
 // Created:    2002-02-22
 // Version:    $Id$
@@ -16,9 +16,9 @@
 // Copyright (C) 2002 Johan Persson. All rights reserved.
 //=============================================================================
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
-require_once 'jpgraph/jpgraph_odo.php';
 
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=250, height=200 pixels)

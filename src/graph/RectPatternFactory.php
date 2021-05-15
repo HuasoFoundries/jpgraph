@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
@@ -22,35 +22,35 @@ class RectPatternFactory
     public function Create($aPattern, $aColor, $aWeight = 1)
     {
         switch ($aPattern) {
-            case BAND_RDIAG:
+            case Configs::BAND_RDIAG:
                 $obj = new RectPatternRDiag($aColor, $aWeight);
 
                 break;
-            case BAND_LDIAG:
+            case Configs::BAND_LDIAG:
                 $obj = new RectPatternLDiag($aColor, $aWeight);
 
                 break;
-            case BAND_SOLID:
+            case Configs::BAND_SOLID:
                 $obj = new RectPatternSolid($aColor, $aWeight);
 
                 break;
-            case BAND_VLINE:
+            case Configs::BAND_VLINE:
                 $obj = new RectPatternVert($aColor, $aWeight);
 
                 break;
-            case BAND_HLINE:
+            case Configs::BAND_HLINE:
                 $obj = new RectPatternHor($aColor, $aWeight);
 
                 break;
-            case BAND_3DPLANE:
+            case Configs::BAND_3DPLANE:
                 $obj = new RectPattern3DPlane($aColor, $aWeight);
 
                 break;
-            case BAND_HVCROSS:
+            case Configs::BAND_HVCROSS:
                 $obj = new RectPatternCross($aColor, $aWeight);
 
                 break;
-            case BAND_DIAGCROSS:
+            case Configs::BAND_DIAGCROSS:
                 $obj = new RectPatternDiagCross($aColor, $aWeight);
 
                 break;

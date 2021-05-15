@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -22,10 +22,10 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $graph->SetMargin(40, 20, 20, 60);
-
-$graph->title->Set('Timing a graph');
+$example_title = 'Timing a graph';
+$graph->title->set($example_title);
 $graph->footer->right->Set('Timer (ms): ');
-$graph->footer->right->SetFont(FF_COURIER, FS_ITALIC);
+$graph->footer->right->SetFont(Graph\Configs::getConfig('FF_COURIER'), Graph\Configs::getConfig('FS_ITALIC'));
 $graph->footer->SetTimer($timer);
 
 // Create the linear plot
@@ -40,9 +40,9 @@ $graph->Add($lineplot2);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2);

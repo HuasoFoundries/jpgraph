@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -13,8 +13,6 @@ namespace Amenadiel\JpGraph\Util;
 class Bezier
 {
     /**
-     * @author Thomas Despoix, openXtrem company
-     * @license released under QPL
      * @abstract Bezier interoplated point generation,
      * computed from control points data sets, based on Paul Bourke algorithm :
      * http://local.wasp.uwa.edu.au/~pbourke/geometry/bezier/index2.html
@@ -26,8 +24,8 @@ class Bezier
     public function __construct($datax, $datay, $attraction_factor = 1)
     {
         // Adding control point multiple time will raise their attraction power over the curve
-        $this->n = safe_count($datax);
-        if ($this->n !== safe_count($datay)) {
+        $this->n = Configs::safe_count($datax);
+        if ($this->n !== Configs::safe_count($datay)) {
             JpGraphError::RaiseL(19003);
             //('Bezier: Number of X and Y coordinates must be the same');
         }
@@ -106,10 +104,12 @@ class Bezier
                     $blend /= (float) $kn;
                     --$kn;
                 }
-                if ($nkn > 1) {
-                    $blend /= (float) $nkn;
-                    --$nkn;
+                if ($nkn <= 1) {
+                    continue;
                 }
+
+                $blend /= (float) $nkn;
+                --$nkn;
             }
             $newx += $this->datax[$k] * $blend;
             $newy += $this->datay[$k] * $blend;

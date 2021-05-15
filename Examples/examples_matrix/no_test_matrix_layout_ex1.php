@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,11 +21,12 @@ $data = [
 
 doMeshInterpolate($data, 4);
 
-$__width  = 850;
-$__height = 580;
-$graph    = new MatrixGraph($__width, $__height);
-$graph->title->Set('Matrix layout example');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
+$__width       = 850;
+$__height      = 580;
+$graph         = new MatrixGraph($__width, $__height);
+$example_title = 'Matrix layout example';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 $mp = [];
 $n  = 5;

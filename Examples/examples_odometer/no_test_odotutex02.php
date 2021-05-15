@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,11 +14,11 @@ $__width  = 250;
 $__height = 180;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup titles
-$graph->title->Set('Result for 2002');
+// Setup titles$example_title='Result for 2002'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 14);
-$graph->subtitle->Set('New York Office');
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$subtitle_text = 'New York Office';
+$graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('white');
 $graph->caption->Set('Figure 1. Branch results.');
 $graph->caption->SetColor('white');

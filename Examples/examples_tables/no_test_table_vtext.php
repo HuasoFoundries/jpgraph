@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -26,8 +26,8 @@ $data = [
 $table = new GTextTable();
 $table->Set($data);
 $table->SetAlign('right');
-$table->SetFont(FF_TIMES, FS_NORMAL, 12);
-$table->SetCellFont(0, 0, FF_ARIAL, FS_BOLD, 16);
+$table->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$table->SetCellFont(0, 0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
 
 // Rotate the entire table 90 degrees
 $table->SetTextOrientation(90);

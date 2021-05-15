@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Image;
@@ -10,7 +10,7 @@ namespace Amenadiel\JpGraph\Image;
  * // File:        JPGRAPH_ANTISPAM.PHP
  * // Description: Genarate anti-spam challenge
  * // Created:     2004-10-07
- * // Ver:         $Id: jpgraph_antispam.php 1106 2009-02-22 20:16:35Z ljp $
+ * // Ver:         $Id: jpgraph_antispam.php 1106 2009-02-22 20:16:35Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -63,7 +63,7 @@ class AntiSpam
             }
         }
 
-        $img = @imagecreatetruecolor($n * $this->iDD->iWidth, $this->iDD->iHeight);
+        $img = @imagecreatetruecolor((int) ($n * $this->iDD->iWidth), (int) ($this->iDD->iHeight));
         if ($img < 1) {
             return false;
         }

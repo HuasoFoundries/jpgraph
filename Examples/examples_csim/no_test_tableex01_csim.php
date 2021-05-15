@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -27,11 +27,11 @@ $table->Set($data);
 
 $table->SetCellCSIMTarget(1, 1, 'tableex02.php', 'View details');
 
-$table->SetRowFont(0, FF_FONT1, FS_BOLD);
+$table->SetRowFont(0, Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $table->SetRowColor(0, 'navy');
 $table->SetRowFillColor(0, 'lightgray');
 
-$table->SetColFont(0, FF_FONT1, FS_BOLD);
+$table->SetColFont(0, Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 

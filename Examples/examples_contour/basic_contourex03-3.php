@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // Basic contour plot example
@@ -25,14 +25,13 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intint');
 
 // Show axis on all sides
-$graph->SetAxisStyle(AXSTYLE_BOXOUT);
+$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
 
 // Adjust the margins to fit the margin
 $graph->SetMargin(30, 100, 40, 30);
 
-// Setup
-$graph->title->Set('Basic contour plot with multiple axis');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+// Setup$example_title='Basic contour plot with multiple axis'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 
 // A simple contour plot with default arguments (e.g. 10 isobar lines)
 $cp = new Plot\ContourPlot($data, 10, 3);

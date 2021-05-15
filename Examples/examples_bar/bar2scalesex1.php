@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,12 +13,13 @@ $datay2   = [430, 645, 223, 690];
 $datazero = [0, 0, 0, 0];
 
 // Create the graph.
-$__width  = 450;
-$__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
-$graph->title->Set('Example with 2 scale bars');
+$__width       = 450;
+$__height      = 200;
+$graph         = new Graph\Graph($__width, $__height);
+$example_title = 'Example with 2 scale bars';
+$graph->title->set($example_title);
 
-// Setup Y and Y2 scales with some "grace"
+// Setup Y and Y2 scales with some grace
 $graph->SetScale('textlin');
 $graph->SetY2Scale('lin');
 $graph->yaxis->scale->SetGrace(30);
@@ -31,15 +32,15 @@ $graph->ygrid->SetColor('gray', 'lightgray@0.5');
 $graph->SetMarginColor('white');
 $graph->y2axis->SetColor('darkred');
 
-// Create the "dummy" 0 bplot
+// Create the dummy 0 bplot
 $bplotzero = new Plot\BarPlot($datazero);
 
-// Create the "Y" axis group
+// Create the Y axis group
 $ybplot1 = new Plot\BarPlot($datay);
 $ybplot1->value->Show();
 $ybplot = new Plot\GroupBarPlot([$ybplot1, $bplotzero]);
 
-// Create the "Y2" axis group
+// Create the Y2 axis group
 $ybplot2 = new Plot\BarPlot($datay2);
 $ybplot2->value->Show();
 $ybplot2->value->SetColor('darkred');

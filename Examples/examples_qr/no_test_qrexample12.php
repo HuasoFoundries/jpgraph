@@ -1,24 +1,24 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Example 11 : Generate postscript output
 
-$data         = 'ABCDEFGH01234567'; // Data to be encoded
-$version      = -1;  // -1 = Let the library decide version (same as default)
-$corrlevel    = QRCapacity::ErrH; // Error correction level H (Highest possible)
-$modulewidth  = 1;
+$data        = 'ABCDEFGH01234567'; // Data to be encoded
+$version     = -1; // -1 = Let the library decide version (same as default)
+$corrlevel   = QRCapacity::ErrH; // Error correction level H (Highest possible)
+$modulewidth = 1;
 
 // Create a new instance of the encoder using the specified
 // QR version and error correction
 $encoder = new QREncoder($version, $corrlevel);
 
 // Use the image backend
-$backend = QRCodeBackendFactory::Create($encoder, BACKEND_ASCII);
+$backend = QRCodeBackendFactory::Create($encoder, Graph\Configs::getConfig('BACKEND_ASCII'));
 
 // Set the module size
 $backend->SetModuleWidth($modulewidth);

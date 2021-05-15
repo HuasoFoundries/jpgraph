@@ -1,25 +1,61 @@
-testTabtitlefileiterator:
-    tabtitleex1.php: { width: 300, height: 200, title: tabtitleFileIterator, filename: tabtitleex1.php }
-testBuiltinplotmarksfileiterator:
-    builtinplotmarksex1.php: { width: 350, height: 200, title: builtinplotmarksFileIterator, filename: builtinplotmarksex1.php }
+testAddingalineplottoabargraph:
+    linebarcentex1.php: { width: 400, height: 200, title: 'Adding a line plot to a bar graph v1', filename: linebarcentex1.php, example_root: ./Examples/examples_line/ }
+testBuiltinplotmarks:
+    builtinplotmarksex1.php: { width: 350, height: 200, title: 'BuiltIn Plot Marks ', filename: builtinplotmarksex1.php, example_root: ./Examples/examples_line/ }
+testCashFlow:
+    staticlinebarex1.php: { width: 400, height: 300, title: 'Cash flow ', filename: staticlinebarex1.php, example_root: ./Examples/examples_line/ }    
+testCenterTheLinePointsInBars:
+    centerlinebarex1.php: { width: 400, height: 200, title: 'Center the line points in bars', filename: centerlinebarex1.php, example_root: ./Examples/examples_line/ }
+testCombinedBarAndLinePlot:
+    linebarex1.php: { width: 450, height: 300, title: 'Combined bar and line plot', filename: linebarex1.php, example_root: ./Examples/examples_line/ }
+    linebarex2.php: { width: 450, height: 300, title: 'Combined bar and line plot', filename: linebarex2.php, example_root: ./Examples/examples_line/ }
+    linebarex3.php: { width: 450, height: 300, title: 'Combined bar and line plot', filename: linebarex3.php, example_root: ./Examples/examples_line/ }
+testEducationGrowth:
+    lineimagefillex1.php: { width: 320, height: 200, title: 'Education growth', filename: lineimagefillex1.php, example_root: ./Examples/examples_line/ }
+testExampleOf10TopBottomGrace:
+    linegraceex.php: { width: 300, height: 200, title: 'Example of 10% top/bottom grace', filename: linegraceex.php, example_root: ./Examples/examples_line/ }
+testExampleOfFilledLineCenteredPlot:
+    centeredlineex02.php: { width: 300, height: 200, title: 'Example of filled line centered plot', filename: centeredlineex02.php, example_root: ./Examples/examples_line/ }
+testExampleOfFilledLinePlot:
+    filledlineex01.1.php: { width: 300, height: 200, title: 'Example of filled line plot', filename: filledlineex01.1.php, example_root: ./Examples/examples_line/ }
+    filledlineex01.php: { width: 300, height: 200, title: 'Example of filled line plot', filename: filledlineex01.php, example_root: ./Examples/examples_line/ }
+    filledlineex02.php: { width: 300, height: 200, title: 'Example of filled line plot', filename: filledlineex02.php, example_root: ./Examples/examples_line/ }
+testExampleOfLineCenteredPlot:
+    centeredlineex01.php: { width: 300, height: 200, title: 'Example of line centered plot', filename: centeredlineex01.php, example_root: ./Examples/examples_line/ }
+testExampleOnTimestampCallback:
+    timestampex01.php: { width: 500, height: 250, title: 'Example on TimeStamp Callback', filename: timestampex01.php, example_root: ./Examples/examples_line/ }
+testExampleSlantedXLabels:
+    centeredlineex03.php: { width: 300, height: 250, title: 'Example slanted X-labels', filename: centeredlineex03.php, example_root: ./Examples/examples_line/ }
+testFilledLineWithNullValues:
+    filledlineex03.php: { width: 400, height: 250, title: 'Filled line with NULL values', filename: filledlineex03.php, example_root: ./Examples/examples_line/ }
+testFilledYGrid:
+    filledgridex1.php: { width: 300, height: 200, title: 'Filled Y-grid', filename: filledgridex1.php, example_root: ./Examples/examples_line/ }
 testFuncfileiterator:
-    funcex3.php: { width: 350, height: 430, title: funcFileIterator, filename: funcex3.php }
-    funcex2.php: { width: 380, height: 450, title: funcFileIterator, filename: funcex2.php }
-    funcex1.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex1.php }
-    funcex4.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex4.php }
-testNullvaluefileiterator:
-    nullvalueex01.php: { width: 400, height: 250, title: nullvalueFileIterator, filename: nullvalueex01.php }
-testLinlogfileiterator:
-    linlogex1.php: { width: 500, height: 300, title: linlogFileIterator, filename: linlogex1.php }
-testLinebarfileiterator:
-    linebarex2.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex2.php }
-    linebarex3.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex3.php }
-    linebarex1.php: { width: 450, height: 300, title: linebarFileIterator, filename: linebarex1.php }
-testPartiallyfilledlinefileiterator:
-    partiallyfilledlineex1.php: { width: 400, height: 300, title: partiallyfilledlineFileIterator, filename: partiallyfilledlineex1.php }
-testCenteredlinefileiterator:
-    centeredlineex01.php: { width: 300, height: 200, title: centeredlineFileIterator, filename: centeredlineex01.php }
-    centeredlineex02.php: { width: 300, height: 200, title: centeredlineFileIterator, filename: centeredlineex02.php }
+    funcex1.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex1.php, example_root: ./Examples/examples_line/ }
+    funcex4.php: { width: 450, height: 350, title: funcFileIterator, filename: funcex4.php, example_root: ./Examples/examples_line/ }
+testFunctionPlot:
+    funcex3.php: { width: 350, height: 430, title: 'Function plot', filename: funcex3.php, example_root: ./Examples/examples_line/ }
+testFunctionPlotWithMarker:
+    funcex2.php: { width: 380, height: 450, title: 'Function plot with marker', filename: funcex2.php, example_root: ./Examples/examples_line/ }
+    gradbkgex1.php: { width: 300, height: 200, title: gradbkgFileIterator, filename: gradbkgex1.php, example_root: ./Examples/examples_line/ }
+testGradientFilledLinePlot:
+    gradlinefillex1.php: { width: 400, height: 200, title: 'Gradient filled line plot', filename: gradlinefillex1.php, example_root: ./Examples/examples_line/ }
+    linlogex1.php: { width: 500, height: 300, title: linlogFileIterator, filename: linlogex1.php, example_root: ./Examples/examples_line/ }
+testManualScale:
+    clipping_ex1.php: { width: 300, height: 250, title: 'Manual scale', filename: clipping_ex1.php, example_root: ./Examples/examples_line/ }
+    clipping_ex2.php: { width: 300, height: 250, title: 'Manual scale', filename: clipping_ex2.php, example_root: ./Examples/examples_line/ }
+    manscaleex1.php: { width: 220, height: 170, title: 'Manual scale, manual ticks', filename: manscaleex1.php, example_root: ./Examples/examples_line/ }
+    manscaleex2.php: { width: 220, height: 170, title: 'Manual scale, exact limits', filename: manscaleex2.php, example_root: ./Examples/examples_line/ }
+    manscaleex3.php: { width: 250, height: 170, title: 'Manual scale, auto ticks', filename: manscaleex3.php, example_root: ./Examples/examples_line/ }
+    manscaleex4.php: { width: 220, height: 200, title: 'Manual scale, allow adjustment', filename: manscaleex4.php, example_root: ./Examples/examples_line/ }
+testNaturalCubicSplines:
+    splineex1.php: { width: 300, height: 200, title: 'Natural cubic splines', filename: splineex1.php, example_root: ./Examples/examples_line/ }
+testStepStyledExample:
+    filledstepstyleex1.php: { width: 400, height: 250, title: 'Step Styled Example', filename: filledstepstyleex1.php, example_root: ./Examples/examples_line/ }
+testTabtitlefileiterator:
+    tabtitleex1.php: { width: 300, height: 200, title: tabtitleFileIterator, filename: tabtitleex1.php, example_root: ./Examples/examples_line/ }
+testTheTitle:
+    titleex1.php: { width: 200, height: 150, title: 'The Title', filename: titleex1.php, example_root: ./Examples/examples_line/ }
     centeredlineex03.php: { width: 300, height: 250, title: centeredlineFileIterator, filename: centeredlineex03.php }
 testCenterlinebarfileiterator:
     centerlinebarex1.php: { width: 400, height: 200, title: centerlinebarFileIterator, filename: centerlinebarex1.php }

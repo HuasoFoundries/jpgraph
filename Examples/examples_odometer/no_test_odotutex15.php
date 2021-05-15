@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,10 +14,9 @@ $__width  = 250;
 $__height = 170;
 $graph    = new OdoGraph($__width, $__height);
 
-// Setup graph titles
-$graph->title->Set('Custom formatting');
+// Setup graph titles$example_title='Custom formatting'; $graph->title->set($example_title);
 $graph->title->SetColor('white');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Add drop shadow for graph
 $graph->SetShadow();
@@ -34,9 +33,9 @@ $odo->scale->SetTickLength(0.05);
 $odo->scale->SetTickWeight(2);
 
 $odo->scale->SetLabelPos(0.75);
-$odo->scale->label->SetFont(FF_FONT1, FS_BOLD);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $odo->scale->label->SetColor('brown');
-$odo->scale->label->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$odo->scale->label->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 
 // Setup a label with a degree mark
 $odo->scale->SetLabelFormat('%dC' . SymChar::Get('degree'));

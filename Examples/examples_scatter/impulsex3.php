@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -29,9 +29,9 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetShadow();
 $graph->SetBox();
-
-$graph->title->Set('Impuls Example 3');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
+$example_title = 'Impuls Example 3';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Set format callback for labels
 $graph->yaxis->SetLabelFormatCallback('mycallback');
@@ -43,12 +43,12 @@ $graph->xaxis->SetPos('min'); // "min" will position the x-axis at the minimum v
 // of the ticks on the Y-axis
 $graph->yaxis->SetLabelMargin(12);
 $graph->xaxis->SetLabelMargin(6);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
-$graph->xaxis->SetTickSide(SIDE_DOWN);
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
 
-// Create a new impuls type scatter plot
+// Create a new impulse type scatter plot
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(MARK_SQUARE);
+$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
 $sp1->mark->SetFillColor('red');
 $sp1->SetImpuls();
 $sp1->SetColor('blue');

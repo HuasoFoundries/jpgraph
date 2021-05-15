@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 /**
  * // File: IMGDATA_PUSHPINS.INC
  * // Description: Base64 encoded images for pushpins
  * // Created:  2003-03-20
- * // Ver:  $Id: imgdata_pushpins.inc.php 1106 2009-02-22 20:16:35Z ljp $
+ * // Ver:  $Id: imgdata_pushpins.inc.php 1106 2009-02-22 20:16:35Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -18,9 +18,11 @@ namespace Amenadiel\JpGraph\Image;
 class ImgData_PushPins extends ImgData
 {
     protected $name = 'Push pins';
-    protected $an   = [MARK_IMG_PUSHPIN     => 'imgdata_small',
-        MARK_IMG_SPUSHPIN                   => 'imgdata_small',
-        MARK_IMG_LPUSHPIN                   => 'imgdata_large', ];
+    protected $an   = [
+        Configs::MARK_IMG_PUSHPIN  => 'imgdata_small',
+        Configs::MARK_IMG_SPUSHPIN => 'imgdata_small',
+        Configs::MARK_IMG_LPUSHPIN => 'imgdata_large',
+    ];
 
     protected $colors = ['blue', 'green', 'orange', 'pink', 'red'];
     protected $index  = ['red' => 0, 'orange' => 1, 'pink' => 2, 'blue' => 3, 'green' => 4];

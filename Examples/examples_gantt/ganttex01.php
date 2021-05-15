@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,30 +12,32 @@ $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 
 // Add title and subtitle
-$graph->title->Set('A main title');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->subtitle->Set('(Draft version)');
+$example_title = 'A main title';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$subtitle_text = '(Draft version)';
+$graph->subtitle->Set($subtitle_text);
 
 // Show day, week and month scale
-$graph->ShowHeaders(GANTT_HDAY | GANTT_HWEEK | GANTT_HMONTH);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK') | Graph\Configs::getConfig('GANTT_HMONTH'));
 
 // Instead of week number show the date for the first day in the week
 // on the week scale
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAY'));
 
 // Make the week scale font smaller than the default
-$graph->scale->week->SetFont(FF_FONT0);
+$graph->scale->week->SetFont(Graph\Configs::getConfig('FF_FONT0'));
 
 // Use the short name of the month together with a 2 digit year
 // on the month scale
-$graph->scale->month->SetStyle(MONTHSTYLE_SHORTNAMEYEAR2);
+$graph->scale->month->SetStyle(Graph\Configs::getConfig('MONTHSTYLE_SHORTNAMEYEAR2'));
 
 // Format the bar for the first activity
 // ($row,$title,$startdate,$enddate)
 $activity = new Plot\GanttBar(0, 'Activity 1', '2001-12-21', '2002-01-18');
 
 // Yellow diagonal line pattern on a red background
-$activity->SetPattern(BAND_LDIAG, 'yellow');
+$activity->SetPattern(Graph\Configs::getConfig('BAND_LDIAG'), 'yellow');
 $activity->SetFillColor('red');
 
 // Finally add the bar to the graph

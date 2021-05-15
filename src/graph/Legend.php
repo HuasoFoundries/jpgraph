@@ -1,16 +1,28 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
+use function array_reverse;
+use function ceil;
+use function define;
+use function defined;
+use function htmlentities;
+use function is_array;
+use function is_string;
+use function max;
+use function min;
+use function preg_match;
+use function round;
+use function sprintf;
 
 /*
- * File:        JPGRAPH_LEGEND.INC.PHP
+ * File:        ..self::PHP
  * // Description: Class to handle the legend box in the graph that gives
  * //              names on the data series. The number of rows and columns
  * //              in the legend are user specifyable.
@@ -26,18 +38,18 @@ defined('_DEFAULT_LPM_SIZE') || define('_DEFAULT_LPM_SIZE', 8); // Default Legen
  * // Description: Responsible for drawing the box containing
  * // all the legend text for the graph
  */
-class Legend
+class Legend extends Configs
 {
     public $txtcol          = [];
-    public $font_family     = FF_DEFAULT;
-    public $font_style      = FS_NORMAL;
+    public $font_family     = Configs::FF_DEFAULT;
+    public $font_style      = Configs::FS_NORMAL;
     public $font_size       = 8; // old. 12
     private $color          = [120, 120, 120]; // Default frame color
     private $fill_color     = [245, 245, 245]; // Default fill color
     private $shadow         = false; // Shadow around legend "box"
     private $shadow_color   = 'darkgray';
-    private $mark_abs_hsize = _DEFAULT_LPM_SIZE;
-    private $mark_abs_vsize = _DEFAULT_LPM_SIZE;
+    private $mark_abs_hsize = Configs::_DEFAULT_LPM_SIZE;
+    private $mark_abs_vsize = Configs::_DEFAULT_LPM_SIZE;
     private $xmargin        = 10;
     private $ymargin        = 0;
     private $shadow_width   = 2;
@@ -65,7 +77,7 @@ class Legend
     private $bkg_gradto   = 'gray';
 
     /**
-     * CONSTRUCTOR.
+     * .
      */
     public function __construct()
     {
@@ -73,7 +85,7 @@ class Legend
     }
 
     /**
-     * PUBLIC METHODS.
+     * Configs::getConfig('PUBLIC') .
      *
      * @param mixed $aHide
      */
@@ -140,9 +152,9 @@ class Legend
         $this->frameweight = $aWeight;
     }
 
-    public function SetLayout($aDirection = LEGEND_VERT)
+    public function SetLayout($aDirection = Configs::LEGEND_VERT)
     {
-        $this->layout_n = $aDirection == LEGEND_VERT ? 1 : 99;
+        $this->layout_n = $aDirection == Configs::getConfig('LEGEND_VERT') ? 1 : 99;
     }
 
     public function SetColumns($aCols)
@@ -162,7 +174,7 @@ class Legend
         $this->color      = $aColor;
     }
 
-    public function SetFont($aFamily, $aStyle = FS_NORMAL, $aSize = 10)
+    public function SetFont($aFamily, $aStyle = Configs::FS_NORMAL, $aSize = 10)
     {
         $this->font_family = $aFamily;
         $this->font_style  = $aStyle;
@@ -222,7 +234,7 @@ class Legend
 
     public function HasItems()
     {
-        return (bool) (safe_count($this->txtcol));
+        return (bool) (Configs::safe_count($this->txtcol));
     }
 
     public function Stroke($aImg)
@@ -240,7 +252,7 @@ class Legend
             $this->txtcol = array_reverse($this->txtcol);
         }
 
-        $n = safe_count($this->txtcol);
+        $n = Configs::safe_count($this->txtcol);
         if ($n == 0) {
             return;
         }
@@ -378,13 +390,13 @@ class Legend
         // p[1] = Color,
         // p[2] = For markers a reference to the PlotMark object
         // p[3] = For lines the line style, for gradient the negative gradient style
-        // p[4] = CSIM target
-        // p[5] = CSIM Alt text
+        // p[4] = Configs::getConfig('CSIM') target
+        // p[5] = Configs::getConfig('CSIM') Alt text
         $i   = 1;
         $row = 0;
         foreach ($this->txtcol as $p) {
-            // STROKE DEBUG BOX
-            if (_JPG_DEBUG) {
+            // Configs::getConfig('STROKE') Configs::getConfig('DEBUG') self::BOX
+            if (Configs::_JPG_DEBUG) {
                 $aImg->SetLineWeight(1);
                 $aImg->SetColor('red');
                 $aImg->SetLineStyle('solid');
@@ -429,13 +441,13 @@ class Legend
                 }
 
                 // Stroke a mark using image
-                if ($p[2]->GetType() == MARK_IMG) {
+                if ($p[2]->GetType() == Configs::getConfig('MARK_IMG')) {
                     $p[2]->Stroke($aImg, $x1, $marky);
                 }
 
                 // Stroke a mark with the standard size
                 // (As long as it is not an image mark )
-                if ($p[2]->GetType() != MARK_IMG) {
+                if ($p[2]->GetType() != Configs::getConfig('MARK_IMG')) {
                     // Clear any user callbacks since we ont want them called for
                     // the legend marks
                     $p[2]->iFormatCallback  = '';
@@ -444,7 +456,7 @@ class Legend
                     // Since size for circles is specified as the radius
                     // this means that we must half the size to make the total
                     // width behave as the other marks
-                    if ($p[2]->GetType() == MARK_FILLEDCIRCLE || $p[2]->GetType() == MARK_CIRCLE) {
+                    if ($p[2]->GetType() == Configs::getConfig('MARK_FILLEDCIRCLE') || $p[2]->GetType() == Configs::getConfig('MARK_CIRCLE')) {
                         $p[2]->SetSize(min($this->mark_abs_vsize, $this->mark_abs_hsize) / 2);
                         $p[2]->Stroke($aImg, $x1, $marky);
                     } else {
@@ -482,7 +494,7 @@ class Legend
                     $prect->Stroke($aImg);
                     $prect = null;
                 } else {
-                    if (is_array($color) && safe_count($color) == 2) {
+                    if (is_array($color) && Configs::safe_count($color) == 2) {
                         // The client want a gradient color
                         $grad->FilledRectangle(
                             $x1 - $boxsize / 2,
@@ -523,7 +535,7 @@ class Legend
                 $debug
             );
 
-            // Add CSIM for Legend if defined
+            // Add Configs::getConfig('CSIM') for Legend if defined
             if (!empty($p[4])) {
                 $xs     = $x1 - $this->mark_abs_hsize;
                 $ys     = $y1 + 1;
@@ -559,4 +571,6 @@ class Legend
             }
         }
     }
-} // @class
+}
+
+// @class

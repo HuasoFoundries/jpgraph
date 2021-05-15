@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -44,15 +44,16 @@ class ColorFactory
         'peru',
         'slategray',
         'yellow4',
-        'springgreen2', ];
-    private static $iNum = 33;
+        'springgreen2',
+    ];
+    private static $iNum       = 33;
 
     public static function getColor()
     {
-        if (ColorFactory::$iIdx >= ColorFactory::$iNum) {
-            ColorFactory::$iIdx = 0;
+        if (self::$iIdx >= self::$iNum) {
+            self::$iIdx = 0;
         }
 
-        return ColorFactory::$iColorList[ColorFactory::$iIdx++];
+        return self::$iColorList[self::$iIdx++];
     }
 }

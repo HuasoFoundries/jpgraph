@@ -1,13 +1,16 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
+use function is_string;
+use function substr;
+use function var_export;
 
 /**
  * @class GanttPlotObject
@@ -68,7 +71,7 @@ class GanttPlotObject
         $this->csimalt = $aAlt;
     }
 
-    public function SetConstrain($aRow, $aType, $aColor = 'black', $aArrowSize = ARROW_S2, $aArrowType = ARROWT_SOLID)
+    public function SetConstrain($aRow, $aType, $aColor = 'black', $aArrowSize = Configs::ARROW_S2, $aArrowType = Configs::ARROWT_SOLID)
     {
         $this->constraints[] = new Util\GanttConstraint($aRow, $aType, $aColor, $aArrowSize, $aArrowType);
     }

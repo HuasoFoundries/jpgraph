@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -26,238 +26,278 @@ class TTF
         dirname(__DIR__) . '/fonts/';
         // String names for font styles to be used in error messages
         $this->style_names = [
-            FS_NORMAL     => 'normal',
-            FS_BOLD       => 'bold',
-            FS_ITALIC     => 'italic',
-            FS_BOLDITALIC => 'bolditalic',
+            Configs::FS_NORMAL     => 'normal',
+            Configs::FS_BOLD       => 'bold',
+            Configs::FS_ITALIC     => 'italic',
+            Configs::FS_BOLDITALIC => 'bolditalic',
         ];
 
         // File names for available fonts
         $this->font_files = [
-            FF_COURIER          => [
-                FS_NORMAL     => 'cour.ttf',
-                FS_BOLD       => 'courbd.ttf',
-                FS_ITALIC     => 'couri.ttf',
-                FS_BOLDITALIC => 'courbi.ttf',
+            Configs::FF_COURIER          => [
+                Configs::FS_NORMAL     => 'cour.ttf',
+                Configs::FS_BOLD       => 'courbd.ttf',
+                Configs::FS_ITALIC     => 'couri.ttf',
+                Configs::FS_BOLDITALIC => 'courbi.ttf',
             ],
-            FF_GEORGIA          => [
-                FS_NORMAL     => 'georgia.ttf',
-                FS_BOLD       => 'georgiab.ttf',
-                FS_ITALIC     => 'georgiai.ttf',
-                FS_BOLDITALIC => '',
+            Configs::FF_GEORGIA          => [
+                Configs::FS_NORMAL     => 'georgia.ttf',
+                Configs::FS_BOLD       => 'georgiab.ttf',
+                Configs::FS_ITALIC     => 'georgiai.ttf',
+                Configs::FS_BOLDITALIC => '',
             ],
-            FF_TREBUCHE         => [
-                FS_NORMAL     => 'trebuc.ttf',
-                FS_BOLD       => 'trebucbd.ttf',
-                FS_ITALIC     => 'trebucit.ttf',
-                FS_BOLDITALIC => 'trebucbi.ttf',
+            Configs::FF_TREBUCHE         => [
+                Configs::FS_NORMAL     => 'trebuc.ttf',
+                Configs::FS_BOLD       => 'trebucbd.ttf',
+                Configs::FS_ITALIC     => 'trebucit.ttf',
+                Configs::FS_BOLDITALIC => 'trebucbi.ttf',
             ],
-            FF_VERDANA          => [
-                FS_NORMAL     => 'verdana.ttf',
-                FS_BOLD       => 'verdanab.ttf',
-                FS_ITALIC     => 'verdanai.ttf',
-                FS_BOLDITALIC => '',
+            Configs::FF_VERDANA          => [
+                Configs::FS_NORMAL     => 'verdana.ttf',
+                Configs::FS_BOLD       => 'verdanab.ttf',
+                Configs::FS_ITALIC     => 'verdanai.ttf',
+                Configs::FS_BOLDITALIC => '',
             ],
-            FF_TIMES            => [
-                FS_NORMAL     => 'times.ttf',
-                FS_BOLD       => 'timesbd.ttf',
-                FS_ITALIC     => 'timesi.ttf',
-                FS_BOLDITALIC => 'timesbi.ttf',
+            Configs::FF_TIMES            => [
+                Configs::FS_NORMAL     => 'times.ttf',
+                Configs::FS_BOLD       => 'timesbd.ttf',
+                Configs::FS_ITALIC     => 'timesi.ttf',
+                Configs::FS_BOLDITALIC => 'timesbi.ttf',
             ],
-            FF_COMIC            => [
-                FS_NORMAL     => 'comic.ttf',
-                FS_BOLD       => 'comicbd.ttf',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_COMIC            => [
+                Configs::FS_NORMAL     => 'comic.ttf',
+                Configs::FS_BOLD       => 'comicbd.ttf',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
-            /*FF_ARIAL => array(FS_NORMAL => 'arial.ttf',
-            FS_BOLD => 'arialbd.ttf',
-            FS_ITALIC => 'ariali.ttf',
-            FS_BOLDITALIC => 'arialbi.ttf'),
+            /*Configs::FF_ARIAL => array(Configs::FS_NORMAL => 'arial.ttf',
+            Configs::FS_BOLD => 'arialbd.ttf',
+            Configs::FS_ITALIC => 'ariali.ttf',
+            Configs::FS_BOLDITALIC => 'arialbi.ttf'),
              */
-            FF_ARIAL            => [
-                FS_NORMAL     => 'arial.ttf',
-                FS_BOLD       => 'msttcorefonts/Arial_Black.ttf',
-                FS_ITALIC     => 'ariali.ttf',
-                FS_BOLDITALIC => 'arialbi.ttf',
+            Configs::FF_ARIAL            => [
+                Configs::FS_NORMAL     => 'arial.ttf',
+                Configs::FS_BOLD       => 'msttcorefonts/Arial_Black.ttf',
+                Configs::FS_ITALIC     => 'ariali.ttf',
+                Configs::FS_BOLDITALIC => 'arialbi.ttf',
             ],
-            FF_VERA             => [
-                FS_NORMAL     => 'Vera.ttf',
-                FS_BOLD       => 'VeraBd.ttf',
-                FS_ITALIC     => 'VeraIt.ttf',
-                FS_BOLDITALIC => 'VeraBI.ttf',
+            Configs::FF_VERA             => [
+                Configs::FS_NORMAL     => 'Vera.ttf',
+                Configs::FS_BOLD       => 'VeraBd.ttf',
+                Configs::FS_ITALIC     => 'VeraIt.ttf',
+                Configs::FS_BOLDITALIC => 'VeraBI.ttf',
             ],
-            FF_VERAMONO         => [
-                FS_NORMAL     => 'VeraMono.ttf',
-                FS_BOLD       => 'VeraMoBd.ttf',
-                FS_ITALIC     => 'VeraMoIt.ttf',
-                FS_BOLDITALIC => 'VeraMoBI.ttf',
+            Configs::FF_VERAMONO         => [
+                Configs::FS_NORMAL     => 'VeraMono.ttf',
+                Configs::FS_BOLD       => 'VeraMoBd.ttf',
+                Configs::FS_ITALIC     => 'VeraMoIt.ttf',
+                Configs::FS_BOLDITALIC => 'VeraMoBI.ttf',
             ],
-            FF_VERASERIF        => [
-                FS_NORMAL     => 'VeraSe.ttf',
-                FS_BOLD       => 'VeraSeBd.ttf',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_VERASERIF        => [
+                Configs::FS_NORMAL     => 'VeraSe.ttf',
+                Configs::FS_BOLD       => 'VeraSeBd.ttf',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
             /* Chinese fonts */
-            FF_SIMSUN           => [
-                FS_NORMAL     => 'simsun.ttc',
-                FS_BOLD       => 'simhei.ttf',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_SIMSUN           => [
+                Configs::FS_NORMAL     => 'simsun.ttc',
+                Configs::FS_BOLD       => 'simhei.ttf',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
-            FF_CHINESE          => [
-                FS_NORMAL     => CHINESE_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_CHINESE          => [
+                Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
-            FF_BIG5             => [
-                FS_NORMAL     => CHINESE_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_BIG5             => [
+                Configs::FS_NORMAL     => Configs::CHINESE_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
             /* Japanese fonts */
-            FF_MINCHO           => [
-                FS_NORMAL     => MINCHO_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_MINCHO           => [
+                Configs::FS_NORMAL     => Configs::MINCHO_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_PMINCHO          => [
-                FS_NORMAL     => PMINCHO_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_PMINCHO          => [
+                Configs::FS_NORMAL     => Configs::PMINCHO_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_GOTHIC           => [
-                FS_NORMAL     => GOTHIC_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_GOTHIC           => [
+                Configs::FS_NORMAL     => Configs::GOTHIC_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_PGOTHIC          => [
-                FS_NORMAL     => PGOTHIC_TTF_FONT,
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_PGOTHIC          => [
+                Configs::FS_NORMAL     => Configs::PGOTHIC_TTF_FONT,
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
             /* Hebrew fonts */
-            FF_DAVID            => [
-                FS_NORMAL     => 'DAVIDNEW.TTF',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_DAVID            => [
+                Configs::FS_NORMAL     => 'DAVIDNEW.TTF',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_MIRIAM           => [
-                FS_NORMAL     => 'MRIAMY.TTF',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_MIRIAM           => [
+                Configs::FS_NORMAL     => 'MRIAMY.TTF',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_AHRON            => [
-                FS_NORMAL     => 'ahronbd.ttf',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_AHRON            => [
+                Configs::FS_NORMAL     => 'ahronbd.ttf',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
             /* Misc fonts */
-            FF_DIGITAL          => [
-                FS_NORMAL     => 'DIGIRU__.TTF',
-                FS_BOLD       => 'Digirtu_.ttf',
-                FS_ITALIC     => 'Digir___.ttf',
-                FS_BOLDITALIC => 'DIGIRT__.TTF',
+            Configs::FF_DIGITAL          => [
+                Configs::FS_NORMAL     => 'DIGIRU__.TTF',
+                Configs::FS_BOLD       => 'Digirtu_.ttf',
+                Configs::FS_ITALIC     => 'Digir___.ttf',
+                Configs::FS_BOLDITALIC => 'DIGIRT__.TTF',
             ],
 
             /* This is an experimental font for the speedometer development
-            FF_SPEEDO =>    array(
-            FS_NORMAL =>'Speedo.ttf',
-            FS_BOLD =>'',
-            FS_ITALIC =>'',
-            FS_BOLDITALIC =>''
+            Configs::FF_SPEEDO =>    array(
+            Configs::FS_NORMAL =>'Speedo.ttf',
+            Configs::FS_BOLD =>'',
+            Configs::FS_ITALIC =>'',
+            Configs::FS_BOLDITALIC =>''
             ),
              */
 
-            FF_COMPUTER         => [
-                FS_NORMAL     => 'COMPUTER.TTF',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_COMPUTER         => [
+                Configs::FS_NORMAL     => 'COMPUTER.TTF',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_CALCULATOR       => [
-                FS_NORMAL     => 'Triad_xs.ttf',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_CALCULATOR       => [
+                Configs::FS_NORMAL     => 'Triad_xs.ttf',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
             /* Dejavu fonts */
-            FF_DV_SANSSERIF     => [
-                FS_NORMAL     => ['DejaVuSans.ttf'],
-                FS_BOLD       => ['DejaVuSans-Bold.ttf', 'DejaVuSansBold.ttf'],
-                FS_ITALIC     => ['DejaVuSans-Oblique.ttf', 'DejaVuSansOblique.ttf'],
-                FS_BOLDITALIC => ['DejaVuSans-BoldOblique.ttf', 'DejaVuSansBoldOblique.ttf'],
+            Configs::FF_DV_SANSSERIF     => [
+                Configs::FS_NORMAL     => [
+                    'DejaVuSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSans-Bold.ttf', 'DejaVuSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSans-Oblique.ttf', 'DejaVuSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSans-BoldOblique.ttf', 'DejaVuSansBoldOblique.ttf',
+                ],
             ],
 
-            FF_DV_SANSSERIFMONO => [
-                FS_NORMAL     => ['DejaVuSansMono.ttf', 'DejaVuMonoSans.ttf'],
-                FS_BOLD       => ['DejaVuSansMono-Bold.ttf', 'DejaVuMonoSansBold.ttf'],
-                FS_ITALIC     => ['DejaVuSansMono-Oblique.ttf', 'DejaVuMonoSansOblique.ttf'],
-                FS_BOLDITALIC => ['DejaVuSansMono-BoldOblique.ttf', 'DejaVuMonoSansBoldOblique.ttf'],
+            Configs::FF_DV_SANSSERIFMONO => [
+                Configs::FS_NORMAL     => [
+                    'DejaVuSansMono.ttf', 'DejaVuMonoSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSansMono-Bold.ttf', 'DejaVuMonoSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSansMono-Oblique.ttf', 'DejaVuMonoSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSansMono-BoldOblique.ttf', 'DejaVuMonoSansBoldOblique.ttf',
+                ],
             ],
 
-            FF_DV_SANSSERIFCOND => [
-                FS_NORMAL     => ['DejaVuSansCondensed.ttf', 'DejaVuCondensedSans.ttf'],
-                FS_BOLD       => ['DejaVuSansCondensed-Bold.ttf', 'DejaVuCondensedSansBold.ttf'],
-                FS_ITALIC     => ['DejaVuSansCondensed-Oblique.ttf', 'DejaVuCondensedSansOblique.ttf'],
-                FS_BOLDITALIC => ['DejaVuSansCondensed-BoldOblique.ttf', 'DejaVuCondensedSansBoldOblique.ttf'],
+            Configs::FF_DV_SANSSERIFCOND => [
+                Configs::FS_NORMAL     => [
+                    'DejaVuSansCondensed.ttf', 'DejaVuCondensedSans.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSansCondensed-Bold.ttf', 'DejaVuCondensedSansBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSansCondensed-Oblique.ttf', 'DejaVuCondensedSansOblique.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSansCondensed-BoldOblique.ttf', 'DejaVuCondensedSansBoldOblique.ttf',
+                ],
             ],
 
-            FF_DV_SERIF         => [
-                FS_NORMAL     => ['DejaVuSerif.ttf'],
-                FS_BOLD       => ['DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf'],
-                FS_ITALIC     => ['DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf'],
-                FS_BOLDITALIC => ['DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf'],
+            Configs::FF_DV_SERIF         => [
+                Configs::FS_NORMAL     => [
+                    'DejaVuSerif.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSerif-Bold.ttf', 'DejaVuSerifBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSerif-Italic.ttf', 'DejaVuSerifItalic.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSerif-BoldItalic.ttf', 'DejaVuSerifBoldItalic.ttf',
+                ],
             ],
 
-            FF_DV_SERIFCOND     => [
-                FS_NORMAL     => ['DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf'],
-                FS_BOLD       => ['DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf'],
-                FS_ITALIC     => ['DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf'],
-                FS_BOLDITALIC => ['DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf'],
+            Configs::FF_DV_SERIFCOND     => [
+                Configs::FS_NORMAL     => [
+                    'DejaVuSerifCondensed.ttf', 'DejaVuCondensedSerif.ttf',
+                ],
+                Configs::FS_BOLD       => [
+                    'DejaVuSerifCondensed-Bold.ttf', 'DejaVuCondensedSerifBold.ttf',
+                ],
+                Configs::FS_ITALIC     => [
+                    'DejaVuSerifCondensed-Italic.ttf', 'DejaVuCondensedSerifItalic.ttf',
+                ],
+                Configs::FS_BOLDITALIC => [
+                    'DejaVuSerifCondensed-BoldItalic.ttf', 'DejaVuCondensedSerifBoldItalic.ttf',
+                ],
             ],
 
             /* Placeholders for defined fonts */
-            FF_USERFONT1        => [
-                FS_NORMAL     => '',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_USERFONT1        => [
+                Configs::FS_NORMAL     => '',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_USERFONT2        => [
-                FS_NORMAL     => '',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_USERFONT2        => [
+                Configs::FS_NORMAL     => '',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
 
-            FF_USERFONT3        => [
-                FS_NORMAL     => '',
-                FS_BOLD       => '',
-                FS_ITALIC     => '',
-                FS_BOLDITALIC => '',
+            Configs::FF_USERFONT3        => [
+                Configs::FS_NORMAL     => '',
+                Configs::FS_BOLD       => '',
+                Configs::FS_ITALIC     => '',
+                Configs::FS_BOLDITALIC => '',
             ],
         ];
     }
@@ -276,11 +316,12 @@ class TTF
     private static function getFullPathIfExists($font_file, $font_path = '')
     {
         $full_path = sprintf('%s%s', $font_path, $font_file);
+        //kdump($full_path);
 
         if (file_exists($full_path) && is_readable($full_path)) {
             return $full_path;
         }
-        // kdump('Not found: ' . $font_path);
+
         return false;
     }
 
@@ -288,15 +329,29 @@ class TTF
      * Given a font family and a style, returns the full path to the font
      * Please check your DoxyDoxygen user configuration file.
      *
-     * @param mixed  $family    font family (e.g. FF_COURIER, FF_VERDANA)
-     * @param mixed  $style     optional font style, defaults to  FS_NORMAL
+     * @param mixed  $family    font family (e.g. Configs::FF_COURIER, Configs::FF_VERDANA)
+     * @param mixed  $style     optional font style, defaults to  Configs::FS_NORMAL
      * @param string $font_path optional font_path. If set, it takes precedence over other paths
      *
-     * @example ` $ttf->File(FF_DV_SANSSERIF, FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
+     * @example ` $ttf->File(Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
      * ` */
-    public function File($family, $style = FS_NORMAL, $font_path = null)
+    public function File($family, $style = Configs::FS_NORMAL, $font_path = null)
     {
-        $fam = @$this->font_files[$family];
+        $font_translation = null;
+        $fam              = @$this->font_files[$family];
+        if (array_key_exists($family, Configs::$font_dict) &&
+            array_key_exists($style, Configs::$font_dict)
+            // && !array_key_exists($family,$this->font_files)
+        ) {
+            $font_translation = sprintf(
+                '%s::%s',
+                Configs::$font_dict[$family],
+                Configs::$font_dict[$style]
+            );
+            if (array_key_exists($font_translation, Configs::$FOUND_FONTS)) {
+                return Configs::$FOUND_FONTS[$font_translation];
+            }
+        }
         if (!$fam) {
             Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
         }
@@ -314,9 +369,9 @@ class TTF
             // All font families are guaranteed to have the normal style
 
             if ($font_file === '') {
-                Util\JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][FS_NORMAL]);
+                Util\JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
             }
-            //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][FS_NORMAL].'.');
+            //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][Configs::FS_NORMAL].'.');
             if (!$font_file) {
                 Util\JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
             }
@@ -333,10 +388,10 @@ class TTF
             }
 
             // check OS font dir
-            if ($family >= FF_MINCHO && $family <= FF_PGOTHIC) {
-                $font_file = MBTTF_DIR . $font_file;
+            if ($family >= Configs::FF_MINCHO && $family <= Configs::FF_PGOTHIC) {
+                $font_file = Configs::MBTTF_DIR . $font_file;
             } else {
-                $font_file = TTF_DIR . $font_file;
+                $font_file = Configs::TTF_DIR . $font_file;
             }
             if (file_exists($font_file) === true && is_readable($font_file) === true) {
                 break;
@@ -345,7 +400,23 @@ class TTF
 
         if (!file_exists($font_file)) {
             //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
-            return $this->File(FF_DV_SANSSERIF, $style);
+            // Fallback to FF_DV_SANSSERIF
+            // which is DejaVuSans in Ubuntu
+            $font_file = $this->File(Configs::FF_DV_SANSSERIF, $style);
+        }
+        // Try to use the canonical path
+        if (is_readable(realpath($font_file))) {
+            $font_file = realpath($font_file);
+        }
+        if ($font_translation) {
+            // Will store found font to skip next search
+            Configs::$FOUND_FONTS[$font_translation] = $font_file;
+            /*kdump([
+        'family'      => sprintf('%s (%d)', Configs::$font_dict[$family], $family),
+        'style'       => sprintf('%s (%d)', Configs::$font_dict[$style], $style),
+        'ff'          => $fam[$style],
+        'FOUND_FONTS' => Configs::$FOUND_FONTS,
+        ]);*/
         }
 
         return $font_file;
@@ -353,41 +424,47 @@ class TTF
 
     public function SetUserFont($aNormal, $aBold = '', $aItalic = '', $aBoldIt = '')
     {
-        $this->font_files[FF_USERFONT] =
-            [FS_NORMAL    => $aNormal,
-            FS_BOLD       => $aBold,
-            FS_ITALIC     => $aItalic,
-            FS_BOLDITALIC => $aBoldIt,
+        $this->font_files[Configs::FF_USERFONT] =
+            [
+            Configs::FS_NORMAL     => $aNormal,
+            Configs::FS_BOLD       => $aBold,
+            Configs::FS_ITALIC     => $aItalic,
+            Configs::FS_BOLDITALIC => $aBoldIt,
         ];
     }
 
     public function SetUserFont1($aNormal, $aBold = '', $aItalic = '', $aBoldIt = '')
     {
-        $this->font_files[FF_USERFONT1] =
-            [FS_NORMAL    => $aNormal,
-            FS_BOLD       => $aBold,
-            FS_ITALIC     => $aItalic,
-            FS_BOLDITALIC => $aBoldIt,
+        $this->font_files[Configs::FF_USERFONT1] =
+            [
+            Configs::FS_NORMAL     => $aNormal,
+            Configs::FS_BOLD       => $aBold,
+            Configs::FS_ITALIC     => $aItalic,
+            Configs::FS_BOLDITALIC => $aBoldIt,
         ];
     }
 
     public function SetUserFont2($aNormal, $aBold = '', $aItalic = '', $aBoldIt = '')
     {
-        $this->font_files[FF_USERFONT2] =
-            [FS_NORMAL    => $aNormal,
-            FS_BOLD       => $aBold,
-            FS_ITALIC     => $aItalic,
-            FS_BOLDITALIC => $aBoldIt,
+        $this->font_files[Configs::FF_USERFONT2] =
+            [
+            Configs::FS_NORMAL     => $aNormal,
+            Configs::FS_BOLD       => $aBold,
+            Configs::FS_ITALIC     => $aItalic,
+            Configs::FS_BOLDITALIC => $aBoldIt,
         ];
     }
 
     public function SetUserFont3($aNormal, $aBold = '', $aItalic = '', $aBoldIt = '')
     {
-        $this->font_files[FF_USERFONT3] =
-            [FS_NORMAL    => $aNormal,
-            FS_BOLD       => $aBold,
-            FS_ITALIC     => $aItalic,
-            FS_BOLDITALIC => $aBoldIt,
+        $this->font_files[Configs::FF_USERFONT3] =
+            [
+            Configs::FS_NORMAL     => $aNormal,
+            Configs::FS_BOLD       => $aBold,
+            Configs::FS_ITALIC     => $aItalic,
+            Configs::FS_BOLDITALIC => $aBoldIt,
         ];
     }
-} // @class
+}
+
+// @class

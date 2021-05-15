@@ -1,12 +1,17 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Util;
+use function floor;
+use function log10;
+use function pow;
+use function round;
+use function sprintf;
 
 /**
  * @class SuperScriptText
@@ -39,8 +44,8 @@ class SuperScriptText extends Text
             $aVal = -$aVal;
         }
 
-        $l = floor(log10($aVal));
-        $a = sprintf('%0.' . $aPrecision . 'f', round($aVal / pow(10, $l), $aPrecision));
+        $l  = floor(log10($aVal));
+        $a  = sprintf('%0.' . $aPrecision . 'f', round($aVal / pow(10, $l), $aPrecision));
         $a *= $neg;
         if ($this->iSimple && ($a == 1 || $a == -1)) {
             $a = '';
@@ -64,7 +69,7 @@ class SuperScriptText extends Text
         $this->iSuper = $aSuper;
     }
 
-    public function SetSuperFont($aFontFam, $aFontStyle = FS_NORMAL, $aFontSize = 8)
+    public function SetSuperFont($aFontFam, $aFontStyle = self::FS_NORMAL, $aFontSize = 8)
     {
         $this->sfont_family = $aFontFam;
         $this->sfont_style  = $aFontStyle;
@@ -128,6 +133,7 @@ class SuperScriptText extends Text
                 break;
             default:
                 Util\JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
+
                 break;
         }
 
@@ -146,6 +152,7 @@ class SuperScriptText extends Text
                 break;
             default:
                 Util\JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
+
                 break;
         }
 
@@ -155,17 +162,17 @@ class SuperScriptText extends Text
         // Should we automatically determine the font or
         // has the user specified it explicetly?
         if ($this->sfont_family == '') {
-            if ($this->font_family <= FF_FONT2) {
-                if ($this->font_family == FF_FONT0) {
-                    $sff = FF_FONT0;
-                } elseif ($this->font_family == FF_FONT1) {
-                    if ($this->font_style == FS_NORMAL) {
-                        $sff = FF_FONT0;
+            if ($this->font_family <= Configs::FF_FONT2) {
+                if ($this->font_family == Configs::FF_FONT0) {
+                    $sff = Configs::FF_FONT0;
+                } elseif ($this->font_family == Configs::FF_FONT1) {
+                    if ($this->font_style == self::FS_NORMAL) {
+                        $sff = Configs::FF_FONT0;
                     } else {
-                        $sff = FF_FONT1;
+                        $sff = Configs::FF_FONT1;
                     }
                 } else {
-                    $sff = FF_FONT1;
+                    $sff = Configs::FF_FONT1;
                 }
                 $sfs = $this->font_style;
                 $sfz = $this->font_size;
@@ -192,7 +199,7 @@ class SuperScriptText extends Text
         // For the builtin fonts we need to reduce the margins
         // since the bounding bx reported for the builtin fonts
         // are much larger than for the TTF fonts.
-        if ($sff <= FF_FONT2) {
+        if ($sff <= Configs::FF_FONT2) {
             $sx -= 2;
             $sy += 3;
         }

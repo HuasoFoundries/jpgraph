@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -28,16 +28,17 @@ $axisweights = ['nw' => 8]; // Could also be specified as 6 => 8
 $axisstyles  = ['nw' => 'solid'];
 
 // First create a new windrose graph with a title
-$__width  = 400;
-$__height = 500;
-$graph    = new Graph\WindroseGraph($__width, $__height);
-$graph->title->Set('Windrose example 9');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
+$__width       = 400;
+$__height      = 500;
+$graph         = new Graph\WindroseGraph($__width, $__height);
+$example_title = 'Windrose example 9';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->title->SetColor('navy');
 
 // Create the free windrose plot.
 $wp = new Plot\WindrosePlot($data);
-$wp->SetType(WINDROSE_TYPE16);
+$wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE16'));
 
 // Specify colors weights and style for the radial gridlines
 $wp->SetRadialColors($axiscolors);

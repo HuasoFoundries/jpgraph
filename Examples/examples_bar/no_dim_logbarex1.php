@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
@@ -20,14 +20,13 @@ $graph    = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlog');
 //$graph->SetShadow();
 
-// Setup titles for graph and axis
-$graph->title->Set('Bar with logarithmic Y-scale');
-$graph->title->SetFont(FF_VERDANA, FS_NORMAL, 18);
+// Setup titles for graph and axis$example_title='Bar with logarithmic Y-scale'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 18);
 
 $graph->xaxis->SetTitle('2002');
-$graph->xaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 16);
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
 
-$graph->yaxis->title->SetFont(FF_ARIAL, FS_NORMAL, 16);
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
 $graph->yaxis->SetTitle('Y-title', 'center');
 $graph->yaxis->SetTitleMargin(30);
 
@@ -44,9 +43,9 @@ $bplot->SetFillColor('orange');
 /*
 $bplot->SetShadow();
 $bplot->value->Show();
-$bplot->value->SetFont(FF_ARIAL,FS_BOLD);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'),FS_BOLD);
 $bplot->value->SetAngle(45);
-$bplot->value->SetColor("black","darkred");
+$bplot->value->SetColor(black,darkred);
  */
 
 $graph->Add($bplot);

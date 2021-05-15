@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,7 +12,7 @@ $datay = [12, 26, 9, 17, 31];
 
 // Create the graph.
 // One minute timeout for the cached image
-// INLINE_NO means don't stream it back to the browser.
+// Graph\Configs::getConfig('INLINE_NO') means don't stream it back to the browser.
 $__width  = 310;
 $__height = 250;
 $graph    = new Graph\Graph($__width, $__height, 'auto');
@@ -23,8 +23,8 @@ $graph->yaxis->scale->SetGrace(30);
 $graph->SetShadow();
 
 // Turn the tickmarks
-$graph->xaxis->SetTickSide(SIDE_DOWN);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -38,19 +38,19 @@ $bplot->SetFillColor('orange');
 // Use a shadow on the bar graphs (just use the default settings)
 $bplot->SetShadow();
 $bplot->value->SetFormat(' $ %2.1f', 70);
-$bplot->value->SetFont(FF_ARIAL, FS_NORMAL, 9);
+$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
 $bplot->value->SetColor('blue');
 $bplot->value->Show();
 
 $graph->Add($bplot);
-
-$graph->title->Set('Image maps barex1');
+$example_title = 'Image maps barex1';
+$graph->title->set($example_title);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->yaxis->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->xaxis->title->SetFont(FF_FONT1, FS_BOLD);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 
 // Send back the HTML page which will call this script again
 // to retrieve the image.

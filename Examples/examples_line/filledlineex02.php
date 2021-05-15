@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,15 +15,17 @@ $graph    = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 40, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
-$graph->title->Set('Example of filled line plot');
-$graph->title->SetFont(FF_FONT1, FS_BOLD);
-$graph->subtitle->Set('(Starting from Y=0)');
+$example_title = 'Example of filled line plot';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$subtitle_text = '(Starting from Y=0)';
+$graph->subtitle->Set($subtitle_text);
 
 $graph->yaxis->scale->SetAutoMin(0);
 
 $p1 = new Plot\LinePlot($datay);
 $p1->SetFillColor('orange');
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $graph->Add($p1);

@@ -1,18 +1,19 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
+use function is_numeric;
 
 /**
  * File:        JPGRAPH_ERROR.PHP
  * // Description: Error plot extension for JpGraph
  * // Created:     2001-01-08
- * // Ver:         $Id: jpgraph_error.php 1106 2009-02-22 20:16:35Z ljp $
+ * // Ver:         $Id: jpgraph_error.php 1106 2009-02-22 20:16:35Z ljp $.
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
@@ -27,8 +28,6 @@ class ErrorPlot extends Plot
     private $errwidth = 2;
 
     /**
-     * CONSTRUCTOR.
-     *
      * @param mixed $datay
      * @param mixed $datax
      */
@@ -62,16 +61,16 @@ class ErrorPlot extends Plot
     // Method description
     public function Stroke($img, $xscale, $yscale)
     {
-        $numpoints = safe_count($this->coords[0]) / 2;
+        $numpoints = Configs::safe_count($this->coords[0]) / 2;
         $img->SetColor($this->color);
         $img->SetLineWeight($this->weight);
 
         if (isset($this->coords[1])) {
-            if (safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, safe_count($this->coords[1]), $numpoints);
+            if (Configs::safe_count($this->coords[1]) != $numpoints) {
+                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
             }
 
-            //("Number of X and Y points are not equal. Number of X-points:". safe_count($this->coords[1])." Number of Y-points:$numpoints");
+            //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             else {
                 $exist_x = true;
             }
@@ -101,4 +100,6 @@ class ErrorPlot extends Plot
 
         return true;
     }
-} // @class
+}
+
+// @class

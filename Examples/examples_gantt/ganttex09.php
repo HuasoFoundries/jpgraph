@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,23 +12,25 @@ $graph = new Graph\GanttGraph();
 $graph->SetShadow();
 
 // Add title and subtitle
-$graph->title->Set('A nice main title');
-$graph->title->SetFont(FF_ARIAL, FS_BOLD, 12);
-$graph->subtitle->Set('(Draft version)');
+$example_title = 'A nice main title';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$subtitle_text = '(Draft version)';
+$graph->subtitle->Set($subtitle_text);
 
 // Show day, week and month scale
-$graph->ShowHeaders(GANTT_HDAY | GANTT_HWEEK | GANTT_HMONTH);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK') | Graph\Configs::getConfig('GANTT_HMONTH'));
 
 // Instead of week number show the date for the first day in the week
 // on the week scale
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAY);
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAY'));
 
 // Make the week scale font smaller than the default
-$graph->scale->week->SetFont(FF_FONT0);
+$graph->scale->week->SetFont(Graph\Configs::getConfig('FF_FONT0'));
 
 // Use the short name of the month together with a 2 digit year
 // on the month scale
-$graph->scale->month->SetStyle(MONTHSTYLE_SHORTNAMEYEAR4);
+$graph->scale->month->SetStyle(Graph\Configs::getConfig('MONTHSTYLE_SHORTNAMEYEAR4'));
 $graph->scale->month->SetFontColor('white');
 $graph->scale->month->SetBackgroundColor('blue');
 
@@ -37,17 +39,17 @@ $graph->scale->month->SetBackgroundColor('blue');
 $activity = new Plot\GanttBar(0, 'Project', '2001-12-21', '2002-02-20');
 
 // Yellow diagonal line pattern on a red background
-$activity->SetPattern(BAND_RDIAG, 'yellow');
+$activity->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');
 $activity->SetFillColor('red');
 
 // Add a right marker
 $activity->rightMark->Show();
-$activity->rightMark->SetType(MARK_FILLEDCIRCLE);
+$activity->rightMark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
 $activity->rightMark->SetWidth(13);
 $activity->rightMark->SetColor('red');
 $activity->rightMark->SetFillColor('red');
 $activity->rightMark->title->Set('M5');
-$activity->rightMark->title->SetFont(FF_ARIAL, FS_BOLD, 12);
+$activity->rightMark->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
 $activity->rightMark->title->SetColor('white');
 
 // Set absolute height
@@ -59,7 +61,7 @@ $graph->Add($activity);
 // Create a miletone
 $milestone = new Plot\MileStone(2, 'Milestone', '2002-01-15', '2002-01-15');
 $milestone->title->SetColor('black');
-$milestone->title->SetFont(FF_FONT1, FS_BOLD);
+$milestone->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
 $graph->Add($milestone);
 
 // Add a vertical line

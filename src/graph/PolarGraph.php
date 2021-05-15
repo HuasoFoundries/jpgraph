@@ -1,31 +1,33 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 namespace Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Util;
+use function max;
+use function round;
 
 class PolarGraph extends Graph
 {
     public $scale;
     public $axis;
-    public $iType       = POLAR_360;
+    public $iType       = Configs::POLAR_360;
     private $iClockwise = false;
 
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
-        $this->SetDensity(TICKD_DENSE);
+        $this->SetDensity(Configs::TICKD_DENSE);
         $this->SetBox();
         $this->SetMarginColor('white');
     }
 
     public function SetDensity($aDense)
     {
-        $this->SetTickDensity(TICKD_NORMAL, $aDense);
+        $this->SetTickDensity(Configs::TICKD_NORMAL, $aDense);
     }
 
     public function SetClockwise($aFlg)
@@ -48,14 +50,14 @@ class PolarGraph extends Graph
     public function SetScale($aScale, $rmax = 0, $dummy1 = 1, $dummy2 = 1, $dummy3 = 1)
     {
         if ($aScale == 'lin') {
-            $this->scale = new PolarScale($rmax, $this, $this->iClockwise);
+            $this->scale = new Scale\PolarScale($rmax, $this, $this->iClockwise);
         } elseif ($aScale == 'log') {
-            $this->scale = new PolarLogScale($rmax, $this, $this->iClockwise);
+            $this->scale = new Scale\PolarLogScale($rmax, $this, $this->iClockwise);
         } else {
             Util\JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }
 
-        $this->axis = new PolarAxis($this->img, $this->scale);
+        $this->axis = new Axis\PolarAxis($this->img, $this->scale);
         $this->SetMargin(40, 40, 50, 40);
     }
 
@@ -77,7 +79,7 @@ class PolarGraph extends Graph
     // Private methods
     public function GetPlotsMax()
     {
-        $n = safe_count($this->plots);
+        $n = Configs::safe_count($this->plots);
         $m = $this->plots[0]->Max();
         $i = 1;
         while ($i < $n) {
@@ -100,7 +102,7 @@ class PolarGraph extends Graph
         // to do to generate the image map to improve performance
         // a best we can. Therefor you will see a lot of tests !$_csim in the
         // code below.
-        $_csim = ($aStrokeFileName === _CSIM_SPECIALFILE);
+        $_csim = ($aStrokeFileName === Configs::getConfig('_CSIM_SPECIALFILE'));
 
         // We need to know if we have stroked the plot in the
         // GetCSIMareas. Otherwise the CSIM hasn't been generated
@@ -109,7 +111,7 @@ class PolarGraph extends Graph
         $this->iHasStroked = true;
 
         //Check if we should autoscale axis
-        if (!$this->scale->IsSpecified() && safe_count($this->plots) > 0) {
+        if (!$this->scale->IsSpecified() && Configs::safe_count($this->plots) > 0) {
             $max = $this->GetPlotsMax();
             $t1  = $this->img->plotwidth;
             $this->img->plotwidth /= 2;
@@ -145,7 +147,7 @@ class PolarGraph extends Graph
             $this->img->left_margin = $t2;
         }
 
-        if ($this->iType == POLAR_180) {
+        if ($this->iType == Configs::POLAR_180) {
             $pos = $this->img->height - $this->img->bottom_margin;
         } else {
             $pos = $this->img->plotheight / 2 + $this->img->top_margin;
@@ -166,7 +168,7 @@ class PolarGraph extends Graph
         }
 
         // Stroke all plots for Y1 axis
-        for ($i = 0; $i < safe_count($this->plots); ++$i) {
+        for ($i = 0; $i < Configs::safe_count($this->plots); ++$i) {
             $this->plots[$i]->Stroke($this->img, $this->scale);
         }
 
@@ -220,29 +222,31 @@ class PolarGraph extends Graph
             $this->StrokeTitles();
         }
 
-        for ($i = 0; $i < safe_count($this->plots); ++$i) {
+        for ($i = 0; $i < Configs::safe_count($this->plots); ++$i) {
             $this->plots[$i]->Legend($this);
         }
 
         $this->legend->Stroke($this->img);
 
-        if (!$_csim) {
-            $this->StrokeTexts();
-            $this->img->SetAngle($aa);
-
-            // Draw an outline around the image map
-            if (_JPG_DEBUG) {
-                $this->DisplayClientSideaImageMapAreas();
-            }
-
-            // If the filename is given as the special "__handle"
-            // then the image handler is returned and the image is NOT
-            // streamed back
-            if ($aStrokeFileName == _IMG_HANDLER) {
-                return $this->img->img;
-            }
-            // Finally stream the generated picture
-            $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
+        if ($_csim) {
+            return;
         }
+
+        $this->StrokeTexts();
+        $this->img->SetAngle($aa);
+
+        // Draw an outline around the image map
+        if (Configs::_JPG_DEBUG) {
+            $this->DisplayClientSideaImageMapAreas();
+        }
+
+        // If the filename is given as the special "__handle"
+        // then the image handler is returned and the image is NOT
+        // streamed back
+        if ($aStrokeFileName == Configs::getConfig('_IMG_HANDLER')) {
+            return $this->img->img;
+        }
+        // Finally stream the generated picture
+        $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
     }
 }

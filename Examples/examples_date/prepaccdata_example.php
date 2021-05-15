@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -30,10 +30,11 @@ $formatDate = function (&$aVal) {
 array_walk($xdata, $formatDate);
 
 // Create the graph.
-$__width  = 600;
-$__height = 350;
-$graph    = new Graph\Graph($__width, $__height);
-$graph->title->Set('Accumulated values with specified X-axis scale');
+$__width       = 600;
+$__height      = 350;
+$graph         = new Graph\Graph($__width, $__height);
+$example_title = 'Accumulated values with specified X-axis scale';
+$graph->title->set($example_title);
 $graph->SetScale('textlin');
 
 // Setup margin color
@@ -43,8 +44,8 @@ $graph->SetMarginColor('green@0.95');
 $graph->SetMargin(40, 30, 40, 120);
 
 // Turn the tick marks out from the plot area
-$graph->xaxis->SetTickSide(SIDE_BOTTOM);
-$graph->yaxis->SetTickSide(SIDE_LEFT);
+$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_BOTTOM'));
+$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
 
 $p0 = new Plot\LinePlot($ydata[0]);
 $p0->SetFillColor('sandybrown');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -18,8 +18,9 @@ $graph    = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot
-$graph->title->Set('Example 1 Pie plot');
-$graph->title->SetFont(FF_VERDANA, FS_BOLD, 14);
+$example_title = 'Pie plot Example ';
+$graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 $graph->title->SetColor('brown');
 
 // Create pie plot
@@ -27,7 +28,7 @@ $p1 = new Plot\PiePlot($data);
 //$p1->SetSliceColors(array("red","blue","yellow","green"));
 $p1->SetTheme('earth');
 
-$p1->value->SetFont(FF_ARIAL, FS_NORMAL, 10);
+$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 // Set how many pixels each slice should explode
 $p1->Explode([0, 15, 15, 25, 15]);
 

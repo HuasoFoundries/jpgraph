@@ -6,9 +6,11 @@ testBasiccontourfileiterator:
     basic_contourex03-3.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex03-3.php }
     basic_contourex04.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex04.php }
     basic_contourex05.php: { width: 350, height: 250, title: basicContourFileIterator, filename: basic_contourex05.php }
-testContourfileiterator:
-    contourex01.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex01.php }
-    contourex02.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex02.php }
-    contourex03.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex03.php }
-    contourex04.php: { width: 500, height: 380, title: contourFileIterator, filename: contourex04.php }
-    contourex05.php: { width: 480, height: 390, title: contourFileIterator, filename: contourex05.php }
+testExampleOfContourPlot:
+    contourex01.php: { width: 500, height: 380, title: 'Example of contour plot', filename: contourex01.php }
+    contourex02.php: { width: 500, height: 380, title: 'Example of contour plot', filename: contourex02.php }
+    contourex03.php: { width: 500, height: 380, title: 'Example of contour plot', filename: contourex03.php }
+testExampleOfInterpolatedContourPlot:
+    contourex04.php: { width: 500, height: 380, title: 'Example of interpolated contour plot', filename: contourex04.php }
+testContourPlot:
+    contourex05.php: { width: 480, height: 390, title: 'Contour plot, high contrast color', filename: contourex05.php }

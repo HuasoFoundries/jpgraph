@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // Gantt example
@@ -10,20 +10,21 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the basic graph
-$graph = new Graph\GanttGraph();
-$graph->title->Set('Example with multiple constrains');
+$graph         = new Graph\GanttGraph();
+$example_title = 'Example with multiple constrains';
+$graph->title->set($example_title);
 
 $bar1 = new Plot\GanttBar(0, 'Label 1', '2003-06-08', '2003-06-12');
 $bar2 = new Plot\GanttBar(1, 'Label 2', '2003-06-16', '2003-06-19');
 $bar3 = new Plot\GanttBar(2, 'Label 3', '2003-06-15', '2003-06-21');
 
 //create constraints
-$bar1->SetConstrain(1, CONSTRAIN_ENDSTART);
-$bar1->SetConstrain(2, CONSTRAIN_ENDSTART);
+$bar1->SetConstrain(1, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
+$bar1->SetConstrain(2, Graph\Configs::getConfig('CONSTRAIN_ENDSTART'));
 
 // Setup scale
-$graph->ShowHeaders( /*GANTT_HYEAR | GANTT_HMONTH |*/GANTT_HDAY | GANTT_HWEEK);
-$graph->scale->week->SetStyle(WEEKSTYLE_FIRSTDAYWNBR);
+$graph->ShowHeaders(Graph\Configs::getConfig('GANTT_HYEAR') | Graph\Configs::getConfig('GANTT_HMONTH') | Graph\Configs::getConfig('GANTT_HDAY') | Graph\Configs::getConfig('GANTT_HWEEK'));
+$graph->scale->week->SetStyle(Graph\Configs::getConfig('WEEKSTYLE_FIRSTDAYWNBR'));
 
 // Add the specified activities
 $graph->Add($bar1);

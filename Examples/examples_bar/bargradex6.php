@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.0.3
+ * JPGraph v4.1.0-beta.01
  */
 
 // Example for use of JpGraph,
@@ -23,14 +23,13 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('silver');
 $graph->SetShadow();
 
-// Set up the title for the graph
-$graph->title->Set('Example negative bars');
-$graph->title->SetFont(FF_VERDANA, FS_NORMAL, 16);
+// Set up the title for the graph$example_title='Example negative bars'; $graph->title->set($example_title);
+$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 16);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
-$graph->yaxis->SetFont(FF_VERDANA, FS_NORMAL, 10);
+$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
 
 // Show 0 label on Y-axis (default is not to show)
 $graph->yscale->ticks->SupressZeroLabel(false);
@@ -40,7 +39,7 @@ $graph->xaxis->SetTickLabels($datax);
 $graph->xaxis->SetLabelAngle(50);
 
 // Set X-axis at the minimum value of Y-axis (default will be at 0)
-$graph->xaxis->SetPos('min'); // "min" will position the x-axis at the minimum value of the Y-axis
+$graph->xaxis->SetPos('min'); // min will position the x-axis at the minimum value of the Y-axis
 
 // Create the bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -48,7 +47,7 @@ $bplot->SetWidth(0.6);
 $bplot->SetLegend('Result 1999', 'blue');
 
 // Setup color for gradient fill style
-$bplot->SetFillGradient('navy', 'steelblue', GRAD_MIDVER);
+$bplot->SetFillGradient('navy', 'steelblue', Graph\Configs::getConfig('GRAD_MIDVER'));
 
 // Set color for the frame of each bar
 $bplot->SetColor('navy');
