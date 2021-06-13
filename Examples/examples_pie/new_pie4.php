@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_pie.php';
@@ -53,7 +54,11 @@ for ($i = 0; $i < $n; ++$i) {
 // Set the titles
 for ($i = 0; $i < $n; ++$i) {
     $p[$i]->title->Set($titles[$i]);
-    $p[$i]->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+    $p[$i]->title->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_NORMAL'),
+        8
+    );
 }
 
 for ($i = 0; $i < $n; ++$i) {

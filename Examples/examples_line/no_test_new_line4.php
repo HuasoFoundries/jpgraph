@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -38,13 +39,21 @@ $p2 = new Plot\LinePlot($datay2);
 $graph->Add($p2);
 
 // Use an image of favourite car as marker
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/new1.gif', 0.8);
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_IMG'),
+    __DIR__ . '/../assets/new1.gif',
+    0.8
+);
 $p1->SetColor('#aadddd');
 $p1->value->SetFormat('%d');
 $p1->value->Show();
 $p1->value->SetColor('#55bbdd');
 
-$p2->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/new2.gif', 0.8);
+$p2->mark->SetType(
+    Graph\Configs::getConfig('MARK_IMG'),
+    __DIR__ . '/../assets/new2.gif',
+    0.8
+);
 $p2->SetColor('#ddaa99');
 $p2->value->SetFormat('%d');
 $p2->value->Show();

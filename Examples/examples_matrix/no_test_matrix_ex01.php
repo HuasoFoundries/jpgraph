@@ -27,12 +27,18 @@ $__height = 500;
 $graph = new MatrixGraph($__width, $__height);
 $example_title = 'Possible legend positions';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 $mp = [];
 $n = 4;
-$pos = [0.3, 0.33, 0.8, 0.68,
-    0.3, 0.68, 0.8, 0.33, ];
+$pos = [
+    0.3, 0.33, 0.8, 0.68,
+    0.3, 0.68, 0.8, 0.33,
+];
 
 for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);

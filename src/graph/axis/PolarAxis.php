@@ -80,13 +80,6 @@ class PolarAxis extends Axis
         $this->show_angle_mark = $aFlg;
     }
 
-    /**
-     * @return void
-     */
-    public function SetAngleStep($aStep)
-    {
-        $this->angle_step = $aStep;
-    }
 
     /**
      * @return void
@@ -97,13 +90,7 @@ class PolarAxis extends Axis
         $this->show_angle_tick = !$aAngleFlg;
     }
 
-    /**
-     * @return void
-     */
-    public function ShowAngleLabel($aFlg = true)
-    {
-        $this->show_angle_label = $aFlg;
-    }
+
 
     /**
      * @return void
@@ -224,7 +211,9 @@ class PolarAxis extends Axis
             } else {
                 $step = 9;
             }
-            $n = \round(Configs::safe_count($pmin) / $step);
+            $n = \round(
+                Configs::safe_count($pmin) / $step
+            );
             $i = 0;
             $this->img->SetColor($this->gridmajor_color);
             $limit = \max($this->img->plotwidth, $this->img->plotheight) * 1.4;
@@ -308,7 +297,9 @@ class PolarAxis extends Axis
         $this->img->SetColor($this->angle_tick_color);
         $rot90 = 90 === $this->img->a;
 
-        if (Configs::POLAR_360 === $type) {
+        if (
+            Configs::POLAR_360 === $type
+        ) {
             // Corner angles of the four corners
             $ca1 = \atan($h / $w) / M_PI * 180;
             $ca2 = 180 - $ca1;
@@ -504,7 +495,7 @@ class PolarAxis extends Axis
         } elseif ('low' === $this->title_adjust) {
             $this->title->SetPos($this->img->left_margin, $y, 'left', 'top');
         } else {
-            Util\JpGraphError::RaiseL(17002, $this->title_adjust);
+            throw      Util\JpGraphError::make(17002, $this->title_adjust);
             //('Unknown alignment specified for X-axis title. ('.$this->title_adjust.')');
         }
 
@@ -521,7 +512,7 @@ class PolarAxis extends Axis
 
         while ($i < $n) {
             $this->scale->ticks->ticks_pos[$i] =
-            $mid - $this->scale->ticks->ticks_pos[$i];
+                $mid - $this->scale->ticks->ticks_pos[$i];
             ++$i;
         }
 
@@ -530,7 +521,7 @@ class PolarAxis extends Axis
 
         while ($i < $n) {
             $this->scale->ticks->maj_ticks_pos[$i] =
-            $mid - $this->scale->ticks->maj_ticks_pos[$i];
+                $mid - $this->scale->ticks->maj_ticks_pos[$i];
             ++$i;
         }
 
@@ -539,7 +530,7 @@ class PolarAxis extends Axis
 
         while ($i < $n) {
             $this->scale->ticks->maj_ticklabels_pos[$i] =
-            $mid - $this->scale->ticks->maj_ticklabels_pos[$i];
+                $mid - $this->scale->ticks->maj_ticklabels_pos[$i];
             ++$i;
         }
 

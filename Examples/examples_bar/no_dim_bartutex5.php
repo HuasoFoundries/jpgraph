@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -38,7 +39,10 @@ $example_title = 'Bar tutorial example 5';
 $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

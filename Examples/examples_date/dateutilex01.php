@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -24,15 +25,27 @@ $graph->SetScale('intlin', 0, 0, \min($xdata), \max($xdata));
 $graph->SetMargin(60, 20, 40, 60);
 
 // Setup the titles
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $example_title = 'Development since 1984';
 $graph->title->set($example_title);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 $subtitle_text = '(Example using DateScaleUtils class)';
 $graph->subtitle->Set($subtitle_text);
 
 // Setup the labels to be correctly format on the X-axis
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->xaxis->SetLabelAngle(30);
 
 // The second paramter set to 'true' will make the library interpret the

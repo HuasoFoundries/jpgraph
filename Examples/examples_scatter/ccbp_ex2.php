@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -23,7 +24,9 @@ $datax2 = [18, 47, 58, 75];
 $datay2 = [80, 97, 105, 110];
 
 $sp = new Plot\ScatterPlot($datay, $datax);
-$sp->mark->SetType(Graph\Configs::getConfig('MARK_DIAMOND'));
+$sp->mark->SetType(
+    Graph\Configs::getConfig('MARK_DIAMOND')
+);
 $sp->mark->SetFillColor('white');
 $sp->mark->SetSize(12);
 

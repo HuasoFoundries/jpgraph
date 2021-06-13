@@ -47,12 +47,12 @@ class GanttPlotObject
     {
         if (!is_string($aTarget)) {
             $tv = substr(var_export($aTarget, true), 0, 40);
-            Util\JpGraphError::RaiseL(6024, $tv);
+     throw      Util\JpGraphError::make(6024, $tv);
             //('CSIM Target must be specified as a string.'."\nStart of target is:\n$tv");
         }
         if (!is_string($aAlt)) {
             $tv = substr(var_export($aAlt, true), 0, 40);
-            Util\JpGraphError::RaiseL(6025, $tv);
+     throw      Util\JpGraphError::make(6025, $tv);
             //('CSIM Alt text must be specified as a string.'."\nStart of alt text is:\n$tv");
         }
 
@@ -65,7 +65,7 @@ class GanttPlotObject
     {
         if (!is_string($aAlt)) {
             $tv = substr(var_export($aAlt, true), 0, 40);
-            Util\JpGraphError::RaiseL(6025, $tv);
+     throw      Util\JpGraphError::make(6025, $tv);
             //('CSIM Alt text must be specified as a string.'."\nStart of alt text is:\n$tv");
         }
         $this->csimalt = $aAlt;

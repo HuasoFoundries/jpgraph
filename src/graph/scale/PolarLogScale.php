@@ -21,7 +21,9 @@ class PolarLogScale extends LogScale
         $this->graph = $graph;
 
         if ($this->ticks instanceof LogTicks) {
-            $this->ticks->SetLabelLogType(Configs::LOGLABELS_MAGNITUDE);
+            $this->ticks->SetLabelLogType(
+                Configs::LOGLABELS_MAGNITUDE
+            );
         }
         $this->clockwise = $aClockwise;
     }
@@ -61,7 +63,9 @@ class PolarLogScale extends LogScale
 
         $x += $w + $this->graph->img->left_margin; //$this->_Translate(0);
 
-        if (Configs::POLAR_360 === $this->graph->iType) {
+        if (
+            Configs::POLAR_360 === $this->graph->iType
+        ) {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight / 2) - $y;
         } else {
             $y = ($this->graph->img->top_margin + $this->graph->img->plotheight) - $y;

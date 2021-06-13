@@ -259,7 +259,8 @@ HTTP header wurden bereits gesendet.<br>Fehler in der Datei <b>%s</b> in der Zei
     25003 => ['Genereller PHP Fehler : Bei %s:%d : %s', 3],
     25004 => ['Genereller PHP Fehler : %s ', 1],
     25005 => ['PHP_SELF, die PHP-Global-Variable kann nicht ermittelt werden. PHP kann nicht von der Kommandozeile gestartet werden, wenn der Cache oder die Bilddateien automatisch benannt werden sollen.', 0],
-    25006 => ['Die Benutzung der Configs::FF_CHINESE (Configs::FF_BIG5) Schriftfamilie benötigt die iconv() Funktion in Deiner PHP-Konfiguration. Dies wird nicht defaultmäßig in PHP kompiliert (benötigt "--width-iconv" bei der Konfiguration).', 0],
+    25006 => ['Die Benutzung der Configs::FF_CHINESE (
+Configs::FF_BIG5) Schriftfamilie benötigt die iconv() Funktion in Deiner PHP-Konfiguration. Dies wird nicht defaultmäßig in PHP kompiliert (benötigt "--width-iconv" bei der Konfiguration).', 0],
     25007 => ['Du versuchst das lokale (%s) zu verwenden, was von Deiner PHP-Installation nicht unterstützt wird. Hinweis: Benutze \'\', um das defaultmäßige Lokale für diese geographische Region festzulegen.', 1],
     25008 => ['Die Bild-Breite und Höhe in Graph::Graph() müssen numerisch sein', 0],
     25009 => ['Die Skalierung der Achsen muss angegeben werden mit Graph::SetScale()', 0],

@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -34,7 +35,9 @@ $graph->xaxis->SetTickLabels(['G', 'F', 'E', 'D', 'C', 'B', 'A']);
 $graph->xaxis->SetLabelMargin(20);
 $graph->yaxis->SetLabelMargin(20);
 
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXOUT')
+);
 $graph->img->SetAngle(180);
 
 // Create the line

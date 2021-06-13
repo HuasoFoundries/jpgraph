@@ -82,7 +82,9 @@ class Helper
         \defined('HALT_ON_ERRORS') || \define('HALT_ON_ERRORS', true);
         self::$initialized = true;
 
-        if (Configs::getConfig('INSTALL_PHP_ERR_HANDLER')) {
+        if (
+            Configs::getConfig('INSTALL_PHP_ERR_HANDLER')
+        ) {
             JpGraphError::registerHandler();
         }
         // Registers image exception handler

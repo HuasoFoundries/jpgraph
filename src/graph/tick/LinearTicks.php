@@ -11,7 +11,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class LinearTicks
-  *  Description: Draw linear ticks on axis
+ *  Description: Draw linear ticks on axis
  */
 class LinearTicks extends Ticks
 {
@@ -71,7 +71,7 @@ class LinearTicks extends Ticks
         }
 
         if (0 >= $aMajStep || 0 >= $aMinStep) {
-            Util\JpGraphError::RaiseL(25064);
+            throw      Util\JpGraphError::make(25064);
             //(" Minor or major step size is 0. Check that you haven't got an accidental SetTextTicks(0) in your code. If this is not the case you might have stumbled upon a bug in JpGraph. Please report this and if possible include the data that caused the problem.");
         }
 
@@ -88,14 +88,14 @@ class LinearTicks extends Ticks
     public function SetTickPositions($aMajPos, $aMinPos = null, $aLabels = null)
     {
         if (!\is_array($aMajPos) || (null !== $aMinPos && !\is_array($aMinPos))) {
-            Util\JpGraphError::RaiseL(25065); //('Tick positions must be specifued as an array()');
+            throw      Util\JpGraphError::make(25065); //('Tick positions must be specifued as an array()');
 
             return;
         }
         $n = Configs::safe_count($aMajPos);
 
         if (\is_array($aLabels) && (Configs::safe_count($aLabels) !== $n)) {
-            Util\JpGraphError::RaiseL(25066); //('When manually specifying tick positions and labels the number of labels must be the same as the number of specified ticks.');
+            throw      Util\JpGraphError::make(25066); //('When manually specifying tick positions and labels the number of labels must be the same as the number of specified ticks.');
         }
         $this->iManualTickPos = $aMajPos;
         $this->iManualMinTickPos = $aMinPos;

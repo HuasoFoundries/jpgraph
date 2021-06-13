@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -27,15 +28,24 @@ $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow');
 
 // ... and titles$example_title='Example of Function plot'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->subtitle->Set("(With some more advanced axis formatting\nHiding first and last label)");
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_NORMAL')
+);
 $graph->xgrid->Show();
 
 $graph->yaxis->SetPos(0);
 $graph->yaxis->SetWeight(2);
 $graph->yaxis->HideZeroLabel();
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->yaxis->SetColor('black', 'darkblue');
 $graph->yaxis->HideTicks(true, false);
 $graph->yaxis->HideFirstLastLabel();
@@ -43,7 +53,10 @@ $graph->yaxis->HideFirstLastLabel();
 $graph->xaxis->SetWeight(2);
 $graph->xaxis->HideZeroLabel();
 $graph->xaxis->HideFirstLastLabel();
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->SetColor('black', 'darkblue');
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);

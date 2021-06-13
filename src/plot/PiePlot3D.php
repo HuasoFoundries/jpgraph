@@ -52,7 +52,10 @@ class PiePlot3D extends PiePlot
         $this->radius = 0.5;
         $this->data   = $data;
         $this->title  = new Text\Text('');
-        $this->title->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->title->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.0f%%');
@@ -100,8 +103,8 @@ class PiePlot3D extends PiePlot
     public function SetAngle($a)
     {
         if ($a < 5 || $a > 90) {
-            Util\JpGraphError::RaiseL(14002);
-        //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
+            throw      Util\JpGraphError::make(14002);
+            //("PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.");
         } else {
             $this->angle = $a;
         }
@@ -230,7 +233,7 @@ class PiePlot3D extends PiePlot
         // pie ellipse. Hence, no slice will cross 90 or 270
         // point.
         if (($sa < 90 && $ea > 90) || (($sa > 90 && $sa < 270) && $ea > 270)) {
-            Util\JpGraphError::RaiseL(14003); //('Internal assertion failed. Pie3D::Pie3DSlice');
+            throw      Util\JpGraphError::make(14003); //('Internal assertion failed. Pie3D::Pie3DSlice');
             exit(1);
         }
 
@@ -455,7 +458,7 @@ class PiePlot3D extends PiePlot
     public function SetStartAngle($aStart)
     {
         if ($aStart < 0 || $aStart > 360) {
-            Util\JpGraphError::RaiseL(14004); //('Slice start angle must be between 0 and 360 degrees.');
+            throw      Util\JpGraphError::make(14004); //('Slice start angle must be between 0 and 360 degrees.');
         }
         $this->startangle = $aStart;
     }
@@ -564,10 +567,12 @@ class PiePlot3D extends PiePlot
                 // one boundary (either 90 or 270) where it needs to be split
                 $split = -1; // no split
                 if (($da <= 90 && ($a <= 90 && $ne > 90)) ||
-                    (($da <= 180 && $da > 90) && (($a < 90 || $a >= 270) && $ne > 90))) {
+                    (($da <= 180 && $da > 90) && (($a < 90 || $a >= 270) && $ne > 90))
+                ) {
                     $split = 90;
                 } elseif (($da <= 90 && ($a <= 270 && $ne > 270)) ||
-                    (($da <= 180 && $da > 90) && ($a >= 90 && $a < 270 && ($a + $da) > 270))) {
+                    (($da <= 180 && $da > 90) && ($a >= 90 && $a < 270 && ($a + $da) > 270))
+                ) {
                     $split = 270;
                 }
                 if ($split > 0) {
@@ -660,7 +665,7 @@ class PiePlot3D extends PiePlot
                 $j = 0;
             }
             if ($cnt > $n) {
-                Util\JpGraphError::RaiseL(14005);
+                throw      Util\JpGraphError::make(14005);
                 //("Pie3D Internal error (#1). Trying to wrap twice when looking for start index");
             }
             ++$cnt;
@@ -697,7 +702,7 @@ class PiePlot3D extends PiePlot
             }
 
             if ($cnt > $n) {
-                Util\JpGraphError::RaiseL(14006);
+                throw      Util\JpGraphError::make(14006);
                 //("Pie3D Internal Error: Z-Sorting algorithm for 3D Pies is not working properly (2). Trying to wrap twice while stroking.");
             }
             ++$cnt;
@@ -730,7 +735,7 @@ class PiePlot3D extends PiePlot
             );
             --$j;
             if ($cnt > $n) {
-                Util\JpGraphError::RaiseL(14006);
+                throw      Util\JpGraphError::make(14006);
                 //("Pie3D Internal Error: Z-Sorting algorithm for 3D Pies is not working properly (2). Trying to wrap twice while stroking.");
             }
             if ($j < 0) {
@@ -974,7 +979,7 @@ class PiePlot3D extends PiePlot
 
         // Add a sanity check for width
         if ($width < 1) {
-            Util\JpGraphError::RaiseL(14007); //("Width for 3D Pie is 0. Specify a size > 0");
+            throw      Util\JpGraphError::make(14007); //("Width for 3D Pie is 0. Specify a size > 0");
         }
 
         // Establish a thickness. By default the thickness is a fifth of the

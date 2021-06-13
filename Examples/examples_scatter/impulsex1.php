@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\Jpgraph\Graph;
 use Amenadiel\Jpgraph\Plot;
 
@@ -19,10 +20,15 @@ $graph3->SetShadow();
 $graph3->img->SetMargin(40, 40, 40, 40);
 $example_title = 'Simple impulse plot';
 $graph3->title->set($example_title);
-$graph3->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph3->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_SQUARE')
+);
 $sp1->SetImpuls();
 
 $graph3->Add($sp1);

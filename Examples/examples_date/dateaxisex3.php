@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -46,7 +47,9 @@ $graph->xaxis->SetLabelAngle(90);
 // $graph->xaxis->scale->SetDateFormat('h:i');
 
 // Adjust the start/end to a specific alignment
-$graph->xaxis->scale->SetTimeAlign(Graph\Configs::getConfig('MINADJ_15'));
+$graph->xaxis->scale->SetTimeAlign(
+    Graph\Configs::getConfig('MINADJ_15')
+);
 
 $line = new Plot\LinePlot($data, $xdata);
 $line->SetLegend('Year 2005');

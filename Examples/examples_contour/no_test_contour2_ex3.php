@@ -14,7 +14,8 @@ $data = [
     [10, 10, 8, 14],
     [7, 7, 13, 17],
     [4, 5, 8, 12],
-    [10, 8, 7, 8], ];
+    [10, 8, 7, 8],
+];
 
 // create a basic graph as a container
 $__width = 300;
@@ -25,11 +26,19 @@ $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
 // Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 
 $subtitle_text = '(Manual colors)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 
 // Create a new contour plot with only 3 isobars
 $cp = new FilledContourPlot($data, 3);

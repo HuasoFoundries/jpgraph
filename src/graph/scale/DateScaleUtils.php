@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Graph\Configs;
 
 /**
  * @class DateScaleUtils
-  *  Description: Help to create a manual date scale
+ *  Description: Help to create a manual date scale
  */
 class DateScaleUtils
 {
@@ -453,13 +453,21 @@ class DateScaleUtils
         self::$iMin = $aMin;
         self::$iMax = $aMax;
 
-        if (Configs::DSUTILS_MONTH6 >= $aType) {
+        if (
+            Configs::DSUTILS_MONTH6 >= $aType
+        ) {
             self::doMonthly($aType, $aMinor);
-        } elseif (Configs::DSUTILS_WEEK4 >= $aType) {
+        } elseif (
+            Configs::DSUTILS_WEEK4 >= $aType
+        ) {
             self::doWeekly($aType, $aMinor);
-        } elseif (Configs::DSUTILS_DAY4 >= $aType) {
+        } elseif (
+            Configs::DSUTILS_DAY4 >= $aType
+        ) {
             self::doDaily($aType, $aMinor);
-        } elseif (Configs::DSUTILS_YEAR5 >= $aType) {
+        } elseif (
+            Configs::DSUTILS_YEAR5 >= $aType
+        ) {
             self::doYearly($aType, $aMinor);
         } else {
             JpGraphError::RaiseL(24003);

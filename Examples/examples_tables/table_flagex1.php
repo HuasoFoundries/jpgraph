@@ -34,7 +34,11 @@ $countries = ['united states', 'united kingdom', 'french republic', 'denmark', '
 // Create a basic table and default fonr
 $table = new GTextTable();
 $table->Set($data);
-$table->SetFont(Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_NORMAL'), 11);
+$table->SetFont(
+    Configs::getConfig('FF_TIMES'),
+    Configs::getConfig('FS_NORMAL'),
+    11
+);
 
 // Adjust the font for row 0 and 6
 $table->SetColFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);

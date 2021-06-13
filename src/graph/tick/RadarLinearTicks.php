@@ -53,7 +53,7 @@ class RadarLinearTicks extends Ticks
         }
 
         if (0 >= $aMajStep || 0 >= $aMinStep) {
-            Util\JpGraphError::RaiseL(25064);
+     throw      Util\JpGraphError::make(25064);
             //Util\JpGraphError::Raise(" Minor or major step size is 0. Check that you haven't got an accidental SetTextTicks(0) in your code. If this is not the case you might have stumbled upon a bug in JpGraph. Please report this and if possible include the data that caused the problem.");
         }
 

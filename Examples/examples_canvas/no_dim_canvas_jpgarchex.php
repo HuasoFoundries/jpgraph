@@ -35,13 +35,21 @@ $width = 16; // Total width
 
 // Setup the two basic rectangle text object we  will use
 $tt = new Text\CanvasRectangleText();
-$tt->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+$tt->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    14
+);
 $tt->SetFillColor('');
 $tt->SetColor('');
 $tt->SetFontColor('navy');
 
 $t = new Text\CanvasRectangleText();
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    14
+);
 $t->SetFillColor('goldenrod1');
 $t->SetFontColor('navy');
 
@@ -142,19 +150,31 @@ $r -= 2.5;
 $h = 2;
 $t->SetFillColor('blue');
 $t->SetFontColor('white');
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 20);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    20
+);
 $t->Set('PHP Application', $l, $r, $width, $h);
 $t->Stroke($g->img, $g->getScale());
 
 // Stroke title
 $r = 0.5;
 $tt->SetFontColor('black');
-$tt->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_BOLD'), 28);
+$tt->SetFont(
+    Graph\Configs::getConfig('FF_TIMES'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    28
+);
 $tt->Set('JpGraph Architecture Overview', $l, $r, $width, 1);
 $tt->Stroke($g->img, $g->getScale());
 
 // Stroke footer
-$tt->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$tt->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    10
+);
 $tt->Set('Generated: ' . \date('ymd H:m', \time()), 0.1, $ymax * 0.95);
 $tt->Stroke($g->img, $g->getScale());
 

@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -30,8 +31,14 @@ $graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $graph->yaxis->SetColor('blue');
 
@@ -41,7 +48,11 @@ $lineplot->SetColor('blue');
 $lineplot->SetWeight(2); // Two pixel wide
 
 // Add an image mark scaled to 50%
-$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_IMG_DIAMOND'), 'red', 0.5);
+$lineplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_IMG_DIAMOND'),
+    'red',
+    0.5
+);
 
 // Add the plot to the graph
 $graph->Add($lineplot);

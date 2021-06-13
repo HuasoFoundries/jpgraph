@@ -22,7 +22,11 @@ $table = new GTextTable();
 $table->Set($data);
 
 // Set default font in entire table
-$table->SetFont(Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
+$table->SetFont(
+    Configs::getConfig('FF_ARIAL'),
+    Configs::getConfig('FS_NORMAL'),
+    11
+);
 
 // Setup font and color for row = 2
 $table->SetRowFont(2, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 11);

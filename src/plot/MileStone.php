@@ -29,12 +29,17 @@ class MileStone extends GanttPlotObject
         parent::__construct();
         $this->caption->Set($aCaption);
         $this->caption->Align('left', 'center');
-        $this->caption->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->caption->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
         $this->title->Set($aLabel);
         $this->title->SetColor('darkred');
         $this->mark = new PlotMark();
         $this->mark->SetWidth(10);
-        $this->mark->SetType(Configs::MARK_DIAMOND);
+        $this->mark->SetType(
+            Configs::MARK_DIAMOND
+        );
         $this->mark->SetColor('darkred');
         $this->mark->SetFillColor('darkred');
         $this->iVPos  = $aVPos;
@@ -68,7 +73,10 @@ class MileStone extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(Configs::safe_count($colwidth), Configs::safe_count($this->title->csimtarget));
+            $n = min(
+                Configs::safe_count($colwidth),
+                Configs::safe_count($this->title->csimtarget)
+            );
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];

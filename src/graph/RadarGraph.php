@@ -16,7 +16,7 @@ use function min;
 
 /**
  * @class RadarGraph
-  *  Description: Main container for a radar graph
+ *  Description: Main container for a radar graph
  */
 class RadarGraph extends Graph
 {
@@ -39,9 +39,13 @@ class RadarGraph extends Graph
         $this->posy = $height / 2;
         $this->len = \min($width, $height) * 0.35;
         $this->SetColor([255, 255, 255]);
-        $this->SetTickDensity(Configs::TICKD_NORMAL);
+        $this->SetTickDensity(
+            Configs::TICKD_NORMAL
+        );
         $this->SetScale('lin');
-        $this->SetGridDepth(Configs::DEPTH_FRONT);
+        $this->SetGridDepth(
+            Configs::DEPTH_FRONT
+        );
     }
 
     public function HideTickMarks($aFlag = true)
@@ -57,10 +61,10 @@ class RadarGraph extends Graph
     /**
      * @param string $axtype
      */
-    public function SetScale($axtype, $ymin = 1, $ymax = 1, $dummy1 = null, $dumy2 = null)
+    public function SetScale($axtype, $ymin = 1, $ymax = 1, $dummy1 = null, $dumy2 = null): self
     {
         if ('lin' !== $axtype && 'log' !== $axtype) {
-            Util\JpGraphError::RaiseL(18003, $axtype);
+            throw      Util\JpGraphError::make(18003, $axtype);
             //("Illegal scale for radarplot ($axtype). Must be \"lin\" or \"log\"");
         }
 
@@ -72,12 +76,13 @@ class RadarGraph extends Graph
 
         $this->axis = new Axis\RadarAxis($this->img, $this->yscale);
         $this->grid = new RadarGrid();
+        return $this;
     }
 
     public function SetSize($aSize)
     {
         if (0.1 > $aSize || 1 < $aSize) {
-            Util\JpGraphError::RaiseL(18004, $aSize);
+            throw      Util\JpGraphError::make(18004, $aSize);
             //("Radar Plot size must be between 0.1 and 1. (Your value=$s)");
         }
         $this->len = \min($this->img->width, $this->img->height) * $aSize / 2;
@@ -91,7 +96,7 @@ class RadarGraph extends Graph
     /**
      * @param int $densy
      */
-    public function SetTickDensity($densy = Configs::TICKD_NORMAL, $dummy1 = null)
+    public function SetTickDensity($densy = Configs::TICKD_NORMAL, $dummy1 = null): self
     {
         $this->ytick_factor = 25;
 
@@ -114,9 +119,11 @@ class RadarGraph extends Graph
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(18005, $densy);
+                throw      Util\JpGraphError::make(18005, $densy);
                 //("RadarPlot Unsupported Tick density: $densy");
+
         }
+        return $this;
     }
 
     public function SetPos($px, $py = 0.5)
@@ -152,10 +159,10 @@ class RadarGraph extends Graph
         $this->axis_title = $aTitleArray;
     }
 
-    public function Add($aPlot)
+    public function Add($aPlot): self
     {
         if (null === $aPlot) {
-            Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
+            throw      Util\JpGraphError::make(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
 
         if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
@@ -171,6 +178,7 @@ class RadarGraph extends Graph
         } else {
             $this->plots[] = $aPlot;
         }
+        return $this;
     }
 
     public function GetPlotsYMinMax($aPlots)
@@ -184,7 +192,7 @@ class RadarGraph extends Graph
         }
 
         if (0 > $min) {
-            Util\JpGraphError::RaiseL(18006, $min);
+            throw      Util\JpGraphError::make(18006, $min);
             //("Minimum data $min (Radar plots should only be used when all data points > 0)");
         }
 
@@ -241,7 +249,8 @@ class RadarGraph extends Graph
         if (!$this->yscale->IsSpecified() && Configs::safe_count($this->plots) > 0) {
             [$min, $max] = $this->GetPlotsYMinMax($this->plots);
             $this->yscale->AutoScale($this->img, 0, $max, $this->len / $this->ytick_factor);
-        } elseif ($this->yscale->IsSpecified()
+        } elseif (
+            $this->yscale->IsSpecified()
             && ($this->yscale->auto_ticks || !$this->yscale->ticks->IsSpecified())
         ) {
             // The tick calculation will use the user suplied min/max values to determine
@@ -271,8 +280,10 @@ class RadarGraph extends Graph
             for ($i = 0; $i < $nbrpnts; ++$i) {
                 $this->axis_title[$i] = $i + 1;
             }
-        } elseif (Configs::safe_count($this->axis_title) < $nbrpnts) {
-            Util\JpGraphError::RaiseL(18007);
+        } elseif (
+            Configs::safe_count($this->axis_title) < $nbrpnts
+        ) {
+            throw      Util\JpGraphError::make(18007);
             // ("Number of titles does not match number of points in plot.");
         }
 
@@ -281,7 +292,7 @@ class RadarGraph extends Graph
                 continue;
             }
 
-            Util\JpGraphError::RaiseL(18008);
+            throw      Util\JpGraphError::make(18008);
             //("Each radar plot must have the same number of data points.");
         }
 
@@ -296,7 +307,9 @@ class RadarGraph extends Graph
         $astep = 2 * M_PI / $nbrpnts;
 
         if (!$_csim) {
-            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth) {
+            if (
+                Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
+            ) {
                 $this->StrokeIcons();
             }
 
@@ -310,7 +323,9 @@ class RadarGraph extends Graph
         $grid = [];
 
         if (!$_csim) {
-            if (Configs::getConfig('DEPTH_BACK') === $this->grid_depth) {
+            if (
+                Configs::getConfig('DEPTH_BACK') === $this->grid_depth
+            ) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], 0 === $i);
@@ -318,7 +333,9 @@ class RadarGraph extends Graph
                 $this->grid->Stroke($this->img, $grid);
             }
 
-            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth) {
+            if (
+                Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
+            ) {
                 $this->StrokeIcons();
             }
         }
@@ -331,7 +348,9 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if (Configs::getConfig('DEPTH_BACK') !== $this->grid_depth) {
+            if (
+                Configs::getConfig('DEPTH_BACK') !== $this->grid_depth
+            ) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
                     $this->axis->Stroke($this->posy, $a, $grid[$i], $this->axis_title[$i], 0 === $i);
@@ -342,7 +361,9 @@ class RadarGraph extends Graph
             $this->StrokeTitles();
             $this->StrokeTexts();
 
-            if (Configs::DEPTH_FRONT === $this->iIconDepth) {
+            if (
+                Configs::DEPTH_FRONT === $this->iIconDepth
+            ) {
                 $this->StrokeIcons();
             }
         }
@@ -368,7 +389,9 @@ class RadarGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
+        if (
+            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        ) {
             return $this->img->img;
         }
         // Finally stream the generated picture

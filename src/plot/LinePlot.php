@@ -231,7 +231,7 @@ class LinePlot extends Plot
             } elseif ($y == '-' && $pnts > 0) {
                 // Just ignore
             } else {
-                Util\JpGraphError::RaiseL(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
+                throw      Util\JpGraphError::make(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
             }
             ++$pnts;
         } // WHILE
@@ -244,9 +244,11 @@ class LinePlot extends Plot
         $idx       = 0;
         $numpoints = Configs::safe_count($this->coords[0]);
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
-            //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
+            if (
+                Configs::safe_count($this->coords[1]) != $numpoints
+            ) {
+                throw      Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
+                //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }

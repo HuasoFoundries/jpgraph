@@ -260,7 +260,8 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     25003 => ['General PHP error : At %s:%d : %s', 3],
     25004 => ['General PHP error : %s ', 1],
     25005 => ['Can\'t access PHP_SELF, PHP global variable. You can\'t run PHP from command line if you want to use the \'auto\' naming of cache or image files.', 0],
-    25006 => ['Usage of Configs::FF_CHINESE (Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).', 0],
+    25006 => ['Usage of Configs::FF_CHINESE (
+Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).', 0],
     25007 => ['You are trying to use the locale (%s) which your PHP installation does not support. Hint: Use \'\' to indicate the default locale for this geographic region.', 1],
     25008 => ['Image width/height argument in Graph::Graph() must be numeric', 0],
     25009 => ['You must specify what scale to use with a call to Graph::SetScale()', 0],

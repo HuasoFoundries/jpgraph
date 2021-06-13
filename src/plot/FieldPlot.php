@@ -23,11 +23,11 @@ class FieldPlot extends Plot
     public function __construct($datay, $datax, $angles)
     {
         if ((Configs::safe_count($datax) != Configs::safe_count($datay))) {
-            Util\JpGraphError::RaiseL(20001);
+            throw      Util\JpGraphError::make(20001);
         }
         //("Fieldplots must have equal number of X and Y points.");
         if ((Configs::safe_count($datax) != Configs::safe_count($angles))) {
-            Util\JpGraphError::RaiseL(20002);
+            throw      Util\JpGraphError::make(20002);
         }
         //("Fieldplots must have an angle specified for each X and Y points.");
 

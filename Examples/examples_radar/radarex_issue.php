@@ -34,14 +34,26 @@ $graph->SetScale('lin', 0, 8);
 $graph->SetFrame(false);
 $graph->legend->SetPos(0.77, 0.02, 'left', 'top');
 
-$graph->legend->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$graph->legend->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    16
+);
 
 $graph->SetTitles($titles);
 
-$graph->axis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$graph->axis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    11
+);
 $graph->axis->SetWeight(2);
 
-$graph->axis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$graph->axis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    16
+);
 $graph->axis->SetColor('black', [225, 100, 150, 0.8]);
 $graph->axis->scale->ticks->Set(1, 2, 3);
 $graph->grid->Show();

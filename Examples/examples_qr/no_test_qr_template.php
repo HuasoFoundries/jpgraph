@@ -26,7 +26,9 @@ $backend->SetModuleWidth($modulewidth);
 // Set Quiet zone (this should rarely need changing from the default)
 $backend->SetQuietZone($quiet);
 
-if (Graph\Configs::getConfig('BACKEND_IMAGE') === $back) {
+if (
+    Graph\Configs::getConfig('BACKEND_IMAGE') === $back
+) {
     $backend->Stroke($data);
 } else {
     $str = $backend->Stroke($data);

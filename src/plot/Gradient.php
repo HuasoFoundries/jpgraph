@@ -14,6 +14,7 @@ namespace Amenadiel\JpGraph\Plot;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 use function abs;
 use Amenadiel\JpGraph\Util;
 use function ceil;
@@ -345,7 +346,7 @@ class Gradient
 
                 break;
             default:
-                Util\JpGraphError::RaiseL(7001, $style);
+                throw      Util\JpGraphError::make(7001, $style);
                 //("Unknown gradient style (=$style).");
                 break;
         }
@@ -358,7 +359,9 @@ class Gradient
     // of a mountain)
     public function FilledFlatPolygon($pts, $from_color, $to_color)
     {
-        if (Configs::safe_count($pts) == 0) {
+        if (
+            Configs::safe_count($pts) == 0
+        ) {
             return;
         }
 

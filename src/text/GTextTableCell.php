@@ -121,7 +121,7 @@ class GTextTableCell
     public function SetImageConstrain($aType, $aVal)
     {
         if (!\in_array($aType, [Configs::TIMG_WIDTH, Configs::TIMG_HEIGHT], true)) {
-            Util\JpGraphError::RaiseL(27015);
+            throw      Util\JpGraphError::make(27015);
         }
         $this->iIconConstrain = [$aType, $aVal];
     }
@@ -264,11 +264,15 @@ class GTextTableCell
     public function GetWidth($aImg)
     {
         if (null !== $this->iIcon) {
-            if (Configs::TIMG_WIDTH === $this->iIconConstrain[0]) {
+            if (
+                Configs::TIMG_WIDTH === $this->iIconConstrain[0]
+            ) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif (Configs::TIMG_HEIGHT === $this->iIconConstrain[0]) {
+            } elseif (
+                Configs::TIMG_HEIGHT === $this->iIconConstrain[0]
+            ) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -295,11 +299,15 @@ class GTextTableCell
     public function GetHeight($aImg)
     {
         if (null !== $this->iIcon) {
-            if (Configs::TIMG_WIDTH === $this->iIconConstrain[0]) {
+            if (
+                Configs::TIMG_WIDTH === $this->iIconConstrain[0]
+            ) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[0]);
-            } elseif (Configs::TIMG_HEIGHT === $this->iIconConstrain[0]) {
+            } elseif (
+                Configs::TIMG_HEIGHT === $this->iIconConstrain[0]
+            ) {
                 $this->iIcon->SetScale(1);
                 $tmp = $this->iIcon->GetWidthHeight();
                 $this->iIcon->SetScale($this->iIconConstrain[1] / $tmp[1]);
@@ -327,7 +335,7 @@ class GTextTableCell
         $chk = ['left', 'right', 'center', 'bottom', 'top', 'middle'];
 
         if (!\in_array($aHorAlign, $chk, true) || !\in_array($aVertAlign, $chk, true)) {
-            Util\JpGraphError::RaiseL(27011, $aHorAlign, $aVertAlign);
+            throw      Util\JpGraphError::make(27011, $aHorAlign, $aVertAlign);
         }
         $this->iVertAlign = $aVertAlign;
         $this->iHorAlign = $aHorAlign;
@@ -420,12 +428,13 @@ class GTextTableCell
         // We don't stroke the grid lines that are on the edge of the table since this is
         // the place of the border.
         if (((0 >= $this->iCol || 0 !== $idx) && ($this->iCol + $this->iColSpan - 1 >= $this->iTable->iSize[1] - 1 || 3 !== $idx))
-            || 0 >= $this->iGridWeight[$idx]) {
+            || 0 >= $this->iGridWeight[$idx]
+        ) {
             // We don't stroke the grid lines that are on the edge of the table since this is
             // the place of the border.
             return;
             // We don't stroke the grid lines that are on the edge of the table since this is
-        // the place of the border.
+            // the place of the border.
         }
 
         $x = 1 === $aDir ? $aX : $aX + $aWidth - 1;
@@ -476,12 +485,13 @@ class GTextTableCell
         // We don't stroke the grid lines that are on the edge of the table since this is
         // the place of the border.
         if (((0 >= $this->iRow || 1 !== $idx) && ($this->iRow + $this->iRowSpan - 1 >= $this->iTable->iSize[0] - 1 || 2 !== $idx))
-            || 0 >= $this->iGridWeight[$idx]) {
+            || 0 >= $this->iGridWeight[$idx]
+        ) {
             // We don't stroke the grid lines that are on the edge of the table since this is
             // the place of the border.
             return;
             // We don't stroke the grid lines that are on the edge of the table since this is
-        // the place of the border.
+            // the place of the border.
         }
 
         $y = 1 === $aDir ? $aY : $aY + $aHeight - 1;
@@ -575,7 +585,7 @@ class GTextTableCell
                     break;
 
                 default:
-                    Util\JpGraphError::RaiseL(27012, $this->iHorAlign);
+                    throw      Util\JpGraphError::make(27012, $this->iHorAlign);
             }
 
             switch ($this->iVertAlign) {
@@ -597,7 +607,7 @@ class GTextTableCell
                     break;
 
                 default:
-                    Util\JpGraphError::RaiseL(27012, $this->iVertAlign);
+                    throw      Util\JpGraphError::make(27012, $this->iVertAlign);
             }
             $this->iIcon->SetAnchor($hanchor, $vanchor);
             $this->iIcon->_Stroke($aImg, $x, $y);
@@ -621,7 +631,7 @@ class GTextTableCell
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(27012, $this->iHorAlign);
+                throw      Util\JpGraphError::make(27012, $this->iHorAlign);
         }
         // A workaround for the shortcomings in the TTF font handling in GD
         // The anchor position for rotated text (=90) is to "short" so we add
@@ -649,7 +659,7 @@ class GTextTableCell
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(27012, $this->iVertAlign);
+                throw      Util\JpGraphError::make(27012, $this->iVertAlign);
         }
         $this->iVal->SetAlign($this->iHorAlign, 'top');
 

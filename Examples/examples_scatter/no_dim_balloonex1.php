@@ -6,6 +6,7 @@
 
 // $Id: balloonex1.php,v 1.5 2002/12/15 16:08:51 aditus Exp $
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -47,11 +48,16 @@ $graph->xaxis->SetPos('min');
 
 // Create the scatter plot
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 
 // Uncomment the following two lines to display the values
 $sp1->value->Show();
-$sp1->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$sp1->value->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Specify the callback
 $sp1->mark->SetCallback($FCallback);

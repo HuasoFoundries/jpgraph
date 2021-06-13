@@ -57,7 +57,7 @@ class LogScale extends Scale
     {
         if (!\is_numeric($a)) {
             if ('' !== $a && '-' !== $a && 'x' !== $a) {
-                Util\JpGraphError::RaiseL(11001);
+         throw      Util\JpGraphError::make(11001);
                 // ('Your data contains non-numeric values.');
             }
 
@@ -65,7 +65,7 @@ class LogScale extends Scale
         }
 
         if (0 > $a) {
-            Util\JpGraphError::RaiseL(11002);
+     throw      Util\JpGraphError::make(11002);
             //("Negative data values can not be used in a log scale.");
             exit(1);
         }
@@ -88,7 +88,7 @@ class LogScale extends Scale
     {
         if (!\is_numeric($a)) {
             if ('' !== $a && '-' !== $a && 'x' !== $a) {
-                Util\JpGraphError::RaiseL(11001);
+         throw      Util\JpGraphError::make(11001);
                 //('Your data contains non-numeric values.');
             }
 
@@ -147,7 +147,7 @@ class LogScale extends Scale
         }
 
         if (0 >= $max) {
-            Util\JpGraphError::RaiseL(11004);
+     throw      Util\JpGraphError::make(11004);
             //('Scale error for logarithmic scale. You have a problem with your data values. The max value must be greater than 0. It is mathematically impossible to have 0 in a logarithmic scale.');
         }
 
@@ -156,7 +156,7 @@ class LogScale extends Scale
             $smax = \ceil(\log10($max));
 
             if ($min >= $max) {
-                Util\JpGraphError::RaiseL(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
+         throw      Util\JpGraphError::make(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
             }
         } else {
             $smin = \floor(\log10($min));
@@ -165,7 +165,7 @@ class LogScale extends Scale
                 $smax = \round($this->autoscale_max);
 
                 if ($smin >= $smax) {
-                    Util\JpGraphError::RaiseL(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
+             throw      Util\JpGraphError::make(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
                 }
             } else {
                 $smax = \ceil(\log10($max));

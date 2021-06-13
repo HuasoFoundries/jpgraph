@@ -51,7 +51,7 @@ class PolarPlot
     {
         $n = Configs::safe_count($aData);
         if ($n & 1) {
-            Util\JpGraphError::RaiseL(17001);
+     throw      Util\JpGraphError::make(17001);
             //('Polar plots must have an even number of data point. Each data point is a tuple (angle,radius).');
         }
         $this->numpoints = $n / 2;

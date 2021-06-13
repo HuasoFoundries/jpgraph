@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -26,20 +27,33 @@ $example_title = 'Line plot with null values';
 $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    14
+);
 
 // Slightly adjust the legend from it's default position
 $graph->legend->Pos(0.03, 0.5, 'right', 'center');
-$graph->legend->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->legend->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Setup X-scale
 $graph->xaxis->SetTickLabels($datax);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->xaxis->SetLabelAngle(45);
 
 // Create the first line
 $p1 = new Plot\LinePlot($datay);
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $p1->SetColor('blue');
@@ -49,7 +63,9 @@ $graph->Add($p1);
 
 // ... and the second
 $p2 = new Plot\LinePlot($data2y);
-$p2->mark->SetType(Graph\Configs::getConfig('MARK_STAR'));
+$p2->mark->SetType(
+    Graph\Configs::getConfig('MARK_STAR')
+);
 $p2->mark->SetFillColor('red');
 $p2->mark->SetWidth(4);
 $p2->SetColor('red');

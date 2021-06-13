@@ -10,20 +10,20 @@ use Amenadiel\JpGraph\Image;
 
 /**
  * File:        JPGRAPH_CANVAS.PHP
-  *  Description: Canvas drawing extension for JpGraph
-  *  Created:     2001-01-08
-  *  Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $.
-  * 
-  *  Copyright (c) Asial Corporation. All rights reserved.
+ *  Description: Canvas drawing extension for JpGraph
+ *  Created:     2001-01-08
+ *  Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $.
+ * 
+ *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class CanvasGraph
-  *  Description: Creates a simple canvas graph which
-  *  might be used together with the basic Image drawing
-  *  primitives. Useful to auickoly produce some arbitrary
-  *  graphic which benefits from all the functionality in the
-  *  graph liek caching for example.
+ *  Description: Creates a simple canvas graph which
+ *  might be used together with the basic Image drawing
+ *  primitives. Useful to auickoly produce some arbitrary
+ *  graphic which benefits from all the functionality in the
+ *  graph liek caching for example.
  */
 final class CanvasGraph extends Graph
 {
@@ -43,7 +43,8 @@ final class CanvasGraph extends Graph
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $timeout, $inline);
     }
-    public function getScale()  {
+    public function getScale()
+    {
         return $this->scale;
     }
     /**
@@ -106,7 +107,9 @@ final class CanvasGraph extends Graph
             // If the filename is given as the special Configs::getConfig('_IMG_HANDLER')
             // then the image handler is returned and the image is NOT
             // streamed back
-            if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
+            if (
+                Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+            ) {
                 return $this->img->img;
             }
             // Finally stream the generated picture
@@ -116,10 +119,11 @@ final class CanvasGraph extends Graph
         }
     }
 
-    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10): void
+    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10): self
     {
         $this->scale = new Scale\CanvasScale($this, $xmin, $xmax, $ymin, $ymax);
         $this->scale->Set($xmin, $xmax, $ymin, $ymax);
+        return $this;
     }
 } // @class
 

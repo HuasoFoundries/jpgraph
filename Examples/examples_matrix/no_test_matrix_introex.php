@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_matrix.php';
@@ -40,7 +41,11 @@ $graph->SetColor('white');
 $graph->SetMarginColor('#fafafa');
 $example_title = 'Intro matrix graph';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 // Setup the background image
 $graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
@@ -79,14 +84,19 @@ $graph->Add($hor1);
 $txts = [
     ['Temperature gradient', $width / 2, 80],
     ['Heat color map', 200, 110],
-    ['High contrast map', 560, 110], ];
+    ['High contrast map', 560, 110],
+];
 
 $n = \count($txts);
 $t = [];
 
 for ($i = 0; $i < $n; ++$i) {
     $t[$i] = new Text($txts[$i][0], $txts[$i][1], $txts[$i][2]);
-    $t[$i]->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+    $t[$i]->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_BOLD'),
+        14
+    );
     $t[$i]->SetColor('white');
     $t[$i]->SetAlign('center', 'top');
 }

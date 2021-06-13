@@ -151,7 +151,7 @@ class GanttBar extends GanttPlotObject
 
     public function Stroke($aImg, $aScale)
     {
-        $factory = new Graph\RectPatternFactory();
+        $factory = new Graph\Pattern\RectPatternFactory();
         $prect   = $factory->Create($this->iPattern, $this->iPatternColor);
         $prect->SetDensity($this->iPatternDensity);
 
@@ -163,7 +163,7 @@ class GanttBar extends GanttPlotObject
         } elseif (is_int($this->iHeightFactor) && $this->iHeightFactor > 2 && $this->iHeightFactor < 200) {
             $vs = $this->iHeightFactor;
         } else {
-            Util\JpGraphError::RaiseL(6028, $this->iHeightFactor);
+            throw      Util\JpGraphError::make(6028, $this->iHeightFactor);
             //    ("Specified height (".$this->iHeightFactor.") for gantt bar is out of range.");
         }
 
@@ -186,7 +186,10 @@ class GanttBar extends GanttPlotObject
             $colwidth  = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(Configs::safe_count($colwidth), Configs::safe_count($this->title->csimtarget));
+            $n = min(
+                Configs::safe_count($colwidth),
+                Configs::safe_count($this->title->csimtarget)
+            );
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];

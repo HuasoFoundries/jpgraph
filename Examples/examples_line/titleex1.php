@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -18,13 +19,25 @@ $graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMargin(25, 10, 30, 30);
 
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $example_title = 'The Title';
 $graph->title->set($example_title);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 $subtitle_text = 'The Subtitle';
 $graph->subtitle->Set($subtitle_text);
-$graph->subsubtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 9);
+$graph->subsubtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    9
+);
 $graph->subsubtitle->Set('The Subsubitle');
 
 // Create the linear plot

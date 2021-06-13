@@ -76,7 +76,7 @@ class WindrosePlotScale
         }
 
         if (\round($totlegsum) > 100) {
-            Util\JpGraphError::RaiseL(22001, $legsum);
+            throw      Util\JpGraphError::make(22001, $legsum);
             //("Total percentage for all windrose legs in a windrose plot can not exceed  100% !\n(Current max is: ".$legsum.')');
         }
         $this->iMax = $max;
@@ -148,7 +148,7 @@ class WindrosePlotScale
         }
 
         if (100 <= $this->iDelta) {
-            Util\JpGraphError::RaiseL(22002); //('Graph is too small to have a scale. Please make the graph larger.');
+            throw      Util\JpGraphError::make(22002); //('Graph is too small to have a scale. Please make the graph larger.');
         }
 
         // If the distance is to large try with multiples of 2 instead
@@ -162,7 +162,7 @@ class WindrosePlotScale
             }
 
             if (100 <= $this->iDelta) {
-                Util\JpGraphError::RaiseL(22002); //('Graph is too small to have a scale. Please make the graph larger.');
+                throw      Util\JpGraphError::make(22002); //('Graph is too small to have a scale. Please make the graph larger.');
             }
         }
 
@@ -305,13 +305,17 @@ class WindrosePlotScale
         }
 
         // Position the labels relative to the radiant circles
-        if (Configs::LBLALIGN_TOP === $this->iLblAlign) {
+        if (
+            Configs::LBLALIGN_TOP === $this->iLblAlign
+        ) {
             if (0 < $a && M_PI / 2 >= $a) {
                 $val->SetAlign('left', 'bottom');
             } elseif (M_PI / 2 < $a && M_PI >= $a) {
                 $val->SetAlign('right', 'bottom');
             }
-        } elseif (Configs::LBLALIGN_CENTER === $this->iLblAlign) {
+        } elseif (
+            Configs::LBLALIGN_CENTER === $this->iLblAlign
+        ) {
             $val->SetAlign('center', 'center');
         }
 

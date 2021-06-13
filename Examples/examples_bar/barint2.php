@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -28,7 +29,9 @@ $graph->SetMarginColor('lightblue');
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1')
+);
 $graph->xaxis->SetColor('darkblue', 'black');
 
 // Stup hidden y-axis by given it the same color
@@ -40,9 +43,15 @@ $graph->ygrid->SetColor('white');
 $subtitle_text = '(With hidden y-axis)';
 $graph->subtitle->Set($subtitle_text);
 
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -54,7 +63,11 @@ $bplot->SetShadow('darkgray');
 // Setup the values that are displayed on top of each bar
 $bplot->value->Show();
 // Must use TTF fonts if we want text at an arbitrary angle
-$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$bplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $bplot->value->SetFormat('$%d');
 // Black color for positive values and darkred for negative values
 $bplot->value->SetColor('black', 'darkred');

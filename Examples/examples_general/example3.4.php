@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -30,8 +31,14 @@ $graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $graph->yaxis->SetColor('blue');
 
@@ -39,12 +46,18 @@ $graph->yaxis->SetColor('blue');
 $lineplot = new Plot\LinePlot($ydata);
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2); // Two pixel wide
-$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'));
+$lineplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_UTRIANGLE')
+);
 $lineplot->mark->SetColor('blue');
 $lineplot->mark->SetFillColor('red');
 
 $lineplot->value->Show();
-$lineplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$lineplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 $lineplot->value->SetColor('darkred');
 $lineplot->value->SetFormat('(%d)');
 

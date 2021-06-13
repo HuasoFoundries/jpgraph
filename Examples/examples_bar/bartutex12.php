@@ -10,11 +10,13 @@
 // some of the capabilities of JpGraph.
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $month = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec', ];
+    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec',
+];
 
 // Create some datapoints
 $steps = 100;
@@ -54,7 +56,10 @@ $graph->title->set($example_title);
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font (don't need TTF support)
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Make the margin around the plot a little bit bigger then default
 $graph->img->SetMargin(40, 140, 40, 80);

@@ -87,7 +87,10 @@ $example_title = 'Canvas Spiral';
 $p = SeaShell($g->img, 0, 20, $w - 1, $h - 21, $r, 19);
 $g->img->SetColor('black');
 $g->img->Rectangle(0, 20, $w - 1, $h - 1);
-$g->img->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$g->img->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $g->img->SetTextAlign('center', 'top');
 $g->img->StrokeText($w / 2, 0, $example_title);
 

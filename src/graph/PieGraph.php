@@ -12,7 +12,7 @@ use Amenadiel\JpGraph\Text;
 
 /**
  * @class PieGraph
-  *  Description:
+ *  Description:
  */
 class PieGraph extends Graph
 {
@@ -57,7 +57,7 @@ class PieGraph extends Graph
      *
      * @param mixed $aObj
      */
-    public function Add($aObj)
+    public function Add($aObj): self
     {
         if (\is_array($aObj) && Configs::safe_count($aObj) > 0) {
             $cl = $aObj[0];
@@ -87,17 +87,18 @@ class PieGraph extends Graph
             }
         }
 
-        if (!$this->graph_theme) {
-            return;
+        if ($this->graph_theme) {
+            $this->graph_theme->SetupPlot($aObj);
         }
 
-        $this->graph_theme->SetupPlot($aObj);
 
-        if (!$aObj->is_using_plot_theme) {
-            return;
+
+        if ($aObj->is_using_plot_theme) {
+            $aObj->UsePlotThemeColors();
         }
 
-        $aObj->UsePlotThemeColors();
+
+        return $this;
     }
 
     public function ClearTheme()
@@ -312,7 +313,9 @@ class PieGraph extends Graph
             }
         }
 
-        if (Configs::_JPG_DEBUG) {
+        if (
+            Configs::_JPG_DEBUG
+        ) {
             $this->DisplayCSIMAreas();
         }
 
@@ -333,7 +336,9 @@ class PieGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
+        if (
+            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        ) {
             return $this->img->img;
         }
         // Finally stream the generated picture

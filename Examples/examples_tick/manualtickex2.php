@@ -9,6 +9,7 @@
 // at the start of each month.
 //
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -53,7 +54,11 @@ $graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin', 0, 0, $xmin, $xmax);
 $example_title = 'Example with manual tick labels';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 //
 // Make sure that the X-axis is always at the bottom of the scale
@@ -65,8 +70,16 @@ $graph->xaxis->SetPos('min');
 $graph->xaxis->SetMajTickPositions($tickPositions, $tickLabels);
 
 // Use Times font
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 10);
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_TIMES'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    10
+);
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_TIMES'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    10
+);
 
 // Add a X-grid
 $graph->xgrid->Show();

@@ -25,7 +25,7 @@ class Progress
     public function Set($aProg)
     {
         if ($aProg < 0.0 || $aProg > 1.0) {
-            Util\JpGraphError::RaiseL(6027);
+     throw      Util\JpGraphError::make(6027);
             //("Progress value must in range [0, 1]");
         }
         $this->iProgress = $aProg;

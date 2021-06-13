@@ -4,7 +4,7 @@
  * JPGraph - Community Edition
  */
 
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Graph\Pattern;
 
 /**
  * @class RectPatternDiagCross

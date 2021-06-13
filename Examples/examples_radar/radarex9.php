@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -16,11 +17,19 @@ $__height = 270;
 $graph = new Graph\RadarGraph($__width, $__height);
 $example_title = 'Accumulated PPM';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 $subtitle_text = '(according to direction)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 
 $graph->SetTitles($titles);
 $graph->SetCenter(0.5, 0.55);
@@ -30,7 +39,9 @@ $graph->axis->SetColor('darkgray@0.3');
 $graph->grid->SetColor('darkgray@0.3');
 $graph->grid->Show();
 
-$graph->SetGridDepth(Graph\Configs::getConfig('DEPTH_BACK'));
+$graph->SetGridDepth(
+    Graph\Configs::getConfig('DEPTH_BACK')
+);
 
 $plot = new Plot\RadarPlot($data);
 $plot->SetColor('red@0.2');

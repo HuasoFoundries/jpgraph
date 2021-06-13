@@ -45,7 +45,7 @@ class Plot
         Util\Helper::bootstrapLibrary();
         $this->numpoints = Configs::safe_count($aDatay);
         if ($this->numpoints == 0) {
-            Util\JpGraphError::RaiseL(25121); //("Empty input data array specified for plot. Must have at least one data point.");
+            throw      Util\JpGraphError::make(25121); //("Empty input data array specified for plot. Must have at least one data point.");
         }
 
         if (!$this->isRunningClear) {
@@ -63,7 +63,7 @@ class Plot
                     continue;
                 }
 
-                Util\JpGraphError::RaiseL(25070);
+                throw      Util\JpGraphError::make(25070);
             }
         }
         $this->value = new DisplayValue();
@@ -74,7 +74,7 @@ class Plot
     // the subclasses
     public function Stroke($aImg, $aXScale, $aYScale)
     {
-        Util\JpGraphError::RaiseL(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
+        throw      Util\JpGraphError::make(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
     }
 
     public function HideLegend($f = true)
@@ -95,7 +95,8 @@ class Plot
     {
         $this->value->Stroke($img, $aVal, $x, $y);
     }
-    public function getScale() {
+    public function getScale()
+    {
         return $this->scale;
     }    // Set href targets for CSIM
     public function SetCSIMTargets($aTargets, $aAlts = '', $aWinTargets = '')
@@ -116,7 +117,7 @@ class Plot
     public function PreStrokeAdjust($aGraph)
     {
         if (substr($aGraph->axtype, 0, 4) == 'text' && (isset($this->coords[1]))) {
-            Util\JpGraphError::RaiseL(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
+            throw      Util\JpGraphError::make(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
         }
 
         return true;
@@ -177,7 +178,9 @@ class Plot
             $xm = $this->numpoints - 1;
         }
         $y = $this->coords[0];
-        if (Configs::safe_count($y) > 0) {
+        if (
+            Configs::safe_count($y) > 0
+        ) {
             $cnt = Configs::safe_count($y);
             $i   = 0;
             while ($i < $cnt && !is_numeric($ym = $y[$i])) {

@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -32,7 +33,10 @@ $graph->SetScale('textlin');
 
 // Specify X-labels
 //$databarx = array('tXi','','','xxx','','','iXii','','','OOO','','','tOO');
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_NORMAL')
+);
 $graph->xaxis->SetTickLabels($databarx);
 $graph->xaxis->SetTextLabelInterval(3);
 
@@ -41,7 +45,10 @@ $example_title = 'Displaying only every third label';
 $graph->title->set($example_title);
 
 // Use built in font
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Create the bar plot
 $b1 = new Plot\BarPlot($databary);

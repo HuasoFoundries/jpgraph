@@ -9,6 +9,7 @@
 // at the start of each month.
 //
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -49,7 +50,11 @@ $graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, 0, $xmin, $xmax);
 $example_title = 'Basic example with manual ticks';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 //
 // Make sure that the X-axis is always at the bottom of the scale
@@ -63,8 +68,12 @@ $graph->xaxis->SetTickPositions($tickPositions, $minTickPositions);
 // The labels should be formatted at dates with "Year-month"
 $graph->xaxis->SetLabelFormatString('My', true);
 
-// Use Ariel font
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
+// Use Arial font
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    9
+);
 
 // Add a X-grid
 $graph->xgrid->Show();

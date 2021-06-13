@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -23,7 +24,11 @@ $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
 
 $graph->title->Set('Adding an icon ("tux") in the background');
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 //$graph->SetBackgroundGradient('red','blue');
 

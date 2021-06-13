@@ -30,7 +30,9 @@ class LinearRegression
 
     public function __construct($aDataX, $aDataY)
     {
-        if (Configs::safe_count($aDataX) !== Configs::safe_count($aDataY)) {
+        if (
+            Configs::safe_count($aDataX) !== Configs::safe_count($aDataY)
+        ) {
             JpGraph::Raise('LinearRegression: X and Y data array must be of equal length.');
         }
         $this->ix = $aDataX;

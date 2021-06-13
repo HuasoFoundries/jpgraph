@@ -151,7 +151,7 @@ class LinearScale extends Scale
     public function SetGrace($aGraceTop, $aGraceBottom = 0)
     {
         if (0 > $aGraceTop || 0 > $aGraceBottom) {
-            Util\JpGraphError::RaiseL(25069); //(" Grace must be larger then 0");
+     throw      Util\JpGraphError::make(25069); //(" Grace must be larger then 0");
         }
         $this->gracetop = $aGraceTop;
         $this->gracebottom = $aGraceBottom;
@@ -199,7 +199,7 @@ class LinearScale extends Scale
             $min = $this->autoscale_min;
 
             if ($min >= $max) {
-                Util\JpGraphError::RaiseL(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
+         throw      Util\JpGraphError::make(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
             }
 
             if (\abs($min - $max) < 0.001) {
@@ -211,7 +211,7 @@ class LinearScale extends Scale
             $max = $this->autoscale_max;
 
             if ($min >= $max) {
-                Util\JpGraphError::RaiseL(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
+         throw      Util\JpGraphError::make(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
             }
 
             if (\abs($min - $max) < 0.001) {
@@ -288,7 +288,7 @@ class LinearScale extends Scale
     {
         if (!\is_numeric($aCoord)) {
             if ('' !== $aCoord && '-' !== $aCoord && 'x' !== $aCoord) {
-                Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
+         throw      Util\JpGraphError::make(25070); //('Your data contains non-numeric values.');
             }
 
             return 0;
@@ -303,7 +303,7 @@ class LinearScale extends Scale
     {
         if (!\is_numeric($aCoord)) {
             if ('' !== $aCoord && '-' !== $aCoord && 'x' !== $aCoord) {
-                Util\JpGraphError::RaiseL(25070); //('Your data contains non-numeric values.');
+         throw      Util\JpGraphError::make(25070); //('Your data contains non-numeric values.');
             }
 
             return 0;

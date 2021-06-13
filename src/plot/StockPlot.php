@@ -37,8 +37,10 @@ class StockPlot extends Plot
      */
     public function __construct($datay, $datax = false)
     {
-        if (Configs::safe_count($datay) % $this->iTupleSize) {
-            Util\JpGraphError::RaiseL(21001, $this->iTupleSize);
+        if (
+            Configs::safe_count($datay) % $this->iTupleSize
+        ) {
+            throw      Util\JpGraphError::make(21001, $this->iTupleSize);
             //('Data values for Stock charts must contain an even multiple of '.$this->iTupleSize.' data points.');
         }
         parent::__construct($datay, $datax);
@@ -96,9 +98,11 @@ class StockPlot extends Plot
         }
 
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $n) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $n);
-            // ("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
+            if (
+                Configs::safe_count($this->coords[1]) != $n
+            ) {
+                throw      Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $n);
+                // ("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -183,8 +187,8 @@ class StockPlot extends Plot
             }
 
             $this->csimareas .= '<area shape="rect" coords="' .
-            round($xl) . ',' . round($ytop) . ',' .
-            round($xr) . ',' . round($ybottom) . '" ';
+                round($xl) . ',' . round($ytop) . ',' .
+                round($xr) . ',' . round($ybottom) . '" ';
             $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
             if (!empty($this->csimalts[$i])) {
                 $sval = $this->csimalts[$i];

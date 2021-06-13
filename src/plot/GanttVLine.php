@@ -54,7 +54,7 @@ class GanttVLine extends GanttPlotObject
     public function SetDayOffset($aOff = 0.5)
     {
         if ($aOff < 0.0 || $aOff > 1.0) {
-            Util\JpGraphError::RaiseL(6029);
+     throw      Util\JpGraphError::make(6029);
             //("Offset for vertical line must be in range [0,1]");
         }
         $this->iDayOffset = $aOff;

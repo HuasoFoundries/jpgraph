@@ -3,6 +3,7 @@
 /**
  * JPGraph - Community Edition
  */
+
 use  Amenadiel\JpGraph\Graph;
 use  Amenadiel\JpGraph\Text\Configs;
 use Amenadiel\JpGraph\Graph\CanvasGraph;
@@ -28,7 +29,11 @@ $data = [
 $table = new GTextTable();
 $table->Set($data);
 $table->SetAlign('right');
-$table->SetFont(Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_NORMAL'), 12);
+$table->SetFont(
+    Configs::getConfig('FF_TIMES'),
+    Configs::getConfig('FS_NORMAL'),
+    12
+);
 $table->SetCellFont(0, 0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 16);
 
 // Rotate the entire table 90 degrees

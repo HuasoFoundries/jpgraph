@@ -43,17 +43,19 @@ class JpGraphError
      * @param string $a4           A 4
      * @param string $a5           A 5
      *
-     * @throws JpGraphExceptionL (description)
+     * @throws JpGraphException (description)
      */
     public static function RaiseL($error_number, $a1 = null, $a2 = null, $a3 = null, $a4 = null, $a5 = null)
     {
-        $errtxt = new ErrMsgText();
+        $errtxt = new ExceptionFactory();
         self::SetTitle('JpGraph Error: ' . $error_number);
-        $exceptionMessage = $errtxt->Get($error_number, $a1, $a2, $a3, $a4, $a5);
+        throw ExceptionFactory::create($error_number, $a1, $a2, $a3, $a4, $a5);
 
-        throw new JpGraphException($exceptionMessage);
     }
 
+    public static function make($error_number,...$args) :JpGraphException {
+        return self::RaiseL($error_number,...$args);
+    }
     public static function SetImageFlag($aFlg = true)
     {
         self::$__iImgFlg = $aFlg;

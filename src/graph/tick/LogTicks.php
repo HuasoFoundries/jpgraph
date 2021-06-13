@@ -45,7 +45,7 @@ class LogTicks extends Ticks
 
     public function SetTextLabelStart($aStart)
     {
-        Util\JpGraphError::RaiseL(11005);
+ throw      Util\JpGraphError::make(11005);
         //('Specifying tick interval for a logarithmic scale is undefined. Remove any calls to SetTextLabelStart() or SetTextTickInterval() on the logarithmic scale.');
     }
 

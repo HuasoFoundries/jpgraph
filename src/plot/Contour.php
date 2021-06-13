@@ -23,6 +23,7 @@ use function round;
  * //
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
+
 define('HORIZ_EDGE', 0);
 define('VERT_EDGE', 1);
 
@@ -87,12 +88,14 @@ class Contour
         }
 
         if (!is_array($aColors)) {
-            Util\JpGraphError::RaiseL(28001);
+            throw      Util\JpGraphError::make(28001);
             //'Third argument to Contour must be an array of colors.'
         }
 
-        if (Configs::safe_count($aColors) != Configs::safe_count($this->isobarValues)) {
-            Util\JpGraphError::RaiseL(28002);
+        if (
+            Configs::safe_count($aColors) != Configs::safe_count($this->isobarValues)
+        ) {
+            throw      Util\JpGraphError::make(28002);
             //'Number of colors must equal the number of isobar lines specified';
         }
 
@@ -162,11 +165,11 @@ class Contour
     public function isobarHCrossing($aRow, $aCol, $aIsobar)
     {
         if ($aCol >= $this->nbrCols - 1) {
-            Util\JpGraphError::RaiseL(28003, $aCol);
+            throw      Util\JpGraphError::make(28003, $aCol);
             //'ContourPlot Internal Error: isobarHCrossing: Coloumn index too large (%d)'
         }
         if ($aRow >= $this->nbrRows) {
-            Util\JpGraphError::RaiseL(28004, $aRow);
+            throw      Util\JpGraphError::make(28004, $aRow);
             //'ContourPlot Internal Error: isobarHCrossing: Row index too large (%d)'
         }
 
@@ -188,11 +191,11 @@ class Contour
     public function isobarVCrossing($aRow, $aCol, $aIsobar)
     {
         if ($aRow >= $this->nbrRows - 1) {
-            Util\JpGraphError::RaiseL(28005, $aRow);
+            throw      Util\JpGraphError::make(28005, $aRow);
             //'isobarVCrossing: Row index too large
         }
         if ($aCol >= $this->nbrCols) {
-            Util\JpGraphError::RaiseL(28006, $aCol);
+            throw      Util\JpGraphError::make(28006, $aCol);
             //'isobarVCrossing: Col index too large
         }
 
@@ -421,7 +424,9 @@ class Contour
             }
         }
 
-        if (Configs::safe_count($this->isobarColors) == 0) {
+        if (
+            Configs::safe_count($this->isobarColors) == 0
+        ) {
             // No manually specified colors. Calculate them automatically.
             $this->CalculateColors();
         }

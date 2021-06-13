@@ -12,7 +12,7 @@ use const M_PI;
 
 /**
  * @class RadarAxis
-  *  Description: Implements axis for the radar graph
+ *  Description: Implements axis for the radar graph
  */
 class RadarAxis extends AxisPrototype
 {
@@ -33,7 +33,10 @@ class RadarAxis extends AxisPrototype
         parent::__construct($img, $aScale, $color);
         $this->len = $img->plotheight;
         $this->title = new Text\Text();
-        $this->title->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->title->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
         $this->color = [0, 0, 0];
     }
 
@@ -80,7 +83,9 @@ class RadarAxis extends AxisPrototype
 
             // majpos contains (x,y) coordinates for labels
             if (!$this->hide_labels) {
-                $n = \floor(Configs::safe_count($majpos) / 2);
+                $n = \floor(
+                    Configs::safe_count($majpos) / 2
+                );
 
                 for ($i = 0; $i < $n; ++$i) {
                     // Set specific label color if specified

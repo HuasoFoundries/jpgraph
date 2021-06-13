@@ -10,14 +10,17 @@ use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
+use Amenadiel\JpGraph\Util\TappableTrait;
+
 use function count;
 
 /**
  * @class Graph
-  *  Description: Main class to handle graphs
+ *  Description: Main class to handle graphs
  */
 class Graph
 {
+    use TappableTrait;
     /**
      * @var Util\DateLocale
      */
@@ -377,7 +380,7 @@ class Graph
         $this->gJpgDateLocale = new Util\DateLocale();
 
         if (!\is_numeric($aWidth) || !\is_numeric($aHeight)) {
-            Util\JpGraphError::RaiseL(25008); //('Image width/height argument in Graph::Graph() must be numeric');
+            throw      Util\JpGraphError::make(25008); //('Image width/height argument in Graph::Graph() must be numeric');
         }
 
         // Initialize frame and margin
@@ -430,24 +433,20 @@ class Graph
 
         $this->tabtitle = new Text\GraphTabTitle();
 
-        if ($this->isRunningClear) {
-            return;
+        if (!$this->isRunningClear) {
+            $this->inputValues = [];
+            $this->inputValues['aWidth'] = $aWidth;
+            $this->inputValues['aHeight'] = $aHeight;
+            $this->inputValues['aCachedName'] = $aCachedName;
+            $this->inputValues['aTimeout'] = $aTimeout;
+            $this->inputValues['aInline'] = $aInline;
+
+            $theme_class = '\Amenadiel\JpGraph\Themes\\' . Configs::getConfig('DEFAULT_THEME_CLASS');
+
+            if (\class_exists($theme_class)) {
+                $this->graph_theme = new $theme_class();
+            }
         }
-
-        $this->inputValues = [];
-        $this->inputValues['aWidth'] = $aWidth;
-        $this->inputValues['aHeight'] = $aHeight;
-        $this->inputValues['aCachedName'] = $aCachedName;
-        $this->inputValues['aTimeout'] = $aTimeout;
-        $this->inputValues['aInline'] = $aInline;
-
-        $theme_class = '\Amenadiel\JpGraph\Themes\\' . Configs::getConfig('DEFAULT_THEME_CLASS');
-
-        if (!\class_exists($theme_class)) {
-            return;
-        }
-
-        $this->graph_theme = new $theme_class();
     }
 
     public function InitializeFrameAndMargin()
@@ -560,11 +559,13 @@ class Graph
     public function SetMargin($lm, $rm, $tm, $bm)
     {
         $this->img->SetMargin($lm, $rm, $tm, $bm);
+        return $this;
     }
 
     public function SetY2OrderBack($aBack = true)
     {
         $this->y2orderback = $aBack;
+        return $this;
     }
 
     // Rotate the graph 90 degrees and set the margin
@@ -582,25 +583,27 @@ class Graph
         $this->SetAngle(90);
 
         if (empty($this->yaxis) || empty($this->xaxis)) {
-            Util\JpGraphError::RaiseL(25009); //('You must specify what scale to use with a call to Graph::SetScale()');
+            throw      Util\JpGraphError::make(25009); //('You must specify what scale to use with a call to Graph::SetScale()');
         }
         $this->xaxis->SetLabelAlign('right', 'center');
         $this->yaxis->SetLabelAlign('center', 'bottom');
+        return $this;
     }
 
     public function SetClipping($aFlg = true)
     {
         $this->iDoClipping = $aFlg;
+        return $this;
     }
 
     // Add a plot object to the graph
     /**
      * @param (Plot\LinePlot|mixed)[]|Text\Text $aPlot
      */
-    public function Add($aPlot)
+    public function Add($aPlot):self
     {
         if (null === $aPlot) {
-            Util\JpGraphError::RaiseL(25010); //("Graph::Add() You tried to add a null plot to the graph.");
+            throw      Util\JpGraphError::make(25010); //("Graph::Add() You tried to add a null plot to the graph.");
         }
 
         if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
@@ -627,11 +630,12 @@ class Graph
             }
         }
 
-        if (!$this->graph_theme) {
-            return;
+        if ($this->graph_theme) {
+            $this->graph_theme->SetupPlot($aPlot);
         }
 
-        $this->graph_theme->SetupPlot($aPlot);
+
+        return $this;
     }
 
     public function AddTable($aTable)
@@ -643,6 +647,7 @@ class Graph
         } else {
             $this->iTables[] = $aTable;
         }
+        return $this;
     }
 
     /**
@@ -657,13 +662,14 @@ class Graph
         } else {
             $this->iIcons[] = $aIcon;
         }
+        return $this;
     }
 
     // Add plot to second Y-scale
     public function AddY2($aPlot)
     {
         if (null === $aPlot) {
-            Util\JpGraphError::RaiseL(25011); //("Graph::AddY2() You tried to add a null plot to the graph.");
+            throw      Util\JpGraphError::make(25011); //("Graph::AddY2() You tried to add a null plot to the graph.");
         }
 
         if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
@@ -693,7 +699,7 @@ class Graph
     public function AddY($aN, $aPlot)
     {
         if (null === $aPlot) {
-            Util\JpGraphError::RaiseL(25012); //("Graph::AddYN() You tried to add a null plot to the graph.");
+            throw      Util\JpGraphError::make(25012); //("Graph::AddYN() You tried to add a null plot to the graph.");
         }
 
         if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
@@ -706,7 +712,7 @@ class Graph
             || ($cl instanceof Plot\PlotLine)
             || ($cl instanceof Plot\PlotBand)
         ) {
-            Util\JpGraphError::RaiseL(25013); //('You can only add standard plots to multiple Y-axis');
+            throw      Util\JpGraphError::make(25013); //('You can only add standard plots to multiple Y-axis');
         } else {
             $this->ynplots[$aN][] = $aPlot;
         }
@@ -726,7 +732,7 @@ class Graph
     public function AddText($aTxt, $aToY2 = false)
     {
         if (null === $aTxt) {
-            Util\JpGraphError::RaiseL(25014); //("Graph::AddText() You tried to add a null text to the graph.");
+            throw      Util\JpGraphError::make(25014); //("Graph::AddText() You tried to add a null text to the graph.");
         }
 
         if ($aToY2) {
@@ -755,7 +761,7 @@ class Graph
     public function AddLine($aLine, $aToY2 = false)
     {
         if (null === $aLine) {
-            Util\JpGraphError::RaiseL(25015); //("Graph::AddLine() You tried to add a null line to the graph.");
+            throw      Util\JpGraphError::make(25015); //("Graph::AddLine() You tried to add a null line to the graph.");
         }
 
         if ($aToY2) {
@@ -779,6 +785,7 @@ class Graph
                 $this->plots[] = $aLine;
             }
         }
+        return $this;
     }
 
     // Add vertical or horizontal band
@@ -788,7 +795,7 @@ class Graph
     public function AddBand($aBand, $aToY2 = false)
     {
         if (null === $aBand) {
-            Util\JpGraphError::RaiseL(25016); //(" Graph::AddBand() You tried to add a null band to the graph.");
+            throw      Util\JpGraphError::make(25016); //(" Graph::AddBand() You tried to add a null band to the graph.");
         }
 
         if ($aToY2) {
@@ -808,6 +815,7 @@ class Graph
                 $this->bands[] = $aBand;
             }
         }
+        return $this;
     }
 
     public function SetPlotGradient($aFrom = 'navy', $aTo = 'silver', $aGradType = 2)
@@ -815,6 +823,7 @@ class Graph
         $this->plot_gradtype = $aGradType;
         $this->plot_gradfrom = $aFrom;
         $this->plot_gradto = $aTo;
+        return $this;
     }
 
     public function SetBackgroundGradient($aFrom = 'navy', $aTo = 'silver', $aGradType = 2, $aStyle = Configs::BGRAD_FRAME)
@@ -823,6 +832,7 @@ class Graph
         $this->bkg_gradstyle = $aStyle;
         $this->bkg_gradfrom = $aFrom;
         $this->bkg_gradto = $aTo;
+        return $this;
     }
 
     // Set a country flag in the background
@@ -831,6 +841,7 @@ class Graph
         $this->background_cflag = $aName;
         $this->background_cflag_type = $aBgType;
         $this->background_cflag_mix = $aMix;
+        return $this;
     }
 
     // Alias for the above method
@@ -839,6 +850,7 @@ class Graph
         $this->background_cflag = $aName;
         $this->background_cflag_type = $aBgType;
         $this->background_cflag_mix = $aMix;
+        return $this;
     }
 
     // Specify a background image
@@ -849,7 +861,7 @@ class Graph
             $e = \explode('.', $aFileName);
 
             if (empty($e)) {
-                Util\JpGraphError::RaiseL(25018, $aFileName); //('Incorrect file name for Graph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
+                throw      Util\JpGraphError::make(25018, $aFileName); //('Incorrect file name for Graph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
             }
 
             $valid_formats = ['png', 'jpg', 'gif'];
@@ -858,13 +870,14 @@ class Graph
             if ('jpeg' === $aImgFormat) {
                 $aImgFormat = 'jpg';
             } elseif (!\in_array($aImgFormat, $valid_formats, true)) {
-                Util\JpGraphError::RaiseL(25019, $aImgFormat); //('Unknown file extension ($aImgFormat) in Graph::SetBackgroundImage() for filename: '.$aFileName);
+                throw      Util\JpGraphError::make(25019, $aImgFormat); //('Unknown file extension ($aImgFormat) in Graph::SetBackgroundImage() for filename: '.$aFileName);
             }
         }
 
         $this->background_image = $aFileName;
         $this->background_image_type = $aBgType;
         $this->background_image_format = $aImgFormat;
+        return $this;
     }
 
     public function SetBackgroundImageMix($aMix)
@@ -877,12 +890,14 @@ class Graph
     {
         $this->background_image_xpos = $aXpos;
         $this->background_image_ypos = $aYpos;
+        return $this;
     }
 
     // Specify axis style (boxed or single)
     public function SetAxisStyle($aStyle)
     {
         $this->iAxisStyle = $aStyle;
+        return $this;
     }
 
     // Set a frame around the plot area
@@ -895,12 +910,14 @@ class Graph
         $this->boxed = $aDrawPlotFrame;
         $this->box_weight = $aPlotFrameWeight;
         $this->box_color = $aPlotFrameColor;
+        return $this;
     }
 
     // Specify color for the plotarea (not the margins)
     public function SetColor($aColor)
     {
         $this->plotarea_color = $aColor;
+        return $this;
     }
 
     // Specify color for the margins (all areas outside the plotarea)
@@ -910,6 +927,7 @@ class Graph
     public function SetMarginColor($aColor)
     {
         $this->margin_color = $aColor;
+        return $this;
     }
 
     // Set a frame around the entire image
@@ -918,6 +936,7 @@ class Graph
         $this->doframe = $aDrawImgFrame;
         $this->frame_color = $aImgFrameColor;
         $this->frame_weight = $aImgFrameWeight;
+        return $this;
     }
 
     public function SetFrameBevel($aDepth = 3, $aBorder = false, $aBorderColor = 'black', $aColor1 = 'white@0.4', $aColor2 = 'darkgray@0.4', $aFlg = true)
@@ -928,6 +947,7 @@ class Graph
         $this->framebevelbordercolor = $aBorderColor;
         $this->framebevelcolor1 = $aColor1;
         $this->framebevelcolor2 = $aColor2;
+        return $this;
 
         $this->doshadow = false;
     }
@@ -940,6 +960,7 @@ class Graph
         $this->shadow_width = $aShadowWidth;
         $this->footer->iBottomMargin += $aShadowWidth;
         $this->footer->iRightMargin += $aShadowWidth;
+        return $this;
     }
 
     // Specify x,y scale. Note that if you manually specify the scale
@@ -951,12 +972,12 @@ class Graph
      * @param float|int $aXMin
      * @param float|int $aXMax
      */
-    public function SetScale($aAxisType, $aYMin = 1, $aYMax = 1, $aXMin = 1, $aXMax = 1)
+    public function SetScale($aAxisType, $aYMin = 1, $aYMax = 1, $aXMin = 1, $aXMax = 1): self
     {
         $this->axtype = $aAxisType;
 
         if ($aYMax < $aYMin || $aXMax < $aXMin) {
-            Util\JpGraphError::RaiseL(25020); //('Graph::SetScale(): Specified Max value must be larger than the specified Min value.');
+            throw      Util\JpGraphError::make(25020); //('Graph::SetScale(): Specified Max value must be larger than the specified Min value.');
         }
 
         $yt = \mb_substr($aAxisType, -3, 3);
@@ -969,7 +990,7 @@ class Graph
         } elseif ('log' === $yt) {
             $this->yscale = new Scale\LogScale($aYMin, $aYMax);
         } else {
-            Util\JpGraphError::RaiseL(25021, $aAxisType); //("Unknown scale specification for Y-scale. ($aAxisType)");
+            throw      Util\JpGraphError::make(25021, $aAxisType); //("Unknown scale specification for Y-scale. ($aAxisType)");
         }
 
         $xt = \mb_substr($aAxisType, 0, 3);
@@ -985,7 +1006,7 @@ class Graph
         } elseif ('log' === $xt) {
             $this->xscale = new Scale\LogScale($aXMin, $aXMax, 'x');
         } else {
-            Util\JpGraphError::RaiseL(25022, $aAxisType); //(" Unknown scale specification for X-scale. ($aAxisType)");
+            throw      Util\JpGraphError::make(25022, $aAxisType); //(" Unknown scale specification for X-scale. ($aAxisType)");
         }
 
         $this->xaxis = new Axis\Axis($this->img, $this->xscale);
@@ -1007,6 +1028,7 @@ class Graph
         }
 
         $this->isAfterSetScale = true;
+        return $this;
     }
 
     // Specify secondary Y scale
@@ -1020,7 +1042,7 @@ class Graph
         } elseif ('log' === $aAxisType) {
             $this->y2scale = new Scale\LogScale($aY2Min, $aY2Max);
         } else {
-            Util\JpGraphError::RaiseL(25023, $aAxisType); //("JpGraph: Unsupported Y2 axis type: $aAxisType\nMust be one of (lin,log,int)");
+            throw      Util\JpGraphError::make(25023, $aAxisType); //("JpGraph: Unsupported Y2 axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
         $this->y2axis = new Axis\Axis($this->img, $this->y2scale);
@@ -1037,16 +1059,18 @@ class Graph
         }
 
         $this->graph_theme->ApplyGraph($this);
+        return $this;
     }
 
     // Set the delta position (in pixels) between the multiple Y-axis
     public function SetYDeltaDist($aDist)
     {
         $this->iYAxisDeltaPos = $aDist;
+        return $this;
     }
 
     // Specify secondary Y scale
-    public function SetYScale($aN, $aAxisType = 'lin', $aYMin = 1, $aYMax = 1)
+    public function SetYScale($aN, $aAxisType = 'lin', $aYMin = 1, $aYMax = 1): self
     {
         if ('lin' === $aAxisType) {
             $this->ynscale[$aN] = new Scale\LinearScale($aYMin, $aYMax);
@@ -1056,18 +1080,19 @@ class Graph
         } elseif ('log' === $aAxisType) {
             $this->ynscale[$aN] = new Scale\LogScale($aYMin, $aYMax);
         } else {
-            Util\JpGraphError::RaiseL(25024, $aAxisType); //("JpGraph: Unsupported Y axis type: $aAxisType\nMust be one of (lin,log,int)");
+            throw      Util\JpGraphError::make(25024, $aAxisType); //("JpGraph: Unsupported Y axis type: $aAxisType\nMust be one of (lin,log,int)");
         }
 
         $this->ynaxis[$aN] = new Axis\Axis($this->img, $this->ynscale[$aN]);
         $this->ynaxis[$aN]->scale->ticks->SetDirection(Configs::getConfig('SIDE_LEFT'));
         $this->ynaxis[$aN]->SetLabelSide(Configs::getConfig('SIDE_RIGHT'));
 
-        if (!$this->graph_theme) {
-            return;
+        if ($this->graph_theme) {
+            $this->graph_theme->ApplyGraph($this);
         }
 
-        $this->graph_theme->ApplyGraph($this);
+
+        return $this;
     }
 
     // Specify density of ticks when autoscaling 'normal', 'dense', 'sparse', 'verysparse'
@@ -1076,7 +1101,7 @@ class Graph
     /**
      * @param int $aYDensity
      */
-    public function SetTickDensity($aYDensity = Configs::TICKD_NORMAL, $aXDensity = Configs::TICKD_NORMAL)
+    public function SetTickDensity($aYDensity = Configs::TICKD_NORMAL, $aXDensity = Configs::TICKD_NORMAL): self
     {
         $this->xtick_factor = 30;
         $this->ytick_factor = 25;
@@ -1100,7 +1125,7 @@ class Graph
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25025, $aYDensity); //("JpGraph: Unsupported Tick density: $densy");
+                throw      Util\JpGraphError::make(25025, $aYDensity); //("JpGraph: Unsupported Tick density: $densy");
         }
 
         switch ($aXDensity) {
@@ -1122,8 +1147,9 @@ class Graph
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25025, $aXDensity); //("JpGraph: Unsupported Tick density: $densx");
+                throw      Util\JpGraphError::make(25025, $aXDensity); //("JpGraph: Unsupported Tick density: $densx");
         }
+        return $this;
     }
 
     // Get a string of all image map areas
@@ -1204,62 +1230,13 @@ class Graph
         return $im;
     }
 
-    public function CheckCSIMCache($aCacheName, $aTimeOut = 60)
-    {
-        global $_SERVER;
 
-        if ('auto' === $aCacheName) {
-            $aCacheName = \basename($_SERVER['PHP_SELF']);
-        }
-
-        $urlarg = $this->GetURLArguments();
-        $this->csimcachename = Configs::getConfig('CSIMCACHE_DIR') . $aCacheName . $urlarg;
-        $this->csimcachetimeout = $aTimeOut;
-
-        // First determine if we need to check for a cached version
-        // This differs from the standard cache in the sense that the
-        // image and Configs::getConfig('CSIM') map Configs::getConfig('HTML') file is written relative to the directory
-        // the script executes in and not the specified cache directory.
-        // The reason for this is that the cache directory is not necessarily
-        // accessible from the Configs::getConfig('HTTP') server.
-        if ('' !== $this->csimcachename) {
-            $dir = \dirname($this->csimcachename);
-            $base = \basename($this->csimcachename);
-            $base = \strtok($base, '.');
-            $suffix = \strtok('.');
-            $basecsim = $dir . '/' . $base . '?' . $urlarg . '_csim_.html';
-            $baseimg = $dir . '/' . $base . '?' . $urlarg . '.' . $this->img->img_format;
-
-            $timedout = false;
-            // Does it exist at all ?
-
-            if (\file_exists($basecsim) && \file_exists($baseimg)) {
-                // Check that it hasn't timed out
-                $diff = \time() - \filemtime($basecsim);
-
-                if (0 < $this->csimcachetimeout && ($this->csimcachetimeout * 60 < $diff)) {
-                    $timedout = true;
-                    \unlink($basecsim);
-                    \unlink($baseimg);
-                } else {
-                    if ($fh = \fopen($basecsim, 'rb')) {
-                        \fpassthru($fh);
-
-                        return true;
-                    }
-                    Util\JpGraphError::RaiseL(25027, $basecsim); //(" Can't open cached Configs::getConfig('CSIM') \"$basecsim\" for reading.");
-                }
-            }
-        }
-
-        return false;
-    }
 
     // Build the argument string to be used with the csim images
     /**
      * @param bool $aAddRecursiveBlocker
      */
-    public static function GetURLArguments($aAddRecursiveBlocker = false)
+    private function GetURLArguments($aAddRecursiveBlocker = false)
     {
         if ($aAddRecursiveBlocker) {
             // This is a Configs::getConfig('JPGRAPH') internal defined that prevents
@@ -1298,10 +1275,6 @@ class Graph
         return $urlarg;
     }
 
-    public function SetCSIMImgAlt($aAlt)
-    {
-        $this->iCSIMImgAlt = $aAlt;
-    }
 
     public function StrokeCSIM($aScriptName = 'auto', $aCSIMName = '', $aBorder = 0)
     {
@@ -1319,7 +1292,7 @@ class Graph
             $aScriptName = \basename($_SERVER['PHP_SELF']);
         }
 
-        $urlarg = $this->GetURLArguments(true);
+
 
         if (empty($_GET[Configs::getConfig('_CSIM_DISPLAY')])) {
             // First determine if we need to check for a cached version
@@ -1329,43 +1302,10 @@ class Graph
             // The reason for this is that the cache directory is not necessarily
             // accessible from the Configs::getConfig('HTTP') server.
             if ('' !== $this->csimcachename) {
-                $dir = \dirname($this->csimcachename);
-                $base = \basename($this->csimcachename);
-                $base = \strtok($base, '.');
-                $suffix = \strtok('.');
-                $basecsim = $dir . '/' . $base . '?' . $urlarg . '_csim_.html';
-                $baseimg = $base . '?' . $urlarg . '.' . $this->img->img_format;
-
-                // Check that apache can write to directory specified
-
-                if (\file_exists($dir) && !\is_writable($dir)) {
-                    Util\JpGraphError::RaiseL(25028, $dir); //('Apache/PHP does not have permission to write to the Configs::getConfig('CSIM') cache directory ('.$dir.'). Check permissions.');
-                }
-
-                // Make sure directory exists
-                $this->cache->MakeDirs($dir);
-
-                // Write the image file
-                $this->Stroke(Configs::getConfig('CSIMCACHE_DIR') . $baseimg);
-
-                // Construct wrapper Configs::getConfig('HTML') and write to file and send it back to browser
-
-                // In the src URL we must replace the '?' with its encoding to prevent the arguments
-                // to be converted to real arguments.
-                $tmp = \str_replace('?', '%3f', $baseimg);
-                $htmlwrap = $this->GetHTMLImageMap($aCSIMName) . "\n" .
-                    '<img src="' . Configs::getConfig('CSIMCACHE_HTTP_DIR') . $tmp . '" ismap="ismap" usemap="#' . $aCSIMName . ' width="' . $this->img->width . '" height="' . $this->img->height . '" alt="' . $this->iCSIMImgAlt . "\" />\n";
-
-                if ($fh = \fopen($basecsim, 'wb')) {
-                    \fwrite($fh, $htmlwrap);
-                    \fclose($fh);
-                    echo $htmlwrap;
-                } else {
-                    Util\JpGraphError::RaiseL(25029, $basecsim); //(" Can't write Configs::getConfig('CSIM') \"$basecsim\" for writing. Check free space and permissions.");
-                }
+                $this->getCSIMImageFromCache($aCSIMName);
             } else {
                 if ('' === $aScriptName) {
-                    Util\JpGraphError::RaiseL(25030); //('Missing script name in call to StrokeCSIM(). You must specify the name of the actual image script as the first parameter to StrokeCSIM().');
+                    throw      Util\JpGraphError::make(25030); //('Missing script name in call to StrokeCSIM(). You must specify the name of the actual image script as the first parameter to StrokeCSIM().');
                 }
                 echo $this->GetHTMLImageMap($aCSIMName) . $this->GetCSIMImgHTML($aCSIMName, $aScriptName, $aBorder);
             }
@@ -1373,7 +1313,49 @@ class Graph
             $this->Stroke();
         }
     }
+    private function getCSIMImageFromCache(string  $aCSIMName)
+    {
+        $dir = \dirname($this->csimcachename);
+        $base = \basename($this->csimcachename);
+        $base = \strtok($base, '.');
+        $suffix = \strtok('.');
+        $urlarg = $this->GetURLArguments(true);
+        $basecsim = $dir . '/' . $base . '?' . $urlarg . '_csim_.html';
+        $baseimg = $base . '?' . $urlarg . '.' . $this->img->img_format;
 
+        // Check that apache can write to directory specified
+
+        if (\file_exists($dir) && !\is_writable($dir)) {
+            throw      Util\JpGraphError::make(25028, $dir); //('Apache/PHP does not have permission to write to the Configs::getConfig('CSIM') cache directory ('.$dir.'). Check permissions.');
+        }
+
+        // Make sure directory exists
+        $this->cache->MakeDirs($dir);
+
+        // Write the image file
+        $this->Stroke(Configs::getConfig('CSIMCACHE_DIR') . $baseimg);
+
+        // Construct wrapper Configs::getConfig('HTML') and write to file and send it back to browser
+
+        // In the src URL we must replace the '?' with its encoding to prevent the arguments
+        // to be converted to real arguments.
+        $tmp = \str_replace('?', '%3f', $baseimg);
+        $htmlwrap = $this->GetHTMLImageMap($aCSIMName) . "\n" .
+            '<img src="' . Configs::getConfig('CSIMCACHE_HTTP_DIR')
+            . $tmp . '" ismap="ismap" usemap="#'
+            . $aCSIMName . ' width="'
+            . $this->img->width . '" height="'
+            . $this->img->height . '" alt="'
+            . $this->iCSIMImgAlt . "\" />\n";
+
+        if ($fh = \fopen($basecsim, 'wb')) {
+            \fwrite($fh, $htmlwrap);
+            \fclose($fh);
+            echo $htmlwrap;
+        } else {
+            throw      Util\JpGraphError::make(25029, $basecsim); //(" Can't write Configs::getConfig('CSIM') \"$basecsim\" for writing. Check free space and permissions.");
+        }
+    }
     public function StrokeCSIMImage()
     {
         if (1 !== $_GET[Configs::getConfig('_CSIM_DISPLAY')]) {
@@ -1585,9 +1567,10 @@ class Graph
             }
         }
     }
-public function getScale()  {
-    return $this->scale;
-}
+    public function getScale()
+    {
+        return $this->scale;
+    }
     public function StrokeStore($aStrokeFileName)
     {
         // Get the handler to prevent the library from sending the
@@ -1696,7 +1679,8 @@ public function getScale()  {
             if (!\is_numeric($this->yaxis->pos) && !\is_string($this->yaxis->pos)) {
                 $this->yaxis->SetPos($this->xscale->GetMinVal());
             }
-        } elseif ($this->xscale->IsSpecified()
+        } elseif (
+            $this->xscale->IsSpecified()
             && ($this->xscale->auto_ticks || !$this->xscale->ticks->IsSpecified())
         ) {
             // The tick calculation will use the user suplied min/max values to determine
@@ -1945,7 +1929,7 @@ public function getScale()  {
 
         for ($i = 0; $i < $n; ++$i) {
             if (null === $this->ynplots || null === $this->ynplots[$i]) {
-                Util\JpGraphError::RaiseL(25032, $i); //("No plots for Y-axis nbr:$i");
+                throw      Util\JpGraphError::make(25032, $i); //("No plots for Y-axis nbr:$i");
             }
             $m = Configs::safe_count($this->ynplots[$i]);
 
@@ -2002,7 +1986,7 @@ public function getScale()  {
     {
         // Fist make a sanity check that user has specified a scale
         if (empty($this->yscale)) {
-            Util\JpGraphError::RaiseL(25031); //('You must specify what scale to use with a call to Graph::SetScale().');
+            throw      Util\JpGraphError::make(25031); //('You must specify what scale to use with a call to Graph::SetScale().');
         }
 
         // Start by adjusting the margin so that potential titles will fit.
@@ -2062,12 +2046,12 @@ public function getScale()  {
             // $e = "Can't draw unspecified Y-scale.<br>\nYou have either:<br>\n";
             // $e .= "1. Specified an Y axis for autoscaling but have not supplied any plots<br>\n";
             // $e .= "2. Specified a scale manually but have forgot to specify the tick steps";
-            Util\JpGraphError::RaiseL(25026);
+            throw      Util\JpGraphError::make(25026);
         }
 
         // Bail out if no plots and no specified X-scale
         if ((!$this->xscale->IsSpecified() && Configs::safe_count($this->plots) === 0 && Configs::safe_count($this->y2plots) === 0)) {
-            Util\JpGraphError::RaiseL(25034); //("<strong>JpGraph: Can't draw unspecified X-scale.</strong><br>No plots.<br>");
+            throw      Util\JpGraphError::make(25034); //("<strong>JpGraph: Can't draw unspecified X-scale.</strong><br>No plots.<br>");
         }
 
         // Autoscale the normal Y-axis
@@ -2230,7 +2214,7 @@ public function getScale()  {
                     $this->img->plotwidth
                 );
             } else {
-                Util\JpGraphError::RaiseL(25035, $this->img->a); //('You have enabled clipping. Cliping is only supported for graphs at 0 or 90 degrees rotation. Please adjust you current angle (='.$this->img->a.' degrees) or disable clipping.');
+                throw      Util\JpGraphError::make(25035, $this->img->a); //('You have enabled clipping. Cliping is only supported for graphs at 0 or 90 degrees rotation. Please adjust you current angle (='.$this->img->a.' degrees) or disable clipping.');
             }
             $this->img->Destroy();
             $this->img->SetCanvasH($oldimage);
@@ -2305,13 +2289,14 @@ public function getScale()  {
         $this->cache->PutAndStream($this->img, $this->cache_name, $this->inline, $aStrokeFileName);
     }
 
-    public function SetAxisLabelBackground($aType, $aXFColor = 'lightgray', $aXColor = 'black', $aYFColor = 'lightgray', $aYColor = 'black')
+    public function SetAxisLabelBackground($aType, $aXFColor = 'lightgray', $aXColor = 'black', $aYFColor = 'lightgray', $aYColor = 'black'): self
     {
         $this->iAxisLblBgType = $aType;
         $this->iXAxisLblBgFillColor = $aXFColor;
         $this->iXAxisLblBgColor = $aXColor;
         $this->iYAxisLblBgFillColor = $aYFColor;
         $this->iYAxisLblBgColor = $aYColor;
+        return $this;
     }
 
     public function StrokeAxisLabelBackground()
@@ -2449,7 +2434,7 @@ public function getScale()  {
                     break;
 
                 default:
-                    Util\JpGraphError::RaiseL(25036, $this->iAxisStyle); //('Unknown AxisStyle() : '.$this->iAxisStyle);
+                    throw      Util\JpGraphError::make(25036, $this->iAxisStyle); //('Unknown AxisStyle() : '.$this->iAxisStyle);
 
                     break;
             }
@@ -2538,7 +2523,7 @@ public function getScale()  {
             || ('bmp' === $ext && !($supported & \IMG_WBMP))
             || ('xpm' === $ext && !($supported & \IMG_XPM))
         ) {
-            Util\JpGraphError::RaiseL(25037, $aFile); //('The image format of your background image ('.$aFile.') is not supported in your system configuration. ');
+            throw      Util\JpGraphError::make(25037, $aFile); //('The image format of your background image ('.$aFile.') is not supported in your system configuration. ');
         }
 
         if ('jpg' === $imgtag || 'jpeg' === $imgtag) {
@@ -2551,13 +2536,13 @@ public function getScale()  {
         // Compare specified image type and file extension
         if ($imgtag !== $ext) {
             //$t = "Background image seems to be of different type (has different file extension) than specified imagetype. Specified: '".$aImgFormat."'File: '".$aFile."'";
-            Util\JpGraphError::RaiseL(25038, $aImgFormat, $aFile);
+            throw      Util\JpGraphError::make(25038, $aImgFormat, $aFile);
         }
 
         $img = $f($aFile);
 
         if (!$img) {
-            Util\JpGraphError::RaiseL(25039, $aFile); //(" Can't read background image: '".$aFile."'");
+            throw      Util\JpGraphError::make(25039, $aFile); //(" Can't read background image: '".$aFile."'");
         }
 
         return $img;
@@ -2617,7 +2602,7 @@ public function getScale()  {
     public function StrokeFrameBackground()
     {
         if ('' !== $this->background_image && '' !== $this->background_cflag) {
-            Util\JpGraphError::RaiseL(25040); //('It is not possible to specify both a background image and a background country flag.');
+            throw      Util\JpGraphError::make(25040); //('It is not possible to specify both a background image and a background country flag.');
         }
 
         if ('' !== $this->background_image) {
@@ -2759,7 +2744,7 @@ public function getScale()  {
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25042); //(" Unknown background image layout");
+                throw      Util\JpGraphError::make(25042); //(" Unknown background image layout");
         }
         $this->img->SetAngle($aa);
     }
@@ -2992,7 +2977,7 @@ public function getScale()  {
                 $h += $this->framebeveldepth;
                 $this->title->margin += $this->framebeveldepth;
             } else {
-                Util\JpGraphError::RaiseL(25043); //('Unknown title background style.');
+                throw      Util\JpGraphError::make(25043); //('Unknown title background style.');
             }
 
             if (3 === $this->titlebackground_framestyle) {
@@ -3302,7 +3287,7 @@ public function getScale()  {
         } while (++$i < $n && !\is_numeric($min));
 
         if (!\is_numeric($min) || !\is_numeric($max)) {
-            Util\JpGraphError::RaiseL(25044); //('Cannot use autoscaling since it is impossible to determine a valid min/max value  of the Y-axis (only null values).');
+            throw      Util\JpGraphError::make(25044); //('Cannot use autoscaling since it is impossible to determine a valid min/max value  of the Y-axis (only null values).');
         }
 
         for ($i = 0; $i < $n; ++$i) {
@@ -3365,7 +3350,7 @@ public function getScale()  {
     {
         if (!($this instanceof PieGraph)) {
             if (!$this->isAfterSetScale) {
-                Util\JpGraphError::RaiseL(25133); //('Use Graph::SetTheme() after Graph::SetScale().');
+                throw      Util\JpGraphError::make(25133); //('Use Graph::SetTheme() after Graph::SetScale().');
             }
         }
 
@@ -3407,7 +3392,7 @@ public function getScale()  {
     {
         if ($do) {
             Configs::setConfig('SUPERSAMPLING_SCALE', $scale);
-        // $this->img->scale = $scale;
+            // $this->img->scale = $scale;
         } else {
             Configs::setConfig('SUPERSAMPLING_SCALE', 1);
             //$this->img->scale = 0;

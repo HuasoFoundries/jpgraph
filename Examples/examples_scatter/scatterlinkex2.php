@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -27,14 +28,19 @@ $graph->img->SetMargin(40, 40, 40, 40);
 $graph->SetShadow();
 $example_title = 'Linked scatter plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // 10% top and bottom grace
 $graph->yscale->SetGrace(5, 5);
 $graph->xscale->SetGrace(1, 1);
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');
 

@@ -16,11 +16,11 @@ use function mktime;
 
 /**
  * File:        JPGRAPH_DATE.PHP
-  *  Description: Classes to handle Date scaling
-  *  Created:     2005-05-02
-  *  Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $.
-  * 
-  *  Copyright (c) Asial Corporation. All rights reserved.
+ *  Description: Classes to handle Date scaling
+ *  Created:     2005-05-02
+ *  Ver:         $Id: jpgraph_date.php 1106 2009-02-22 20:16:35Z ljp $.
+ * 
+ *  Copyright (c) Asial Corporation. All rights reserved.
  */
 class DateScale extends LinearScale
 {
@@ -130,7 +130,7 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjDate that will round a timestamp to an even date rounding
-      *  it downwards.
+     *  it downwards.
      *
      * @param mixed $aTime
      * @param mixed $aYearType
@@ -144,7 +144,7 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjDate that will round a timestamp to an even date rounding
-      *  it upwards.
+     *  it upwards.
      *
      * @param mixed $aTime
      * @param mixed $aYearType
@@ -248,8 +248,8 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjTime that will round a timestamp to an even time rounding
-      *  it downwards.
-      *  Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20.
+     *  it downwards.
+     *  Example: AdjStartTime(mktime(18,27,13,2,22,2005),false,2) => 18:20.
      *
      * @param mixed $aTime
      * @param mixed $aHourType
@@ -263,8 +263,8 @@ class DateScale extends LinearScale
 
     /**
      * Wrapper for AdjTime that will round a timestamp to an even time rounding
-      *  it upwards
-      *  Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30.
+     *  it upwards
+     *  Example: AdjEndTime(mktime(18,27,13,2,22,2005),false,2) => 18:30.
      *
      * @param mixed $aTime
      * @param mixed $aHourType
@@ -305,7 +305,8 @@ class DateScale extends LinearScale
                         Configs::SECPERYEAR * 5,
                         Configs::SECPERYEAR * 2,
                     ],
-                    [Configs::SECPERYEAR,
+                    [
+                        Configs::SECPERYEAR,
                     ],
                     [
                         0,
@@ -318,7 +319,8 @@ class DateScale extends LinearScale
                 /* Intervall larger than 2 years */
                 Configs::SECPERYEAR * 2,
                 [
-                    [Configs::SECPERYEAR,
+                    [
+                        Configs::SECPERYEAR,
                     ], [
                         Configs::SECPERYEAR,
                     ],
@@ -599,7 +601,9 @@ class DateScale extends LinearScale
 
                 if ($aAdjust) {
                     // Find out how we should align the start and end timestamps
-                    $idx = 2 * \min($aDensity, \floor(Configs::safe_count($scaleSteps[2]) / 2) - 1);
+                    $idx = 2 * \min($aDensity, \floor(
+                        Configs::safe_count($scaleSteps[2]) / 2
+                    ) - 1);
 
                     if (0 === $scaleSteps[2][$idx]) {
                         // Use date adjustment
@@ -638,11 +642,15 @@ class DateScale extends LinearScale
                 // If the overall date span is larger than 1 day ten we show date
                 $format = '';
 
-                if (Configs::SECPERDAY < ($end - $start)) {
+                if (
+                    Configs::SECPERDAY < ($end - $start)
+                ) {
                     $format = 'Y-m-d ';
                 }
                 // If the major step is less than 1 day we need to whow hours + min
-                if (Configs::SECPERDAY > $major) {
+                if (
+                    Configs::SECPERDAY > $major
+                ) {
                     $format .= 'H:i';
                 }
                 // If the major step is less than 1 min we need to show sec
@@ -741,7 +749,7 @@ class DateScale extends LinearScale
          */
 
         if (false !== $this->iStartTimeAlign && false !== $this->iStartAlign) {
-            Util\JpGraphError::RaiseL(3001);
+            throw      Util\JpGraphError::make(3001);
             //('It is only possible to use either SetDateAlign() or SetTimeAlign() but not both');
         }
 

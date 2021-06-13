@@ -57,7 +57,7 @@ class ContourPlot extends Plot
 
         if ($this->interpFactor > 1) {
             if ($this->interpFactor > 5) {
-                Util\JpGraphError::RaiseL(28007); // ContourPlot interpolation factor is too large (>5)
+                throw      Util\JpGraphError::make(28007); // ContourPlot interpolation factor is too large (>5)
             }
 
             $ip               = new MeshInterpolate();
@@ -192,10 +192,14 @@ class ContourPlot extends Plot
      */
     public function Stroke($img, $xscale, $yscale)
     {
-        if (Configs::safe_count($this->manualIsobarColors) > 0) {
+        if (
+            Configs::safe_count($this->manualIsobarColors) > 0
+        ) {
             $this->contourColor = $this->manualIsobarColors;
-            if (Configs::safe_count($this->manualIsobarColors) != $this->nbrContours) {
-                Util\JpGraphError::RaiseL(28002);
+            if (
+                Configs::safe_count($this->manualIsobarColors) != $this->nbrContours
+            ) {
+                throw      Util\JpGraphError::make(28002);
             }
         }
 

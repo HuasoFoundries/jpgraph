@@ -17,8 +17,14 @@ namespace Amenadiel\JpGraph\Util;
  * // Copyright 2006 (c) Aditus Consulting. All rights reserved.
  */
 
-class ErrMsgText
+class ExceptionFactory
 {
+    /**
+     * 
+     * @param mixed $errnbr 
+     * @param mixed $args 
+     * @return string
+     */
     public function Get($errnbr, ...$args)
     {
         if (!$errorMessageStr = Helper::getErrorMessage($errnbr)) {
@@ -34,5 +40,15 @@ class ErrMsgText
         } catch (\Exception $e) {
             return $errorMessageStr[0];
         }
+    }
+    /**
+     * 
+     * @param mixed $errnbr 
+     * @param mixed $args 
+     * @return JpGraphException 
+     */
+    public static function create($errnbr, ...$args):JpGraphException
+    {
+        return new JpGraphException((new self())->Get($errnbr, ...$args));
     }
 }

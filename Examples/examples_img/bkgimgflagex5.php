@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -24,7 +25,12 @@ $graph->SetColor('white');
 $graph->SetShadow();
 
 // Apply a perspective transformation at the end
-$graph->Set3DPerspective(Graph\Configs::getConfig('SKEW3D_RIGHT'), 350, 320, true);
+$graph->Set3DPerspective(
+    Graph\Configs::getConfig('SKEW3D_RIGHT'),
+    350,
+    320,
+    true
+);
 
 // Adjust the position of the legend box
 $graph->legend->Pos(0.03, 0.10);
@@ -41,13 +47,22 @@ $graph->SetBackgroundCountryFlag('mais', Graph\Configs::getConfig('BGIMG_COPY'),
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->title->SetColor('white');
 
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->SetColor('navy');
 
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->yaxis->SetColor('navy');
 
 //$graph->ygrid->Show(false);
@@ -59,7 +74,11 @@ $graph->title->set($example_title);
 
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 // Create the three var series we will combine
 $bplot1 = new Plot\BarPlot($datay1);

@@ -22,8 +22,12 @@ class LanguageConv
 
     public function Convert($aTxt, $aFF)
     {
-        if (Configs::getConfig('LANGUAGE_GREEK')) {
-            if (Configs::getConfig('GREEK_FROM_WINDOWS')) {
+        if (
+            Configs::getConfig('LANGUAGE_GREEK')
+        ) {
+            if (
+                Configs::getConfig('GREEK_FROM_WINDOWS')
+            ) {
                 $unistring = self::gr_win2uni($aTxt);
             } else {
                 $unistring = self::gr_iso2uni($aTxt);
@@ -32,15 +36,30 @@ class LanguageConv
             return $unistring;
         }
 
-        if (Configs::getConfig('LANGUAGE_CYRILLIC')) {
-            if (Configs::getConfig('CYRILLIC_FROM_WINDOWS')
-                && \mb_stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
-                $aTxt = \convert_cyr_string($aTxt, 'w', 'k');
+        if (
+            Configs::getConfig('LANGUAGE_CYRILLIC')
+        ) {
+            if (
+                Configs::getConfig('CYRILLIC_FROM_WINDOWS')
+                && \mb_stristr(
+                    Configs::getConfig('LANGUAGE_CHARSET'),
+                    'windows-1251'
+                )
+            ) {
+                $aTxt = \iconv('windows-1251', 'koi8-r', $aTxt);
             }
 
-            if (\mb_stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'koi8-r')
-                || \mb_stristr(Configs::getConfig('LANGUAGE_CHARSET'), 'windows-1251')) {
-                $isostring = \convert_cyr_string($aTxt, 'k', 'i');
+            if (
+                \mb_stristr(
+                    Configs::getConfig('LANGUAGE_CHARSET'),
+                    'koi8-r'
+                )
+                || \mb_stristr(
+                    Configs::getConfig('LANGUAGE_CHARSET'),
+                    'windows-1251'
+                )
+            ) {
+                $isostring = \iconv('koi8-r', 'iso8859-5', $aTxt);
                 $unistring = self::iso2uni($isostring);
             } else {
                 $unistring = $aTxt;
@@ -49,7 +68,9 @@ class LanguageConv
             return $unistring;
         }
 
-        if (Configs::getConfig('FF_SIMSUN') === $aFF) {
+        if (
+            Configs::getConfig('FF_SIMSUN') === $aFF
+        ) {
             // Do Chinese conversion
             if (null === $this->g2312) {
                 $this->g2312 = new GB2312toUTF8();
@@ -58,30 +79,36 @@ class LanguageConv
             return $this->g2312->gb2utf8($aTxt);
         }
 
-        if (Configs::getConfig('FF_BIG5') === $aFF) {
+        if (
+            Configs::getConfig('FF_BIG5') === $aFF
+        ) {
             if (!\function_exists('iconv')) {
-                Util\JpGraphError::RaiseL(25006);
+                throw      Util\JpGraphError::make(25006);
                 //('Usage of Configs::FF_CHINESE (Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).');
             }
 
             return \iconv('BIG5', 'UTF-8', $aTxt);
         }
 
-        if (Configs::getConfig('ASSUME_EUCJP_ENCODING')
+        if (
+            Configs::getConfig('ASSUME_EUCJP_ENCODING')
             && (Configs::getConfig('FF_MINCHO') === $aFF
                 || Configs::getConfig('FF_GOTHIC') === $aFF
                 || Configs::getConfig('FF_PMINCHO') === $aFF
-                || Configs::getConfig('FF_PGOTHIC') === $aFF)) {
+                || Configs::getConfig('FF_PGOTHIC') === $aFF)
+        ) {
             if (!\function_exists('mb_convert_encoding')) {
-                Util\JpGraphError::RaiseL(25127);
+                throw      Util\JpGraphError::make(25127);
             }
 
             return \mb_convert_encoding($aTxt, 'UTF-8', 'EUC-JP');
         }
 
-        if (Configs::getConfig('FF_DAVID') === $aFF
+        if (
+            Configs::getConfig('FF_DAVID') === $aFF
             || Configs::getConfig('FF_MIRIAM') === $aFF
-            || Configs::getConfig('FF_AHRON') === $aFF) {
+            || Configs::getConfig('FF_AHRON') === $aFF
+        ) {
             return self::heb_iso2uni($aTxt);
         }
 

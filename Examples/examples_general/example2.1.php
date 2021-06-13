@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -21,7 +22,10 @@ $lineplot = new Plot\LinePlot($ydata);
 
 $lineplot->value->Show();
 $lineplot->value->SetColor('red');
-$lineplot->value->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$lineplot->value->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Add the plot to the graph
 $graph->Add($lineplot);

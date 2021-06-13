@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -21,7 +22,9 @@ $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetBox(true, 'black', 2);
 $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow');
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXIN'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXIN')
+);
 $graph->xgrid->Show();
 
 //$graph->xaxis->SetLabelFormat('%.0f');
@@ -29,10 +32,16 @@ $graph->xgrid->Show();
 $graph->img->SetMargin(50, 50, 60, 40);
 $example_title = 'Function plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $subtitle_text = ' BOXIN  Axis style)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_NORMAL')
+);
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);
 $lp1->SetColor('blue');

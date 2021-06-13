@@ -41,7 +41,9 @@ class Spline
         $n = Configs::safe_count($ydata);
         $this->n = $n;
 
-        if (Configs::safe_count($xdata) !== $this->n) {
+        if (
+            Configs::safe_count($xdata) !== $this->n
+        ) {
             JpGraphError::RaiseL(19001);
             //('Spline: Number of X and Y coordinates must be the same');
         }

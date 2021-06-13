@@ -33,10 +33,18 @@ $lr = new Util\LinearRegression($datax, $datay);
 // Setup title
 $example_title = 'Linear regression';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 $graph->subtitle->Set('(stderr=' . \sprintf('%.2f', $stderr) . ', corr=' . \sprintf('%.2f', $corr) . ')');
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 // make sure that the X-axis is always at the
 // bottom at the plot and not just at Y=0 which is
@@ -45,7 +53,9 @@ $graph->xaxis->SetPos('min');
 
 // Create the scatter plot with some nice colors
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');
 $sp1->SetWeight(3);

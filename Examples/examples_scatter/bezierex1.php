@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -28,7 +29,11 @@ $g = new Graph\Graph($__width, $__height);
 $g->SetMargin(30, 20, 40, 30);
 $example_title = 'Bezier interpolation';
 $g->title->set($example_title);
-$g->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$g->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 $subtitle_text = '(Control points shown in red)';
 $g->subtitle->Set($subtitle_text);
 $g->subtitle->SetColor('darkred');

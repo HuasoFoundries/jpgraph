@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -17,11 +18,16 @@ $graph->SetScale('textlin');
 $graph->SetShadow();
 $example_title = 'Example of filled line plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $p1 = new Plot\LinePlot($datay);
 $p1->SetFillColor('orange');
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $graph->Add($p1);

@@ -14,7 +14,8 @@ $data = [
     [10, 10, 8, 14],
     [7, 7, 13, 17],
     [4, 5, 8, 12],
-    [10, 8, 7, 8], ];
+    [10, 8, 7, 8],
+];
 
 // create a basic graph as a container
 $__width = 300;
@@ -25,11 +26,19 @@ $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
 // Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 
 $subtitle_text = '(labels follows gradients)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 
 // Create a new contour plot
 $cp = new FilledContourPlot($data, 8);
@@ -42,7 +51,11 @@ $cp->SetFilled(true);
 
 // Display the labels
 $cp->ShowLabels(true, true);
-$cp->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 9);
+$cp->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    9
+);
 $cp->SetFontColor('black');
 
 // And add the plot to the graph

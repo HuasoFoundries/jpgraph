@@ -6,6 +6,7 @@
 
 namespace Amenadiel\JpGraph\Graph;
 
+use Amenadiel\JpGraph\Graph\Pattern\RectPatternFactory;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
 use function defined;
@@ -22,12 +23,13 @@ use function round;
   * 
   *  Copyright (c) Asial Corporation. All rights reserved.
  */
+
 \defined('_DEFAULT_LPM_SIZE') || \define('_DEFAULT_LPM_SIZE', 8); // Default Legend Plot Mark size
 
 /**
  * @class Legend
-  *  Description: Responsible for drawing the box containing
-  *  all the legend text for the graph
+ *  Description: Responsible for drawing the box containing
+ *  all the legend text for the graph
  */
 class Legend extends Configs
 {
@@ -229,7 +231,7 @@ class Legend extends Configs
     public function Pos($aX, $aY, $aHAlign = 'right', $aVAlign = 'top')
     {
         if (!(1 > $aX && 1 > $aY)) {
-            Util\JpGraphError::RaiseL(25120); //(" Position for legend must be given as percentage in range 0-1");
+            throw      Util\JpGraphError::make(25120); //(" Position for legend must be given as percentage in range 0-1");
         }
         $this->xpos = $aX;
         $this->ypos = $aY;
@@ -296,7 +298,7 @@ class Legend extends Configs
 
         for ($i = 0; $i < $numcolumns; ++$i) {
             $colwidth[$i] = $aImg->GetTextWidth($this->txtcol[$i][0]) +
-            2 * $this->xmargin + 2 * $this->mark_abs_hsize;
+                2 * $this->xmargin + 2 * $this->mark_abs_hsize;
             $colheight[$i] = 0;
         }
 
@@ -435,7 +437,9 @@ class Legend extends Configs
 
         foreach ($this->txtcol as $p) {
             // Configs::getConfig('STROKE') Configs::getConfig('DEBUG') self::BOX
-            if (Configs::_JPG_DEBUG) {
+            if (
+                Configs::_JPG_DEBUG
+            ) {
                 $aImg->SetLineWeight(1);
                 $aImg->SetColor('red');
                 $aImg->SetLineStyle('solid');

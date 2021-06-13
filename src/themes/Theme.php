@@ -71,7 +71,9 @@ abstract class Theme
         $graph->legend->SetFrameWeight(0);
         $graph->legend->Pos(0.5, 0.85, 'center', 'top');
         $graph->legend->SetFillColor('white');
-        $graph->legend->SetLayout(Configs::LEGEND_HOR);
+        $graph->legend->SetLayout(
+            Configs::LEGEND_HOR
+        );
         $graph->legend->SetColumns(3);
         $graph->legend->SetShadow(false);
         $graph->legend->SetMarkAbsSize(5);
@@ -79,13 +81,17 @@ abstract class Theme
         // xaxis
         $graph->xaxis->title->SetColor($this->font_color);
         $graph->xaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->xaxis->SetTickSide(Configs::SIDE_BOTTOM);
+        $graph->xaxis->SetTickSide(
+            Configs::SIDE_BOTTOM
+        );
         $graph->xaxis->SetLabelMargin(10);
 
         // yaxis
         $graph->yaxis->title->SetColor($this->font_color);
         $graph->yaxis->SetColor($this->axis_color, $this->font_color);
-        $graph->yaxis->SetTickSide(Configs::SIDE_LEFT);
+        $graph->yaxis->SetTickSide(
+            Configs::SIDE_LEFT
+        );
         $graph->yaxis->SetLabelMargin(8);
         $graph->yaxis->HideLine();
         $graph->yaxis->HideTicks();
@@ -210,7 +216,7 @@ abstract class Theme
         if (\method_exists($this, $method_name)) {
             $this->{$method_name}($graph);
         } else {
-            Util\JpGraphError::RaiseL(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
+            throw      Util\JpGraphError::make(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
         }
     }
 

@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
@@ -81,7 +82,9 @@ $graph3->title->SetFont(
 );
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_SQUARE')
+);
 $sp1->SetImpuls();
 
 $graph3->Add($sp1);

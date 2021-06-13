@@ -35,11 +35,19 @@ $g = new CanvasGraph($w, $h);
 $img = $g->img;
 
 // Get the bounding box for text
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    16
+);
 $tw = $img->GetBBoxWidth($txt, $angle);
 $th = $img->GetBBoxHeight($txt, $angle);
 
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    11
+);
 $ch = $img->GetBBoxHeight($caption);
 
 // Calculate needed height for the image
@@ -48,7 +56,8 @@ $g = new CanvasGraph($w, $h);
 $img = $g->img;
 
 // Alignment for anchor points to use
-$anchors = ['left', 'top',
+$anchors = [
+    'left', 'top',
     'center', 'top',
     'right', 'top',
     'left', 'center',
@@ -56,7 +65,8 @@ $anchors = ['left', 'top',
     'right', 'center',
     'left', 'bottom',
     'center', 'bottom',
-    'right', 'bottom', ];
+    'right', 'bottom',
+];
 
 $n = \count($anchors) / 2;
 
@@ -66,11 +76,18 @@ for ($i = 0, $r = 0, $c = 0; $i < $n; ++$i) {
 
     $img->SetColor('blue');
     $img->SetTextAlign($anchors[$i * 2], $anchors[$i * 2 + 1]);
-    $img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+    $img->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_NORMAL'),
+        16
+    );
     $img->StrokeText($x, $y, $txt, $angle, 'left', true);
 
     $img->SetColor('black');
-    $img->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+    $img->SetFont(
+        Graph\Configs::getConfig('FF_FONT1'),
+        Graph\Configs::getConfig('FS_BOLD')
+    );
     $img->SetTextAlign('center', 'top');
     $align = \sprintf('("%s","%s")', $anchors[$i * 2], $anchors[$i * 2 + 1]);
     $img->StrokeText($c * ($tw / 2 + $xm) + $xm / 2 + $tw / 2, $r * ($th / 2 + $ym) + $th + $ym / 2 - 4, $align);
@@ -85,7 +102,11 @@ for ($i = 0, $r = 0, $c = 0; $i < $n; ++$i) {
 
 // Draw the caption text
 $img->SetTextAlign('center', 'bottom');
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 11);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    11
+);
 $img->StrokeText($w / 2, $h - 10, $caption, 0, 'left');
 
 $img->SetColor('navy');

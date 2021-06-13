@@ -365,7 +365,7 @@ class AxisPrototype extends Configs
     public function SetTextLabelInterval($aStep)
     {
         if (1 > $aStep) {
-            Util\JpGraphError::RaiseL(25058); //(" Text label interval must be specified >= 1.");
+     throw      Util\JpGraphError::make(25058); //(" Text label interval must be specified >= 1.");
         }
         $this->label_step = $aStep;
     }

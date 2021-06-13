@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -22,8 +23,12 @@ $graph->title->set($example_title);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1')
+);
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1')
+);
 
 // Create the bar pot
 $bplot = new Plot\BarPlot($datay);

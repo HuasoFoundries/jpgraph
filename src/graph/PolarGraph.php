@@ -31,7 +31,9 @@ class PolarGraph extends Graph
     public function __construct($aWidth = 300, $aHeight = 200, $aCachedName = '', $aTimeOut = 0, $aInline = true)
     {
         parent::__construct($aWidth, $aHeight, $aCachedName, $aTimeOut, $aInline);
-        $this->SetDensity(Configs::TICKD_DENSE);
+        $this->SetDensity(
+            Configs::TICKD_DENSE
+        );
         $this->SetBox();
         $this->SetMarginColor('white');
     }
@@ -41,7 +43,10 @@ class PolarGraph extends Graph
      */
     public function SetDensity($aDense)
     {
-        $this->SetTickDensity(Configs::TICKD_NORMAL, $aDense);
+        $this->SetTickDensity(
+            Configs::TICKD_NORMAL,
+            $aDense
+        );
     }
 
     public function SetClockwise($aFlg)
@@ -61,18 +66,19 @@ class PolarGraph extends Graph
         $this->axis->SetLabelAlign('right', 'center');
     }
 
-    public function SetScale($aScale, $rmax = 0, $dummy1 = 1, $dummy2 = 1, $dummy3 = 1)
+    public function SetScale($aScale, $rmax = 0, $dummy1 = 1, $dummy2 = 1, $dummy3 = 1): self
     {
         if ('lin' === $aScale) {
             $this->scale = new Scale\PolarScale($rmax, $this, $this->iClockwise);
         } elseif ('log' === $aScale) {
             $this->scale = new Scale\PolarLogScale($rmax, $this, $this->iClockwise);
         } else {
-            Util\JpGraphError::RaiseL(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
+            throw      Util\JpGraphError::make(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }
 
         $this->axis = new Axis\PolarAxis($this->img, $this->scale);
         $this->SetMargin(40, 40, 50, 40);
+        return $this;
     }
 
     public function SetType($aType)
@@ -162,7 +168,9 @@ class PolarGraph extends Graph
             $this->img->left_margin = $t2;
         }
 
-        if (Configs::POLAR_180 === $this->iType) {
+        if (
+            Configs::POLAR_180 === $this->iType
+        ) {
             $pos = $this->img->height - $this->img->bottom_margin;
         } else {
             $pos = $this->img->plotheight / 2 + $this->img->top_margin;
@@ -251,14 +259,18 @@ class PolarGraph extends Graph
         $this->img->SetAngle($aa);
 
         // Draw an outline around the image map
-        if (Configs::_JPG_DEBUG) {
+        if (
+            Configs::_JPG_DEBUG
+        ) {
             $this->DisplayClientSideaImageMapAreas();
         }
 
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
+        if (
+            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        ) {
             return $this->img->img;
         }
         // Finally stream the generated picture

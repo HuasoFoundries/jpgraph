@@ -26,7 +26,7 @@ class PredefIcons
     public function GetImg($aIdx)
     {
         if ($aIdx < 0 || $aIdx >= $this->iLen) {
-            Util\JpGraphError::RaiseL(6010, $aIdx);
+     throw      Util\JpGraphError::make(6010, $aIdx);
             //('Illegal icon index for Gantt builtin icon ['.$aIdx.']');
         }
 

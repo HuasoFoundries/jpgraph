@@ -114,16 +114,7 @@ if (\getenv('JPGRAPH_MBTTF_DIR')) {
 \defined('CACHE_FILE_MOD') || \define('CACHE_FILE_MOD', \getenv('JPGRAPH_CACHE_FILE_MOD') || 0664);
 \defined('DEFAULT_THEME_CLASS') || \define('DEFAULT_THEME_CLASS', 'UniversalTheme');
 
-/*
- * NOTE THAT CACHE FUNCTIONALITY IS TURNED OFF BY  DEFAULT ENABLE BY SETTING USE_CACHE TO TRUE)
- * Should the cache be used at all? By setting this to false no
- * files will be generated in the cache directory.
- * The difference from READ_CACHE being that setting READ_CACHE to
- * false will still create the image in the cache directory
- * just not use it. By setting USE_CACHE=false no files will even
- * be generated in the cache directory.
- */
-\defined('USE_CACHE') || \define('USE_CACHE', \getenv('JPGRAPH_USE_CACHE') || false);
+
 /**
  * @class Configs
  *
@@ -1181,10 +1172,7 @@ class Configs
             if (!\defined('CACHE_DIR')) {
                 if (\mb_strstr(\PHP_OS, 'WIN')) {
                     if (empty($_SERVER['TEMP'])) {
-                        $t = new ErrMsgText();
-                        $msg = $t->Get(11, $file, $lineno);
-
-                        exit($msg);
+                        throw ExceptionFactory::create(11, __FILE__, __LINE__);
                     }
                     self::setConfig('CACHE_DIR', $_SERVER['TEMP'] . '/');
                 } else {
@@ -1209,10 +1197,7 @@ class Configs
 
         if (\mb_strstr(\PHP_OS, 'WIN')) {
             if (!\defined('SYSTEMROOT')) {
-                $t = new ErrMsgText();
-                $msg = $t->Get(12, $file, $lineno);
-
-                exit($msg);
+                throw ExceptionFactory::create(12, __FILE__, __LINE__);
             }
             self::setConfig('TTF_DIR', SYSTEMROOT . '/fonts/');
         } else {
@@ -1231,10 +1216,7 @@ class Configs
 
         if (\mb_strstr(\PHP_OS, 'WIN')) {
             if (!\defined('SYSTEMROOT')) {
-                $t = new ErrMsgText();
-                $msg = $t->Get(12, $file, $lineno);
-
-                exit($msg);
+                throw ExceptionFactory::create(12, __FILE__, __LINE__);
             }
             self::setConfig('MBTTF_DIR', SYSTEMROOT . '/fonts/');
         } else {

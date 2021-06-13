@@ -163,7 +163,9 @@ final class CCBPGraph
      */
     public function SetColorIndication(array $aSpec, ?array $aColors = null): void
     {
-        if (Configs::safe_count($aSpec) !== 3) {
+        if (
+            Configs::safe_count($aSpec) !== 3
+        ) {
             Util\JpGraphError::Raise('Specification of scale values for background indicators must be an array with three elements.');
         }
         $this->iColorInd = $aSpec;
@@ -202,7 +204,9 @@ final class CCBPGraph
     {
         $this->Init();
 
-        if (Configs::safe_count($this->iPlots) > 0) {
+        if (
+            Configs::safe_count($this->iPlots) > 0
+        ) {
             $this->graph->Add($this->iPlots);
         }
         $this->graph->Stroke($aFile);
@@ -259,13 +263,29 @@ final class CCBPGraph
         $graph->title->Set($this->iTitle);
         $graph->subtitle->Set($this->iSubTitle);
 
-        $graph->title->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 4);
-        $graph->subtitle->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize + 1);
+        $graph->title->SetFont(
+            Configs::FF_ARIAL,
+            Configs::FS_BOLD,
+            $labelsize + 4
+        );
+        $graph->subtitle->SetFont(
+            Configs::FF_ARIAL,
+            Configs::FS_BOLD,
+            $labelsize + 1
+        );
 
         $graph->SetBox(true, 'black@0.3');
 
-        $graph->xaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
-        $graph->yaxis->SetFont(Configs::FF_ARIAL, Configs::FS_BOLD, $labelsize);
+        $graph->xaxis->SetFont(
+            Configs::FF_ARIAL,
+            Configs::FS_BOLD,
+            $labelsize
+        );
+        $graph->yaxis->SetFont(
+            Configs::FF_ARIAL,
+            Configs::FS_BOLD,
+            $labelsize
+        );
 
         $graph->xaxis->scale->ticks->Set(self::TickStep, self::TickStep);
         $graph->yaxis->scale->ticks->Set(self::TickStep, self::TickStep);
@@ -306,13 +326,13 @@ final class CCBPGraph
         $graph->yaxis->SetWeight(1);
 
         $ytitle = new Text\Text(self::YTitle, \floor($lm * .75), ($height - $tm - $bm) / 2 + $tm);
-        // $ytitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize+1);
+        $ytitle->SetFont(Configs::FF_VERA, Configs::FS_BOLD, $labelsize + 1);
         $ytitle->SetAlign('right', 'center');
         $ytitle->SetAngle(90);
         $graph->Add($ytitle);
 
         $xtitle = new Text\Text(self::XTitle, ($width - $lm - $rm) / 2 + $lm, $height - 10);
-        // $xtitle->SetFont(Configs::FF_VERA,FS_BOLD,$labelsize);
+        $xtitle->SetFont(Configs::FF_VERA, Configs::FS_BOLD, $labelsize);
         $xtitle->SetAlign('center', 'bottom');
         $graph->Add($xtitle);
 

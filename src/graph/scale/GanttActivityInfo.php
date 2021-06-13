@@ -12,16 +12,16 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_GANTT.PHP
-  *  Description: JpGraph Gantt plot extension
-  *  Created:     2001-11-12
-  *  Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $.
-  * 
-  *  Copyright (c) Asial Corporation. All rights reserved.
+ *  Description: JpGraph Gantt plot extension
+ *  Created:     2001-11-12
+ *  Ver:         $Id: jpgraph_gantt.php 1809 2009-09-09 13:07:33Z ljp $.
+ * 
+ *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class GanttActivityInfo
-  *  Description:
+ *  Description:
  */
 class GanttActivityInfo
 {
@@ -160,7 +160,10 @@ class GanttActivityInfo
      */
     public function SetMinColWidth($aWidths)
     {
-        $n = \min(Configs::safe_count($this->iTitles), Configs::safe_count($aWidths));
+        $n = \min(
+            Configs::safe_count($this->iTitles),
+            Configs::safe_count($aWidths)
+        );
 
         for ($i = 0; $i < $n; ++$i) {
             if (empty($aWidths[$i])) {
@@ -251,7 +254,7 @@ class GanttActivityInfo
         $yTop = $aUseTextHeight ? $aYBottom - $h - $this->iTopColMargin - $this->iBottomColMargin : $aYTop;
 
         if (0 > $h) {
-            Util\JpGraphError::RaiseL(6001);
+            throw      Util\JpGraphError::make(6001);
             //('Internal error. Height for ActivityTitles is < 0');
         }
 

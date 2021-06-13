@@ -505,7 +505,7 @@ class RGB
             // 9: adjust value with : stripped
             $regex = '/(#([0-9a-fA-F]{1,2})([0-9a-fA-F]{1,2})([0-9a-fA-F]{1,2}))?([\w]+)?(@([\d\.,]+))?(:([\d\.,]+))?/';
             if (!preg_match($regex, $aColor, $matches)) {
-                Util\JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
+                throw      Util\JpGraphError::make(25078, $aColor); //(" Unknown color: $aColor");
             }
             if (empty($matches[5])) {
                 $r = strlen($matches[2]) == 1 ? $matches[2] . $matches[2] : $matches[2];
@@ -516,7 +516,7 @@ class RGB
                 $b = hexdec($b);
             } else {
                 if (!isset($this->rgb_table[$matches[5]])) {
-                    Util\JpGraphError::RaiseL(25078, $aColor); //(" Unknown color: $aColor");
+                    throw      Util\JpGraphError::make(25078, $aColor); //(" Unknown color: $aColor");
                 }
                 $r = $this->rgb_table[$matches[5]][0];
                 $g = $this->rgb_table[$matches[5]][1];
@@ -530,7 +530,7 @@ class RGB
             }
 
             if ($adj < 0) {
-                Util\JpGraphError::RaiseL(25077); //('Adjustment factor for color must be > 0');
+                throw      Util\JpGraphError::make(25077); //('Adjustment factor for color must be > 0');
             }
 
             // Scale adj so that an adj=2 always
@@ -556,7 +556,7 @@ class RGB
 
             return $aColor;
         } else {
-            Util\JpGraphError::RaiseL(25079, $aColor, Configs::safe_count($aColor)); //(" Unknown color specification: $aColor , size=". Configs::safe_count($aColor));
+            throw      Util\JpGraphError::make(25079, $aColor, Configs::safe_count($aColor)); //(" Unknown color specification: $aColor , size=". Configs::safe_count($aColor));
         }
     }
 
@@ -581,7 +581,7 @@ class RGB
             $aAlpha = $a;
         }
         if ($aAlpha < 0 || $aAlpha > 1) {
-            Util\JpGraphError::RaiseL(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
+            throw      Util\JpGraphError::make(25080); //('Alpha parameter for color must be between 0.0 and 1.0');
         }
 
         return imagecolorresolvealpha($this->img, $r, $g, $b, (int) (round($aAlpha * 127)));
@@ -595,11 +595,14 @@ class RGB
     public static function tryHexConversion($aColor)
     {
         if (is_array($aColor)) {
-            if (Configs::safe_count($aColor) == 3) {
+            if (
+                Configs::safe_count($aColor) == 3
+            ) {
                 if (is_numeric($aColor[0]) && is_numeric($aColor[1]) && is_numeric($aColor[2])) {
                     if (($aColor[0] >= 0 && $aColor[0] <= 255) &&
                         ($aColor[1] >= 0 && $aColor[1] <= 255) &&
-                        ($aColor[2] >= 0 && $aColor[2] <= 255)) {
+                        ($aColor[2] >= 0 && $aColor[2] <= 255)
+                    ) {
                         return sprintf('#%02x%02x%02x', $aColor[0], $aColor[1], $aColor[2]);
                     }
                 }

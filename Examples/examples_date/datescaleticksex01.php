@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -40,10 +41,18 @@ $graph->SetMarginColor('white');
 $graph->SetScale('dateint');
 $example_title = 'Current Bids';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $subtitle_text = '(Updated every 5 minutes)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 
 // Enable antialias
 $graph->img->SetAntiAliasing();
@@ -59,14 +68,18 @@ $graph->xaxis->scale->SetDateFormat('H:i');
 $graph->xaxis->scale->ticks->Set($INTERVAL);
 
 // Adjust the start time for an "even" 5 minute, i.e. 5,10,15,20,25, ...
-$graph->xaxis->scale->SetTimeAlign(Graph\Configs::getConfig('MINADJ_5'));
+$graph->xaxis->scale->SetTimeAlign(
+    Graph\Configs::getConfig('MINADJ_5')
+);
 
 // Create the plots using the dummy data created at the beginning
 $line = [];
 
 for ($i = 0; $i < $m; ++$i) {
     $line[$i] = new Plot\LinePlot($bids[$i], $times);
-    $line[$i]->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+    $line[$i]->mark->SetType(
+        Graph\Configs::getConfig('MARK_SQUARE')
+    );
 }
 $graph->Add($line);
 

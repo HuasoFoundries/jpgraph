@@ -39,10 +39,10 @@ class PlotBand
 
     public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = Configs::DEPTH_BACK)
     {
-        $f           = new Graph\RectPatternFactory();
+        $f           = new Graph\Pattern\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
         if (is_numeric($aMin) && is_numeric($aMax) && ($aMin > $aMax)) {
-            Util\JpGraphError::RaiseL(16004);
+     throw      Util\JpGraphError::make(16004);
         }
 
         //('Min value for plotband is larger than specified max value. Please correct.');

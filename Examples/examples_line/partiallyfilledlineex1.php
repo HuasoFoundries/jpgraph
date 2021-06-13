@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -26,7 +27,10 @@ $graph->legend->SetShadow(true);
 // Setup title
 $example_title = 'Filled Area Example';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Setup semi-filled line plot
 $lineplot = new Plot\LinePlot($ydata);
@@ -40,7 +44,9 @@ $lineplot->AddArea(2, 5, Graph\Configs::getConfig('LP_AREA_FILLED'), 'red');
 $lineplot->AddArea(6, 8, Graph\Configs::getConfig('LP_AREA_FILLED'), 'green');
 
 // Display the marks on the lines
-$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_DIAMOND'));
+$lineplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_DIAMOND')
+);
 $lineplot->mark->SetSize(8);
 $lineplot->mark->Show();
 

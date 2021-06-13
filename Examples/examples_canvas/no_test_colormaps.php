@@ -48,7 +48,11 @@ class no_test_colormaps
 
         $t = new Text($aTitle, $width / 2, 5);
         $t->SetAlign('center', 'top');
-        $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+        $t->SetFont(
+            Graph\Configs::getConfig('FF_ARIAL'),
+            Graph\Configs::getConfig('FS_BOLD'),
+            14
+        );
         $t->Stroke($graph->img);
 
         // Instantiate a colormap
@@ -69,19 +73,31 @@ class no_test_colormaps
             $t->Set('Basic colors: ' . $ncols . ',   Total colors: ' . $n);
             $t->SetAlign('center', 'bottom');
             $t->SetAngle(0);
-            $t->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+            $t->SetFont(
+                Graph\Configs::getConfig('FF_TIMES'),
+                Graph\Configs::getConfig('FS_NORMAL'),
+                14
+            );
             $t->Stroke($graph->img, $width / 2, $ys - 3);
 
             // Add the name/number of the map to the left
             $t->SetAlign('right', 'center');
             $t->Set('Map: ' . $mapidx);
-            $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+            $t->SetFont(
+                Graph\Configs::getConfig('FF_ARIAL'),
+                Graph\Configs::getConfig('FS_NORMAL'),
+                14
+            );
             $t->Stroke($graph->img, $xs - 20, \round($ys + $mh / 2));
 
             // Setup text properties for the color names
             if ($addColorNames) {
                 $t->SetAngle(30);
-                $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+                $t->SetFont(
+                    Graph\Configs::getConfig('FF_ARIAL'),
+                    Graph\Configs::getConfig('FS_NORMAL'),
+                    12
+                );
                 $t->SetAlign('right', 'top');
             }
 

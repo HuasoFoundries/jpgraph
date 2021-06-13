@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -34,7 +35,11 @@ $graph->SetFrame(false);
 
 // Setup the tab title
 $graph->tabtitle->Set('Year 2003');
-$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$graph->tabtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 
 // Setup the X and Y grid
 $graph->ygrid->SetFill(true, '#DDDDDD@0.5', '#BBBBBB@0.5');
@@ -46,7 +51,11 @@ $graph->xgrid->SetColor('gray');
 
 // Setup month as labels on the X-axis
 $graph->xaxis->SetTickLabels($months);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->xaxis->SetLabelAngle(45);
 
 // Create a bar pot
@@ -69,7 +78,9 @@ $lplot->SetFillColor('skyblue@0.5');
 $lplot->SetColor('navy@0.7');
 $lplot->SetBarCenter();
 
-$lplot->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+$lplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_SQUARE')
+);
 $lplot->mark->SetColor('blue@0.5');
 $lplot->mark->SetFillColor('lightblue');
 $lplot->mark->SetSize(6);

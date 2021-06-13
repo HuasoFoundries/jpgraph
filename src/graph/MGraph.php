@@ -12,16 +12,16 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * File:        JPGRAPH_MGRAPH.PHP
-  *  Description: Class to handle multiple graphs in the same image
-  *  Created:     2006-01-15
-  *  Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $.
-  * 
-  *  Copyright (c) Asial Corporation. All rights reserved.
+ *  Description: Class to handle multiple graphs in the same image
+ *  Created:     2006-01-15
+ *  Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $.
+ * 
+ *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
 /**
  * @class MGraph
-  *  Description: Create a container image that can hold several graph
+ *  Description: Create a container image that can hold several graph
  */
 class MGraph
 {
@@ -145,19 +145,28 @@ class MGraph
 
         $this->title = new Text\Text();
         $this->title->ParagraphAlign('center');
-        $this->title->SetFont(Configs::FF_FONT2, Configs::FS_BOLD);
+        $this->title->SetFont(
+            Configs::FF_FONT2,
+            Configs::FS_BOLD
+        );
         $this->title->SetMargin(3);
         $this->title->SetAlign('center');
 
         $this->subtitle = new Text\Text();
         $this->subtitle->ParagraphAlign('center');
-        $this->subtitle->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->subtitle->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
         $this->subtitle->SetMargin(3);
         $this->subtitle->SetAlign('center');
 
         $this->subsubtitle = new Text\Text();
         $this->subsubtitle->ParagraphAlign('center');
-        $this->subsubtitle->SetFont(Configs::FF_FONT1, Configs::getConfig('FS_NORMAL'));
+        $this->subsubtitle->SetFont(
+            Configs::FF_FONT1,
+            Configs::getConfig('FS_NORMAL')
+        );
         $this->subsubtitle->SetMargin(3);
         $this->subsubtitle->SetAlign('center');
 
@@ -200,7 +209,7 @@ class MGraph
         $e = \explode('.', $aFileName);
 
         if (!$e) {
-            Util\JpGraphError::RaiseL(12002, $aFileName);
+            throw      Util\JpGraphError::make(12002, $aFileName);
             //('Incorrect file name for MGraph::SetBackgroundImage() : '.$aFileName.' Must have a valid image extension (jpg,gif,png) when using autodetection of image type');
         }
 
@@ -210,7 +219,7 @@ class MGraph
         if ('jpeg' === $aImgFormat) {
             $aImgFormat = 'jpg';
         } elseif (!\in_array($aImgFormat, $valid_formats, true)) {
-            Util\JpGraphError::RaiseL(12003, $aImgFormat, $aFileName);
+            throw      Util\JpGraphError::make(12003, $aImgFormat, $aFileName);
             //('Unknown file extension ($aImgFormat) in MGraph::SetBackgroundImage() for filename: '.$aFileName);
         }
 
@@ -259,14 +268,20 @@ class MGraph
         \imagecopymerge($this->img, $bkgimg, $x, $y, 0, 0, $bw, $bh, $this->background_image_mix);
     }
 
-    public function AddMix($aGraph, $x = 0, $y = 0, $mix = 100, $fx = 0, $fy = 0, $w = 0, $h = 0)
+    public function AddMix($aGraph, $x = 0, $y = 0, $mix = 100, $fx = 0, $fy = 0, $w = 0, $h = 0): self
     {
-        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
+        $this->_gdImgHandle($aGraph->Stroke(
+            Configs::getConfig('_IMG_HANDLER')
+        ), $x, $y, $fx = 0, $fy = 0, $w, $h, $mix);
+        return $this;
     }
 
-    public function Add($aGraph, $x = 0, $y = 0, $fx = 0, $fy = 0, $w = 0, $h = 0)
+    public function Add($aGraph, $x = 0, $y = 0, $fx = 0, $fy = 0, $w = 0, $h = 0): self
     {
-        $this->_gdImgHandle($aGraph->Stroke(Configs::getConfig('_IMG_HANDLER')), $x, $y, $fx = 0, $fy = 0, $w, $h);
+        $this->_gdImgHandle($aGraph->Stroke(
+            Configs::getConfig('_IMG_HANDLER')
+        ), $x, $y, $fx = 0, $fy = 0, $w, $h);
+        return $this;
     }
 
     /**
@@ -280,7 +295,7 @@ class MGraph
         }
 
         if (null === $w) {
-            Util\JpGraphError::RaiseL(12007);
+            throw      Util\JpGraphError::make(12007);
             //('Argument to MGraph::Add() is not a valid GD image handle.');
             return;
         }
@@ -457,7 +472,9 @@ class MGraph
         $this->footer->Stroke($image);
 
         // Output image
-        if (Configs::getConfig('_IMG_HANDLER') === $aFileName) {
+        if (
+            Configs::getConfig('_IMG_HANDLER') === $aFileName
+        ) {
             return $image->img;
         }
         //Finally stream the generated picture

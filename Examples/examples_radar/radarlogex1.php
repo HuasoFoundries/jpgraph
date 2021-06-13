@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -21,7 +22,11 @@ $graph = new Graph\RadarGraph($__width, $__height);
 // the radar graph will default to linear scale
 $graph->SetScale('log');
 
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    16
+);
 $example_title = 'Logarithmic scale';
 $graph->title->set($example_title);
 $graph->title->SetMargin(10);
@@ -39,7 +44,11 @@ $graph->SetCenter(0.5, 0.55);
 $graph->yscale->ticks->SetMarkColor('black', 'darkgray');
 
 // Set the axis title font
-$graph->axis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->axis->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 $graph->axis->title->SetColor('darkred:0.8');
 
 // Use blue axis

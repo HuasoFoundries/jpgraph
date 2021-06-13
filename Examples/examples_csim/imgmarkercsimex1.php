@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -38,7 +39,7 @@ $p1->SetCSIMTargets(['#1', '#2', '#3', '#4', '#5']);
 
 // Use an image of favourite car as
 $p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/saab_95.jpg', 0.5);
-//$p1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+//$p1->mark->SetTyp1e(Graph\Configs::getConfig('MARK_SQUARE'));
 
 // Displayes value on top of marker image
 $p1->value->SetFormat('%d mil');

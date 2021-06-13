@@ -4,7 +4,7 @@
  * JPGraph - Community Edition
  */
 
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Graph\Pattern;
 
 use Amenadiel\JpGraph\Util;
 
@@ -59,7 +59,7 @@ class RectPattern
     public function SetDensity(float $aDens)
     {
         if (1 > $aDens || 100 < $aDens) {
-            Util\JpGraphError::RaiseL(16001, $aDens);
+     throw      Util\JpGraphError::make(16001, $aDens);
         }
 
         //(" Desity for pattern must be between 1 and 100. (You tried $aDens)");
@@ -70,7 +70,7 @@ class RectPattern
     public function Stroke($aImg)
     {
         if (null === $this->rect) {
-            Util\JpGraphError::RaiseL(16002);
+     throw      Util\JpGraphError::make(16002);
         }
 
         //(" No positions specified for pattern.");

@@ -6,6 +6,7 @@
 
 // $Id: stockex2.php,v 1.1 2003/01/31 17:41:29 aditus Exp $
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
 use Amenadiel\JpGraph\Plot\StockPlot;
@@ -15,7 +16,8 @@ $datay = [
     55, 25, 12, 59,
     38, 49, 32, 64,
     34, 40, 29, 42,
-    40, 29, 22, 45, ];
+    40, 29, 22, 45,
+];
 
 // Setup basic graph
 $__width = 300;
@@ -28,7 +30,11 @@ $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');
 $graph->SetBox();
 
 $graph->tabtitle->Set(' Week 34 ');
-$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->tabtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 // Get week days in curent locale
 $days = $graph->gDateLocale->GetShortDay();

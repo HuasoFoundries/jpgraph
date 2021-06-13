@@ -164,7 +164,7 @@ class PlotLine
             $ypos_abs = $aYPos;
             $aImg->StyleLine($xmin_abs, $ypos_abs, $xmax_abs, $ypos_abs);
         } else {
-            Util\JpGraphError::RaiseL(25125); //(" Illegal direction for static line");
+     throw      Util\JpGraphError::make(25125); //(" Illegal direction for static line");
         }
         $aImg->SetLineStyle($oldStyle);
     }

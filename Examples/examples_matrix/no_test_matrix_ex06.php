@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_matrix.php';
@@ -41,12 +42,26 @@ $graph = new MatrixGraph($__width, $__height);
 $graph->SetBackgroundGradient('lightsteelblue:0.8', 'lightsteelblue:0.3');
 $example_title = 'Matrix with lines';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    18
+);
 $graph->title->SetColor('white');
 
 // Create two lines to add as markers
-$l1 = new Plot\PlotLine(Graph\Configs::getConfig('VERTICAL'), 5, 'lightgray:1.5', 4);
-$l2 = new Plot\PlotLine(Graph\Configs::getConfig('HORIZONTAL'), 3, 'lightgray:1.5', 4);
+$l1 = new Plot\PlotLine(
+    Graph\Configs::getConfig('VERTICAL'),
+    5,
+    'lightgray:1.5',
+    4
+);
+$l2 = new Plot\PlotLine(
+    Graph\Configs::getConfig('HORIZONTAL'),
+    3,
+    'lightgray:1.5',
+    4
+);
 
 // Create one matrix plot
 $mp = new MatrixPlot($data, 1);
@@ -63,19 +78,31 @@ $mp->AddLine($l2);
 // Setup column lablels
 $mp->collabel->Set($collabels);
 $mp->collabel->SetSide('top');
-$mp->collabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$mp->collabel->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $mp->collabel->SetFontColor('lightgray');
 
 // Setup row lablels
 $mp->rowlabel->Set($rowlabels);
 $mp->rowlabel->SetSide('right');
-$mp->rowlabel->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$mp->rowlabel->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $mp->rowlabel->SetFontColor('lightgray');
 
 // Move the legend more to the right
 $mp->legend->SetMargin(90);
 $mp->legend->SetColor('white');
-$mp->legend->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$mp->legend->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 
 $graph->Add($mp);
 $graph->Stroke();

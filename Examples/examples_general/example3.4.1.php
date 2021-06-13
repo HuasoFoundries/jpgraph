@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -16,9 +17,11 @@ function numberToRoman($aNum)
     $result = '';
 
     // Declare a lookup array that we will use to traverse the number:
-    $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
+    $lookup = [
+        'M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400,
         'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40,
-        'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1, ];
+        'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1,
+    ];
 
     foreach ($lookup as $roman => $value) {
         // Determine the number of matches
@@ -62,8 +65,14 @@ $graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $graph->yaxis->SetColor('blue');
 
@@ -71,12 +80,18 @@ $graph->yaxis->SetColor('blue');
 $lineplot = new Plot\LinePlot($ydata);
 $lineplot->SetColor('blue');
 $lineplot->SetWeight(2); // Two pixel wide
-$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'));
+$lineplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_UTRIANGLE')
+);
 $lineplot->mark->SetColor('blue');
 $lineplot->mark->SetFillColor('red');
 
 $lineplot->value->Show();
-$lineplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$lineplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 $lineplot->value->SetColor('darkred');
 $lineplot->value->SetFormatCallback('formatCallback');
 

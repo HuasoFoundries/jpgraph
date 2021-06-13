@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -32,12 +33,17 @@ $graph->SetMarginColor('white');
 $graph->SetColor('lightyellow@0.7');
 $example_title = 'Interpolation growth for size 10x10';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $graph->xaxis->SetTitle('Interpolation factor', 'center');
 $graph->xaxis->SetTitleMargin(10);
 
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_YBOXIN'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_YBOXIN')
+);
 $graph->xgrid->Show();
 
 $lp1 = new Plot\LinePlot($ydata, $xdata);

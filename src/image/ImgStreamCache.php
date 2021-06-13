@@ -62,7 +62,9 @@ class ImgStreamCache extends Configs
     public function PutAndStream($aImage, $aCacheFileName, $aInline, $aStrokeFileName)
     {
         // Check if we should always stroke the image to a file
-        if (Configs::_FORCE_IMGTOFILE) {
+        if (
+            Configs::_FORCE_IMGTOFILE
+        ) {
             $aStrokeFileName = Configs::_FORCE_IMGDIR . Util\Helper::GenImgName();
         }
 
@@ -80,7 +82,7 @@ class ImgStreamCache extends Configs
                 // exist we need to delete the old file first
                 if (!@unlink($aStrokeFileName)) {
                     $lock = flock($fd, LOCK_UN);
-                    Util\JpGraphError::RaiseL(25111, $aStrokeFileName);
+                    throw      Util\JpGraphError::make(25111, $aStrokeFileName);
                     //(" Can't delete cached image $aStrokeFileName. Permission problem?");
                 }
                 $aImage->Stream($aStrokeFileName);
@@ -102,7 +104,7 @@ class ImgStreamCache extends Configs
                     // then do nothing, just return.
                     $diff = time() - filemtime($aCacheFileName);
                     if ($diff < 0) {
-                        Util\JpGraphError::RaiseL(25112, $aCacheFileName);
+                        throw      Util\JpGraphError::make(25112, $aCacheFileName);
                         //(" Cached imagefile ($aCacheFileName) has file date in the future!!");
                     }
                     if ($this->timeout > 0 && ($diff <= $this->timeout * 60)) {
@@ -116,7 +118,7 @@ class ImgStreamCache extends Configs
 
                 if (!@unlink($aCacheFileName)) {
                     $lock = flock($fd, LOCK_UN);
-                    Util\JpGraphError::RaiseL(25113, $aStrokeFileName);
+                    throw      Util\JpGraphError::make(25113, $aStrokeFileName);
                     //(" Can't delete cached image $aStrokeFileName. Permission problem?");
                 }
                 $aImage->Stream($aCacheFileName);
@@ -125,7 +127,7 @@ class ImgStreamCache extends Configs
             } else {
                 $this->MakeDirs(dirname($aCacheFileName));
                 if (!is_writeable(dirname($aCacheFileName))) {
-                    Util\JpGraphError::RaiseL(25114, $aCacheFileName);
+                    throw      Util\JpGraphError::make(25114, $aCacheFileName);
                     //('PHP has not enough permissions to write to the cache file '.$aCacheFileName.'. Please make sure that the user running PHP has write permission for this file if you wan to use the cache system with JpGraph.');
                 }
                 $aImage->Stream($aCacheFileName);
@@ -133,14 +135,18 @@ class ImgStreamCache extends Configs
 
             $res = true;
             // Set group to specified
-            if (Configs::getConfig('CACHE_FILE_GROUP') != '') {
+            if (
+                Configs::getConfig('CACHE_FILE_GROUP') != ''
+            ) {
                 $res = @chgrp($aCacheFileName, Configs::getConfig('CACHE_FILE_GROUP'));
             }
-            if (Configs::getConfig('CACHE_FILE_MOD') != '') {
+            if (
+                Configs::getConfig('CACHE_FILE_MOD') != ''
+            ) {
                 $res = @chmod($aCacheFileName, Configs::getConfig('CACHE_FILE_MOD'));
             }
             if (!$res) {
-                Util\JpGraphError::RaiseL(25115, $aStrokeFileName);
+                throw      Util\JpGraphError::make(25115, $aStrokeFileName);
                 //(" Can't set permission for cached image $aStrokeFileName. Permission problem?");
             }
 
@@ -152,7 +158,7 @@ class ImgStreamCache extends Configs
 
                     return;
                 }
-                Util\JpGraphError::RaiseL(25116, $aFile); //(" Cant open file from cache [$aFile]");
+                throw      Util\JpGraphError::make(25116, $aFile); //(" Cant open file from cache [$aFile]");
             }
         } elseif ($aInline) {
             $aImage->Headers();
@@ -165,7 +171,9 @@ class ImgStreamCache extends Configs
     public function IsValid($aCacheFileName)
     {
         $aCacheFileName = $this->cache_dir . $aCacheFileName;
-        if (Configs::getConfig('USE_CACHE') && file_exists($aCacheFileName)) {
+        if (
+            Configs::getConfig('USE_CACHE') && file_exists($aCacheFileName)
+        ) {
             $diff = time() - filemtime($aCacheFileName);
             if ($this->timeout > 0 && ($diff > $this->timeout * 60)) {
                 return false;
@@ -189,7 +197,7 @@ class ImgStreamCache extends Configs
 
             return true;
         }
-        Util\JpGraphError::RaiseL(25117, $aCacheFileName); //(" Can't open cached image \"$aCacheFileName\" for reading.");
+        throw      Util\JpGraphError::make(25117, $aCacheFileName); //(" Can't open cached image \"$aCacheFileName\" for reading.");
     }
 
     // Check if a given image is in cache and in that case
@@ -222,13 +230,15 @@ class ImgStreamCache extends Configs
         }
         for ($i = Configs::safe_count($dirs) - 1; $i >= 0; --$i) {
             if (!@mkdir($dirs[$i], 0777)) {
-                Util\JpGraphError::RaiseL(25118, $aFile); //(" Can't create directory $aFile. Make sure PHP has write permission to this directory.");
+                throw      Util\JpGraphError::make(25118, $aFile); //(" Can't create directory $aFile. Make sure PHP has write permission to this directory.");
             }
             // We also specify mode here after we have changed group.
             // This is necessary if Apache user doesn't belong the
             // default group and hence can't specify group permission
             // in the previous mkdir() call
-            if (Configs::getConfig('CACHE_FILE_GROUP') == '') {
+            if (
+                Configs::getConfig('CACHE_FILE_GROUP') == ''
+            ) {
                 // We also specify mode here after we have changed group.
                 // This is necessary if Apache user doesn't belong the
                 // default group and hence can't specify group permission
@@ -247,7 +257,7 @@ class ImgStreamCache extends Configs
                 continue;
             }
 
-            Util\JpGraphError::RaiseL(25119, $aFile); //(" Can't set permissions for $aFile. Permission problems?");
+            throw      Util\JpGraphError::make(25119, $aFile); //(" Can't set permissions for $aFile. Permission problems?");
         }
 
         return true;

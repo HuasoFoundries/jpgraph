@@ -66,8 +66,10 @@ class ErrorPlot extends Plot
         $img->SetLineWeight($this->weight);
 
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
+            if (
+                Configs::safe_count($this->coords[1]) != $numpoints
+            ) {
+                throw      Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
             }
 
             //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
@@ -85,8 +87,10 @@ class ErrorPlot extends Plot
                 $x = $i;
             }
 
-            if (!is_numeric($x) ||
-                !is_numeric($this->coords[0][$i * 2]) || !is_numeric($this->coords[0][$i * 2 + 1])) {
+            if (
+                !is_numeric($x) ||
+                !is_numeric($this->coords[0][$i * 2]) || !is_numeric($this->coords[0][$i * 2 + 1])
+            ) {
                 continue;
             }
 

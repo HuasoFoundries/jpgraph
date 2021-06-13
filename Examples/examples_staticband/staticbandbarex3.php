@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -18,7 +19,11 @@ $graph->img->SetMargin(60, 30, 50, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
 
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 15);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    15
+);
 $example_title = 'Cash flow ';
 $graph->title->set($example_title);
 $subtitle_text = '(Department X)';
@@ -31,8 +36,12 @@ $graph->xgrid->Show(true, false);
 $graph->yscale->SetGrace(10, 10);
 
 // Turn the tick mark out from the plot area
-$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
-$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
+$graph->xaxis->SetTickSide(
+    Graph\Configs::getConfig('SIDE_DOWN')
+);
+$graph->yaxis->SetTickSide(
+    Graph\Configs::getConfig('SIDE_LEFT')
+);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -49,9 +58,21 @@ $graph->xaxis->SetPos('min');
 $graph->Add($bplot);
 
 // Add upper and lower band and use no frames
-$uband = new Plot\PlotBand(Graph\Configs::getConfig('HORIZONTAL'), Graph\Configs::getConfig('BAND_RDIAG'), 0, 'max', 'green');
+$uband = new Plot\PlotBand(
+    Graph\Configs::getConfig('HORIZONTAL'),
+    Graph\Configs::getConfig('BAND_RDIAG'),
+    0,
+    'max',
+    'green'
+);
 $uband->ShowFrame(false);
-$lband = new Plot\PlotBand(Graph\Configs::getConfig('HORIZONTAL'), Graph\Configs::getConfig('BAND_LDIAG'), 'min', 0, 'red');
+$lband = new Plot\PlotBand(
+    Graph\Configs::getConfig('HORIZONTAL'),
+    Graph\Configs::getConfig('BAND_LDIAG'),
+    'min',
+    0,
+    'red'
+);
 $lband->ShowFrame(false);
 
 $graph->Add($uband);
@@ -61,7 +82,15 @@ $graph->Add($lband);
 $graph->xaxis->title->Set('X-title');
 $graph->yaxis->title->Set('Y-title');
 
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    11
+);
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    11
+);
 
 $graph->Stroke();

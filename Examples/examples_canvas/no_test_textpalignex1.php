@@ -33,13 +33,20 @@ for ($i = 0; $i < $n; ++$i) {
 
     $t->SetColor('black');
     $t->SetAlign('left', 'top');
-    $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+    $t->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_NORMAL'),
+        11
+    );
     $t->SetBox();
     $t->SetParagraphAlign($palign[$i]);
     $t->Stroke($img, $x, $y);
 
     $img->SetColor('black');
-    $img->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+    $img->SetFont(
+        Graph\Configs::getConfig('FF_FONT1'),
+        Graph\Configs::getConfig('FS_BOLD')
+    );
     $img->SetTextAlign('center', 'top');
     $img->StrokeText($x + 140, $y + 160, '"' . $palign[$i] . '"' . ' pargraph align');
 }

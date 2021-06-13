@@ -205,12 +205,20 @@ class JpGraphException extends Exception
 
         // Stroke text
         $img->SetColor('darkred');
-        $img->SetFont(Configs::FF_FONT2, Configs::FS_BOLD);
+        $img->SetFont(
+            Configs::FF_FONT2,
+            Configs::FS_BOLD
+        );
         $img->StrokeText($m - 90, 15, JpGraphError::GetTitle());
         $img->SetColor('black');
-        $img->SetFont(Configs::FF_FONT1, Configs::FS_NORMAL);
+        $img->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_NORMAL
+        );
         $txt = new Text\Text($this->getMessage(), 52, 25);
-        $txt->SetFont(Configs::FF_FONT1);
+        $txt->SetFont(
+            Configs::FF_FONT1
+        );
         $txt->Align('left', 'top');
         $txt->Stroke($img);
 

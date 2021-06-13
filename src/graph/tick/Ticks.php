@@ -11,8 +11,8 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Ticks
-  *  Description: Abstract base class for drawing linear and logarithmic
-  *  tick marks on axis
+ *  Description: Abstract base class for drawing linear and logarithmic
+ *  tick marks on axis
  */
 class Ticks
 {
@@ -233,8 +233,10 @@ class Ticks
         }
 
         // Some sanity check
-        if (Configs::safe_count($this->maj_ticks_pos) < 2) {
-            Util\JpGraphError::RaiseL(25067); //('Your manually specified scale and ticks is not correct. The scale seems to be too small to hold any of the specified tickl marks.');
+        if (
+            Configs::safe_count($this->maj_ticks_pos) < 2
+        ) {
+            throw      Util\JpGraphError::make(25067); //('Your manually specified scale and ticks is not correct. The scale seems to be too small to hold any of the specified tickl marks.');
         }
 
         // Setup the minor tick marks
@@ -255,7 +257,7 @@ class Ticks
         $min_step_abs = $aScale->scale_factor * $this->minor_step;
 
         if (0 === $min_step_abs || 0 === $maj_step_abs) {
-            Util\JpGraphError::RaiseL(25068); //("A plot has an illegal scale. This could for example be that you are trying to use text autoscaling to draw a line plot with only one point or that the plot area is too small. It could also be that no input data value is numeric (perhaps only '-' or 'x')");
+            throw      Util\JpGraphError::make(25068); //("A plot has an illegal scale. This could for example be that you are trying to use text autoscaling to draw a line plot with only one point or that the plot area is too small. It could also be that no input data value is numeric (perhaps only '-' or 'x')");
         }
         // We need to make this an int since comparing it below
         // with the result from round() can give wrong result, such that

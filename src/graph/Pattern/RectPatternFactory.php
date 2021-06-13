@@ -4,8 +4,9 @@
  * JPGraph - Community Edition
  */
 
-namespace Amenadiel\JpGraph\Graph;
+namespace Amenadiel\JpGraph\Graph\Pattern;
 
+use Amenadiel\JpGraph\Graph\Configs;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -59,7 +60,7 @@ class RectPatternFactory
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(16003, $aPattern);
+         throw      Util\JpGraphError::make(16003, $aPattern);
                 //(" Unknown pattern specification ($aPattern)");
         }
 

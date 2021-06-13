@@ -3,6 +3,7 @@
 /**
  * JPGraph - Community Edition
  */
+
 use  Amenadiel\JpGraph\Graph;
 use  Amenadiel\JpGraph\Text\Configs;
 use Amenadiel\JpGraph\Graph\CanvasGraph;
@@ -29,7 +30,11 @@ $table = new GTextTable();
 $table->Set($data);
 
 // Setup fonts
-$table->SetFont(Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_NORMAL'), 11);
+$table->SetFont(
+    Configs::getConfig('FF_TIMES'),
+    Configs::getConfig('FS_NORMAL'),
+    11
+);
 $table->SetColFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
 $table->SetRowFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
 $table->SetRowFont(4, Configs::getConfig('FF_TIMES'), Configs::getConfig('FS_BOLD'), 14);

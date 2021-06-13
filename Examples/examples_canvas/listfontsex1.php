@@ -21,7 +21,11 @@ $g->InitFrame();
 $example_title = 'Font demonstration on canvas';
 
 $t = new Text\CanvasRectangleText();
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    16
+);
 $t->SetFillColor('lemonchiffon2');
 $t->SetFontColor('black');
 $t->Set("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTTF Fonts (11pt)", 0.5, 19.5, 26, 64.5);
@@ -37,7 +41,11 @@ $t->SetFontColor('black');
 $t->SetColor('');
 $t->SetShadow('');
 
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    18
+);
 $t->Set('Normal', 1, 1, 8);
 $t->Stroke($g->img, $g->getScale());
 

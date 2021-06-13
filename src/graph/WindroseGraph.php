@@ -27,11 +27,23 @@ class WindroseGraph extends Graph
         $this->posx = $width / 2;
         $this->posy = $height / 2;
         $this->SetColor('white');
-        $this->title->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 12);
+        $this->title->SetFont(
+            Configs::getConfig('FF_VERDANA'),
+            Configs::getConfig('FS_NORMAL'),
+            12
+        );
         $this->title->SetMargin(8);
-        $this->subtitle->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 10);
+        $this->subtitle->SetFont(
+            Configs::getConfig('FF_VERDANA'),
+            Configs::getConfig('FS_NORMAL'),
+            10
+        );
         $this->subtitle->SetMargin(0);
-        $this->subsubtitle->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 8);
+        $this->subsubtitle->SetFont(
+            Configs::getConfig('FF_VERDANA'),
+            Configs::getConfig('FS_NORMAL'),
+            8
+        );
         $this->subsubtitle->SetMargin(0);
     }
 
@@ -68,7 +80,7 @@ class WindroseGraph extends Graph
      *
      * @param mixed $aObj
      */
-    public function Add($aObj)
+    public function Add($aObj): self
     {
         if (\is_array($aObj) && Configs::safe_count($aObj) > 0) {
             $cl = $aObj[0];
@@ -83,8 +95,9 @@ class WindroseGraph extends Graph
         } elseif (($cl instanceof Plot\WindrosePlot)) {
             $this->plots[] = $aObj;
         } else {
-            Util\JpGraphError::RaiseL(22021);
+            throw      Util\JpGraphError::make(22021);
         }
+        return $this;
     }
 
     public function AddText($aTxt, $aToY2 = false)
@@ -139,7 +152,9 @@ class WindroseGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName) {
+        if (
+            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        ) {
             return $this->img->img;
         }
         // Finally stream the generated picture

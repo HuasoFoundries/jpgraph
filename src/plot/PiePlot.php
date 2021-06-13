@@ -89,7 +89,10 @@ class PiePlot
     {
         $this->data  = array_reverse($data);
         $this->title = new Text\Text('');
-        $this->title->SetFont(Configs::FF_DEFAULT, Configs::FS_BOLD);
+        $this->title->SetFont(
+            Configs::FF_DEFAULT,
+            Configs::FS_BOLD
+        );
         $this->value = new DisplayValue();
         $this->value->Show();
         $this->value->SetFormat('%.1f%%');
@@ -229,21 +232,21 @@ class PiePlot
 
     public function SetTheme($aTheme)
     {
-        //        Util\JpGraphError::RaiseL(15012,$aTheme);
+        // throw      Util\JpGraphError::make(15012,$aTheme);
         //        return;
 
         if (in_array($aTheme, array_keys($this->themearr), true)) {
             $this->theme               = $aTheme;
             $this->is_using_plot_theme = true;
         } else {
-            Util\JpGraphError::RaiseL(15001, $aTheme); //("PiePLot::SetTheme() Unknown theme: $aTheme");
+            throw      Util\JpGraphError::make(15001, $aTheme); //("PiePLot::SetTheme() Unknown theme: $aTheme");
         }
     }
 
     public function ExplodeSlice($e, $radius = 20)
     {
         if (!is_integer($e)) {
-            Util\JpGraphError::RaiseL(15002);
+            throw      Util\JpGraphError::make(15002);
         }
         //('Argument to PiePlot::ExplodeSlice() must be an integer');
         $this->explode_radius[$e] = $radius;
@@ -258,7 +261,7 @@ class PiePlot
     public function Explode($aExplodeArr)
     {
         if (!is_array($aExplodeArr)) {
-            Util\JpGraphError::RaiseL(15003);
+            throw      Util\JpGraphError::make(15003);
             //("Argument to PiePlot::Explode() must be an array with integer distances.");
         }
         $this->explode_radius = $aExplodeArr;
@@ -267,7 +270,7 @@ class PiePlot
     public function SetStartAngle($aStart)
     {
         if ($aStart < 0 || $aStart > 360) {
-            Util\JpGraphError::RaiseL(15004); //('Slice start angle must be between 0 and 360 degrees.');
+            throw      Util\JpGraphError::make(15004); //('Slice start angle must be between 0 and 360 degrees.');
         }
         if ($aStart == 0) {
             $this->startangle = 0;
@@ -283,7 +286,7 @@ class PiePlot
         if (($aSize > 0 && $aSize <= 0.5) || ($aSize > 10 && $aSize < 1000)) {
             $this->radius = $aSize;
         } else {
-            Util\JpGraphError::RaiseL(15006);
+            throw      Util\JpGraphError::make(15006);
         }
 
         //("PiePlot::SetSize() Radius for pie must either be specified as a fraction [0, 0.5] of the size of the image or as an absolute size in pixels  in the range [10, 1000]");
@@ -311,7 +314,7 @@ class PiePlot
     public function SetLabelType($aType)
     {
         if ($aType < 0 || $aType > 2) {
-            Util\JpGraphError::RaiseL(15008, $aType);
+            throw      Util\JpGraphError::make(15008, $aType);
         }
 
         //("PiePlot::SetLabelType() Type for pie plots must be 0 or 1 (not $t).");
@@ -359,20 +362,25 @@ class PiePlot
 
         // Bail out with error if the sum is 0
         if ($sum == 0) {
-            Util\JpGraphError::RaiseL(15009);
+            throw      Util\JpGraphError::make(15009);
         }
         //("Illegal pie plot. Sum of all data is zero for Pie!");
 
         // Make sure we don't plot more values than data points
         // (in case the user added more legends than data points)
-        $n = min(Configs::safe_count($this->legends), Configs::safe_count($this->data));
+        $n = min(
+            Configs::safe_count($this->legends),
+            Configs::safe_count($this->data)
+        );
         if ($this->legends != '') {
             $this->legends = array_reverse(array_slice($this->legends, 0, $n));
         }
         for ($i = $n - 1; $i >= 0; --$i) {
             $l = $this->legends[$i];
             // Replace possible format with actual values
-            if (Configs::safe_count($this->csimalts) > $i) {
+            if (
+                Configs::safe_count($this->csimalts) > $i
+            ) {
                 $fmt = $this->csimalts[$i];
             } else {
                 $fmt = '%d'; // Deafult Alt if no other has been specified
@@ -506,7 +514,7 @@ class PiePlot
 
         // Bail out with error if the sum is 0
         if ($sum == 0) {
-            Util\JpGraphError::RaiseL(15009); //("Sum of all data is 0 for Pie.");
+            throw      Util\JpGraphError::make(15009); //("Sum of all data is 0 for Pie.");
         }
 
         // Set up the pie-circle

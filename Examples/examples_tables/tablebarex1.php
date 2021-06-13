@@ -16,7 +16,8 @@ $datay = [
     ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     [12, 18, 19, 7, 17, 6],
     [3, 5, 2, 7, 5, 25],
-    [6, 1.5, 2.4, 2.1, 6.9, 12.3], ];
+    [6, 1.5, 2.4, 2.1, 6.9, 12.3],
+];
 
 // Some basic defines to specify the shape of the bar+table
 $nbrbar = 6;
@@ -37,9 +38,17 @@ $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
 // Setup titles and fonts$example_title='Bar and table'; $graph->title->set($example_title);
-$graph->title->SetFont(Configs::getConfig('FF_VERDANA'), Configs::getConfig('FS_NORMAL'), 14);
+$graph->title->SetFont(
+    Configs::getConfig('FF_VERDANA'),
+    Configs::getConfig('FS_NORMAL'),
+    14
+);
 $graph->yaxis->title->Set('Flow');
-$graph->yaxis->title->SetFont(Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 12);
+$graph->yaxis->title->SetFont(
+    Configs::getConfig('FF_ARIAL'),
+    Configs::getConfig('FS_NORMAL'),
+    12
+);
 $graph->yaxis->title->SetMargin(10);
 
 // Create the bars and the accbar plot
@@ -59,7 +68,11 @@ $table->Set($datay);
 $table->SetPos($tablexpos, $tableypos + 1);
 
 // Basic table formatting
-$table->SetFont(Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 10);
+$table->SetFont(
+    Configs::getConfig('FF_ARIAL'),
+    Configs::getConfig('FS_NORMAL'),
+    10
+);
 $table->SetAlign('right');
 $table->SetMinColWidth($cellwidth);
 $table->SetNumberFormat('%0.1f');

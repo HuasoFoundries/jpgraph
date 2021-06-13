@@ -27,11 +27,13 @@ class ScatterPlot extends Plot
     public function __construct($datay, $datax = false)
     {
         if ((Configs::safe_count($datax) != Configs::safe_count($datay)) && is_array($datax)) {
-            Util\JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
+            throw      Util\JpGraphError::make(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
-        $this->mark->SetType(Configs::MARK_SQUARE);
+        $this->mark->SetType(
+            Configs::MARK_SQUARE
+        );
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);

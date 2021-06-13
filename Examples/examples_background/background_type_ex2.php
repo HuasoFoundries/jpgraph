@@ -25,10 +25,18 @@ $graph->ygrid->setColor('darkgray');
 $graph->SetBox(true);
 
 // Steup graph titles
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $example_title = 'Using background image';
 $graph->title->set($example_title);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_COURIER'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_COURIER'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    11
+);
 $subtitle_text = 'BGIMG_FREE';
 $graph->subtitle->Set($subtitle_text);
 $graph->subtitle->SetColor('darkred');

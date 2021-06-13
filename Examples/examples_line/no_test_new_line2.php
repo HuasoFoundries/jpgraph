@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -39,14 +40,22 @@ $graph->Add($p2);
 
 $p1->SetColor('#55bbdd');
 $p1->SetLegend('Line 1');
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'), '', 1.0);
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE'),
+    '',
+    1.0
+);
 $p1->mark->SetColor('#55bbdd');
 $p1->mark->SetFillColor('#55bbdd');
 $p1->SetCenter();
 
 $p2->SetColor('#aaaaaa');
 $p2->SetLegend('Line 2');
-$p2->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'), '', 1.0);
+$p2->mark->SetType(
+    Graph\Configs::getConfig('MARK_UTRIANGLE'),
+    '',
+    1.0
+);
 $p2->mark->SetColor('#aaaaaa');
 $p2->mark->SetFillColor('#aaaaaa');
 $p2->value->SetMargin(14);

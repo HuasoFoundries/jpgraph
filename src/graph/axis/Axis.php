@@ -11,11 +11,11 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Axis
-  *  Description: Defines X and Y axis. Notes that at the
-  *  moment the code is not really good since the axis on
-  *  several occasion must know wheter it's an X or Y axis.
-  *  This was a design decision to make the code easier to
-  *  follow.
+ *  Description: Defines X and Y axis. Notes that at the
+ *  moment the code is not really good since the axis on
+ *  several occasion must know wheter it's an X or Y axis.
+ *  This was a design decision to make the code easier to
+ *  follow.
  */
 class Axis extends AxisPrototype
 {
@@ -68,7 +68,9 @@ class Axis extends AxisPrototype
                 );
             }
 
-            if (Configs::getConfig('SIDE_DOWN') === $this->title_side) {
+            if (
+                Configs::getConfig('SIDE_DOWN') === $this->title_side
+            ) {
                 $y = $pos + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
                 $yalign = 'top';
             } else {
@@ -83,7 +85,7 @@ class Axis extends AxisPrototype
             } elseif ('low' === $this->title_adjust) {
                 $this->title->SetPos($this->img->left_margin, $y, 'left', $yalign);
             } else {
-                Util\JpGraphError::RaiseL(25060, $this->title_adjust); //('Unknown alignment specified for X-axis title. ('.$this->title_adjust.')');
+                throw      Util\JpGraphError::make(25060, $this->title_adjust); //('Unknown alignment specified for X-axis title. ('.$this->title_adjust.')');
             }
         } elseif ('y' === $this->scale->type) {
             // Add line weight to the height of the axis since
@@ -100,7 +102,9 @@ class Axis extends AxisPrototype
 
             $x = $pos;
 
-            if (Configs::getConfig('SIDE_LEFT') === $this->title_side) {
+            if (
+                Configs::getConfig('SIDE_LEFT') === $this->title_side
+            ) {
                 $x -= $this->title_margin;
                 $x -= $this->title->margin;
                 $halign = 'right';
@@ -125,7 +129,7 @@ class Axis extends AxisPrototype
             } elseif ('low' === $this->title_adjust) {
                 $this->title->SetPos($x, $this->img->height - $this->img->bottom_margin, $halign, 'bottom');
             } else {
-                Util\JpGraphError::RaiseL(25061, $this->title_adjust); //('Unknown alignment specified for Y-axis title. ('.$this->title_adjust.')');
+                throw      Util\JpGraphError::make(25061, $this->title_adjust); //('Unknown alignment specified for Y-axis title. ('.$this->title_adjust.')');
             }
         }
         $this->scale->ticks->Stroke($this->img, $this->scale, $pos);
@@ -215,15 +219,19 @@ class Axis extends AxisPrototype
                     }
 
                     // We number the scale from 1 and not from 0 so increase by one
-                    if ($this->scale->textscale
+                    if (
+                        $this->scale->textscale
                         && '' === $this->scale->ticks->label_formfunc
-                        && !$this->scale->ticks->HaveManualLabels()) {
+                        && !$this->scale->ticks->HaveManualLabels()
+                    ) {
                         ++$label;
                     }
                 }
 
                 if ('x' === $this->scale->type) {
-                    if (Configs::getConfig('SIDE_DOWN') === $this->labelPos) {
+                    if (
+                        Configs::getConfig('SIDE_DOWN') === $this->labelPos
+                    ) {
                         if (0 === $this->label_angle || 90 === $this->label_angle) {
                             if ('' === $this->label_halign && '' === $this->label_valign) {
                                 $this->img->SetTextAlign('center', 'top');
@@ -270,7 +278,9 @@ class Axis extends AxisPrototype
                     // scale->type == "y"
                     //if( $this->label_angle!=0 )
                     //Util\JpGraphError::Raise(" Labels at an angle are not supported on Y-axis");
-                    if (Configs::getConfig('SIDE_LEFT') === $this->labelPos) {
+                    if (
+                        Configs::getConfig('SIDE_LEFT') === $this->labelPos
+                    ) {
                         // To the left of y-axis
                         if ('' === $this->label_halign && '' === $this->label_valign) {
                             $this->img->SetTextAlign('right', 'center');

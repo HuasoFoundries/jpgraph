@@ -12,10 +12,10 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class GanttScale
-  *  Description: Responsible for calculating and showing
-  *  the scale in a gantt chart. This includes providing methods for
-  *  converting dates to position in the chart as well as stroking the
-  *  date headers (days, week, etc).
+ *  Description: Responsible for calculating and showing
+ *  the scale in a gantt chart. This includes providing methods for
+ *  converting dates to position in the chart as well as stroking the
+ *  date headers (days, week, etc).
  */
 class GanttScale
 {
@@ -137,13 +137,19 @@ class GanttScale
         $this->minute = new HeaderProperty();
         $this->minute->SetIntervall(15);
         $this->minute->SetLabelFormatString('i');
-        $this->minute->SetFont(Configs::FF_FONT0);
+        $this->minute->SetFont(
+            Configs::FF_FONT0
+        );
         $this->minute->grid->SetColor('gray');
 
         $this->hour = new HeaderProperty();
-        $this->hour->SetFont(Configs::FF_FONT0);
+        $this->hour->SetFont(
+            Configs::FF_FONT0
+        );
         $this->hour->SetIntervall(6);
-        $this->hour->SetStyle(Configs::HOURSTYLE_HM24);
+        $this->hour->SetStyle(
+            Configs::HOURSTYLE_HM24
+        );
         $this->hour->SetLabelFormatString('H:i');
         $this->hour->grid->SetColor('gray');
 
@@ -153,13 +159,21 @@ class GanttScale
 
         $this->week = new HeaderProperty();
         $this->week->SetLabelFormatString('w%d');
-        $this->week->SetFont(Configs::FF_FONT1);
+        $this->week->SetFont(
+            Configs::FF_FONT1
+        );
 
         $this->month = new HeaderProperty();
-        $this->month->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->month->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
 
         $this->year = new HeaderProperty();
-        $this->year->SetFont(Configs::FF_FONT1, Configs::FS_BOLD);
+        $this->year->SetFont(
+            Configs::FF_FONT1,
+            Configs::FS_BOLD
+        );
 
         $this->divider = new LineProperty();
         $this->dividerh = new LineProperty();
@@ -615,11 +629,13 @@ class GanttScale
         $img = $this->iImg;
 
         if ($aPos > $this->iVertLines) {
-            Util\JpGraphError::RaiseL(6015, $aPos);
+            throw      Util\JpGraphError::make(6015, $aPos);
         }
 
         // 'Illegal vertical position %d'
-        if (Configs::GANTT_EVEN === $this->iVertLayout) {
+        if (
+            Configs::GANTT_EVEN === $this->iVertLayout
+        ) {
             // Position the top bar at 1 vert spacing from the scale
             $pos = \round($img->top_margin + $this->iVertHeaderSize + ($aPos + 1) * $this->iVertSpacing);
         } else {
@@ -656,7 +672,7 @@ class GanttScale
             $t = \strtotime($aDate);
 
             if (false === $t || -1 === $t) {
-                Util\JpGraphError::RaiseL(6016, $aDate);
+                throw      Util\JpGraphError::make(6016, $aDate);
                 //("Date string ($aDate) specified for Gantt activity can not be interpretated. Please make sure it is a valid time string, e.g. 2005-04-23 13:30");
             }
 
@@ -666,23 +682,24 @@ class GanttScale
         if (\is_int($aDate) || \is_float($aDate)) {
             return $aDate;
         }
-        Util\JpGraphError::RaiseL(6017, $aDate);
+        throw      Util\JpGraphError::make(6017, $aDate);
 
         //Unknown date format in GanttScale ($aDate).");
     }
 
+
     // Convert a time string to minutes
 
-    public function TimeToMinutes($aTimeString)
+    public function TimeToMinutes(string $aTimeString)
     {
         // Split in hours and minutes
         $pos = \mb_strpos($aTimeString, ':');
-        $minint = 60;
+        $minint = 0;
+        $hourint = (int) $aTimeString;
+        if (false !== $pos) {
 
-        if (false === $pos) {
-            $hourint = $aTimeString;
-            $minint = 0;
-        } else {
+
+
             $hourint = \floor(\mb_substr($aTimeString, 0, $pos));
             $minint = \floor(\mb_substr($aTimeString, $pos + 1));
         }
@@ -704,7 +721,7 @@ class GanttScale
         if ($this->minute->iShowLabels) {
             $img->SetFont($this->minute->iFFamily, $this->minute->iFStyle, $this->minute->iFSize);
             $yb = $yt + $img->GetFontHeight() +
-            $this->minute->iTitleVertMargin + $this->minute->iFrameWeight;
+                $this->minute->iTitleVertMargin + $this->minute->iFrameWeight;
 
             if ($getHeight) {
                 return $yb - $img->top_margin;
@@ -716,31 +733,31 @@ class GanttScale
             $x = $xt;
             $img->SetTextAlign('center');
             $day = \date('w', $this->iStartDate);
-            $minint = $this->minute->GetIntervall();
+            $minutesRounded = $this->minute->GetInterval();
 
-            if (60 % $minint !== 0) {
-                Util\JpGraphError::RaiseL(6018, $minint);
+            if (60 % $minutesRounded !== 0) {
+                throw      Util\JpGraphError::make(6018, $minutesRounded);
                 //'Intervall for minutes must divide the hour evenly, e.g. 1,5,10,12,15,20,30 etc You have specified an intervall of '.$minint.' minutes.');
             }
 
-            $n = 60 / $minint;
+            $ticksPerHour = 60 / $minutesRounded;
             $datestamp = $this->iStartDate;
-            $width = $this->GetHourWidth() / $n;
+            $width = $this->GetHourWidth() / $ticksPerHour;
 
             if (8 > $width) {
                 // TO small width to draw minute scale
-                Util\JpGraphError::RaiseL(6019, $width);
+                throw      Util\JpGraphError::make(6019, $width);
                 //('The available width ('.$width.') for minutes are to small for this scale to be displayed. Please use auto-sizing or increase the width of the graph.');
             }
 
-            $nh = \ceil(24 * 60 / $this->TimeToMinutes($this->hour->GetIntervall()));
-            $nd = $this->GetNumberOfDays();
+            $nh = \ceil(24 * 60 / $this->TimeToMinutes($this->hour->GetInterval()));
+            $totalDays = $this->GetNumberOfDays();
             // Convert to intervall to seconds
-            $minint *= 60;
+            $minutesRounded *= 60;
 
-            for ($j = 0; $j < $nd; ++$j, ++$day, $day %= 7) {
+            for ($j = 0; $j < $totalDays; ++$j, ++$day, $day %= 7) {
                 for ($k = 0; $k < $nh; ++$k) {
-                    for ($i = 0; $i < $n; ++$i, $x += $width, $datestamp += $minint) {
+                    for ($i = 0; $i < $ticksPerHour; ++$i, $x += $width, $datestamp += $minutesRounded) {
                         if (6 === $day || 0 === $day) {
                             $img->PushColor($this->day->iWeekendBackgroundColor);
 
@@ -780,7 +797,7 @@ class GanttScale
                         // this might sometimes be one pixel of so we fix this by not drawing it.
                         // The proper way to fix it would be to re-calculate the scale for each step and
                         // not using the additive term.
-                        if (($i === $n || 0 === $i) && $this->hour->iShowLabels && $this->hour->grid->iShow) {
+                        if (($i === $ticksPerHour || 0 === $i) && $this->hour->iShowLabels && $this->hour->grid->iShow) {
                             // Fix a rounding problem the wrong way ..
                             // If we also have hour scale then don't draw the firsta or last
                             // gridline since that will be overwritten by the hour scale gridline if such exists.
@@ -828,7 +845,7 @@ class GanttScale
         if ($this->hour->iShowLabels) {
             $img->SetFont($this->hour->iFFamily, $this->hour->iFStyle, $this->hour->iFSize);
             $yb = $yt + $img->GetFontHeight() +
-            $this->hour->iTitleVertMargin + $this->hour->iFrameWeight;
+                $this->hour->iTitleVertMargin + $this->hour->iFrameWeight;
 
             if ($getHeight) {
                 return $yb - $img->top_margin;
@@ -839,11 +856,11 @@ class GanttScale
 
             $x = $xt;
             $img->SetTextAlign('center');
-            $tmp = $this->hour->GetIntervall();
+            $tmp = $this->hour->GetInterval();
             $minint = $this->TimeToMinutes($tmp);
 
             if (1440 % $minint !== 0) {
-                Util\JpGraphError::RaiseL(6020, $tmp);
+                throw      Util\JpGraphError::make(6020, $tmp);
                 //('Intervall for hours must divide the day evenly, e.g. 0:30, 1:00, 1:30, 4:00 etc. You have specified an intervall of '.$tmp);
             }
 
@@ -1107,37 +1124,49 @@ class GanttScale
             $img->SetColor($this->week->grid->iColor);
             $x = $xt;
 
-            if (Configs::WEEKSTYLE_WNBR === $this->week->iStyle) {
+            if (
+                Configs::WEEKSTYLE_WNBR === $this->week->iStyle
+            ) {
                 $img->SetTextAlign('center');
                 $txtOffset = $weekwidth / 2 + 1;
-            } elseif (Configs::WEEKSTYLE_FIRSTDAY === $this->week->iStyle
+            } elseif (
+                Configs::WEEKSTYLE_FIRSTDAY === $this->week->iStyle
                 || Configs::WEEKSTYLE_FIRSTDAY2 === $this->week->iStyle
                 || Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->week->iStyle
-                || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle) {
+                || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle
+            ) {
                 $img->SetTextAlign('left');
                 $txtOffset = 3;
             } else {
-                Util\JpGraphError::RaiseL(6021);
+                throw      Util\JpGraphError::make(6021);
                 //("Unknown formatting style for week.");
             }
 
             for ($i = 0; $this->GetNumberOfDays() / 7 > $i; ++$i, $x += $weekwidth) {
                 $img->PushColor($this->week->iTextColor);
 
-                if (Configs::WEEKSTYLE_WNBR === $this->week->iStyle) {
+                if (
+                    Configs::WEEKSTYLE_WNBR === $this->week->iStyle
+                ) {
                     $txt = \sprintf($this->week->iLabelFormStr, $weeknbr);
-                } elseif (Configs::WEEKSTYLE_FIRSTDAY === $this->week->iStyle
-                    || Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->week->iStyle) {
+                } elseif (
+                    Configs::WEEKSTYLE_FIRSTDAY === $this->week->iStyle
+                    || Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->week->iStyle
+                ) {
                     $txt = \date('j/n', $week);
-                } elseif (Configs::WEEKSTYLE_FIRSTDAY2 === $this->week->iStyle
-                    || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle) {
+                } elseif (
+                    Configs::WEEKSTYLE_FIRSTDAY2 === $this->week->iStyle
+                    || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle
+                ) {
                     $monthnbr = \date('n', $week) - 1;
                     $shortmonth = $this->iDateLocale->GetShortMonthName($monthnbr);
                     $txt = \date('j', $week) . ' ' . $shortmonth;
                 }
 
-                if (Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->week->iStyle
-                    || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle) {
+                if (
+                    Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->week->iStyle
+                    || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->week->iStyle
+                ) {
                     $w = \sprintf($this->week->iLabelFormStr, $weeknbr);
                     $txt .= ' ' . $w;
                 }
@@ -1235,8 +1264,10 @@ class GanttScale
             $year = 0 + \strftime('%Y', $this->iStartDate);
             $img->SetTextAlign('center');
 
-            if ($this->GetMonthNbr($this->iStartDate) === $this->GetMonthNbr($this->iEndDate)
-                && $this->GetYear($this->iStartDate) === $this->GetYear($this->iEndDate)) {
+            if (
+                $this->GetMonthNbr($this->iStartDate) === $this->GetMonthNbr($this->iEndDate)
+                && $this->GetYear($this->iStartDate) === $this->GetYear($this->iEndDate)
+            ) {
                 $monthwidth = $this->GetDayWidth() * ($this->GetMonthDayNbr($this->iEndDate) - $this->GetMonthDayNbr($this->iStartDate) + 1);
             } else {
                 $monthwidth = $this->GetDayWidth() * ($this->GetNumDaysInMonth($monthnbr, $year) - $this->GetMonthDayNbr($this->iStartDate) + 1);
@@ -1435,14 +1466,14 @@ class GanttScale
     public function Stroke()
     {
         if (!$this->IsRangeSet()) {
-            Util\JpGraphError::RaiseL(6022);
+            throw      Util\JpGraphError::make(6022);
             //("Gantt scale has not been specified.");
         }
         $img = $this->iImg;
 
         // If minutes are displayed then hour interval must be 1
-        if ($this->IsDisplayMinute() && $this->hour->GetIntervall() > 1) {
-            Util\JpGraphError::RaiseL(6023);
+        if ($this->IsDisplayMinute() && $this->hour->GetInterval() > 1) {
+            throw      Util\JpGraphError::make(6023);
             //('If you display both hour and minutes the hour intervall must be 1 (Otherwise it doesn\' make sense to display minutes).');
         }
 

@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -19,14 +20,24 @@ $graph->SetScale('textlin');
 $graph->SetShadow();
 $example_title = 'Example slanted X-labels';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    14
+);
 
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    11
+);
 $graph->xaxis->SetTickLabels($labels);
 $graph->xaxis->SetLabelAngle(45);
 
 $p1 = new Plot\LinePlot($datay);
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $p1->mark->SetFillColor('red');
 $p1->mark->SetWidth(4);
 $p1->SetColor('blue');

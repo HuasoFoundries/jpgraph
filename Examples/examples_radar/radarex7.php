@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -21,7 +22,10 @@ $graph->SetShadow();
 $graph->SetCenter(0.4, 0.55);
 
 // Setup the axis formatting
-$graph->axis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->axis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->axis->SetWeight(2);
 
 // Setup the grid lines
@@ -31,7 +35,10 @@ $graph->grid->Show();
 $graph->HideTickMarks();
 
 // Setup graph titles$example_title='Quality result'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->SetTitles(['One', 'Two', 'Three', 'Four', 'Five', 'Sex', 'Seven', 'Eight', 'Nine', 'Ten']);
 // Create the first radar plot
 $plot = new Plot\RadarPlot([30, 80, 60, 40, 71, 81, 47]);

@@ -7,6 +7,8 @@
 namespace Amenadiel\JpGraph\Text;
 
 //use Amenadiel\JpGraph\Graph\Graph;
+
+use Amenadiel\JpGraph\Image\RotImage;
 use Amenadiel\JpGraph\Util;
 
 /**
@@ -89,7 +91,7 @@ class Text extends Configs
     public function __construct($aTxt = '', $aXAbsPos = 0, $aYAbsPos = 0)
     {
         if (!\is_string($aTxt)) {
-            Util\JpGraphError::RaiseL(25050); //('First argument to Text::Text() must be s atring.');
+            throw      Util\JpGraphError::make(25050); //('First argument to Text::Text() must be s atring.');
         }
         $this->t = $aTxt;
         $this->x = \round($aXAbsPos);
@@ -111,12 +113,13 @@ class Text extends Configs
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * self::SUPERSAMPLING_SCALE;
         }
-        Util\JpGraphError::RaiseL('25132', $name);
+        throw      Util\JpGraphError::make('25132', $name);
     }
 
     public function __set($name, $value)
     {
         $this->{'_' . $name} = $value;
+        return $this;
     }
 
     /**
@@ -128,6 +131,7 @@ class Text extends Configs
     public function Set($aTxt)
     {
         $this->t = $aTxt;
+        return $this;
     }
 
     // Alias for Pos()
@@ -138,12 +142,14 @@ class Text extends Configs
         $this->y = $aYAbsPos;
         $this->halign = $aHAlign;
         $this->valign = $aVAlign;
+        return $this;
     }
 
     public function SetScalePos($aX, $aY)
     {
         $this->iScalePosX = $aX;
         $this->iScalePosY = $aY;
+        return $this;
     }
 
     // Specify alignment for the text
@@ -157,24 +163,28 @@ class Text extends Configs
         }
 
         $this->paragraph_align = $aParagraphAlign;
+        return $this;
     }
 
     // Alias
     public function SetAlign($aHAlign, $aVAlign = 'top', $aParagraphAlign = '')
     {
         $this->Align($aHAlign, $aVAlign, $aParagraphAlign);
+        return $this;
     }
 
     // Specifies the alignment for a multi line text
     public function ParagraphAlign($aAlign)
     {
         $this->paragraph_align = $aAlign;
+        return $this;
     }
 
     // Specifies the alignment for a multi line text
     public function SetParagraphAlign($aAlign)
     {
         $this->paragraph_align = $aAlign;
+        return $this;
     }
 
     public function SetShadow($aShadowColor = 'gray', $aShadowWidth = 3)
@@ -182,11 +192,14 @@ class Text extends Configs
         $this->ishadowwidth = $aShadowWidth;
         $this->shadow = $aShadowColor;
         $this->boxed = true;
+        return $this;
     }
+
 
     public function SetWordWrap($aCol)
     {
         $this->iWordwrap = $aCol;
+        return $this;
     }
 
     // Specify that the text should be boxed. fcolor=frame color, bcolor=border color,
@@ -207,18 +220,21 @@ class Text extends Configs
         $this->shadow = $aShadowColor;
         $this->icornerradius = $aCornerRadius;
         $this->ishadowwidth = $aShadowWidth;
+        return $this;
     }
 
     public function SetBox2($aFrameColor = [255, 255, 255], $aBorderColor = [0, 0, 0], $aShadowColor = false, $aCornerRadius = 4, $aShadowWidth = 3)
     {
         $this->iBoxType = 2;
         $this->SetBox($aFrameColor, $aBorderColor, $aShadowColor, $aCornerRadius, $aShadowWidth);
+        return $this;
     }
 
     // Hide the text
     public function Hide($aHide = true)
     {
         $this->hide = $aHide;
+        return $this;
     }
 
     // This looks ugly since it's not a very orthogonal design
@@ -228,6 +244,7 @@ class Text extends Configs
     public function Show($aShow = true)
     {
         $this->hide = !$aShow;
+        return $this;
     }
 
     // Specify font
@@ -236,6 +253,7 @@ class Text extends Configs
         $this->font_family = $aFamily;
         $this->font_style = $aStyle;
         $this->font_size = $aSize;
+        return $this;
     }
 
     // Center the text between $left and $right coordinates
@@ -249,17 +267,20 @@ class Text extends Configs
         }
 
         $this->y = $aYAbsPos;
+        return $this;
     }
 
     // Set text color
     public function SetColor($aColor)
     {
         $this->color = $aColor;
+        return $this;
     }
 
     public function SetAngle($aAngle)
     {
         $this->SetOrientation($aAngle);
+        return $this;
     }
 
     // Orientation of text. Note only TTF fonts can have an arbitrary angle
@@ -272,8 +293,9 @@ class Text extends Configs
         } elseif ('v' === $aDirection) {
             $this->dir = 90;
         } else {
-            Util\JpGraphError::RaiseL(25051);
+            throw      Util\JpGraphError::make(25051);
         }
+        return $this;
         //(" Invalid direction specified for text.");
     }
 
@@ -313,6 +335,7 @@ class Text extends Configs
     public function SetMargin($aMarg)
     {
         $this->margin = $aMarg;
+        return $this;
     }
 
     public function StrokeWithScale($aImg, $axscale, $ayscale)
@@ -326,6 +349,7 @@ class Text extends Configs
                 \round($ayscale->Translate($this->iScalePosY))
             );
         }
+        return $this;
     }
 
     public function SetCSIMTarget($aURITarget, $aAlt = '', $aWinTarget = '')
@@ -333,6 +357,7 @@ class Text extends Configs
         $this->iCSIMtarget = $aURITarget;
         $this->iCSIMalt = $aAlt;
         $this->iCSIMWinTarget = $aWinTarget;
+        return $this;
     }
 
     public function GetCSIMareas()
@@ -374,7 +399,7 @@ class Text extends Configs
         $aImg->SetFont($this->font_family, $this->font_style, $this->raw_font_size);
         $aImg->SetTextAlign($this->halign, $this->valign);
 
-        if ($this->boxed) {
+        if ($this->boxed && $aImg instanceof RotImage) {
             if ('nofill' === $this->fcolor) {
                 $this->fcolor = false;
             }
@@ -444,6 +469,7 @@ class Text extends Configs
         $this->iCSIMarea .= " />\n";
 
         $aImg->PopColor($this->color);
+        return $this;
     }
 }
 // @class

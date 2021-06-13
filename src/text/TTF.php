@@ -24,7 +24,7 @@ class TTF
     public function __construct()
     {
         self::$FONT_BASEPATH = \getenv('JPGRAPH_FONT_BASEPATH') ?:
-        \dirname(__DIR__) . '/fonts/';
+            \dirname(__DIR__) . '/fonts/';
         // String names for font styles to be used in error messages
         $this->style_names = [
             Configs::FS_NORMAL => 'normal',
@@ -71,7 +71,8 @@ class TTF
                 Configs::FS_ITALIC => '',
                 Configs::FS_BOLDITALIC => '',
             ],
-            /*Configs::FF_ARIAL => array(Configs::FS_NORMAL => 'arial.ttf',
+            /*Configs::FF_ARIAL => array(
+Configs::FS_NORMAL => 'arial.ttf',
             Configs::FS_BOLD => 'arialbd.ttf',
             Configs::FS_ITALIC => 'ariali.ttf',
             Configs::FS_BOLDITALIC => 'arialbi.ttf'),
@@ -311,14 +312,16 @@ class TTF
      * @param mixed  $style     optional font style, defaults to  Configs::FS_NORMAL
      * @param string $font_path optional font_path. If set, it takes precedence over other paths
      *
-     * @example ` $ttf->File(Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
+     * @example ` $ttf->File(
+Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
      * ` */
     public function File($family, $style = Configs::FS_NORMAL, $font_path = null)
     {
         $font_translation = null;
         $fam = $this->font_files[$family];
 
-        if (\array_key_exists($family, Configs::$font_dict)
+        if (
+            \array_key_exists($family, Configs::$font_dict)
             && \array_key_exists($style, Configs::$font_dict)
             // && !array_key_exists($family,$this->font_files)
         ) {
@@ -334,7 +337,7 @@ class TTF
         }
 
         if (!$fam) {
-            Util\JpGraphError::RaiseL(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
+            throw      Util\JpGraphError::make(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
         }
         $ff = $fam[$style];
 
@@ -350,11 +353,11 @@ class TTF
             // All font families are guaranteed to have the normal style
 
             if ('' === $font_file) {
-                Util\JpGraphError::RaiseL(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
+                throw      Util\JpGraphError::make(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
             }
             //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][Configs::FS_NORMAL].'.');
             if (!$font_file) {
-                Util\JpGraphError::RaiseL(25048, $fam); //("Unknown font style specification [$fam].");
+                throw      Util\JpGraphError::make(25048, $fam); //("Unknown font style specification [$fam].");
             }
 
             if ($font_candidate = self::getFullPathIfExists($font_file, $font_path)) {
@@ -370,7 +373,9 @@ class TTF
             }
 
             // check OS font dir
-            if (Configs::FF_MINCHO <= $family && Configs::FF_PGOTHIC >= $family) {
+            if (
+                Configs::FF_MINCHO <= $family && Configs::FF_PGOTHIC >= $family
+            ) {
                 $font_file = Configs::MBTTF_DIR . $font_file;
             } else {
                 $font_file = Configs::TTF_DIR . $font_file;
@@ -385,7 +390,10 @@ class TTF
             //Util\JpGraphError::RaiseL(25049, $font_file); //("Font file \"$font_file\" is not readable or does not exist.");
             // Fallback to FF_DV_SANSSERIF
             // which is DejaVuSans in Ubuntu
-            $font_file = $this->File(Configs::FF_DV_SANSSERIF, $style);
+            $font_file = $this->File(
+                Configs::FF_DV_SANSSERIF,
+                $style
+            );
         }
         // Try to use the canonical path
         if (\is_readable(\realpath($font_file))) {

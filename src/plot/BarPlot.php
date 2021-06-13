@@ -319,8 +319,10 @@ class BarPlot extends Plot
             $this->iPatternDensity = [];
             if (is_array($aColor)) {
                 $this->iPatternColor = [];
-                if (Configs::safe_count($aColor) != $n) {
-                    Util\JpGraphError::RaiseL(2001); //('NUmber of colors is not the same as the number of patterns in BarPlot::SetPattern()');
+                if (
+                    Configs::safe_count($aColor) != $n
+                ) {
+                    throw      Util\JpGraphError::make(2001); //('NUmber of colors is not the same as the number of patterns in BarPlot::SetPattern()');
                 }
             } else {
                 $this->iPatternColor = $aColor;
@@ -393,7 +395,7 @@ class BarPlot extends Plot
 
                 break;
             default:
-                Util\JpGraphError::RaiseL(2002);
+                throw      Util\JpGraphError::make(2002);
                 //('Unknown pattern specified in call to BarPlot::SetPattern()');
         }
     }
@@ -402,9 +404,11 @@ class BarPlot extends Plot
     {
         $numpoints = Configs::safe_count($this->coords[0]);
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
-            //"Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])."Number of Y-points:$numpoints");
+            if (
+                Configs::safe_count($this->coords[1]) != $numpoints
+            ) {
+                throw      Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
+                //"Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])."Number of Y-points:$numpoints");
             } else {
                 $exist_x = true;
             }
@@ -533,7 +537,7 @@ class BarPlot extends Plot
             $val = $this->coords[0][$i];
 
             if (!empty($val) && !is_numeric($val)) {
-                Util\JpGraphError::RaiseL(2004, $i, $val);
+                throw      Util\JpGraphError::make(2004, $i, $val);
                 //'All values for a barplot must be numeric. You have specified value['.$i.'] == \''.$val.'\'');
             }
 
@@ -572,7 +576,7 @@ class BarPlot extends Plot
                 if (is_array($this->bar_shadow_color)) {
                     $numcolors = Configs::safe_count($this->bar_shadow_color);
                     if ($numcolors == 0) {
-                        Util\JpGraphError::RaiseL(2005); //('You have specified an empty array for shadow colors in the bar plot.');
+                        throw      Util\JpGraphError::make(2005); //('You have specified an empty array for shadow colors in the bar plot.');
                     }
                     $img->PushColor($this->bar_shadow_color[$i % $numcolors]);
                 } else {
@@ -638,7 +642,7 @@ class BarPlot extends Plot
 
             // Stroke the pattern
             if (is_array($this->iPattern)) {
-                $f = new Graph\RectPatternFactory();
+                $f = new Graph\Pattern\RectPatternFactory();
                 if (is_array($this->iPatternColor)) {
                     $pcolor = $this->iPatternColor[$i % $np];
                 } else {
@@ -660,7 +664,7 @@ class BarPlot extends Plot
                 $prect->Stroke($img);
             } else {
                 if ($this->iPattern > -1) {
-                    $f     = new Graph\RectPatternFactory();
+                    $f     = new Graph\Pattern\RectPatternFactory();
                     $prect = $f->Create($this->iPattern, $this->iPatternColor, 1);
                     $prect->SetDensity($this->iPatternDensity);
                     if ($val < 0) {
@@ -748,7 +752,7 @@ class BarPlot extends Plot
                 $this->value->SetMargin(3);
                 $this->value->Stroke($img, $val, $x, $y);
             } else {
-                Util\JpGraphError::RaiseL(2006, $this->valuepos);
+                throw      Util\JpGraphError::make(2006, $this->valuepos);
                 //'Unknown position for values on bars :'.$this->valuepos);
             }
             // Create the client side image map

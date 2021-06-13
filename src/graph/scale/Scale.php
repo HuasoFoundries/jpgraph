@@ -114,7 +114,7 @@ class Scale extends Configs
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * Configs::getConfig('SUPERSAMPLING_SCALE');
         }
-        Util\JpGraphError::RaiseL('25132', $name);
+ throw      Util\JpGraphError::make('25132', $name);
     }
 
     public function __set($name, $value)
@@ -165,7 +165,7 @@ class Scale extends Configs
 
         if (0 >= $this->world_size) {
             // This should never ever happen !!
-            Util\JpGraphError::RaiseL(25074);
+     throw      Util\JpGraphError::make(25074);
             //("You have unfortunately stumbled upon a bug in JpGraph. It seems like the scale range is ".$this->world_size." [for ".$this->type." scale] <br> Please report Bug #01 to info@jpgraph.net and include the script that gave this error. This problem could potentially be caused by trying to use \"illegal\" values in the input data arrays (like trying to send in strings or only NULL values) which causes the autoscaling to fail.");
         }
 
@@ -199,7 +199,7 @@ class Scale extends Configs
             $min = \ceil($this->autoscale_min);
 
             if ($min >= $max) {
-                Util\JpGraphError::RaiseL(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
+         throw      Util\JpGraphError::make(25071); //('You have specified a min value with SetAutoMin() which is larger than the maximum value used for the scale. This is not possible.');
             }
         }
 
@@ -207,7 +207,7 @@ class Scale extends Configs
             $max = \ceil($this->autoscale_max);
 
             if ($min >= $max) {
-                Util\JpGraphError::RaiseL(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
+         throw      Util\JpGraphError::make(25072); //('You have specified a max value with SetAutoMax() which is smaller than the miminum value used for the scale. This is not possible.');
             }
         }
 
@@ -299,7 +299,7 @@ class Scale extends Configs
                 break;
 
             default:
-                Util\JpGraphError::RaiseL(25073, $r); //('Internal error. Integer scale algorithm comparison out of bound (r=$r)');
+         throw      Util\JpGraphError::make(25073, $r); //('Internal error. Integer scale algorithm comparison out of bound (r=$r)');
         }
     }
 
@@ -364,7 +364,7 @@ class Scale extends Configs
 
         if (0 >= $this->world_size) {
             // This should never ever happen !!
-            Util\JpGraphError::RaiseL(25074);
+     throw      Util\JpGraphError::make(25074);
             //("You have unfortunately stumbled upon a bug in JpGraph. It seems like the scale range is ".$this->world_size." [for ".$this->type." scale] <br> Please report Bug #01 to info@jpgraph.net and include the script that gave this error. This problem could potentially be caused by trying to use \"illegal\" values in the input data arrays (like trying to send in strings or only NULL values) which causes the autoscaling to fail.");
         }
 
@@ -486,7 +486,7 @@ class Scale extends Configs
         $diff = $max - $min;
 
         if (0 === $diff) {
-            Util\JpGraphError::RaiseL(25075); //('Can\'t automatically determine ticks since min==max.');
+     throw      Util\JpGraphError::make(25075); //('Can\'t automatically determine ticks since min==max.');
         } else {
             $ld = \floor(\log10($diff));
         }
@@ -547,7 +547,7 @@ class Scale extends Configs
         $diff = $max - $min;
 
         if (0 === $diff) {
-            Util\JpGraphError::RaiseL(25075); //('Can\'t automatically determine ticks since min==max.');
+     throw      Util\JpGraphError::make(25075); //('Can\'t automatically determine ticks since min==max.');
         } else {
             $ld = \floor(\log10($diff));
         }

@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Image;
 
+use Amenadiel\JpGraph\Util\JpGraphError;
+
 use function cos;
 use const M_PI;
 use function round;
@@ -31,6 +33,301 @@ class RotImage extends Image
         $this->dx = $this->left_margin + $this->plotwidth / 2;
         $this->dy = $this->top_margin + $this->plotheight / 2;
         $this->SetAngle($a);
+    }
+    // Draw text with a box around it
+    public function StrokeBoxedText(
+        $x,
+        $y,
+        $txt,
+        $dir = 0,
+        $fcolor = 'white',
+        $bcolor = 'black',
+        $shadowcolor = false,
+        $paragraph_align = 'left',
+        $xmarg = 6,
+        $ymarg = 4,
+        $cornerradius = 0,
+        $dropwidth = 3
+    ) {
+        $oldx = $this->lastx;
+        $oldy = $this->lasty;
+
+        if (!is_numeric($dir)) {
+            if ($dir == 'h') {
+                $dir = 0;
+            } elseif ($dir == 'v') {
+                $dir = 90;
+            } else {
+                throw      JpGraphError::make(25090, $dir);
+            }
+            //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
+        }
+
+        if ($this->font_family >= Configs::FF_FONT0 && $this->font_family <= Configs::FF_FONT2 + 1) {
+            $width  = $this->GetTextWidth($txt, $dir);
+            $height = $this->GetTextHeight($txt, $dir);
+        } else {
+            $width  = $this->GetBBoxWidth($txt, $dir);
+            $height = $this->GetBBoxHeight($txt, $dir);
+        }
+
+        $height += 2 * $ymarg;
+        $width += 2 * $xmarg;
+
+        if ($this->text_halign == 'right') {
+            $x -= $width;
+        } elseif ($this->text_halign == 'center') {
+            $x -= $width / 2;
+        }
+
+        if ($this->text_valign == 'bottom') {
+            $y -= $height;
+        } elseif ($this->text_valign == 'center') {
+            $y -= $height / 2;
+        }
+
+        $olda = $this->SetAngle(0);
+
+        if ($shadowcolor) {
+            $this->PushColor($shadowcolor);
+            $this->FilledRoundedRectangle(
+                $x - $xmarg + $dropwidth,
+                $y - $ymarg + $dropwidth,
+                $x + $width + $dropwidth,
+                $y + $height - $ymarg + $dropwidth,
+                $cornerradius
+            );
+            $this->PopColor();
+            $this->PushColor($fcolor);
+            $this->FilledRoundedRectangle(
+                $x - $xmarg,
+                $y - $ymarg,
+                $x + $width,
+                $y + $height - $ymarg,
+                $cornerradius
+            );
+            $this->PopColor();
+            $this->PushColor($bcolor);
+            $this->RoundedRectangle(
+                $x - $xmarg,
+                $y - $ymarg,
+                $x + $width,
+                $y + $height - $ymarg,
+                $cornerradius
+            );
+            $this->PopColor();
+        } else {
+            if ($fcolor) {
+                $oc = $this->current_color;
+                $this->SetColor($fcolor);
+                $this->FilledRoundedRectangle($x - $xmarg, $y - $ymarg, $x + $width, $y + $height - $ymarg, $cornerradius);
+                $this->current_color = $oc;
+            }
+            if ($bcolor) {
+                $oc = $this->current_color;
+                $this->SetColor($bcolor);
+                $this->RoundedRectangle($x - $xmarg, $y - $ymarg, $x + $width, $y + $height - $ymarg, $cornerradius);
+                $this->current_color = $oc;
+            }
+        }
+
+        $h = $this->text_halign;
+        $v = $this->text_valign;
+        $this->SetTextAlign('left', 'top');
+
+        $debug = false;
+        $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
+
+        $bb = [
+            $x - $xmarg,
+            $y + $height - $ymarg,
+            $x + $width,
+            $y + $height - $ymarg,
+            $x + $width,
+            $y - $ymarg,
+            $x - $xmarg,
+            $y - $ymarg,
+        ];
+        $this->SetTextAlign($h, $v);
+
+        $this->SetAngle($olda);
+        $this->lastx = $oldx;
+        $this->lasty = $oldy;
+
+        return $bb;
+    }
+
+    // Draw text with a box around it. This time the box will be rotated
+    // with the text. The previous method will just make a larger enough non-rotated
+    // box to hold the text inside.
+    public function StrokeBoxedText2(
+        $x,
+        $y,
+        $txt,
+        $dir = 0,
+        $fcolor = 'white',
+        $bcolor = 'black',
+        $shadowcolor = false,
+        $paragraph_align = 'left',
+        $xmarg = 6,
+        $ymarg = 4,
+        $cornerradius = 0,
+        $dropwidth = 3
+    ) {
+        // This version of boxed text will stroke a rotated box round the text
+        // thta will follow the angle of the text.
+        // This has two implications:
+        // 1) This methos will only support TTF fonts
+        // 2) The only two alignment that makes sense are centered or baselined
+
+        if ($this->font_family <= Configs::FF_FONT2 + 1) {
+            throw      JpGraphError::make(25131); //StrokeBoxedText2() Only support TTF fonts and not built in bitmap fonts
+        }
+
+        $oldx = $this->lastx;
+        $oldy = $this->lasty;
+        $dir  = $this->NormAngle($dir);
+
+        if (!is_numeric($dir)) {
+            if ($dir == 'h') {
+                $dir = 0;
+            } elseif ($dir == 'v') {
+                $dir = 90;
+            } else {
+                throw      JpGraphError::make(25090, $dir);
+            }
+            //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
+        }
+
+        $width       = $this->GetTextWidth($txt, 0) + 2 * $xmarg;
+        $height      = $this->GetTextHeight($txt, 0) + 2 * $ymarg;
+        $rect_width  = $this->GetBBoxWidth($txt, $dir);
+        $rect_height = $this->GetBBoxHeight($txt, $dir);
+
+        $baseline_offset = $this->bbox_cache[1] - 1;
+
+        if ($this->text_halign == 'center') {
+            if ($dir >= 0 && $dir <= 90) {
+                $x -= $rect_width / 2;
+                $x += sin($dir * M_PI / 180) * $height;
+                $y += $rect_height / 2;
+            } elseif ($dir >= 270 && $dir <= 360) {
+                $x -= $rect_width / 2;
+                $y -= $rect_height / 2;
+                $y += cos($dir * M_PI / 180) * $height;
+            } elseif ($dir >= 90 && $dir <= 180) {
+                $x += $rect_width / 2;
+                $y += $rect_height / 2;
+                $y += cos($dir * M_PI / 180) * $height;
+            } else {
+                // $dir > 180 &&  $dir < 270
+                $x += $rect_width / 2;
+                $x += sin($dir * M_PI / 180) * $height;
+                $y -= $rect_height / 2;
+            }
+        }
+
+        // Rotate the box around this point
+        $this->SetCenter($x, $y);
+        $olda = $this->SetAngle(-$dir);
+
+        // We need to use adjusted coordinats for the box to be able
+        // to draw the box below the baseline. This cannot be done before since
+        // the rotating point must be the original x,y since that is arounbf the
+        // point where the text will rotate and we cannot change this since
+        // that is where the GD/GreeType will rotate the text
+
+        // For smaller <14pt font we need to do some additional
+        // adjustments to make it look good
+        if ($this->font_size < 14) {
+            $x -= 2;
+            $y += 2;
+        }
+        //  $y += $baseline_offset;
+
+        if ($shadowcolor) {
+            $this->PushColor($shadowcolor);
+            $this->FilledRectangle(
+                $x - $xmarg + $dropwidth,
+                $y + $ymarg + $dropwidth - $height,
+                $x + $width + $dropwidth,
+                $y + $ymarg + $dropwidth
+            );
+            //$cornerradius);
+            $this->PopColor();
+            $this->PushColor($fcolor);
+            $this->FilledRectangle(
+                $x - $xmarg,
+                $y + $ymarg - $height,
+                $x + $width,
+                $y + $ymarg
+            );
+            //$cornerradius);
+            $this->PopColor();
+            $this->PushColor($bcolor);
+            $this->Rectangle(
+                $x - $xmarg,
+                $y + $ymarg - $height,
+                $x + $width,
+                $y + $ymarg
+            );
+            //$cornerradius);
+            $this->PopColor();
+        } else {
+            if ($fcolor) {
+                $oc = $this->current_color;
+                $this->SetColor($fcolor);
+                $this->FilledRectangle($x - $xmarg, $y + $ymarg - $height, $x + $width, $y + $ymarg); //,$cornerradius);
+                $this->current_color = $oc;
+            }
+            if ($bcolor) {
+                $oc = $this->current_color;
+                $this->SetColor($bcolor);
+                $this->Rectangle($x - $xmarg, $y + $ymarg - $height, $x + $width, $y + $ymarg); //,$cornerradius);
+                $this->current_color = $oc;
+            }
+        }
+
+        if ($this->font_size < 14) {
+            $x += 2;
+            $y -= 2;
+        }
+
+        // Restore the original y before we stroke the text
+        // $y -= $baseline_offset;
+
+        $this->SetCenter(0, 0);
+        $this->SetAngle($olda);
+
+        $h = $this->text_halign;
+        $v = $this->text_valign;
+        if ($this->text_halign == 'center') {
+            $this->SetTextAlign('center', 'basepoint');
+        } else {
+            $this->SetTextAlign('basepoint', 'basepoint');
+        }
+
+        $debug = false;
+        $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
+
+        $bb = [
+            $x - $xmarg,
+            $y + $height - $ymarg,
+            $x + $width,
+            $y + $height - $ymarg,
+            $x + $width,
+            $y - $ymarg,
+            $x - $xmarg,
+            $y - $ymarg,
+        ];
+
+        $this->SetTextAlign($h, $v);
+        $this->SetAngle($olda);
+
+        $this->lastx = $oldx;
+        $this->lasty = $oldy;
+
+        return $bb;
     }
 
     public function SetCenter($dx, $dy)

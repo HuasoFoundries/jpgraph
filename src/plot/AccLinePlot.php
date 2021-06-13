@@ -35,7 +35,7 @@ class AccLinePlot extends Plot
                 continue;
             }
 
-            Util\JpGraphError::RaiseL(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
+     throw      Util\JpGraphError::make(10003); //('Each plot in an accumulated lineplot must have the same number of data points',0)
         }
 
         for ($i = 0; $i < $this->nbrplots; ++$i) {

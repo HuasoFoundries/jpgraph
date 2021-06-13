@@ -10,7 +10,7 @@ use Amenadiel\JpGraph\Util;
 
 /**
  * @class Grid
-  *  Description: responsible for drawing grid lines in graph
+ *  Description: responsible for drawing grid lines in graph
  */
 class Grid
 {
@@ -103,7 +103,7 @@ class Grid
 
     /**
      * Private methods
-      *  Draw the grid.
+     *  Draw the grid.
      *
      * @param mixed $aTicksPos
      * @param mixed $aType
@@ -195,7 +195,9 @@ class Grid
             $i = 0;
             $x = $aTicksPos[$i];
 
-            while (Configs::safe_count($aTicksPos) > $i && ($x = $aTicksPos[$i]) <= $limit) {
+            while (
+                Configs::safe_count($aTicksPos) > $i && ($x = $aTicksPos[$i]) <= $limit
+            ) {
                 if ('solid' === $aType) {
                     $this->img->Line($x, $yl, $x, $yu);
                 } elseif ('dotted' === $aType) {
@@ -209,7 +211,7 @@ class Grid
                 ++$i;
             }
         } else {
-            Util\JpGraphError::RaiseL(25054, $this->scale->type); //('Internal error: Unknown grid axis ['.$this->scale->type.']');
+            throw      Util\JpGraphError::make(25054, $this->scale->type); //('Internal error: Unknown grid axis ['.$this->scale->type.']');
         }
 
         return true;

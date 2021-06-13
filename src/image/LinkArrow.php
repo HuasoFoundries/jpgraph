@@ -75,7 +75,7 @@ class LinkArrow
 
                 break;
             default:
-                Util\JpGraphError::RaiseL(6030);
+         throw      Util\JpGraphError::make(6030);
                 //('Unknown arrow direction for link.');
                 die;
 
@@ -92,7 +92,7 @@ class LinkArrow
 
                 break;
             default:
-                Util\JpGraphError::RaiseL(6031);
+         throw      Util\JpGraphError::make(6031);
                 //('Unknown arrow type for link.');
                 die;
 

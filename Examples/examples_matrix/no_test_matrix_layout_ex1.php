@@ -26,7 +26,11 @@ $__height = 580;
 $graph = new MatrixGraph($__width, $__height);
 $example_title = 'Matrix layout example';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 $mp = [];
 $n = 5;

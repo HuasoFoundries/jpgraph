@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -91,7 +92,11 @@ $b5plot->SetLegend('Single Only');
 $lplot->SetBarCenter();
 $lplot->SetColor('yellow');
 $lplot->SetLegend('Houses');
-$lplot->mark->SetType(Graph\Configs::getConfig('MARK_X'), '', 1.0);
+$lplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_X'),
+    '',
+    1.0
+);
 $lplot->mark->SetWeight(2);
 $lplot->mark->SetWidth(8);
 $lplot->mark->setColor('yellow');
@@ -101,9 +106,17 @@ $graph->legend->SetFrameWeight(1);
 $graph->legend->SetColumns(6);
 $graph->legend->SetColor('#4E4E4E', '#00A78A');
 
-$band = new Plot\PlotBand(Graph\Configs::getConfig('VERTICAL'), Graph\Configs::getConfig('BAND_RDIAG'), 11, 'max', 'khaki4');
+$band = new Plot\PlotBand(
+    Graph\Configs::getConfig('VERTICAL'),
+    Graph\Configs::getConfig('BAND_RDIAG'),
+    11,
+    'max',
+    'khaki4'
+);
 $band->ShowFrame(true);
-$band->SetOrder(Graph\Configs::getConfig('DEPTH_BACK'));
+$band->SetOrder(
+    Graph\Configs::getConfig('DEPTH_BACK')
+);
 $graph->Add($band);
 $example_title = 'Combineed Line and Bar plots';
 $graph->title->set($example_title);
