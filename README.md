@@ -1,7 +1,20 @@
-# JpGraph Community Edition v4.1.0
 
-![Packagist Version](https://img.shields.io/packagist/v/amenadiel/jpgraph)
-[![Packagist](https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg)](https://packagist.org/packages/amenadiel/jpgraph) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield) [![Tests](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg)](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml)
+<h1 align="center">JpGraph Community Edition v4.1.0</h1>
+
+<p align="center">
+<a href="https://packagist.org/packages/amenadiel/jpgraph">
+<img src="https://img.shields.io/packagist/v/amenadiel/jpgraph">
+</a>
+<a href="https://packagist.org/packages/amenadiel/jpgraph">
+<img src="https://img.shields.io/packagist/dm/amenadiel/jpgraph.svg">
+</a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_shield">
+<img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=shield">
+</a>
+<a href="https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml">
+<img src="https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml/badge.svg">
+</a>
+</p> 
 
 **JpGraph Community Edition** was created as a [Composer](https://getcomposer.org/) friendly port of [JpGraph v3.5](README.3.5.md). With time and through incremental refactorings, it became a whole different library, with [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) compliant codebase, namespaces and folder hierarchy enabling [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloading, and more.
 
@@ -9,38 +22,39 @@ We are now, at most, distant cousins with the current official release.
 
 Refactoring is an ongoing effort and we ensure editions and additions don't hurt our (already poor) metrics
 
-[![Code Climate](https://codeclimate.com/github/HuasoFoundries/jpgraph/badges/gpa.svg)](https://codeclimate.com/github/HuasoFoundries/jpgraph) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a7ea0cac1d84bc79545c9f6ff85cd25)](https://www.codacy.com/app/amenadiel/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master)
+<p align="center">
+<a href="https://codeclimate.com/github/HuasoFoundries/jpgraph/maintainability"><img src="https://api.codeclimate.com/v1/badges/f85b91e9a85eb4b43059/maintainability" /></a> <a href="https://www.codacy.com/gh/HuasoFoundries/jpgraph/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HuasoFoundries/jpgraph&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/eb29aeb298ea4379a281db35d55ddeb1"/></a>
+<a href="https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/?branch=master"><img src="https://scrutinizer-ci.com/g/HuasoFoundries/jpgraph/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" /></a>
+      <a href="https://codecov.io/gh/HuasoFoundries/jpgraph">
+        <img src="https://codecov.io/gh/HuasoFoundries/jpgraph/branch/master/graph/badge.svg?token=VESbMV2rS4"/>
+      </a>
+    </p>
 
----------
+--------
+## What is JPGraph Community Edition?
 
-### JPGraph CE is NOT...
+As can be seen in [their releases section](https://jpgraph.net/download/release.php), there was a six year pause in JPGraph release cycle, during which some of us had no choice but to code our way out of PHP 5.x. And thus "Community Edition" was born. From then on, this library evolved on its own and completely diverged from the official packages.
+
+In general terms, JPGraph CE relies in PHP's thriving ecosystem. We aim to be a simple dependency you can seamlessly integrate in your app. JPGraph CE aligns with [PHP Standards Reccomendations](https://www.php-fig.org/psr/) as published by the [PHP Framework Interoperability Group](https://www.php-fig.org/), and when presented with the choice, will always pick an agnostic implementation over custom ones that reinvent the wheel. A lot of code has been trimmed and refactored with this purpose and a lot more is waiting to undergo such a change.
+
+- Distrbution through PHP's popular [Packagist Registry](https://packagist.org/packages/amenadiel/jpgraph)
+- Relies in [Composer](https://getcomposer.org/), so you don't need to manually download or copy anything, nor check for platform and dependency requirements yourself.
+- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) compliant structure. No need to resort to `require` or `include` in your code.
+- Sensible fallbacks to handle missing fonts or particular GD version features availability.
+- IDE friendly, allowing for autocompletion and go-to-definition where supported.
+- [Integration pipelines](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml) checking new releases compatibility against different PHP versions
+- New or refactored code is expected to observe [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) coding standards (Eventually [PSR-12](https://www.php-fig.org/psr/psr-12/) as well).
+
+Comparing against the original v3.5 codebase, we also stripped examples or incomplete implementation of graph types exclusive to v3.5 pro (e.g. Barcodes).
+
+### Things that JPGraph CE is NOT
 
 - This library **is NOT an official JPGraph package**. The offcial package can be downloaded at [JPGraph's downloads section of their website](https://jpgraph.net/download/). They have a full featured free version with support for current and olver PHP versions.
 - Endorsed in any way by JPGraph's creator company [Asial](https://www.asial.co.jp/)
 - A composer enabled wrapper for the official package
-- A drop-in replacement for the official package. We do not claim nor offer any kind of feature parity with the official package. 
+- A drop-in replacement for the official package. We do not claim nor offer any kind of feature parity with the official package.
 
 
---------------------
-
-### What's different between the official edition and yours?
-
-As can be seen in [their releases section](https://jpgraph.net/download/release.php), there was a six year pause in JPGraph release cycle, during which some of us had no choice but to code our way out of PHP 5.x. And thus "Community Edition" was born. From then on, this library evolved on its own and completely diverged from the official packages.
-
-JPGraph CE aligns with [PHP Standards Reccomendations](https://www.php-fig.org/psr/) as published by the [PHP Framework Interoperability Group](https://www.php-fig.org/), the understanding that this allows for easier and seamless integration with your framework of choice. 
-
-- It's distributed through PHP's popular [Packagist Registry](https://packagist.org/packages/amenadiel/jpgraph)
-- It's meant to be installed with [Composer](https://getcomposer.org/) as any regular dependency. You don't need to manually download or copy anything.
-- Platform and dependency requirements are checked upon installation or update. 
-- [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/) compliant structure. No need to resort to `require` or `include` in your code.
-- Sensible fallbacks to handle missing fonts or particular GD version feature availability.
-- IDE friendly, allowing for autocompletion and go-to-definition where supported.
-- [Integration pipelines](https://github.com/HuasoFoundries/jpgraph/actions/workflows/tests.yml) checking new releases compatibility against different PHP versions
-- New or refactored code is expected to observe [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) coding standards (Eventually [PSR-12](https://www.php-fig.org/psr/psr-12/) as well). 
-
-
-Comparing against the original v3.5 codebase, we also stripped examples or incomplete implementation of graph types exclusive to v3.5 pro (e.g. Barcodes).
 
 ## Requirements And Installation
 
@@ -49,7 +63,6 @@ This version requires PHP v7.2.0+. If you need to install this library package i
 - Upgrading your PHP installation. (No, really, even PHP 7.2 is past its EOL)
 - for PHP v7.0+  please try [release v4.0.x](https://github.com/HuasoFoundries/jpgraph/releases/tag/v4.0.3)
 - for PHP v5.6+ please check [release v3.6.x](https://github.com/HuasoFoundries/jpgraph/tree/v3.6.21)
-
 
 Install it Using composer
 
@@ -106,7 +119,8 @@ See [.env.example](.env.example) as a reference.
 # Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c783a8708a374d0298f2e1364fd60e88)](https://app.codacy.com/gh/HuasoFoundries/jpgraph?utm_source=github.com&utm_medium=referral&utm_content=HuasoFoundries/jpgraph&utm_campaign=Badge_Grade_Settings)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -128,6 +142,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://corwatts.com"><img src="https://avatars.githubusercontent.com/u/220260?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Corey Watts</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=CorWatts" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/eisberg"><img src="https://avatars.githubusercontent.com/u/9015003?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Alexander Rakushin</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=eisberg" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/abidaks"><img src="https://avatars.githubusercontent.com/u/20839618?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Muhammad Abid</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/commits?author=abidaks" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.whiletrue.it"><img src="https://avatars.githubusercontent.com/u/683688?v=4?s=50" width="50px;" alt=""/><br /><sub><b>WhileTrue</b></sub></a><br /><a href="https://github.com/HuasoFoundries/jpgraph/issues?q=author%3Aformikaio" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
@@ -139,6 +154,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ______________
+
 ### Wishlist
 
 - Get all the examples working (half of them have yet to be transformed from the old code to the new PSR-4 format)
@@ -150,8 +166,7 @@ ______________
 ## Similar Projects
 
 - [ztec/JpGraph](https://github.com/ztec/JpGraph)
+
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHuasoFoundries%2Fjpgraph?ref=badge_large)
-
-
