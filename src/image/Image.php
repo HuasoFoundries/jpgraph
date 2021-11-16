@@ -263,21 +263,13 @@ class Image
         }
     }
 
-    public static function GetWidth($aImg = null)
+    public static function GetWidth($aImg)
     {
-        if ($aImg === null) {
-            $aImg = $this->img;
-        }
-
         return imagesx($aImg);
     }
 
-    public static function GetHeight($aImg = null)
+    public static function GetHeight($aImg)
     {
-        if ($aImg === null) {
-            $aImg = $this->img;
-        }
-
         return imagesy($aImg);
     }
 
