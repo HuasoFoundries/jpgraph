@@ -1045,6 +1045,10 @@ class Image
                     // Do nothing the text is drawn at baseline by default
                 }
             }
+
+            $x = round($x);
+            $y = round($y);
+
             imagettftext(
                 $this->img,
                 $this->font_size,
@@ -1155,12 +1159,16 @@ class Image
                 $xl -= $bbox[0] / 2;
                 $yl = $y - $yadj;
                 //$xl = $xl- $xadj;
+
+                $xl = round($xl);
+                $yl = round($yl - ($h - $fh) + $fh * $i);
+
                 imagettftext(
                     $this->img,
                     $this->font_size,
                     $dir,
                     $xl,
-                    $yl - ($h - $fh) + $fh * $i,
+                    $yl,
                     $this->current_color,
                     $this->font_file,
                     $tmp[$i]
