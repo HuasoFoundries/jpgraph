@@ -1046,8 +1046,8 @@ class Image
                 }
             }
 
-            $x = round($x);
-            $y = round($y);
+            $x = (int) round($x);
+            $y = (int) round($y);
 
             imagettftext(
                 $this->img,
@@ -1160,8 +1160,8 @@ class Image
                 $yl = $y - $yadj;
                 //$xl = $xl- $xadj;
 
-                $xl = round($xl);
-                $yl = round($yl - ($h - $fh) + $fh * $i);
+                $xl = (int) round($xl);
+                $yl = (int) round($yl - ($h - $fh) + $fh * $i);
 
                 imagettftext(
                     $this->img,
