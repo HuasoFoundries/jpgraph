@@ -59,7 +59,7 @@
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "rector/rector-installer": false,
-            "pestphp/pest-plugin": false,
+            "pestphp/pest-plugin": true,
             "ergebnis/composer-normalize": false
         }
     },
