@@ -56,11 +56,12 @@
         ]
     },
     "config": {
-        "allow plugins": {
+        
+        "allow-plugins": {
             "composer/package-versions-deprecated": true,
-            "ergebnis/composer-normalize": true,
-            "pestphp/pest-plugin": true,
-            "rector/rector-installer": true
+            "rector/rector-installer": false,
+            "pestphp/pest-plugin": false,
+            "ergebnis/composer-normalize": false
         }
     },
     "extra": {
