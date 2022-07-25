@@ -1,7 +1,8 @@
 {
     "name": "amenadiel/jpgraph",
-    "type": "library",
     "description": "Composer Friendly, full refactor of JpGraph, library to make graphs and charts",
+    "license": "QPL-1.0",
+    "type": "library",
     "keywords": [
         "graph",
         "chart",
@@ -10,9 +11,11 @@
         "data"
     ],
     "homepage": "https://github.com/HuasoFoundries/jpgraph",
-    "license": "QPL-1.0",
+    "support": {
+        "issues": "https://github.com/huasofoundries/jpgraph/issues"
+    },
     "require": {
-        "php": ">=7.4.0|| >= 8.0.0|| >= 8.1.0",
+        "php": ">=7.4.0 || >= 8.0.0 || >= 8.1.0",
         "ext-gd": "*"
     },
     "require-dev": {
@@ -24,24 +27,16 @@
         "pestphp/pest": "^1.0",
         "phpstan/phpstan": "^0.12.84",
         "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.10.11",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/dotenv": "^4.0 || ^5.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0",
         "symfony/yaml": "^4.0 || ^5.0",
-        "vimeo/psalm": "^4.7",
-        "rector/rector": "^0.10.11"
-    },
-    "extra": {
-        "composer-normalize": {
-            "indent-size": 4,
-            "indent-style": "space"
-        },
-        "version": "4.2.0"
+        "vimeo/psalm": "^4.7"
     },
     "autoload": {
         "psr-4": {
             "Amenadiel\\JpGraph\\": "src/",
-            
             "Amenadiel\\JpGraph\\Image\\": "src/image",
             "Amenadiel\\JpGraph\\Plot\\": "src/plot",
             "Amenadiel\\JpGraph\\Text\\": "src/text",
@@ -55,9 +50,25 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests"
-        },"files": [
+        },
+        "files": [
             "tests/polyfills.php"
         ]
+    },
+    "config": {
+        "allow plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "pestphp/pest-plugin": true,
+            "rector/rector-installer": true
+        }
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
+        "version": "4.2.0"
     },
     "scripts": {
         "act": "act -P ubuntu-latest=shivammathur/node:latest",
@@ -66,12 +77,9 @@
         "lint": "vendor/bin/phplint",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
         "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
+        "psalm_baseline": "vendor/bin/psalm --config=psalm.xml --update-baseline --ignore-baseline  --set-baseline=psalm-baseline.xml",
         "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --allow-backwards-incompatible-changes=false  --safe-types --issues=all  --dry-run",
-        "psalm_baseline":"vendor/bin/psalm --config=psalm.xml --update-baseline --ignore-baseline  --set-baseline=psalm-baseline.xml",
         "start": "php -S localhost:8000 -t Examples",
         "test": "vendor/bin/pest"
-    },
-    "support": {
-        "issues": "https://github.com/huasofoundries/jpgraph/issues"
     }
 }
