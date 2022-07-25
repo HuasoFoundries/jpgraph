@@ -1,16 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
-use function abs;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
-use function assert;
-use function is_numeric;
 use function max;
 use function min;
 
@@ -32,30 +29,35 @@ use function min;
 class PlotBand
 {
     public $depth; // Determine if band should be over or under the plots
+
     private $prect;
+
     private $dir;
+
     private $min;
+
     private $max;
 
     public function __construct($aDir, $aPattern, $aMin, $aMax, $aColor = 'black', $aWeight = 1, $aDepth = Configs::DEPTH_BACK)
     {
-        $f           = new Graph\Pattern\RectPatternFactory();
+        $f = new Graph\Pattern\RectPatternFactory();
         $this->prect = $f->Create($aPattern, $aColor, $aWeight);
-        if (is_numeric($aMin) && is_numeric($aMax) && ($aMin > $aMax)) {
-     throw      Util\JpGraphError::make(16004);
+
+        if (\is_numeric($aMin) && \is_numeric($aMax) && ($aMin > $aMax)) {
+            throw Util\JpGraphError::make(16004);
         }
 
         //('Min value for plotband is larger than specified max value. Please correct.');
-        $this->dir   = $aDir;
-        $this->min   = $aMin;
-        $this->max   = $aMax;
+        $this->dir = $aDir;
+        $this->min = $aMin;
+        $this->max = $aMax;
         $this->depth = $aDepth;
     }
 
     // Set position. aRect contains absolute image coordinates
     public function SetPos($aRect)
     {
-        assert($this->prect != null);
+        \assert(null !== $this->prect);
         $this->prect->SetPos($aRect);
     }
 
@@ -98,49 +100,50 @@ class PlotBand
     // Display band
     public function Stroke($aImg, $aXScale, $aYScale)
     {
-        assert($this->prect != null);
-        if ($this->dir == Configs::HORIZONTAL) {
-            if ($this->min === 'min') {
+        \assert(null !== $this->prect);
+
+        if (Configs::HORIZONTAL === $this->dir) {
+            if ('min' === $this->min) {
                 $this->min = $aYScale->GetMinVal();
             }
 
-            if ($this->max === 'max') {
+            if ('max' === $this->max) {
                 $this->max = $aYScale->GetMaxVal();
             }
 
             // Only draw the bar if it actually appears in the range
-            if ($this->min < $aYScale->GetMaxVal() && $this->max > $aYScale->GetMinVal()) {
+            if ($aYScale->GetMaxVal() > $this->min && $aYScale->GetMinVal() < $this->max) {
                 // Trucate to limit of axis
-                $this->min = max($this->min, $aYScale->GetMinVal());
-                $this->max = min($this->max, $aYScale->GetMaxVal());
+                $this->min = \max($this->min, $aYScale->GetMinVal());
+                $this->max = \min($this->max, $aYScale->GetMaxVal());
 
-                $x      = $aXScale->scale_abs[0];
-                $y      = $aYScale->Translate($this->max);
-                $width  = $aXScale->scale_abs[1] - $aXScale->scale_abs[0] + 1;
-                $height = abs($y - $aYScale->Translate($this->min)) + 1;
+                $x = $aXScale->scale_abs[0];
+                $y = $aYScale->Translate($this->max);
+                $width = $aXScale->scale_abs[1] - $aXScale->scale_abs[0] + 1;
+                $height = \abs($y - $aYScale->Translate($this->min)) + 1;
                 $this->prect->SetPos(new Util\Rectangle($x, $y, $width, $height));
                 $this->prect->Stroke($aImg);
             }
         } else {
             // VERTICAL
-            if ($this->min === 'min') {
+            if ('min' === $this->min) {
                 $this->min = $aXScale->GetMinVal();
             }
 
-            if ($this->max === 'max') {
+            if ('max' === $this->max) {
                 $this->max = $aXScale->GetMaxVal();
             }
 
             // Only draw the bar if it actually appears in the range
-            if ($this->min < $aXScale->GetMaxVal() && $this->max > $aXScale->GetMinVal()) {
+            if ($aXScale->GetMaxVal() > $this->min && $aXScale->GetMinVal() < $this->max) {
                 // Trucate to limit of axis
-                $this->min = max($this->min, $aXScale->GetMinVal());
-                $this->max = min($this->max, $aXScale->GetMaxVal());
+                $this->min = \max($this->min, $aXScale->GetMinVal());
+                $this->max = \min($this->max, $aXScale->GetMaxVal());
 
-                $y      = $aYScale->scale_abs[1];
-                $x      = $aXScale->Translate($this->min);
-                $height = abs($aYScale->scale_abs[1] - $aYScale->scale_abs[0]);
-                $width  = abs($x - $aXScale->Translate($this->max));
+                $y = $aYScale->scale_abs[1];
+                $x = $aXScale->Translate($this->min);
+                $height = \abs($aYScale->scale_abs[1] - $aYScale->scale_abs[0]);
+                $width = \abs($x - $aXScale->Translate($this->max));
                 $this->prect->SetPos(new Util\Rectangle($x, $y, $width, $height));
                 $this->prect->Stroke($aImg);
             }

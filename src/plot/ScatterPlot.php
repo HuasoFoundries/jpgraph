@@ -1,14 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
-use function is_array;
 
 /**
  * @class ScatterPlot
@@ -17,7 +16,9 @@ use function is_array;
 class ScatterPlot extends Plot
 {
     public $mark;
+
     public $link;
+
     private $impuls = false;
 
     /**
@@ -26,8 +27,8 @@ class ScatterPlot extends Plot
      */
     public function __construct($datay, $datax = false)
     {
-        if ((Configs::safe_count($datax) != Configs::safe_count($datay)) && is_array($datax)) {
-            throw      Util\JpGraphError::make(20003); //("Scatterplot must have equal number of X and Y points.");
+        if ((Configs::safe_count($datax) !== Configs::safe_count($datay)) && \is_array($datax)) {
+            throw Util\JpGraphError::make(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
@@ -37,7 +38,7 @@ class ScatterPlot extends Plot
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link        = new Graph\Scale\LineProperty(1, 'black', 'solid');
+        $this->link = new Graph\Scale\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 
@@ -59,25 +60,27 @@ class ScatterPlot extends Plot
     // Combine the scatter plot points with a line
     public function SetLinkPoints($aFlag = true, $aColor = 'black', $aWeight = 1, $aStyle = 'solid')
     {
-        $this->link->iShow   = $aFlag;
-        $this->link->iColor  = $aColor;
+        $this->link->iShow = $aFlag;
+        $this->link->iColor = $aColor;
         $this->link->iWeight = $aWeight;
-        $this->link->iStyle  = $aStyle;
+        $this->link->iStyle = $aStyle;
     }
 
     public function Stroke($img, $xscale, $yscale)
     {
         $ymin = $yscale->scale_abs[0];
-        if ($yscale->scale[0] < 0) {
+
+        if (0 > $yscale->scale[0]) {
             $yzero = $yscale->Translate(0);
         } else {
             $yzero = $yscale->scale_abs[0];
         }
 
         $this->csimareas = '';
+
         for ($i = 0; $i < $this->numpoints; ++$i) {
             // Skip null values
-            if ($this->coords[0][$i] === '' || $this->coords[0][$i] === '-' || $this->coords[0][$i] === 'x') {
+            if ('' === $this->coords[0][$i] || '-' === $this->coords[0][$i] || 'x' === $this->coords[0][$i]) {
                 continue;
             }
 
@@ -131,7 +134,7 @@ class ScatterPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 

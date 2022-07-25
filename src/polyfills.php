@@ -4,7 +4,7 @@
  * JPGraph - Community Edition
  */
 
-use Kint\Kint;
+
 
 if (!\function_exists('tap')) {
     /**
@@ -30,20 +30,20 @@ if (!\function_exists('tap')) {
  */
 if (!\function_exists('dump')) {
     // I'm sure this can be improved... just not today
-    if (\class_exists(Kint::class)) {
+    if (\class_exists(Kint\Kint::class)) {
         function dump(...$vars)
         {
-            Kint::$enabled_mode = Kint::MODE_CLI;
-            $return = Kint::$return;
-            Kint::$return = true;
+            Kint\Kint::$enabled_mode = Kint\Kint::MODE_CLI;
+            $return = Kint\Kint::$return;
+            Kint\Kint::$return = true;
             $fp = \fopen('php://stderr', 'ab');
-            \fwrite($fp, Kint::dump(...$vars));
+            \fwrite($fp, Kint\Kint::dump(...$vars));
             \fclose($fp);
-            $return = Kint::$return;
-            Kint::$return = $return;
+            $return = Kint\Kint::$return;
+            Kint\Kint::$return = $return;
         }
 
-        Kint::$aliases[] = 'dump';
+        Kint\Kint::$aliases[] = 'dump';
     } else {
         function dump(...$vars)
         {
@@ -62,7 +62,7 @@ if (!\function_exists('dd')) {
         exit();
     }
 
-    if (\class_exists(Kint::class)) {
-        Kint::$aliases[] = 'dd';
+    if (\class_exists(Kint\Kint::class)) {
+        Kint\Kint::$aliases[] = 'dd';
     }
 }

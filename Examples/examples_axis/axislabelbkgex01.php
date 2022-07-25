@@ -9,6 +9,8 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
+
+
 $ydata = [12, 19, 3, 9, 15, 10];
 
 // The code to setup a very basic graph

@@ -1,13 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
-
-use function array_fill;
-use function pow;
 
 /**
  * File:        JPGRAPH_MESHINTERPOLATE.INC.PHP
@@ -24,12 +21,11 @@ use function pow;
 /**
  * Utility function to do linear mesh interpolation.
  *
- * @param $aDat Matrix to interpolate
  * @param $aFactor Interpolation factor
  */
 function doMeshInterpolate(&$aData, $aFactor)
 {
-    $m     = new MeshInterpolate();
+    $m = new MeshInterpolate();
     $aData = $m->Linear($aData, $aFactor);
 }
 
@@ -45,30 +41,27 @@ class MeshInterpolate
      * corner at $row,$col. The $aFactordecides how many spliots should be done.
      * i.e. how many more divisions should be done recursively.
      *
-     * @param $row Top left corner of square to work with
-     * @param $col Top left corner of square to work with
-     * $param $aFactor In how many subsquare should we split this square. A value of 1 indicates that no action
      * @param mixed $aRow
      * @param mixed $aCol
      * @param mixed $aFactor
      */
     public function IntSquare($aRow, $aCol, $aFactor)
     {
-        if ($aFactor <= 1) {
+        if (1 >= $aFactor) {
             return;
         }
 
-        $step = pow(2, $aFactor - 1);
+        $step = 2 ** ($aFactor - 1);
 
         $v0 = $this->data[$aRow][$aCol];
         $v1 = $this->data[$aRow][$aCol + $step];
         $v2 = $this->data[$aRow + $step][$aCol];
         $v3 = $this->data[$aRow + $step][$aCol + $step];
 
-        $this->data[$aRow][$aCol + $step / 2]             = ($v0 + $v1) / 2;
-        $this->data[$aRow + $step / 2][$aCol]             = ($v0 + $v2) / 2;
-        $this->data[$aRow + $step][$aCol + $step / 2]     = ($v2 + $v3) / 2;
-        $this->data[$aRow + $step / 2][$aCol + $step]     = ($v1 + $v3) / 2;
+        $this->data[$aRow][$aCol + $step / 2] = ($v0 + $v1) / 2;
+        $this->data[$aRow + $step / 2][$aCol] = ($v0 + $v2) / 2;
+        $this->data[$aRow + $step][$aCol + $step / 2] = ($v2 + $v3) / 2;
+        $this->data[$aRow + $step / 2][$aCol + $step] = ($v1 + $v3) / 2;
         $this->data[$aRow + $step / 2][$aCol + $step / 2] = ($v0 + $v1 + $v2 + $v3) / 4;
 
         $this->IntSquare($aRow, $aCol, $aFactor - 1);
@@ -85,7 +78,6 @@ class MeshInterpolate
      * Note: This will blow up the matrcide in memory size in the order of $aInNbr^2
      *
      * @param  $ &$aData The original data matricde
-     * @param  $aInNbr Interpolation factor
      * @param mixed $aIntFactor
      * @param mixed $aData
      *
@@ -93,30 +85,31 @@ class MeshInterpolate
      */
     public function Linear(&$aData, $aIntFactor)
     {
-        $step = pow(2, $aIntFactor - 1);
+        $step = 2 ** ($aIntFactor - 1);
 
         $orig_cols = Configs::safe_count($aData[0]);
         $orig_rows = Configs::safe_count($aData);
         // Number of new columns/rows
         // N = (a-1) * 2^(f-1) + 1
-        $p        = pow(2, $aIntFactor - 1);
+        $p = 2 ** ($aIntFactor - 1);
         $new_cols = $p * ($orig_cols - 1) + 1;
         $new_rows = $p * ($orig_rows - 1) + 1;
 
-        $this->data = array_fill(0, $new_rows, array_fill(0, $new_cols, 0));
+        $this->data = \array_fill(0, $new_rows, \array_fill(0, $new_cols, 0));
         // Initialize the new matrix with the values that we know
         for ($i = 0; $i < $new_rows; ++$i) {
             for ($j = 0; $j < $new_cols; ++$j) {
                 $v = 0;
-                if (($i % $step == 0) && ($j % $step == 0)) {
+
+                if (($i % $step === 0) && ($j % $step === 0)) {
                     $v = $aData[$i / $step][$j / $step];
                 }
                 $this->data[$i][$j] = $v;
             }
         }
 
-        for ($i = 0; $i < $new_rows - 1; $i += $step) {
-            for ($j = 0; $j < $new_cols - 1; $j += $step) {
+        for ($i = 0; $new_rows - 1 > $i; $i += $step) {
+            for ($j = 0; $new_cols - 1 > $j; $j += $step) {
                 $this->IntSquare($i, $j, $aIntFactor);
             }
         }

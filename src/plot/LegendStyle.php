@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -24,68 +24,90 @@ namespace Amenadiel\JpGraph\Plot;
  */
 class LegendStyle
 {
-    public $iLength           = 40;
-    public $iMargin           = 20;
-    public $iBottomMargin     = 5;
-    public $iCircleWeight     = 2;
-    public $iCircleRadius     = 18;
-    public $iCircleColor      = 'black';
-    public $iTxtFontFamily    = Configs::FF_VERDANA;
-    public $iTxtFontStyle     = Configs::FS_NORMAL;
-    public $iTxtFontSize      = 8;
-    public $iLblFontFamily    = Configs::FF_VERDANA;
-    public $iLblFontStyle     = Configs::FS_NORMAL;
-    public $iLblFontSize      = 8;
+    public $iLength = 40;
+
+    public $iMargin = 20;
+
+    public $iBottomMargin = 5;
+
+    public $iCircleWeight = 2;
+
+    public $iCircleRadius = 18;
+
+    public $iCircleColor = 'black';
+
+    public $iTxtFontFamily = Configs::FF_VERDANA;
+
+    public $iTxtFontStyle = Configs::FS_NORMAL;
+
+    public $iTxtFontSize = 8;
+
+    public $iLblFontFamily = Configs::FF_VERDANA;
+
+    public $iLblFontStyle = Configs::FS_NORMAL;
+
+    public $iLblFontSize = 8;
+
     public $iCircleFontFamily = Configs::FF_VERDANA;
-    public $iCircleFontStyle  = Configs::FS_NORMAL;
-    public $iCircleFontSize   = 8;
-    public $iLblFontColor     = 'black';
-    public $iTxtFontColor     = 'black';
-    public $iCircleFontColor  = 'black';
-    public $iShow             = true;
-    public $iFormatString     = '%.1f';
-    public $iTxtMargin        = 6;
-    public $iTxt              = '';
-    public $iZCircleTxt       = 'Calm';
+
+    public $iCircleFontStyle = Configs::FS_NORMAL;
+
+    public $iCircleFontSize = 8;
+
+    public $iLblFontColor = 'black';
+
+    public $iTxtFontColor = 'black';
+
+    public $iCircleFontColor = 'black';
+
+    public $iShow = true;
+
+    public $iFormatString = '%.1f';
+
+    public $iTxtMargin = 6;
+
+    public $iTxt = '';
+
+    public $iZCircleTxt = 'Calm';
 
     public function SetFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
-        $this->iLblFontFamily    = $aFontFamily;
-        $this->iLblFontStyle     = $aFontStyle;
-        $this->iLblFontSize      = $aFontSize;
-        $this->iTxtFontFamily    = $aFontFamily;
-        $this->iTxtFontStyle     = $aFontStyle;
-        $this->iTxtFontSize      = $aFontSize;
+        $this->iLblFontFamily = $aFontFamily;
+        $this->iLblFontStyle = $aFontStyle;
+        $this->iLblFontSize = $aFontSize;
+        $this->iTxtFontFamily = $aFontFamily;
+        $this->iTxtFontStyle = $aFontStyle;
+        $this->iTxtFontSize = $aFontSize;
         $this->iCircleFontFamily = $aFontFamily;
-        $this->iCircleFontStyle  = $aFontStyle;
-        $this->iCircleFontSize   = $aFontSize;
+        $this->iCircleFontStyle = $aFontStyle;
+        $this->iCircleFontSize = $aFontSize;
     }
 
     public function SetLFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iLblFontFamily = $aFontFamily;
-        $this->iLblFontStyle  = $aFontStyle;
-        $this->iLblFontSize   = $aFontSize;
+        $this->iLblFontStyle = $aFontStyle;
+        $this->iLblFontSize = $aFontSize;
     }
 
     public function SetTFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iTxtFontFamily = $aFontFamily;
-        $this->iTxtFontStyle  = $aFontStyle;
-        $this->iTxtFontSize   = $aFontSize;
+        $this->iTxtFontStyle = $aFontStyle;
+        $this->iTxtFontSize = $aFontSize;
     }
 
     public function SetCFont($aFontFamily, $aFontStyle = Configs::FS_NORMAL, $aFontSize = 10)
     {
         $this->iCircleFontFamily = $aFontFamily;
-        $this->iCircleFontStyle  = $aFontStyle;
-        $this->iCircleFontSize   = $aFontSize;
+        $this->iCircleFontStyle = $aFontStyle;
+        $this->iCircleFontSize = $aFontSize;
     }
 
     public function SetFontColor($aColor)
     {
-        $this->iTxtFontColor    = $aColor;
-        $this->iLblFontColor    = $aColor;
+        $this->iTxtFontColor = $aColor;
+        $this->iLblFontColor = $aColor;
         $this->iCircleFontColor = $aColor;
     }
 
@@ -126,7 +148,7 @@ class LegendStyle
 
     public function SetMargin($aMarg, $aBottomMargin = 5)
     {
-        $this->iMargin       = $aMarg;
+        $this->iMargin = $aMarg;
         $this->iBottomMargin = $aBottomMargin;
     }
 

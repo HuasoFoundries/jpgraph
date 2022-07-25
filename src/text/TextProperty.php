@@ -138,7 +138,7 @@ class TextProperty
     public function SetColumnFonts($aFontArray)
     {
         if (!\is_array($aFontArray) || Configs::safe_count($aFontArray[0]) !== 3) {
-            throw      Util\JpGraphError::make(6033);
+            throw Util\JpGraphError::make(6033);
             // 'Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)'
         }
         $this->iFontArray = $aFontArray;
@@ -164,8 +164,7 @@ class TextProperty
 
             $tmp = \preg_split('/\t/', $this->iText);
 
-            if (
-                Configs::safe_count($tmp) <= 1 || !$aUseTabs
+            if (Configs::safe_count($tmp) <= 1 || !$aUseTabs
             ) {
                 $w = $aImg->GetTextWidth($this->iText);
 
@@ -205,7 +204,7 @@ class TextProperty
                     $w += $aImg->GetTextWidth($tmp) + $extra_margin;
                 } else {
                     if (\is_object($tmp) === false) {
-                        throw      Util\JpGraphError::make(6012);
+                        throw Util\JpGraphError::make(6012);
                     }
                     $w += $tmp->GetWidth() + $extra_margin;
                 }
@@ -213,7 +212,8 @@ class TextProperty
 
             return $w;
         }
-        throw      Util\JpGraphError::make(6012);
+
+        throw Util\JpGraphError::make(6012);
     }
 
     // for the case where we have multiple columns this function returns the width of each
@@ -239,7 +239,7 @@ class TextProperty
                     $w[$i] = $aImg->GetTextWidth($tmp) + $aMargin;
                 } else {
                     if (\is_object($tmp) === false) {
-                        throw      Util\JpGraphError::make(6012);
+                        throw Util\JpGraphError::make(6012);
                     }
                     $w[$i] = $tmp->GetWidth() + $aMargin;
                 }
@@ -326,8 +326,7 @@ class TextProperty
                     if (\is_object($tmp)) {
                         $tmp->Stroke($aImg, $aX[$i], $aY[$i]);
                     } else {
-                        if (
-                            Configs::safe_count($this->iFontArray) > $i
+                        if (Configs::safe_count($this->iFontArray) > $i
                         ) {
                             $font = $this->iFontArray[$i];
                             $aImg->SetFont($font[0], $font[1], $font[2]);
@@ -346,8 +345,7 @@ class TextProperty
             );
 
             for ($i = 0; $i < $n; ++$i) {
-                if (
-                    Configs::safe_count($this->iFontArray) > $i
+                if (Configs::safe_count($this->iFontArray) > $i
                 ) {
                     $font = $this->iFontArray[$i];
                     $aImg->SetFont($font[0], $font[1], $font[2]);

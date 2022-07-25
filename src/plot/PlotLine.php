@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -24,31 +24,41 @@ use Amenadiel\JpGraph\Util;
 class PlotLine
 {
     public $scaleposition;
-    public $direction            = -1;
-    protected $weight            = 1;
-    protected $color             = 'black';
-    private $legend              = '';
-    private $hidelegend          = false;
-    private $legendcsimtarget    = '';
-    private $legendcsimalt       = '';
+
+    public $direction = -1;
+
+    public $numpoints = 0; // Needed since the framework expects this property
+
+    protected $weight = 1;
+
+    protected $color = 'black';
+
+    private $legend = '';
+
+    private $hidelegend = false;
+
+    private $legendcsimtarget = '';
+
+    private $legendcsimalt = '';
+
     private $legendcsimwintarget = '';
-    private $iLineStyle          = 'solid';
-    public $numpoints            = 0; // Needed since the framework expects this property
+
+    private $iLineStyle = 'solid';
 
     public function __construct($aDir = Configs::HORIZONTAL, $aPos = 0, $aColor = 'black', $aWeight = 1)
     {
-        $this->direction     = $aDir;
-        $this->color         = $aColor;
-        $this->weight        = $aWeight;
+        $this->direction = $aDir;
+        $this->color = $aColor;
+        $this->weight = $aWeight;
         $this->scaleposition = $aPos;
     }
 
     public function SetLegend($aLegend, $aCSIM = '', $aCSIMAlt = '', $aCSIMWinTarget = '')
     {
-        $this->legend              = $aLegend;
-        $this->legendcsimtarget    = $aCSIM;
+        $this->legend = $aLegend;
+        $this->legendcsimtarget = $aCSIM;
         $this->legendcsimwintarget = $aCSIMWinTarget;
-        $this->legendcsimalt       = $aCSIMAlt;
+        $this->legendcsimalt = $aCSIMAlt;
     }
 
     public function HideLegend($f = true)
@@ -103,12 +113,12 @@ class PlotLine
     // Framework function the chance for each plot class to set a legend
     public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 
         $dummyPlotMark = new PlotMark();
-        $lineStyle     = 1;
+        $lineStyle = 1;
         $aGraph->legend->Add(
             $this->legend,
             $this->color,
@@ -153,18 +163,19 @@ class PlotLine
         $aImg->SetColor($this->color);
         $aImg->SetLineWeight($this->weight);
         $oldStyle = $aImg->SetLineStyle($this->iLineStyle);
-        if ($this->direction == Configs::VERTICAL) {
+
+        if (Configs::VERTICAL === $this->direction) {
             $ymin_abs = $aMinY;
             $ymax_abs = $aMaxY;
             $xpos_abs = $aXPos;
             $aImg->StyleLine($xpos_abs, $ymin_abs, $xpos_abs, $ymax_abs);
-        } elseif ($this->direction == Configs::HORIZONTAL) {
+        } elseif (Configs::HORIZONTAL === $this->direction) {
             $xmin_abs = $aMinX;
             $xmax_abs = $aMaxX;
             $ypos_abs = $aYPos;
             $aImg->StyleLine($xmin_abs, $ypos_abs, $xmax_abs, $ypos_abs);
         } else {
-     throw      Util\JpGraphError::make(25125); //(" Illegal direction for static line");
+            throw Util\JpGraphError::make(25125); //(" Illegal direction for static line");
         }
         $aImg->SetLineStyle($oldStyle);
     }

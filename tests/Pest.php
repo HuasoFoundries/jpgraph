@@ -8,9 +8,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\Yaml\Yaml;
 use Tests\SizeFixture;
 
-\ini_set('display_errors', 'On');
 
-\ini_set('display_startup_errors', 'On');
 \ini_set('display_errors', 'On');
 \ini_set('display_startup_errors', 'On');
 \define('UNIT_TEST_FOLDER', \sprintf('%s/Unit', __DIR__));
@@ -93,7 +91,7 @@ function getMergedFixturesArray(string $testClass): array
             ],
             $fileArray
         ),
-    ], fn ($datasetPair) => null && dump($datasetPair));
+    ], fn ($datasetPair) => null && kdump($datasetPair));
 }
 /*
 |--------------------------------------------------------------------------

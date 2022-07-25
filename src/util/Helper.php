@@ -6,6 +6,8 @@
 
 namespace Amenadiel\JpGraph\Util;
 
+use Symfony\Component\Console\Output\ConsoleOutput;
+
 use const IMG_GIF;
 use const IMG_JPG;
 use const IMG_PNG;
@@ -22,10 +24,15 @@ class Helper
 {
     private static $__jpg_err_locale = 'en';
 
-    private static $initialized = false;
+    private static $instance = null;
 
     private static $_jpg_messages = [];
-
+    private static $output;
+    public static function getConsole(): ConsoleOutput
+    {
+        if (self::$output) self::$output = new ConsoleOutput(ConsoleOutput::VERBOSITY_VERBOSE);
+        return self::$output;
+    }
     /**
      * Keeps a reference of the library related
      * constants to verify their existance.
@@ -33,16 +40,23 @@ class Helper
      * @var array
      */
     private static $Configs = [];
-
+    public static function getInstance(): self
+    {
+        if (!self::$instance) {
+            self::$instance = self::bootstrapLibrary();
+        }
+        return self::$instance;
+    }
     /**
      * Declares handlers and last minute constants.
      */
-    public static function bootstrapLibrary()
+    public static function bootstrapLibrary(): self
     {
         // we don't need to initialize again, of course
-        if (self::$initialized) {
-            return;
+        if (self::$instance) {
+            return self::$instance;
         }
+        self::$instance = new static();
 
         if (\defined('DEFAULT_ERR_LOCALE')) {
             self::$__jpg_err_locale = DEFAULT_ERR_LOCALE;
@@ -60,15 +74,15 @@ class Helper
 
         self::$_jpg_messages = $_jpg_messages;
         // Make sure PHP version is high enough
-        if (\version_compare(PHP_VERSION, Configs::getConfig('MIN_PHPVERSION')) < 0) {
+        if (\version_compare(PHP_VERSION, strval(Configs::getConfig('MIN_PHPVERSION'))) < 0) {
             JpGraphError::RaiseL(13, PHP_VERSION, Configs::getConfig('MIN_PHPVERSION'));
-
-            exit;
+            return self::$instance;
         }
 
         // Make GD sanity check
         if (!\function_exists('imagetypes') || !\function_exists('imagecreatefromstring')) {
             JpGraphError::RaiseL(25001);
+            return self::$instance;
             //("This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)");
         }
 
@@ -77,14 +91,12 @@ class Helper
         // debugging difficult. This is controlled by the user setting CATCH_PHPERRMSG
         if (isset($GLOBALS['php_errormsg']) && Configs::getConfig('CATCH_PHPERRMSG') && !\preg_match('/|Deprecated|/i', $GLOBALS['php_errormsg'])) {
             JpGraphError::RaiseL(25004, $GLOBALS['php_errormsg']);
+            return self::$instance;
         }
 
         \defined('HALT_ON_ERRORS') || \define('HALT_ON_ERRORS', true);
-        self::$initialized = true;
 
-        if (
-            Configs::getConfig('INSTALL_PHP_ERR_HANDLER')
-        ) {
+        if (Configs::getConfig('INSTALL_PHP_ERR_HANDLER')) {
             JpGraphError::registerHandler();
         }
         // Registers image exception handler
@@ -93,8 +105,7 @@ class Helper
         if (!Configs::getConfig('USE_IMAGE_ERROR_HANDLER')) {
             JpGraphError::SetImageFlag(false);
         }
-
-        return self::$initialized;
+        return self::$instance;
     }
 
     public static function getErrorMessage(int $errCode): ?array

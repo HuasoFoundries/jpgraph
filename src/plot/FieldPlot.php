@@ -1,14 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
-use function call_user_func;
 
 /**
  * @class FieldPlot
@@ -16,18 +15,20 @@ use function call_user_func;
  */
 class FieldPlot extends Plot
 {
-    public $arrow      = '';
-    private $iAngles   = [];
+    public $arrow = '';
+
+    private $iAngles = [];
+
     private $iCallback = '';
 
     public function __construct($datay, $datax, $angles)
     {
-        if ((Configs::safe_count($datax) != Configs::safe_count($datay))) {
-            throw      Util\JpGraphError::make(20001);
+        if ((Configs::safe_count($datax) !== Configs::safe_count($datay))) {
+            throw Util\JpGraphError::make(20001);
         }
         //("Fieldplots must have equal number of X and Y points.");
-        if ((Configs::safe_count($datax) != Configs::safe_count($angles))) {
-            throw      Util\JpGraphError::make(20002);
+        if ((Configs::safe_count($datax) !== Configs::safe_count($angles))) {
+            throw Util\JpGraphError::make(20002);
         }
         //("Fieldplots must have an angle specified for each X and Y points.");
 
@@ -48,29 +49,30 @@ class FieldPlot extends Plot
     public function Stroke($img, $xscale, $yscale)
     {
         // Remeber base color and size
-        $bc  = $this->arrow->iColor;
-        $bs  = $this->arrow->iSize;
+        $bc = $this->arrow->iColor;
+        $bs = $this->arrow->iSize;
         $bas = $this->arrow->iArrowSize;
 
         for ($i = 0; $i < $this->numpoints; ++$i) {
             // Skip null values
-            if ($this->coords[0][$i] === '') {
+            if ('' === $this->coords[0][$i]) {
                 continue;
             }
 
             $f = $this->iCallback;
-            if ($f != '') {
-                list($cc, $cs, $cas) = call_user_func($f, $this->coords[1][$i], $this->coords[0][$i], $this->iAngles[$i]);
+
+            if ('' !== $f) {
+                [$cc, $cs, $cas] = $f($this->coords[1][$i], $this->coords[0][$i], $this->iAngles[$i]);
                 // Fall back on global data if the callback isn't set
-                if ($cc == '') {
+                if ('' === $cc) {
                     $cc = $bc;
                 }
 
-                if ($cs == '') {
+                if ('' === $cs) {
                     $cs = $bs;
                 }
 
-                if ($cas == '') {
+                if ('' === $cas) {
                     $cas = $bas;
                 }
 
@@ -89,7 +91,7 @@ class FieldPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 

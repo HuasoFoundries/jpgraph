@@ -49,13 +49,15 @@ class JpGraphError
     {
         $errtxt = new ExceptionFactory();
         self::SetTitle('JpGraph Error: ' . $error_number);
+
         throw ExceptionFactory::create($error_number, $a1, $a2, $a3, $a4, $a5);
-
     }
 
-    public static function make($error_number,...$args) :JpGraphException {
-        return self::RaiseL($error_number,...$args);
+    public static function make($error_number, ...$args): JpGraphException
+    {
+        return self::RaiseL($error_number, ...$args);
     }
+
     public static function SetImageFlag($aFlg = true)
     {
         self::$__iImgFlg = $aFlg;

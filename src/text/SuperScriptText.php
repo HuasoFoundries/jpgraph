@@ -139,7 +139,7 @@ class SuperScriptText extends Text
                 break;
 
             default:
-                throw      Util\JpGraphError::make(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
+                throw Util\JpGraphError::make(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
 
                 break;
         }
@@ -159,7 +159,7 @@ class SuperScriptText extends Text
                 break;
 
             default:
-                throw      Util\JpGraphError::make(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
+                throw Util\JpGraphError::make(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
 
                 break;
         }
@@ -170,15 +170,12 @@ class SuperScriptText extends Text
         // Should we automatically determine the font or
         // has the user specified it explicetly?
         if ('' === $this->sfont_family) {
-            if (
-                Configs::FF_FONT2 >= $this->font_family
+            if (Configs::FF_FONT2 >= $this->font_family
             ) {
-                if (
-                    Configs::FF_FONT0 === $this->font_family
+                if (Configs::FF_FONT0 === $this->font_family
                 ) {
                     $sff = Configs::FF_FONT0;
-                } elseif (
-                    Configs::FF_FONT1 === $this->font_family
+                } elseif (Configs::FF_FONT1 === $this->font_family
                 ) {
                     if (self::FS_NORMAL === $this->font_style) {
                         $sff = Configs::FF_FONT0;
@@ -214,8 +211,7 @@ class SuperScriptText extends Text
         // For the builtin fonts we need to reduce the margins
         // since the bounding bx reported for the builtin fonts
         // are much larger than for the TTF fonts.
-        if (
-            Configs::FF_FONT2 >= $sff
+        if (Configs::FF_FONT2 >= $sff
         ) {
             $sx -= 2;
             $sy += 3;

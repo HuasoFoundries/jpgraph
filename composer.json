@@ -9,7 +9,7 @@
         "jpgraph",
         "data"
     ],
-    "homepage": "http://jpgraph.net/",
+    "homepage": "https://github.com/HuasoFoundries/jpgraph",
     "license": "QPL-1.0",
     "require": {
         "php": ">=7.4.0",
@@ -41,22 +41,21 @@
     "autoload": {
         "psr-4": {
             "Amenadiel\\JpGraph\\": "src/",
-            "Amenadiel\\JpGraph\\Graph\\": "src/graph",
-            "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
-            "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
-            "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
+            
             "Amenadiel\\JpGraph\\Image\\": "src/image",
             "Amenadiel\\JpGraph\\Plot\\": "src/plot",
             "Amenadiel\\JpGraph\\Text\\": "src/text",
             "Amenadiel\\JpGraph\\Themes\\": "src/themes",
             "Amenadiel\\JpGraph\\Util\\": "src/util"
-        }
+        },
+        "files": [
+            "src/bootstrap.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests"
-        },
-        "files": [
+        },"files": [
             "tests/polyfills.php"
         ]
     },

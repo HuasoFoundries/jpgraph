@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -10,11 +10,6 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function call_user_func;
-use function htmlentities;
-use function max;
-use function round;
-use function sprintf;
 
 /**
  * File:        JPGRAPH_PLOTMARK.PHP
@@ -32,29 +27,53 @@ use function sprintf;
 class PlotMark
 {
     public $title;
+
     public $show = true;
+
     public $type;
-    public $weight           = 1;
-    public $iFormatCallback  = '';
+
+    public $weight = 1;
+
+    public $iFormatCallback = '';
+
     public $iFormatCallback2 = '';
-    public $fill_color       = 'blue';
-    public $color            = 'black';
-    public $width            = 4;
+
+    public $fill_color = 'blue';
+
+    public $color = 'black';
+
+    public $width = 4;
+
     private $yvalue;
+
     private $xvalue = '';
+
     private $csimtarget;
+
     private $csimwintarget = '';
+
     private $csimalt;
+
     private $csimareas;
-    private $markimg     = '';
-    private $iScale      = 1.0;
+
+    private $markimg = '';
+
+    private $iScale = 1.0;
+
     private $oldfilename = '';
-    private $iFileName   = '';
+
+    private $iFileName = '';
+
     private $imgdata_balls;
+
     private $imgdata_diamonds;
+
     private $imgdata_squares;
+
     private $imgdata_bevels;
+
     private $imgdata_stars;
+
     private $imgdata_pushpins;
 
     public function __construct()
@@ -62,7 +81,7 @@ class PlotMark
         $this->title = new Text\Text();
         $this->title->Hide();
         $this->csimareas = '';
-        $this->type      = -1;
+        $this->type = -1;
     }
 
     /**
@@ -75,11 +94,12 @@ class PlotMark
     public function SetType($aType, $aFileName = '', $aScale = 1.0)
     {
         $this->type = $aType;
-        if ($aType == Configs::getConfig('MARK_IMG') && $aFileName == '') {
-     throw      Util\JpGraphError::make(23003); //('A filename must be specified if you set the mark type to Configs::getConfig('MARK_IMG').');
+
+        if (Configs::getConfig('MARK_IMG') === $aType && '' === $aFileName) {
+            throw Util\JpGraphError::make(23003); //('A filename must be specified if you set the mark type to Configs::getConfig('MARK_IMG').');
         }
         $this->iFileName = $aFileName;
-        $this->iScale    = $aScale;
+        $this->iScale = $aScale;
     }
 
     public function SetCallback($aFunc)
@@ -131,6 +151,7 @@ class PlotMark
                 $this->width = 4;
 
                 break;
+
             default:
                 $this->width = 7;
         }
@@ -159,7 +180,7 @@ class PlotMark
 
     public function SetCSIMTarget($aTarget, $aWinTarget = '')
     {
-        $this->csimtarget    = $aTarget;
+        $this->csimtarget = $aTarget;
         $this->csimwintarget = $aWinTarget;
     }
 
@@ -175,50 +196,53 @@ class PlotMark
 
     public function AddCSIMPoly($aPts)
     {
-        $coords = round($aPts[0]) . ', ' . round($aPts[1]);
-        $n      = Configs::safe_count($aPts) / 2;
+        $coords = \round($aPts[0]) . ', ' . \round($aPts[1]);
+        $n = Configs::safe_count($aPts) / 2;
+
         for ($i = 1; $i < $n; ++$i) {
-            $coords .= ', ' . round($aPts[2 * $i]) . ', ' . round($aPts[2 * $i + 1]);
+            $coords .= ', ' . \round($aPts[2 * $i]) . ', ' . \round($aPts[2 * $i + 1]);
         }
         $this->csimareas = '';
+
         if (empty($this->csimtarget)) {
             return;
         }
 
-        $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" ";
-        $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
+        $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" ";
+        $this->csimareas .= 'href="' . \htmlentities($this->csimtarget) . '"';
 
         if (!empty($this->csimwintarget)) {
             $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
         }
 
         if (!empty($this->csimalt)) {
-            $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-            $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\"";
+            $tmp = \sprintf($this->csimalt, $this->yvalue, $this->xvalue);
+            $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\"";
         }
         $this->csimareas .= " />\n";
     }
 
     public function AddCSIMCircle($x, $y, $r)
     {
-        $x               = round($x);
-        $y               = round($y);
-        $r               = round($r);
+        $x = \round($x);
+        $y = \round($y);
+        $r = \round($r);
         $this->csimareas = '';
+
         if (empty($this->csimtarget)) {
             return;
         }
 
-        $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" ";
-        $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
+        $this->csimareas .= "<area shape=\"circle\" coords=\"{$x},{$y},{$r}\" ";
+        $this->csimareas .= 'href="' . \htmlentities($this->csimtarget) . '"';
 
         if (!empty($this->csimwintarget)) {
             $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
         }
 
         if (!empty($this->csimalt)) {
-            $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-            $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+            $tmp = \sprintf($this->csimalt, $this->yvalue, $this->xvalue);
+            $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
         }
         $this->csimareas .= " />\n";
     }
@@ -229,50 +253,52 @@ class PlotMark
             return;
         }
 
-        if ($this->iFormatCallback != '' || $this->iFormatCallback2 != '') {
-            if ($this->iFormatCallback != '') {
-                $f                            = $this->iFormatCallback;
-                list($width, $color, $fcolor) = call_user_func($f, $this->yvalue);
-                $filename                     = $this->iFileName;
-                $imgscale                     = $this->iScale;
+        if ('' !== $this->iFormatCallback || '' !== $this->iFormatCallback2) {
+            if ('' !== $this->iFormatCallback) {
+                $f = $this->iFormatCallback;
+                [$width, $color, $fcolor] = $f($this->yvalue);
+                $filename = $this->iFileName;
+                $imgscale = $this->iScale;
             } else {
-                $f                                                  = $this->iFormatCallback2;
-                list($width, $color, $fcolor, $filename, $imgscale) = call_user_func($f, $this->yvalue, $this->xvalue);
-                if ($filename == '') {
+                $f = $this->iFormatCallback2;
+                [$width, $color, $fcolor, $filename, $imgscale] = $f($this->yvalue, $this->xvalue);
+
+                if ('' === $filename) {
                     $filename = $this->iFileName;
                 }
 
-                if ($imgscale == '') {
+                if ('' === $imgscale) {
                     $imgscale = $this->iScale;
                 }
             }
 
-            if ($width == '') {
+            if ('' === $width) {
                 $width = $this->width;
             }
 
-            if ($color == '') {
+            if ('' === $color) {
                 $color = $this->color;
             }
 
-            if ($fcolor == '') {
+            if ('' === $fcolor) {
                 $fcolor = $this->fill_color;
             }
         } else {
-            $fcolor   = $this->fill_color;
-            $color    = $this->color;
-            $width    = $this->width;
+            $fcolor = $this->fill_color;
+            $color = $this->color;
+            $width = $this->width;
             $filename = $this->iFileName;
             $imgscale = $this->iScale;
         }
 
-        if ($this->type == Configs::getConfig('MARK_IMG') ||
-            ($this->type >= Configs::getConfig('MARK_FLAG1') && $this->type <= Configs::getConfig('MARK_FLAG4')) ||
-            $this->type >= Configs::getConfig('MARK_IMG_PUSHPIN')) {
+        if (Configs::getConfig('MARK_IMG') === $this->type
+            || (Configs::getConfig('MARK_FLAG1') <= $this->type && Configs::getConfig('MARK_FLAG4') >= $this->type)
+            || Configs::getConfig('MARK_IMG_PUSHPIN') <= $this->type) {
             // Note: For the builtin images we use the "filename" parameter
             // to denote the color
             $anchor_x = 0.5;
             $anchor_y = 0.5;
+
             switch ($this->type) {
                 case Configs::getConfig('MARK_FLAG1'):
                 case Configs::getConfig('MARK_FLAG2'):
@@ -285,8 +311,8 @@ class PlotMark
                     // Load an image and use that as a marker
                     // Small optimization, if we have already read an image don't
                     // waste time reading it again.
-                    if ($this->markimg == '' || !($this->oldfilename === $filename)) {
-                        $this->markimg     = Graph\Graph::LoadBkgImage('', $filename);
+                    if ('' === $this->markimg || !($this->oldfilename === $filename)) {
+                        $this->markimg = Graph\Graph::LoadBkgImage('', $filename);
                         $this->oldfilename = $filename;
                     }
 
@@ -294,54 +320,54 @@ class PlotMark
                 case Configs::getConfig('MARK_IMG_PUSHPIN'):
                 case Configs::getConfig('MARK_IMG_SPUSHPIN'):
                 case Configs::getConfig('MARK_IMG_LPUSHPIN'):
-                    if ($this->imgdata_pushpins == null) {
+                    if (null === $this->imgdata_pushpins) {
                         $this->imgdata_pushpins = new Image\ImgData_PushPins();
                     }
-                    $this->markimg             = $this->imgdata_pushpins->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_pushpins->GetAnchor();
+                    $this->markimg = $this->imgdata_pushpins->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_pushpins->GetAnchor();
 
                     break;
                 case Configs::getConfig('MARK_IMG_SQUARE'):
-                    if ($this->imgdata_squares == null) {
+                    if (null === $this->imgdata_squares) {
                         $this->imgdata_squares = new Image\ImgData_Squares();
                     }
-                    $this->markimg             = $this->imgdata_squares->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_squares->GetAnchor();
+                    $this->markimg = $this->imgdata_squares->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_squares->GetAnchor();
 
                     break;
                 case Configs::getConfig('MARK_IMG_STAR'):
-                    if ($this->imgdata_stars == null) {
+                    if (null === $this->imgdata_stars) {
                         $this->imgdata_stars = new Image\ImgData_Stars();
                     }
-                    $this->markimg             = $this->imgdata_stars->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_stars->GetAnchor();
+                    $this->markimg = $this->imgdata_stars->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_stars->GetAnchor();
 
                     break;
                 case Configs::getConfig('MARK_IMG_BEVEL'):
-                    if ($this->imgdata_bevels == null) {
+                    if (null === $this->imgdata_bevels) {
                         $this->imgdata_bevels = new Image\ImgData_Bevels();
                     }
-                    $this->markimg             = $this->imgdata_bevels->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_bevels->GetAnchor();
+                    $this->markimg = $this->imgdata_bevels->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_bevels->GetAnchor();
 
                     break;
                 case Configs::getConfig('MARK_IMG_DIAMOND'):
-                    if ($this->imgdata_diamonds == null) {
+                    if (null === $this->imgdata_diamonds) {
                         $this->imgdata_diamonds = new Image\ImgData_Diamonds();
                     }
-                    $this->markimg             = $this->imgdata_diamonds->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_diamonds->GetAnchor();
+                    $this->markimg = $this->imgdata_diamonds->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_diamonds->GetAnchor();
 
                     break;
                 case Configs::getConfig('MARK_IMG_BALL'):
                 case Configs::getConfig('MARK_IMG_SBALL'):
                 case Configs::getConfig('MARK_IMG_MBALL'):
                 case Configs::getConfig('MARK_IMG_LBALL'):
-                    if ($this->imgdata_balls == null) {
+                    if (null === $this->imgdata_balls) {
                         $this->imgdata_balls = new Image\ImgData_Balls();
                     }
-                    $this->markimg             = $this->imgdata_balls->GetImg($this->type, $filename);
-                    list($anchor_x, $anchor_y) = $this->imgdata_balls->GetAnchor();
+                    $this->markimg = $this->imgdata_balls->GetImg($this->type, $filename);
+                    [$anchor_x, $anchor_y] = $this->imgdata_balls->GetAnchor();
 
                     break;
             }
@@ -349,45 +375,46 @@ class PlotMark
             $w = $img->GetWidth($this->markimg);
             $h = $img->GetHeight($this->markimg);
 
-            $dw = round($imgscale * $w);
-            $dh = round($imgscale * $h);
+            $dw = \round($imgscale * $w);
+            $dh = \round($imgscale * $h);
 
             // Do potential rotation
-            list($x, $y) = $img->Rotate($x, $y);
+            [$x, $y] = $img->Rotate($x, $y);
 
-            $dx = round($x - $dw * $anchor_x);
-            $dy = round($y - $dh * $anchor_y);
+            $dx = \round($x - $dw * $anchor_x);
+            $dy = \round($y - $dh * $anchor_y);
 
-            $this->width = max($dx, $dy);
+            $this->width = \max($dx, $dy);
 
             $img->Copy($this->markimg, $dx, $dy, 0, 0, $dw, $dh, $w, $h);
+
             if (!empty($this->csimtarget)) {
                 $this->csimareas = '<area shape="rect" coords="' .
-                $dx . ',' . $dy . ',' . round($dx + $dw) . ',' . round($dy + $dh) . '" ' .
-                'href="' . htmlentities($this->csimtarget) . '"';
+                $dx . ',' . $dy . ',' . \round($dx + $dw) . ',' . \round($dy + $dh) . '" ' .
+                'href="' . \htmlentities($this->csimtarget) . '"';
 
                 if (!empty($this->csimwintarget)) {
                     $this->csimareas .= ' target="' . $this->csimwintarget . '" ';
                 }
 
                 if (!empty($this->csimalt)) {
-                    $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-                    $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                    $tmp = \sprintf($this->csimalt, $this->yvalue, $this->xvalue);
+                    $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                 }
                 $this->csimareas .= " />\n";
             }
 
             // Stroke title
             $this->title->Align('center', 'top');
-            $this->title->Stroke($img, $x, $y + round($dh / 2));
+            $this->title->Stroke($img, $x, $y + \round($dh / 2));
 
             return;
         }
 
         $weight = $this->weight;
-        $dx     = round($width / 2, 0);
-        $dy     = round($width / 2, 0);
-        $pts    = 0;
+        $dx = \round($width / 2, 0);
+        $dy = \round($width / 2, 0);
+        $pts = 0;
 
         switch ($this->type) {
             case Configs::getConfig('MARK_SQUARE'):
@@ -489,7 +516,7 @@ class PlotMark
                 break;
         }
 
-        if ($pts > 0) {
+        if (0 < $pts) {
             $this->AddCSIMPoly($c);
             $img->SetLineWeight($weight);
             $img->SetColor($fcolor);
@@ -497,30 +524,30 @@ class PlotMark
             $img->SetColor($color);
             $img->Polygon($c);
             $img->SetLineWeight(1);
-        } elseif ($this->type == Configs::getConfig('MARK_CIRCLE')) {
+        } elseif (Configs::getConfig('MARK_CIRCLE') === $this->type) {
             $img->SetColor($color);
             $img->Circle($x, $y, $width);
             $this->AddCSIMCircle($x, $y, $width);
-        } elseif ($this->type == Configs::getConfig('MARK_FILLEDCIRCLE')) {
+        } elseif (Configs::getConfig('MARK_FILLEDCIRCLE') === $this->type) {
             $img->SetColor($fcolor);
             $img->FilledCircle($x, $y, $width);
             $img->SetColor($color);
             $img->Circle($x, $y, $width);
             $this->AddCSIMCircle($x, $y, $width);
-        } elseif ($this->type == Configs::getConfig('MARK_CROSS')) {
+        } elseif (Configs::getConfig('MARK_CROSS') === $this->type) {
             // Oversize by a pixel to match the X
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x, $y + $dy + 1, $x, $y - $dy - 1);
             $img->Line($x - $dx - 1, $y, $x + $dx + 1, $y);
             $this->AddCSIMCircle($x, $y, $dx);
-        } elseif ($this->type == Configs::getConfig('MARK_X')) {
+        } elseif (Configs::getConfig('MARK_X') === $this->type) {
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x + $dx, $y + $dy, $x - $dx, $y - $dy);
             $img->Line($x - $dx, $y + $dy, $x + $dx, $y - $dy);
             $this->AddCSIMCircle($x, $y, $dx + $dy);
-        } elseif ($this->type == Configs::getConfig('MARK_STAR')) {
+        } elseif (Configs::getConfig('MARK_STAR') === $this->type) {
             $img->SetColor($color);
             $img->SetLineWeight($weight);
             $img->Line($x + $dx, $y + $dy, $x - $dx, $y - $dy);

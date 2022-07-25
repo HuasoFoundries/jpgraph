@@ -91,7 +91,7 @@ class Text extends Configs
     public function __construct($aTxt = '', $aXAbsPos = 0, $aYAbsPos = 0)
     {
         if (!\is_string($aTxt)) {
-            throw      Util\JpGraphError::make(25050); //('First argument to Text::Text() must be s atring.');
+            throw Util\JpGraphError::make(25050); //('First argument to Text::Text() must be s atring.');
         }
         $this->t = $aTxt;
         $this->x = \round($aXAbsPos);
@@ -113,12 +113,14 @@ class Text extends Configs
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * self::SUPERSAMPLING_SCALE;
         }
-        throw      Util\JpGraphError::make('25132', $name);
+
+        throw Util\JpGraphError::make('25132', $name);
     }
 
     public function __set($name, $value)
     {
         $this->{'_' . $name} = $value;
+
         return $this;
     }
 
@@ -131,6 +133,7 @@ class Text extends Configs
     public function Set($aTxt)
     {
         $this->t = $aTxt;
+
         return $this;
     }
 
@@ -142,6 +145,7 @@ class Text extends Configs
         $this->y = $aYAbsPos;
         $this->halign = $aHAlign;
         $this->valign = $aVAlign;
+
         return $this;
     }
 
@@ -149,6 +153,7 @@ class Text extends Configs
     {
         $this->iScalePosX = $aX;
         $this->iScalePosY = $aY;
+
         return $this;
     }
 
@@ -163,6 +168,7 @@ class Text extends Configs
         }
 
         $this->paragraph_align = $aParagraphAlign;
+
         return $this;
     }
 
@@ -170,6 +176,7 @@ class Text extends Configs
     public function SetAlign($aHAlign, $aVAlign = 'top', $aParagraphAlign = '')
     {
         $this->Align($aHAlign, $aVAlign, $aParagraphAlign);
+
         return $this;
     }
 
@@ -177,6 +184,7 @@ class Text extends Configs
     public function ParagraphAlign($aAlign)
     {
         $this->paragraph_align = $aAlign;
+
         return $this;
     }
 
@@ -184,6 +192,7 @@ class Text extends Configs
     public function SetParagraphAlign($aAlign)
     {
         $this->paragraph_align = $aAlign;
+
         return $this;
     }
 
@@ -192,13 +201,14 @@ class Text extends Configs
         $this->ishadowwidth = $aShadowWidth;
         $this->shadow = $aShadowColor;
         $this->boxed = true;
+
         return $this;
     }
-
 
     public function SetWordWrap($aCol)
     {
         $this->iWordwrap = $aCol;
+
         return $this;
     }
 
@@ -220,6 +230,7 @@ class Text extends Configs
         $this->shadow = $aShadowColor;
         $this->icornerradius = $aCornerRadius;
         $this->ishadowwidth = $aShadowWidth;
+
         return $this;
     }
 
@@ -227,6 +238,7 @@ class Text extends Configs
     {
         $this->iBoxType = 2;
         $this->SetBox($aFrameColor, $aBorderColor, $aShadowColor, $aCornerRadius, $aShadowWidth);
+
         return $this;
     }
 
@@ -234,6 +246,7 @@ class Text extends Configs
     public function Hide($aHide = true)
     {
         $this->hide = $aHide;
+
         return $this;
     }
 
@@ -244,6 +257,7 @@ class Text extends Configs
     public function Show($aShow = true)
     {
         $this->hide = !$aShow;
+
         return $this;
     }
 
@@ -253,6 +267,7 @@ class Text extends Configs
         $this->font_family = $aFamily;
         $this->font_style = $aStyle;
         $this->font_size = $aSize;
+
         return $this;
     }
 
@@ -267,6 +282,7 @@ class Text extends Configs
         }
 
         $this->y = $aYAbsPos;
+
         return $this;
     }
 
@@ -274,12 +290,14 @@ class Text extends Configs
     public function SetColor($aColor)
     {
         $this->color = $aColor;
+
         return $this;
     }
 
     public function SetAngle($aAngle)
     {
         $this->SetOrientation($aAngle);
+
         return $this;
     }
 
@@ -293,8 +311,9 @@ class Text extends Configs
         } elseif ('v' === $aDirection) {
             $this->dir = 90;
         } else {
-            throw      Util\JpGraphError::make(25051);
+            throw Util\JpGraphError::make(25051);
         }
+
         return $this;
         //(" Invalid direction specified for text.");
     }
@@ -335,6 +354,7 @@ class Text extends Configs
     public function SetMargin($aMarg)
     {
         $this->margin = $aMarg;
+
         return $this;
     }
 
@@ -349,6 +369,7 @@ class Text extends Configs
                 \round($ayscale->Translate($this->iScalePosY))
             );
         }
+
         return $this;
     }
 
@@ -357,6 +378,7 @@ class Text extends Configs
         $this->iCSIMtarget = $aURITarget;
         $this->iCSIMalt = $aAlt;
         $this->iCSIMWinTarget = $aWinTarget;
+
         return $this;
     }
 
@@ -469,6 +491,7 @@ class Text extends Configs
         $this->iCSIMarea .= " />\n";
 
         $aImg->PopColor($this->color);
+
         return $this;
     }
 }

@@ -1,17 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
-use function is_array;
-use function is_numeric;
 use function max;
 use function min;
-use function substr;
 
 /**
  * @class Plot
@@ -20,23 +17,39 @@ use function substr;
 class Plot
 {
     public $numpoints = 0;
+
     public $value;
-    public $legend         = '';
-    public $coords         = [];
-    public $color          = 'black';
-    public $hidelegend     = false;
-    public $line_weight    = 1;
-    public $csimtargets    = [];
+
+    public $legend = '';
+
+    public $coords = [];
+
+    public $color = 'black';
+
+    public $hidelegend = false;
+
+    public $line_weight = 1;
+
+    public $csimtargets = [];
+
     public $csimwintargets = []; // Array of targets for CSIM
-    public $csimareas      = ''; // Resultant CSIM area tags
+
+    public $csimareas = ''; // Resultant CSIM area tags
+
     public $csimalts; // ALT:s for corresponding target
-    public $legendcsimtarget    = '';
+
+    public $legendcsimtarget = '';
+
     public $legendcsimwintarget = '';
-    public $legendcsimalt       = '';
-    protected $weight           = 1;
-    protected $center           = false;
+
+    public $legendcsimalt = '';
+
+    protected $weight = 1;
+
+    protected $center = false;
 
     protected $inputValues;
+
     protected $isRunningClear = false;
 
     public function __construct($aDatay, $aDatax = false)
@@ -44,26 +57,29 @@ class Plot
         // Bootstrap configs repository if it hasn't bootstrapped already
         Util\Helper::bootstrapLibrary();
         $this->numpoints = Configs::safe_count($aDatay);
-        if ($this->numpoints == 0) {
-            throw      Util\JpGraphError::make(25121); //("Empty input data array specified for plot. Must have at least one data point.");
+
+        if (0 === $this->numpoints) {
+            throw Util\JpGraphError::make(25121); //("Empty input data array specified for plot. Must have at least one data point.");
         }
 
         if (!$this->isRunningClear) {
-            $this->inputValues           = [];
+            $this->inputValues = [];
             $this->inputValues['aDatay'] = $aDatay;
             $this->inputValues['aDatax'] = $aDatax;
         }
 
         $this->coords[0] = $aDatay;
-        if (is_array($aDatax)) {
+
+        if (\is_array($aDatax)) {
             $this->coords[1] = $aDatax;
-            $n               = Configs::safe_count($aDatax);
+            $n = Configs::safe_count($aDatax);
+
             for ($i = 0; $i < $n; ++$i) {
-                if (is_numeric($aDatax[$i])) {
+                if (\is_numeric($aDatax[$i])) {
                     continue;
                 }
 
-                throw      Util\JpGraphError::make(25070);
+                throw Util\JpGraphError::make(25070);
             }
         }
         $this->value = new DisplayValue();
@@ -74,7 +90,7 @@ class Plot
     // the subclasses
     public function Stroke($aImg, $aXScale, $aYScale)
     {
-        throw      Util\JpGraphError::make(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
+        throw Util\JpGraphError::make(25122); //("JpGraph: Stroke() must be implemented by concrete subclass to class Plot");
     }
 
     public function HideLegend($f = true)
@@ -95,15 +111,19 @@ class Plot
     {
         $this->value->Stroke($img, $aVal, $x, $y);
     }
+
     public function getScale()
     {
         return $this->scale;
-    }    // Set href targets for CSIM
+    }
+
+    // Set href targets for CSIM
+
     public function SetCSIMTargets($aTargets, $aAlts = '', $aWinTargets = '')
     {
-        $this->csimtargets    = $aTargets;
+        $this->csimtargets = $aTargets;
         $this->csimwintargets = $aWinTargets;
-        $this->csimalts       = $aAlts;
+        $this->csimalts = $aAlts;
     }
 
     // Get all created areas
@@ -116,8 +136,8 @@ class Plot
     // or axis are stroked used to do any plot specific adjustment
     public function PreStrokeAdjust($aGraph)
     {
-        if (substr($aGraph->axtype, 0, 4) == 'text' && (isset($this->coords[1]))) {
-            throw      Util\JpGraphError::make(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
+        if (\mb_substr($aGraph->axtype, 0, 4) === 'text' && (isset($this->coords[1]))) {
+            throw Util\JpGraphError::make(25123); //("JpGraph: You can't use a text X-scale with specified X-coords. Use a \"int\" or \"lin\" scale instead.");
         }
 
         return true;
@@ -138,21 +158,25 @@ class Plot
         } else {
             $x = '';
         }
-        if ($x != '' && Configs::safe_count($x) > 0) {
-            $xm = min($x);
+
+        if ('' !== $x && Configs::safe_count($x) > 0) {
+            $xm = \min($x);
         } else {
             $xm = 0;
         }
-        $y   = $this->coords[0];
+        $y = $this->coords[0];
         $cnt = Configs::safe_count($y);
-        if ($cnt > 0) {
+
+        if (0 < $cnt) {
             $i = 0;
-            while ($i < $cnt && !is_numeric($ym = $y[$i])) {
+
+            while ($i < $cnt && !\is_numeric($ym = $y[$i])) {
                 ++$i;
             }
+
             while ($i < $cnt) {
-                if (is_numeric($y[$i])) {
-                    $ym = min($ym, $y[$i]);
+                if (\is_numeric($y[$i])) {
+                    $ym = \min($ym, $y[$i]);
                 }
                 ++$i;
             }
@@ -172,23 +196,25 @@ class Plot
             $x = '';
         }
 
-        if ($x != '' && Configs::safe_count($x) > 0) {
-            $xm = max($x);
+        if ('' !== $x && Configs::safe_count($x) > 0) {
+            $xm = \max($x);
         } else {
             $xm = $this->numpoints - 1;
         }
         $y = $this->coords[0];
-        if (
-            Configs::safe_count($y) > 0
+
+        if (Configs::safe_count($y) > 0
         ) {
             $cnt = Configs::safe_count($y);
-            $i   = 0;
-            while ($i < $cnt && !is_numeric($ym = $y[$i])) {
+            $i = 0;
+
+            while ($i < $cnt && !\is_numeric($ym = $y[$i])) {
                 ++$i;
             }
+
             while ($i < $cnt) {
-                if (is_numeric($y[$i])) {
-                    $ym = max($ym, $y[$i]);
+                if (\is_numeric($y[$i])) {
+                    $ym = \max($ym, $y[$i]);
                 }
                 ++$i;
             }
@@ -206,10 +232,10 @@ class Plot
 
     public function SetLegend($aLegend, $aCSIM = '', $aCSIMAlt = '', $aCSIMWinTarget = '')
     {
-        $this->legend              = $aLegend;
-        $this->legendcsimtarget    = $aCSIM;
+        $this->legend = $aLegend;
+        $this->legendcsimtarget = $aCSIM;
         $this->legendcsimwintarget = $aCSIMWinTarget;
-        $this->legendcsimalt       = $aCSIMAlt;
+        $this->legendcsimalt = $aCSIMAlt;
     }
 
     public function SetWeight($aWeight)
@@ -237,7 +263,7 @@ class Plot
     // Framework function the chance for each plot class to set a legend
     public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 

@@ -267,11 +267,11 @@ class GTextTable
                     $this->iSize[1] = $n;
                     $this->iInit = true;
                 } else {
-                    throw      Util\JpGraphError::make(27001);
+                    throw Util\JpGraphError::make(27001);
                     //('Illegal argument to GTextTable::Set(). Array must be 2 dimensional');
                 }
             } else {
-                throw      Util\JpGraphError::make(27002);
+                throw Util\JpGraphError::make(27002);
                 //('Illegal argument to GTextTable::Set()');
             }
         } else {
@@ -542,7 +542,7 @@ class GTextTable
                 $aFSize = 10;
             }
         } else {
-            throw      Util\JpGraphError::make(27003);
+            throw Util\JpGraphError::make(27003);
             //('Wrong number of arguments to GTextTable::SetColor()');
         }
         $this->_chkR($aR1);
@@ -602,7 +602,7 @@ class GTextTable
             $this->_chkC($aC2);
         } else {
             if (null === $aR1HAlign) {
-                throw      Util\JpGraphError::make(27010);
+                throw Util\JpGraphError::make(27010);
             }
 
             if (null === $aC1VAlign) {
@@ -674,7 +674,7 @@ class GTextTable
         }
 
         if (!\is_string($aArg)) {
-            throw      Util\JpGraphError::make(27013); // argument must be a string
+            throw Util\JpGraphError::make(27013); // argument must be a string
         }
 
         for ($i = $aArgR1; $i <= $aR2; ++$i) {
@@ -689,7 +689,7 @@ class GTextTable
         $this->_chkR($aRow);
 
         if (!\is_string($aF)) {
-            throw      Util\JpGraphError::make(27013); // argument must be a string
+            throw Util\JpGraphError::make(27013); // argument must be a string
         }
 
         for ($j = 0; $j < $this->iSize[1]; ++$j) {
@@ -702,7 +702,7 @@ class GTextTable
         $this->_chkC($aCol);
 
         if (!\is_string($aF)) {
-            throw      Util\JpGraphError::make(27013); // argument must be a string
+            throw Util\JpGraphError::make(27013); // argument must be a string
         }
 
         for ($i = 0; $i < $this->iSize[0]; ++$i) {
@@ -716,7 +716,7 @@ class GTextTable
         $this->_chkC($aCol);
 
         if (!\is_string($aF)) {
-            throw      Util\JpGraphError::make(27013); // argument must be a string
+            throw Util\JpGraphError::make(27013); // argument must be a string
         }
         $this->iCells[$aRow][$aCol]->SetNumberFormat($aF);
     }
@@ -823,7 +823,7 @@ class GTextTable
     public function MergeCells($aR1, $aC1, $aR2, $aC2, $aHAlign = 'center', $aVAlign = 'center')
     {
         if ($aR1 > $aR2 || $aC1 > $aC2) {
-            throw      Util\JpGraphError::make(27004);
+            throw Util\JpGraphError::make(27004);
             //('GTextTable::MergeCells(). Specified cell range to be merged is not valid.');
         }
         $this->_chkR($aR1);
@@ -834,7 +834,7 @@ class GTextTable
         $cspan = $aC2 - $aC1 + 1;
         // Setup the parent cell for this merged group
         if ($this->iCells[$aR1][$aC1]->IsMerged()) {
-            throw      Util\JpGraphError::make(27005, $aR1, $aC1, $aR2, $aC2);
+            throw Util\JpGraphError::make(27005, $aR1, $aC1, $aR2, $aC2);
             //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
         }
         $this->iCells[$aR1][$aC1]->SetRowColSpan($rspan, $cspan);
@@ -847,7 +847,7 @@ class GTextTable
                 }
 
                 if ($this->iCells[$i][$j]->IsMerged()) {
-                    throw      Util\JpGraphError::make(27005, $aR1, $aC1, $aR2, $aC2);
+                    throw Util\JpGraphError::make(27005, $aR1, $aC1, $aR2, $aC2);
                     //("Cannot merge already merged cells in the range ($aR1,$aC1), ($aR2,$aC2)");
                 }
                 $this->iCells[$i][$j]->SetMerged($aR1, $aC1, true);
@@ -915,7 +915,7 @@ class GTextTable
         }
 
         if (0 > $aCol || $aCol >= $this->iSize[1]) {
-            throw      Util\JpGraphError::make(27006, $aCol);
+            throw Util\JpGraphError::make(27006, $aCol);
         }
 
         //("GTextTable:\nColumn argument ($aCol) is outside specified table size.");
@@ -928,7 +928,7 @@ class GTextTable
         }
 
         if (0 > $aRow || $aRow >= $this->iSize[0]) {
-            throw      Util\JpGraphError::make(27007, $aRow);
+            throw Util\JpGraphError::make(27007, $aRow);
         }
 
         //("GTextTable:\nRow argument ($aRow) is outside specified table size.");
@@ -1014,7 +1014,7 @@ class GTextTable
         $cc = $this->iSize[1]; // column count
 
         if (0 === $rc || 0 === $cc) {
-            throw      Util\JpGraphError::make(27009);
+            throw Util\JpGraphError::make(27009);
         }
 
         // Adjust margins of each cell based on the weight of the grid. Each table grid line
@@ -1036,10 +1036,9 @@ class GTextTable
         // adjust row and column size depending on cell content
         $this->_autoSizeTable($aImg);
 
-        if (
-            Configs::safe_count($this->iColWidth) !== $this->iSize[1] || Configs::safe_count($this->iRowHeight) !== $this->iSize[0]
+        if (Configs::safe_count($this->iColWidth) !== $this->iSize[1] || Configs::safe_count($this->iRowHeight) !== $this->iSize[0]
         ) {
-            throw      Util\JpGraphError::make(27008);
+            throw Util\JpGraphError::make(27008);
             //('Column and row size arrays must match the dimesnions of the table');
         }
 

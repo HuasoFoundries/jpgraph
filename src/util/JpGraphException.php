@@ -17,6 +17,8 @@ class JpGraphException extends Exception
 
     private $iDest; // 'php://stderr';
 
+    private $__iTitle = 'JpGraph Error: ';
+
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0)
     {
@@ -46,7 +48,7 @@ class JpGraphException extends Exception
     public function Stroke()
     {
         //$sent_headers = headers_list();
-        kdump($this->_toString());
+        dump($this->_toString());
 
         if (JpGraphError::GetImageFlag()) {
             $this->handleImgException();
@@ -68,7 +70,6 @@ class JpGraphException extends Exception
 
         $exception->Stroke();
     }
-    private   $__iTitle = 'JpGraph Error: ';
 
     /**
      * Register exception handler for JpGraphException.

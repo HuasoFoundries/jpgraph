@@ -313,15 +313,14 @@ Configs::FS_NORMAL => 'arial.ttf',
      * @param string $font_path optional font_path. If set, it takes precedence over other paths
      *
      * @example ` $ttf->File(
-Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
+     * Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT>/self::src/fonts/DejaVuSans-Bold-ttf
      * ` */
     public function File($family, $style = Configs::FS_NORMAL, $font_path = null)
     {
         $font_translation = null;
         $fam = $this->font_files[$family];
 
-        if (
-            \array_key_exists($family, Configs::$font_dict)
+        if (\array_key_exists($family, Configs::$font_dict)
             && \array_key_exists($style, Configs::$font_dict)
             // && !array_key_exists($family,$this->font_files)
         ) {
@@ -337,7 +336,7 @@ Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT
         }
 
         if (!$fam) {
-            throw      Util\JpGraphError::make(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
+            throw Util\JpGraphError::make(25046, $family); //("Specified TTF font family (id=$family) is unknown or does not exist. Please note that TTF fonts are not distributed with JpGraph for copyright reasons. You can find the MS TTF WEB-fonts (arial, courier etc) for download at http://corefonts.sourceforge.net/");
         }
         $ff = $fam[$style];
 
@@ -353,11 +352,11 @@ Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT
             // All font families are guaranteed to have the normal style
 
             if ('' === $font_file) {
-                throw      Util\JpGraphError::make(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
+                throw Util\JpGraphError::make(25047, $this->style_names[$style], $this->font_files[$family][Configs::FS_NORMAL]);
             }
             //('Style "'.$this->style_names[$style].'" is not available for font family '.$this->font_files[$family][Configs::FS_NORMAL].'.');
             if (!$font_file) {
-                throw      Util\JpGraphError::make(25048, $fam); //("Unknown font style specification [$fam].");
+                throw Util\JpGraphError::make(25048, $fam); //("Unknown font style specification [$fam].");
             }
 
             if ($font_candidate = self::getFullPathIfExists($font_file, $font_path)) {
@@ -373,8 +372,7 @@ Configs::FF_DV_SANSSERIF, Configs::FS_BOLD); // would return <self::LIBRARY ROOT
             }
 
             // check OS font dir
-            if (
-                Configs::FF_MINCHO <= $family && Configs::FF_PGOTHIC >= $family
+            if (Configs::FF_MINCHO <= $family && Configs::FF_PGOTHIC >= $family
             ) {
                 $font_file = Configs::MBTTF_DIR . $font_file;
             } else {

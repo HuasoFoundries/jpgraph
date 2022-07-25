@@ -216,7 +216,7 @@ abstract class Theme
         if (\method_exists($this, $method_name)) {
             $this->{$method_name}($graph);
         } else {
-            throw      Util\JpGraphError::make(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
+            throw Util\JpGraphError::make(30001, $method_name, $method_name); //Theme::%s() is not const  \nPlease=ake %s(\$graph) functio;in your theme classs.
         }
     }
 

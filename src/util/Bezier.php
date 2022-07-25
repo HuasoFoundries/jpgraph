@@ -28,8 +28,7 @@ class Bezier
         // Adding control point multiple time will raise their attraction power over the curve
         $this->n = Configs::safe_count($datax);
 
-        if (
-            Configs::safe_count($datay) !== $this->n
+        if (Configs::safe_count($datay) !== $this->n
         ) {
             JpGraphError::RaiseL(19003);
             //('Bezier: Number of X and Y coordinates must be the same');

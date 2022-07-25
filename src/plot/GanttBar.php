@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -10,16 +10,8 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function ceil;
-use function floor;
-use function is_float;
-use function is_int;
-use function is_string;
 use function max;
 use function min;
-use function round;
-use function strpos;
-use function strtotime;
 
 /**
  * @class GanttBar
@@ -28,21 +20,37 @@ use function strtotime;
 class GanttBar extends GanttPlotObject
 {
     public $progress;
+
     public $leftMark;
+
     public $rightMark;
+
     private $iEnd;
-    private $iHeightFactor    = 0.5;
-    private $iFillColor       = 'white';
-    private $iFrameColor      = 'black';
-    private $iShadow          = false;
-    private $iShadowColor     = 'darkgray';
-    private $iShadowWidth     = 1;
-    private $iShadowFrame     = 'black';
-    private $iPattern         = Configs::GANTT_RDIAG;
-    private $iPatternColor    = 'blue';
-    private $iPatternDensity  = 95;
-    private $iBreakStyle      = false;
-    private $iBreakLineStyle  = 'dotted';
+
+    private $iHeightFactor = 0.5;
+
+    private $iFillColor = 'white';
+
+    private $iFrameColor = 'black';
+
+    private $iShadow = false;
+
+    private $iShadowColor = 'darkgray';
+
+    private $iShadowWidth = 1;
+
+    private $iShadowFrame = 'black';
+
+    private $iPattern = Configs::GANTT_RDIAG;
+
+    private $iPatternColor = 'blue';
+
+    private $iPatternDensity = 95;
+
+    private $iBreakStyle = false;
+
+    private $iBreakLineStyle = 'dotted';
+
     private $iBreakLineWeight = 1;
 
     /**
@@ -58,18 +66,18 @@ class GanttBar extends GanttPlotObject
         parent::__construct();
         $this->iStart = $aStart;
         // Is the end date given as a date or as number of days added to start date?
-        if (is_string($aEnd)) {
+        if (\is_string($aEnd)) {
             // If end date has been specified without a time we will asssume
             // end date is at the end of that date
-            if (strpos($aEnd, ':') === false) {
-                $this->iEnd = strtotime($aEnd) + Configs::SECPERDAY - 1;
+            if (\mb_strpos($aEnd, ':') === false) {
+                $this->iEnd = \strtotime($aEnd) + Configs::SECPERDAY - 1;
             } else {
                 $this->iEnd = $aEnd;
             }
-        } elseif (is_int($aEnd) || is_float($aEnd)) {
-            $this->iEnd = strtotime($aStart) + round($aEnd * Configs::SECPERDAY);
+        } elseif (\is_int($aEnd) || \is_float($aEnd)) {
+            $this->iEnd = \strtotime($aStart) + \round($aEnd * Configs::SECPERDAY);
         }
-        $this->iVPos         = $aPos;
+        $this->iVPos = $aPos;
         $this->iHeightFactor = $aHeightFactor;
         $this->title->Set($aLabel);
         $this->caption = new Text\TextProperty($aCaption);
@@ -89,14 +97,14 @@ class GanttBar extends GanttPlotObject
      */
     public function SetShadow($aShadow = true, $aColor = 'gray')
     {
-        $this->iShadow      = $aShadow;
+        $this->iShadow = $aShadow;
         $this->iShadowColor = $aColor;
     }
 
     public function SetBreakStyle($aFlg = true, $aLineStyle = 'dotted', $aLineWeight = 1)
     {
-        $this->iBreakStyle      = $aFlg;
-        $this->iBreakLineStyle  = $aLineStyle;
+        $this->iBreakStyle = $aFlg;
+        $this->iBreakLineStyle = $aLineStyle;
         $this->iBreakLineWeight = $aLineWeight;
     }
 
@@ -122,18 +130,19 @@ class GanttBar extends GanttPlotObject
 
     public function GetAbsHeight($aImg)
     {
-        if (is_int($this->iHeightFactor) || $this->leftMark->show || $this->rightMark->show) {
+        if (\is_int($this->iHeightFactor) || $this->leftMark->show || $this->rightMark->show) {
             $m = -1;
-            if (is_int($this->iHeightFactor)) {
+
+            if (\is_int($this->iHeightFactor)) {
                 $m = $this->iHeightFactor;
             }
 
             if ($this->leftMark->show) {
-                $m = max($m, $this->leftMark->width * 2);
+                $m = \max($m, $this->leftMark->width * 2);
             }
 
             if ($this->rightMark->show) {
-                $m = max($m, $this->rightMark->width * 2);
+                $m = \max($m, $this->rightMark->width * 2);
             }
 
             return $m;
@@ -144,26 +153,26 @@ class GanttBar extends GanttPlotObject
 
     public function SetPattern($aPattern, $aColor = 'blue', $aDensity = 95)
     {
-        $this->iPattern        = $aPattern;
-        $this->iPatternColor   = $aColor;
+        $this->iPattern = $aPattern;
+        $this->iPatternColor = $aColor;
         $this->iPatternDensity = $aDensity;
     }
 
     public function Stroke($aImg, $aScale)
     {
         $factory = new Graph\Pattern\RectPatternFactory();
-        $prect   = $factory->Create($this->iPattern, $this->iPatternColor);
+        $prect = $factory->Create($this->iPattern, $this->iPatternColor);
         $prect->SetDensity($this->iPatternDensity);
 
         // If height factor is specified as a float between 0,1 then we take it as meaning
         // percetage of the scale width between horizontal line.
         // If it is an integer > 1 we take it to mean the absolute height in pixels
-        if ($this->iHeightFactor > -0.0 && $this->iHeightFactor <= 1.1) {
+        if (-0.0 < $this->iHeightFactor && 1.1 >= $this->iHeightFactor) {
             $vs = $aScale->GetVertSpacing() * $this->iHeightFactor;
-        } elseif (is_int($this->iHeightFactor) && $this->iHeightFactor > 2 && $this->iHeightFactor < 200) {
+        } elseif (\is_int($this->iHeightFactor) && 2 < $this->iHeightFactor && 200 > $this->iHeightFactor) {
             $vs = $this->iHeightFactor;
         } else {
-            throw      Util\JpGraphError::make(6028, $this->iHeightFactor);
+            throw Util\JpGraphError::make(6028, $this->iHeightFactor);
             //    ("Specified height (".$this->iHeightFactor.") for gantt bar is out of range.");
         }
 
@@ -171,35 +180,36 @@ class GanttBar extends GanttPlotObject
         $st = $aScale->NormalizeDate($this->iStart);
         $en = $aScale->NormalizeDate($this->iEnd);
 
-        $limst = max($st, $aScale->iStartDate);
-        $limen = min($en, $aScale->iEndDate);
+        $limst = \max($st, $aScale->iStartDate);
+        $limen = \min($en, $aScale->iEndDate);
 
-        $xt     = round($aScale->TranslateDate($limst));
-        $xb     = round($aScale->TranslateDate($limen));
-        $yt     = round($aScale->TranslateVertPos($this->iVPos) - $vs - ($aScale->GetVertSpacing() / 2 - $vs / 2));
-        $yb     = round($aScale->TranslateVertPos($this->iVPos) - ($aScale->GetVertSpacing() / 2 - $vs / 2));
-        $middle = round($yt + ($yb - $yt) / 2);
+        $xt = \round($aScale->TranslateDate($limst));
+        $xb = \round($aScale->TranslateDate($limen));
+        $yt = \round($aScale->TranslateVertPos($this->iVPos) - $vs - ($aScale->GetVertSpacing() / 2 - $vs / 2));
+        $yb = \round($aScale->TranslateVertPos($this->iVPos) - ($aScale->GetVertSpacing() / 2 - $vs / 2));
+        $middle = \round($yt + ($yb - $yt) / 2);
         $this->StrokeActInfo($aImg, $aScale, $middle);
 
         // CSIM for title
         if (!empty($this->title->csimtarget)) {
-            $colwidth  = $this->title->GetColWidth($aImg);
+            $colwidth = $this->title->GetColWidth($aImg);
             $colstarts = [];
             $aScale->actinfo->GetColStart($aImg, $colstarts, true);
-            $n = min(
+            $n = \min(
                 Configs::safe_count($colwidth),
                 Configs::safe_count($this->title->csimtarget)
             );
+
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
-                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
+                $coords = "{$title_xt},{$yt},{$title_xb},{$yt},{$title_xb},{$yb},{$title_xt},{$yb}";
 
                 if (empty($this->title->csimtarget[$i])) {
                     continue;
                 }
 
-                $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
+                $this->csimarea .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                 if (!empty($this->title->csimwintarget[$i])) {
                     $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
@@ -207,7 +217,7 @@ class GanttBar extends GanttPlotObject
 
                 if (!empty($this->title->csimalt[$i])) {
                     $tmp = $this->title->csimalt[$i];
-                    $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                    $this->csimarea .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                 }
                 $this->csimarea .= " />\n";
             }
@@ -223,6 +233,7 @@ class GanttBar extends GanttPlotObject
 
         $prect->ShowFrame(false);
         $prect->SetBackground($this->iFillColor);
+
         if ($this->iBreakStyle) {
             $aImg->SetColor($this->iFrameColor);
             $olds = $aImg->SetLineStyle($this->iBreakLineStyle);
@@ -246,27 +257,28 @@ class GanttBar extends GanttPlotObject
         }
         // CSIM for bar
         if (!empty($this->csimtarget)) {
-            $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtarget . '"';
+            $coords = "{$xt},{$yt},{$xb},{$yt},{$xb},{$yb},{$xt},{$yb}";
+            $this->csimarea .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->csimtarget . '"';
 
             if (!empty($this->csimwintarget)) {
                 $this->csimarea .= ' target="' . $this->csimwintarget . '" ';
             }
 
-            if ($this->csimalt != '') {
+            if ('' !== $this->csimalt) {
                 $tmp = $this->csimalt;
-                $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                $this->csimarea .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
             }
             $this->csimarea .= " />\n";
         }
 
         // Draw progress bar inside activity bar
-        if ($this->progress->iProgress > 0) {
+        if (0 < $this->progress->iProgress) {
             $xtp = $aScale->TranslateDate($st);
             $xbp = $aScale->TranslateDate($en);
             $len = ($xbp - $xtp) * $this->progress->iProgress;
 
             $endpos = $xtp + $len;
+
             if ($endpos > $xt) {
                 // Take away the length of the progress that is not visible (before the start date)
                 $len -= ($xt - $xtp);
@@ -285,30 +297,32 @@ class GanttBar extends GanttPlotObject
                 $prog->SetDensity($this->progress->iDensity);
                 $prog->SetBackground($this->progress->iFillColor);
                 $barheight = ($yb - $yt + 1);
+
                 if ($this->iShadow) {
                     $barheight -= $this->iShadowWidth;
                 }
 
-                $progressheight = floor($barheight * $this->progress->iHeight);
-                $marg           = ceil(($barheight - $progressheight) / 2);
-                $pos            = new Util\Rectangle($xtp, $yt + $marg, $len, $barheight - 2 * $marg);
+                $progressheight = \floor($barheight * $this->progress->iHeight);
+                $marg = \ceil(($barheight - $progressheight) / 2);
+                $pos = new Util\Rectangle($xtp, $yt + $marg, $len, $barheight - 2 * $marg);
                 $prog->SetPos($pos);
                 $prog->Stroke($aImg);
             }
         }
 
         // We don't plot the end mark if the bar has been capped
-        if ($limst == $st) {
+        if ($limst === $st) {
             $y = $middle;
             // We treat the RIGHT and LEFT triangle mark a little bi
             // special so that these marks are placed right under the
             // bar.
-            if ($this->leftMark->GetType() == Configs::MARK_LEFTTRIANGLE) {
+            if ($this->leftMark->GetType() === Configs::MARK_LEFTTRIANGLE) {
                 $y = $yb;
             }
             $this->leftMark->Stroke($aImg, $xt, $y);
         }
-        if ($limen != $en) {
+
+        if ($limen !== $en) {
             return;
         }
 
@@ -316,12 +330,13 @@ class GanttBar extends GanttPlotObject
         // We treat the RIGHT and LEFT triangle mark a little bi
         // special so that these marks are placed right under the
         // bar.
-        if ($this->rightMark->GetType() == Configs::MARK_RIGHTTRIANGLE) {
+        if ($this->rightMark->GetType() === Configs::MARK_RIGHTTRIANGLE) {
             $y = $yb;
         }
         $this->rightMark->Stroke($aImg, $xb, $y);
 
         $margin = $this->iCaptionMargin;
+
         if ($this->rightMark->show) {
             $margin += $this->rightMark->GetWidth();
         }

@@ -114,7 +114,6 @@ if (\getenv('JPGRAPH_MBTTF_DIR')) {
 \defined('CACHE_FILE_MOD') || \define('CACHE_FILE_MOD', \getenv('JPGRAPH_CACHE_FILE_MOD') || 0664);
 \defined('DEFAULT_THEME_CLASS') || \define('DEFAULT_THEME_CLASS', 'UniversalTheme');
 
-
 /**
  * @class Configs
  *
@@ -797,7 +796,7 @@ class Configs
      *
      * @throws Exception (description)
      *
-     * @return array the constant
+     * @return array|string the constant
      */
     public static function getConfig(string $config_key)
     {

@@ -1,13 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
-use function is_numeric;
 
 /**
  * File:        JPGRAPH_ERROR.PHP
@@ -66,16 +65,14 @@ class ErrorPlot extends Plot
         $img->SetLineWeight($this->weight);
 
         if (isset($this->coords[1])) {
-            if (
-                Configs::safe_count($this->coords[1]) != $numpoints
+            if (Configs::safe_count($this->coords[1]) !== $numpoints
             ) {
-                throw      Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
+                throw Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
             }
 
             //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
-            else {
-                $exist_x = true;
-            }
+
+            $exist_x = true;
         } else {
             $exist_x = false;
         }
@@ -87,14 +84,13 @@ class ErrorPlot extends Plot
                 $x = $i;
             }
 
-            if (
-                !is_numeric($x) ||
-                !is_numeric($this->coords[0][$i * 2]) || !is_numeric($this->coords[0][$i * 2 + 1])
+            if (!\is_numeric($x)
+                || !\is_numeric($this->coords[0][$i * 2]) || !\is_numeric($this->coords[0][$i * 2 + 1])
             ) {
                 continue;
             }
 
-            $xt  = $xscale->Translate($x);
+            $xt = $xscale->Translate($x);
             $yt1 = $yscale->Translate($this->coords[0][$i * 2]);
             $yt2 = $yscale->Translate($this->coords[0][$i * 2 + 1]);
             $img->Line($xt, $yt1, $xt, $yt2);

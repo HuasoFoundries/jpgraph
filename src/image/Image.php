@@ -261,19 +261,19 @@ class Image
         }
     }
 
-    public   function GetWidth($aImg = null)
+    public  static  function GetWidth($aImg)
     {
         if ($aImg === null) {
-            $aImg = $this->img;
+            throw new \Exception("parameter 1 cannot be empty", 1);
         }
 
         return imagesx($aImg);
     }
 
-    public   function GetHeight($aImg = null)
+    public  static  function GetHeight($aImg)
     {
         if ($aImg === null) {
-            $aImg = $this->img;
+            throw new \Exception("parameter 1 cannot be empty", 1);
         }
 
         return imagesy($aImg);

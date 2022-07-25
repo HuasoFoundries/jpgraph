@@ -7,50 +7,6 @@
 use Kint\Kint;
 use Tests\BaseTestCase;
 
-if (!\function_exists('tap')) {
-    /**
-     * Call the given Closure with the given value then return the value.
-     *
-     * @param mixed $value
-     *
-     * @return mixed
-     */
-    function tap($value, ?callable $callback = null)
-    {
-        if (null !== $callback) {
-            $callback($value);
-        }
-
-        return $value;
-    }
-}
-
-/*
- * Unless there's a dump function declared already, declare
- * one so we can use it safely elsewhere. Mostly used while developing
- */
-if (!\function_exists('kdump')) {
-    // I'm sure this can be improved... just not today
-    if (\class_exists(Kint::class)) {
-        function kdump(...$vars)
-        {
-            Kint::$enabled_mode = Kint::MODE_CLI;
-            $return = Kint::$return;
-            Kint::$return = true;
-            $fp = \fopen('php://stderr', 'ab');
-            \fwrite($fp,(string) Kint::dump(...$vars));
-            \fclose($fp);
-            $return = Kint::$return;
-            Kint::$return = $return;
-        }
-
-        Kint::$aliases[] = 'kdump';
-    } else {
-        function kdump(...$vars)
-        {
-        }
-    }
-}
 function examples_path(string $path = ''): string
 {
     return \sprintf('%s/Examples/%s', \dirname(BaseTestCase::TEST_FOLDER), ($path ? \DIRECTORY_SEPARATOR . $path : $path));
@@ -76,7 +32,8 @@ if (!\function_exists('getTestableExampleFiles')) {
         $d = \dir(examples_path($exampleRoot));
 
         while ($entry = $d->Read()) {
-            if (!\array_key_exists($entry, $skippedFixtures)
+            if (
+                !\array_key_exists($entry, $skippedFixtures)
                 && \is_file(examples_path(\implode('/', [$exampleRoot, $entry])))
                 && \mb_strpos($entry, '.php') !== false
                 && \mb_strpos($entry, 'ex') !== false
@@ -89,21 +46,5 @@ if (!\function_exists('getTestableExampleFiles')) {
         $d->Close();
 
         return tap($fileArray, fn (&$arr) => \sort($arr));
-    }
-}
-
-/*
- * Dump to stderr and exit
- */
-if (!\function_exists('dd')) {
-    function dd(...$vars): void
-    {
-        kdump(...$vars);
-
-        exit();
-    }
-
-    if (\class_exists(Kint::class)) {
-        Kint::$aliases[] = 'dd';
     }
 }
