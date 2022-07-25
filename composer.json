@@ -27,7 +27,6 @@
         "pestphp/pest": "^1.0",
         "phpstan/phpstan": "^0.12.84",
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.10.11",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/dotenv": "^4.0 || ^5.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0",
