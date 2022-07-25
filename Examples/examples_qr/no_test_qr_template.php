@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once 'jpgraph/QR/qrencoder.inc.php';
@@ -10,11 +10,11 @@ require_once 'jpgraph/QR/qrencoder.inc.php';
 $data = 'ABCDEFGH01234567';
 
 // QR Code specification
-$version     = -1; // -1 = Let the library decide version (same as default)
-$corrlevel   = QRCapacity::ErrM; // Medium erro correction
+$version = -1; // -1 = Let the library decide version (same as default)
+$corrlevel = QRCapacity::ErrM; // Medium erro correction
 $modulewidth = 2; // Module width
-$back        = Graph\Configs::getConfig('BACKEND_IMAGE'); // Default backend
-$quiet       = 4; // Same as default value
+$back = Graph\Configs::getConfig('BACKEND_IMAGE'); // Default backend
+$quiet = 4; // Same as default value
 
 // Create encoder and backend
 $encoder = new QREncoder($version, $corrlevel);
@@ -26,7 +26,9 @@ $backend->SetModuleWidth($modulewidth);
 // Set Quiet zone (this should rarely need changing from the default)
 $backend->SetQuietZone($quiet);
 
-if ($back == Graph\Configs::getConfig('BACKEND_IMAGE')) {
+if (
+    Graph\Configs::getConfig('BACKEND_IMAGE') === $back
+) {
     $backend->Stroke($data);
 } else {
     $str = $backend->Stroke($data);

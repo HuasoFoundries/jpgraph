@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -18,14 +19,15 @@ $data4y = [40, 45, 70, 80, 50, 75, 70, 70, 80, 75, 80, 50];
 $data5y = [20, 20, 25, 22, 30, 25, 35, 30, 27, 25, 25, 45];
 //line1
 $data6y = [50, 58, 60, 58, 53, 58, 57, 60, 58, 58, 57, 50];
+
 foreach ($data6y as &$y) {
     $y -= 10;
 }
 
 // Create the graph. These two calls are always required
-$__width  = 750;
+$__width = 750;
 $__height = 320;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetY2Scale('lin', 0, 90);
 $graph->SetY2OrderBack(false);
@@ -39,7 +41,7 @@ $graph->yaxis->SetTickPositions([0, 50, 100, 150, 200, 250, 300, 350], [25, 75, 
 $graph->y2axis->SetTickPositions([30, 40, 50, 60, 70, 80, 90]);
 
 $months = $graph->gDateLocale->GetShortMonth();
-$months = array_merge(array_slice($months, 3, 9), array_slice($months, 0, 3));
+$months = \array_merge(\array_slice($months, 3, 9), \array_slice($months, 0, 3));
 $graph->SetBox(false);
 
 $graph->ygrid->SetFill(false);
@@ -61,7 +63,7 @@ $lplot = new Plot\LinePlot($data6y);
 
 // Create the grouped bar plot
 $gbbplot = new Plot\AccBarPlot([$b3plot, $b4plot, $b5plot]);
-$gbplot  = new Plot\GroupBarPlot([$b1plot, $b2plot, $gbbplot]);
+$gbplot = new Plot\GroupBarPlot([$b1plot, $b2plot, $gbbplot]);
 
 // ...and add it to the graPH
 $graph->Add($gbplot);
@@ -90,7 +92,11 @@ $b5plot->SetLegend('Single Only');
 $lplot->SetBarCenter();
 $lplot->SetColor('yellow');
 $lplot->SetLegend('Houses');
-$lplot->mark->SetType(Graph\Configs::getConfig('MARK_X'), '', 1.0);
+$lplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_X'),
+    '',
+    1.0
+);
 $lplot->mark->SetWeight(2);
 $lplot->mark->SetWidth(8);
 $lplot->mark->setColor('yellow');
@@ -100,9 +106,17 @@ $graph->legend->SetFrameWeight(1);
 $graph->legend->SetColumns(6);
 $graph->legend->SetColor('#4E4E4E', '#00A78A');
 
-$band = new Plot\PlotBand(Graph\Configs::getConfig('VERTICAL'), Graph\Configs::getConfig('BAND_RDIAG'), 11, 'max', 'khaki4');
+$band = new Plot\PlotBand(
+    Graph\Configs::getConfig('VERTICAL'),
+    Graph\Configs::getConfig('BAND_RDIAG'),
+    11,
+    'max',
+    'khaki4'
+);
 $band->ShowFrame(true);
-$band->SetOrder(Graph\Configs::getConfig('DEPTH_BACK'));
+$band->SetOrder(
+    Graph\Configs::getConfig('DEPTH_BACK')
+);
 $graph->Add($band);
 $example_title = 'Combineed Line and Bar plots';
 $graph->title->set($example_title);

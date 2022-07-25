@@ -1,134 +1,134 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Note: Format of each error message is array(<error message>,<number of arguments>)
 $_jpg_messages = [
-/*
- ** Headers already sent error. This is formatted as HTML different since this will be sent back directly as text
- */
-    10    => [
+    /*
+     ** Headers already sent error. This is formatted as HTML different since this will be sent back directly as text
+     */
+    10 => [
         '<table border="1"><tr><td style="color:darkred; font-size:1.2em;"><b>JpGraph Error:</b>
 HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at line <b>%d</b>.</td></tr><tr><td><b>Explanation:</b><br>HTTP headers have already been sent back to the browser indicating the data as text before the library got a chance to send it\'s image HTTP header to this browser. This makes it impossible for the library to send back image data to the browser (since that would be interpretated as text by the browser and show up as junk text).<p>Most likely you have some text in your script before the call to <i>Graph::Stroke()</i>. If this texts gets sent back to the browser the browser will assume that all data is plain text. Look for any text, even spaces and newlines, that might have been sent back to the browser. <p>For example it is a common mistake to leave a blank line before the opening "<b>&lt;?php</b>".</td></tr></table>', 2,
     ],
 
-/*
- ** Setup errors
- */
-    11    => ['No path specified for Configs::CACHE_DIR. Please specify Configs::CACHE_DIR manually in jpg-config.inc', 0],
-    12    => ['No path specified for TTF_DIR and path can not be determined automatically. Please specify TTF_DIR manually (in jpg-config.inc).', 0],
-    13    => ['The installed PHP version (%s) is not compatible with this release of the library. The library requires at least PHP version %s', 2],
+    /*
+     ** Setup errors
+     */
+    11 => ['No path specified for Configs::CACHE_DIR. Please specify Configs::CACHE_DIR manually in jpg-config.inc', 0],
+    12 => ['No path specified for TTF_DIR and path can not be determined automatically. Please specify TTF_DIR manually (in jpg-config.inc).', 0],
+    13 => ['The installed PHP version (%s) is not compatible with this release of the library. The library requires at least PHP version %s', 2],
 
-/*
- **  jpgraph_bar
- */
+    /*
+     **  jpgraph_bar
+     */
 
-    2001  => ['Number of colors is not the same as the number of patterns in BarPlot::SetPattern()', 0],
-    2002  => ['Unknown pattern specified in call to BarPlot::SetPattern()', 0],
-    2003  => ['Number of X and Y points are not equal. Number of X-points: %d Number of Y-points: %d', 2],
-    2004  => ['All values for a barplot must be numeric. You have specified value nr [%d] == %s', 2],
-    2005  => ['You have specified an empty array for shadow colors in the bar plot.', 0],
-    2006  => ['Unknown position for values on bars : %s', 1],
-    2007  => ['Cannot create GroupBarPlot from empty plot array.', 0],
-    2008  => ['Group bar plot element nbr %d is undefined or empty.', 0],
-    2009  => ['One of the objects submitted to GroupBar is not a BarPlot. Make sure that you create the GroupBar plot from an array of BarPlot or AccBarPlot objects. (Class = %s)', 1],
-    2010  => ['Cannot create AccBarPlot from empty plot array.', 0],
-    2011  => ['Acc bar plot element nbr %d is undefined or empty.', 1],
-    2012  => ['One of the objects submitted to AccBar is not a BarPlot. Make sure that you create the AccBar plot from an array of BarPlot objects. (Class=%s)', 1],
-    2013  => ['You have specified an empty array for shadow colors in the bar plot.', 0],
-    2014  => ['Number of datapoints for each data set in accbarplot must be the same', 0],
-    2015  => ['Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-coordinates', 0],
+    2001 => ['Number of colors is not the same as the number of patterns in BarPlot::SetPattern()', 0],
+    2002 => ['Unknown pattern specified in call to BarPlot::SetPattern()', 0],
+    2003 => ['Number of X and Y points are not equal. Number of X-points: %d Number of Y-points: %d', 2],
+    2004 => ['All values for a barplot must be numeric. You have specified value nr [%d] == %s', 2],
+    2005 => ['You have specified an empty array for shadow colors in the bar plot.', 0],
+    2006 => ['Unknown position for values on bars : %s', 1],
+    2007 => ['Cannot create GroupBarPlot from empty plot array.', 0],
+    2008 => ['Group bar plot element nbr %d is undefined or empty.', 0],
+    2009 => ['One of the objects submitted to GroupBar is not a BarPlot. Make sure that you create the GroupBar plot from an array of BarPlot or AccBarPlot objects. (Class = %s)', 1],
+    2010 => ['Cannot create AccBarPlot from empty plot array.', 0],
+    2011 => ['Acc bar plot element nbr %d is undefined or empty.', 1],
+    2012 => ['One of the objects submitted to AccBar is not a BarPlot. Make sure that you create the AccBar plot from an array of BarPlot objects. (Class=%s)', 1],
+    2013 => ['You have specified an empty array for shadow colors in the bar plot.', 0],
+    2014 => ['Number of datapoints for each data set in accbarplot must be the same', 0],
+    2015 => ['Individual bar plots in an AccBarPlot or GroupBarPlot can not have specified X-coordinates', 0],
 
-/*
- **  jpgraph_date
- */
+    /*
+     **  jpgraph_date
+     */
 
-    3001  => ['It is only possible to use either SetDateAlign() or SetTimeAlign() but not both', 0],
+    3001 => ['It is only possible to use either SetDateAlign() or SetTimeAlign() but not both', 0],
 
-/*
- **  jpgraph_error
- */
+    /*
+     **  jpgraph_error
+     */
 
-    4002  => ['Error in input data to LineErrorPlot. Number of data points must be a multiple of 3', 0],
+    4002 => ['Error in input data to LineErrorPlot. Number of data points must be a multiple of 3', 0],
 
-/*
- **  jpgraph_flags
- */
+    /*
+     **  jpgraph_flags
+     */
 
-    5001  => ['Unknown flag size (%d).', 1],
-    5002  => ['Flag index %s does not exist.', 1],
-    5003  => ['Invalid ordinal number (%d) specified for flag index.', 1],
-    5004  => ['The (partial) country name %s does not have a corresponding flag image. The flag may still exist but under another name, e.g. instead of "usa" try "united states".', 1],
+    5001 => ['Unknown flag size (%d).', 1],
+    5002 => ['Flag index %s does not exist.', 1],
+    5003 => ['Invalid ordinal number (%d) specified for flag index.', 1],
+    5004 => ['The (partial) country name %s does not have a corresponding flag image. The flag may still exist but under another name, e.g. instead of "usa" try "united states".', 1],
 
-/*
- **  jpgraph_gantt
- */
+    /*
+     **  jpgraph_gantt
+     */
 
-    6001  => ['Internal error. Height for ActivityTitles is < 0', 0],
-    6002  => ['You can\'t specify negative sizes for Gantt graph dimensions. Use 0 to indicate that you want the library to automatically determine a dimension.', 0],
-    6003  => ['Invalid format for Constrain parameter at index=%d in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)', 1],
-    6004  => ['Invalid format for Progress parameter at index=%d in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Progress)', 1],
-    6005  => ['SetScale() is not meaningful with Gantt charts.', 0],
-    6006  => ['Cannot autoscale Gantt chart. No dated activities exist. [GetBarMinMax() start >= n]', 0],
-    6007  => ['Sanity check for automatic Gantt chart size failed. Either the width (=%d) or height (=%d) is larger than MAX_GANTTIMG_SIZE. This could potentially be caused by a wrong date in one of the activities.', 2],
-    6008  => ['You have specified a constrain from row=%d to row=%d which does not have any activity', 2],
-    6009  => ['Unknown constrain type specified from row=%d to row=%d', 2],
-    6010  => ['Illegal icon index for Gantt builtin icon [%d]', 1],
-    6011  => ['Argument to IconImage must be string or integer', 0],
-    6012  => ['Unknown type in Gantt object title specification', 0],
-    6015  => ['Illegal vertical position %d', 1],
-    6016  => ['Date string (%s) specified for Gantt activity can not be interpretated. Please make sure it is a valid time string, e.g. 2005-04-23 13:30', 1],
-    6017  => ['Unknown date format in GanttScale (%s).', 1],
-    6018  => ['Interval for minutes must divide the hour evenly, e.g. 1,5,10,12,15,20,30 etc You have specified an interval of %d minutes.', 1],
-    6019  => ['The available width (%d) for minutes are to small for this scale to be displayed. Please use auto-sizing or increase the width of the graph.', 1],
-    6020  => ['Interval for hours must divide the day evenly, e.g. 0:30, 1:00, 1:30, 4:00 etc. You have specified an interval of %d', 1],
-    6021  => ['Unknown formatting style for week.', 0],
-    6022  => ['Gantt scale has not been specified.', 0],
-    6023  => ['If you display both hour and minutes the hour interval must be 1 (Otherwise it doesn\'t make sense to display minutes).', 0],
-    6024  => ['CSIM Target must be specified as a string. Start of target is: %d', 1],
-    6025  => ['CSIM Alt text must be specified as a string. Start of alt text is: %d', 1],
-    6027  => ['Progress value must in range [0, 1]', 0],
-    6028  => ['Specified height (%d) for gantt bar is out of range.', 1],
-    6029  => ['Offset for vertical line must be in range [0,1]', 0],
-    6030  => ['Unknown arrow direction for link.', 0],
-    6031  => ['Unknown arrow type for link.', 0],
-    6032  => ['Internal error: Unknown path type (=%d) specified for link.', 1],
-    6033  => ['Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)', 0],
+    6001 => ['Internal error. Height for ActivityTitles is < 0', 0],
+    6002 => ['You can\'t specify negative sizes for Gantt graph dimensions. Use 0 to indicate that you want the library to automatically determine a dimension.', 0],
+    6003 => ['Invalid format for Constrain parameter at index=%d in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Constrain-To,Constrain-Type)', 1],
+    6004 => ['Invalid format for Progress parameter at index=%d in CreateSimple(). Parameter must start with index 0 and contain arrays of (Row,Progress)', 1],
+    6005 => ['SetScale() is not meaningful with Gantt charts.', 0],
+    6006 => ['Cannot autoscale Gantt chart. No dated activities exist. [GetBarMinMax() start >= n]', 0],
+    6007 => ['Sanity check for automatic Gantt chart size failed. Either the width (=%d) or height (=%d) is larger than MAX_GANTTIMG_SIZE. This could potentially be caused by a wrong date in one of the activities.', 2],
+    6008 => ['You have specified a constrain from row=%d to row=%d which does not have any activity', 2],
+    6009 => ['Unknown constrain type specified from row=%d to row=%d', 2],
+    6010 => ['Illegal icon index for Gantt builtin icon [%d]', 1],
+    6011 => ['Argument to IconImage must be string or integer', 0],
+    6012 => ['Unknown type in Gantt object title specification', 0],
+    6015 => ['Illegal vertical position %d', 1],
+    6016 => ['Date string (%s) specified for Gantt activity can not be interpretated. Please make sure it is a valid time string, e.g. 2005-04-23 13:30', 1],
+    6017 => ['Unknown date format in GanttScale (%s).', 1],
+    6018 => ['Interval for minutes must divide the hour evenly, e.g. 1,5,10,12,15,20,30 etc You have specified an interval of %d minutes.', 1],
+    6019 => ['The available width (%d) for minutes are to small for this scale to be displayed. Please use auto-sizing or increase the width of the graph.', 1],
+    6020 => ['Interval for hours must divide the day evenly, e.g. 0:30, 1:00, 1:30, 4:00 etc. You have specified an interval of %d', 1],
+    6021 => ['Unknown formatting style for week.', 0],
+    6022 => ['Gantt scale has not been specified.', 0],
+    6023 => ['If you display both hour and minutes the hour interval must be 1 (Otherwise it doesn\'t make sense to display minutes).', 0],
+    6024 => ['CSIM Target must be specified as a string. Start of target is: %d', 1],
+    6025 => ['CSIM Alt text must be specified as a string. Start of alt text is: %d', 1],
+    6027 => ['Progress value must in range [0, 1]', 0],
+    6028 => ['Specified height (%d) for gantt bar is out of range.', 1],
+    6029 => ['Offset for vertical line must be in range [0,1]', 0],
+    6030 => ['Unknown arrow direction for link.', 0],
+    6031 => ['Unknown arrow type for link.', 0],
+    6032 => ['Internal error: Unknown path type (=%d) specified for link.', 1],
+    6033 => ['Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)', 0],
 
-/*
- **  jpgraph_gradient
- */
+    /*
+     **  jpgraph_gradient
+     */
 
-    7001  => ['Unknown gradient style (=%d).', 1],
+    7001 => ['Unknown gradient style (=%d).', 1],
 
-/*
- **  jpgraph_iconplot
- */
+    /*
+     **  jpgraph_iconplot
+     */
 
-    8001  => ['Mix value for icon must be between 0 and 100.', 0],
-    8002  => ['Anchor position for icons must be one of "top", "bottom", "left", "right" or "center"', 0],
-    8003  => ['It is not possible to specify both an image file and a country flag for the same icon.', 0],
-    8004  => ['In order to use Country flags as icons you must include the "jpgraph_flags.php" file.', 0],
+    8001 => ['Mix value for icon must be between 0 and 100.', 0],
+    8002 => ['Anchor position for icons must be one of "top", "bottom", "left", "right" or "center"', 0],
+    8003 => ['It is not possible to specify both an image file and a country flag for the same icon.', 0],
+    8004 => ['In order to use Country flags as icons you must include the "jpgraph_flags.php" file.', 0],
 
-/*
- **  jpgraph_imgtrans
- */
+    /*
+     **  jpgraph_imgtrans
+     */
 
-    9001  => ['Value for image transformation out of bounds. Vanishing point on horizon must be specified as a value between 0 and 1.', 0],
+    9001 => ['Value for image transformation out of bounds. Vanishing point on horizon must be specified as a value between 0 and 1.', 0],
 
-/*
- **  jpgraph_lineplot
- */
+    /*
+     **  jpgraph_lineplot
+     */
 
     10001 => ['LinePlot::SetFilled() is deprecated. Use SetFillColor()', 0],
     10002 => ['Plot too complicated for fast line Stroke. Use standard Stroke()', 0],
     10003 => ['Each plot in an accumulated lineplot must have the same number of data points.', 0],
 
-/*
- **  jpgraph_log
- */
+    /*
+     **  jpgraph_log
+     */
 
     11001 => ['Your data contains non-numeric values.', 0],
     11002 => ['Negative data values can not be used in a log scale.', 0],
@@ -136,9 +136,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     11004 => ['Scale error for logarithmic scale. You have a problem with your data values. The max value must be greater than 0. It is mathematically impossible to have 0 in a logarithmic scale.', 0],
     11005 => ['Specifying tick interval for a logarithmic scale is undefined. Remove any calls to SetTextLabelStart() or SetTextTickInterval() on the logarithmic scale.', 0],
 
-/*
- **  jpgraph_mgraph
- */
+    /*
+     **  jpgraph_mgraph
+     */
 
     12001 => ['You are using GD 2.x and are trying to use a background images on a non truecolor image. To use background images with GD 2.x it is necessary to enable truecolor by setting the USE_TRUECOLOR constant to TRUE. Due to a bug in GD 2.0.1 using any truetype fonts with truecolor images will result in very poor quality fonts.', 0],
     12002 => ['Incorrect file name for MGraph::SetBackgroundImage() : %s Must have a valid image extension (jpg,gif,png) when using auto detection of image type', 1],
@@ -153,9 +153,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     12011 => ['Can\'t create truecolor image. Check that you really have GD2 library installed.', 0],
     12012 => ['Can\'t create image. Check that you really have GD2 library installed.', 0],
 
-/*
- **  jpgraph_pie3d
- */
+    /*
+     **  jpgraph_pie3d
+     */
 
     14001 => ['Pie3D::ShowBorder() . Deprecated function. Use Pie3D::SetEdge() to control the edges around slices.', 0],
     14002 => ['PiePlot3D::SetAngle() 3D Pie projection angle must be between 5 and 85 degrees.', 0],
@@ -165,9 +165,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     14006 => ['Pie3D Internal Error: Z-Sorting algorithm for 3D Pies is not working properly (2). Trying to wrap twice while stroking.', 0],
     14007 => ['Width for 3D Pie is 0. Specify a size > 0', 0],
 
-/*
- **  jpgraph_pie
- */
+    /*
+     **  jpgraph_pie
+     */
 
     15001 => ['PiePLot::SetTheme() Unknown theme: %s', 1],
     15002 => ['Argument to PiePlot::ExplodeSlice() must be an integer', 0],
@@ -182,27 +182,27 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     15011 => ['In order to use image transformation you must include the file jpgraph_imgtrans.php in your script.', 0],
     15012 => ['PiePlot::SetTheme() is no longer supported. Use PieGraph::SetTheme()', 0],
 
-/*
- **  jpgraph_plotband
- */
+    /*
+     **  jpgraph_plotband
+     */
 
     16001 => ['Density for pattern must be between 1 and 100. (You tried %f)', 1],
     16002 => ['No positions specified for pattern.', 0],
     16003 => ['Unknown pattern specification (%d)', 0],
     16004 => ['Min value for plotband is larger than specified max value. Please correct.', 0],
 
-/*
- **  jpgraph_polar
- */
+    /*
+     **  jpgraph_polar
+     */
 
     17001 => ['Polar plots must have an even number of data point. Each data point is a tuple (angle,radius).', 0],
     17002 => ['Unknown alignment specified for X-axis title. (%s)', 1],
     //17003 => array('Set90AndMargin() is not supported for polar graphs.',0),
     17004 => ['Unknown scale type for polar graph. Must be "lin" or "log"', 0],
 
-/*
- **  jpgraph_radar
- */
+    /*
+     **  jpgraph_radar
+     */
 
     18001 => ['Client side image maps not supported for RadarPlots.', 0],
     18002 => ['RadarGraph::SupressTickMarks() is deprecated. Use HideTickMarks() instead.', 0],
@@ -213,54 +213,55 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     18007 => ['Number of titles does not match number of points in plot.', 0],
     18008 => ['Each radar plot must have the same number of data points.', 0],
 
-/*
- **  jpgraph_regstat
- */
+    /*
+     **  jpgraph_regstat
+     */
 
     19001 => ['Spline: Number of X and Y coordinates must be the same', 0],
     19002 => ['Invalid input data for spline. Two or more consecutive input X-values are equal. Each input X-value must differ since from a mathematical point of view it must be a one-to-one mapping, i.e. each X-value must correspond to exactly one Y-value.', 0],
     19003 => ['Bezier: Number of X and Y coordinates must be the same', 0],
 
-/*
- **  jpgraph_scatter
- */
+    /*
+     **  jpgraph_scatter
+     */
 
     20001 => ['Fieldplots must have equal number of X and Y points.', 0],
     20002 => ['Fieldplots must have an angle specified for each X and Y points.', 0],
     20003 => ['Scatterplot must have equal number of X and Y points.', 0],
 
-/*
- **  jpgraph_stock
- */
+    /*
+     **  jpgraph_stock
+     */
 
     21001 => ['Data values for Stock charts must contain an even multiple of %d data points.', 1],
 
-/*
- **  jpgraph_plotmark
- */
+    /*
+     **  jpgraph_plotmark
+     */
 
     23001 => ['This marker "%s" does not exist in color with index: %d', 2],
     23002 => ['Mark color index too large for marker "%s"', 1],
     23003 => ['A filename must be specified if you set the mark type to MARK_IMG.', 0],
 
-/*
- **  jpgraph_utils
- */
+    /*
+     **  jpgraph_utils
+     */
 
     24001 => ['FuncGenerator : No function specified. ', 0],
     24002 => ['FuncGenerator : Syntax error in function specification ', 0],
     24003 => ['DateScaleUtils: Unknown tick type specified in call to GetTicks()', 0],
     24004 => ['ReadCSV2: Column count mismatch in %s line %d', 2],
-/*
- **  jpgraph
- */
+    /*
+     **  jpgraph
+     */
 
     25001 => ['This PHP installation is not configured with the GD library. Please recompile PHP with GD support to run JpGraph. (Neither function imagetypes() nor imagecreatefromstring() does exist)', 0],
     25002 => ['Your PHP installation does not seem to have the required GD library. Please see the PHP documentation on how to install and enable the GD library.', 0],
     25003 => ['General PHP error : At %s:%d : %s', 3],
     25004 => ['General PHP error : %s ', 1],
     25005 => ['Can\'t access PHP_SELF, PHP global variable. You can\'t run PHP from command line if you want to use the \'auto\' naming of cache or image files.', 0],
-    25006 => ['Usage of Configs::FF_CHINESE (Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).', 0],
+    25006 => ['Usage of Configs::FF_CHINESE (
+Configs::FF_BIG5) font family requires that your PHP setup has the iconv() function. By default this is not compiled into PHP (needs the "--width-iconv" when configured).', 0],
     25007 => ['You are trying to use the locale (%s) which your PHP installation does not support. Hint: Use \'\' to indicate the default locale for this geographic region.', 1],
     25008 => ['Image width/height argument in Graph::Graph() must be numeric', 0],
     25009 => ['You must specify what scale to use with a call to Graph::SetScale()', 0],
@@ -400,21 +401,21 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     25132 => ['Undefined property %s.', 1],
     25133 => ['Use Graph::SetTheme() after Graph::SetScale().', 0],
 
-/*
- **  jpgraph_led
- */
+    /*
+     **  jpgraph_led
+     */
 
     25500 => ['Multibyte strings must be enabled in the PHP installation in order to run the LED module so that the function mb_strlen() is available. See PHP documentation for more information.', 0],
 
-/*
- **---------------------------------------------------------------------------------------------
- ** Pro-version strings
- **---------------------------------------------------------------------------------------------
- */
+    /*
+     **---------------------------------------------------------------------------------------------
+     ** Pro-version strings
+     **---------------------------------------------------------------------------------------------
+     */
 
-/*
- **  jpgraph_table
- */
+    /*
+     **  jpgraph_table
+     */
 
     27001 => ['GTextTable: Invalid argument to Set(). Array argument must be 2 dimensional', 0],
     27002 => ['GTextTable: Invalid argument to Set()', 0],
@@ -432,9 +433,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     27014 => ['GTextTable: Table is not initilaized with either a call to Set() or Init()', 0],
     27015 => ['GTextTable: Cell image constrain type must be TIMG_WIDTH or TIMG_HEIGHT', 0],
 
-/*
- **  jpgraph_windrose
- */
+    /*
+     **  jpgraph_windrose
+     */
 
     22001 => ['Total percentage for all windrose legs in a windrose plot can not exceed 100%% !\n(Current max is: %d)', 1],
     22002 => ['Graph is too small to have a scale. Please make the graph larger.', 0],
@@ -456,32 +457,32 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     22019 => ['Index for direction must be between 0 and 15. You can\'t specify angles for a Regular Windplot, only index and compass directions.', 0],
     22020 => ['Windrose plot is too large to fit the specified Graph size. Please use WindrosePlot::SetSize() to make the plot smaller or increase the size of the Graph in the initial WindroseGraph() call.', 0],
     22021 => ['It is only possible to add Text, IconPlot or WindrosePlot to a Windrose Graph', 0],
-/*
- **  jpgraph_odometer
- */
+    /*
+     **  jpgraph_odometer
+     */
 
     13001 => ['Unknown needle style (%d).', 1],
     13002 => ['Value for odometer (%f) is outside specified scale [%f,%f]', 3],
 
-/*
- **  jpgraph_barcode
- */
+    /*
+     **  jpgraph_barcode
+     */
 
-    1001  => ['Unknown encoder specification: %s', 1],
-    1002  => ['Data validation failed. Can\'t encode [%s] using encoding "%s"', 2],
-    1003  => ['Internal encoding error. Trying to encode %s is not possible in Code 128', 1],
-    1004  => ['Internal barcode error. Unknown UPC-E encoding type: %s', 1],
-    1005  => ['Internal error. Can\'t encode character tuple (%s, %s) in Code-128 charset C', 2],
-    1006  => ['Internal encoding error for CODE 128. Trying to encode control character in CHARSET != A', 0],
-    1007  => ['Internal encoding error for CODE 128. Trying to encode DEL in CHARSET != B', 0],
-    1008  => ['Internal encoding error for CODE 128. Trying to encode small letters in CHARSET != B', 0],
-    1009  => ['Encoding using CODE 93 is not yet supported.', 0],
-    1010  => ['Encoding using POSTNET is not yet supported.', 0],
-    1011  => ['Non supported barcode backend for type %s', 1],
+    1001 => ['Unknown encoder specification: %s', 1],
+    1002 => ['Data validation failed. Can\'t encode [%s] using encoding "%s"', 2],
+    1003 => ['Internal encoding error. Trying to encode %s is not possible in Code 128', 1],
+    1004 => ['Internal barcode error. Unknown UPC-E encoding type: %s', 1],
+    1005 => ['Internal error. Can\'t encode character tuple (%s, %s) in Code-128 charset C', 2],
+    1006 => ['Internal encoding error for CODE 128. Trying to encode control character in CHARSET != A', 0],
+    1007 => ['Internal encoding error for CODE 128. Trying to encode DEL in CHARSET != B', 0],
+    1008 => ['Internal encoding error for CODE 128. Trying to encode small letters in CHARSET != B', 0],
+    1009 => ['Encoding using CODE 93 is not yet supported.', 0],
+    1010 => ['Encoding using POSTNET is not yet supported.', 0],
+    1011 => ['Non supported barcode backend for type %s', 1],
 
-/*
- ** PDF417
- */
+    /*
+     ** PDF417
+     */
     26000 => ['PDF417: The PDF417 module requires that the PHP installation must support the function bcmod(). This is normally enabled at compile time. See documentation for more information.', 0],
     26001 => ['PDF417: Number of Columns must be >= 1 and <= 30', 0],
     26002 => ['PDF417: Error level must be between 0 and 8', 0],
@@ -500,9 +501,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     26015 => ['PDF417: Internal error. State transition table entry 0 is NULL. Entry 1 = (%s)', 1],
     26016 => ['PDF417: Internal error: Unrecognized state transition mode in decode.', 0],
 
-/*
- ** jpgraph_contour
- */
+    /*
+     ** jpgraph_contour
+     */
 
     28001 => ['Third argument to Contour must be an array of colors.', 0],
     28002 => ['Number of colors must equal the number of isobar lines specified', 0],
@@ -512,9 +513,9 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     28006 => ['ContourPlot Internal Error: isobarVCrossing: Col index too large (%d)', 1],
     28007 => ['ContourPlot interpolation factor is too large (>5)', 0],
 
-/*
- * jpgraph_matrix and colormap
- */
+    /*
+     * jpgraph_matrix and colormap
+     */
     29201 => ['Min range value must be less or equal to max range value for colormaps', 0],
     29202 => ['The distance between min and max value is too small for numerical precision', 0],
     29203 => ['Number of color quantification level must be at least %d', 1],
@@ -526,8 +527,8 @@ HTTP headers have already been sent.<br>Caused by output from file <b>%s</b> at 
     29209 => ['CSIM Target matrix must be the same size as the data matrix (csim=%d x %d, data=%d x %d)', 4],
     29210 => ['CSIM Target for matrix labels does not match the number of labels (csim=%d, labels=%d)', 2],
 
-/*
- * jpgraph_theme
- */
+    /*
+     * jpgraph_theme
+     */
     30001 => ["Theme::%s() is not defined. \nPlease make %s(\$graph) function in your theme classs.", 2],
 ];

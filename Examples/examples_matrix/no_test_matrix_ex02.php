@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -21,15 +21,19 @@ $data = [
 
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
-$r = count($data);
-$c = count($data[0]);
+$r = \count($data);
+$c = \count($data[0]);
 
-$__width       = 250;
-$__height      = 220;
-$graph         = new MatrixGraph($__width, $__height);
+$__width = 250;
+$__height = 220;
+$graph = new MatrixGraph($__width, $__height);
 $example_title = 'Meshinterpolation=3';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 $mp = new MatrixPlot($data, 1);
 $mp->colormap->SetMap(0);

@@ -9,7 +9,7 @@ namespace Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Text\LanguageConv;
 use Amenadiel\JpGraph\Text\TTF;
 use Amenadiel\JpGraph\Util;
-use Amenadiel\JpGraph\Util\ErrMsgText;
+use Amenadiel\JpGraph\Util\ExceptionFactory;
 
 // load fonts only once, and define a constant for them
 define("GD_FF_FONT0", imageloadfont(dirname(dirname(__FILE__)) . '/fonts/FF_FONT0.gdf'));
@@ -101,7 +101,7 @@ class Image
         }
 
         if (!$this->SetImgFormat($aFormat)) {
-            Util\JpGraphError::RaiseL(25081, $aFormat); //("JpGraph: Selected graphic format is either not supported or unknown [$aFormat]");
+            throw      Util\JpGraphError::make(25081, $aFormat); //("JpGraph: Selected graphic format is either not supported or unknown [$aFormat]");
         }
         $this->ttf      = new TTF();
         $this->langconv = new LanguageConv();
@@ -141,12 +141,12 @@ class Image
         $aHeight *= Configs::SUPERSAMPLING_SCALE;
 
         if ($aWidth <= 1 || $aHeight <= 1) {
-            Util\JpGraphError::RaiseL(25082, $aWidth, $aHeight); //("Illegal sizes specified for width or height when creating an image, (width=$aWidth, height=$aHeight)");
+            throw      Util\JpGraphError::make(25082, $aWidth, $aHeight); //("Illegal sizes specified for width or height when creating an image, (width=$aWidth, height=$aHeight)");
         }
 
         $this->img = @imagecreatetruecolor((int) $aWidth, (int) $aHeight);
         if ($this->img === false) {
-            Util\JpGraphError::RaiseL(25126);
+            throw      Util\JpGraphError::make(25126);
             //die("Can't create truecolor image. Check that you really have GD2 library installed.");
         }
         $this->SetAlphaBlending();
@@ -235,13 +235,13 @@ class Image
             if (($fromWidth != -1 && ($fromWidth != $toWidth)) || ($fromHeight != -1 && ($fromHeight != $fromHeight))) {
                 // Create a new canvas that will hold the re-scaled original from image
                 if ($toWidth <= 1 || $toHeight <= 1) {
-                    Util\JpGraphError::RaiseL(25083); //('Illegal image size when copying image. Size for copied to image is 1 pixel or less.');
+                    throw      Util\JpGraphError::make(25083); //('Illegal image size when copying image. Size for copied to image is 1 pixel or less.');
                 }
 
                 $tmpimg = @imagecreatetruecolor($toWidth, $toHeight);
 
                 if ($tmpimg < 1) {
-                    Util\JpGraphError::RaiseL(25084); //('Failed to create temporary GD canvas. Out of memory ?');
+                    throw      Util\JpGraphError::make(25084); //('Failed to create temporary GD canvas. Out of memory ?');
                 }
                 $this->CopyCanvasH(
                     $tmpimg,
@@ -261,19 +261,19 @@ class Image
         }
     }
 
-    public static function GetWidth($aImg = null)
+    public static function GetWidth($aImg)
     {
         if ($aImg === null) {
-            $aImg = $this->img;
+            throw new \Exception("parameter 1 cannot be empty", 1);
         }
 
         return imagesx($aImg);
     }
 
-    public static function GetHeight($aImg = null)
+    public static function GetHeight($aImg)
     {
         if ($aImg === null) {
-            $aImg = $this->img;
+            throw new \Exception("parameter 1 cannot be empty", 1);
         }
 
         return imagesy($aImg);
@@ -283,7 +283,7 @@ class Image
     {
         $img = imagecreatefromstring($aStr);
         if ($img === false) {
-            Util\JpGraphError::RaiseL(25085);
+            throw      Util\JpGraphError::make(25085);
             //('An image can not be created from the supplied string. It is either in a format not supported or the string is representing an corrupt image.');
         }
 
@@ -342,7 +342,7 @@ class Image
         if (!function_exists('imagettfbbox')) {
             // use internal font when php is configured without '--with-ttf'
             $this->font_family = Configs::FF_FONT1;
-        //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
+            //  Util\JpGraphError::RaiseL(25087);//('This PHP build has not been configured with TTF support. You need to recompile your PHP installation with FreeType support.');
         } else {
             $this->font_file = $this->ttf->File($this->font_family, $this->font_style);
         }
@@ -362,14 +362,14 @@ class Image
             if ($angle == 0) {
                 $h = imagefontheight($this->font_family);
                 if ($h === false) {
-                    Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                    throw      Util\JpGraphError::make(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
                 }
 
                 return $n * $h;
             }
             $w = @imagefontwidth($this->font_family);
             if ($w === false) {
-                Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                throw      Util\JpGraphError::make(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
             }
 
             return $m * $w;
@@ -416,7 +416,7 @@ class Image
             if ($angle == 0) {
                 $w = @imagefontwidth($this->font_family);
                 if ($w === false) {
-                    Util\JpGraphError::RaiseL(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
+                    throw      Util\JpGraphError::make(25088); //('You have a misconfigured GD font support. The call to imagefontwidth() fails.');
                 }
 
                 return $m * $w;
@@ -424,7 +424,7 @@ class Image
             // 90 degrees internal so height becomes width
             $h = @imagefontheight($this->font_family);
             if ($h === false) {
-                Util\JpGraphError::RaiseL(25089); //('You have a misconfigured GD font support. The call to imagefontheight() fails.');
+                throw      Util\JpGraphError::make(25089); //('You have a misconfigured GD font support. The call to imagefontheight() fails.');
             }
 
             return $n * $h;
@@ -446,301 +446,6 @@ class Image
         return $m;
     }
 
-    // Draw text with a box around it
-    public function StrokeBoxedText(
-        $x,
-        $y,
-        $txt,
-        $dir = 0,
-        $fcolor = 'white',
-        $bcolor = 'black',
-        $shadowcolor = false,
-        $paragraph_align = 'left',
-        $xmarg = 6,
-        $ymarg = 4,
-        $cornerradius = 0,
-        $dropwidth = 3
-    ) {
-        $oldx = $this->lastx;
-        $oldy = $this->lasty;
-
-        if (!is_numeric($dir)) {
-            if ($dir == 'h') {
-                $dir = 0;
-            } elseif ($dir == 'v') {
-                $dir = 90;
-            } else {
-                Util\JpGraphError::RaiseL(25090, $dir);
-            }
-            //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
-        }
-
-        if ($this->font_family >= Configs::FF_FONT0 && $this->font_family <= Configs::FF_FONT2 + 1) {
-            $width  = $this->GetTextWidth($txt, $dir);
-            $height = $this->GetTextHeight($txt, $dir);
-        } else {
-            $width  = $this->GetBBoxWidth($txt, $dir);
-            $height = $this->GetBBoxHeight($txt, $dir);
-        }
-
-        $height += 2 * $ymarg;
-        $width += 2 * $xmarg;
-
-        if ($this->text_halign == 'right') {
-            $x -= $width;
-        } elseif ($this->text_halign == 'center') {
-            $x -= $width / 2;
-        }
-
-        if ($this->text_valign == 'bottom') {
-            $y -= $height;
-        } elseif ($this->text_valign == 'center') {
-            $y -= $height / 2;
-        }
-
-        $olda = $this->SetAngle(0);
-
-        if ($shadowcolor) {
-            $this->PushColor($shadowcolor);
-            $this->FilledRoundedRectangle(
-                $x - $xmarg + $dropwidth,
-                $y - $ymarg + $dropwidth,
-                $x + $width + $dropwidth,
-                $y + $height - $ymarg + $dropwidth,
-                $cornerradius
-            );
-            $this->PopColor();
-            $this->PushColor($fcolor);
-            $this->FilledRoundedRectangle(
-                $x - $xmarg,
-                $y - $ymarg,
-                $x + $width,
-                $y + $height - $ymarg,
-                $cornerradius
-            );
-            $this->PopColor();
-            $this->PushColor($bcolor);
-            $this->RoundedRectangle(
-                $x - $xmarg,
-                $y - $ymarg,
-                $x + $width,
-                $y + $height - $ymarg,
-                $cornerradius
-            );
-            $this->PopColor();
-        } else {
-            if ($fcolor) {
-                $oc = $this->current_color;
-                $this->SetColor($fcolor);
-                $this->FilledRoundedRectangle($x - $xmarg, $y - $ymarg, $x + $width, $y + $height - $ymarg, $cornerradius);
-                $this->current_color = $oc;
-            }
-            if ($bcolor) {
-                $oc = $this->current_color;
-                $this->SetColor($bcolor);
-                $this->RoundedRectangle($x - $xmarg, $y - $ymarg, $x + $width, $y + $height - $ymarg, $cornerradius);
-                $this->current_color = $oc;
-            }
-        }
-
-        $h = $this->text_halign;
-        $v = $this->text_valign;
-        $this->SetTextAlign('left', 'top');
-
-        $debug = false;
-        $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
-
-        $bb = [
-            $x - $xmarg,
-            $y + $height - $ymarg,
-            $x + $width,
-            $y + $height - $ymarg,
-            $x + $width,
-            $y - $ymarg,
-            $x - $xmarg,
-            $y - $ymarg,
-        ];
-        $this->SetTextAlign($h, $v);
-
-        $this->SetAngle($olda);
-        $this->lastx = $oldx;
-        $this->lasty = $oldy;
-
-        return $bb;
-    }
-
-    // Draw text with a box around it. This time the box will be rotated
-    // with the text. The previous method will just make a larger enough non-rotated
-    // box to hold the text inside.
-    public function StrokeBoxedText2(
-        $x,
-        $y,
-        $txt,
-        $dir = 0,
-        $fcolor = 'white',
-        $bcolor = 'black',
-        $shadowcolor = false,
-        $paragraph_align = 'left',
-        $xmarg = 6,
-        $ymarg = 4,
-        $cornerradius = 0,
-        $dropwidth = 3
-    ) {
-        // This version of boxed text will stroke a rotated box round the text
-        // thta will follow the angle of the text.
-        // This has two implications:
-        // 1) This methos will only support TTF fonts
-        // 2) The only two alignment that makes sense are centered or baselined
-
-        if ($this->font_family <= Configs::FF_FONT2 + 1) {
-            Util\JpGraphError::RaiseL(25131); //StrokeBoxedText2() Only support TTF fonts and not built in bitmap fonts
-        }
-
-        $oldx = $this->lastx;
-        $oldy = $this->lasty;
-        $dir  = $this->NormAngle($dir);
-
-        if (!is_numeric($dir)) {
-            if ($dir == 'h') {
-                $dir = 0;
-            } elseif ($dir == 'v') {
-                $dir = 90;
-            } else {
-                Util\JpGraphError::RaiseL(25090, $dir);
-            }
-            //(" Unknown direction specified in call to StrokeBoxedText() [$dir]");
-        }
-
-        $width       = $this->GetTextWidth($txt, 0) + 2 * $xmarg;
-        $height      = $this->GetTextHeight($txt, 0) + 2 * $ymarg;
-        $rect_width  = $this->GetBBoxWidth($txt, $dir);
-        $rect_height = $this->GetBBoxHeight($txt, $dir);
-
-        $baseline_offset = $this->bbox_cache[1] - 1;
-
-        if ($this->text_halign == 'center') {
-            if ($dir >= 0 && $dir <= 90) {
-                $x -= $rect_width / 2;
-                $x += sin($dir * M_PI / 180) * $height;
-                $y += $rect_height / 2;
-            } elseif ($dir >= 270 && $dir <= 360) {
-                $x -= $rect_width / 2;
-                $y -= $rect_height / 2;
-                $y += cos($dir * M_PI / 180) * $height;
-            } elseif ($dir >= 90 && $dir <= 180) {
-                $x += $rect_width / 2;
-                $y += $rect_height / 2;
-                $y += cos($dir * M_PI / 180) * $height;
-            } else {
-                // $dir > 180 &&  $dir < 270
-                $x += $rect_width / 2;
-                $x += sin($dir * M_PI / 180) * $height;
-                $y -= $rect_height / 2;
-            }
-        }
-
-        // Rotate the box around this point
-        $this->SetCenter($x, $y);
-        $olda = $this->SetAngle(-$dir);
-
-        // We need to use adjusted coordinats for the box to be able
-        // to draw the box below the baseline. This cannot be done before since
-        // the rotating point must be the original x,y since that is arounbf the
-        // point where the text will rotate and we cannot change this since
-        // that is where the GD/GreeType will rotate the text
-
-        // For smaller <14pt font we need to do some additional
-        // adjustments to make it look good
-        if ($this->font_size < 14) {
-            $x -= 2;
-            $y += 2;
-        }
-        //  $y += $baseline_offset;
-
-        if ($shadowcolor) {
-            $this->PushColor($shadowcolor);
-            $this->FilledRectangle(
-                $x - $xmarg + $dropwidth,
-                $y + $ymarg + $dropwidth - $height,
-                $x + $width + $dropwidth,
-                $y + $ymarg + $dropwidth
-            );
-            //$cornerradius);
-            $this->PopColor();
-            $this->PushColor($fcolor);
-            $this->FilledRectangle(
-                $x - $xmarg,
-                $y + $ymarg - $height,
-                $x + $width,
-                $y + $ymarg
-            );
-            //$cornerradius);
-            $this->PopColor();
-            $this->PushColor($bcolor);
-            $this->Rectangle(
-                $x - $xmarg,
-                $y + $ymarg - $height,
-                $x + $width,
-                $y + $ymarg
-            );
-            //$cornerradius);
-            $this->PopColor();
-        } else {
-            if ($fcolor) {
-                $oc = $this->current_color;
-                $this->SetColor($fcolor);
-                $this->FilledRectangle($x - $xmarg, $y + $ymarg - $height, $x + $width, $y + $ymarg); //,$cornerradius);
-                $this->current_color = $oc;
-            }
-            if ($bcolor) {
-                $oc = $this->current_color;
-                $this->SetColor($bcolor);
-                $this->Rectangle($x - $xmarg, $y + $ymarg - $height, $x + $width, $y + $ymarg); //,$cornerradius);
-                $this->current_color = $oc;
-            }
-        }
-
-        if ($this->font_size < 14) {
-            $x += 2;
-            $y -= 2;
-        }
-
-        // Restore the original y before we stroke the text
-        // $y -= $baseline_offset;
-
-        $this->SetCenter(0, 0);
-        $this->SetAngle($olda);
-
-        $h = $this->text_halign;
-        $v = $this->text_valign;
-        if ($this->text_halign == 'center') {
-            $this->SetTextAlign('center', 'basepoint');
-        } else {
-            $this->SetTextAlign('basepoint', 'basepoint');
-        }
-
-        $debug = false;
-        $this->StrokeText($x, $y, $txt, $dir, $paragraph_align, $debug);
-
-        $bb = [
-            $x - $xmarg,
-            $y + $height - $ymarg,
-            $x + $width,
-            $y + $height - $ymarg,
-            $x + $width,
-            $y - $ymarg,
-            $x - $xmarg,
-            $y - $ymarg,
-        ];
-
-        $this->SetTextAlign($h, $v);
-        $this->SetAngle($olda);
-
-        $this->lastx = $oldx;
-        $this->lasty = $oldy;
-
-        return $bb;
-    }
 
     // Set text alignment
     public function SetTextAlign($halign, $valign = 'bottom')
@@ -752,7 +457,7 @@ class Image
     public function _StrokeBuiltinFont($x, $y, $txt, $dir, $paragraph_align, &$aBoundingBox, $aDebug = false)
     {
         if (is_numeric($dir) && $dir != 90 && $dir != 0) {
-            Util\JpGraphError::RaiseL(25091);
+            throw      Util\JpGraphError::make(25091);
         }
         //(" Internal font does not support drawing text at arbitrary angle. Use TTF fonts instead.");
 
@@ -853,7 +558,7 @@ class Image
         if (!Configs::USE_LIBRARY_IMAGETTFBBOX) {
             $bbox = @imagettfbbox($size, $angle, $fontfile, $text);
             if ($bbox === false) {
-                Util\JpGraphError::RaiseL(25092, $this->font_file);
+                throw      Util\JpGraphError::make(25092, $this->font_file);
                 //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
             }
             $this->bbox_cache = $bbox;
@@ -866,7 +571,7 @@ class Image
         // angle = 0 and then rotate the bounding box manually
         $bbox = @imagettfbbox($size, 0, $fontfile, $text);
         if ($bbox === false && !is_readable($this->font_file)) {
-            Util\JpGraphError::RaiseL(25092, $this->font_file);
+            throw      Util\JpGraphError::make(25092, $this->font_file);
             //("There is either a configuration problem with TrueType or a problem reading font file (".$this->font_file."). Make sure file exists and is in a readable place for the HTTP process. (If 'basedir' restriction is enabled in PHP then the font file must be located in the document root.). It might also be a wrongly installed FreeType library. Try uppgrading to at least FreeType 2.1.13 and recompile GD with the correct setup so it can find the new FT library.");
         }
 
@@ -951,7 +656,7 @@ class Image
         $aTxt = $this->AddTxtCR($aTxt);
 
         if (!is_readable($this->font_file)) {
-            Util\JpGraphError::RaiseL(25093, $this->font_file);
+            throw      Util\JpGraphError::make(25093, $this->font_file);
             //('Can not read font file ('.$this->font_file.') in call to Image::GetBBoxTTF. Please make sure that you have set a font before calling this method and that the font is installed in the TTF directory.');
         }
         $bbox = $this->imagettfbbox_fixed($this->font_size, $aAngle, $this->font_file, $aTxt);
@@ -1296,7 +1001,7 @@ class Image
         $txt = $this->langconv->Convert($txt, $this->font_family);
 
         if (!is_numeric($dir)) {
-            Util\JpGraphError::RaiseL(25094); //(" Direction for text most be given as an angle between 0 and 90.");
+            throw      Util\JpGraphError::make(25094); //(" Direction for text most be given as an angle between 0 and 90.");
         }
 
         if ($this->font_family >= Configs::FF_FONT0 && $this->font_family <= Configs::FF_FONT2 + 1) {
@@ -1304,7 +1009,7 @@ class Image
         } elseif ($this->font_family >= Configs::_FIRST_FONT && $this->font_family <= Configs::_LAST_FONT) {
             $this->_StrokeTTF($x, $y, $txt, $dir, $paragraph_align, $boundingbox, $debug);
         } else {
-            Util\JpGraphError::RaiseL(25095); //(" Unknown font font family specification. ");
+            throw      Util\JpGraphError::make(25095); //(" Unknown font font family specification. ");
         }
 
         return $boundingbox;
@@ -1328,7 +1033,7 @@ class Image
             return;
         }
 
-        Util\JpGraphError::RaiseL(25130, $this->plotwidth, $this->plotheight);
+        throw      Util\JpGraphError::make(25130, $this->plotwidth, $this->plotheight);
         //Util\JpGraphError::raise("To small plot area. ($lm,$rm,$tm,$bm : $this->plotwidth x $this->plotheight). With the given image size and margins there is to little space left for the plot. Increase the plot size or reduce the margins.");
     }
 
@@ -1343,7 +1048,7 @@ class Image
         $this->current_color      = $this->rgb->allocate($color, $aAlpha);
         if ($this->current_color == -1) {
             $tc = imagecolorstotal($this->img);
-            Util\JpGraphError::RaiseL(25096);
+            throw      Util\JpGraphError::make(25096);
             //("Can't allocate any more colors. Image has already allocated maximum of <b>$tc colors</b>. This might happen if you have anti-aliasing turned on together with a background image or perhaps gradient fill since this requires many, many colors. Try to turn off anti-aliasing. If there is still a problem try downgrading the quality of the background image to use a smaller pallete to leave some entries for your graphs. You should try to limit the number of colors in your background image to 64. If there is still problem set the constant DEFINE(\"Configs::USE_APPROX_COLORS\",true); in jpgraph.php This will use approximative colors when the palette is full. Unfortunately there is not much JpGraph can do about this since the palette size is a limitation of current graphic format and what the underlying GD library suppports.");
         }
 
@@ -1358,14 +1063,14 @@ class Image
             $this->colorstackidx += 2;
             $this->SetColor($color);
         } else {
-            Util\JpGraphError::RaiseL(25097); //("Color specified as empty string in PushColor().");
+            throw      Util\JpGraphError::make(25097); //("Color specified as empty string in PushColor().");
         }
     }
 
     public function PopColor()
     {
         if ($this->colorstackidx < 1) {
-            Util\JpGraphError::RaiseL(25098); //(" Negative Color stack index. Unmatched call to PopColor()");
+            throw      Util\JpGraphError::make(25098); //(" Negative Color stack index. Unmatched call to PopColor()");
         }
         $this->current_color      = $this->colorstack[--$this->colorstackidx];
         $this->current_color_name = $this->colorstack[--$this->colorstackidx];
@@ -1500,7 +1205,7 @@ class Image
     {
         if (is_numeric($s)) {
             if ($s < 1 || $s > 4) {
-                Util\JpGraphError::RaiseL(25101, $s); //(" Illegal numeric argument to SetLineStyle(): ($s)");
+                throw      Util\JpGraphError::make(25101, $s); //(" Illegal numeric argument to SetLineStyle(): ($s)");
             }
         } elseif (is_string($s)) {
             if ($s == 'solid') {
@@ -1512,10 +1217,10 @@ class Image
             } elseif ($s == 'longdashed') {
                 $s = 4;
             } else {
-                Util\JpGraphError::RaiseL(25102, $s); //(" Illegal string argument to SetLineStyle(): $s");
+                throw      Util\JpGraphError::make(25102, $s); //(" Illegal string argument to SetLineStyle(): $s");
             }
         } else {
-            Util\JpGraphError::RaiseL(25103, $s); //(" Illegal argument to SetLineStyle $s");
+            throw      Util\JpGraphError::make(25103, $s); //(" Illegal argument to SetLineStyle $s");
         }
         $old              = $this->line_style;
         $this->line_style = $s;
@@ -1568,7 +1273,7 @@ class Image
 
                     break;
                 default:
-                    Util\JpGraphError::RaiseL(25104, $this->line_style); //(" Unknown line style: $this->line_style ");
+                    throw      Util\JpGraphError::make(25104, $this->line_style); //(" Unknown line style: $this->line_style ");
 
                     break;
             }
@@ -1588,7 +1293,7 @@ class Image
         // Dashed line does not work with anti-alias enabled. This
         // is a limitation in GD.
         if ($this->use_anti_aliasing) {
-            //            Util\JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
+            //     throw      Util\JpGraphError::make(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
 
         $x1 = round($x1);
@@ -1618,7 +1323,7 @@ class Image
         // Dashed line does not work with anti-alias enabled. This
         // is a limitation in GD.
         if ($this->use_anti_aliasing) {
-            //            Util\JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
+            //     throw      Util\JpGraphError::make(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
 
         $x1 = round($x1);
@@ -1694,7 +1399,7 @@ class Image
     {
         $n = Configs::safe_count($pts);
         if ($n == 0) {
-            Util\JpGraphError::RaiseL(25105); //('NULL data specified for a filled polygon. Check that your data is not NULL.');
+            throw      Util\JpGraphError::make(25105); //('NULL data specified for a filled polygon. Check that your data is not NULL.');
         }
         for ($i = 0; $i < $n; ++$i) {
             $pts[$i] = round($pts[$i]);
@@ -1903,7 +1608,7 @@ class Image
     {
         $bc = $this->rgb->allocate($aBordColor);
         if ($bc == -1) {
-            Util\JpGraphError::RaiseL(25106); //('Image::FillToBorder : Can not allocate more colors');
+            throw      Util\JpGraphError::make(25106); //('Image::FillToBorder : Can not allocate more colors');
         }
         imagefilltoborder($this->img, round($x), round($y), $bc, $this->current_color);
     }
@@ -1929,9 +1634,8 @@ class Image
         $lineno = '';
         if (headers_sent($file, $lineno)) {
             $file = basename($file);
-            $t    = new ErrMsgText();
-            $msg  = $t->Get(10, $file, $lineno);
-            die($msg);
+
+            throw ExceptionFactory::create(10, $file, $lineno);
         }
 
         if ($this->expired) {
@@ -1961,12 +1665,12 @@ class Image
             if ($aFile != '') {
                 $res = @$func($this->img, $aFile);
                 if (!$res) {
-                    Util\JpGraphError::RaiseL(25107, $aFile); //("Can't write to file '$aFile'. Check that the process running PHP has enough permission.");
+                    throw      Util\JpGraphError::make(25107, $aFile); //("Can't write to file '$aFile'. Check that the process running PHP has enough permission.");
                 }
             } else {
                 $res = @$func($this->img);
                 if (!$res) {
-                    Util\JpGraphError::RaiseL(25108); //("Can't stream image. This is most likely due to a faulty PHP/GD setup. Try to recompile PHP and use the built-in GD library that comes with PHP.");
+                    throw      Util\JpGraphError::make(25108); //("Can't stream image. This is most likely due to a faulty PHP/GD setup. Try to recompile PHP and use the built-in GD library that comes with PHP.");
                 }
             }
         }
@@ -1975,7 +1679,8 @@ class Image
     // Do SuperSampling using $scale
     public function DoSupersampling()
     {
-        if (Configs::SUPERSAMPLING_SCALE <= 1) {
+        if (Configs::SUPERSAMPLING_SCALE <= 1
+        ) {
             return $this->img;
         }
 
@@ -2013,7 +1718,7 @@ class Image
             } elseif ($supported & IMG_XPM) {
                 $this->img_format = 'xpm';
             } else {
-                Util\JpGraphError::RaiseL(25109); //("Your PHP (and GD-lib) installation does not appear to support any known graphic formats. You need to first make sure GD is compiled as a module to PHP. If you also want to use JPEG images you must get the JPEG library. Please see the PHP docs for details.");
+                throw      Util\JpGraphError::make(25109); //("Your PHP (and GD-lib) installation does not appear to support any known graphic formats. You need to first make sure GD is compiled as a module to PHP. If you also want to use JPEG images you must get the JPEG library. Please see the PHP docs for details.");
             }
 
             return true;
@@ -2041,7 +1746,7 @@ class Image
             return;
         }
 
-        Util\JpGraphError::RaiseL(25110, $aFormat); //(" Your PHP installation does not support the chosen graphic format: $aFormat");
+        throw      Util\JpGraphError::make(25110, $aFormat); //(" Your PHP installation does not support the chosen graphic format: $aFormat");
     }
 
     /**
@@ -2134,7 +1839,8 @@ class Image
         }
 
         //print_r($pts);exit;
-        if (Configs::safe_count($pts) / 2 < 3) {
+        if (Configs::safe_count($pts) / 2 < 3
+        ) {
             return;
         }
 
@@ -2239,7 +1945,7 @@ class Image
         if (isset($this->{$variable_name})) {
             return $this->{$variable_name} * Configs::SUPERSAMPLING_SCALE;
         }
-        Util\JpGraphError::RaiseL('25132', $name);
+        throw      Util\JpGraphError::make('25132', $name);
     }
 
     public function __set($name, $value)

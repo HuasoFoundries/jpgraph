@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -34,9 +34,10 @@ $data = [
 ];
 
 // Format and add the Gantt bars to the chart
-$n = count($data);
+$n = \count($data);
+
 for ($i = 0; $i < $n; ++$i) {
-    if ($i === 0 || $i === 3) {
+    if (0 === $i || 3 === $i) {
         // Format the group bars
         $bar = new Plot\GanttBar($data[$i][0], [$data[$i][1], $data[$i][2], $data[$i][3]], $data[$i][2], $data[$i][3], '', 0.35);
 

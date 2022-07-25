@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,9 +10,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 
 // Setup a basic canvas we can work
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
+$g = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');
@@ -23,8 +23,12 @@ $g->InitFrame();
 
 // Draw a text box in the middle
 $txt = "This\nis\na TEXT!!!";
-$t   = new Text\Text($txt, 200, 10);
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 40);
+$t = new Text\Text($txt, 200, 10);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    40
+);
 
 // How should the text box interpret the coordinates?
 $t->Align('center', 'top');

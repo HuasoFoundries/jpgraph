@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -25,11 +25,13 @@ class LineErrorPlot extends ErrorPlot
     {
         $ly = [];
         $ey = [];
-        $n  = Configs::safe_count($datay);
-        if ($n % 3 != 0) {
-            Util\JpGraphError::RaiseL(4002);
+        $n = Configs::safe_count($datay);
+
+        if ($n % 3 !== 0) {
+            throw Util\JpGraphError::make(4002);
             //('Error in input data to LineErrorPlot. Number of data points must be a multiple of 3');
         }
+
         for ($i = 0; $i < $n; $i += 3) {
             $ly[] = $datay[$i];
             $ey[] = $datay[$i] + $datay[$i + 1];
@@ -42,15 +44,15 @@ class LineErrorPlot extends ErrorPlot
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $graph
+     * @param mixed $aGraph
      */
-    public function Legend($graph)
+    public function Legend($aGraph)
     {
-        if ($this->legend != '') {
-            $graph->legend->Add($this->legend, $this->color);
+        if ('' !== $this->legend) {
+            $aGraph->legend->Add($this->legend, $this->color);
         }
 
-        $this->line->Legend($graph);
+        $this->line->Legend($aGraph);
     }
 
     public function Stroke($img, $xscale, $yscale)

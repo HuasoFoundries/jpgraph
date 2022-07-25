@@ -1,19 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $datay = [0, 25, 12, 47, 27, 27, 0];
 
 // Setup the graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin', 0, $aYMax = 50);
 
 $theme_class = new UniversalTheme();
@@ -34,7 +35,9 @@ $graph->xaxis->SetTickLabels(['G', 'F', 'E', 'D', 'C', 'B', 'A']);
 $graph->xaxis->SetLabelMargin(20);
 $graph->yaxis->SetLabelMargin(20);
 
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXOUT')
+);
 $graph->img->SetAngle(180);
 
 // Create the line

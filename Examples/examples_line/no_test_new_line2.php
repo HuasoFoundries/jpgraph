@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,9 +13,9 @@ $datay1 = [20, 7, 16, 46];
 $datay2 = [6, 20, 10, 22];
 
 // Setup the graph
-$__width  = 350;
+$__width = 350;
 $__height = 230;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 $theme_class = new UniversalTheme();
@@ -39,14 +40,22 @@ $graph->Add($p2);
 
 $p1->SetColor('#55bbdd');
 $p1->SetLegend('Line 1');
-$p1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'), '', 1.0);
+$p1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE'),
+    '',
+    1.0
+);
 $p1->mark->SetColor('#55bbdd');
 $p1->mark->SetFillColor('#55bbdd');
 $p1->SetCenter();
 
 $p2->SetColor('#aaaaaa');
 $p2->SetLegend('Line 2');
-$p2->mark->SetType(Graph\Configs::getConfig('MARK_UTRIANGLE'), '', 1.0);
+$p2->mark->SetType(
+    Graph\Configs::getConfig('MARK_UTRIANGLE'),
+    '',
+    1.0
+);
 $p2->mark->SetColor('#aaaaaa');
 $p2->mark->SetFillColor('#aaaaaa');
 $p2->value->SetMargin(14);

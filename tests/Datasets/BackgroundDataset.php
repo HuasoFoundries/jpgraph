@@ -1,7 +1,12 @@
 <?php
 
+/**
+ * JPGraph - Community Edition
+ */
 
+$testClass = \str_replace('Dataset.php', 'Test', \basename(__FILE__));
 
-$testClass = str_replace('Dataset.php', 'Test', basename(__FILE__));
-
-dataset($testClass, tap(getMergedFixturesArray($testClass), fn ($totalData) => strlen(sprintf('Dataset %s created with %d fixtures', $testClass, count($totalData)))));
+tap(getMergedFixturesArray($testClass), function ($groups) use ($testClass) {
+    dataset($testClass, $groups['testClass']);
+    dataset($testClass . 'PlainFile', $groups['plainFile']);
+});

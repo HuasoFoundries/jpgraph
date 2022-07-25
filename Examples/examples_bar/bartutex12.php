@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // A medium complex example of JpGraph
@@ -10,28 +10,32 @@
 // some of the capabilities of JpGraph.
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $month = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec', ];
+    'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec',
+];
 
 // Create some datapoints
 $steps = 100;
+
 for ($i = 0; $i < $steps; ++$i) {
-    $databarx[] = sprintf('198%d %s', floor($i / 12), $month[$i % 12]);
-    $datay[$i]  = log(pow($i, $i / 10) + 1) * sin($i / 15) + 35;
-    if ($i % 6 == 0 && $i < $steps - 6) {
-        $databary[] = abs(25 * sin($i) + 5);
+    $databarx[] = \sprintf('198%d %s', \floor($i / 12), $month[$i % 12]);
+    $datay[$i] = \log($i ** ($i / 10) + 1) * \sin($i / 15) + 35;
+
+    if ($i % 6 === 0 && $steps - 6 > $i) {
+        $databary[] = \abs(25 * \sin($i) + 5);
     } else {
         $databary[] = 0;
     }
 }
 
 // new Graph\Graph with a background image and drop shadow
-$__width  = 450;
+$__width = 450;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetBackgroundImage(__DIR__ . '/../assets/tiger_bkg.png', Graph\Configs::getConfig('BGIMG_FILLFRAME'));
 $graph->SetShadow();
 
@@ -52,7 +56,10 @@ $graph->title->set($example_title);
 $graph->subtitle->Set("100 data points, X-Scale: 'text'");
 
 // Use built in font (don't need TTF support)
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Make the margin around the plot a little bit bigger then default
 $graph->img->SetMargin(40, 140, 40, 80);

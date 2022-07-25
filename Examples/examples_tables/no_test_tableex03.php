@@ -1,12 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
+use  Amenadiel\JpGraph\Graph;
+use  Amenadiel\JpGraph\Text\Configs;
+use Amenadiel\JpGraph\Graph\CanvasGraph;
+use Amenadiel\JpGraph\Text\GTextTable;
 
 require_once __DIR__ . '/../../src/config.inc.php';
-require_once 'jpgraph/jpgraph_canvas.php';
-require_once 'jpgraph/jpgraph_table.php';
 
 $cols = 4;
 $rows = 3;
@@ -18,9 +20,9 @@ $data = [['2007'],
 
 $q = 1;
 
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new CanvasGraph($__width, $__height);
+$graph = new CanvasGraph($__width, $__height);
 
 $table = new GTextTable($cols, $rows);
 $table->Init();
@@ -29,7 +31,7 @@ $table->SetBorder(2, 'black');
 
 // Setup top row with the year title
 $table->MergeCells(0, 0, 0, 6);
-$table->SetRowFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$table->SetRowFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 16);
 $table->SetRowColor(0, 'navy');
 $table->SetRowAlign(0, 'center');
 
@@ -37,17 +39,17 @@ $table->SetRowAlign(0, 'center');
 $table->MergeCells(1, 1, 1, 3);
 $table->MergeCells(1, 4, 1, 6);
 $table->SetRowAlign(1, 'center');
-$table->SetRowFont(1, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$table->SetRowFont(1, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_BOLD'), 10);
 $table->SetRowColor(1, 'navy');
 $table->SetRowFillColor(1, 'lightgray');
 $table->SetRowGrid(2, '', 0); // Turn off the gridline just under the top row
 
 // Setup row and column headers
-$table->SetRowFont(2, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$table->SetRowFont(2, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
 $table->SetRowColor(2, 'navy');
 $table->SetRowFillColor(2, 'lightgray');
 
-$table->SetColFont(0, Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$table->SetColFont(0, Configs::getConfig('FF_ARIAL'), Configs::getConfig('FS_NORMAL'), 11);
 $table->SetColColor(0, 'navy');
 $table->SetColFillColor(0, 'lightgray');
 

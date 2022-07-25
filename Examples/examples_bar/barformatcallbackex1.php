@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,13 +15,13 @@ $data = [0.1235, 0.4567, 0.67, 0.45, 0.832];
 // value to be displayed as a string
 function cbFmtPercentage($aVal)
 {
-    return sprintf('%.1f%%', 100 * $aVal); // Convert to string
+    return \sprintf('%.1f%%', 100 * $aVal); // Convert to string
 }
 
 // Create the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 
 // Create a bar plots

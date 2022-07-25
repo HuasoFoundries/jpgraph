@@ -1,23 +1,25 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
 
-use function basename;
-use function set_error_handler;
+use Exception;
 
 // A wrapper class that is used to access the specified error object
 // (to hide the global error parameter and avoid having a GLOBAL directive
 // in all methods.
 class JpGraphError
 {
-    private static $__iImgFlg  = true;
-    private static $__iLogFile = '';
-    private static $__iTitle   = 'JpGraph Error: ';
     public static $previous_handler;
+
+    private static $__iImgFlg = true;
+
+    private static $__iLogFile = '';
+
+    private static $__iTitle = 'JpGraph Error: ';
 
     /**
      * Generic error or exception messages.
@@ -28,7 +30,7 @@ class JpGraphError
      */
     public static function Raise(string $aMsg = 'Generic Exception')
     {
-        throw new JpGraphException($aMsg);
+        throw new Exception($aMsg);
     }
 
     /**
@@ -41,15 +43,19 @@ class JpGraphError
      * @param string $a4           A 4
      * @param string $a5           A 5
      *
-     * @throws JpGraphExceptionL (description)
+     * @throws JpGraphException (description)
      */
     public static function RaiseL($error_number, $a1 = null, $a2 = null, $a3 = null, $a4 = null, $a5 = null)
     {
-        $errtxt = new ErrMsgText();
+        $errtxt = new ExceptionFactory();
         self::SetTitle('JpGraph Error: ' . $error_number);
-        $exceptionMessage = $errtxt->Get($error_number, $a1, $a2, $a3, $a4, $a5);
 
-        throw new JpGraphException($exceptionMessage);
+        throw ExceptionFactory::create($error_number, $a1, $a2, $a3, $a4, $a5);
+    }
+
+    public static function make($error_number, ...$args): JpGraphException
+    {
+        return self::RaiseL($error_number, ...$args);
     }
 
     public static function SetImageFlag($aFlg = true)
@@ -86,17 +92,17 @@ class JpGraphError
     public static function phpErrorHandler(int $errno, string $errmsg, string $filename = '', int $errline = 0, array $errcontext = [])
     {
         // Respect current error level
-        if (!($errno & error_reporting())) {
+        if (!($errno & \error_reporting())) {
             // Respect current error level
             return;
             // Respect current error level
         }
 
-        self::RaiseL(25003, basename($filename), $errline, $errmsg);
+        self::RaiseL(25003, \basename($filename), $errline, $errmsg);
     }
 
     public static function registerHandler()
     {
-        self::$previous_handler = set_error_handler([__CLASS__, 'phpErrorHandler']);
+        self::$previous_handler = \set_error_handler([__CLASS__, 'phpErrorHandler']);
     }
 }

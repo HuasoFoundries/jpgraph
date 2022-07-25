@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once 'jpgraph/jpgraph.php';
+
 require_once 'jpgraph/jpgraph_flags.php';
 
 if (empty($_GET['size'])) {
@@ -20,6 +21,6 @@ if (empty($_GET['idx'])) {
 }
 
 $flags = new FlagImages($size);
-$img   = $flags->GetImgByIdx($idx);
-header('Content-type: image/png');
-imagepng($img);
+$img = $flags->GetImgByIdx($idx);
+\header('Content-type: image/png');
+\imagepng($img);

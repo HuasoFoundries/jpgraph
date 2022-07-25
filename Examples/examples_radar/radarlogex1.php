@@ -1,27 +1,32 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data to plot
-$data  = [242, 58, 1500, 12, 1397, 810, 373];
+$data = [242, 58, 1500, 12, 1397, 810, 373];
 $data2 = [447, 176, 1472, 191, 1616, 42, 46];
 
 // Create the graph
-$__width  = 300;
+$__width = 300;
 $__height = 350;
-$graph    = new Graph\RadarGraph($__width, $__height);
+$graph = new Graph\RadarGraph($__width, $__height);
 
 // Use logarithmic scale (If you don't use any SetScale()
 // the radar graph will default to linear scale
 $graph->SetScale('log');
 
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    16
+);
 $example_title = 'Logarithmic scale';
 $graph->title->set($example_title);
 $graph->title->SetMargin(10);
@@ -39,7 +44,11 @@ $graph->SetCenter(0.5, 0.55);
 $graph->yscale->ticks->SetMarkColor('black', 'darkgray');
 
 // Set the axis title font
-$graph->axis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->axis->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 $graph->axis->title->SetColor('darkred:0.8');
 
 // Use blue axis

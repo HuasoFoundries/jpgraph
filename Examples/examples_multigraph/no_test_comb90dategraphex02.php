@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,25 +9,29 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 require_once 'jpgraph/jpgraph_date.php';
+
 require_once 'jpgraph/jpgraph_mgraph.php';
 
 // Setup some fake data to simulate some wind speed and direction
 
-define('NDATAPOINTS', 420);
-define('SAMPLERATE', 300);
-$start                 = time();
-$end                   = $start + NDATAPOINTS * SAMPLERATE;
-$data                  = [];
-$xdata                 = [];
-$data_winddirection[0] = rand(100, 200);
-$data_windspeed[0]     = rand(7, 10);
-for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
-    $data_winddirection[$i + 1] = $data_winddirection[$i] + rand(-4, 4);
+\define('NDATAPOINTS', 420);
+\define('SAMPLERATE', 300);
+$start = \time();
+$end = $start + NDATAPOINTS * SAMPLERATE;
+$data = [];
+$xdata = [];
+$data_winddirection[0] = \mt_rand(100, 200);
+$data_windspeed[0] = \mt_rand(7, 10);
+
+for ($i = 0; NDATAPOINTS - 1 > $i; ++$i) {
+    $data_winddirection[$i + 1] = $data_winddirection[$i] + \mt_rand(-4, 4);
+
     if ($data_winddirection[$i + 1] < 0 || $data_winddirection[$i + 1] > 359) {
         $data_winddirection[$i + 1] = 0;
     }
 
-    $data_windspeed[$i + 1] = $data_windspeed[$i] + rand(-2, 2);
+    $data_windspeed[$i + 1] = $data_windspeed[$i] + \mt_rand(-2, 2);
+
     if ($data_windspeed[$i + 1] < 0) {
         $data_windspeed[$i + 1] = 0;
     }
@@ -36,9 +40,9 @@ for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
 }
 $xdata[$i] = $start + $i * SAMPLERATE;
 
-define('BKG_COLOR', 'lightgray:1.7');
-define('WIND_HEIGHT', 800);
-define('WIND_WIDTH', 280);
+\define('BKG_COLOR', 'lightgray:1.7');
+\define('WIND_HEIGHT', 800);
+\define('WIND_WIDTH', 280);
 
 // Setup the Wind direction graph
 $graph = new Graph\Graph(WIND_WIDTH, WIND_HEIGHT);

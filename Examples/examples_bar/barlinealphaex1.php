@@ -1,21 +1,22 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some random data
-$ydata  = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
+$ydata = [10, 120, 80, 190, 260, 170, 60, 40, 20, 230];
 $ydata2 = [10, 70, 40, 120, 200, 60, 80, 40, 20, 5];
 
 // Create the graph.
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('white');
 
@@ -34,7 +35,11 @@ $graph->SetFrame(false);
 
 // Setup the tab title
 $graph->tabtitle->Set('Year 2003');
-$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$graph->tabtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 
 // Setup the X and Y grid
 $graph->ygrid->SetFill(true, '#DDDDDD@0.5', '#BBBBBB@0.5');
@@ -46,7 +51,11 @@ $graph->xgrid->SetColor('gray');
 
 // Setup month as labels on the X-axis
 $graph->xaxis->SetTickLabels($months);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->xaxis->SetLabelAngle(45);
 
 // Create a bar pot
@@ -69,7 +78,9 @@ $lplot->SetFillColor('skyblue@0.5');
 $lplot->SetColor('navy@0.7');
 $lplot->SetBarCenter();
 
-$lplot->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+$lplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_SQUARE')
+);
 $lplot->mark->SetColor('blue@0.5');
 $lplot->mark->SetFillColor('lightblue');
 $lplot->mark->SetSize(6);

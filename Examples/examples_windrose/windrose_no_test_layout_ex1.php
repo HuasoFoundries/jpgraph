@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -32,19 +32,21 @@ $data = [
 $rangecolors = ['green', 'yellow', 'red', 'brown'];
 
 // Create a windrose graph with titles
-$__width       = 750;
-$__height      = 700;
-$graph         = new Graph\WindroseGraph($__width, $__height);
+$__width = 750;
+$__height = 700;
+$graph = new Graph\WindroseGraph($__width, $__height);
 $example_title = 'Multiple plots with automatic layout';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
 // Setup the individual windrose plots
 $wp = [];
-for ($i = 0; $i < 5; ++$i) {
+
+for ($i = 0; 5 > $i; ++$i) {
     $wp[$i] = new Plot\WindrosePlot($data[$i]);
     $wp[$i]->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
-    if ($i < 2) {
+
+    if (2 > $i) {
         $wp[$i]->SetSize(0.28);
     } else {
         $wp[$i]->legend->Hide();
@@ -58,7 +60,7 @@ for ($i = 0; $i < 5; ++$i) {
 // bottom row.
 $hl1 = new LayoutHor([$wp[0], $wp[1]]);
 $hl2 = new LayoutHor([$wp[2], $wp[3], $wp[4]]);
-$vl  = new LayoutVert([$hl1, $hl2]);
+$vl = new LayoutVert([$hl1, $hl2]);
 
 $graph->Add($vl);
 $graph->Stroke();

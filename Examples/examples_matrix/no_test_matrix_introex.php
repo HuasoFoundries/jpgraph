@@ -1,13 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 
 require_once 'jpgraph/jpgraph_matrix.php';
+
 require_once 'jpgraph/jpgraph_iconplot.php';
 
 $data = [
@@ -31,15 +33,19 @@ $timer->Push();
 //--------------------------------------------------------------
 // Setup a basic matrix graph
 //--------------------------------------------------------------
-$width  = 740;
+$width = 740;
 $height = 500;
-$graph  = new MatrixGraph($width, $height);
+$graph = new MatrixGraph($width, $height);
 $graph->SetMargin(1, 2, 70, 1);
 $graph->SetColor('white');
 $graph->SetMarginColor('#fafafa');
 $example_title = 'Intro matrix graph';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 // Setup the background image
 $graph->SetBackgroundImage(__DIR__ . '/../assets/fireplace.jpg', Graph\Configs::getConfig('BGIMG_FILLPLOT'));
@@ -53,7 +59,8 @@ $graph->footer->right->SetColor('white');
 // Create the 2 matrix plots
 //--------------------------------------------------------------
 $mp = [];
-$n  = 2;
+$n = 2;
+
 for ($i = 0; $i < $n; ++$i) {
     $mp[$i] = new MatrixPlot($data);
     $mp[$i]->colormap->SetMap($i);
@@ -77,13 +84,19 @@ $graph->Add($hor1);
 $txts = [
     ['Temperature gradient', $width / 2, 80],
     ['Heat color map', 200, 110],
-    ['High contrast map', 560, 110], ];
+    ['High contrast map', 560, 110],
+];
 
-$n = count($txts);
+$n = \count($txts);
 $t = [];
+
 for ($i = 0; $i < $n; ++$i) {
     $t[$i] = new Text($txts[$i][0], $txts[$i][1], $txts[$i][2]);
-    $t[$i]->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+    $t[$i]->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_BOLD'),
+        14
+    );
     $t[$i]->SetColor('white');
     $t[$i]->SetAlign('center', 'top');
 }

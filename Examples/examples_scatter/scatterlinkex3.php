@@ -1,42 +1,54 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Make a circle with a scatterplot
 $steps = 16;
+
 for ($i = 0; $i < $steps; ++$i) {
-    $a         = 2 * M_PI / $steps * $i;
-    $datax[$i] = cos($a);
-    $datay[$i] = sin($a);
+    $a = 2 * \M_PI / $steps * $i;
+    $datax[$i] = \cos($a);
+    $datay[$i] = \sin($a);
 }
 
-$__width  = 350;
+$__width = 350;
 $__height = 230;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->SetShadow();
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXOUT')
+);
 
 $graph->img->SetMargin(50, 50, 60, 40);
 $example_title = 'Linked scatter plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $subtitle_text = 'BOXOUT Axis style)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_NORMAL'));
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_NORMAL')
+);
 
 // 10% top and bottom grace
 $graph->yscale->SetGrace(5, 5);
 $graph->xscale->SetGrace(1, 1);
 
 $sp1 = new Plot\ScatterPlot($datay, $datax);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_FILLEDCIRCLE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_FILLEDCIRCLE')
+);
 $sp1->mark->SetFillColor('red');
 $sp1->SetColor('blue');
 

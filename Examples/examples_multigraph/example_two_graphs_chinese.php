@@ -1,17 +1,18 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 
 $data = [40, 60, 21, 33];
 
-$__width  = 300;
+$__width = 300;
 $__height = 250;
 
 $data = [0.1235, 0.4567, 0.67, 0.45, 0.832];
@@ -81,7 +82,9 @@ $graph3->title->SetFont(
 );
 
 $sp1 = new Plot\ScatterPlot($datay);
-$sp1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+$sp1->mark->SetType(
+    Graph\Configs::getConfig('MARK_SQUARE')
+);
 $sp1->SetImpuls();
 
 $graph3->Add($sp1);

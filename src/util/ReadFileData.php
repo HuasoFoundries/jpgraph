@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -30,25 +30,28 @@ class ReadFileData
      */
     public static function FromCSV($aFile, &$aData, $aSepChar = ',', $aMaxLineLength = 1024)
     {
-        $rh = @fopen($aFile, 'r');
-        if ($rh === false) {
+        $rh = \fopen($aFile, 'rb');
+
+        if (false === $rh) {
             return false;
         }
-        $tmp        = [];
-        $lineofdata = fgetcsv($rh, 1000, ',');
-        while ($lineofdata !== false) {
-            $tmp        = array_merge($tmp, $lineofdata);
-            $lineofdata = fgetcsv($rh, $aMaxLineLength, $aSepChar);
+        $tmp = [];
+        $lineofdata = \fgetcsv($rh, 1000, ',');
+
+        while (false !== $lineofdata) {
+            $tmp = \array_merge($tmp, $lineofdata);
+            $lineofdata = \fgetcsv($rh, $aMaxLineLength, $aSepChar);
         }
-        fclose($rh);
+        \fclose($rh);
 
         // Now make sure that all data is numeric. By default
         // all data is read as strings
-        $n     = Configs::safe_count($tmp);
+        $n = Configs::safe_count($tmp);
         $aData = [];
-        $cnt   = 0;
+        $cnt = 0;
+
         for ($i = 0; $i < $n; ++$i) {
-            if ($tmp[$i] === '') {
+            if ('' === $tmp[$i]) {
                 continue;
             }
 
@@ -85,31 +88,31 @@ class ReadFileData
     public static function FromCSV2($aFile, &$aData, $aOptions = [])
     {
         $aDefaults = [
-            'separator'    => ',',
-            'enclosure'    => chr(34),
-            'escape'       => chr(92),
-            'readlength'   => 1024,
+            'separator' => ',',
+            'enclosure' => \chr(34),
+            'escape' => \chr(92),
+            'readlength' => 1024,
             'ignore_first' => false,
             'first_as_key' => false,
         ];
 
-        $aOptions = array_merge(
+        $aOptions = \array_merge(
             $aDefaults,
-            is_array($aOptions) ? $aOptions : []
+            \is_array($aOptions) ? $aOptions : []
         );
 
         if ($aOptions['first_as_key']) {
             $aOptions['ignore_first'] = true;
         }
 
-        $rh = @fopen($aFile, 'r');
+        $rh = \fopen($aFile, 'rb');
 
-        if ($rh === false) {
+        if (false === $rh) {
             return false;
         }
 
         $aData = [];
-        $aLine = fgetcsv(
+        $aLine = \fgetcsv(
             $rh,
             $aOptions['readlength'],
             $aOptions['separator'],
@@ -119,32 +122,33 @@ class ReadFileData
 
         // Use numeric array keys for the columns by default
         // If specified use first lines values as assoc keys instead
-        $keys = array_keys($aLine);
+        $keys = \array_keys($aLine);
+
         if ($aOptions['first_as_key']) {
-            $keys = array_values($aLine);
+            $keys = \array_values($aLine);
         }
 
         $num_lines = 0;
-        $num_cols  = Configs::safe_count($aLine);
+        $num_cols = Configs::safe_count($aLine);
 
-        while ($aLine !== false) {
-            if (is_array($aLine) && Configs::safe_count($aLine) != $num_cols) {
+        while (false !== $aLine) {
+            if (\is_array($aLine) && Configs::safe_count($aLine) !== $num_cols) {
                 JpGraphError::RaiseL(24004);
                 // 'ReadCSV2: Column count mismatch in %s line %d'
             }
 
             // fgetcsv returns NULL for empty lines
-            if (!is_null($aLine)) {
+            if (null !== $aLine) {
                 ++$num_lines;
 
-                if (!($aOptions['ignore_first'] && $num_lines == 1) && is_numeric($aLine[0])) {
+                if (!($aOptions['ignore_first'] && 1 === $num_lines) && \is_numeric($aLine[0])) {
                     for ($i = 0; $i < $num_cols; ++$i) {
                         $aData[$keys[$i]][] = (float) ($aLine[$i]);
                     }
                 }
             }
 
-            $aLine = fgetcsv(
+            $aLine = \fgetcsv(
                 $rh,
                 $aOptions['readlength'],
                 $aOptions['separator'],
@@ -153,7 +157,7 @@ class ReadFileData
             );
         }
 
-        fclose($rh);
+        \fclose($rh);
 
         if ($aOptions['ignore_first']) {
             --$num_lines;
@@ -165,20 +169,23 @@ class ReadFileData
     // Read data from two columns in a plain text file
     public static function From2Col($aFile, $aCol1, $aCol2, $aSepChar = ' ')
     {
-        $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        if ($lines === false) {
+        $lines = \file($aFile, \FILE_IGNORE_NEW_LINES | \FILE_SKIP_EMPTY_LINES);
+
+        if (false === $lines) {
             return false;
         }
         $s = '/[\s]+/';
-        if ($aSepChar == ',') {
+
+        if (',' === $aSepChar) {
             $s = '/[\s]*,[\s]*/';
-        } elseif ($aSepChar == ';') {
+        } elseif (';' === $aSepChar) {
             $s = '/[\s]*;[\s]*/';
         }
+
         foreach ($lines as $line => $datarow) {
-            $split   = preg_split($s, $datarow);
-            $aCol1[] = (float) (trim($split[0]));
-            $aCol2[] = (float) (trim($split[1]));
+            $split = \preg_split($s, $datarow);
+            $aCol1[] = (float) (\trim($split[0]));
+            $aCol2[] = (float) (\trim($split[1]));
         }
 
         return Configs::safe_count($lines);
@@ -187,12 +194,14 @@ class ReadFileData
     // Read data from one columns in a plain text file
     public static function From1Col($aFile, $aCol1)
     {
-        $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        if ($lines === false) {
+        $lines = \file($aFile, \FILE_IGNORE_NEW_LINES | \FILE_SKIP_EMPTY_LINES);
+
+        if (false === $lines) {
             return false;
         }
+
         foreach ($lines as $line => $datarow) {
-            $aCol1[] = (float) (trim($datarow));
+            $aCol1[] = (float) (\trim($datarow));
         }
 
         return Configs::safe_count($lines);
@@ -200,16 +209,19 @@ class ReadFileData
 
     public static function FromMatrix($aFile, $aSepChar = ' ')
     {
-        $lines = @file($aFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        if ($lines === false) {
+        $lines = \file($aFile, \FILE_IGNORE_NEW_LINES | \FILE_SKIP_EMPTY_LINES);
+
+        if (false === $lines) {
             return false;
         }
         $mat = [];
         $reg = '/' . $aSepChar . '/';
+
         foreach ($lines as $line => $datarow) {
-            $row = preg_split($reg, trim($datarow));
+            $row = \preg_split($reg, \trim($datarow));
+
             foreach ($row as $key => $cell) {
-                $row[$key] = (float) (trim($cell));
+                $row[$key] = (float) (\trim($cell));
             }
             $mat[] = $row;
         }

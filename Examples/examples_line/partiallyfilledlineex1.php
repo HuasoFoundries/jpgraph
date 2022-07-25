@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,9 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $ydata = [5, 10, 15, 20, 15, 10, 8, 7, 4, 10, 5];
 
 // Create the graph
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetShadow(true);
 $graph->SetMarginColor('lightblue');
@@ -26,7 +27,10 @@ $graph->legend->SetShadow(true);
 // Setup title
 $example_title = 'Filled Area Example';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Setup semi-filled line plot
 $lineplot = new Plot\LinePlot($ydata);
@@ -40,7 +44,9 @@ $lineplot->AddArea(2, 5, Graph\Configs::getConfig('LP_AREA_FILLED'), 'red');
 $lineplot->AddArea(6, 8, Graph\Configs::getConfig('LP_AREA_FILLED'), 'green');
 
 // Display the marks on the lines
-$lineplot->mark->SetType(Graph\Configs::getConfig('MARK_DIAMOND'));
+$lineplot->mark->SetType(
+    Graph\Configs::getConfig('MARK_DIAMOND')
+);
 $lineplot->mark->SetSize(8);
 $lineplot->mark->Show();
 

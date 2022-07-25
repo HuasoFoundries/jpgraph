@@ -1,29 +1,37 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
 
-define('__LR_EPSILON', 1.0e-8);
+\define('__LR_EPSILON', 1.0e-8);
 /**
  * @class LinearRegression
  */
 class LinearRegression
 {
-    private $ix          = [];
-    private $iy          = [];
-    private $ib          = 0;
-    private $ia          = 0;
+    public $iDet = 0;
+
+    public $iCorr = 0;
+
+    public $iStdErr = 0;
+
+    private $ix = [];
+
+    private $iy = [];
+
+    private $ib = 0;
+
+    private $ia = 0;
+
     private $icalculated = false;
-    public $iDet         = 0;
-    public $iCorr        = 0;
-    public $iStdErr      = 0;
 
     public function __construct($aDataX, $aDataY)
     {
-        if (Configs::safe_count($aDataX) !== Configs::safe_count($aDataY)) {
+        if (Configs::safe_count($aDataX) !== Configs::safe_count($aDataY)
+        ) {
             JpGraph::Raise('LinearRegression: X and Y data array must be of equal length.');
         }
         $this->ix = $aDataX;
@@ -34,12 +42,12 @@ class LinearRegression
     {
         $this->icalculated = true;
 
-        $n   = Configs::safe_count($this->ix);
+        $n = Configs::safe_count($this->ix);
         $sx2 = 0;
         $sy2 = 0;
         $sxy = 0;
-        $sx  = 0;
-        $sy  = 0;
+        $sx = 0;
+        $sy = 0;
 
         for ($i = 0; $i < $n; ++$i) {
             $sx2 += $this->ix[$i] * $this->ix[$i];
@@ -53,16 +61,17 @@ class LinearRegression
             $this->ib = ($n * $sxy - $sx * $sy) / ($n * $sx2 - $sx * $sx);
             $this->ia = ($sy - $this->ib * $sx) / $n;
 
-            $sx  = $this->ib * ($sxy - $sx * $sy / $n);
+            $sx = $this->ib * ($sxy - $sx * $sy / $n);
             $sy2 = $sy2 - $sy * $sy / $n;
-            $sy  = $sy2 - $sx;
+            $sy = $sy2 - $sx;
 
-            $this->iDet  = $sx / $sy2;
-            $this->iCorr = sqrt($this->iDet);
-            if ($n > 2) {
-                $this->iStdErr = sqrt($sy / ($n - 2));
+            $this->iDet = $sx / $sy2;
+            $this->iCorr = \sqrt($this->iDet);
+
+            if (2 < $n) {
+                $this->iStdErr = \sqrt($sy / ($n - 2));
             } else {
-                $this->iStdErr = NAN;
+                $this->iStdErr = \NAN;
             }
         } else {
             $this->ib = 0;
@@ -72,7 +81,7 @@ class LinearRegression
 
     public function GetAB()
     {
-        if ($this->icalculated == false) {
+        if (false === $this->icalculated) {
             $this->Calc();
         }
 
@@ -81,7 +90,7 @@ class LinearRegression
 
     public function GetStat()
     {
-        if ($this->icalculated == false) {
+        if (false === $this->icalculated) {
             $this->Calc();
         }
 
@@ -90,14 +99,15 @@ class LinearRegression
 
     public function GetY($aMinX, $aMaxX, $aStep = 1)
     {
-        if ($this->icalculated == false) {
+        if (false === $this->icalculated) {
             $this->Calc();
         }
 
         $yy = [];
-        $i  = 0;
+        $i = 0;
+
         for ($x = $aMinX; $x <= $aMaxX; $x += $aStep) {
-            $xx[$i]   = $x;
+            $xx[$i] = $x;
             $yy[$i++] = $this->ia + $this->ib * $x;
         }
 

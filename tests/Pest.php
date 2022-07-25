@@ -1,73 +1,96 @@
 <?php
 
+/**
+ * JPGraph - Community Edition
+ */
+
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\Yaml\Yaml;
 use Tests\SizeFixture;
 
+\ini_set('display_errors', 'On');
+\ini_set('display_startup_errors', 'On');
+\define('UNIT_TEST_FOLDER', \sprintf('%s/Unit', __DIR__));
+\define('PROJECT_ROOT', \dirname(__DIR__));
+//define('CACHE_DIR', __DIR__ . '/_output/');
+//define('USE_CACHE', true);
+require_once \sprintf('%s/vendor/autoload.php', PROJECT_ROOT);
 
-
-function getMergedFixturesArray($testClass)
+/**
+ * Parses the contents of a yaml file (in `tests/_support`) and marshallize it
+ * as a fixture array.
+ *
+ * @param string $testClass    the testname/filename/groupname we use to figure out final fixture paths
+ * @param array  $fixtureArray an array to which the output will be concatenated. By default, []
+ *
+ * @return array the input $fixtureArray plus the fixtures we figured out from the yaml file
+ */
+function getFixturesFromYamlDefinition(string $testClass, array $fixtureArray = []): array
 {
-    $fileArray = [];
-    $filePath = sprintf('%s/_support/%s.yml', (__DIR__), $testClass);
-    $exampleRoot = PROJECT_ROOT . '/Examples/examples_' . str_replace('test', '', strtolower($testClass)) . '/';
+    $exampleRoot = getExampleSubfolderFolderFromTestClassName($testClass);
+    $filePath = \sprintf('%s/_support/%s.yml', (__DIR__), $testClass);
 
+    if (!\is_file($filePath)) {
+        return [];
+    }
 
-    $datasetNames = [];
-    $totalData = [];
-    $fileList = [];
-    if (is_file($filePath)) {
-        try {
-            $examplesArray = Yaml::parseFile($filePath);
-            foreach ($examplesArray as $exampleName => $exampleData) {
-                try {
-                    $arrayValues = array_values($exampleData);
-                    $exampleDataWithPath = array_map(function ($example) use ($exampleRoot, &$fileList) {
-                        $exampleSorted = ['title' => $example['title'] ?? basename($example['filename']), 'filename' => $example['filename']];
+    try {
+        $examplesArray = Yaml::parseFile($filePath);
 
-                        $example['example_root'] = str_replace(PROJECT_ROOT, '.', $exampleRoot);
+        foreach ($examplesArray as $exampleName => $exampleData) {
+            try {
+                $itemsWithImageDimensions = \array_filter(\array_values($exampleData), function ($fixTure) {
+                    return \array_key_exists('width', $fixTure) && \array_key_exists('height', $fixTure);
+                });
+
+                $exampleDataWithPath = \array_map(
+                    function ($example) use ($exampleRoot, &$fileList) {
+                        $exampleSorted = [
+                            'title' => $example['title'] ?? \basename($example['filename']),
+                            'filename' => $example['filename'],
+                        ];
+
+                        $example['example_root'] = $exampleRoot;
                         $fileList[$example['filename']] = $exampleSorted['title'];
-                        return [$exampleSorted['filename'] => array_merge($exampleSorted, $example)];
-                    }, $arrayValues);
-                    $totalData = array_merge($totalData, $exampleDataWithPath);
 
-                    $datasetNames[] = $exampleName;
-                } catch (Exception $err) {
-                    dump([$err->getMessage() => $exampleData]);
-                }
-            }
-        } catch (Exception $err) {
-            dump([$err->getMessage() => $testClass]);
-        }
-        sort($totalData);
-    }
-    if (is_dir($exampleRoot)) {
-
-
-        $d = @dir($exampleRoot);
-
-        while ($entry = $d->Read()) {
-            if (
-                !array_key_exists($entry, $fileList) &&
-                is_file($exampleRoot . $entry) &&
-                strstr($entry, '.php') &&
-                strstr($entry, 'ex')
-                && !strstr($entry, 'no_test')
-                && !strstr($entry, 'no_dim')
-            ) {
-                $fileArray[] = $entry;
+                        return [$exampleSorted['filename'] => \array_merge($exampleSorted, $example)];
+                    },
+                    $itemsWithImageDimensions
+                );
+                $fixtureArray = \array_merge($fixtureArray, $exampleDataWithPath);
+            } catch (Exception $err) {
+                dump([$err->getMessage() => $exampleData]);
             }
         }
-        $d->Close();
-    } else {
-        dump(['not a folder' => $exampleRoot]);
-    }
-    sort($fileArray);
-    if (count($fileArray) === 0) {
-        dump([$testClass => count($totalData)]);
+    } catch (Exception $err) {
+        dump([$filePath => $err->getMessage()]);
     }
 
+    return tap($fixtureArray, function (&$arr) {
+        \sort($arr);
+    });
+}
+/**
+ * @param string $testClass the testname/filename/groupname we use to figure out final fixture paths
+ */
+function getMergedFixturesArray(string $testClass): array
+{
+    $fixtures = getFixturesFromYamlDefinition($testClass);
 
-    return $totalData;
+    $fileArray = getTestableExampleFiles($testClass, $fixtures);
+
+    return tap([
+        'testClass' => $fixtures,
+        'plainFile' => \array_map(
+            fn (string $filename) => [
+                $filename => [
+                    'filename' => $filename,
+                    'example_root' => getExampleSubfolderFolderFromTestClassName($testClass),
+                ],
+            ],
+            $fileArray
+        ),
+    ], fn ($datasetPair) => null && kdump($datasetPair));
 }
 /*
 |--------------------------------------------------------------------------
@@ -78,10 +101,10 @@ function getMergedFixturesArray($testClass)
 | case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
 | need to change it using the "uses()" function to bind a different classes or traits.
 |
-*/
+ */
 
-uses(Tests\TestCase::class)->in('Unit');
-uses(Tests\TestCase::class)->in('Feature');
+uses(Tests\BaseTestCase::class)->in('Unit');
+uses(Tests\BaseTestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -92,39 +115,42 @@ uses(Tests\TestCase::class)->in('Feature');
 | "expect()" function gives you access to a set of "expectations" methods that you can use
 | to assert different things. Of course, you may extend the Expectation API at any time.
 |
-*/
+ */
 
 expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
-
-expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture) {
-
-
-    $__width = $sizeFixture->width;
-
-    $__height = $sizeFixture->height;
-
+expect()->extend('toMatchImageType', function (SizeFixture $sizeFixture, array $options = ['copyOnFail' => false]) {
     $filename = $sizeFixture->filename;
-
-    $example_title = $sizeFixture->title;
-    $subtitle_text = '';
-    ob_start();
-
-    include $sizeFixture->example_root . $filename;
-
-    $img  = (ob_get_clean());
-    $size = getimagesizefromstring($img);
+    $img = $sizeFixture->captureImage(SizeFixture::SAVE_CAPTURE_IF_NOT_EXISTS);
+    $size = \getimagesizefromstring($img);
 
     $size['filename'] = $filename;
-    if ($example_title === 'file_iterator' && $subtitle_text) {
-        $example_title = $subtitle_text;
+
+    try {
+        return expect($size['mime'])->toEqual('image/png');
+    } catch (ExpectationFailedException $err) {
+        dump([$filename => $size]);
+
+        throw $err;
     }
+});
+expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture, array $options = ['copyOnFail' => false]) {
+    $filename = $sizeFixture->filename;
+    $img = $sizeFixture->captureImage(SizeFixture::SAVE_CAPTURE_IF_NOT_EXISTS);
+    $size = \getimagesizefromstring($img);
+    $size['filename'] = $filename;
 
+    try {
+        return expect($size[0])->toEqual($sizeFixture->width)
+            ->and($size[1])->toEqual($sizeFixture->height);
+    } catch (ExpectationFailedException $err) {
+        $size['expected'] = [$sizeFixture->width, $sizeFixture->height];
+        dump([$filename => $size]);
 
-    return expect($size[0])->toEqual($__width)
-        ->and($size[1])->toEqual($__height);
+        throw $err;
+    }
 });
 /*
 |--------------------------------------------------------------------------
@@ -135,7 +161,7 @@ expect()->extend('toMatchFixture', function (SizeFixture $sizeFixture) {
 | project that you don't want to repeat in every file. Here you can also expose helpers as
 | global functions to help you to reduce the number of lines of code in your test files.
 |
-*/
+ */
 
 function something()
 {

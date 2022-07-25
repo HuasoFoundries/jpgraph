@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Text;
@@ -14,18 +14,29 @@ use Amenadiel\JpGraph\Util;
  */
 class TextProperty
 {
-    public $iShow         = true;
-    public $csimtarget    = '';
+    public $iShow = true;
+
+    public $csimtarget = '';
+
     public $csimwintarget = '';
-    public $csimalt       = '';
-    private $iFFamily     = Configs::FF_FONT1;
-    private $iFStyle      = Configs::FS_NORMAL;
-    private $iFSize       = 10;
-    private $iFontArray   = [];
-    private $iColor       = 'black';
-    private $iText        = '';
-    private $iHAlign      = 'left';
-    private $iVAlign      = 'bottom';
+
+    public $csimalt = '';
+
+    private $iFFamily = Configs::FF_FONT1;
+
+    private $iFStyle = Configs::FS_NORMAL;
+
+    private $iFSize = 10;
+
+    private $iFontArray = [];
+
+    private $iColor = 'black';
+
+    private $iText = '';
+
+    private $iHAlign = 'left';
+
+    private $iVAlign = 'bottom';
 
     /**
      * @param mixed $aTxt
@@ -47,19 +58,19 @@ class TextProperty
 
     public function SetCSIMTarget($aTarget, $aAltText = '', $aWinTarget = '')
     {
-        if (is_string($aTarget)) {
+        if (\is_string($aTarget)) {
             $aTarget = [$aTarget];
         }
 
         $this->csimtarget = $aTarget;
 
-        if (is_string($aWinTarget)) {
+        if (\is_string($aWinTarget)) {
             $aWinTarget = [$aWinTarget];
         }
 
         $this->csimwintarget = $aWinTarget;
 
-        if (is_string($aAltText)) {
+        if (\is_string($aAltText)) {
             $aAltText = [$aAltText];
         }
 
@@ -68,7 +79,7 @@ class TextProperty
 
     public function SetCSIMAlt($aAltText)
     {
-        if (is_string($aAltText)) {
+        if (\is_string($aAltText)) {
             $aAltText = [$aAltText];
         }
 
@@ -83,10 +94,11 @@ class TextProperty
 
     public function HasTabs()
     {
-        if (is_string($this->iText)) {
-            return substr_count($this->iText, "\t") > 0;
+        if (\is_string($this->iText)) {
+            return \mb_substr_count($this->iText, "\t") > 0;
         }
-        if (is_array($this->iText)) {
+
+        if (\is_array($this->iText)) {
             return false;
         }
     }
@@ -94,8 +106,8 @@ class TextProperty
     // Get number of tabs in string
     public function GetNbrTabs()
     {
-        if (is_string($this->iText)) {
-            return substr_count($this->iText, "\t");
+        if (\is_string($this->iText)) {
+            return \mb_substr_count($this->iText, "\t");
         }
 
         return 0;
@@ -119,14 +131,14 @@ class TextProperty
     public function SetFont($aFFamily, $aFStyle = self::FS_NORMAL, $aFSize = 10)
     {
         $this->iFFamily = $aFFamily;
-        $this->iFStyle  = $aFStyle;
-        $this->iFSize   = $aFSize;
+        $this->iFStyle = $aFStyle;
+        $this->iFSize = $aFSize;
     }
 
     public function SetColumnFonts($aFontArray)
     {
-        if (!is_array($aFontArray) || Configs::safe_count($aFontArray[0]) != 3) {
-            Util\JpGraphError::RaiseL(6033);
+        if (!\is_array($aFontArray) || Configs::safe_count($aFontArray[0]) !== 3) {
+            throw Util\JpGraphError::make(6033);
             // 'Array of fonts must contain arrays with 3 elements, i.e. (Family, Style, Size)'
         }
         $this->iFontArray = $aFontArray;
@@ -134,7 +146,7 @@ class TextProperty
 
     public function IsColumns()
     {
-        return is_array($this->iText);
+        return \is_array($this->iText);
     }
 
     // Get width of text. If text contains several columns separated by
@@ -144,35 +156,42 @@ class TextProperty
     {
         $extra_margin = 4;
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-        if (is_string($this->iText)) {
-            if (strlen($this->iText) == 0) {
+
+        if (\is_string($this->iText)) {
+            if (\mb_strlen($this->iText) === 0) {
                 return 0;
             }
 
-            $tmp = preg_split('/\t/', $this->iText);
-            if (Configs::safe_count($tmp) <= 1 || !$aUseTabs) {
+            $tmp = \preg_split('/\t/', $this->iText);
+
+            if (Configs::safe_count($tmp) <= 1 || !$aUseTabs
+            ) {
                 $w = $aImg->GetTextWidth($this->iText);
 
                 return $w + 2 * $extra_margin;
             }
             $tot = 0;
-            $n   = Configs::safe_count($tmp);
+            $n = Configs::safe_count($tmp);
+
             for ($i = 0; $i < $n; ++$i) {
                 $res[$i] = $aImg->GetTextWidth($tmp[$i]);
                 $tot += $res[$i] * $aTabExtraMargin;
             }
 
-            return [round($tot), $res];
+            return [\round($tot), $res];
         }
-        if (is_object($this->iText)) {
+
+        if (\is_object($this->iText)) {
             // A single icon
             return $this->iText->GetWidth() + 2 * $extra_margin;
         }
-        if (is_array($this->iText)) {
+
+        if (\is_array($this->iText)) {
             // Must be an array of texts. In this case we return the sum of the
             // length + a fixed margin of 4 pixels on each text string
-            $n  = Configs::safe_count($this->iText);
+            $n = Configs::safe_count($this->iText);
             $nf = Configs::safe_count($this->iFontArray);
+
             for ($i = 0, $w = 0; $i < $n; ++$i) {
                 if ($i < $nf) {
                     $aImg->SetFont($this->iFontArray[$i][0], $this->iFontArray[$i][1], $this->iFontArray[$i][2]);
@@ -180,11 +199,12 @@ class TextProperty
                     $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
                 }
                 $tmp = $this->iText[$i];
-                if (is_string($tmp)) {
+
+                if (\is_string($tmp)) {
                     $w += $aImg->GetTextWidth($tmp) + $extra_margin;
                 } else {
-                    if (is_object($tmp) === false) {
-                        Util\JpGraphError::RaiseL(6012);
+                    if (\is_object($tmp) === false) {
+                        throw Util\JpGraphError::make(6012);
                     }
                     $w += $tmp->GetWidth() + $extra_margin;
                 }
@@ -192,7 +212,8 @@ class TextProperty
 
             return $w;
         }
-        Util\JpGraphError::RaiseL(6012);
+
+        throw Util\JpGraphError::make(6012);
     }
 
     // for the case where we have multiple columns this function returns the width of each
@@ -201,12 +222,15 @@ class TextProperty
     public function GetColWidth($aImg, $aMargin = 0)
     {
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-        if (is_array($this->iText)) {
-            $n  = Configs::safe_count($this->iText);
+
+        if (\is_array($this->iText)) {
+            $n = Configs::safe_count($this->iText);
             $nf = Configs::safe_count($this->iFontArray);
+
             for ($i = 0, $w = []; $i < $n; ++$i) {
                 $tmp = $this->iText[$i];
-                if (is_string($tmp)) {
+
+                if (\is_string($tmp)) {
                     if ($i < $nf) {
                         $aImg->SetFont($this->iFontArray[$i][0], $this->iFontArray[$i][1], $this->iFontArray[$i][2]);
                     } else {
@@ -214,8 +238,8 @@ class TextProperty
                     }
                     $w[$i] = $aImg->GetTextWidth($tmp) + $aMargin;
                 } else {
-                    if (is_object($tmp) === false) {
-                        Util\JpGraphError::RaiseL(6012);
+                    if (\is_object($tmp) === false) {
+                        throw Util\JpGraphError::make(6012);
                     }
                     $w[$i] = $tmp->GetWidth() + $aMargin;
                 }
@@ -230,24 +254,23 @@ class TextProperty
     // Get total height of text
     public function GetHeight($aImg)
     {
-        $nf        = Configs::safe_count($this->iFontArray);
+        $nf = Configs::safe_count($this->iFontArray);
         $maxheight = -1;
 
-        if ($nf > 0) {
+        if (0 < $nf) {
             // We have to find out the largest font and take that one as the
             // height of the row
             for ($i = 0; $i < $nf; ++$i) {
                 $aImg->SetFont($this->iFontArray[$i][0], $this->iFontArray[$i][1], $this->iFontArray[$i][2]);
-                $height    = $aImg->GetFontHeight();
-                $maxheight = max($height, $maxheight);
+                $height = $aImg->GetFontHeight();
+                $maxheight = \max($height, $maxheight);
             }
         }
 
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
-        $height    = $aImg->GetFontHeight();
-        $maxheight = max($height, $maxheight);
+        $height = $aImg->GetFontHeight();
 
-        return $maxheight;
+        return \max($height, $maxheight);
     }
 
     // Unhide/hide the text
@@ -268,52 +291,62 @@ class TextProperty
         $aImg->SetColor($this->iColor);
         $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
         $aImg->SetTextAlign($this->iHAlign, $this->iVAlign);
+
         if ($this->GetNbrTabs() < 1) {
-            if (is_string($this->iText)) {
-                if (is_array($aX)) {
+            if (\is_string($this->iText)) {
+                if (\is_array($aX)) {
                     $aX = $aX[0];
                 }
 
-                if (is_array($aY)) {
+                if (\is_array($aY)) {
                     $aY = $aY[0];
                 }
 
                 $aImg->StrokeText($aX, $aY, $this->iText);
-            } elseif (is_array($this->iText) && ($n = Configs::safe_count($this->iText)) > 0) {
-                $ax = is_array($aX);
-                $ay = is_array($aY);
+            } elseif (\is_array($this->iText) && 0 < ($n = Configs::safe_count($this->iText))) {
+                $ax = \is_array($aX);
+                $ay = \is_array($aY);
+
                 if ($ax && $ay) {
                     // Nothing; both are already arrays
                 } elseif ($ax) {
-                    $aY = array_fill(0, $n, $aY);
+                    $aY = \array_fill(0, $n, $aY);
                 } elseif ($ay) {
-                    $aX = array_fill(0, $n, $aX);
+                    $aX = \array_fill(0, $n, $aX);
                 } else {
-                    $aX = array_fill(0, $n, $aX);
-                    $aY = array_fill(0, $n, $aY);
+                    $aX = \array_fill(0, $n, $aX);
+                    $aY = \array_fill(0, $n, $aY);
                 }
-                $n = min($n, Configs::safe_count($aX));
-                $n = min($n, Configs::safe_count($aY));
+                $n = \min($n, Configs::safe_count($aX));
+                $n = \min($n, Configs::safe_count($aY));
+
                 for ($i = 0; $i < $n; ++$i) {
                     $tmp = $this->iText[$i];
-                    if (is_object($tmp)) {
+
+                    if (\is_object($tmp)) {
                         $tmp->Stroke($aImg, $aX[$i], $aY[$i]);
                     } else {
-                        if ($i < Configs::safe_count($this->iFontArray)) {
+                        if (Configs::safe_count($this->iFontArray) > $i
+                        ) {
                             $font = $this->iFontArray[$i];
                             $aImg->SetFont($font[0], $font[1], $font[2]);
                         } else {
                             $aImg->SetFont($this->iFFamily, $this->iFStyle, $this->iFSize);
                         }
-                        $aImg->StrokeText($aX[$i], $aY[$i], str_replace("\t", ' ', $tmp));
+                        $aImg->StrokeText($aX[$i], $aY[$i], \str_replace("\t", ' ', $tmp));
                     }
                 }
             }
         } else {
-            $tmp = preg_split('/\t/', $this->iText);
-            $n   = min(Configs::safe_count($tmp), Configs::safe_count($aX));
+            $tmp = \preg_split('/\t/', $this->iText);
+            $n = \min(
+                Configs::safe_count($tmp),
+                Configs::safe_count($aX)
+            );
+
             for ($i = 0; $i < $n; ++$i) {
-                if ($i < Configs::safe_count($this->iFontArray)) {
+                if (Configs::safe_count($this->iFontArray) > $i
+                ) {
                     $font = $this->iFontArray[$i];
                     $aImg->SetFont($font[0], $font[1], $font[2]);
                 } else {

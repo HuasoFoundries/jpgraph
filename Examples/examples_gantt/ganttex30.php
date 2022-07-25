@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Gantt example 30
@@ -42,9 +42,10 @@ $data = [
     [6, '  Label 5', '2001-11-01', '2001-11-8'],
 ];
 
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $bar = new Plot\GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[50%]', 0.5);
-    if (count($data[$i]) > 4) {
+
+    if (\count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
 

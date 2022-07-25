@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,10 +11,10 @@ use Amenadiel\JpGraph\Plot;
 // Data can be specified using both ordinal index of the axis
 // as well as the direction label.
 $data = [
-    'E'  => [3, 2, 1, 2, 2],
-    'N'  => [1, 1, 1.5, 2],
+    'E' => [3, 2, 1, 2, 2],
+    'N' => [1, 1, 1.5, 2],
     'nw' => [1, 1, 1.5, 2],
-    'S'  => [2, 3, 5, 1],
+    'S' => [2, 3, 5, 1],
 ];
 
 // Define the color,weight and style of some individual radial
@@ -23,14 +23,14 @@ $data = [
 // Note; Depending on how many axis you have in the plot the
 // index will vary between 0..n where n is the number of
 // compass directions.
-$axiscolors  = ['nw' => 'brown'];
+$axiscolors = ['nw' => 'brown'];
 $axisweights = ['nw' => 8]; // Could also be specified as 6 => 8
-$axisstyles  = ['nw' => 'solid'];
+$axisstyles = ['nw' => 'solid'];
 
 // First create a new windrose graph with a title
-$__width       = 400;
-$__height      = 500;
-$graph         = new Graph\WindroseGraph($__width, $__height);
+$__width = 400;
+$__height = 500;
+$graph = new Graph\WindroseGraph($__width, $__height);
 $example_title = 'Windrose example 9';
 $graph->title->set($example_title);
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);

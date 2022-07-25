@@ -1,20 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Text;
 
 $datay = [2, 3, 5, 8, 12, 6, 3];
-$datax = ['320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
-    '1600x1200(32)', ];
+$datax = [
+    '320x240', '640x480', '600x800', '1024x768', '1280x1024(16)', '1280x1024(32)',
+    '1600x1200(32)',
+];
 
 // Size of graph
-$__width  = 300;
+$__width = 300;
 $__height = 400;
 
 // Set the basic parameters of the graph
@@ -39,13 +42,21 @@ $graph->SetBackgroundGradient('white', 'lightblue', Graph\Configs::getConfig('GR
 // Setup title
 $example_title = 'Graphic card performance';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 11);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    11
+);
 $subtitle_text = '(Non optimized)';
 $graph->subtitle->Set($subtitle_text);
 
 // Setup X-axis
 $graph->xaxis->SetTickLabels($datax);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 
 // Some extra margin looks nicer
 $graph->xaxis->SetLabelMargin(10);
@@ -72,7 +83,11 @@ $bplot->SetFillGradient('darkred', 'yellow', Graph\Configs::getConfig('GRAD_HOR'
 
 // We want to display the value of each bar at the top
 $bplot->value->Show();
-$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 10);
+$bplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    10
+);
 //$bplot->value->SetAlign('left','center');
 $bplot->value->SetColor('white');
 $bplot->value->SetFormat('%.1f');
@@ -84,7 +99,11 @@ $graph->Add($bplot);
 // Add some explanation text
 $txt = new Text\Text('Note: Higher value is better.');
 $txt->SetPos(190, 399, 'center', 'bottom');
-$txt->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$txt->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->Add($txt);
 
 // .. and stroke the graph

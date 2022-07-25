@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $data2y = [61, 30, 82, 105];
 $data3y = [115, 50, 70, 93];
 
 // Create the graph. These two calls are always required
-$__width  = 350;
+$__width = 350;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
 $theme_class = new UniversalTheme();

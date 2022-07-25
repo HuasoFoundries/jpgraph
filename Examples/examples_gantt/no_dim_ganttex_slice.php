@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Gantt example with sunday week start and only shows a partial graph
@@ -10,9 +10,9 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Setup Gantt graph
-$__width  = 0;
+$__width = 0;
 $__height = 0;
-$graph    = new Graph\GanttGraph($__width, $__height, 'auto');
+$graph = new Graph\GanttGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 $graph->SetBox();
 
@@ -42,9 +42,10 @@ $data = [
 ];
 
 // make up some fictionary activity bars
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $bar = new Plot\GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], '[5%]', 10);
-    if (count($data[$i]) > 4) {
+
+    if (\count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
 
@@ -66,7 +67,7 @@ for ($i = 0; $i < count($data); ++$i) {
 }
 
 // The line will NOT be shown since it is outside the specified slice
-$vline         = new Plot\GanttVLine('2002-02-28');
+$vline = new Plot\GanttVLine('2002-02-28');
 $example_title = '2002-02-28';
 $vline->title->set($example_title);
 $vline->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'), 10);

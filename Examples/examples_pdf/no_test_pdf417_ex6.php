@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once 'jpgraph/pdf417/jpgraph_pdf417.php';
@@ -20,7 +20,7 @@ $data = [
 
 // Setup some symbolic names for barcode specification
 
-$columns  = 8;   // Use 8 data (payload) columns
+$columns = 8;   // Use 8 data (payload) columns
 $modwidth = 2;  // Use 2 pixel module width
 $errlevel = 2;  // Use error level 2
 $showtext = true;  // Show human readable string

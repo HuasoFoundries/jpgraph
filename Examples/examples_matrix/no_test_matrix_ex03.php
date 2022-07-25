@@ -1,12 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 
 require_once 'jpgraph/jpgraph_matrix.php';
+
 require_once 'jpgraph/jpgraph_iconplot.php';
 
 $data = [
@@ -22,15 +23,19 @@ $data = [
 
 // Do the meshinterpolation once for the data
 doMeshInterpolate($data, 3);
-$r = count($data);
-$c = count($data[0]);
+$r = \count($data);
+$c = \count($data[0]);
 
-$width         = 400;
-$height        = 400;
-$graph         = new MatrixGraph($width, $height);
+$width = 400;
+$height = 400;
+$graph = new MatrixGraph($width, $height);
 $example_title = 'Adding an icon to the background';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 
 $mp = new MatrixPlot($data, 1);
 $mp->SetSize(0.6);

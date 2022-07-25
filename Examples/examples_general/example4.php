@@ -1,19 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some (random) data
-$ydata  = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
+$ydata = [11, 3, 8, 12, 5, 1, 9, 13, 5, 7];
 $ydata2 = [1, 19, 15, 7, 22, 14, 5, 9, 21, 13];
 
 // Size of the overall graph
-$__width  = 350;
+$__width = 350;
 $__height = 250;
 
 // Create the graph and set a scale.
@@ -30,8 +31,14 @@ $graph->subtitle->Set($subtitle_text);
 $graph->xaxis->title->Set('Operator');
 $graph->yaxis->title->Set('# of calls');
 
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Create the first data series
 $lineplot = new Plot\LinePlot($ydata);

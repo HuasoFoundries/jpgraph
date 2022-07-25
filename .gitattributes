@@ -17,3 +17,7 @@
 /codeception.yml export-ignore
 /composer.lock export-ignore
 /jpgraph_logo.jpg export-ignore
+/.php_cs.cache export-ignore
+/.phpunit.result.cache export-ignore
+/.build/csfixer.cache export-ignore
+/.build/phplint.cache export-ignore

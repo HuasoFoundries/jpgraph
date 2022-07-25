@@ -1,106 +1,36 @@
 <?php
-namespace Tests\Unit;
-use Tests\UnitTestTrait;
-
-
-use \Codeception\Util\Debug;
 
 /**
- * @group ready
+ * JPGraph - Community Edition
  */
-class ThemeTest extends \Tests\TestCase
-{
-    
 
-    public static $fixTures    = [];
-    public static $files       = null;
-    public static $exampleRoot = null;
-    public static $ranTests    = [];
+namespace Tests\Unit;
 
-    public static function setUpBeforeClass(): void
-    {
-        $className = str_replace('test', '', strtolower(__CLASS__));
+use Tests\SizeFixture;
+use Amenadiel\JpGraph\Themes\AquaTheme;
 
-        self::$files   = self::getFiles($className);
-        $knownFixtures = self::getShallowFixtureArray(self::$fixTures);
+use Amenadiel\JpGraph\Themes\GreenTheme;
+use Amenadiel\JpGraph\Themes\OceanTheme;
+use Amenadiel\JpGraph\Themes\OrangeTheme;
+use Amenadiel\JpGraph\Themes\PastelTheme;
+use Amenadiel\JpGraph\Themes\RoseTheme;
+use Amenadiel\JpGraph\Themes\SoftyTheme;
+use Amenadiel\JpGraph\Themes\UniversalTheme;
+use Amenadiel\JpGraph\Themes\VividTheme;
 
-        self::$files = array_filter(self::$files, function ($filename) use ($knownFixtures) {
-            return !array_key_exists($filename, $knownFixtures);
-        });
+it('it retrieves an array of colors  theme', function (string $theme) {
+    $themeInstance = new $theme();
 
-        Debug::debug(__CLASS__ . ' has ' . count(self::$files) . ' files');
-
-    }
-
-    protected function _before() {}
-
-    protected function _after() {}
-
-    public function testAquathemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testGreenthemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testOceanthemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testOrangethemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testPastelthemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testRosethemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testSoftythemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testThemefileiterator()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testUniversalthemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testVividthemeExample()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-
-    }
-
-    public function testFileIterator()
-    {
-        self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
-        }, self::$genericFixtures);
-    }
-}
+    expect($themeInstance->GetColorList())->toBeArray();
+})->with([
+    AquaTheme::class,
+    RoseTheme::class,
+    GreenTheme::class,
+    OceanTheme::class,
+    OrangeTheme::class,
+    PastelTheme::class,
+    SoftyTheme::class,
+    RoseTheme::class,
+    UniversalTheme::class,
+    VividTheme::class
+]);

@@ -1,14 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Util;
-use function is_array;
 
 /**
  * @class ScatterPlot
@@ -17,7 +16,9 @@ use function is_array;
 class ScatterPlot extends Plot
 {
     public $mark;
+
     public $link;
+
     private $impuls = false;
 
     /**
@@ -26,16 +27,18 @@ class ScatterPlot extends Plot
      */
     public function __construct($datay, $datax = false)
     {
-        if ((Configs::safe_count($datax) != Configs::safe_count($datay)) && is_array($datax)) {
-            Util\JpGraphError::RaiseL(20003); //("Scatterplot must have equal number of X and Y points.");
+        if ((Configs::safe_count($datax) !== Configs::safe_count($datay)) && \is_array($datax)) {
+            throw Util\JpGraphError::make(20003); //("Scatterplot must have equal number of X and Y points.");
         }
         parent::__construct($datay, $datax);
         $this->mark = new PlotMark();
-        $this->mark->SetType(Configs::MARK_SQUARE);
+        $this->mark->SetType(
+            Configs::MARK_SQUARE
+        );
         $this->mark->SetColor($this->color);
         $this->value->SetAlign('center', 'center');
         $this->value->SetMargin(0);
-        $this->link        = new Graph\Scale\LineProperty(1, 'black', 'solid');
+        $this->link = new Graph\Scale\LineProperty(1, 'black', 'solid');
         $this->link->iShow = false;
     }
 
@@ -57,48 +60,50 @@ class ScatterPlot extends Plot
     // Combine the scatter plot points with a line
     public function SetLinkPoints($aFlag = true, $aColor = 'black', $aWeight = 1, $aStyle = 'solid')
     {
-        $this->link->iShow   = $aFlag;
-        $this->link->iColor  = $aColor;
+        $this->link->iShow = $aFlag;
+        $this->link->iColor = $aColor;
         $this->link->iWeight = $aWeight;
-        $this->link->iStyle  = $aStyle;
+        $this->link->iStyle = $aStyle;
     }
 
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
-        $ymin = $yscale->scale_abs[0];
-        if ($yscale->scale[0] < 0) {
-            $yzero = $yscale->Translate(0);
+        $ymin = $aYScale->scale_abs[0];
+
+        if (0 > $aYScale->scale[0]) {
+            $yzero = $aYScale->Translate(0);
         } else {
-            $yzero = $yscale->scale_abs[0];
+            $yzero = $aYScale->scale_abs[0];
         }
 
         $this->csimareas = '';
+
         for ($i = 0; $i < $this->numpoints; ++$i) {
             // Skip null values
-            if ($this->coords[0][$i] === '' || $this->coords[0][$i] === '-' || $this->coords[0][$i] === 'x') {
+            if ('' === $this->coords[0][$i] || '-' === $this->coords[0][$i] || 'x' === $this->coords[0][$i]) {
                 continue;
             }
 
             if (isset($this->coords[1])) {
-                $xt = $xscale->Translate($this->coords[1][$i]);
+                $xt = $aXScale->Translate($this->coords[1][$i]);
             } else {
-                $xt = $xscale->Translate($i);
+                $xt = $aXScale->Translate($i);
             }
 
-            $yt = $yscale->Translate($this->coords[0][$i]);
+            $yt = $aYScale->Translate($this->coords[0][$i]);
 
             if ($this->link->iShow && isset($yt_old)) {
-                $img->SetColor($this->link->iColor);
-                $img->SetLineWeight($this->link->iWeight);
-                $old = $img->SetLineStyle($this->link->iStyle);
-                $img->StyleLine($xt_old, $yt_old, $xt, $yt);
-                $img->SetLineStyle($old);
+                $aImg->SetColor($this->link->iColor);
+                $aImg->SetLineWeight($this->link->iWeight);
+                $old = $aImg->SetLineStyle($this->link->iStyle);
+                $aImg->StyleLine($xt_old, $yt_old, $xt, $yt);
+                $aImg->SetLineStyle($old);
             }
 
             if ($this->impuls) {
-                $img->SetColor($this->color);
-                $img->SetLineWeight($this->weight);
-                $img->Line($xt, $yzero, $xt, $yt);
+                $aImg->SetColor($this->color);
+                $aImg->SetLineWeight($this->weight);
+                $aImg->Line($xt, $yzero, $xt, $yt);
             }
 
             if (!empty($this->csimtargets[$i])) {
@@ -116,10 +121,10 @@ class ScatterPlot extends Plot
                 $this->mark->SetCSIMAltVal($this->coords[0][$i], $i);
             }
 
-            $this->mark->Stroke($img, $xt, $yt);
+            $this->mark->Stroke($aImg, $xt, $yt);
 
             $this->csimareas .= $this->mark->GetCSIMAreas();
-            $this->value->Stroke($img, $this->coords[0][$i], $xt, $yt);
+            $this->value->Stroke($aImg, $this->coords[0][$i], $xt, $yt);
 
             $xt_old = $xt;
             $yt_old = $yt;
@@ -129,7 +134,7 @@ class ScatterPlot extends Plot
     // Framework function
     public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 

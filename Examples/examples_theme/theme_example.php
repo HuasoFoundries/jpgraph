@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,10 +9,10 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Themes;
 
-$data1y   = [47, 80, 40, 116];
-$__width  = 400;
+$data1y = [47, 80, 40, 116];
+$__width = 400;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 
 $theme_class = new Themes\AquaTheme();

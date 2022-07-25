@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -13,10 +13,14 @@ use Amenadiel\JpGraph\Util;
 class GanttVLine extends GanttPlotObject
 {
     private $iLine;
+
     private $title_margin = 3;
-    private $iDayOffset   = 0.5;
-    private $iStartRow    = -1;
-    private $iEndRow      = -1;
+
+    private $iDayOffset = 0.5;
+
+    private $iStartRow = -1;
+
+    private $iEndRow = -1;
 
     /**
      * @param mixed $aDate
@@ -33,7 +37,7 @@ class GanttVLine extends GanttPlotObject
         $this->iLine->SetWeight($aWeight);
         $this->iLine->SetStyle($aStyle);
         $this->iStart = $aDate;
-        $this->title  = new Text\TextPropertyBelow();
+        $this->title = new Text\TextPropertyBelow();
         $this->title->Set($aTitle);
     }
 
@@ -48,13 +52,13 @@ class GanttVLine extends GanttPlotObject
     public function SetRowSpan($aStart, $aEnd = -1)
     {
         $this->iStartRow = $aStart;
-        $this->iEndRow   = $aEnd;
+        $this->iEndRow = $aEnd;
     }
 
     public function SetDayOffset($aOff = 0.5)
     {
-        if ($aOff < 0.0 || $aOff > 1.0) {
-            Util\JpGraphError::RaiseL(6029);
+        if (0.0 > $aOff || 1.0 < $aOff) {
+            throw Util\JpGraphError::make(6029);
             //("Offset for vertical line must be in range [0,1]");
         }
         $this->iDayOffset = $aOff;
@@ -73,23 +77,24 @@ class GanttVLine extends GanttPlotObject
     public function Stroke($aImg, $aScale)
     {
         $d = $aScale->NormalizeDate($this->iStart);
+
         if ($d < $aScale->iStartDate || $d > $aScale->iEndDate) {
             return;
         }
 
-        if ($this->iDayOffset != 0.0) {
+        if (0.0 !== $this->iDayOffset) {
             $d += 24 * 60 * 60 * $this->iDayOffset;
         }
 
         $x = $aScale->TranslateDate($d); //d=1006858800,
 
-        if ($this->iStartRow > -1) {
+        if (-1 < $this->iStartRow) {
             $y1 = $aScale->TranslateVertPos($this->iStartRow, true);
         } else {
             $y1 = $aScale->iVertHeaderSize + $aImg->top_margin;
         }
 
-        if ($this->iEndRow > -1) {
+        if (-1 < $this->iEndRow) {
             $y2 = $aScale->TranslateVertPos($this->iEndRow);
         } else {
             $y2 = $aImg->height - $aImg->bottom_margin;

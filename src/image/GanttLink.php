@@ -102,7 +102,7 @@ class GanttLink
 
                         break;
                     default:
-                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
+                        throw      Util\JpGraphError::make(6032, $this->iPathType);
                         //('Internal error: Unknown path type (='.$this->iPathType .') specified for link.');
                         exit(1);
 
@@ -155,7 +155,7 @@ class GanttLink
 
                         break;
                     default:
-                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
+                        throw      Util\JpGraphError::make(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         exit(1);
 
@@ -184,7 +184,7 @@ class GanttLink
 
                         break;
                     default:
-                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
+                        throw      Util\JpGraphError::make(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         break;
                 }
@@ -232,7 +232,7 @@ class GanttLink
 
                         break;
                     default:
-                        Util\JpGraphError::RaiseL(6032, $this->iPathType);
+                        throw      Util\JpGraphError::make(6032, $this->iPathType);
                         //('Internal error: Unknown path type specified for link.');
                         break;
                 }

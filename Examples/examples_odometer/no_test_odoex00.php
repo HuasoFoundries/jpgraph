@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // File:    Graph\Configs::getConfig('ODOEX00').PHP
@@ -19,13 +19,12 @@ require_once __DIR__ . '/../../src/config.inc.php';
 
 use Amenadiel\JpGraph\Graph;
 
-
 //---------------------------------------------------------------------
 // Create a new odometer graph (width=250, height=200 pixels)
 //---------------------------------------------------------------------
-$__width  = 250;
+$__width = 250;
 $__height = 130;
-$graph    = new OdoGraph($__width, $__height);
+$graph = new OdoGraph($__width, $__height);
 $graph->SetColor('white');
 $graph->SetMarginColor('white');
 $graph->SetFrame(false);

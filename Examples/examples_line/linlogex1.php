@@ -1,19 +1,23 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$xdata = [2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0,
+$xdata = [
+    2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0,
     12.0, 15.0, 20.0, 25.0, 30.0, 40.0, 50.0, 60.0,
     75.0, 100., 125., 150., 175., 200., 250., 300.,
     400., 500., 600., 800., 950.,
-    1200., 1500., 2000., 2500., ];
-$ydata = [270., 280., // 2 m
+    1200., 1500., 2000., 2500.,
+];
+$ydata = [
+    270., 280., // 2 m
     330., 340., // 2.5
     410., 420., // 3
     550., 560., // 4
@@ -48,16 +52,25 @@ $ydata = [270., 280., // 2 m
     8., 10., // 2500 m
 ];
 
-$__width  = 500;
+$__width = 500;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlog');
 $graph->img->SetMargin(40, 20, 20, 40);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->title->Set('ab/2');
 $graph->yaxis->title->Set('rho_s');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
-$graph->yaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
+$graph->yaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->ygrid->Show(true, true);
 $graph->xgrid->Show(true, true);
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -72,9 +72,10 @@ $graph->title->set($example_title);
 $graph->title->SetColor('darkgray');
 $graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 14);
 
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $bar = new Plot\GanttBar($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3]);
-    if (count($data[$i]) > 4) {
+
+    if (\count($data[$i]) > 4) {
         $bar->title->SetFont($data[$i][4], $data[$i][5], $data[$i][6]);
     }
     $bar->SetPattern(Graph\Configs::getConfig('BAND_RDIAG'), 'yellow');

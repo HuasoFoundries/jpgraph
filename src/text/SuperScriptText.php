@@ -1,17 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Text;
 
 use Amenadiel\JpGraph\Util;
-use function floor;
-use function log10;
-use function pow;
-use function round;
-use function sprintf;
 
 /**
  * @class SuperScriptText
@@ -19,15 +14,23 @@ use function sprintf;
  */
 class SuperScriptText extends Text
 {
-    private $iSuper       = '';
+    private $iSuper = '';
+
     private $sfont_family = '';
-    private $sfont_style  = '';
-    private $sfont_size   = 8;
+
+    private $sfont_style = '';
+
+    private $sfont_size = 8;
+
     private $iSuperMargin = 2;
+
     private $iVertOverlap = 4;
-    private $iSuperScale  = 0.65;
-    private $iSDir        = 0;
-    private $iSimple      = false;
+
+    private $iSuperScale = 0.65;
+
+    private $iSDir = 0;
+
+    private $iSimple = false;
 
     public function __construct($aTxt = '', $aSuper = '', $aXAbsPos = 0, $aYAbsPos = 0)
     {
@@ -39,22 +42,24 @@ class SuperScriptText extends Text
     {
         // Convert a floating point number to scientific notation
         $neg = 1.0;
-        if ($aVal < 0) {
-            $neg  = -1.0;
+
+        if (0 > $aVal) {
+            $neg = -1.0;
             $aVal = -$aVal;
         }
 
-        $l  = floor(log10($aVal));
-        $a  = sprintf('%0.' . $aPrecision . 'f', round($aVal / pow(10, $l), $aPrecision));
+        $l = \floor(\log10($aVal));
+        $a = \sprintf('%0.' . $aPrecision . 'f', \round($aVal / 10 ** $l, $aPrecision));
         $a *= $neg;
-        if ($this->iSimple && ($a == 1 || $a == -1)) {
+
+        if ($this->iSimple && (1 === $a || -1 === $a)) {
             $a = '';
         }
 
-        if ($a != '') {
+        if ('' !== $a) {
             $this->t = $a . ' * 10';
         } else {
-            if ($neg == 1) {
+            if (1 === $neg) {
                 $this->t = '10';
             } else {
                 $this->t = '-10';
@@ -65,15 +70,15 @@ class SuperScriptText extends Text
 
     public function Set($aTxt, $aSuper = '')
     {
-        $this->t      = $aTxt;
+        $this->t = $aTxt;
         $this->iSuper = $aSuper;
     }
 
     public function SetSuperFont($aFontFam, $aFontStyle = self::FS_NORMAL, $aFontSize = 8)
     {
         $this->sfont_family = $aFontFam;
-        $this->sfont_style  = $aFontStyle;
-        $this->sfont_size   = $aFontSize;
+        $this->sfont_style = $aFontStyle;
+        $this->sfont_size = $aFontSize;
     }
 
     // Total width of text
@@ -110,7 +115,7 @@ class SuperScriptText extends Text
         return $h;
     }
 
-    public function Stroke($aImg, $ax = -1, $ay = -1)
+    public function Stroke($aImg, $x = -1, $y = -1)
     {
         // To position the super script correctly we need different
         // cases to handle the alignmewnt specified since that will
@@ -118,6 +123,7 @@ class SuperScriptText extends Text
 
         $w = parent::GetWidth($aImg);
         $h = parent::GetTextHeight($aImg);
+
         switch ($this->valign) {
             case 'top':
                 $sy = $this->y;
@@ -131,8 +137,9 @@ class SuperScriptText extends Text
                 $sy = $this->y - $h;
 
                 break;
+
             default:
-                Util\JpGraphError::RaiseL(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
+                throw Util\JpGraphError::make(25052); //('PANIC: Internal error in SuperScript::Stroke(). Unknown vertical alignment for text');
 
                 break;
         }
@@ -150,8 +157,9 @@ class SuperScriptText extends Text
                 $sx = $this->x;
 
                 break;
+
             default:
-                Util\JpGraphError::RaiseL(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
+                throw Util\JpGraphError::make(25053); //('PANIC: Internal error in SuperScript::Stroke(). Unknown horizontal alignment for text');
 
                 break;
         }
@@ -161,12 +169,15 @@ class SuperScriptText extends Text
 
         // Should we automatically determine the font or
         // has the user specified it explicetly?
-        if ($this->sfont_family == '') {
-            if ($this->font_family <= Configs::FF_FONT2) {
-                if ($this->font_family == Configs::FF_FONT0) {
+        if ('' === $this->sfont_family) {
+            if (Configs::FF_FONT2 >= $this->font_family
+            ) {
+                if (Configs::FF_FONT0 === $this->font_family
+                ) {
                     $sff = Configs::FF_FONT0;
-                } elseif ($this->font_family == Configs::FF_FONT1) {
-                    if ($this->font_style == self::FS_NORMAL) {
+                } elseif (Configs::FF_FONT1 === $this->font_family
+                ) {
+                    if (self::FS_NORMAL === $this->font_style) {
                         $sff = Configs::FF_FONT0;
                     } else {
                         $sff = Configs::FF_FONT1;
@@ -180,26 +191,28 @@ class SuperScriptText extends Text
                 // TTF fonts
                 $sff = $this->font_family;
                 $sfs = $this->font_style;
-                $sfz = floor($this->font_size * $this->iSuperScale);
-                if ($sfz < 8) {
+                $sfz = \floor($this->font_size * $this->iSuperScale);
+
+                if (8 > $sfz) {
                     $sfz = 8;
                 }
             }
             $this->sfont_family = $sff;
-            $this->sfont_style  = $sfs;
-            $this->sfont_size   = $sfz;
+            $this->sfont_style = $sfs;
+            $this->sfont_size = $sfz;
         } else {
             $sff = $this->sfont_family;
             $sfs = $this->sfont_style;
             $sfz = $this->sfont_size;
         }
 
-        parent::Stroke($aImg, $ax, $ay);
+        parent::Stroke($aImg, $x, $y);
 
         // For the builtin fonts we need to reduce the margins
         // since the bounding bx reported for the builtin fonts
         // are much larger than for the TTF fonts.
-        if ($sff <= Configs::FF_FONT2) {
+        if (Configs::FF_FONT2 >= $sff
+        ) {
             $sx -= 2;
             $sy += 3;
         }

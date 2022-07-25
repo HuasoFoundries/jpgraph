@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,16 +14,20 @@ $datay2 = [12, 9, 42, 8];
 $datay3 = [5, 17, 32, 24];
 
 // Setup the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);
 $graph->SetMargin(30, 50, 30, 30);
 
 $graph->tabtitle->Set(' Year 2003 ');
-$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 13);
+$graph->tabtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    13
+);
 
 $graph->yaxis->HideZeroLabel();
 $graph->ygrid->SetFill(true, '#EFEFEF@0.5', '#BBCCFF@0.5');

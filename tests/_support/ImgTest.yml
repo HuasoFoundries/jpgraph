@@ -1,4 +1,13 @@
-testAntispamfileiterator:
-    antispamex01.php: { title: antispamFileIterator, filename: antispamex01.php, example_root: '' }
+
 testImgmarkerfileiterator:
-    imgmarkerex1.php: { title: imgmarkerFileIterator, filename: imgmarkerex1.php, example_root: '' }
+    imgmarkerex1.php: { title: imgmarkerFileIterator,  width : 300, height: 200, filename: imgmarkerex1.php, example_root: '' }
+testFlagImage:
+    bkgimgflagex1.php: {title: 'using a flag background', width : 300, height: 200, filename: bkgimgflagex1.php }
+
+testVerticallySkewedImages:
+    bkgimgflagex2.php: {title: 'using a vertically skewed flag background 1', width : 300, height: 58, filename: bkgimgflagex2.php }
+    bkgimgflagex3.php: {title: 'using a vertically skewed flag background 2', width : 300, height: 53, filename: bkgimgflagex3.php }
+
+testHorizontallySkewedImages:
+    bkgimgflagex4.php: {title: 'using an horizontally skewed flag background 1', width : 146, height: 200, filename: bkgimgflagex4.php }
+    bkgimgflagex5.php: {title: 'using an horizontally skewed flag background 2', width : 170, height: 200, filename: bkgimgflagex5.php }

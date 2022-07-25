@@ -301,7 +301,7 @@ class FlagImages
 
                 break;
             default:
-                Util\JpGraphError::RaiseL(5001, $aSize);
+                throw      Util\JpGraphError::make(5001, $aSize);
                 //('Unknown flag size. ('.$aSize.')');
         }
         $this->iFlagCount = Configs::safe_count($this->iCountryNameMap);
@@ -326,7 +326,7 @@ class FlagImages
 
             return Image::CreateFromString($d);
         }
-        Util\JpGraphError::RaiseL(5002, $aIdx);
+ throw      Util\JpGraphError::make(5002, $aIdx);
         //("Flag index \"�$aIdx\" does not exist.");
     }
 
@@ -352,7 +352,7 @@ class FlagImages
 
             return $tmp[0];
         }
-        Util\JpGraphError::RaiseL(5003, $aOrd);
+ throw      Util\JpGraphError::make(5003, $aOrd);
         //('Invalid ordinal number specified for flag index.');
     }
 
@@ -392,7 +392,7 @@ class FlagImages
 
             return $val;
         }
-        Util\JpGraphError::RaiseL(5004, $aName);
+ throw      Util\JpGraphError::make(5004, $aName);
         //("The (partial) country name \"$aName\" does not have a cooresponding flag image. The flag may still exist but under another name, e.g. insted of \"usa\" try \"united states\".");
     }
 }

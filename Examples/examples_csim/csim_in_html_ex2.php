@@ -8,14 +8,15 @@ $_graphfilename2 = 'csim_in_html_graph_ex2.php';
 
 // This is the filename of this Graph\Configs::getConfig('HTML') file
 global $_wrapperfilename;
-$_wrapperfilename = basename(__FILE__);
+$_wrapperfilename = \basename(__FILE__);
 
 // Create a random mapname used to connect the image map with the image
-$_mapname1 = '__mapname' . rand(0, 1000000) . '__';
-$_mapname2 = '__mapname' . rand(0, 1000000) . '__';
+$_mapname1 = '__mapname' . \mt_rand(0, 1000000) . '__';
+$_mapname2 = '__mapname' . \mt_rand(0, 1000000) . '__';
 
 // Get the graph scripts
 require_once $_graphfilename1;
+
 require_once $_graphfilename2;
 
 // This line gets the image map and inserts it on the page
@@ -35,6 +36,7 @@ if (empty($_GET['clickedon'])) {
     echo '<b style="color:darkred;">Clicked on bar: ' . $_GET['clickedon'] . '</b>';
 }
 echo '<p />';
+
 if (empty($_GET['pie_clickedon'])) {
     echo '<b style="color:darkred;">Clicked on pie slice: &lt;none></b>';
 } else {
@@ -48,14 +50,14 @@ echo '<p />';
 <p>For these graphs the maps are:</p>
 <?php
 // The we display the image map as well
-echo '<small><pre>' . htmlentities($imgmap1) . '</pre></small>';
+echo '<small><pre>' . \htmlentities($imgmap1) . '</pre></small>';
 ?>
 <p>
 and
 </p>
 <?php
 // The we display the image map as well
-echo '<small><pre>' . htmlentities($imgmap2) . '</pre></small>';
+echo '<small><pre>' . \htmlentities($imgmap2) . '</pre></small>';
 ?>
 
 <?php
@@ -67,8 +69,8 @@ $imgtag2 = $piegraph->GetCSIMImgHTML($_mapname2, $_graphfilename2);
   created &lt;img> tags:</p>
 <small><pre>
 <?php
-echo htmlentities($imgtag1);
-echo htmlentities($imgtag2);
+echo \htmlentities($imgtag1);
+echo \htmlentities($imgtag2);
 ?>
 </pre></small>
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,5 +16,5 @@ $chars = $spam->Rand(5);
 
 // Stroke random cahllenge
 if ($spam->Stroke() === false) {
-    die('Illegal or no data to plot');
+    exit('Illegal or no data to plot');
 }

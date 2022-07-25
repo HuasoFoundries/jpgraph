@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,18 +14,19 @@ $data = [
     [80, 18, 15, 17],
     [35, 28, 6, 34],
     [10, 28, 10, 5],
-    [22, 22, 10, 17], ];
+    [22, 22, 10, 17],
+];
 
 $piepos = [0.2, 0.4, 0.65, 0.28, 0.25, 0.75, 0.8, 0.75];
 $titles = ['USA', 'Sweden', 'South America', 'Australia'];
 
-$n = count($piepos) / 2;
+$n = \count($piepos) / 2;
 
-defined('DEFAULT_THEME_CLASS') || define('DEFAULT_THEME_CLASS', 'NoTheme');
+\defined('DEFAULT_THEME_CLASS') || \define('DEFAULT_THEME_CLASS', 'NoTheme');
 // A new Graph\Graph
-$__width  = 550;
+$__width = 550;
 $__height = 400;
-$graph    = new Graph\PieGraph($__width, $__height, 'auto');
+$graph = new Graph\PieGraph($__width, $__height, 'auto');
 
 // Specify margins since we put the image in the plot area
 $graph->SetMargin(1, 1, 40, 1);
@@ -37,13 +39,17 @@ $graph->SetBackgroundImage(__DIR__ . '/../assets/worldmap1.jpg', Graph\Configs::
 // Setup title
 $example_title = 'Pie plots with background image';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 20);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    20
+);
 $graph->title->SetColor('white');
 
 $p = [];
 // Create the plots
 for ($i = 0; $i < $n; ++$i) {
-    $d   = "data${i}";
+    $d = "data{$i}";
     $p[] = new Plot\PiePlot3D($data[$i]);
 }
 
@@ -56,12 +62,19 @@ for ($i = 0; $i < $n; ++$i) {
 for ($i = 0; $i < $n; ++$i) {
     $p[$i]->title->Set($titles[$i]);
     $p[$i]->title->SetColor('white');
-    $p[$i]->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+    $p[$i]->title->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_BOLD'),
+        12
+    );
 }
 
 // Label font and color setup
 for ($i = 0; $i < $n; ++$i) {
-    $p[$i]->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
+    $p[$i]->value->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_BOLD')
+    );
     $p[$i]->value->SetColor('white');
 }
 

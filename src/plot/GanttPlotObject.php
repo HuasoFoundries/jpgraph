@@ -1,16 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function is_string;
-use function substr;
-use function var_export;
 
 /**
  * @class GanttPlotObject
@@ -19,16 +16,27 @@ use function var_export;
 class GanttPlotObject
 {
     public $title;
+
     public $caption;
-    public $csimarea            = '';
-    public $csimtarget          = '';
-    public $csimwintarget       = '';
-    public $csimalt             = '';
-    public $constraints         = [];
-    public $iCaptionMargin      = 5;
-    public $iConstrainPos       = [];
-    protected $iStart           = ''; // Start date
-    public $iVPos               = 0; // Vertical position
+
+    public $csimarea = '';
+
+    public $csimtarget = '';
+
+    public $csimwintarget = '';
+
+    public $csimalt = '';
+
+    public $constraints = [];
+
+    public $iCaptionMargin = 5;
+
+    public $iConstrainPos = [];
+
+    public $iVPos = 0; // Vertical position
+
+    protected $iStart = ''; // Start date
+
     protected $iLabelLeftMargin = 2; // Title margin
 
     public function __construct()
@@ -45,27 +53,31 @@ class GanttPlotObject
 
     public function SetCSIMTarget($aTarget, $aAlt = '', $aWinTarget = '')
     {
-        if (!is_string($aTarget)) {
-            $tv = substr(var_export($aTarget, true), 0, 40);
-            Util\JpGraphError::RaiseL(6024, $tv);
+        if (!\is_string($aTarget)) {
+            $tv = \mb_substr(\var_export($aTarget, true), 0, 40);
+
+            throw Util\JpGraphError::make(6024, $tv);
             //('CSIM Target must be specified as a string.'."\nStart of target is:\n$tv");
         }
-        if (!is_string($aAlt)) {
-            $tv = substr(var_export($aAlt, true), 0, 40);
-            Util\JpGraphError::RaiseL(6025, $tv);
+
+        if (!\is_string($aAlt)) {
+            $tv = \mb_substr(\var_export($aAlt, true), 0, 40);
+
+            throw Util\JpGraphError::make(6025, $tv);
             //('CSIM Alt text must be specified as a string.'."\nStart of alt text is:\n$tv");
         }
 
-        $this->csimtarget    = $aTarget;
+        $this->csimtarget = $aTarget;
         $this->csimwintarget = $aWinTarget;
-        $this->csimalt       = $aAlt;
+        $this->csimalt = $aAlt;
     }
 
     public function SetCSIMAlt($aAlt)
     {
-        if (!is_string($aAlt)) {
-            $tv = substr(var_export($aAlt, true), 0, 40);
-            Util\JpGraphError::RaiseL(6025, $tv);
+        if (!\is_string($aAlt)) {
+            $tv = \mb_substr(\var_export($aAlt, true), 0, 40);
+
+            throw Util\JpGraphError::make(6025, $tv);
             //('CSIM Alt text must be specified as a string.'."\nStart of alt text is:\n$tv");
         }
         $this->csimalt = $aAlt;

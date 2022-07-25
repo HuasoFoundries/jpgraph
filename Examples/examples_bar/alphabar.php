@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -15,9 +15,9 @@ $datay2 = [35, 90, 190, 190];
 $datay3 = [20, 60, 70, 140];
 
 // Create the basic graph
-$__width  = 450;
+$__width = 450;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->img->SetMargin(40, 80, 30, 40);
 
@@ -36,13 +36,22 @@ $graph->SetBackgroundImage(__DIR__ . '/../assets/stship.jpg', Graph\Configs::get
 
 // Set axis titles and fonts
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->title->SetColor('white');
 
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->SetColor('white');
 
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->yaxis->SetColor('white');
 
 //$graph->ygrid->Show(false);
@@ -53,7 +62,11 @@ $example_title = 'Using alpha blending with a background';
 $graph->title->set($example_title);
 // Some extra margin (from the top)
 $graph->title->SetMargin(3);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 // Create the three var series we will combine
 $bplot1 = new Plot\BarPlot($datay1);

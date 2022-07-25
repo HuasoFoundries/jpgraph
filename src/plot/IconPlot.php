@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -9,10 +9,6 @@ namespace Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Image;
 use Amenadiel\JpGraph\Util;
-use function imagesx;
-use function imagesy;
-use function in_array;
-use function round;
 
 /**
  * File:        JPGRAPH_ICONPLOT.PHP
@@ -30,28 +26,41 @@ use function round;
  */
 class IconPlot
 {
-    public $iX               = 0;
-    public $iY               = 0;
-    public $iScale           = 1.0;
-    public $iMix             = 100;
-    private $iHorAnchor      = 'left';
-    private $iVertAnchor     = 'top';
-    private $iFile           = '';
-    private $iAnchors        = ['left', 'right', 'top', 'bottom', 'center'];
-    private $iCountryFlag    = '';
+    public $iX = 0;
+
+    public $iY = 0;
+
+    public $iScale = 1.0;
+
+    public $iMix = 100;
+
+    private $iHorAnchor = 'left';
+
+    private $iVertAnchor = 'top';
+
+    private $iFile = '';
+
+    private $iAnchors = ['left', 'right', 'top', 'bottom', 'center'];
+
+    private $iCountryFlag = '';
+
     private $iCountryStdSize = 3;
+
     private $iScalePosY;
+
     private $iScalePosX;
+
     private $iImgString = '';
 
     public function __construct($aFile = '', $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100)
     {
-        $this->iFile  = $aFile;
-        $this->iX     = $aX;
-        $this->iY     = $aY;
+        $this->iFile = $aFile;
+        $this->iX = $aX;
+        $this->iY = $aY;
         $this->iScale = $aScale;
-        if ($aMix < 0 || $aMix > 100) {
-            Util\JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
+
+        if (0 > $aMix || 100 < $aMix) {
+            throw Util\JpGraphError::make(8001); //('Mix value for icon must be between 0 and 100.');
         }
         $this->iMix = $aMix;
     }
@@ -59,13 +68,14 @@ class IconPlot
     public function SetCountryFlag($aFlag, $aX = 0, $aY = 0, $aScale = 1.0, $aMix = 100, $aStdSize = 3)
     {
         $this->iCountryFlag = $aFlag;
-        $this->iX           = $aX;
-        $this->iY           = $aY;
-        $this->iScale       = $aScale;
-        if ($aMix < 0 || $aMix > 100) {
-            Util\JpGraphError::RaiseL(8001); //'Mix value for icon must be between 0 and 100.');
+        $this->iX = $aX;
+        $this->iY = $aY;
+        $this->iScale = $aScale;
+
+        if (0 > $aMix || 100 < $aMix) {
+            throw Util\JpGraphError::make(8001); //'Mix value for icon must be between 0 and 100.');
         }
-        $this->iMix            = $aMix;
+        $this->iMix = $aMix;
         $this->iCountryStdSize = $aStdSize;
     }
 
@@ -93,19 +103,19 @@ class IconPlot
 
     public function SetMix($aMix)
     {
-        if ($aMix < 0 || $aMix > 100) {
-            Util\JpGraphError::RaiseL(8001); //('Mix value for icon must be between 0 and 100.');
+        if (0 > $aMix || 100 < $aMix) {
+            throw Util\JpGraphError::make(8001); //('Mix value for icon must be between 0 and 100.');
         }
         $this->iMix = $aMix;
     }
 
     public function SetAnchor($aXAnchor = 'left', $aYAnchor = 'center')
     {
-        if (!in_array($aXAnchor, $this->iAnchors, true) ||
-            !in_array($aYAnchor, $this->iAnchors, true)) {
-            Util\JpGraphError::RaiseL(8002); //("Anchor position for icons must be one of 'top', 'bottom', 'left', 'right' or 'center'");
+        if (!\in_array($aXAnchor, $this->iAnchors, true)
+            || !\in_array($aYAnchor, $this->iAnchors, true)) {
+            throw Util\JpGraphError::make(8002); //("Anchor position for icons must be one of 'top', 'bottom', 'left', 'right' or 'center'");
         }
-        $this->iHorAnchor  = $aXAnchor;
+        $this->iHorAnchor = $aXAnchor;
         $this->iVertAnchor = $aYAnchor;
     }
 
@@ -164,14 +174,14 @@ class IconPlot
 
     public function StrokeWithScale($aImg, $axscale, $ayscale)
     {
-        if ($this->iScalePosX === null || $this->iScalePosY === null ||
-            $axscale === null || $ayscale === null) {
+        if (null === $this->iScalePosX || null === $this->iScalePosY
+            || null === $axscale || null === $ayscale) {
             $this->_Stroke($aImg);
         } else {
             $this->_Stroke(
                 $aImg,
-                round($axscale->Translate($this->iScalePosX)),
-                round($ayscale->Translate($this->iScalePosY))
+                \round($axscale->Translate($this->iScalePosX)),
+                \round($ayscale->Translate($this->iScalePosY))
             );
         }
     }
@@ -185,53 +195,56 @@ class IconPlot
 
     public function _Stroke($aImg, $x = null, $y = null, $aReturnWidthHeight = false)
     {
-        if ($this->iFile != '' && $this->iCountryFlag != '') {
-            Util\JpGraphError::RaiseL(8003); //('It is not possible to specify both an image file and a country flag for the same icon.');
+        if ('' !== $this->iFile && '' !== $this->iCountryFlag) {
+            throw Util\JpGraphError::make(8003); //('It is not possible to specify both an image file and a country flag for the same icon.');
         }
-        if ($this->iFile != '') {
+
+        if ('' !== $this->iFile) {
             $gdimg = Graph\Graph::LoadBkgImage('', $this->iFile);
-        } elseif ($this->iImgString != '') {
+        } elseif ('' !== $this->iImgString) {
             $gdimg = Image\Image::CreateFromString($this->iImgString);
         } else {
-            $fobj  = new Image\FlagImages($this->iCountryStdSize);
+            $fobj = new Image\FlagImages($this->iCountryStdSize);
             $dummy = '';
             $gdimg = $fobj->GetImgByName($this->iCountryFlag, $dummy);
         }
 
-        $iconw = imagesx($gdimg);
-        $iconh = imagesy($gdimg);
+        $iconw = \imagesx($gdimg);
+        $iconh = \imagesy($gdimg);
 
         if ($aReturnWidthHeight) {
-            return [round($iconw * $this->iScale), round($iconh * $this->iScale)];
+            return [\round($iconw * $this->iScale), \round($iconh * $this->iScale)];
         }
 
-        if ($x !== null && $y !== null) {
+        if (null !== $x && null !== $y) {
             $this->iX = $x;
             $this->iY = $y;
         }
-        if ($this->iX >= 0 && $this->iX <= 1.0) {
-            $w        = imagesx($aImg->img);
-            $this->iX = round($w * $this->iX);
-        }
-        if ($this->iY >= 0 && $this->iY <= 1.0) {
-            $h        = imagesy($aImg->img);
-            $this->iY = round($h * $this->iY);
+
+        if (0 <= $this->iX && 1.0 >= $this->iX) {
+            $w = \imagesx($aImg->img);
+            $this->iX = \round($w * $this->iX);
         }
 
-        if ($this->iHorAnchor == 'center') {
-            $this->iX -= round($iconw * $this->iScale / 2);
+        if (0 <= $this->iY && 1.0 >= $this->iY) {
+            $h = \imagesy($aImg->img);
+            $this->iY = \round($h * $this->iY);
         }
 
-        if ($this->iHorAnchor == 'right') {
-            $this->iX -= round($iconw * $this->iScale);
+        if ('center' === $this->iHorAnchor) {
+            $this->iX -= \round($iconw * $this->iScale / 2);
         }
 
-        if ($this->iVertAnchor == 'center') {
-            $this->iY -= round($iconh * $this->iScale / 2);
+        if ('right' === $this->iHorAnchor) {
+            $this->iX -= \round($iconw * $this->iScale);
         }
 
-        if ($this->iVertAnchor == 'bottom') {
-            $this->iY -= round($iconh * $this->iScale);
+        if ('center' === $this->iVertAnchor) {
+            $this->iY -= \round($iconh * $this->iScale / 2);
+        }
+
+        if ('bottom' === $this->iVertAnchor) {
+            $this->iY -= \round($iconh * $this->iScale);
         }
 
         $aImg->CopyMerge(
@@ -240,8 +253,8 @@ class IconPlot
             $this->iY,
             0,
             0,
-            round($iconw * $this->iScale),
-            round($iconh * $this->iScale),
+            \round($iconw * $this->iScale),
+            \round($iconh * $this->iScale),
             $iconw,
             $iconh,
             $this->iMix

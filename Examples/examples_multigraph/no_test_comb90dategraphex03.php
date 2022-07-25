@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,42 +9,45 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 require_once 'jpgraph/jpgraph_date.php';
+
 require_once 'jpgraph/jpgraph_mgraph.php';
 
 // Setup some fake data to simulate some wind speed and direction
 
-define('NDATAPOINTS', 280);
-define('SAMPLERATE', 300);
+\define('NDATAPOINTS', 280);
+\define('SAMPLERATE', 300);
 
-$start = time();
-$end   = $start + NDATAPOINTS * SAMPLERATE;
+$start = \time();
+$end = $start + NDATAPOINTS * SAMPLERATE;
 $xdata = [];
 
-$data_winddirection[0] = rand(100, 200);
-$data_windspeed[0]     = rand(7, 10);
-$data_windtemp[0]      = rand(5, 20);
+$data_winddirection[0] = \mt_rand(100, 200);
+$data_windspeed[0] = \mt_rand(7, 10);
+$data_windtemp[0] = \mt_rand(5, 20);
 
-for ($i = 0; $i < NDATAPOINTS - 1; ++$i) {
-    $data_winddirection[$i + 1] = $data_winddirection[$i] + rand(-4, 4);
+for ($i = 0; NDATAPOINTS - 1 > $i; ++$i) {
+    $data_winddirection[$i + 1] = $data_winddirection[$i] + \mt_rand(-4, 4);
+
     if ($data_winddirection[$i + 1] < 0 || $data_winddirection[$i + 1] > 359) {
         $data_winddirection[$i + 1] = 0;
     }
 
-    $data_windspeed[$i + 1] = $data_windspeed[$i] + rand(-2, 2);
+    $data_windspeed[$i + 1] = $data_windspeed[$i] + \mt_rand(-2, 2);
+
     if ($data_windspeed[$i + 1] < 0) {
         $data_windspeed[$i + 1] = 0;
     }
 
-    $data_windtemp[$i + 1] = $data_windtemp[$i] + rand(-1.5, 1.5);
+    $data_windtemp[$i + 1] = $data_windtemp[$i] + \mt_rand(-1.5, 1.5);
 
     $xdata[$i] = $start + $i * SAMPLERATE;
 }
 $xdata[$i] = $start + $i * SAMPLERATE;
 
 //DEFINE('BKG_COLOR','lightgray:1.7');
-define('BKG_COLOR', 'green:1.98');
-define('WIND_HEIGHT', 800);
-define('WIND_WIDTH', 250);
+\define('BKG_COLOR', 'green:1.98');
+\define('WIND_HEIGHT', 800);
+\define('WIND_WIDTH', 250);
 
 //------------------------------------------------------------------
 // Setup the Wind direction graph

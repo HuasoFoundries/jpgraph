@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,9 +10,9 @@ use Amenadiel\JpGraph\Plot;
 
 $ydata = [12, 15, 22, 19, 5];
 
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(40, 80, 40, 40);
 $graph->SetScale('textlin');
 $graph->SetShadow();
@@ -23,7 +23,7 @@ $line = new Plot\LinePlot($ydata);
 $line->SetBarCenter();
 $line->SetWeight(2);
 
-$bar  = new Plot\BarPlot($ydata);
+$bar = new Plot\BarPlot($ydata);
 $bar2 = new Plot\BarPlot($ydata);
 $bar2->SetFillColor('red');
 

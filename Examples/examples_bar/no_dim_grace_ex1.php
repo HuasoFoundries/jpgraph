@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,9 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [7, 19, 11, 4, 20];
 
 // Create the graph and setup the basic parameters
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 40, 50);
 $graph->SetScale('textint');
 $graph->SetFrame(true, 'blue', 1);
@@ -24,7 +25,9 @@ $graph->SetMarginColor('lightblue');
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT1'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1')
+);
 $graph->xaxis->SetColor('darkblue', 'black');
 
 // Setup hidden y-axis by given it the same color
@@ -34,10 +37,16 @@ $graph->yaxis->SetColor('lightblue', 'darkblue');
 $graph->ygrid->SetColor('white');
 
 // Setup graph title ands fonts$example_title='Using grace = 10%'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->SetTitle('Year 2002', 'center');
 $graph->xaxis->SetTitleMargin(10);
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Add some grace to the top so that the scale doesn't
 // end exactly at the max value.
@@ -53,7 +62,11 @@ $bplot->SetShadow('darkgray');
 // Setup the values that are displayed on top of each bar
 // Must use TTF fonts if we want text at an arbitrary angle
 $bplot->value->Show();
-$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$bplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $bplot->value->SetFormat('$%d');
 $bplot->value->SetColor('darkred');
 $bplot->value->SetAngle(45);

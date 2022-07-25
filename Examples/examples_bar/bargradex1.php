@@ -1,11 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Example for use of JpGraph,
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -14,9 +15,9 @@ $datay = [0.13, 0.25, 0.21, 0.35, 0.31, 0.06];
 $datax = ['January', 'February', 'March', 'April', 'May', 'June'];
 
 // Setup the graph.
-$__width  = 400;
+$__width = 400;
 $__height = 240;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->img->SetMargin(60, 20, 35, 75);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue:1.1');
@@ -24,12 +25,24 @@ $graph->SetShadow();
 
 // Set up the title for the graph$example_title='Bar gradient with left reflection'; $graph->title->set($example_title);
 $graph->title->SetMargin(8);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $graph->title->SetColor('darkred');
 
 // Setup font for axis
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
-$graph->yaxis->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_NORMAL'), 10);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    10
+);
+$graph->yaxis->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    10
+);
 
 // Show 0 label on Y-axis (default is not to show)
 $graph->yscale->ticks->SupressZeroLabel(false);

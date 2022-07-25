@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $datay = [12, 26, 9, 17, 31];
 // Create the graph.
 // One minute timeout for the cached image
 // Graph\Configs::getConfig('INLINE_NO') means don't stream it back to the browser.
-$__width  = 310;
+$__width = 310;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->img->SetMargin(60, 30, 20, 40);
 $graph->yaxis->SetTitleMargin(45);

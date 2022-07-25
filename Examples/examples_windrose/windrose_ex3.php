@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,9 +17,9 @@ $data[0] = [
     5 => [2, 7, 1, 2], ];
 
 $data[1] = [
-    'n'   => [1, 1, 2.5, 4],
+    'n' => [1, 1, 2.5, 4],
     'ssw' => [3, 4, 1, 4],
-    'se'  => [2, 7, 4, 4, 3], ];
+    'se' => [2, 7, 4, 4, 3], ];
 
 // Store the position and size data for each plot in an
 // array to make it easier to create multiple plots.
@@ -32,9 +32,9 @@ $layout = [
 $legendtxt = ['(m/s) Station 7', '(m/s) Station 12'];
 
 // First create a new windrose graph with a dropshadow
-$__width  = 600;
+$__width = 600;
 $__height = 350;
-$graph    = new Graph\WindroseGraph($__width, $__height);
+$graph = new Graph\WindroseGraph($__width, $__height);
 $graph->SetShadow('darkgray');
 
 // Setup titles$example_title='Windrose example 3'; $graph->title->set($example_title);
@@ -46,7 +46,7 @@ $graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs:
 $graph->subtitle->SetColor('navy');
 
 // Create the two windrose plots.
-for ($i = 0; $i < count($data); ++$i) {
+for ($i = 0; \count($data) > $i; ++$i) {
     $wp[$i] = new Plot\WindrosePlot($data[$i]);
 
     // Make it have 8 compass direction

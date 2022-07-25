@@ -1,11 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: groupbarex1.php,v 1.2 2002/07/11 23:27:28 aditus Exp $
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,19 +14,25 @@ $datay1 = [35, 160, 0, 0, 0, 0];
 $datay2 = [35, 190, 190, 190, 190, 190];
 $datay3 = [20, 70, 70, 140, 230, 260];
 
-$__width  = 450;
+$__width = 450;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->SetScale('textlin');
 $graph->SetShadow();
 $graph->img->SetMargin(40, 30, 40, 40);
 $graph->xaxis->SetTickLabels($graph->gDateLocale->GetShortMonth());
 
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $example_title = 'Group bar plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $bplot1 = new Plot\BarPlot($datay1);
 $bplot2 = new Plot\BarPlot($datay2);

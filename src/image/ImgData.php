@@ -38,12 +38,12 @@ class ImgData
         $n = $this->an[$aMark];
         if (is_string($aIdx)) {
             if (!in_array($aIdx, $this->colors, true)) {
-                Util\JpGraphError::RaiseL(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
+         throw      Util\JpGraphError::make(23001, $this->name, $aIdx); //('This marker "'.($this->name).'" does not exist in color: '.$aIdx);
             }
             $idx = $this->index[$aIdx];
         } elseif (!is_integer($aIdx) ||
             (is_integer($aIdx) && $aIdx > $this->maxidx)) {
-            Util\JpGraphError::RaiseL(23002, $this->name); //('Mark color index too large for marker "'.($this->name).'"');
+     throw      Util\JpGraphError::make(23002, $this->name); //('Mark color index too large for marker "'.($this->name).'"');
         } else {
             $idx = $aIdx;
         }

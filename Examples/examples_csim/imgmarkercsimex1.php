@@ -1,19 +1,20 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $datay1 = [4, 26, 15, 44];
 
 // Setup the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin');
 $graph->SetFrame(false);
@@ -38,7 +39,7 @@ $p1->SetCSIMTargets(['#1', '#2', '#3', '#4', '#5']);
 
 // Use an image of favourite car as
 $p1->mark->SetType(Graph\Configs::getConfig('MARK_IMG'), __DIR__ . '/../assets/saab_95.jpg', 0.5);
-//$p1->mark->SetType(Graph\Configs::getConfig('MARK_SQUARE'));
+//$p1->mark->SetTyp1e(Graph\Configs::getConfig('MARK_SQUARE'));
 
 // Displayes value on top of marker image
 $p1->value->SetFormat('%d mil');

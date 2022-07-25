@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 require_once 'jpgraph/jpgraph_canvas.php';
 
 // We accept a URI argument to adjust the angle at what we display the text
@@ -23,8 +24,8 @@ $txt = 'TextAlign()';
 
 // Initial width and height since we need a "dummy" canvas to
 // calculate the height of the text strings
-$w  = 480;
-$h  = 50;
+$w = 480;
+$h = 50;
 $xm = 90;
 $ym = 80;
 
@@ -34,20 +35,29 @@ $g = new CanvasGraph($w, $h);
 $img = $g->img;
 
 // Get the bounding box for text
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    16
+);
 $tw = $img->GetBBoxWidth($txt, $angle);
 $th = $img->GetBBoxHeight($txt, $angle);
 
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 11);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    11
+);
 $ch = $img->GetBBoxHeight($caption);
 
 // Calculate needed height for the image
-$h   = 3 * $th + 2 * $ym + $ch;
-$g   = new CanvasGraph($w, $h);
+$h = 3 * $th + 2 * $ym + $ch;
+$g = new CanvasGraph($w, $h);
 $img = $g->img;
 
 // Alignment for anchor points to use
-$anchors = ['left', 'top',
+$anchors = [
+    'left', 'top',
     'center', 'top',
     'right', 'top',
     'left', 'center',
@@ -55,9 +65,10 @@ $anchors = ['left', 'top',
     'right', 'center',
     'left', 'bottom',
     'center', 'bottom',
-    'right', 'bottom', ];
+    'right', 'bottom',
+];
 
-$n = count($anchors) / 2;
+$n = \count($anchors) / 2;
 
 for ($i = 0, $r = 0, $c = 0; $i < $n; ++$i) {
     $x = $c * ($tw + $xm) + $xm / 2;
@@ -65,17 +76,25 @@ for ($i = 0, $r = 0, $c = 0; $i < $n; ++$i) {
 
     $img->SetColor('blue');
     $img->SetTextAlign($anchors[$i * 2], $anchors[$i * 2 + 1]);
-    $img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+    $img->SetFont(
+        Graph\Configs::getConfig('FF_ARIAL'),
+        Graph\Configs::getConfig('FS_NORMAL'),
+        16
+    );
     $img->StrokeText($x, $y, $txt, $angle, 'left', true);
 
     $img->SetColor('black');
-    $img->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+    $img->SetFont(
+        Graph\Configs::getConfig('FF_FONT1'),
+        Graph\Configs::getConfig('FS_BOLD')
+    );
     $img->SetTextAlign('center', 'top');
-    $align = sprintf('("%s","%s")', $anchors[$i * 2], $anchors[$i * 2 + 1]);
+    $align = \sprintf('("%s","%s")', $anchors[$i * 2], $anchors[$i * 2 + 1]);
     $img->StrokeText($c * ($tw / 2 + $xm) + $xm / 2 + $tw / 2, $r * ($th / 2 + $ym) + $th + $ym / 2 - 4, $align);
 
     ++$c;
-    if ($c == 3) {
+
+    if (3 === $c) {
         $c = 0;
         ++$r;
     }
@@ -83,7 +102,11 @@ for ($i = 0, $r = 0, $c = 0; $i < $n; ++$i) {
 
 // Draw the caption text
 $img->SetTextAlign('center', 'bottom');
-$img->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 11);
+$img->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    11
+);
 $img->StrokeText($w / 2, $h - 10, $caption, 0, 'left');
 
 $img->SetColor('navy');

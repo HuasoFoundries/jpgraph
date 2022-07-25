@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -14,22 +15,34 @@ include __DIR__ . '/../assets/dataset01.inc.php';
 $dateUtils = new Graph\Scale\DateScaleUtils();
 
 // Setup a basic graph
-$__width  = 500;
+$__width = 500;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('datlin');
 $graph->SetMargin(60, 20, 40, 60);
 
 // Setup the titles
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $example_title = 'Development since 1984';
 $graph->title->set($example_title);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 $subtitle_text = '(Example using the builtin date scale)';
 $graph->subtitle->Set($subtitle_text);
 
 // Setup the labels to be correctly format on the X-axis
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 8);
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    8
+);
 $graph->xaxis->SetLabelAngle(30);
 
 // The second paramter set to 'true' will make the library interpret the

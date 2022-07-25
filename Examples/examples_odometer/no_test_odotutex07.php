@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,11 +10,11 @@ use Amenadiel\JpGraph\Graph;
 require_once 'jpgraph/jpgraph_odo.php';
 
 // Create a new odometer graph (width=250, height=200 pixels)
-$__width  = 570;
+$__width = 570;
 $__height = 250;
-$graph    = new OdoGraph($__width, $__height);
+$graph = new OdoGraph($__width, $__height);
 
-$odo     = [];
+$odo = [];
 $astyles = [
     Graph\Configs::getConfig('NEEDLE_ARROW_SS'), Graph\Configs::getConfig('NEEDLE_ARROW_SM'), Graph\Configs::getConfig('NEEDLE_ARROW_SL'),
     Graph\Configs::getConfig('NEEDLE_ARROW_MS'), Graph\Configs::getConfig('NEEDLE_ARROW_MM'), Graph\Configs::getConfig('NEEDLE_ARROW_ML'),
@@ -24,7 +24,7 @@ $acaptions = [
     'SS', 'SM', 'SL', 'MS', 'MM', 'ML', 'LS', 'LM', 'LL',
 ];
 
-for ($i = 0; $i < 9; ++$i) {
+for ($i = 0; 9 > $i; ++$i) {
     $odo[$i] = new Odometer();
     $odo[$i]->SetColor('lightyellow');
     $odo[$i]->needle->Set(75);

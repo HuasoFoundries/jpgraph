@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $xmax = 40;
 $ymax = 40;
 
 // Setup a basic canvas we can work
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$g        = new Graph\CanvasGraph($__width, $__height, 'auto');
+$g = new Graph\CanvasGraph($__width, $__height, 'auto');
 $g->SetMargin(5, 11, 6, 11);
 $g->SetShadow();
 $g->SetMarginColor('teal');
@@ -29,7 +29,7 @@ $g->SetScale('canvas', 0, $xmax, 0, $ymax);
 
 // The shape class is wrapper around the Imgae class which translates
 // the coordinates for us
-$shape = new Graph\Shape($g, $g->scale);
+$shape = new Graph\Shape($g, $g->getScale());
 $shape->SetColor('black');
 
 $shape->IndentedRectangle(1, 2, 15, 15, 8, 8, Graph\Configs::getConfig('CORNER_TOPLEFT'), 'khaki');

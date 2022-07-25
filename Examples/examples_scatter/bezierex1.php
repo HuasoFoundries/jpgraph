@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 use Amenadiel\JpGraph\Util;
@@ -19,16 +20,20 @@ $bez = new Util\Bezier($xdata, $ydata);
 
 // For the new data set we want 40 points to
 // get a smooth curve.
-list($newx, $newy) = $bez->Get(50);
+[$newx, $newy] = $bez->Get(50);
 
 // Create the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$g        = new Graph\Graph($__width, $__height);
+$g = new Graph\Graph($__width, $__height);
 $g->SetMargin(30, 20, 40, 30);
 $example_title = 'Bezier interpolation';
 $g->title->set($example_title);
-$g->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$g->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 $subtitle_text = '(Control points shown in red)';
 $g->subtitle->Set($subtitle_text);
 $g->subtitle->SetColor('darkred');

@@ -1,30 +1,37 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Some data and the labels
-$data   = [19, 12, 4, 7, 3, 12, 3];
-$labels = ["First\n(%.1f%%)",
+$data = [19, 12, 4, 7, 3, 12, 3];
+$labels = [
+    "First\n(%.1f%%)",
     "Second\n(%.1f%%)", "Third\n(%.1f%%)",
     "Fourth\n(%.1f%%)", "Fifth\n(%.1f%%)",
-    "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)", ];
+    "Sixth\n(%.1f%%)", "Seventh\n(%.1f%%)",
+];
 
 // Create the Pie Graph.
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\PieGraph($__width, $__height);
+$graph = new Graph\PieGraph($__width, $__height);
 $graph->SetShadow();
 
 // Set A title for the plot
 $example_title = 'String labels with values';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $graph->title->SetColor('black');
 
 // Create pie plot
@@ -43,9 +50,15 @@ $p1->SetLabelPos(1);
 
 // Setup the label formats and what value we want to be shown (The absolute)
 // or the percentage.
-$p1->SetLabelType(Graph\Configs::getConfig('PIE_VALUE_PER'));
+$p1->SetLabelType(
+    Graph\Configs::getConfig('PIE_VALUE_PER')
+);
 $p1->value->Show();
-$p1->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 9);
+$p1->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    9
+);
 $p1->value->SetColor('darkgray');
 
 // Add and stroke

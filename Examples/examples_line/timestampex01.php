@@ -1,41 +1,43 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Example on how to treat and format timestamp as human readable labels
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Number of "fake" data points
-define('NDATAPOINTS', 500);
+\define('NDATAPOINTS', 500);
 
 // Assume data points are sample every 10th second
-define('SAMPLERATE', 10);
+\define('SAMPLERATE', 10);
 
 // Callback formatting function for the X-scale to convert timestamps
 // to hour and minutes.
 function TimeCallback($aVal)
 {
-    return date('H:i', $aVal);
+    return \date('H:i', $aVal);
 }
 
 // Get start time
-$start = time();
+$start = \time();
 // Set the start time to be on the closest minute just before the "start" timestamp
-$adjstart = floor($start / 60);
+$adjstart = \floor($start / 60);
 
 // Create a data set in range (20,100) and X-positions
 // We also apply a simple low pass filter on the data to make it less
 // random and a little smoother
-$data     = [];
-$xdata    = [];
-$data[0]  = rand(20, 100);
+$data = [];
+$xdata = [];
+$data[0] = \mt_rand(20, 100);
 $xdata[0] = $adjstart;
-for ($i = 1; $i < Graph\Configs::getConfig('NDATAPOINTS'); ++$i) {
-    $data[$i]  = rand(20, 100) * 0.2 + $data[$i - 1] * 0.8;
+
+for ($i = 1; Graph\Configs::getConfig('NDATAPOINTS') > $i; ++$i) {
+    $data[$i] = \mt_rand(20, 100) * 0.2 + $data[$i - 1] * 0.8;
     $xdata[$i] = $adjstart + $i * Graph\Configs::getConfig('SAMPLERATE');
 }
 
@@ -44,9 +46,9 @@ for ($i = 1; $i < Graph\Configs::getConfig('NDATAPOINTS'); ++$i) {
 // length to end on an even label tick.
 $adjend = $adjstart + (Graph\Configs::getConfig('NDATAPOINTS') + 10) * 10;
 
-$__width  = 500;
+$__width = 500;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 20, 30, 50);
 
 // Now specify the X-scale explicit but let the Y-scale be auto-scaled

@@ -1,11 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -13,9 +14,9 @@ use Amenadiel\JpGraph\Plot;
 $datay = [1, 1, 0.5];
 
 // Create the graph and setup the basic parameters
-$__width  = 460;
+$__width = 460;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 30, 30, 40);
 $graph->SetScale('textint');
 $graph->SetShadow();
@@ -28,12 +29,20 @@ $graph->yaxis->scale->SetGrace(100);
 // Setup X-axis labels
 $a = $graph->gDateLocale->GetShortMonth();
 $graph->xaxis->SetTickLabels($a);
-$graph->xaxis->SetFont(Graph\Configs::getConfig('FF_FONT2'));
+$graph->xaxis->SetFont(
+    Graph\Configs::getConfig('FF_FONT2')
+);
 
 // Setup graph title ands fonts$example_title='Example of integer Y-scale'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $graph->xaxis->title->Set('Year 2002');
-$graph->xaxis->title->SetFont(Graph\Configs::getConfig('FF_FONT2'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->xaxis->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT2'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Create a bar pot
 $bplot = new Plot\BarPlot($datay);
@@ -44,7 +53,10 @@ $bplot->SetShadow();
 // Setup the values that are displayed on top of each bar
 $bplot->value->Show();
 // Must use TTF fonts if we want text at an arbitrary angle
-$bplot->value->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'));
+$bplot->value->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 $bplot->value->SetAngle(45);
 // Black color for positive values and darkred for negative values
 $bplot->value->SetColor('black', 'darkred');

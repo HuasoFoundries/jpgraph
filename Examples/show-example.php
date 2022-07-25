@@ -1,15 +1,18 @@
 <?php
 
-$target = basename(urldecode($_GET['target'] ?? 'axislabelbkgex01.php'));
-$folder = basename(urldecode($_GET['folder'] ?? 'examples_axis'));
+/**
+ * JPGraph - Community Edition
+ */
 
-echo "<html>";
+$target = \basename(\urldecode($_GET['target'] ?? 'axislabelbkgex01.php'));
+$folder = \basename(\urldecode($_GET['folder'] ?? 'examples_axis'));
+
+echo '<html>';
 echo '<head>';
 echo '<title> Image ' . $target . '</title>';
 
-
-if (!strstr($target, 'csim')) {
-    $highlighted =    highlight_file(($folder ? $folder . '/' : '') . $target, true);
+if (!\mb_strstr($target, 'csim')) {
+    $highlighted = \highlight_file(($folder ? $folder . '/' : '') . $target, true);
 
     echo '</head>';
     echo '<body>';
@@ -17,7 +20,6 @@ if (!strstr($target, 'csim')) {
     echo $highlighted;
     echo '</body>';
 } else {
-
     echo '<script type="text/javascript" language="javascript">';
     echo '<!--';
     echo 'function resize() {';

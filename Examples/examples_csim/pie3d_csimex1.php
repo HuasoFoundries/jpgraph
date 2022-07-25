@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,9 +14,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [40, 21, 17, 27, 23];
 
 // Create the Pie Graph.
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\PieGraph($__width, $__height, 'auto');
+$graph = new Graph\PieGraph($__width, $__height, 'auto');
 $graph->SetShadow();
 
 // Set A title for the plot$example_title='3D Pie Client side image map'; $graph->title->set($example_title);

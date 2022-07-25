@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,9 +13,9 @@ use Amenadiel\JpGraph\Plot;
 $data = [242, 58, 500, 12, 397, 810, 373];
 
 // Create the graph
-$__width  = 200;
+$__width = 200;
 $__height = 200;
-$graph    = new Graph\RadarGraph($__width, $__height);
+$graph = new Graph\RadarGraph($__width, $__height);
 
 // Uncomment the following line to use anti-aliasing
 // Note: Enabling this results in a very noticable slow
@@ -38,7 +39,11 @@ $graph->SetScale('log');
 $graph->yscale->ticks->SetMarkColor('black', 'darkgray');
 
 // Set the axis title font
-$graph->axis->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->axis->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 
 // Use blue axis
 $graph->axis->SetColor('blue');

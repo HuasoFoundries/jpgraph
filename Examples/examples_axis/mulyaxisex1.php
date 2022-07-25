@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,17 +10,18 @@ use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 $n = 8;
+
 for ($i = 0; $i < $n; ++$i) {
-    $datay[$i]  = rand(1, 10);
-    $datay2[$i] = rand(10, 55);
-    $datay3[$i] = rand(200, 600);
-    $datay4[$i] = rand(500, 800);
+    $datay[$i] = \mt_rand(1, 10);
+    $datay2[$i] = \mt_rand(10, 55);
+    $datay3[$i] = \mt_rand(200, 600);
+    $datay4[$i] = \mt_rand(500, 800);
 }
 
 // Setup the graph
-$__width  = 450;
+$__width = 450;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 150, 40, 30);
 $graph->SetMarginColor('white');
 

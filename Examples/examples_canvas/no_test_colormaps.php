@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -10,27 +10,27 @@ use Amenadiel\JpGraph\Graph;
 
 require_once '../jpgraph_colormap.inc.php';
 
-class ColorMapDriver
+class no_test_colormaps
 {
-    const WIDTH     = 600; // Image width
-    const LMARG     = 90; // Left margin
-    const RMARG     = 25; // Right margin
-    const MAPMARG   = 35; // Map margin between each map
+    const WIDTH = 600; // Image width
+    const LMARG = 90; // Left margin
+    const RMARG = 25; // Right margin
+    const MAPMARG = 35; // Map margin between each map
     const MODHEIGHT = 30; // Module height (=Map height)
-    const YSTART    = 60; // Start coordinate for map list
+    const YSTART = 60; // Start coordinate for map list
 
     public function Draw($aTitle, $aStart, $aEnd, $n = 64, $aReverse = false, $addColorNames = false)
     {
         // Setup to draw colormap with names platoe colors
-        $lmarg = ColorMapDriver::LMARG; // left margin
-        $rmarg = ColorMapDriver::RMARG; // right margin
-        $width = ColorMapDriver::WIDTH; // Overall image width
+        $lmarg = self::LMARG; // left margin
+        $rmarg = self::RMARG; // right margin
+        $width = self::WIDTH; // Overall image width
 
         // Module height
-        $mh = ColorMapDriver::MODHEIGHT;
+        $mh = self::MODHEIGHT;
 
         // Step between each map
-        $ymarg = $mh + ColorMapDriver::MAPMARG;
+        $ymarg = $mh + self::MAPMARG;
 
         if ($addColorNames) {
             $ymarg += 50;
@@ -38,17 +38,21 @@ class ColorMapDriver
 
         // Start position
         $xs = $lmarg;
-        $ys = ColorMapDriver::YSTART;
+        $ys = self::YSTART;
 
         // Setup a basic canvas graph
         $height = ($aEnd - $aStart + 1) * $ymarg + 50;
-        $graph  = new CanvasGraph($width, $height);
+        $graph = new CanvasGraph($width, $height);
         $graph->img->SetColor('darkgray');
         $graph->img->Rectangle(0, 0, $width - 1, $height - 1);
 
         $t = new Text($aTitle, $width / 2, 5);
         $t->SetAlign('center', 'top');
-        $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+        $t->SetFont(
+            Graph\Configs::getConfig('FF_ARIAL'),
+            Graph\Configs::getConfig('FS_BOLD'),
+            14
+        );
         $t->Stroke($graph->img);
 
         // Instantiate a colormap
@@ -57,31 +61,43 @@ class ColorMapDriver
 
         for ($mapidx = $aStart; $mapidx <= $aEnd; ++$mapidx, $ys += $ymarg) {
             $cm->SetMap($mapidx, $aReverse);
-            $n                       = $cm->SetNumColors($n);
-            list($mapidx, $maparray) = $cm->GetCurrMap();
-            $ncols                   = count($maparray);
-            $colbuckets              = $cm->GetBuckets();
+            $n = $cm->SetNumColors($n);
+            [$mapidx, $maparray] = $cm->GetCurrMap();
+            $ncols = \count($maparray);
+            $colbuckets = $cm->GetBuckets();
 
             // The module width will depend on the actual number of colors
-            $mw = round(($width - $lmarg - $rmarg) / $n);
+            $mw = \round(($width - $lmarg - $rmarg) / $n);
 
             // Draw color map title (name)
             $t->Set('Basic colors: ' . $ncols . ',   Total colors: ' . $n);
             $t->SetAlign('center', 'bottom');
             $t->SetAngle(0);
-            $t->SetFont(Graph\Configs::getConfig('FF_TIMES'), Graph\Configs::getConfig('FS_NORMAL'), 14);
+            $t->SetFont(
+                Graph\Configs::getConfig('FF_TIMES'),
+                Graph\Configs::getConfig('FS_NORMAL'),
+                14
+            );
             $t->Stroke($graph->img, $width / 2, $ys - 3);
 
             // Add the name/number of the map to the left
             $t->SetAlign('right', 'center');
             $t->Set('Map: ' . $mapidx);
-            $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 14);
-            $t->Stroke($graph->img, $xs - 20, round($ys + $mh / 2));
+            $t->SetFont(
+                Graph\Configs::getConfig('FF_ARIAL'),
+                Graph\Configs::getConfig('FS_NORMAL'),
+                14
+            );
+            $t->Stroke($graph->img, $xs - 20, \round($ys + $mh / 2));
 
             // Setup text properties for the color names
             if ($addColorNames) {
                 $t->SetAngle(30);
-                $t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+                $t->SetFont(
+                    Graph\Configs::getConfig('FF_ARIAL'),
+                    Graph\Configs::getConfig('FS_NORMAL'),
+                    12
+                );
                 $t->SetAlign('right', 'top');
             }
 
@@ -89,14 +105,16 @@ class ColorMapDriver
             $x = $xs;
             $y = $ys;
             $k = 0;
+
             for ($i = 0; $i < $n; ++$i) {
                 $graph->img->SetColor($colbuckets[$i]);
                 $graph->img->FilledRectangle($x, $y, $x + $mw, $y + $mh);
 
                 // Mark all basic colors in the map with a bar and name
-                if ($i % (($n - $ncols) / ($ncols - 1) + 1) == 0) {
+                if ($i % (($n - $ncols) / ($ncols - 1) + 1) === 0) {
                     $graph->img->SetColor('black');
                     $graph->img->FilledRectangle($x, $y + $mh + 4, $x + $mw - 1, $y + $mh + 6);
+
                     if ($addColorNames) {
                         $t->Set($maparray[$k++]);
                         $t->Stroke($graph->img, $x + $mw / 2, $y + $mh + 10);
@@ -117,11 +135,11 @@ class ColorMapDriver
 
 $driver = new ColorMapDriver();
 
-$title     = 'Standard maps';
-$reverse   = false;
-$n         = 64;
-$s         = 0;
-$e         = 9;
+$title = 'Standard maps';
+$reverse = false;
+$n = 64;
+$s = 0;
+$e = 9;
 $showNames = false;
 
 /*

@@ -1,17 +1,18 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 // Create the basic radar graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\RadarGraph($__width, $__height);
+$graph = new Graph\RadarGraph($__width, $__height);
 $graph->img->SetAntiAliasing();
 
 // Set background color and shadow
@@ -22,7 +23,10 @@ $graph->SetShadow();
 $graph->SetCenter(0.4, 0.55);
 
 // Setup the axis formatting
-$graph->axis->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->axis->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 // Setup the grid lines
 $graph->grid->SetLineStyle('solid');
@@ -31,7 +35,10 @@ $graph->grid->Show();
 $graph->HideTickMarks();
 
 // Setup graph titles$example_title='Quality result'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_FONT1'), Graph\Configs::getConfig('FS_BOLD'));
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_FONT1'),
+    Graph\Configs::getConfig('FS_BOLD')
+);
 
 $graph->SetTitles($graph->gDateLocale->GetShortMonth());
 

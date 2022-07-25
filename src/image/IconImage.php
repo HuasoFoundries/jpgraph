@@ -35,7 +35,7 @@ class IconImage
             // Builtin image
             $this->iGDImage = $_gPredefIcons->GetImg($aIcon);
         } else {
-            Util\JpGraphError::RaiseL(6011);
+     throw      Util\JpGraphError::make(6011);
             //('Argument to IconImage must be string or integer');
         }
         $this->iScale  = $aScale;

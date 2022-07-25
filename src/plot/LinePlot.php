@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -17,10 +17,10 @@ use Amenadiel\JpGraph\Util;
  * // Copyright (c) Asial Corporation. All rights reserved.
  */
 // constants for the (filled) area
-define('LP_AREA_FILLED', true);
-define('LP_AREA_NOT_FILLED', false);
-define('LP_AREA_BORDER', false);
-define('LP_AREA_NO_BORDER', true);
+\define('LP_AREA_FILLED', true);
+\define('LP_AREA_NOT_FILLED', false);
+\define('LP_AREA_BORDER', false);
+\define('LP_AREA_NO_BORDER', true);
 
 /**
  * @class LinePlot
@@ -29,20 +29,34 @@ define('LP_AREA_NO_BORDER', true);
 class LinePlot extends Plot
 {
     public $mark;
-    protected $filled             = false;
-    protected $fill_color         = 'blue';
-    protected $step_style         = false;
-    protected $center             = false;
-    protected $line_style         = 1; // Default to solid
-    protected $filledAreas        = []; // array of arrays(with min,max,col,filled in them)
-    public $barcenter             = false; // When we mix line and bar. Should we center the line in the bar.
-    protected $fillFromMin        = false;
-    protected $fillFromMax        = false;
-    protected $fillgrad           = false;
+
+    public $barcenter = false; // When we mix line and bar. Should we center the line in the bar.
+
+    protected $filled = false;
+
+    protected $fill_color = 'blue';
+
+    protected $step_style = false;
+
+    protected $center = false;
+
+    protected $line_style = 1; // Default to solid
+
+    protected $filledAreas = []; // array of arrays(with min,max,col,filled in them)
+
+    protected $fillFromMin = false;
+
+    protected $fillFromMax = false;
+
+    protected $fillgrad = false;
+
     protected $fillgrad_fromcolor = 'navy';
-    protected $fillgrad_tocolor   = 'silver';
+
+    protected $fillgrad_tocolor = 'silver';
+
     protected $fillgrad_numcolors = 100;
-    protected $iFastStroke        = false;
+
+    protected $iFastStroke = false;
 
     /**
      * @param mixed $datay
@@ -51,8 +65,8 @@ class LinePlot extends Plot
     public function __construct($datay, $datax = false)
     {
         parent::__construct($datay, $datax);
-        $this->mark       = new PlotMark();
-        $this->color      = Util\ColorFactory::getColor();
+        $this->mark = new PlotMark();
+        $this->color = Util\ColorFactory::getColor();
         $this->fill_color = $this->color;
     }
 
@@ -100,26 +114,26 @@ class LinePlot extends Plot
     {
         //$this->color = $aColor;
         $this->fill_color = $aColor;
-        $this->filled     = $aFilled;
+        $this->filled = $aFilled;
     }
 
     public function SetFillGradient($aFromColor, $aToColor, $aNumColors = 100, $aFilled = true)
     {
         $this->fillgrad_fromcolor = $aFromColor;
-        $this->fillgrad_tocolor   = $aToColor;
+        $this->fillgrad_tocolor = $aToColor;
         $this->fillgrad_numcolors = $aNumColors;
-        $this->filled             = $aFilled;
-        $this->fillgrad           = true;
+        $this->filled = $aFilled;
+        $this->fillgrad = true;
     }
 
-    public function Legend($graph)
+    public function Legend($aGraph)
     {
-        if ($this->legend == '') {
+        if ('' === $this->legend) {
             return;
         }
 
         if ($this->filled && !$this->fillgrad) {
-            $graph->legend->Add(
+            $aGraph->legend->Add(
                 $this->legend,
                 $this->fill_color,
                 $this->mark,
@@ -131,7 +145,7 @@ class LinePlot extends Plot
         } elseif ($this->fillgrad) {
             $color = [$this->fillgrad_fromcolor, $this->fillgrad_tocolor];
             // In order to differentiate between gradients and cooors specified as an Image\RGB triple
-            $graph->legend->Add(
+            $aGraph->legend->Add(
                 $this->legend,
                 $color,
                 '',
@@ -141,7 +155,7 @@ class LinePlot extends Plot
                 $this->legendcsimwintarget
             );
         } else {
-            $graph->legend->Add(
+            $aGraph->legend->Add(
                 $this->legend,
                 $this->color,
                 $this->mark,
@@ -157,7 +171,7 @@ class LinePlot extends Plot
     {
         if ($aMin > $aMax) {
             // swap
-            $tmp  = $aMin;
+            $tmp = $aMin;
             $aMin = $aMax;
             $aMax = $tmp;
         }
@@ -165,13 +179,13 @@ class LinePlot extends Plot
     }
 
     // Gets called before any axis are stroked
-    public function PreStrokeAdjust($graph)
+    public function PreStrokeAdjust($aGraph)
     {
         // If another plot type have already adjusted the
         // offset we don't touch it.
         // (We check for empty in case the scale is  a log scale
         // and hence doesn't contain any xlabel_offset)
-        if (!empty($graph->xaxis->scale->ticks->xlabel_offset) && $graph->xaxis->scale->ticks->xlabel_offset != 0) {
+        if (!empty($aGraph->xaxis->scale->ticks->xlabel_offset) && 0 !== $aGraph->xaxis->scale->ticks->xlabel_offset) {
             // If another plot type have already adjusted the
             // offset we don't touch it.
             // (We check for empty in case the scale is  a log scale
@@ -191,8 +205,8 @@ class LinePlot extends Plot
             $a = 0;
             $b = 0;
         }
-        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-        $graph->SetTextScaleOff($b);
+        $aGraph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $aGraph->SetTextScaleOff($b);
         //$graph->xaxis->scale->ticks->SupressMinorTickMarks();
     }
 
@@ -207,6 +221,7 @@ class LinePlot extends Plot
         // features but 60% faster. You can't have values or line styles, or null
         // values in plots.
         $numpoints = Configs::safe_count($this->coords[0]);
+
         if ($this->barcenter) {
             $textadj = 0.5 - $xscale->text_scale_off;
         } else {
@@ -216,6 +231,7 @@ class LinePlot extends Plot
         $img->SetColor($this->color);
         $img->SetLineWeight($this->weight);
         $pnts = $aStartPoint;
+
         while ($pnts < $numpoints) {
             if ($exist_x) {
                 $x = $this->coords[1][$pnts];
@@ -223,15 +239,16 @@ class LinePlot extends Plot
                 $x = $pnts + $textadj;
             }
             $xt = $xscale->Translate($x);
-            $y  = $this->coords[0][$pnts];
+            $y = $this->coords[0][$pnts];
             $yt = $yscale->Translate($y);
-            if (is_numeric($y)) {
+
+            if (\is_numeric($y)) {
                 $cord[] = $xt;
                 $cord[] = $yt;
-            } elseif ($y == '-' && $pnts > 0) {
+            } elseif ('-' === $y && 0 < $pnts) {
                 // Just ignore
             } else {
-                Util\JpGraphError::RaiseL(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
+                throw Util\JpGraphError::make(10002); //('Plot too complicated for fast line Stroke. Use standard Stroke()');
             }
             ++$pnts;
         } // WHILE
@@ -239,40 +256,42 @@ class LinePlot extends Plot
         $img->Polygon($cord, false, true);
     }
 
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
-        $idx       = 0;
+        $idx = 0;
         $numpoints = Configs::safe_count($this->coords[0]);
+
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
-            //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
-            } else {
-                $exist_x = true;
+            if (Configs::safe_count($this->coords[1]) !== $numpoints
+            ) {
+                throw Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
+                //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
             }
+            $exist_x = true;
         } else {
             $exist_x = false;
         }
 
         if ($this->barcenter) {
-            $textadj = 0.5 - $xscale->text_scale_off;
+            $textadj = 0.5 - $aXScale->text_scale_off;
         } else {
             $textadj = 0;
         }
 
         // Find the first numeric data point
         $startpoint = 0;
-        while ($startpoint < $numpoints && !is_numeric($this->coords[0][$startpoint])) {
+
+        while ($startpoint < $numpoints && !\is_numeric($this->coords[0][$startpoint])) {
             ++$startpoint;
         }
 
         // Bail out if no data points
-        if ($startpoint == $numpoints) {
+        if ($startpoint === $numpoints) {
             return;
         }
 
         if ($this->iFastStroke) {
-            $this->FastStroke($img, $xscale, $yscale, $startpoint, $exist_x);
+            $this->FastStroke($aImg, $aXScale, $aYScale, $startpoint, $exist_x);
 
             return;
         }
@@ -283,42 +302,43 @@ class LinePlot extends Plot
             $xs = $textadj + $startpoint;
         }
 
-        $img->SetStartPoint(
-            $xscale->Translate($xs),
-            $yscale->Translate($this->coords[0][$startpoint])
+        $aImg->SetStartPoint(
+            $aXScale->Translate($xs),
+            $aYScale->Translate($this->coords[0][$startpoint])
         );
 
         if ($this->filled) {
             if ($this->fillFromMax) {
                 //$max = $yscale->GetMaxVal();
-                $cord[$idx++] = $xscale->Translate($xs);
-                $cord[$idx++] = $yscale->scale_abs[1];
+                $cord[$idx++] = $aXScale->Translate($xs);
+                $cord[$idx++] = $aYScale->scale_abs[1];
             } else {
-                $min = $yscale->GetMinVal();
-                if ($min > 0 || $this->fillFromMin) {
-                    $fillmin = $yscale->scale_abs[0]; //Translate($min);
+                $min = $aYScale->GetMinVal();
+
+                if (0 < $min || $this->fillFromMin) {
+                    $fillmin = $aYScale->scale_abs[0]; //Translate($min);
                 } else {
-                    $fillmin = $yscale->Translate(0);
+                    $fillmin = $aYScale->Translate(0);
                 }
 
-                $cord[$idx++] = $xscale->Translate($xs);
+                $cord[$idx++] = $aXScale->Translate($xs);
                 $cord[$idx++] = $fillmin;
             }
         }
-        $xt           = $xscale->Translate($xs);
-        $yt           = $yscale->Translate($this->coords[0][$startpoint]);
+        $xt = $aXScale->Translate($xs);
+        $yt = $aYScale->Translate($this->coords[0][$startpoint]);
         $cord[$idx++] = $xt;
         $cord[$idx++] = $yt;
-        $yt_old       = $yt;
-        $xt_old       = $xt;
-        $y_old        = $this->coords[0][$startpoint];
+        $yt_old = $yt;
+        $xt_old = $xt;
+        $y_old = $this->coords[0][$startpoint];
 
-        $this->value->Stroke($img, $this->coords[0][$startpoint], $xt, $yt);
+        $this->value->Stroke($aImg, $this->coords[0][$startpoint], $xt, $yt);
 
-        $img->SetColor($this->color);
-        $img->SetLineWeight($this->weight);
-        $img->SetLineStyle($this->line_style);
-        $pnts           = $startpoint + 1;
+        $aImg->SetColor($this->color);
+        $aImg->SetLineWeight($this->weight);
+        $aImg->SetLineStyle($this->line_style);
+        $pnts = $startpoint + 1;
         $firstnonumeric = false;
 
         while ($pnts < $numpoints) {
@@ -327,22 +347,24 @@ class LinePlot extends Plot
             } else {
                 $x = $pnts + $textadj;
             }
-            $xt = $xscale->Translate($x);
-            $yt = $yscale->Translate($this->coords[0][$pnts]);
+            $xt = $aXScale->Translate($x);
+            $yt = $aYScale->Translate($this->coords[0][$pnts]);
 
             $y = $this->coords[0][$pnts];
+
             if ($this->step_style) {
                 // To handle null values within step style we need to record the
                 // first non numeric value so we know from where to start if the
                 // non value is '-'.
-                if (is_numeric($y)) {
+                if (\is_numeric($y)) {
                     $firstnonumeric = false;
-                    if (is_numeric($y_old)) {
-                        $img->StyleLine($xt_old, $yt_old, $xt, $yt_old);
-                        $img->StyleLine($xt, $yt_old, $xt, $yt);
-                    } elseif ($y_old == '-') {
-                        $img->StyleLine($xt_first, $yt_first, $xt, $yt_first);
-                        $img->StyleLine($xt, $yt_first, $xt, $yt);
+
+                    if (\is_numeric($y_old)) {
+                        $aImg->StyleLine($xt_old, $yt_old, $xt, $yt_old);
+                        $aImg->StyleLine($xt, $yt_old, $xt, $yt);
+                    } elseif ('-' === $y_old) {
+                        $aImg->StyleLine($xt_first, $yt_first, $xt, $yt_first);
+                        $aImg->StyleLine($xt, $yt_first, $xt, $yt);
                     } else {
                         $yt_old = $yt;
                         $xt_old = $xt;
@@ -351,34 +373,36 @@ class LinePlot extends Plot
                     $cord[$idx++] = $yt_old;
                     $cord[$idx++] = $xt;
                     $cord[$idx++] = $yt;
-                } elseif ($firstnonumeric == false) {
+                } elseif (false === $firstnonumeric) {
                     $firstnonumeric = true;
-                    $yt_first       = $yt_old;
-                    $xt_first       = $xt_old;
+                    $yt_first = $yt_old;
+                    $xt_first = $xt_old;
                 }
             } else {
                 $tmp1 = $y;
                 $prev = $this->coords[0][$pnts - 1];
-                if ($tmp1 === '' || $tmp1 === null || $tmp1 === 'X') {
+
+                if ('' === $tmp1 || null === $tmp1 || 'X' === $tmp1) {
                     $tmp1 = 'x';
                 }
 
-                if ($prev === '' || $prev === null || $prev === 'X') {
+                if ('' === $prev || null === $prev || 'X' === $prev) {
                     $prev = 'x';
                 }
 
-                if (is_numeric($y) || (is_string($y) && $y != '-')) {
-                    if (is_numeric($y) && (is_numeric($prev) || $prev === '-')) {
-                        $img->StyleLineTo($xt, $yt);
+                if (\is_numeric($y) || (\is_string($y) && '-' !== $y)) {
+                    if (\is_numeric($y) && (\is_numeric($prev) || '-' === $prev)) {
+                        $aImg->StyleLineTo($xt, $yt);
                     } else {
-                        $img->SetStartPoint($xt, $yt);
+                        $aImg->SetStartPoint($xt, $yt);
                     }
                 }
-                if ($this->filled && $tmp1 !== '-') {
-                    if ($tmp1 === 'x') {
+
+                if ($this->filled && '-' !== $tmp1) {
+                    if ('x' === $tmp1) {
                         $cord[$idx++] = $cord[$idx - 3];
                         $cord[$idx++] = $fillmin;
-                    } elseif ($prev === 'x') {
+                    } elseif ('x' === $prev) {
                         $cord[$idx++] = $xt;
                         $cord[$idx++] = $fillmin;
                         $cord[$idx++] = $xt;
@@ -388,7 +412,7 @@ class LinePlot extends Plot
                         $cord[$idx++] = $yt;
                     }
                 } else {
-                    if (is_numeric($tmp1) && (is_numeric($prev) || $prev === '-')) {
+                    if (\is_numeric($tmp1) && (\is_numeric($prev) || '-' === $prev)) {
                         $cord[$idx++] = $xt;
                         $cord[$idx++] = $yt;
                     }
@@ -396,58 +420,61 @@ class LinePlot extends Plot
             }
             $yt_old = $yt;
             $xt_old = $xt;
-            $y_old  = $y;
+            $y_old = $y;
 
-            $this->StrokeDataValue($img, $this->coords[0][$pnts], $xt, $yt);
+            $this->StrokeDataValue($aImg, $this->coords[0][$pnts], $xt, $yt);
 
             ++$pnts;
         }
 
         if ($this->filled) {
             $cord[$idx++] = $xt;
+
             if ($this->fillFromMax) {
-                $cord[$idx++] = $yscale->scale_abs[1];
+                $cord[$idx++] = $aYScale->scale_abs[1];
             } else {
-                if ($min > 0 || $this->fillFromMin) {
-                    $cord[$idx++] = $yscale->Translate($min);
+                if (0 < $min || $this->fillFromMin) {
+                    $cord[$idx++] = $aYScale->Translate($min);
                 } else {
-                    $cord[$idx++] = $yscale->Translate(0);
+                    $cord[$idx++] = $aYScale->Translate(0);
                 }
             }
+
             if ($this->fillgrad) {
-                $img->SetLineWeight(1);
-                $grad = new Gradient($img);
+                $aImg->SetLineWeight(1);
+                $grad = new Gradient($aImg);
                 $grad->SetNumColors($this->fillgrad_numcolors);
                 $grad->FilledFlatPolygon($cord, $this->fillgrad_fromcolor, $this->fillgrad_tocolor);
-                $img->SetLineWeight($this->weight);
+                $aImg->SetLineWeight($this->weight);
             } else {
-                $img->SetColor($this->fill_color);
-                $img->FilledPolygon($cord);
+                $aImg->SetColor($this->fill_color);
+                $aImg->FilledPolygon($cord);
             }
-            if ($this->weight > 0) {
-                $img->SetLineWeight($this->weight);
-                $img->SetColor($this->color);
+
+            if (0 < $this->weight) {
+                $aImg->SetLineWeight($this->weight);
+                $aImg->SetColor($this->color);
                 // Remove first and last coordinate before drawing the line
                 // sine we otherwise get the vertical start and end lines which
                 // doesn't look appropriate
-                $img->Polygon(array_slice($cord, 2, Configs::safe_count($cord) - 4));
+                $aImg->Polygon(\array_slice($cord, 2, Configs::safe_count($cord) - 4));
             }
         }
 
         if (!empty($this->filledAreas)) {
-            $minY   = $yscale->Translate($yscale->GetMinVal());
+            $minY = $aYScale->Translate($aYScale->GetMinVal());
             $factor = ($this->step_style ? 4 : 2);
 
-            for ($i = 0; $i < Configs::safe_count($this->filledAreas); ++$i) {
+            for ($i = 0; Configs::safe_count($this->filledAreas) > $i; ++$i) {
                 // go through all filled area elements ordered by insertion
                 // fill polygon array
                 $areaCoords[] = $cord[$this->filledAreas[$i][0] * $factor];
                 $areaCoords[] = $minY;
 
                 $areaCoords =
-                    array_merge(
+                    \array_merge(
                         $areaCoords,
-                        array_slice(
+                        \array_slice(
                             $cord,
                             $this->filledAreas[$i][0] * $factor,
                             ($this->filledAreas[$i][1] - $this->filledAreas[$i][0] + ($this->step_style ? 0 : 1)) * $factor
@@ -457,25 +484,25 @@ class LinePlot extends Plot
                 $areaCoords[] = $minY; // last y
 
                 if ($this->filledAreas[$i][3]) {
-                    $img->SetColor($this->filledAreas[$i][2]);
-                    $img->FilledPolygon($areaCoords);
-                    $img->SetColor($this->color);
+                    $aImg->SetColor($this->filledAreas[$i][2]);
+                    $aImg->FilledPolygon($areaCoords);
+                    $aImg->SetColor($this->color);
                 }
                 // Check if we should draw the frame.
                 // If not we still re-draw the line since it might have been
                 // partially overwritten by the filled area and it doesn't look
                 // very good.
                 if ($this->filledAreas[$i][4]) {
-                    $img->Polygon($areaCoords);
+                    $aImg->Polygon($areaCoords);
                 } else {
-                    $img->Polygon($cord);
+                    $aImg->Polygon($cord);
                 }
 
                 $areaCoords = [];
             }
         }
 
-        if (!is_object($this->mark) || $this->mark->type == -1 || $this->mark->show == false) {
+        if (!\is_object($this->mark) || -1 === $this->mark->type || false === $this->mark->show) {
             return;
         }
 
@@ -485,10 +512,10 @@ class LinePlot extends Plot
             } else {
                 $x = $pnts + $textadj;
             }
-            $xt = $xscale->Translate($x);
-            $yt = $yscale->Translate($this->coords[0][$pnts]);
+            $xt = $aXScale->Translate($x);
+            $yt = $aYScale->Translate($this->coords[0][$pnts]);
 
-            if (!is_numeric($this->coords[0][$pnts])) {
+            if (!\is_numeric($this->coords[0][$pnts])) {
                 continue;
             }
 
@@ -500,13 +527,14 @@ class LinePlot extends Plot
                 }
                 $this->mark->SetCSIMAlt($this->csimalts[$pnts]);
             }
+
             if ($exist_x) {
                 $x = $this->coords[1][$pnts];
             } else {
                 $x = $pnts;
             }
             $this->mark->SetCSIMAltVal($this->coords[0][$pnts], $x);
-            $this->mark->Stroke($img, $xt, $yt);
+            $this->mark->Stroke($aImg, $xt, $yt);
             $this->csimareas .= $this->mark->GetCSIMAreas();
         }
     }

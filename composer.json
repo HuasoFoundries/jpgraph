@@ -1,7 +1,8 @@
 {
     "name": "amenadiel/jpgraph",
-    "type": "library",
     "description": "Composer Friendly, full refactor of JpGraph, library to make graphs and charts",
+    "license": "QPL-1.0",
+    "type": "library",
     "keywords": [
         "graph",
         "chart",
@@ -9,49 +10,42 @@
         "jpgraph",
         "data"
     ],
-    "homepage": "http://jpgraph.net/",
-    
-    "license": "QPL-1.0",
+    "homepage": "https://github.com/HuasoFoundries/jpgraph",
+    "support": {
+        "issues": "https://github.com/huasofoundries/jpgraph/issues"
+    },
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0 || >= 8.0.0 || >= 8.1.0",
         "ext-gd": "*"
     },
     "require-dev": {
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.3",
         "ergebnis/composer-normalize": "^2.13",
         "ergebnis/php-cs-fixer-config": "^2.13",
         "kint-php/kint": "^3.3",
+        "maglnet/composer-require-checker": "^3.2",
         "overtrue/phplint": "^2.3",
+        "pestphp/pest": "^1.0",
         "phpstan/phpstan": "^0.12.84",
         "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.6",
+        "squizlabs/php_codesniffer": "^3.5",
         "symfony/dotenv": "^4.0 || ^5.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0",
         "symfony/yaml": "^4.0 || ^5.0",
-        "vimeo/psalm": "^4.7"
-    },
-    "extra": {
-        "composer-normalize": {
-            "indent-size": 4,
-            "indent-style": "space"
-        },
-        
-        "version": "4.2.0"
+        "vimeo/psalm": "^4.7",
+        "pestphp/pest-plugin-parallel": "^1.2"
     },
     "autoload": {
         "psr-4": {
             "Amenadiel\\JpGraph\\": "src/",
-            "Amenadiel\\JpGraph\\Graph\\": "src/graph",
-            "Amenadiel\\JpGraph\\Graph\\Scale\\": "src/graph/scale",
-            "Amenadiel\\JpGraph\\Graph\\Tick\\": "src/graph/tick",
-            "Amenadiel\\JpGraph\\Graph\\Axis\\": "src/graph/axis",
             "Amenadiel\\JpGraph\\Image\\": "src/image",
             "Amenadiel\\JpGraph\\Plot\\": "src/plot",
             "Amenadiel\\JpGraph\\Text\\": "src/text",
             "Amenadiel\\JpGraph\\Themes\\": "src/themes",
             "Amenadiel\\JpGraph\\Util\\": "src/util"
-        }
+        },
+        "files": [
+            "src/bootstrap.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -61,18 +55,33 @@
             "tests/polyfills.php"
         ]
     },
+    "config": {
+        
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "rector/rector-installer": false,
+            "pestphp/pest-plugin": true,
+            "pestphp/pest-plugin-parallel":true,
+            "ergebnis/composer-normalize": false
+        }
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
+        "version": "4.2.0"
+    },
     "scripts": {
         "act": "act -P ubuntu-latest=shivammathur/node:latest",
+        "coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage --coverage-clover tests/_output/coverage.xml  --testsuite Feature",
         "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
         "lint": "vendor/bin/phplint",
-        "start": "php -S localhost:8000 -t Examples",
-        "test": "php vendor/bin/codecept run unit ",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
         "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
-        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --issues=all --allow-backwards-incompatible-changes=false  --safe-types --dry-run",
-        "coverage": "XDEBUG_MODE=coverage php vendor/bin/codecept run unit --coverage --coverage-xml"
-    },
-    "support": {
-        "issues": "https://github.com/huasofoundries/jpgraph/issues"
+        "psalm_baseline": "vendor/bin/psalm --config=psalm.xml --update-baseline --ignore-baseline  --set-baseline=psalm-baseline.xml",
+        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --allow-backwards-incompatible-changes=false  --safe-types  ",
+        "start": "php -S localhost:8000 -t Examples",
+        "test": "vendor/bin/pest "
     }
 }

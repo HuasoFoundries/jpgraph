@@ -1,13 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Util;
-use function is_numeric;
 
 /**
  * File:        JPGRAPH_ERROR.PHP
@@ -40,10 +39,10 @@ class ErrorPlot extends Plot
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $graph
+     * @param mixed $aGraph
      */
     // Gets called before any axis are stroked
-    public function PreStrokeAdjust($graph)
+    public function PreStrokeAdjust($aGraph)
     {
         if ($this->center) {
             $a = 0.5;
@@ -53,27 +52,27 @@ class ErrorPlot extends Plot
             $a = 0;
             $b = 0;
         }
-        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-        $graph->SetTextScaleOff($b);
+        $aGraph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $aGraph->SetTextScaleOff($b);
         //$graph->xaxis->scale->ticks->SupressMinorTickMarks();
     }
 
     // Method description
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
         $numpoints = Configs::safe_count($this->coords[0]) / 2;
-        $img->SetColor($this->color);
-        $img->SetLineWeight($this->weight);
+        $aImg->SetColor($this->color);
+        $aImg->SetLineWeight($this->weight);
 
         if (isset($this->coords[1])) {
-            if (Configs::safe_count($this->coords[1]) != $numpoints) {
-                Util\JpGraphError::RaiseL(2003, Configs::safe_count($this->coords[1]), $numpoints);
+            if (Configs::safe_count($this->coords[1]) !== $numpoints
+            ) {
+                throw Util\JpGraphError::make(2003, Configs::safe_count($this->coords[1]), $numpoints);
             }
 
             //("Number of X and Y points are not equal. Number of X-points:". Configs::safe_count($this->coords[1])." Number of Y-points:$numpoints");
-            else {
-                $exist_x = true;
-            }
+
+            $exist_x = true;
         } else {
             $exist_x = false;
         }
@@ -85,17 +84,18 @@ class ErrorPlot extends Plot
                 $x = $i;
             }
 
-            if (!is_numeric($x) ||
-                !is_numeric($this->coords[0][$i * 2]) || !is_numeric($this->coords[0][$i * 2 + 1])) {
+            if (!\is_numeric($x)
+                || !\is_numeric($this->coords[0][$i * 2]) || !\is_numeric($this->coords[0][$i * 2 + 1])
+            ) {
                 continue;
             }
 
-            $xt  = $xscale->Translate($x);
-            $yt1 = $yscale->Translate($this->coords[0][$i * 2]);
-            $yt2 = $yscale->Translate($this->coords[0][$i * 2 + 1]);
-            $img->Line($xt, $yt1, $xt, $yt2);
-            $img->Line($xt - $this->errwidth, $yt1, $xt + $this->errwidth, $yt1);
-            $img->Line($xt - $this->errwidth, $yt2, $xt + $this->errwidth, $yt2);
+            $xt = $aXScale->Translate($x);
+            $yt1 = $aYScale->Translate($this->coords[0][$i * 2]);
+            $yt2 = $aYScale->Translate($this->coords[0][$i * 2 + 1]);
+            $aImg->Line($xt, $yt1, $xt, $yt2);
+            $aImg->Line($xt - $this->errwidth, $yt1, $xt + $this->errwidth, $yt1);
+            $aImg->Line($xt - $this->errwidth, $yt2, $xt + $this->errwidth, $yt2);
         }
 
         return true;

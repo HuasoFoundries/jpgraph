@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,9 +17,9 @@ $data = [
     5 => [2, 7, 1, 2], ];
 
 // First create a new windrose graph with a title
-$__width  = 400;
+$__width = 400;
 $__height = 400;
-$graph    = new Graph\WindroseGraph($__width, $__height);
+$graph = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title
 $example_title = 'Windrose example 4';

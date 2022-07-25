@@ -1,17 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
 use Amenadiel\JpGraph\Text;
 use Amenadiel\JpGraph\Util;
-use function call_user_func;
-use function is_numeric;
-use function is_string;
-use function sprintf;
 
 /**
  * @class DisplayValue
@@ -19,21 +15,35 @@ use function sprintf;
  */
 class DisplayValue extends Configs
 {
-    public $margin         = 5;
-    public $show           = false;
-    public $valign         = '';
-    public $halign         = 'center';
-    public $format         = '%.1f';
-    public $negformat      = '';
-    private $ff            = self::FF_DEFAULT;
-    private $fs            = self::FS_NORMAL;
-    private $fsize         = 8;
-    private $iFormCallback = '';
-    private $angle         = 0;
-    private $color         = 'navy';
-    private $negcolor      = '';
-    private $iHideZero     = false;
+    public $margin = 5;
+
+    public $show = false;
+
+    public $valign = '';
+
+    public $halign = 'center';
+
+    public $format = '%.1f';
+
+    public $negformat = '';
+
     public $txt;
+
+    private $ff = self::FF_DEFAULT;
+
+    private $fs = self::FS_NORMAL;
+
+    private $fsize = 8;
+
+    private $iFormCallback = '';
+
+    private $angle = 0;
+
+    private $color = 'navy';
+
+    private $negcolor = '';
+
+    private $iHideZero = false;
 
     public function __construct()
     {
@@ -47,14 +57,14 @@ class DisplayValue extends Configs
 
     public function SetColor($aColor, $aNegcolor = '')
     {
-        $this->color    = $aColor;
+        $this->color = $aColor;
         $this->negcolor = $aNegcolor;
     }
 
     public function SetFont($aFontFamily, $aFontStyle = self::FS_NORMAL, $aFontSize = 8)
     {
-        $this->ff    = $aFontFamily;
-        $this->fs    = $aFontStyle;
+        $this->ff = $aFontFamily;
+        $this->fs = $aFontStyle;
         $this->fsize = $aFontSize;
     }
 
@@ -81,7 +91,7 @@ class DisplayValue extends Configs
 
     public function SetFormat($aFormat, $aNegFormat = '')
     {
-        $this->format    = $aFormat;
+        $this->format = $aFormat;
         $this->negformat = $aNegFormat;
     }
 
@@ -101,18 +111,19 @@ class DisplayValue extends Configs
             return;
         }
 
-        if ($this->negformat == '') {
+        if ('' === $this->negformat) {
             $this->negformat = $this->format;
         }
-        if ($this->negcolor == '') {
+
+        if ('' === $this->negcolor) {
             $this->negcolor = $this->color;
         }
 
-        if ($aVal === null || (is_string($aVal) && ($aVal == '' || $aVal == '-' || $aVal == 'x'))) {
+        if (null === $aVal || (\is_string($aVal) && ('' === $aVal || '-' === $aVal || 'x' === $aVal))) {
             return;
         }
 
-        if (is_numeric($aVal) && $aVal == 0 && $this->iHideZero) {
+        if (\is_numeric($aVal) && 0 === $aVal && $this->iHideZero) {
             return;
         }
 
@@ -120,14 +131,14 @@ class DisplayValue extends Configs
         // kind of formatting we shall use. For example, to display values in a line
         // graph we simply display the formatted value, but in the case where the user
         // has already specified a text string we don't fo anything.
-        if ($this->iFormCallback != '') {
-            $f    = $this->iFormCallback;
-            $sval = call_user_func($f, $aVal);
-        } elseif (is_numeric($aVal)) {
-            if ($aVal >= 0) {
-                $sval = sprintf($this->format, $aVal);
+        if ('' !== $this->iFormCallback) {
+            $f = $this->iFormCallback;
+            $sval = $f($aVal);
+        } elseif (\is_numeric($aVal)) {
+            if (0 <= $aVal) {
+                $sval = \sprintf($this->format, $aVal);
             } else {
-                $sval = sprintf($this->negformat, $aVal);
+                $sval = \sprintf($this->negformat, $aVal);
             }
         } else {
             $sval = $aVal;
@@ -138,8 +149,9 @@ class DisplayValue extends Configs
         $this->txt->Set($sval);
         $this->txt->SetPos($x, $y);
         $this->txt->SetFont($this->ff, $this->fs, $this->fsize);
-        if ($this->valign == '') {
-            if ($aVal >= 0) {
+
+        if ('' === $this->valign) {
+            if (0 <= $aVal) {
                 $valign = 'bottom';
             } else {
                 $valign = 'top';
@@ -150,7 +162,8 @@ class DisplayValue extends Configs
         $this->txt->Align($this->halign, $valign);
 
         $this->txt->SetOrientation($this->angle);
-        if ($aVal > 0) {
+
+        if (0 < $aVal) {
             $this->txt->SetColor($this->color);
         } else {
             $this->txt->SetColor($this->negcolor);

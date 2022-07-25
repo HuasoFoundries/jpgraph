@@ -1,7 +1,0 @@
-# Codeception Test Suite Configuration
-#
-# Suite for unit or integration tests.
-
-modules:
-  enabled:
-    - Asserts

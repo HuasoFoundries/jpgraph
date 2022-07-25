@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Example of a stock chart
@@ -19,9 +19,9 @@ $datay = [
     38, 49, 32, 64, 45, ];
 
 // Setup a simple graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('textlin');
 $graph->SetMarginColor('lightblue');
 $example_title = 'Box Stock chart example';

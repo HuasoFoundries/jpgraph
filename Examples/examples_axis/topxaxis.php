@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -12,9 +12,9 @@ use Amenadiel\JpGraph\Plot;
 // Some data
 $datay = [25, 29, 29, 39, 55];
 
-$__width  = 400;
+$__width = 400;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height, 'auto');
+$graph = new Graph\Graph($__width, $__height, 'auto');
 $graph->img->SetMargin(40, 40, 40, 20);
 
 $graph->SetScale('linlin');

@@ -1,21 +1,21 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-$datay    = [20, 30, 50, 80];
-$datay2   = [430, 645, 223, 690];
+$datay = [20, 30, 50, 80];
+$datay2 = [430, 645, 223, 690];
 $datazero = [0, 0, 0, 0];
 
 // Create the graph.
-$__width       = 450;
-$__height      = 200;
-$graph         = new Graph\Graph($__width, $__height);
+$__width = 450;
+$__height = 200;
+$graph = new Graph\Graph($__width, $__height);
 $example_title = 'Example with 2 scale bars';
 $graph->title->set($example_title);
 

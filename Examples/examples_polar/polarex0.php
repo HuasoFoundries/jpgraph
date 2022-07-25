@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // A simple Polar graph, example 0
@@ -17,9 +17,9 @@ $data = [0, 1, 10, 2, 30, 25, 40, 60,
     110, 210, 120, 160, 130, 110, 140, 60,
     150, 25, 170, 2, 180, 1, ];
 
-$__width  = 250;
+$__width = 250;
 $__height = 250;
-$graph    = new Graph\PolarGraph($__width, $__height);
+$graph = new Graph\PolarGraph($__width, $__height);
 $graph->SetScale('lin');
 $graph->SetMargin(35, 35, 25, 25);
 

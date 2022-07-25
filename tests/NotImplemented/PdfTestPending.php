@@ -1,34 +1,32 @@
 <?php
+
+/**
+ * JPGraph - Community Edition
+ */
+
 namespace Tests\NotImplemented;
 
-class PdfTestPending extends \Codeception\Test\Unit
+use Tests\BaseTestCase;
+
+/**
+ * @internal
+ * @coversNothing
+ */
+class PdfTestPending extends BaseTestCase
 {
-    protected function _before()
-    {
-        $className = strtolower(str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this))));
-
-        $this->exampleRoot = UNIT_TEST_FOLDER . '/Examples/examples_' . $className . '/';
-    }
-
-    protected function _after()
-    {
-    }
-
-    // tests
-    public function _fileCheck($filename)
-    {
-        ob_start();
-        include $this->exampleRoot . $filename;
-        $img  = (ob_get_clean());
-        $size = getimagesizefromstring($img);
-        Debug::debug($size);
-    }
-
     public function testFileIterator()
     {
-        $files =self::getFiles($this->exampleRoot);
+        $files = self::getFiles($this->exampleRoot);
+
         foreach ($files as $file) {
             $this->_fileCheck($file);
         }
+    }
+
+    protected function _before()
+    {
+        $className = \mb_strtolower(\str_replace('Test', '', \str_replace(__NAMESPACE__ . '\\', '', \get_class($this))));
+
+        $this->exampleRoot = \dirname(BaseTestCase::TEST_FOLDER) . '/Examples/examples_' . $className . '/';
     }
 }

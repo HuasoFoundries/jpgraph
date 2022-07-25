@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -23,7 +23,7 @@ $constrains = [[2, 1, Graph\Configs::getConfig('CONSTRAIN_ENDSTART')],
 $progress = [[1, 0.4]];
 
 // Create the basic graph
-$graph         = new Graph\GanttGraph();
+$graph = new Graph\GanttGraph();
 $example_title = 'Example with grouping and constrains';
 $graph->title->set($example_title);
 //$graph->SetFrame(false);

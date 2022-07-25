@@ -1,91 +1,21 @@
 <?php
 
+/**
+ * JPGraph - Community Edition
+ */
+
 namespace Tests\Unit;
 
-use Tests\UnitTestTrait;
+use Tests\SizeFixture;
 
-
-/**
- * @group ready
- */
-class GanttTest extends \Tests\TestCase
-{
-
-    public static $persistYaml = false;
-    public static $fixTures    = [];
-    public static $files       = null;
-    public static $exampleRoot = null;
-    public static $ranTests    = [];
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
-
-    // tests
-    protected function _fileCheck($filename, &$ownFixtures = [], $debug = false)
-    {
-        if (is_array($filename)) {
-            $filename = $filename['filename'];
+$datasetName = \str_replace('.php', '', \basename(__FILE__));
+$testGroupName = \str_replace('Test', '', \ucfirst($datasetName));
+it(\sprintf('verifies basic mime info of images for %s Graphs', $testGroupName), function (array $fixTure) {
+    tap(new SizeFixture($fixTure), function ($sizeFixture) {
+        if ($sizeFixture->hasDimensions()) {
+            expect($sizeFixture)->toMatchFixture($sizeFixture);
+        } else {
+            expect($sizeFixture)->toMatchImageType($sizeFixture);
         }
-        $example_title = 'file_iterator';
-        ob_start();
-        include self::$exampleRoot . $filename;
-        $img  = (ob_get_clean());
-        $size = getimagesizefromstring($img);
-        $this->assertEquals('image/png', $size['mime'], 'image should have mime image/png for ' . $filename);
-
-        return $this->_normalizeTestGroup($filename, $ownFixtures, $example_title, $debug);
-    }
-
-    public function testExampleWithGroupingAndConstrains()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function test200()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testExampleOfHoursInScale()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function test271()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testGanttChartWithTitleColumnsAndIcons()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testOnlyMonthYearScale()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testAddingASpaningTitle()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testExampleWithMultipleConstrains()
-    {
-        $this->traverseFixtureGroup($this->fixTures(__METHOD__));
-    }
-
-    public function testFileIterator()
-    {
-        self::$genericFixtures = array_reduce(self::$files, function ($carry, $file) {
-            $carry = $this->_fileCheck($file, $carry);
-            return $carry;
-        }, self::$genericFixtures);
-    }
-}
+    });
+})->with($datasetName . 'PlainFile');

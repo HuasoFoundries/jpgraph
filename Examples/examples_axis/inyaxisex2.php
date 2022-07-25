@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,22 +11,23 @@ use Amenadiel\JpGraph\Plot;
 
 // Callback to negate the argument
 $_cb_negate = function ($aVal) {
-    return round(-$aVal);
+    return \round(-$aVal);
 };
 
 // A fake depth curve
 $ydata = [0, 1, 4, 5, 8, 9, 10, 14, 16, 16, 16, 18, 20, 20, 20, 22, 22.5, 22, 19, 19, 15, 15, 15, 15, 10, 10, 10, 6, 5, 5, 5, 4, 4, 2, 1, 0];
 
 // Negate all data
-$n = count($ydata);
+$n = \count($ydata);
+
 for ($i = 0; $i < $n; ++$i) {
-    $ydata[$i] = round(-$ydata[$i]);
+    $ydata[$i] = \round(-$ydata[$i]);
 }
 
 // Basic graph setup
-$__width  = 400;
+$__width = 400;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('linlin');
 $graph->img->SetMargin(50, 50, 60, 40);
 $graph->SetMarginColor('darkblue');

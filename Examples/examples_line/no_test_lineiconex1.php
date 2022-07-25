@@ -1,29 +1,34 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
 require_once 'jpgraph/jpgraph_iconplot.php';
 
 //$datay = array(20,15,23,15,17,35,22);
-$datay  = [30, 25, 33, 25, 27, 45, 32];
+$datay = [30, 25, 33, 25, 27, 45, 32];
 $datay2 = [3, 25, 10, 15, 50, 5, 18];
 $datay3 = [10, 5, 10, 15, 5, 2, 1];
 
 // Setup the graph
-$__width  = 400;
+$__width = 400;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 40, 20, 30);
 $graph->SetScale('textlin');
 
 $graph->title->Set('Adding an icon ("tux") in the background');
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    12
+);
 
 //$graph->SetBackgroundGradient('red','blue');
 

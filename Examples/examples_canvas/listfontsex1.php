@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -9,9 +9,9 @@ require_once __DIR__ . '/../../src/config.inc.php';
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Text;
 
-$__width  = 700;
+$__width = 700;
 $__height = 800;
-$g        = new Graph\CanvasGraph($__width, $__height);
+$g = new Graph\CanvasGraph($__width, $__height);
 
 $g->SetScale('canvas', 0, 27, 0, 85);
 $g->SetMargin(5, 6, 5, 6);
@@ -21,15 +21,19 @@ $g->InitFrame();
 $example_title = 'Font demonstration on canvas';
 
 $t = new Text\CanvasRectangleText();
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_NORMAL'), 16);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_NORMAL'),
+    16
+);
 $t->SetFillColor('lemonchiffon2');
 $t->SetFontColor('black');
 $t->Set("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTTF Fonts (11pt)", 0.5, 19.5, 26, 64.5);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->SetFillColor('lemonchiffon3');
 $t->Set("\n\n\n\nBitmap Fonts", 0.5, 5, 26, 13.5);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t = new Text\CanvasRectangleText();
 $t->SetFillColor('');
@@ -37,15 +41,19 @@ $t->SetFontColor('black');
 $t->SetColor('');
 $t->SetShadow('');
 
-$t->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 18);
+$t->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    18
+);
 $t->Set('Normal', 1, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->Set('Italic style', 9, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->Set('Bold style', 17.5, 1, 8);
-$t->Stroke($g->img, $g->scale);
+$t->Stroke($g->img, $g->getScale());
 
 $t->SetFillColor('yellow');
 $t->SetFontColor('black');
@@ -131,10 +139,10 @@ $fonts = [
     ['DejaVuCond sans serif', Graph\Configs::getConfig('FF_DV_SANSSERIFCOND'), Graph\Configs::getConfig('FS_BOLD')],
 ];
 
-$n = count($fonts);
+$n = \count($fonts);
 
 for ($i = 0; $i < $n; ++$i) {
-    if ($i == 9) {
+    if (9 === $i) {
         $r += 3;
     }
 
@@ -142,11 +150,12 @@ for ($i = 0; $i < $n; ++$i) {
         $t->SetTxt($fonts[$i][0]);
         $t->SetPos($c, $r, $w, $h);
         $t->SetFont($fonts[$i][1], $fonts[$i][2], 11);
-        $t->Stroke($g->img, $g->scale);
+        $t->Stroke($g->img, $g->getScale());
     }
 
     $c += $w + 1;
-    if ($c > 30 - $w - 2) {
+
+    if (30 - $w - 2 < $c) {
         $c = 1;
         $r += 4;
     }

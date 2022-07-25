@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
@@ -22,34 +22,38 @@ namespace Amenadiel\JpGraph\Util;
  */
 class FuncGenerator
 {
-    private $iFunc  = '';
+    private $iFunc = '';
+
     private $iXFunc = '';
+
     private $iMin;
+
     private $iMax;
+
     private $iStepSize;
 
     public function __construct($aFunc, $aXFunc = '')
     {
-        $this->iFunc  = $aFunc;
+        $this->iFunc = $aFunc;
         $this->iXFunc = $aXFunc;
     }
 
     public function E($aXMin, $aXMax, $aSteps = 50)
     {
-        $this->iMin      = $aXMin;
-        $this->iMax      = $aXMax;
+        $this->iMin = $aXMin;
+        $this->iMax = $aXMax;
         $this->iStepSize = ($aXMax - $aXMin) / $aSteps;
 
-        if ($this->iXFunc != '') {
+        if ('' !== $this->iXFunc) {
             $t = 'for($i=' . $aXMin . '; $i<=' . $aXMax . '; $i += ' . $this->iStepSize . ') {$ya[]=' . $this->iFunc . ';$xa[]=' . $this->iXFunc . ';}';
-        } elseif ($this->iFunc != '') {
+        } elseif ('' !== $this->iFunc) {
             $t = 'for($x=' . $aXMin . '; $x<=' . $aXMax . '; $x += ' . $this->iStepSize . ') {$ya[]=' . $this->iFunc . ';$xa[]=$x;} $x=' . $aXMax . ';$ya[]=' . $this->iFunc . ';$xa[]=$x;';
         } else {
             JpGraphError::RaiseL(24001);
         }
         //('FuncGenerator : No function specified. ');
 
-        @eval($t);
+        eval($t);
 
         // If there is an error in the function specifcation this is the only
         // way we can discover that.

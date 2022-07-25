@@ -1,14 +1,15 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
-define('WORLDMAP', __DIR__ . '/../assets/worldmap1.jpg');
+\define('WORLDMAP', __DIR__ . '/../assets/worldmap1.jpg');
 
 $markCallback = function ($y, $x) {
     // Return array width
@@ -16,7 +17,7 @@ $markCallback = function ($y, $x) {
     // any value can be false, in that case the default value will
     // be used.
     // We only make one pushpin another color
-    if ($x == 54) {
+    if (54 === $x) {
         return [false, false, false, 'red', 0.8];
     }
 
@@ -28,9 +29,9 @@ $datax = [10, 20, 30, 40, 54, 60, 70, 80];
 $datay = [12, 23, 65, 18, 84, 28, 86, 44];
 
 // Setup the graph
-$__width  = 400;
+$__width = 400;
 $__height = 270;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 
 // We add a small 1pixel left,right,bottom margin so the plot area
 // doesn't cover the frame around the graph.
@@ -42,19 +43,34 @@ $graph->xaxis->Hide();
 $graph->yaxis->Hide();
 
 // Use a worldmap as the background and let it fill the plot area
-$graph->SetBackgroundImage(Graph\Configs::getConfig('WORLDMAP'), Graph\Configs::getConfig('BGIMG_FILLPLOT'));
+$graph->SetBackgroundImage(
+    Graph\Configs::getConfig('WORLDMAP'),
+    Graph\Configs::getConfig('BGIMG_FILLPLOT')
+);
 
 // Setup a nice title with a striped bevel background$example_title='Pushpin graph'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 16);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    16
+);
 $graph->title->SetColor('white');
 $graph->SetTitleBackground('darkgreen', Graph\Configs::getConfig('TITLEBKG_STYLE1'), Graph\Configs::getConfig('TITLEBKG_FRAME_BEVEL'));
-$graph->SetTitleBackgroundFillStyle(Graph\Configs::getConfig('TITLEBKG_FILLSTYLE_HSTRIPED'), 'blue', 'darkgreen');
+$graph->SetTitleBackgroundFillStyle(
+    Graph\Configs::getConfig('TITLEBKG_FILLSTYLE_HSTRIPED'),
+    'blue',
+    'darkgreen'
+);
 
 // Finally create the scatterplot
 $sp = new Plot\ScatterPlot($datay, $datax);
 
 // We want the markers to be an image
-$sp->mark->SetType(Graph\Configs::getConfig('MARK_IMG_PUSHPIN'), 'blue', 0.6);
+$sp->mark->SetType(
+    Graph\Configs::getConfig('MARK_IMG_PUSHPIN'),
+    'blue',
+    0.6
+);
 
 // Install the Y-X callback for the markers
 $sp->mark->SetCallbackYX($markCallback);

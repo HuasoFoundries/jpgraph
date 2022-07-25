@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -16,14 +16,15 @@ $data = [0, 1, 10, 2, 30, 25, 40, 60,
     110, 210, 120, 160, 130, 110, 140, 60,
     150, 25, 170, 2, 180, 1, ];
 
-$n = count($data);
+$n = \count($data);
+
 for ($i = 0; $i < $n; ++$i) {
-    $targets[$i] = "#${i}";
+    $targets[$i] = "#{$i}";
 }
 
-$__width  = 350;
+$__width = 350;
 $__height = 320;
-$graph    = new PolarGraph($__width, $__height);
+$graph = new PolarGraph($__width, $__height);
 $graph->SetScale('log', 100);
 $graph->SetType(Graph\Configs::getConfig('POLAR_180'));
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
@@ -12,6 +12,7 @@ namespace Amenadiel\JpGraph\Plot;
 class BoxPlot extends StockPlot
 {
     private $iPColor = 'black';
+
     private $iNColor = 'white';
 
     public function __construct($datay, $datax = false)

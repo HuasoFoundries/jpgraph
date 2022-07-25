@@ -1,20 +1,13 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Plot;
 
-use function abs;
 use Amenadiel\JpGraph\Text;
-use function cos;
-use function floor;
 use const M_PI;
-use function min;
-use function round;
-use function sin;
-use function sprintf;
 
 /**
  * @class PiePlotC
@@ -23,12 +16,17 @@ use function sprintf;
  */
 class PiePlotC extends PiePlot
 {
-    private $imidsize            = 0.5; // Fraction of total width
-    private $imidcolor           = 'white';
-    public $midtitle             = '';
-    private $middlecsimtarget    = '';
+    public $midtitle = '';
+
+    private $imidsize = 0.5; // Fraction of total width
+
+    private $imidcolor = 'white';
+
+    private $middlecsimtarget = '';
+
     private $middlecsimwintarget = '';
-    private $middlecsimalt       = '';
+
+    private $middlecsimalt = '';
 
     public function __construct($data, $aCenterTitle = '')
     {
@@ -41,7 +39,7 @@ class PiePlotC extends PiePlot
     {
         $this->midtitle->Set($aTitle);
 
-        $this->imidsize  = $aSize;
+        $this->imidsize = $aSize;
         $this->imidcolor = $aColor;
     }
 
@@ -62,19 +60,19 @@ class PiePlotC extends PiePlot
 
     public function SetMidCSIM($aTarget, $aAlt = '', $aWinTarget = '')
     {
-        $this->middlecsimtarget    = $aTarget;
+        $this->middlecsimtarget = $aTarget;
         $this->middlecsimwintarget = $aWinTarget;
-        $this->middlecsimalt       = $aAlt;
+        $this->middlecsimalt = $aAlt;
     }
 
     public function AddSliceToCSIM($i, $xc, $yc, $radius, $sa, $ea)
     {
         //Slice number, ellipse centre (x,y), radius, start angle, end angle
-        while ($sa > 2 * M_PI) {
+        while (2 * M_PI < $sa) {
             $sa = $sa - 2 * M_PI;
         }
 
-        while ($ea > 2 * M_PI) {
+        while (2 * M_PI < $ea) {
             $ea = $ea - 2 * M_PI;
         }
 
@@ -83,15 +81,15 @@ class PiePlotC extends PiePlot
 
         // Special case when we have only one slice since then both start and end
         // angle will be == 0
-        if (abs($sa - $ea) < 0.0001) {
+        if (\abs($sa - $ea) < 0.0001) {
             $sa = 2 * M_PI;
             $ea = 0;
         }
 
         // Add inner circle first point
-        $xp     = floor(($this->imidsize * $radius * cos($ea)) + $xc);
-        $yp     = floor($yc - ($this->imidsize * $radius * sin($ea)));
-        $coords = "${xp}, ${yp}";
+        $xp = \floor(($this->imidsize * $radius * \cos($ea)) + $xc);
+        $yp = \floor($yc - ($this->imidsize * $radius * \sin($ea)));
+        $coords = "{$xp}, {$yp}";
 
         //add coordinates every 0.25 radians
         $a = $ea + 0.25;
@@ -99,63 +97,66 @@ class PiePlotC extends PiePlot
         // If we cross the 360-limit with a slice we need to handle
         // the fact that end angle is smaller than start
         if ($sa < $ea) {
-            while ($a <= 2 * M_PI) {
-                $xp      = floor($radius * cos($a) + $xc);
-                $yp      = floor($yc - $radius * sin($a));
-                $coords .= ", ${xp}, ${yp}";
+            while (2 * M_PI >= $a) {
+                $xp = \floor($radius * \cos($a) + $xc);
+                $yp = \floor($yc - $radius * \sin($a));
+                $coords .= ", {$xp}, {$yp}";
                 $a += 0.25;
             }
             $a -= 2 * M_PI;
         }
 
         while ($a < $sa) {
-            $xp      = floor(($this->imidsize * $radius * cos($a) + $xc));
-            $yp      = floor($yc - ($this->imidsize * $radius * sin($a)));
-            $coords .= ", ${xp}, ${yp}";
+            $xp = \floor(($this->imidsize * $radius * \cos($a) + $xc));
+            $yp = \floor($yc - ($this->imidsize * $radius * \sin($a)));
+            $coords .= ", {$xp}, {$yp}";
             $a += 0.25;
         }
 
         // Make sure we end at the last point
-        $xp      = floor(($this->imidsize * $radius * cos($sa) + $xc));
-        $yp      = floor($yc - ($this->imidsize * $radius * sin($sa)));
-        $coords .= ", ${xp}, ${yp}";
+        $xp = \floor(($this->imidsize * $radius * \cos($sa) + $xc));
+        $yp = \floor($yc - ($this->imidsize * $radius * \sin($sa)));
+        $coords .= ", {$xp}, {$yp}";
 
         // Straight line to outer circle
-        $xp      = floor($radius * cos($sa) + $xc);
-        $yp      = floor($yc - $radius * sin($sa));
-        $coords .= ", ${xp}, ${yp}";
+        $xp = \floor($radius * \cos($sa) + $xc);
+        $yp = \floor($yc - $radius * \sin($sa));
+        $coords .= ", {$xp}, {$yp}";
 
         //add coordinates every 0.25 radians
         $a = $sa - 0.25;
+
         while ($a > $ea) {
-            $xp      = floor($radius * cos($a) + $xc);
-            $yp      = floor($yc - $radius * sin($a));
-            $coords .= ", ${xp}, ${yp}";
+            $xp = \floor($radius * \cos($a) + $xc);
+            $yp = \floor($yc - $radius * \sin($a));
+            $coords .= ", {$xp}, {$yp}";
             $a -= 0.25;
         }
 
         //Add the last point on the arc
-        $xp      = floor($radius * cos($ea) + $xc);
-        $yp      = floor($yc - $radius * sin($ea));
-        $coords .= ", ${xp}, ${yp}";
+        $xp = \floor($radius * \cos($ea) + $xc);
+        $yp = \floor($yc - $radius * \sin($ea));
+        $coords .= ", {$xp}, {$yp}";
 
         // Close the arc
-        $xp      = floor(($this->imidsize * $radius * cos($ea)) + $xc);
-        $yp      = floor($yc - ($this->imidsize * $radius * sin($ea)));
-        $coords .= ", ${xp}, ${yp}";
+        $xp = \floor(($this->imidsize * $radius * \cos($ea)) + $xc);
+        $yp = \floor($yc - ($this->imidsize * $radius * \sin($ea)));
+        $coords .= ", {$xp}, {$yp}";
 
         if (empty($this->csimtargets[$i])) {
             return;
         }
 
-        $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" .
+        $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" .
         $this->csimtargets[$i] . '"';
+
         if (!empty($this->csimwintargets[$i])) {
             $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
         }
+
         if (!empty($this->csimalts[$i])) {
-            $tmp              = sprintf($this->csimalts[$i], $this->data[$i]);
-            $this->csimareas .= " title=\"${tmp}\"  alt=\"${tmp}\" ";
+            $tmp = \sprintf($this->csimalts[$i], $this->data[$i]);
+            $this->csimareas .= " title=\"{$tmp}\"  alt=\"{$tmp}\" ";
         }
         $this->csimareas .= " />\n";
     }
@@ -163,40 +164,40 @@ class PiePlotC extends PiePlot
     public function Stroke($img, $aaoption = 0)
     {
         // Stroke the pie but don't stroke values
-        $tmp               = $this->value->show;
+        $tmp = $this->value->show;
         $this->value->show = false;
         parent::Stroke($img, $aaoption);
         $this->value->show = $tmp;
 
-        $xc = round($this->posx * $img->width);
-        $yc = round($this->posy * $img->height);
+        $xc = \round($this->posx * $img->width);
+        $yc = \round($this->posy * $img->height);
 
-        $radius = floor($this->radius * min($img->width, $img->height));
+        $radius = \floor($this->radius * \min($img->width, $img->height));
 
-        if ($this->imidsize > 0 && $aaoption !== 2) {
-            if ($this->ishadowcolor != '') {
+        if (0 < $this->imidsize && 2 !== $aaoption) {
+            if ('' !== $this->ishadowcolor) {
                 $img->SetColor($this->ishadowcolor);
                 $img->FilledCircle(
                     $xc + $this->ishadowdrop,
                     $yc + $this->ishadowdrop,
-                    round($radius * $this->imidsize)
+                    \round($radius * $this->imidsize)
                 );
             }
 
             $img->SetColor($this->imidcolor);
-            $img->FilledCircle($xc, $yc, round($radius * $this->imidsize));
+            $img->FilledCircle($xc, $yc, \round($radius * $this->imidsize));
 
-            if ($this->pie_border && $aaoption === 0) {
+            if ($this->pie_border && 0 === $aaoption) {
                 $img->SetColor($this->color);
-                $img->Circle($xc, $yc, round($radius * $this->imidsize));
+                $img->Circle($xc, $yc, \round($radius * $this->imidsize));
             }
 
             if (!empty($this->middlecsimtarget)) {
-                $this->AddMiddleCSIM($xc, $yc, round($radius * $this->imidsize));
+                $this->AddMiddleCSIM($xc, $yc, \round($radius * $this->imidsize));
             }
         }
 
-        if (!$this->value->show || $aaoption === 1) {
+        if (!$this->value->show || 1 === $aaoption) {
             return;
         }
 
@@ -207,24 +208,26 @@ class PiePlotC extends PiePlot
 
     public function AddMiddleCSIM($xc, $yc, $r)
     {
-        $xc               = round($xc);
-        $yc               = round($yc);
-        $r                = round($r);
-        $this->csimareas .= "<area shape=\"circle\" coords=\"${xc},${yc},${r}\" href=\"" .
+        $xc = \round($xc);
+        $yc = \round($yc);
+        $r = \round($r);
+        $this->csimareas .= "<area shape=\"circle\" coords=\"{$xc},{$yc},{$r}\" href=\"" .
         $this->middlecsimtarget . '"';
+
         if (!empty($this->middlecsimwintarget)) {
             $this->csimareas .= ' target="' . $this->middlecsimwintarget . '"';
         }
+
         if (!empty($this->middlecsimalt)) {
-            $tmp              = $this->middlecsimalt;
-            $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+            $tmp = $this->middlecsimalt;
+            $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
         }
         $this->csimareas .= " />\n";
     }
 
     public function StrokeLabel($label, $img, $xc, $yc, $a, $r)
     {
-        if ($this->ilabelposadj === 'auto') {
+        if ('auto' === $this->ilabelposadj) {
             $this->ilabelposadj = (1 - $this->imidsize) / 2 + $this->imidsize;
         }
 

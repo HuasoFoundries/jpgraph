@@ -1,22 +1,12 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Util;
 
-use function array_keys;
-use function explode;
-use function in_array;
-use function is_array;
 use const LC_TIME;
-use function setlocale;
-use function settype;
-use function strftime;
-use function strtotime;
-use function strtoupper;
-use function ucfirst;
 
 /**
  * @class DateLocale
@@ -25,33 +15,38 @@ use function ucfirst;
 class DateLocale
 {
     public $iLocale = 'C'; // environmental locale be used by default
+
     private $iDayAbb;
+
     private $iShortDay;
+
     private $iShortMonth;
+
     private $iMonthName;
 
     public function __construct()
     {
-        settype($this->iDayAbb, 'array');
-        settype($this->iShortDay, 'array');
-        settype($this->iShortMonth, 'array');
-        settype($this->iMonthName, 'array');
+        \settype($this->iDayAbb, 'array');
+        \settype($this->iShortDay, 'array');
+        \settype($this->iShortMonth, 'array');
+        \settype($this->iMonthName, 'array');
         $this->Set('C');
     }
 
     public function Set($aLocale)
     {
-        if (in_array($aLocale, array_keys($this->iDayAbb), true)) {
+        if (\in_array($aLocale, \array_keys($this->iDayAbb), true)) {
             $this->iLocale = $aLocale;
 
             return true; // already cached nothing else to do!
         }
 
-        $pLocale = setlocale(LC_TIME, 0); // get current locale for LC_TIME
+        $pLocale = \setlocale(LC_TIME, 0); // get current locale for LC_TIME
 
-        if (is_array($aLocale)) {
+        if (\is_array($aLocale)) {
             foreach ($aLocale as $loc) {
-                $res = @setlocale(LC_TIME, $loc);
+                $res = \setlocale(LC_TIME, $loc);
+
                 if ($res) {
                     $aLocale = $loc;
 
@@ -59,7 +54,7 @@ class DateLocale
                 }
             }
         } else {
-            $res = @setlocale(LC_TIME, $aLocale);
+            $res = \setlocale(LC_TIME, $aLocale);
         }
 
         if (!$res) {
@@ -69,20 +64,21 @@ class DateLocale
         }
 
         $this->iLocale = $aLocale;
-        for ($i = 0, $ofs = 0 - strftime('%w'); $i < 7; $i++, $ofs++) {
-            $day                         = strftime('%a', strtotime("${ofs} day"));
-            $day[0]                      = strtoupper($day[0]);
-            $this->iDayAbb[$aLocale][]   = $day[0];
+
+        for ($i = 0, $ofs = 0 - \strftime('%w'); 7 > $i; $i++, $ofs++) {
+            $day = \strftime('%a', \strtotime("{$ofs} day"));
+            $day[0] = \mb_strtoupper($day[0]);
+            $this->iDayAbb[$aLocale][] = $day[0];
             $this->iShortDay[$aLocale][] = $day;
         }
 
-        for ($i = 1; $i <= 12; ++$i) {
-            list($short, $full)                = explode('|', strftime('%b|%B', strtotime("2001-${i}-01")));
-            $this->iShortMonth[$aLocale][]     = ucfirst($short);
-            $this->iMonthName[$aLocale][]      = ucfirst($full);
+        for ($i = 1; 12 >= $i; ++$i) {
+            [$short, $full] = \explode('|', \strftime('%b|%B', \strtotime("2001-{$i}-01")));
+            $this->iShortMonth[$aLocale][] = \ucfirst($short);
+            $this->iMonthName[$aLocale][] = \ucfirst($full);
         }
 
-        setlocale(LC_TIME, $pLocale);
+        \setlocale(LC_TIME, $pLocale);
 
         return true;
     }

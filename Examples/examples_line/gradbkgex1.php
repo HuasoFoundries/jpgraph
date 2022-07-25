@@ -1,10 +1,11 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
+
 use Amenadiel\JpGraph\Graph;
 use Amenadiel\JpGraph\Plot;
 
@@ -12,9 +13,9 @@ $datay1 = [4, 26, 12, 18, 8, 22];
 $datay2 = [12, 9, 42, 8, 20, 19];
 
 // Setup the graph
-$__width  = 300;
+$__width = 300;
 $__height = 200;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMarginColor('white');
 $graph->SetScale('textlin', 0, 50);
 $graph->SetMargin(30, 50, 30, 30);
@@ -29,7 +30,11 @@ $graph->SetBackgroundGradient('blue', 'navy:0.5', Graph\Configs::getConfig('GRAD
 
 // Setup the tab title
 $graph->tabtitle->Set(' 3rd Division ');
-$graph->tabtitle->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 13);
+$graph->tabtitle->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    13
+);
 
 // Setup x,Y grid
 $graph->xgrid->Show();
@@ -42,13 +47,21 @@ $graph->xaxis->SetColor('orange', 'black');
 $graph->yaxis->SetColor('orange', 'black');
 
 // Ticks on the outsid
-$graph->xaxis->SetTickSide(Graph\Configs::getConfig('SIDE_DOWN'));
-$graph->yaxis->SetTickSide(Graph\Configs::getConfig('SIDE_LEFT'));
+$graph->xaxis->SetTickSide(
+    Graph\Configs::getConfig('SIDE_DOWN')
+);
+$graph->yaxis->SetTickSide(
+    Graph\Configs::getConfig('SIDE_LEFT')
+);
 
 // Setup the legend box colors and font
 $graph->legend->SetColor('white', 'navy');
 $graph->legend->SetFillColor('navy@0.25');
-$graph->legend->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 8);
+$graph->legend->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    8
+);
 $graph->legend->SetShadow('darkgray@0.4', 3);
 $graph->legend->SetPos(0.05, 0.05, 'right', 'top');
 

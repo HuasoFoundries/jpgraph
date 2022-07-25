@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Contour example 05
@@ -31,20 +31,26 @@ $data = [
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$__width  = 480;
+$__width = 480;
 $__height = 390;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 120, 60, 50);
 $example_title = 'Contour plot, high contrast color';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 $graph->title->SetMargin(10);
 
 // For contour plots it is custom to use a box style ofr the axis
 $graph->SetScale('intint', 0, 56, 0, 56);
 
 // Setup axis and grids
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXOUT')
+);
 $graph->xgrid->Show(true);
 $graph->ygrid->Show(true);
 

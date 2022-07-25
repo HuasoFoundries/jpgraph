@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Contour plot example 04
@@ -16,17 +16,22 @@ $data = [
     [10, 10, 8, 14, 10, 3],
     [7, 7, 13, 17, 12, 8],
     [4, 5, 8, 12, 7, 6],
-    [10, 8, 7, 8, 10, 4], ];
+    [10, 8, 7, 8, 10, 4],
+];
 
 // Setup a basic graph context with some generous margins to be able
 // to fit the legend
-$__width  = 500;
+$__width = 500;
 $__height = 380;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(40, 140, 60, 40);
 $example_title = 'Example of interpolated contour plot';
 $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_ARIAL'), Graph\Configs::getConfig('FS_BOLD'), 14);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_ARIAL'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    14
+);
 $graph->title->SetMargin(10);
 
 // For contour plots it is custom to use a box style ofr the axis
@@ -34,7 +39,9 @@ $graph->legend->SetPos(0.05, 0.5, 'right', 'center');
 $graph->SetScale('intint');
 
 // Setup axis and grids
-$graph->SetAxisStyle(Graph\Configs::getConfig('AXSTYLE_BOXOUT'));
+$graph->SetAxisStyle(
+    Graph\Configs::getConfig('AXSTYLE_BOXOUT')
+);
 $graph->xgrid->SetLineStyle('dashed');
 $graph->xgrid->Show(true);
 $graph->ygrid->SetLineStyle('dashed');

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 // Include the library
 require_once 'jpgraph/QR/qrencoder.inc.php';
 
 // Data to be encoded
-$data    = '01234567';
+$data = '01234567';
 $version = 4; // Use QR version 4
 
 // Create a new instance of the encoder and let the library

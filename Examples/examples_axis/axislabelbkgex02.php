@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -13,9 +13,9 @@ $ydata = [12, 19, 3, 9, 15, 10];
 // ([\(\s])([A-Z]{2}[A-Z_0-9]{2,100})
 // $1Graph\\Configs::getConfig('$2')
 // The code to setup a very basic graph
-$__width  = 200;
+$__width = 200;
 $__height = 150;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetScale('intlin');
 $graph->SetMargin(30, 15, 40, 30);
 $graph->SetMarginColor('white');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -11,10 +11,11 @@ use Amenadiel\JpGraph\Plot;
 
 // Setup some dummy targets for the Graph\Configs::getConfig('CSIM')
 $n = 5;
+
 for ($i = 0; $i < $n; ++$i) {
-    $targ1[$i] = "#${i}";
-    $targ2[$i] = "#${i}";
-    $targ3[$i] = "#${i}";
+    $targ1[$i] = "#{$i}";
+    $targ2[$i] = "#{$i}";
+    $targ3[$i] = "#{$i}";
     $alts1[$i] = 'val=%d';
     $alts2[$i] = 'val=%d';
     $alts3[$i] = 'val=%d';
@@ -26,9 +27,9 @@ $datay2 = [25, 22, 18, 24, 20];
 $datay3 = [89, 70, 92, 77, 96];
 
 // Create a basic graph with some suitable margins
-$__width  = 500;
+$__width = 500;
 $__height = 250;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(60, 180, 50, 40);
 $graph->SetMarginColor('white');
 $example_title = 'Multi Y-axes with Image Map';

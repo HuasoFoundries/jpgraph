@@ -1,12 +1,10 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 namespace Amenadiel\JpGraph\Text;
-
-use function round;
 
 /**
  * @class RectangleText
@@ -16,26 +14,38 @@ use function round;
 class CanvasRectangleText
 {
     private $ix;
+
     private $iy;
+
     private $iw;
+
     private $ih;
+
     private $ir = 4;
+
     private $iTxt;
-    private $iColor         = 'black';
-    private $iFillColor     = '';
-    private $iFontColor     = 'black';
-    private $iParaAlign     = 'center';
+
+    private $iColor = 'black';
+
+    private $iFillColor = '';
+
+    private $iFontColor = 'black';
+
+    private $iParaAlign = 'center';
+
     private $iAutoBoxMargin = 5;
-    private $iShadowWidth   = 3;
-    private $iShadowColor   = '';
+
+    private $iShadowWidth = 3;
+
+    private $iShadowColor = '';
 
     public function __construct($aTxt = '', $xl = 0, $yt = 0, $w = 0, $h = 0)
     {
         $this->iTxt = new Text($aTxt);
-        $this->ix   = $xl;
-        $this->iy   = $yt;
-        $this->iw   = $w;
-        $this->ih   = $h;
+        $this->ix = $xl;
+        $this->iy = $yt;
+        $this->iw = $w;
+        $this->ih = $h;
     }
 
     public function SetShadow($aColor = 'gray', $aWidth = 3)
@@ -113,29 +123,29 @@ class CanvasRectangleText
     {
         // If coordinates are specifed as negative this means we should
         // treat them as abolsute (pixels) coordinates
-        if ($this->ix > 0) {
+        if (0 < $this->ix) {
             $this->ix = $scale->TranslateX($this->ix);
         } else {
             $this->ix = -$this->ix;
         }
 
-        if ($this->iy > 0) {
+        if (0 < $this->iy) {
             $this->iy = $scale->TranslateY($this->iy);
         } else {
             $this->iy = -$this->iy;
         }
 
-        list($this->iw, $this->ih) = $scale->Translate($this->iw, $this->ih);
+        [$this->iw, $this->ih] = $scale->Translate($this->iw, $this->ih);
 
-        if ($this->iw == 0) {
-            $this->iw = round($this->iTxt->GetWidth($aImg) + $this->iAutoBoxMargin);
+        if (0 === $this->iw) {
+            $this->iw = \round($this->iTxt->GetWidth($aImg) + $this->iAutoBoxMargin);
         }
 
-        if ($this->ih == 0) {
-            $this->ih = round($this->iTxt->GetTextHeight($aImg) + $this->iAutoBoxMargin);
+        if (0 === $this->ih) {
+            $this->ih = \round($this->iTxt->GetTextHeight($aImg) + $this->iAutoBoxMargin);
         }
 
-        if ($this->iShadowColor != '') {
+        if ('' !== $this->iShadowColor) {
             $aImg->PushColor($this->iShadowColor);
             $aImg->FilledRoundedRectangle(
                 $this->ix + $this->iShadowWidth,
@@ -147,7 +157,7 @@ class CanvasRectangleText
             $aImg->PopColor();
         }
 
-        if ($this->iFillColor != '') {
+        if ('' !== $this->iFillColor) {
             $aImg->PushColor($this->iFillColor);
             $aImg->FilledRoundedRectangle(
                 $this->ix,
@@ -159,7 +169,7 @@ class CanvasRectangleText
             $aImg->PopColor();
         }
 
-        if ($this->iColor != '') {
+        if ('' !== $this->iColor) {
             $aImg->PushColor($this->iColor);
             $aImg->RoundedRectangle(
                 $this->ix,

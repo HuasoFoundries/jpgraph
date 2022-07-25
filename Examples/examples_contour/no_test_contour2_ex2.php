@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -14,22 +14,31 @@ $data = [
     [10, 10, 8, 14],
     [7, 7, 13, 17],
     [4, 5, 8, 12],
-    [10, 8, 7, 8], ];
+    [10, 8, 7, 8],
+];
 
 // create a basic graph as a container
-$__width  = 300;
+$__width = 300;
 $__height = 300;
-$graph    = new Graph\Graph($__width, $__height);
+$graph = new Graph\Graph($__width, $__height);
 $graph->SetMargin(30, 30, 40, 30);
 $graph->SetScale('intint');
 $graph->SetMarginColor('white');
 
 // Setup title of graph$example_title='Filled contour plot'; $graph->title->set($example_title);
-$graph->title->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_BOLD'), 12);
+$graph->title->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_BOLD'),
+    12
+);
 
 $subtitle_text = '(No lines, no labels)';
 $graph->subtitle->Set($subtitle_text);
-$graph->subtitle->SetFont(Graph\Configs::getConfig('FF_VERDANA'), Graph\Configs::getConfig('FS_ITALIC'), 10);
+$graph->subtitle->SetFont(
+    Graph\Configs::getConfig('FF_VERDANA'),
+    Graph\Configs::getConfig('FS_ITALIC'),
+    10
+);
 
 // Create a new contour plot
 $cp = new FilledContourPlot($data);

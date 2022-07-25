@@ -1,7 +1,7 @@
 <?php
 
 /**
- * JPGraph v4.1.0-beta.01
+ * JPGraph - Community Edition
  */
 
 require_once __DIR__ . '/../../src/config.inc.php';
@@ -17,9 +17,9 @@ $data = [
     5 => [2, 7, 1, 2], ];
 
 // First create a new windrose graph with a title
-$__width  = 400;
+$__width = 400;
 $__height = 400;
-$graph    = new Graph\WindroseGraph($__width, $__height);
+$graph = new Graph\WindroseGraph($__width, $__height);
 
 // Setup title
 $example_title = 'Windrose example 2';
@@ -34,7 +34,7 @@ $wp = new Plot\WindrosePlot($data);
 $wp->SetType(Plot\Configs::getConfig('WINDROSE_TYPE8'));
 
 // Setup the weight of the laegs for the different ranges
-$weights = array_fill(0, 8, 10);
+$weights = \array_fill(0, 8, 10);
 $wp->SetRangeWeights($weights);
 
 // Adjust the font and font color for scale labels
