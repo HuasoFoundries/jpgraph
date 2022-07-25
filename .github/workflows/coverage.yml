@@ -53,7 +53,7 @@ jobs:
         echo "::add-matcher::${{ runner.tool_cache }}/php.json"
         echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
     - name: Install PHP dependencies
-      run: composer install --'no-plugins' --'prefer-dist' --no-interaction --no-progress
+      run: composer install --no-plugins --prefer-dist --no-interaction --no-progress --ignore-platform-reqs
 
     - name: Coverage
       run: composer coverage
