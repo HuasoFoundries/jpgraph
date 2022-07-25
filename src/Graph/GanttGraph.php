@@ -268,31 +268,31 @@ class GanttGraph extends Graph
 
     // Add a new Gantt object
     /**
-     * @param Plot\GanttBar|Plot\MileStone $aObject
+     * @param Plot\GanttBar|Plot\MileStone $aPlot
      */
-    public function Add($aObject): self
+    public function Add($aPlot): self
     {
-        if (\is_array($aObject) && Configs::safe_count($aObject) > 0) {
-            $cl = $aObject[0];
+        if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
+            $cl = $aPlot[0];
 
             if (($cl instanceof Plot\IconPlot)) {
-                $this->AddIcon($aObject);
+                $this->AddIcon($aPlot);
             } elseif (($cl instanceof Text\Text)) {
-                $this->AddText($aObject);
+                $this->AddText($aPlot);
             } else {
-                $n = Configs::safe_count($aObject);
+                $n = Configs::safe_count($aPlot);
 
                 for ($i = 0; $i < $n; ++$i) {
-                    $this->iObj[] = $aObject[$i];
+                    $this->iObj[] = $aPlot[$i];
                 }
             }
         } else {
-            if (($aObject instanceof Plot\IconPlot)) {
-                $this->AddIcon($aObject);
-            } elseif (($aObject instanceof Text\Text)) {
-                $this->AddText($aObject);
+            if (($aPlot instanceof Plot\IconPlot)) {
+                $this->AddIcon($aPlot);
+            } elseif (($aPlot instanceof Text\Text)) {
+                $this->AddText($aPlot);
             } else {
-                $this->iObj[] = $aObject;
+                $this->iObj[] = $aPlot;
             }
         }
         return $this;

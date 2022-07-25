@@ -197,7 +197,7 @@ class ContourPlot extends Plot
      * @param $xscale Instance of the xscale to use
      * @param $yscale Instance of the yscale to use
      */
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
         if (Configs::safe_count($this->manualIsobarColors) > 0
         ) {
@@ -209,24 +209,24 @@ class ContourPlot extends Plot
             }
         }
 
-        $img->SetLineWeight($this->line_weight);
+        $aImg->SetLineWeight($this->line_weight);
 
         for ($c = 0; $c < $this->nbrContours; ++$c) {
-            $img->SetColor($this->contourColor[$c]);
+            $aImg->SetColor($this->contourColor[$c]);
 
             $n = Configs::safe_count($this->contourCoord[$c]);
             $i = 0;
 
             while ($i < $n) {
                 [$x1, $y1] = $this->contourCoord[$c][$i][0];
-                $x1t = $xscale->Translate($x1);
-                $y1t = $yscale->Translate($y1);
+                $x1t = $aXScale->Translate($x1);
+                $y1t = $aYScale->Translate($y1);
 
                 [$x2, $y2] = $this->contourCoord[$c][$i++][1];
-                $x2t = $xscale->Translate($x2);
-                $y2t = $yscale->Translate($y2);
+                $x2t = $aXScale->Translate($x2);
+                $y2t = $aYScale->Translate($y2);
 
-                $img->Line($x1t, $y1t, $x2t, $y2t);
+                $aImg->Line($x1t, $y1t, $x2t, $y2t);
             }
         }
     }

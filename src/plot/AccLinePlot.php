@@ -48,12 +48,12 @@ class AccLinePlot extends Plot
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $graph
+     * @param mixed $aGraph
      */
-    public function Legend($graph)
+    public function Legend($aGraph)
     {
         foreach ($this->plots as $p) {
-            $p->DoLegend($graph);
+            $p->DoLegend($aGraph);
         }
     }
 
@@ -121,15 +121,15 @@ class AccLinePlot extends Plot
     }
 
     // Gets called before any axis are stroked
-    public function PreStrokeAdjust($graph)
+    public function PreStrokeAdjust($aGraph)
     {
         // If another plot type have already adjusted the
         // offset we don't touch it.
         // (We check for empty in case the scale is  a log scale
         // and hence doesn't contain any xlabel_offset)
 
-        if (!empty($graph->xaxis->scale->ticks->xlabel_offset)
-            && 0 !== $graph->xaxis->scale->ticks->xlabel_offset) {
+        if (!empty($aGraph->xaxis->scale->ticks->xlabel_offset)
+            && 0 !== $aGraph->xaxis->scale->ticks->xlabel_offset) {
             return;
         }
 
@@ -141,9 +141,9 @@ class AccLinePlot extends Plot
             $a = 0;
             $b = 0;
         }
-        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-        $graph->SetTextScaleOff($b);
-        $graph->xaxis->scale->ticks->SupressMinorTickMarks();
+        $aGraph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $aGraph->SetTextScaleOff($b);
+        $aGraph->xaxis->scale->ticks->SupressMinorTickMarks();
     }
 
     public function SetInterpolateMode($aIntMode)
@@ -228,9 +228,9 @@ class AccLinePlot extends Plot
     // it wouldn't be possible to create an acc line plot
     // with the same graphs, i.e AccLinePlot(array($pl,$pl,$pl));
     // since this method would have a side effect.
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
-        $img->SetLineWeight($this->weight);
+        $aImg->SetLineWeight($this->weight);
         $this->numpoints = Configs::safe_count($this->plots[0]->coords[0]);
         // Allocate array
         $coords[$this->nbrplots][$this->numpoints] = 0;
@@ -252,7 +252,7 @@ class AccLinePlot extends Plot
                 $tmp[$i] = $p->coords[0][$i];
                 $p->coords[0][$i] = $coords[$j][$i];
             }
-            $p->Stroke($img, $xscale, $yscale);
+            $p->Stroke($aImg, $aXScale, $aYScale);
 
             for ($i = 0; $i < $this->numpoints; ++$i) {
                 $p->coords[0][$i] = $tmp[$i];

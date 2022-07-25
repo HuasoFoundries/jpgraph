@@ -118,10 +118,10 @@ final class CanvasGraph extends Graph
         }
     }
 
-    public function SetScale($aAxisType = 'canvas', $xmin = 0, $xmax = 10, $ymin = 0, $ymax = 10): self
+    public function SetScale($aAxisType = 'canvas', $aYMin = 0, $aYMax = 10, $aXMin = 0, $aXMax = 10): self
     {
-        $this->scale = new Scale\CanvasScale($this, $xmin, $xmax, $ymin, $ymax);
-        $this->scale->Set($xmin, $xmax, $ymin, $ymax);
+        $this->scale = new Scale\CanvasScale($this, $aYMin, $aYMax, $aXMin, $aXMax);
+        $this->scale->Set($aYMin, $aYMax, $aXMin, $aXMax);
         return $this;
     }
 } // @class

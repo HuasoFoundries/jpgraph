@@ -66,14 +66,14 @@ class ScatterPlot extends Plot
         $this->link->iStyle = $aStyle;
     }
 
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
-        $ymin = $yscale->scale_abs[0];
+        $ymin = $aYScale->scale_abs[0];
 
-        if (0 > $yscale->scale[0]) {
-            $yzero = $yscale->Translate(0);
+        if (0 > $aYScale->scale[0]) {
+            $yzero = $aYScale->Translate(0);
         } else {
-            $yzero = $yscale->scale_abs[0];
+            $yzero = $aYScale->scale_abs[0];
         }
 
         $this->csimareas = '';
@@ -85,25 +85,25 @@ class ScatterPlot extends Plot
             }
 
             if (isset($this->coords[1])) {
-                $xt = $xscale->Translate($this->coords[1][$i]);
+                $xt = $aXScale->Translate($this->coords[1][$i]);
             } else {
-                $xt = $xscale->Translate($i);
+                $xt = $aXScale->Translate($i);
             }
 
-            $yt = $yscale->Translate($this->coords[0][$i]);
+            $yt = $aYScale->Translate($this->coords[0][$i]);
 
             if ($this->link->iShow && isset($yt_old)) {
-                $img->SetColor($this->link->iColor);
-                $img->SetLineWeight($this->link->iWeight);
-                $old = $img->SetLineStyle($this->link->iStyle);
-                $img->StyleLine($xt_old, $yt_old, $xt, $yt);
-                $img->SetLineStyle($old);
+                $aImg->SetColor($this->link->iColor);
+                $aImg->SetLineWeight($this->link->iWeight);
+                $old = $aImg->SetLineStyle($this->link->iStyle);
+                $aImg->StyleLine($xt_old, $yt_old, $xt, $yt);
+                $aImg->SetLineStyle($old);
             }
 
             if ($this->impuls) {
-                $img->SetColor($this->color);
-                $img->SetLineWeight($this->weight);
-                $img->Line($xt, $yzero, $xt, $yt);
+                $aImg->SetColor($this->color);
+                $aImg->SetLineWeight($this->weight);
+                $aImg->Line($xt, $yzero, $xt, $yt);
             }
 
             if (!empty($this->csimtargets[$i])) {
@@ -121,10 +121,10 @@ class ScatterPlot extends Plot
                 $this->mark->SetCSIMAltVal($this->coords[0][$i], $i);
             }
 
-            $this->mark->Stroke($img, $xt, $yt);
+            $this->mark->Stroke($aImg, $xt, $yt);
 
             $this->csimareas .= $this->mark->GetCSIMAreas();
-            $this->value->Stroke($img, $this->coords[0][$i], $xt, $yt);
+            $this->value->Stroke($aImg, $this->coords[0][$i], $xt, $yt);
 
             $xt_old = $xt;
             $yt_old = $yt;

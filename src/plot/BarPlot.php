@@ -147,12 +147,12 @@ class BarPlot extends Plot
         return $aPat;
     }
 
-    public function Legend($graph)
+    public function Legend($aGraph)
     {
         if ($this->grad && '' !== $this->legend && !$this->fill) {
             $color = [$this->grad_fromcolor, $this->grad_tocolor];
             // In order to differentiate between gradients and cooors specified as an Image\RGB triple
-            $graph->legend->Add(
+            $aGraph->legend->Add(
                 $this->legend,
                 $color,
                 '',
@@ -163,11 +163,11 @@ class BarPlot extends Plot
             );
         } elseif ('' !== $this->legend && (-1 < $this->iPattern || \is_array($this->iPattern))) {
             if (\is_array($this->iPattern)) {
-                $p1 = $this->RotatePattern($this->iPattern[0], 90 === $graph->img->a);
+                $p1 = $this->RotatePattern($this->iPattern[0], 90 === $aGraph->img->a);
                 $p2 = $this->iPatternColor[0];
                 $p3 = $this->iPatternDensity[0];
             } else {
-                $p1 = $this->RotatePattern($this->iPattern, 90 === $graph->img->a);
+                $p1 = $this->RotatePattern($this->iPattern, 90 === $aGraph->img->a);
                 $p2 = $this->iPatternColor;
                 $p3 = $this->iPatternDensity;
             }
@@ -178,7 +178,7 @@ class BarPlot extends Plot
 
             $color = [$p1, $p2, $p3, $this->fill_color];
             // A kludge: Too mark that we add a pattern we use a type value of < 100
-            $graph->legend->Add(
+            $aGraph->legend->Add(
                 $this->legend,
                 $color,
                 '',
@@ -189,7 +189,7 @@ class BarPlot extends Plot
             );
         } elseif ($this->fill_color && '' !== $this->legend) {
             if (\is_array($this->fill_color)) {
-                $graph->legend->Add(
+                $aGraph->legend->Add(
                     $this->legend,
                     $this->fill_color[0],
                     '',
@@ -199,7 +199,7 @@ class BarPlot extends Plot
                     $this->legendcsimwintarget
                 );
             } else {
-                $graph->legend->Add(
+                $aGraph->legend->Add(
                     $this->legend,
                     $this->fill_color,
                     '',
@@ -213,31 +213,31 @@ class BarPlot extends Plot
     }
 
     // Gets called before any axis are stroked
-    public function PreStrokeAdjust($graph)
+    public function PreStrokeAdjust($aGraph)
     {
-        parent::PreStrokeAdjust($graph);
+        parent::PreStrokeAdjust($aGraph);
 
         // If we are using a log Y-scale we want the base to be at the
         // minimum Y-value unless the user have specifically set some other
         // value than the default.
-        if (\mb_substr($graph->axtype, -3, 3) === 'log' && 0 === $this->ybase) {
-            $this->ybase = $graph->yaxis->scale->GetMinVal();
+        if (\mb_substr($aGraph->axtype, -3, 3) === 'log' && 0 === $this->ybase) {
+            $this->ybase = $aGraph->yaxis->scale->GetMinVal();
         }
 
         // For a "text" X-axis scale we will adjust the
         // display of the bars a little bit.
-        if (\mb_substr($graph->axtype, 0, 3) === 'tex') {
+        if (\mb_substr($aGraph->axtype, 0, 3) === 'tex') {
             // Position the ticks between the bars
-            $graph->xaxis->scale->ticks->SetXLabelOffset(0.5, 0);
+            $aGraph->xaxis->scale->ticks->SetXLabelOffset(0.5, 0);
 
             // Center the bars
             if (-1 < $this->abswidth) {
-                $graph->SetTextScaleAbsCenterOff($this->abswidth);
+                $aGraph->SetTextScaleAbsCenterOff($this->abswidth);
             } else {
                 if ('center' === $this->align) {
-                    $graph->SetTextScaleOff(0.5 - $this->width / 2);
+                    $aGraph->SetTextScaleOff(0.5 - $this->width / 2);
                 } elseif ('right' === $this->align) {
-                    $graph->SetTextScaleOff(1 - $this->width);
+                    $aGraph->SetTextScaleOff(1 - $this->width);
                 }
             }
         } elseif (($this instanceof AccBarPlot) || ($this instanceof GroupBarPlot)) {
@@ -247,7 +247,7 @@ class BarPlot extends Plot
             if (-1 === $this->abswidth) {
                 // Not set
                 // set width to a visuable sensible default
-                $this->abswidth = $graph->img->plotwidth / (2 * $this->numpoints);
+                $this->abswidth = $aGraph->img->plotwidth / (2 * $this->numpoints);
             }
         }
     }
@@ -421,7 +421,7 @@ class BarPlot extends Plot
         }
     }
 
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
         $numpoints = Configs::safe_count($this->coords[0]);
 
@@ -441,16 +441,16 @@ class BarPlot extends Plot
         // Use GetMinVal() instead of scale[0] directly since in the case
         // of log scale we get a correct value. Log scales will have negative
         // values for values < 1 while still not representing negative numbers.
-        if ($yscale->GetMinVal() >= 0) {
-            $zp = $yscale->scale_abs[0];
+        if ($aYScale->GetMinVal() >= 0) {
+            $zp = $aYScale->scale_abs[0];
         } else {
-            $zp = $yscale->Translate(0);
+            $zp = $aYScale->Translate(0);
         }
 
         if (-1 < $this->abswidth) {
             $abswidth = $this->abswidth;
         } else {
-            $abswidth = \round($this->width * $xscale->scale_factor, 0);
+            $abswidth = \round($this->width * $aXScale->scale_factor, 0);
         }
 
         // Count pontetial pattern array to avoid doing the count for each iteration
@@ -472,7 +472,7 @@ class BarPlot extends Plot
                 $x = $i;
             }
 
-            $x = $xscale->Translate($x);
+            $x = $aXScale->Translate($x);
 
             // Comment Note: This confuses the positioning when using acc together with
             // grouped bars. Workaround for fixing #191
@@ -489,16 +489,16 @@ class BarPlot extends Plot
                 $x,
                 $zp,
                 $x,
-                $yscale->Translate($this->coords[0][$i]),
+                $aYScale->Translate($this->coords[0][$i]),
                 $x + $abswidth,
-                $yscale->Translate($this->coords[0][$i]),
+                $aYScale->Translate($this->coords[0][$i]),
                 $x + $abswidth,
                 $zp,
             ];
 
             if ($this->grad) {
                 if (null === $grad) {
-                    $grad = new Gradient($img);
+                    $grad = new Gradient($aImg);
                 }
 
                 if (\is_array($this->grad_fromcolor)) {
@@ -547,12 +547,12 @@ class BarPlot extends Plot
                 }
             } elseif (!empty($this->fill_color)) {
                 if (\is_array($this->fill_color)) {
-                    $img->PushColor($this->fill_color[$i % Configs::safe_count($this->fill_color)]);
+                    $aImg->PushColor($this->fill_color[$i % Configs::safe_count($this->fill_color)]);
                 } else {
-                    $img->PushColor($this->fill_color);
+                    $aImg->PushColor($this->fill_color);
                 }
-                $img->FilledPolygon($pts);
-                $img->PopColor();
+                $aImg->FilledPolygon($pts);
+                $aImg->PopColor();
             }
 
             /////////////////////////kokorahen rectangle polygon//////////////////////
@@ -604,12 +604,12 @@ class BarPlot extends Plot
                     if (0 === $numcolors) {
                         throw Util\JpGraphError::make(2005); //('You have specified an empty array for shadow colors in the bar plot.');
                     }
-                    $img->PushColor($this->bar_shadow_color[$i % $numcolors]);
+                    $aImg->PushColor($this->bar_shadow_color[$i % $numcolors]);
                 } else {
-                    $img->PushColor($this->bar_shadow_color);
+                    $aImg->PushColor($this->bar_shadow_color);
                 }
-                $img->FilledPolygon($sp);
-                $img->PopColor();
+                $aImg->FilledPolygon($sp);
+                $aImg->PopColor();
             } elseif ($this->bar_3d && 0 !== $val) {
                 // Determine the 3D
 
@@ -657,13 +657,13 @@ class BarPlot extends Plot
 
                 $base_color = $this->fill_color;
 
-                $img->PushColor($base_color . ':0.7');
-                $img->FilledPolygon($sp1);
-                $img->PopColor();
+                $aImg->PushColor($base_color . ':0.7');
+                $aImg->FilledPolygon($sp1);
+                $aImg->PopColor();
 
-                $img->PushColor($base_color . ':1.1');
-                $img->FilledPolygon($sp2);
-                $img->PopColor();
+                $aImg->PushColor($base_color . ':1.1');
+                $aImg->FilledPolygon($sp2);
+                $aImg->PopColor();
             }
 
             // Stroke the pattern
@@ -688,7 +688,7 @@ class BarPlot extends Plot
                 $width = \abs($pts[4] - $pts[0]) + 1;
                 $height = \abs($pts[1] - $pts[3]) + 1;
                 $prect->SetPos(new Util\Rectangle($rx, $ry, $width, $height));
-                $prect->Stroke($img);
+                $prect->Stroke($aImg);
             } else {
                 if (-1 < $this->iPattern) {
                     $f = new Graph\Pattern\RectPatternFactory();
@@ -705,23 +705,23 @@ class BarPlot extends Plot
                     $width = \abs($pts[4] - $pts[0]) + 1;
                     $height = \abs($pts[1] - $pts[3]) + 1;
                     $prect->SetPos(new Util\Rectangle($rx, $ry, $width, $height));
-                    $prect->Stroke($img);
+                    $prect->Stroke($aImg);
                 }
             }
 
             // Stroke the outline of the bar
             if (\is_array($this->color)) {
-                $img->SetColor($this->color[$i % Configs::safe_count($this->color)]);
+                $aImg->SetColor($this->color[$i % Configs::safe_count($this->color)]);
             } else {
-                $img->SetColor($this->color);
+                $aImg->SetColor($this->color);
             }
 
             $pts[] = $pts[0];
             $pts[] = $pts[1];
 
             if (0 < $this->weight) {
-                $img->SetLineWeight($this->weight);
-                $img->Polygon($pts);
+                $aImg->SetLineWeight($this->weight);
+                $aImg->Polygon($pts);
             }
 
             // Determine how to best position the values of the individual bars
@@ -731,7 +731,7 @@ class BarPlot extends Plot
             if ('top' === $this->valuepos) {
                 $y = $pts[3];
 
-                if (90 === $img->a) {
+                if (90 === $aImg->a) {
                     if (0 > $val) {
                         $this->value->SetAlign('right', 'center');
                     } else {
@@ -746,11 +746,11 @@ class BarPlot extends Plot
                         $this->value->SetAlign('center', 'bottom');
                     }
                 }
-                $this->value->Stroke($img, $val, $x, $y);
+                $this->value->Stroke($aImg, $val, $x, $y);
             } elseif ('max' === $this->valuepos) {
                 $y = $pts[3];
 
-                if (90 === $img->a) {
+                if (90 === $aImg->a) {
                     if (0 > $val) {
                         $this->value->SetAlign('left', 'center');
                     } else {
@@ -764,16 +764,16 @@ class BarPlot extends Plot
                     }
                 }
                 $this->value->SetMargin(-5);
-                $this->value->Stroke($img, $val, $x, $y);
+                $this->value->Stroke($aImg, $val, $x, $y);
             } elseif ('center' === $this->valuepos) {
                 $y = ($pts[3] + $pts[1]) / 2;
                 $this->value->SetAlign('center', 'center');
                 $this->value->SetMargin(0);
-                $this->value->Stroke($img, $val, $x, $y);
+                $this->value->Stroke($aImg, $val, $x, $y);
             } elseif ('bottom' === $this->valuepos || 'min' === $this->valuepos) {
                 $y = $pts[1];
 
-                if (90 === $img->a) {
+                if (90 === $aImg->a) {
                     if (0 > $val) {
                         $this->value->SetAlign('right', 'center');
                     } else {
@@ -781,13 +781,13 @@ class BarPlot extends Plot
                     }
                 }
                 $this->value->SetMargin(3);
-                $this->value->Stroke($img, $val, $x, $y);
+                $this->value->Stroke($aImg, $val, $x, $y);
             } else {
                 throw Util\JpGraphError::make(2006, $this->valuepos);
                 //'Unknown position for values on bars :'.$this->valuepos);
             }
             // Create the client side image map
-            $rpts = $img->ArrRotate($pts);
+            $rpts = $aImg->ArrRotate($pts);
             $csimcoord = \round($rpts[0]) . ', ' . \round($rpts[1]);
 
             for ($j = 1; 4 > $j; ++$j) {

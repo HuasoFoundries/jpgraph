@@ -386,12 +386,12 @@ class RotImage extends Image
         parent::FilledCircle($xc, $yc, $r);
     }
 
-    public function Arc($xc, $yc, $w, $h, $s, $e)
+    public function Arc($cx, $cy, $w, $h, $s, $e)
     {
-        list($xc, $yc) = $this->Rotate($xc, $yc);
+        list($cx, $cy) = $this->Rotate($cx, $cy);
         $s += $this->a;
         $e += $this->a;
-        parent::Arc($xc, $yc, $w, $h, $s, $e);
+        parent::Arc($cx, $cy, $w, $h, $s, $e);
     }
 
     public function FilledArc($xc, $yc, $w, $h, $s, $e, $style = '')
@@ -454,35 +454,35 @@ class RotImage extends Image
         parent::Line($x1, $y1, $x2, $y2);
     }
 
-    public function Rectangle($x1, $y1, $x2, $y2)
+    public function Rectangle($xl, $yu, $xr, $yl)
     {
         // Rectangle uses Line() so it will be rotated through that call
-        parent::Rectangle($x1, $y1, $x2, $y2);
+        parent::Rectangle($xl, $yu, $xr, $yl);
     }
 
-    public function FilledRectangle($x1, $y1, $x2, $y2)
+    public function FilledRectangle($xl, $yu, $xr, $yl)
     {
-        if ($y1 == $y2 || $x1 == $x2) {
-            $this->Line($x1, $y1, $x2, $y2);
+        if ($yu == $yl || $xl == $xr) {
+            $this->Line($xl, $yu, $xr, $yl);
         } else {
-            $this->FilledPolygon([$x1, $y1, $x2, $y1, $x2, $y2, $x1, $y2]);
+            $this->FilledPolygon([$xl, $yu, $xr, $yu, $xr, $yl, $xl, $yl]);
         }
     }
 
-    public function Polygon($pnts, $closed = false, $fast = false)
+    public function Polygon($p, $closed = false, $fast = false)
     {
         // Polygon uses Line() so it will be rotated through that call unless
         // fast drawing routines are used in which case a rotate is needed
         if ($fast) {
-            parent::Polygon($this->ArrRotate($pnts));
+            parent::Polygon($this->ArrRotate($p));
         } else {
-            parent::Polygon($pnts, $closed, $fast);
+            parent::Polygon($p, $closed, $fast);
         }
     }
 
-    public function FilledPolygon($pnts)
+    public function FilledPolygon($pts)
     {
-        parent::FilledPolygon($this->ArrRotate($pnts));
+        parent::FilledPolygon($this->ArrRotate($pts));
     }
 
     public function Point($x, $y)

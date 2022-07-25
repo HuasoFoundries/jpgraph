@@ -59,19 +59,19 @@ class RadarGraph extends Graph
     }
 
     /**
-     * @param string $axtype
+     * @param string $aAxisType
      */
-    public function SetScale($axtype, $ymin = 1, $ymax = 1, $dummy1 = null, $dumy2 = null): self
+    public function SetScale($aAxisType, $aYMin = 1, $aYMax = 1, $aXMin = null, $aXMax = null): self
     {
-        if ('lin' !== $axtype && 'log' !== $axtype) {
-            throw      Util\JpGraphError::make(18003, $axtype);
+        if ('lin' !== $aAxisType && 'log' !== $aAxisType) {
+            throw      Util\JpGraphError::make(18003, $aAxisType);
             //("Illegal scale for radarplot ($axtype). Must be \"lin\" or \"log\"");
         }
 
-        if ('lin' === $axtype) {
-            $this->yscale = new Scale\LinearScale($ymin, $ymax, 'y', 'radar');
-        } elseif ('log' === $axtype) {
-            $this->yscale = new Scale\LogScale($ymin, $ymax, 'y', 'radar');
+        if ('lin' === $aAxisType) {
+            $this->yscale = new Scale\LinearScale($aYMin, $aYMax, 'y', 'radar');
+        } elseif ('log' === $aAxisType) {
+            $this->yscale = new Scale\LogScale($aYMin, $aYMax, 'y', 'radar');
         }
 
         $this->axis = new Axis\RadarAxis($this->img, $this->yscale);
@@ -94,13 +94,13 @@ class RadarGraph extends Graph
     }
 
     /**
-     * @param int $densy
+     * @param int $aYDensity
      */
-    public function SetTickDensity($densy = Configs::TICKD_NORMAL, $dummy1 = null): self
+    public function SetTickDensity($aYDensity = Configs::TICKD_NORMAL, $aXDensity = null): self
     {
         $this->ytick_factor = 25;
 
-        switch ($densy) {
+        switch ($aYDensity) {
             case Configs::TICKD_DENSE:
                 $this->ytick_factor = 12;
 
@@ -119,7 +119,7 @@ class RadarGraph extends Graph
                 break;
 
             default:
-                throw      Util\JpGraphError::make(18005, $densy);
+                throw      Util\JpGraphError::make(18005, $aYDensity);
                 //("RadarPlot Unsupported Tick density: $densy");
         }
         return $this;
@@ -180,10 +180,10 @@ class RadarGraph extends Graph
         return $this;
     }
 
-    public function GetPlotsYMinMax($aPlots)
+    public function GetPlotsYMinMax($bPlots)
     {
-        $min = $aPlots[0]->Min();
-        $max = $aPlots[0]->Max();
+        $min = $bPlots[0]->Min();
+        $max = $bPlots[0]->Max();
 
         foreach ($this->plots as $p) {
             $max = \max($max, $p->Max());

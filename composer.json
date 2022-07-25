@@ -31,7 +31,8 @@
         "symfony/dotenv": "^4.0 || ^5.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0",
         "symfony/yaml": "^4.0 || ^5.0",
-        "vimeo/psalm": "^4.7"
+        "vimeo/psalm": "^4.7",
+        "pestphp/pest-plugin-parallel": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -60,6 +61,7 @@
             "composer/package-versions-deprecated": true,
             "rector/rector-installer": false,
             "pestphp/pest-plugin": true,
+            "pestphp/pest-plugin-parallel":true,
             "ergebnis/composer-normalize": false
         }
     },
@@ -72,14 +74,14 @@
     },
     "scripts": {
         "act": "act -P ubuntu-latest=shivammathur/node:latest",
-        "coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage --coverage-clover tests/_output/coverage.xml",
+        "coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage --coverage-clover tests/_output/coverage.xml  --testsuite Feature",
         "fix": "vendor/bin/phpcbf  --standard=.phpcs.xml src/* tests/* && vendor/bin/php-cs-fixer fix --config=.php_cs.php",
         "lint": "vendor/bin/phplint",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G   --configuration phpstan.neon ",
         "psalm": "vendor/bin/psalm --config=psalm.xml --long-progress --threads=4 --show-info=false  ",
         "psalm_baseline": "vendor/bin/psalm --config=psalm.xml --update-baseline --ignore-baseline  --set-baseline=psalm-baseline.xml",
-        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --allow-backwards-incompatible-changes=false  --safe-types --issues=all  --dry-run",
+        "psalter": "vendor/bin/psalm    --config=psalm.xml  --alter  --allow-backwards-incompatible-changes=false  --safe-types  ",
         "start": "php -S localhost:8000 -t Examples",
-        "test": "vendor/bin/pest"
+        "test": "vendor/bin/pest "
     }
 }

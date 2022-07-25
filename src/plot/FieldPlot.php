@@ -46,7 +46,7 @@ class FieldPlot extends Plot
         $this->iCallback = $aFunc;
     }
 
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
         // Remeber base color and size
         $bc = $this->arrow->iColor;
@@ -80,11 +80,11 @@ class FieldPlot extends Plot
                 $this->arrow->SetSize($cs, $cas);
             }
 
-            $xt = $xscale->Translate($this->coords[1][$i]);
-            $yt = $yscale->Translate($this->coords[0][$i]);
+            $xt = $aXScale->Translate($this->coords[1][$i]);
+            $yt = $aYScale->Translate($this->coords[0][$i]);
 
-            $this->arrow->Stroke($img, $xt, $yt, $this->iAngles[$i]);
-            $this->value->Stroke($img, $this->coords[0][$i], $xt, $yt);
+            $this->arrow->Stroke($aImg, $xt, $yt, $this->iAngles[$i]);
+            $this->value->Stroke($aImg, $this->coords[0][$i], $xt, $yt);
         }
     }
 

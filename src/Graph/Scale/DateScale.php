@@ -709,28 +709,28 @@ class DateScale extends LinearScale
 
     /**
      * @param float $aNumSteps
-     * @param false $_adummy
+     * @param false $majend
      *
      * @return void
      */
-    public function AutoScale($img, $aStartTime, $aEndTime, $aNumSteps, $_adummy = false)
+    public function AutoScale($img, $min, $max, $maxsteps, $majend = false)
     {
         // We need to have one dummy argument to make the signature of AutoScale()
         // identical to LinearScale::AutoScale
-        if ($aStartTime === $aEndTime) {
+        if ($min === $max) {
             // Special case when we only have one data point.
             // Create a small artifical intervall to do the autoscaling
-            $aStartTime -= 10;
-            $aEndTime += 10;
+            $min -= 10;
+            $max += 10;
         }
         $done = false;
         $i = 0;
 
         while (!$done && 5 > $i) {
-            [$adjstart, $adjend, $maj, $min, $format] = $this->DoDateAutoScale($aStartTime, $aEndTime, $i);
+            [$adjstart, $adjend, $maj, $min_new, $format] = $this->DoDateAutoScale($min, $max, $i);
             $n = \floor(($adjend - $adjstart) / $maj);
 
-            if ($n * 1.7 > $aNumSteps) {
+            if ($n * 1.7 > $maxsteps) {
                 $done = true;
             }
             ++$i;
@@ -755,47 +755,47 @@ class DateScale extends LinearScale
 
         if (false !== $this->iStartTimeAlign) {
             if (30 <= $this->iStartTimeAlign) {
-                $adjstart = $this->AdjStartTime($aStartTime, $this->iStartTimeAlign - 30);
+                $adjstart = $this->AdjStartTime($min, $this->iStartTimeAlign - 30);
             } elseif (20 <= $this->iStartTimeAlign) {
-                $adjstart = $this->AdjStartTime($aStartTime, false, $this->iStartTimeAlign - 20);
+                $adjstart = $this->AdjStartTime($min, false, $this->iStartTimeAlign - 20);
             } else {
-                $adjstart = $this->AdjStartTime($aStartTime, false, false, $this->iStartTimeAlign);
+                $adjstart = $this->AdjStartTime($min, false, false, $this->iStartTimeAlign);
             }
         }
 
         if (false !== $this->iEndTimeAlign) {
             if (30 <= $this->iEndTimeAlign) {
-                $adjend = $this->AdjEndTime($aEndTime, $this->iEndTimeAlign - 30);
+                $adjend = $this->AdjEndTime($max, $this->iEndTimeAlign - 30);
             } elseif (20 <= $this->iEndTimeAlign) {
-                $adjend = $this->AdjEndTime($aEndTime, false, $this->iEndTimeAlign - 20);
+                $adjend = $this->AdjEndTime($max, false, $this->iEndTimeAlign - 20);
             } else {
-                $adjend = $this->AdjEndTime($aEndTime, false, false, $this->iEndTimeAlign);
+                $adjend = $this->AdjEndTime($max, false, false, $this->iEndTimeAlign);
             }
         }
 
         if (false !== $this->iStartAlign) {
             if (30 <= $this->iStartAlign) {
-                $adjstart = $this->AdjStartDate($aStartTime, $this->iStartAlign - 30);
+                $adjstart = $this->AdjStartDate($min, $this->iStartAlign - 30);
             } elseif (20 <= $this->iStartAlign) {
-                $adjstart = $this->AdjStartDate($aStartTime, false, $this->iStartAlign - 20);
+                $adjstart = $this->AdjStartDate($min, false, $this->iStartAlign - 20);
             } else {
-                $adjstart = $this->AdjStartDate($aStartTime, false, false, $this->iStartAlign);
+                $adjstart = $this->AdjStartDate($min, false, false, $this->iStartAlign);
             }
         }
 
         if (false !== $this->iEndAlign) {
             if (30 <= $this->iEndAlign) {
-                $adjend = $this->AdjEndDate($aEndTime, $this->iEndAlign - 30);
+                $adjend = $this->AdjEndDate($max, $this->iEndAlign - 30);
             } elseif (20 <= $this->iEndAlign) {
-                $adjend = $this->AdjEndDate($aEndTime, false, $this->iEndAlign - 20);
+                $adjend = $this->AdjEndDate($max, false, $this->iEndAlign - 20);
             } else {
-                $adjend = $this->AdjEndDate($aEndTime, false, false, $this->iEndAlign);
+                $adjend = $this->AdjEndDate($max, false, false, $this->iEndAlign);
             }
         }
         $this->Update($img, $adjstart, $adjend);
 
         if (!$this->ticks->IsSpecified()) {
-            $this->ticks->Set($maj, $min);
+            $this->ticks->Set($maj, $min_new);
         }
 
         if ('' === $this->date_format) {

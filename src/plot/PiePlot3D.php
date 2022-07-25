@@ -71,10 +71,10 @@ class PiePlot3D extends PiePlot
         $this->setslicecolors = $aColors;
     }
 
-    public function Legend($aGraph)
+    public function Legend($graph)
     {
-        parent::Legend($aGraph);
-        $aGraph->legend->txtcol = \array_reverse($aGraph->legend->txtcol);
+        parent::Legend($graph);
+        $graph->legend->txtcol = \array_reverse($graph->legend->txtcol);
     }
 
     public function SetCSIMTargets($aTargets, $aAlts = '', $aWinTargets = '')

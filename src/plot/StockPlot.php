@@ -77,7 +77,7 @@ class StockPlot extends Plot
     }
 
     // Gets called before any axis are stroked
-    public function PreStrokeAdjust($graph)
+    public function PreStrokeAdjust($aGraph)
     {
         if ($this->center) {
             $a = 0.5;
@@ -87,12 +87,12 @@ class StockPlot extends Plot
             $a = 0;
             $b = 0;
         }
-        $graph->xaxis->scale->ticks->SetXLabelOffset($a);
-        $graph->SetTextScaleOff($b);
+        $aGraph->xaxis->scale->ticks->SetXLabelOffset($a);
+        $aGraph->SetTextScaleOff($b);
     }
 
     // Method description
-    public function Stroke($img, $xscale, $yscale)
+    public function Stroke($aImg, $aXScale, $aYScale)
     {
         $n = $this->numpoints;
 
@@ -135,33 +135,33 @@ class StockPlot extends Plot
             } else {
                 $x = $i;
             }
-            $xt = $xscale->Translate($x);
+            $xt = $aXScale->Translate($x);
 
             $neg = $this->coords[0][$i * $ts] > $this->coords[0][$i * $ts + 1];
-            $yopen = $yscale->Translate($this->coords[0][$i * $ts]);
-            $yclose = $yscale->Translate($this->coords[0][$i * $ts + 1]);
-            $ymin = $yscale->Translate($this->coords[0][$i * $ts + 2]);
-            $ymax = $yscale->Translate($this->coords[0][$i * $ts + 3]);
+            $yopen = $aYScale->Translate($this->coords[0][$i * $ts]);
+            $yclose = $aYScale->Translate($this->coords[0][$i * $ts + 1]);
+            $ymin = $aYScale->Translate($this->coords[0][$i * $ts + 2]);
+            $ymax = $aYScale->Translate($this->coords[0][$i * $ts + 3]);
 
             $dx = \floor($this->iWidth / 2);
             $xl = $xt - $dx;
             $xr = $xt + $dx;
 
             if ($neg) {
-                $img->SetColor($this->iStockColor3);
+                $aImg->SetColor($this->iStockColor3);
             } else {
-                $img->SetColor($this->iStockColor1);
+                $aImg->SetColor($this->iStockColor1);
             }
-            $img->FilledRectangle($xl, $yopen, $xr, $yclose);
-            $img->SetLineWeight($this->weight);
+            $aImg->FilledRectangle($xl, $yopen, $xr, $yclose);
+            $aImg->SetLineWeight($this->weight);
 
             if ($neg) {
-                $img->SetColor($this->iStockColor2);
+                $aImg->SetColor($this->iStockColor2);
             } else {
-                $img->SetColor($this->color);
+                $aImg->SetColor($this->color);
             }
 
-            $img->Rectangle($xl, $yopen, $xr, $yclose);
+            $aImg->Rectangle($xl, $yopen, $xr, $yclose);
 
             if ($yopen < $yclose) {
                 $ytop = $yopen;
@@ -170,18 +170,18 @@ class StockPlot extends Plot
                 $ytop = $yclose;
                 $ybottom = $yopen;
             }
-            $img->SetColor($this->color);
-            $img->Line($xt, $ytop, $xt, $ymax);
-            $img->Line($xt, $ybottom, $xt, $ymin);
+            $aImg->SetColor($this->color);
+            $aImg->Line($xt, $ytop, $xt, $ymax);
+            $aImg->Line($xt, $ybottom, $xt, $ymin);
 
             if ($this->iEndLines) {
-                $img->Line($xl, $ymax, $xr, $ymax);
-                $img->Line($xl, $ymin, $xr, $ymin);
+                $aImg->Line($xl, $ymax, $xr, $ymax);
+                $aImg->Line($xl, $ymin, $xr, $ymin);
             }
 
             // A chance for subclasses to add things to the bar
             // for data point i
-            $this->ModBox($img, $xscale, $yscale, $i, $xl, $xr, $neg);
+            $this->ModBox($aImg, $aXScale, $aYScale, $i, $xl, $xr, $neg);
 
             // Setup image maps
             if (empty($this->csimtargets[$i])) {

@@ -84,10 +84,10 @@ class PolarAxis extends Axis
     /**
      * @return void
      */
-    public function HideTicks($aFlg = true, $aAngleFlg = true)
+    public function HideTicks($aHideMinor = true, $aHideMajor = true)
     {
-        parent::HideTicks($aFlg, $aFlg);
-        $this->show_angle_tick = !$aAngleFlg;
+        parent::HideTicks($aHideMinor, $aHideMinor);
+        $this->show_angle_tick = !$aHideMajor;
     }
 
 
@@ -115,13 +115,13 @@ class PolarAxis extends Axis
     /**
      * @return void
      */
-    public function SetColor($aColor, $aRadColor = '', $aAngleColor = '')
+    public function SetColor($aColor, $aLabelColor = '', $aAngleColor = '')
     {
         if ('' === $aAngleColor) {
             $aAngleColor = $aColor;
         }
 
-        parent::SetColor($aColor, $aRadColor);
+        parent::SetColor($aColor, $aLabelColor);
         $this->angle_fontcolor = $aAngleColor;
     }
 
@@ -467,7 +467,7 @@ class PolarAxis extends Axis
     /**
      * @return void
      */
-    public function Stroke($pos, $dummy = true)
+    public function Stroke($aOtherAxisScale, $aStrokeLabels = true)
     {
         $this->img->SetLineWeight($this->weight);
         $this->img->SetColor($this->color);
@@ -476,12 +476,12 @@ class PolarAxis extends Axis
         if (!$this->hide_line) {
             $this->img->FilledRectangle(
                 $this->img->left_margin,
-                $pos,
+                $aOtherAxisScale,
                 $this->img->width - $this->img->right_margin,
-                $pos + $this->weight - 1
+                $aOtherAxisScale + $this->weight - 1
             );
         }
-        $y = $pos + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
+        $y = $aOtherAxisScale + $this->img->GetFontHeight() + $this->title_margin + $this->title->margin;
 
         if ('high' === $this->title_adjust) {
             $this->title->SetPos($this->img->width - $this->img->right_margin, $y, 'right', 'top');
@@ -500,10 +500,10 @@ class PolarAxis extends Axis
         }
 
         if (!$this->hide_labels) {
-            $this->StrokeLabels($pos, false);
+            $this->StrokeLabels($aOtherAxisScale, false);
         }
         $this->img->SetColor($this->radius_tick_color);
-        $this->scale->ticks->Stroke($this->img, $this->scale, $pos);
+        $this->scale->ticks->Stroke($this->img, $this->scale, $aOtherAxisScale);
 
         // Mirror the positions for the left side of the scale
         $mid = 2 * ($this->img->left_margin + $this->img->plotwidth / 2);
@@ -536,7 +536,7 @@ class PolarAxis extends Axis
 
         // Draw the left side of the scale
         $n = Configs::safe_count($this->scale->ticks->ticks_pos);
-        $yu = $pos - $this->scale->ticks->direction * $this->scale->ticks->GetMinTickAbsSize();
+        $yu = $aOtherAxisScale - $this->scale->ticks->direction * $this->scale->ticks->GetMinTickAbsSize();
 
         // Minor ticks
         if (!$this->scale->ticks->supress_minor_tickmarks) {
@@ -544,13 +544,13 @@ class PolarAxis extends Axis
 
             while ($n / 2 > $i) {
                 $x = \round($this->scale->ticks->ticks_pos[$i]);
-                $this->img->Line($x, $pos, $x, $yu);
+                $this->img->Line($x, $aOtherAxisScale, $x, $yu);
                 ++$i;
             }
         }
 
         $n = Configs::safe_count($this->scale->ticks->maj_ticks_pos);
-        $yu = $pos - $this->scale->ticks->direction * $this->scale->ticks->GetMajTickAbsSize();
+        $yu = $aOtherAxisScale - $this->scale->ticks->direction * $this->scale->ticks->GetMajTickAbsSize();
 
         // Major ticks
         if (!$this->scale->ticks->supress_tickmarks) {
@@ -558,13 +558,13 @@ class PolarAxis extends Axis
 
             while ($n / 2 > $i) {
                 $x = \round($this->scale->ticks->maj_ticks_pos[$i]);
-                $this->img->Line($x, $pos, $x, $yu);
+                $this->img->Line($x, $aOtherAxisScale, $x, $yu);
                 ++$i;
             }
         }
 
         if (!$this->hide_labels) {
-            $this->StrokeLabels($pos, false);
+            $this->StrokeLabels($aOtherAxisScale, false);
         }
         $this->title->Stroke($this->img);
     }

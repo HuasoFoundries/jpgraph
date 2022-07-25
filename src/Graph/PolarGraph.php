@@ -66,12 +66,12 @@ class PolarGraph extends Graph
         $this->axis->SetLabelAlign('right', 'center');
     }
 
-    public function SetScale($aScale, $rmax = 0, $dummy1 = 1, $dummy2 = 1, $dummy3 = 1): self
+    public function SetScale($aAxisType, $aYMin = 0, $aYMax = 1, $aXMin = 1, $aXMax = 1): self
     {
-        if ('lin' === $aScale) {
-            $this->scale = new Scale\PolarScale($rmax, $this, $this->iClockwise);
-        } elseif ('log' === $aScale) {
-            $this->scale = new Scale\PolarLogScale($rmax, $this, $this->iClockwise);
+        if ('lin' === $aAxisType) {
+            $this->scale = new Scale\PolarScale($aYMin, $this, $this->iClockwise);
+        } elseif ('log' === $aAxisType) {
+            $this->scale = new Scale\PolarLogScale($aYMin, $this, $this->iClockwise);
         } else {
             throw      Util\JpGraphError::make(17004); //('Unknown scale type for polar graph. Must be "lin" or "log"');
         }

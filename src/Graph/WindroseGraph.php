@@ -78,22 +78,22 @@ class WindroseGraph extends Graph
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $aObj
+     * @param mixed $aPlot
      */
-    public function Add($aObj): self
+    public function Add($aPlot): self
     {
-        if (\is_array($aObj) && Configs::safe_count($aObj) > 0) {
-            $cl = $aObj[0];
+        if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
+            $cl = $aPlot[0];
         } else {
-            $cl = $aObj;
+            $cl = $aPlot;
         }
 
         if ($cl instanceof Text\Text) {
-            $this->AddText($aObj);
+            $this->AddText($aPlot);
         } elseif ($cl instanceof Plot\IconPlot) {
-            $this->AddIcon($aObj);
+            $this->AddIcon($aPlot);
         } elseif (($cl instanceof Plot\WindrosePlot)) {
-            $this->plots[] = $aObj;
+            $this->plots[] = $aPlot;
         } else {
             throw      Util\JpGraphError::make(22021);
         }
@@ -106,11 +106,11 @@ class WindroseGraph extends Graph
     }
 
     /**
-     * @param string $c
+     * @param string $aColor
      */
-    public function SetColor($c)
+    public function SetColor($aColor)
     {
-        $this->SetMarginColor($c);
+        $this->SetMarginColor($aColor);
     }
 
     // Method description

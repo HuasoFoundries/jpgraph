@@ -115,7 +115,7 @@ class SuperScriptText extends Text
         return $h;
     }
 
-    public function Stroke($aImg, $ax = -1, $ay = -1)
+    public function Stroke($aImg, $x = -1, $y = -1)
     {
         // To position the super script correctly we need different
         // cases to handle the alignmewnt specified since that will
@@ -206,7 +206,7 @@ class SuperScriptText extends Text
             $sfz = $this->sfont_size;
         }
 
-        parent::Stroke($aImg, $ax, $ay);
+        parent::Stroke($aImg, $x, $y);
 
         // For the builtin fonts we need to reduce the margins
         // since the bounding bx reported for the builtin fonts

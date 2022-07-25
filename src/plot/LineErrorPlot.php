@@ -44,15 +44,15 @@ class LineErrorPlot extends ErrorPlot
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $graph
+     * @param mixed $aGraph
      */
-    public function Legend($graph)
+    public function Legend($aGraph)
     {
         if ('' !== $this->legend) {
-            $graph->legend->Add($this->legend, $this->color);
+            $aGraph->legend->Add($this->legend, $this->color);
         }
 
-        $this->line->Legend($graph);
+        $this->line->Legend($aGraph);
     }
 
     public function Stroke($img, $xscale, $yscale)

@@ -55,46 +55,46 @@ class PieGraph extends Graph
     /**
      * PUBLIC METHODS.
      *
-     * @param mixed $aObj
+     * @param mixed $aPlot
      */
-    public function Add($aObj): self
+    public function Add($aPlot): self
     {
-        if (\is_array($aObj) && Configs::safe_count($aObj) > 0) {
-            $cl = $aObj[0];
+        if (\is_array($aPlot) && Configs::safe_count($aPlot) > 0) {
+            $cl = $aPlot[0];
         } else {
-            $cl = $aObj;
+            $cl = $aPlot;
         }
 
         if ($cl instanceof Text\Text) {
-            $this->AddText($aObj);
+            $this->AddText($aPlot);
         } elseif (($cl instanceof Plot\IconPlot)) {
-            $this->AddIcon($aObj);
+            $this->AddIcon($aPlot);
         } else {
-            if (\is_array($aObj)) {
-                $n = Configs::safe_count($aObj);
+            if (\is_array($aPlot)) {
+                $n = Configs::safe_count($aPlot);
 
                 for ($i = 0; $i < $n; ++$i) {
                     //if ($aObj[$i]->theme) {
                     //    $this->ClearTheme();
                     //}
-                    $this->plots[] = $aObj[$i];
+                    $this->plots[] = $aPlot[$i];
                 }
             } else {
                 //if ($aObj->theme) {
                 //    $this->ClearTheme();
                 //}
-                $this->plots[] = $aObj;
+                $this->plots[] = $aPlot;
             }
         }
 
         if ($this->graph_theme) {
-            $this->graph_theme->SetupPlot($aObj);
+            $this->graph_theme->SetupPlot($aPlot);
         }
 
 
 
-        if ($aObj->is_using_plot_theme) {
-            $aObj->UsePlotThemeColors();
+        if ($aPlot->is_using_plot_theme) {
+            $aPlot->UsePlotThemeColors();
         }
 
 
@@ -124,11 +124,11 @@ class PieGraph extends Graph
     }
 
     /**
-     * @param int[] $c
+     * @param int[] $aColor
      */
-    public function SetColor($c)
+    public function SetColor($aColor)
     {
-        $this->SetMarginColor($c);
+        $this->SetMarginColor($aColor);
     }
 
     public function DisplayCSIMAreas()
