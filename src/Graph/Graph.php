@@ -1679,8 +1679,7 @@ class Graph
             if (!\is_numeric($this->yaxis->pos) && !\is_string($this->yaxis->pos)) {
                 $this->yaxis->SetPos($this->xscale->GetMinVal());
             }
-        } elseif (
-            $this->xscale->IsSpecified()
+        } elseif ($this->xscale->IsSpecified()
             && ($this->xscale->auto_ticks || !$this->xscale->ticks->IsSpecified())
         ) {
             // The tick calculation will use the user suplied min/max values to determine

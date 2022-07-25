@@ -168,8 +168,7 @@ class PolarGraph extends Graph
             $this->img->left_margin = $t2;
         }
 
-        if (
-            Configs::POLAR_180 === $this->iType
+        if (Configs::POLAR_180 === $this->iType
         ) {
             $pos = $this->img->height - $this->img->bottom_margin;
         } else {
@@ -259,8 +258,7 @@ class PolarGraph extends Graph
         $this->img->SetAngle($aa);
 
         // Draw an outline around the image map
-        if (
-            Configs::_JPG_DEBUG
+        if (Configs::_JPG_DEBUG
         ) {
             $this->DisplayClientSideaImageMapAreas();
         }
@@ -268,8 +266,7 @@ class PolarGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (
-            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
         ) {
             return $this->img->img;
         }

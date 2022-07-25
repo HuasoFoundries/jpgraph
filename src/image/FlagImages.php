@@ -301,7 +301,7 @@ class FlagImages
 
                 break;
             default:
-         throw      Util\JpGraphError::make(5001, $aSize);
+                throw      Util\JpGraphError::make(5001, $aSize);
                 //('Unknown flag size. ('.$aSize.')');
         }
         $this->iFlagCount = Configs::safe_count($this->iCountryNameMap);

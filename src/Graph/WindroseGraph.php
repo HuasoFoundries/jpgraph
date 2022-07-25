@@ -152,8 +152,7 @@ class WindroseGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (
-            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
         ) {
             return $this->img->img;
         }

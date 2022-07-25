@@ -20,7 +20,7 @@ use function round;
   *               in the legend are user specifyable.
   *  Created:     2001-01-08 (Refactored to separate file 2008-08-01)
   *  Ver:         $Id: jpgraph_legend.inc.php 1926 2010-01-11 16:33:07Z ljp $
-  * 
+  *
   *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
@@ -437,8 +437,7 @@ class Legend extends Configs
 
         foreach ($this->txtcol as $p) {
             // Configs::getConfig('STROKE') Configs::getConfig('DEBUG') self::BOX
-            if (
-                Configs::_JPG_DEBUG
+            if (Configs::_JPG_DEBUG
             ) {
                 $aImg->SetLineWeight(1);
                 $aImg->SetColor('red');

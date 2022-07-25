@@ -121,7 +121,6 @@ class RadarGraph extends Graph
             default:
                 throw      Util\JpGraphError::make(18005, $densy);
                 //("RadarPlot Unsupported Tick density: $densy");
-
         }
         return $this;
     }
@@ -249,8 +248,7 @@ class RadarGraph extends Graph
         if (!$this->yscale->IsSpecified() && Configs::safe_count($this->plots) > 0) {
             [$min, $max] = $this->GetPlotsYMinMax($this->plots);
             $this->yscale->AutoScale($this->img, 0, $max, $this->len / $this->ytick_factor);
-        } elseif (
-            $this->yscale->IsSpecified()
+        } elseif ($this->yscale->IsSpecified()
             && ($this->yscale->auto_ticks || !$this->yscale->ticks->IsSpecified())
         ) {
             // The tick calculation will use the user suplied min/max values to determine
@@ -280,8 +278,7 @@ class RadarGraph extends Graph
             for ($i = 0; $i < $nbrpnts; ++$i) {
                 $this->axis_title[$i] = $i + 1;
             }
-        } elseif (
-            Configs::safe_count($this->axis_title) < $nbrpnts
+        } elseif (Configs::safe_count($this->axis_title) < $nbrpnts
         ) {
             throw      Util\JpGraphError::make(18007);
             // ("Number of titles does not match number of points in plot.");
@@ -307,8 +304,7 @@ class RadarGraph extends Graph
         $astep = 2 * M_PI / $nbrpnts;
 
         if (!$_csim) {
-            if (
-                Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
+            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
             ) {
                 $this->StrokeIcons();
             }
@@ -323,8 +319,7 @@ class RadarGraph extends Graph
         $grid = [];
 
         if (!$_csim) {
-            if (
-                Configs::getConfig('DEPTH_BACK') === $this->grid_depth
+            if (Configs::getConfig('DEPTH_BACK') === $this->grid_depth
             ) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
@@ -333,8 +328,7 @@ class RadarGraph extends Graph
                 $this->grid->Stroke($this->img, $grid);
             }
 
-            if (
-                Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
+            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
             ) {
                 $this->StrokeIcons();
             }
@@ -348,8 +342,7 @@ class RadarGraph extends Graph
         }
 
         if (!$_csim) {
-            if (
-                Configs::getConfig('DEPTH_BACK') !== $this->grid_depth
+            if (Configs::getConfig('DEPTH_BACK') !== $this->grid_depth
             ) {
                 // Draw axis and grid
                 for ($i = 0, $a = M_PI / 2; $i < $nbrpnts; ++$i, $a += $astep) {
@@ -361,8 +354,7 @@ class RadarGraph extends Graph
             $this->StrokeTitles();
             $this->StrokeTexts();
 
-            if (
-                Configs::DEPTH_FRONT === $this->iIconDepth
+            if (Configs::DEPTH_FRONT === $this->iIconDepth
             ) {
                 $this->StrokeIcons();
             }
@@ -389,8 +381,7 @@ class RadarGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (
-            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
         ) {
             return $this->img->img;
         }

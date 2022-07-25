@@ -15,7 +15,7 @@ use Amenadiel\JpGraph\Util;
  *  Description: Class to handle multiple graphs in the same image
  *  Created:     2006-01-15
  *  Ver:         $Id: jpgraph_mgraph.php 1770 2009-08-17 06:10:22Z ljp $.
- * 
+ *
  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
@@ -472,8 +472,7 @@ class MGraph
         $this->footer->Stroke($image);
 
         // Output image
-        if (
-            Configs::getConfig('_IMG_HANDLER') === $aFileName
+        if (Configs::getConfig('_IMG_HANDLER') === $aFileName
         ) {
             return $image->img;
         }

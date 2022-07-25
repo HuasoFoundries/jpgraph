@@ -261,7 +261,7 @@ class Image
         }
     }
 
-    public  static  function GetWidth($aImg)
+    public static function GetWidth($aImg)
     {
         if ($aImg === null) {
             throw new \Exception("parameter 1 cannot be empty", 1);
@@ -270,7 +270,7 @@ class Image
         return imagesx($aImg);
     }
 
-    public  static  function GetHeight($aImg)
+    public static function GetHeight($aImg)
     {
         if ($aImg === null) {
             throw new \Exception("parameter 1 cannot be empty", 1);
@@ -1679,8 +1679,7 @@ class Image
     // Do SuperSampling using $scale
     public function DoSupersampling()
     {
-        if (
-            Configs::SUPERSAMPLING_SCALE <= 1
+        if (Configs::SUPERSAMPLING_SCALE <= 1
         ) {
             return $this->img;
         }
@@ -1840,8 +1839,7 @@ class Image
         }
 
         //print_r($pts);exit;
-        if (
-            Configs::safe_count($pts) / 2 < 3
+        if (Configs::safe_count($pts) / 2 < 3
         ) {
             return;
         }

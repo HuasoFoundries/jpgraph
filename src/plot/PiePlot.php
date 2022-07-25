@@ -430,8 +430,7 @@ class PiePlot
         for ($i = $n - 1; 0 <= $i; --$i) {
             $l = $this->legends[$i];
             // Replace possible format with actual values
-            if (
-                Configs::safe_count($this->csimalts) > $i
+            if (Configs::safe_count($this->csimalts) > $i
             ) {
                 $fmt = $this->csimalts[$i];
             } else {
@@ -907,8 +906,7 @@ class PiePlot
                     // have a cluster of one in quadrant 0 we just extend that
                     // cluster. If we don't do this then we risk that the label
                     // for the cluster of one will cross the guide-line
-                    if (
-                        0 === $q1 && -1 < $cidx
+                    if (0 === $q1 && -1 < $cidx
                         && 1 === $clusters[$cidx][1]
                         && $this->Quadrant($this->la[$clusters[$cidx][0]]) === 0
                     ) {

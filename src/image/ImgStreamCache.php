@@ -62,8 +62,7 @@ class ImgStreamCache extends Configs
     public function PutAndStream($aImage, $aCacheFileName, $aInline, $aStrokeFileName)
     {
         // Check if we should always stroke the image to a file
-        if (
-            Configs::_FORCE_IMGTOFILE
+        if (Configs::_FORCE_IMGTOFILE
         ) {
             $aStrokeFileName = Configs::_FORCE_IMGDIR . Util\Helper::GenImgName();
         }
@@ -135,13 +134,11 @@ class ImgStreamCache extends Configs
 
             $res = true;
             // Set group to specified
-            if (
-                Configs::getConfig('CACHE_FILE_GROUP') != ''
+            if (Configs::getConfig('CACHE_FILE_GROUP') != ''
             ) {
                 $res = @chgrp($aCacheFileName, Configs::getConfig('CACHE_FILE_GROUP'));
             }
-            if (
-                Configs::getConfig('CACHE_FILE_MOD') != ''
+            if (Configs::getConfig('CACHE_FILE_MOD') != ''
             ) {
                 $res = @chmod($aCacheFileName, Configs::getConfig('CACHE_FILE_MOD'));
             }
@@ -171,8 +168,7 @@ class ImgStreamCache extends Configs
     public function IsValid($aCacheFileName)
     {
         $aCacheFileName = $this->cache_dir . $aCacheFileName;
-        if (
-            Configs::getConfig('USE_CACHE') && file_exists($aCacheFileName)
+        if (Configs::getConfig('USE_CACHE') && file_exists($aCacheFileName)
         ) {
             $diff = time() - filemtime($aCacheFileName);
             if ($this->timeout > 0 && ($diff > $this->timeout * 60)) {
@@ -236,8 +232,7 @@ class ImgStreamCache extends Configs
             // This is necessary if Apache user doesn't belong the
             // default group and hence can't specify group permission
             // in the previous mkdir() call
-            if (
-                Configs::getConfig('CACHE_FILE_GROUP') == ''
+            if (Configs::getConfig('CACHE_FILE_GROUP') == ''
             ) {
                 // We also specify mode here after we have changed group.
                 // This is necessary if Apache user doesn't belong the

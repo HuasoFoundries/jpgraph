@@ -595,8 +595,7 @@ class RGB
     public static function tryHexConversion($aColor)
     {
         if (is_array($aColor)) {
-            if (
-                Configs::safe_count($aColor) == 3
+            if (Configs::safe_count($aColor) == 3
             ) {
                 if (is_numeric($aColor[0]) && is_numeric($aColor[1]) && is_numeric($aColor[2])) {
                     if (($aColor[0] >= 0 && $aColor[0] <= 255) &&

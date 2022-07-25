@@ -275,8 +275,7 @@ class ExceptionFactory
     {
         if (is_string($errnbr)) {
             $errorMessageStr = [$errnbr];
-        } else 
-        if (!$errorMessageStr = Helper::getErrorMessage($errnbr)) {
+        } else if (!$errorMessageStr = Helper::getErrorMessage($errnbr)) {
             return \sprintf(
                 'Internal error: The specified error message (%s) does not exist in the chosen locale (%s)',
                 $errnbr,

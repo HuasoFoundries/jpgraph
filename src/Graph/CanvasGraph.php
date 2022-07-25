@@ -13,7 +13,7 @@ use Amenadiel\JpGraph\Image;
  *  Description: Canvas drawing extension for JpGraph
  *  Created:     2001-01-08
  *  Ver:         $Id: jpgraph_canvas.php 1923 2010-01-11 13:48:49Z ljp $.
- * 
+ *
  *  Copyright (c) Asial Corporation. All rights reserved.
  */
 
@@ -107,8 +107,7 @@ final class CanvasGraph extends Graph
             // If the filename is given as the special Configs::getConfig('_IMG_HANDLER')
             // then the image handler is returned and the image is NOT
             // streamed back
-            if (
-                Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+            if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
             ) {
                 return $this->img->img;
             }

@@ -12,7 +12,7 @@
     "homepage": "https://github.com/HuasoFoundries/jpgraph",
     "license": "QPL-1.0",
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=7.4.0|| >= 8.0.0|| >= 8.1.0",
         "ext-gd": "*"
     },
     "require-dev": {

@@ -195,8 +195,7 @@ class Grid
             $i = 0;
             $x = $aTicksPos[$i];
 
-            while (
-                Configs::safe_count($aTicksPos) > $i && ($x = $aTicksPos[$i]) <= $limit
+            while (Configs::safe_count($aTicksPos) > $i && ($x = $aTicksPos[$i]) <= $limit
             ) {
                 if ('solid' === $aType) {
                     $this->img->Line($x, $yl, $x, $yu);

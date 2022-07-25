@@ -32,8 +32,7 @@ if (!\function_exists('getTestableExampleFiles')) {
         $d = \dir(examples_path($exampleRoot));
 
         while ($entry = $d->Read()) {
-            if (
-                !\array_key_exists($entry, $skippedFixtures)
+            if (!\array_key_exists($entry, $skippedFixtures)
                 && \is_file(examples_path(\implode('/', [$exampleRoot, $entry])))
                 && \mb_strpos($entry, '.php') !== false
                 && \mb_strpos($entry, 'ex') !== false

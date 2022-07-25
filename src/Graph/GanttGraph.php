@@ -703,12 +703,10 @@ class GanttGraph extends Graph
             // of space
             $fsw = \mb_strlen($this->scale->week->iLabelFormStr);
 
-            if (
-                Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->scale->week->iStyle
+            if (Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->scale->week->iStyle
             ) {
                 $fsw += 8;
-            } elseif (
-                Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->scale->week->iStyle
+            } elseif (Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->scale->week->iStyle
             ) {
                 $fsw += 7;
             } else {
@@ -722,8 +720,7 @@ class GanttGraph extends Graph
             }
         }
 
-        if (
-            !$this->scale->IsDisplayDay() && !$this->scale->IsDisplayHour()
+        if (!$this->scale->IsDisplayDay() && !$this->scale->IsDisplayHour()
             && !((Configs::WEEKSTYLE_FIRSTDAYWNBR === $this->scale->week->iStyle
                 || Configs::WEEKSTYLE_FIRSTDAY2WNBR === $this->scale->week->iStyle) && $this->scale->IsDisplayWeek())
         ) {
@@ -772,8 +769,7 @@ class GanttGraph extends Graph
         $width = \round($width);
         $height = \round($height);
         // Make a sanity check on image size
-        if (
-            Configs::MAX_GANTTIMG_SIZE_W < $width || Configs::MAX_GANTTIMG_SIZE_H < $height
+        if (Configs::MAX_GANTTIMG_SIZE_W < $width || Configs::MAX_GANTTIMG_SIZE_H < $height
         ) {
             throw      Util\JpGraphError::make(6007, $width, $height);
             //("Sanity check for automatic Gantt chart size failed. Either the width (=$width) or height (=$height) is larger than Configs::getConfig('MAX_GANTTIMG_SIZE') . This could potentially be caused by a wrong date in one of the activities.");
@@ -841,8 +837,7 @@ class GanttGraph extends Graph
         // available height
         $this->scale->SetVertLayout($this->iLayout);
 
-        if (
-            Configs::GANTT_FROMTOP === $this->iLayout
+        if (Configs::GANTT_FROMTOP === $this->iLayout
         ) {
             $maxheight = \max($this->GetMaxLabelHeight(), $this->GetMaxBarAbsHeight());
             $this->scale->SetVertSpacing($maxheight * (1 + $this->iLabelVMarginFactor));
@@ -865,8 +860,7 @@ class GanttGraph extends Graph
         if (!$_csim) {
             $this->StrokePlotArea();
 
-            if (
-                Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
+            if (Configs::getConfig('DEPTH_BACK') === $this->iIconDepth
             ) {
                 $this->StrokeIcons();
             }
@@ -900,8 +894,7 @@ class GanttGraph extends Graph
         $this->StrokeConstrains();
         $this->footer->Stroke($this->img);
 
-        if (
-            Configs::getConfig('DEPTH_FRONT') === $this->iIconDepth
+        if (Configs::getConfig('DEPTH_FRONT') === $this->iIconDepth
         ) {
             $this->StrokeIcons();
         }
@@ -926,8 +919,7 @@ class GanttGraph extends Graph
         // If the filename is given as the special "__handle"
         // then the image handler is returned and the image is NOT
         // streamed back
-        if (
-            Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
+        if (Configs::getConfig('_IMG_HANDLER') === $aStrokeFileName
         ) {
             return $this->img->img;
         }
@@ -980,8 +972,7 @@ class GanttGraph extends Graph
                 }
                 $c2 = $this->iObj[$targetobj]->iConstrainPos;
 
-                if (
-                    Configs::safe_count($c1) !== 4 || Configs::safe_count($c2) !== 4
+                if (Configs::safe_count($c1) !== 4 || Configs::safe_count($c2) !== 4
                 ) {
                     continue;
                 }

@@ -163,8 +163,7 @@ final class CCBPGraph
      */
     public function SetColorIndication(array $aSpec, ?array $aColors = null): void
     {
-        if (
-            Configs::safe_count($aSpec) !== 3
+        if (Configs::safe_count($aSpec) !== 3
         ) {
             Util\JpGraphError::Raise('Specification of scale values for background indicators must be an array with three elements.');
         }
@@ -204,8 +203,7 @@ final class CCBPGraph
     {
         $this->Init();
 
-        if (
-            Configs::safe_count($this->iPlots) > 0
+        if (Configs::safe_count($this->iPlots) > 0
         ) {
             $this->graph->Add($this->iPlots);
         }
