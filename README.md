@@ -49,7 +49,7 @@ Comparing against the original v3.5 codebase, we also stripped examples or incom
 
 ### Things that JPGraph CE is NOT
 
-- This library **is NOT an official JPGraph package**. The offcial package can be downloaded at [JPGraph's downloads section of their website](https://jpgraph.net/download/). They have a full featured free version with support for current and olver PHP versions.
+- This library **is NOT an official JPGraph package**. The offcial package can be downloaded at [JPGraph's downloads section of their website](https://jpgraph.net/download/). They have a full featured free version with support for current and older PHP versions.
 - Endorsed in any way by JPGraph's creator company [Asial](https://www.asial.co.jp/)
 - A composer enabled wrapper for the official package
 - A drop-in replacement for the official package. We do not claim nor offer any kind of feature parity with the official package.
