@@ -26,6 +26,7 @@ use Amenadiel\JpGraph\Util;
 abstract class Theme
 {
     protected $color_index;
+    private $graph;
 
     public function __construct()
     {
