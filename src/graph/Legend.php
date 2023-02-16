@@ -529,9 +529,9 @@ class Legend
                 $ys     = $y1 + 1;
                 $xe     = $x1 + $aImg->GetTextWidth($p[0]) + $this->mark_abs_hsize + $this->xmargin;
                 $ye     = $y1 - $rowheight[$row] + 1;
-                $coords = "${xs},${ys},${xe},${y1},${xe},${ye},${xs},${ye}";
+                $coords = "{$xs},{$ys},{$xe},{$y1},{$xe},{$ye},{$xs},{$ye}";
                 if (!empty($p[4])) {
-                    $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . htmlentities($p[4]) . '"';
+                    $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . htmlentities($p[4]) . '"';
 
                     if (!empty($p[6])) {
                         $this->csimareas .= ' target="' . $p[6] . '"';
@@ -539,7 +539,7 @@ class Legend
 
                     if (!empty($p[5])) {
                         $tmp = sprintf($p[5], $p[0]);
-                        $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                        $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                     }
                     $this->csimareas .= " />\n";
                 }

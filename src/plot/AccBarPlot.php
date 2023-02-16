@@ -364,9 +364,9 @@ class AccBarPlot extends BarPlot
                         $sval = '';
                         if (!empty($this->plots[$j]->csimalts[$i])) {
                             $sval = sprintf($this->plots[$j]->csimalts[$i], $this->plots[$j]->coords[0][$i]);
-                            $this->csimareas .= " title=\"${sval}\" ";
+                            $this->csimareas .= " title=\"{$sval}\" ";
                         }
-                        $this->csimareas .= " alt=\"${sval}\" />\n";
+                        $this->csimareas .= " alt=\"{$sval}\" />\n";
                     }
                 }
 

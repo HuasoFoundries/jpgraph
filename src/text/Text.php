@@ -376,7 +376,7 @@ class Text //extends Graph
         $coords = implode(',', [
             $bbox[0], $bbox[1], $bbox[2], $bbox[3], $bbox[4], $bbox[5], $bbox[6], $bbox[7],
         ]);
-        $this->iCSIMarea = "<area shape=\"poly\" coords=\"${coords}\" href=\"";
+        $this->iCSIMarea = "<area shape=\"poly\" coords=\"{$coords}\" href=\"";
         $this->iCSIMarea .= htmlentities($this->iCSIMtarget) . '" ';
         if (trim($this->iCSIMalt) != '') {
             $this->iCSIMarea .= ' alt="' . $this->iCSIMalt . '" ';

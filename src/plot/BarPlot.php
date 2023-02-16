@@ -755,7 +755,7 @@ class BarPlot extends Plot
                 $sval = '';
                 if (!empty($this->csimalts[$i])) {
                     $sval = sprintf($this->csimalts[$i], $this->coords[0][$i]);
-                    $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
+                    $this->csimareas .= " title=\"{$sval}\" alt=\"{$sval}\" ";
                 }
                 $this->csimareas .= " />\n";
             }

@@ -23,6 +23,7 @@ class Ticks
     public $maj_ticks_pos           = [];
     public $maj_ticklabels_pos      = [];
     public $ticks_pos               = [];
+    public $ticks_label             = [];
     public $maj_ticks_label         = [];
     public $precision;
 

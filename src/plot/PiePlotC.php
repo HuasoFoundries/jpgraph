@@ -83,7 +83,7 @@ class PiePlotC extends PiePlot
         // Add inner circle first point
         $xp     = floor(($this->imidsize * $radius * cos($ea)) + $xc);
         $yp     = floor($yc - ($this->imidsize * $radius * sin($ea)));
-        $coords = "${xp}, ${yp}";
+        $coords = "{$xp}, {$yp}";
 
         //add coordinates every 0.25 radians
         $a = $ea + 0.25;
@@ -94,7 +94,7 @@ class PiePlotC extends PiePlot
             while ($a <= 2 * M_PI) {
                 $xp = floor($radius * cos($a) + $xc);
                 $yp = floor($yc - $radius * sin($a));
-                $coords .= ", ${xp}, ${yp}";
+                $coords .= ", {$xp}, {$yp}";
                 $a += 0.25;
             }
             $a -= 2 * M_PI;
@@ -103,48 +103,48 @@ class PiePlotC extends PiePlot
         while ($a < $sa) {
             $xp = floor(($this->imidsize * $radius * cos($a) + $xc));
             $yp = floor($yc - ($this->imidsize * $radius * sin($a)));
-            $coords .= ", ${xp}, ${yp}";
+            $coords .= ", {$xp}, {$yp}";
             $a += 0.25;
         }
 
         // Make sure we end at the last point
         $xp = floor(($this->imidsize * $radius * cos($sa) + $xc));
         $yp = floor($yc - ($this->imidsize * $radius * sin($sa)));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         // Straight line to outer circle
         $xp = floor($radius * cos($sa) + $xc);
         $yp = floor($yc - $radius * sin($sa));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         //add coordinates every 0.25 radians
         $a = $sa - 0.25;
         while ($a > $ea) {
             $xp = floor($radius * cos($a) + $xc);
             $yp = floor($yc - $radius * sin($a));
-            $coords .= ", ${xp}, ${yp}";
+            $coords .= ", {$xp}, {$yp}";
             $a -= 0.25;
         }
 
         //Add the last point on the arc
         $xp = floor($radius * cos($ea) + $xc);
         $yp = floor($yc - $radius * sin($ea));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         // Close the arc
         $xp = floor(($this->imidsize * $radius * cos($ea)) + $xc);
         $yp = floor($yc - ($this->imidsize * $radius * sin($ea)));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" .
+            $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" .
             $this->csimtargets[$i] . '"';
             if (!empty($this->csimwintargets[$i])) {
                 $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
-                $this->csimareas .= " title=\"${tmp}\"  alt=\"${tmp}\" ";
+                $this->csimareas .= " title=\"{$tmp}\"  alt=\"{$tmp}\" ";
             }
             $this->csimareas .= " />\n";
         }
@@ -198,14 +198,14 @@ class PiePlotC extends PiePlot
         $xc = round($xc);
         $yc = round($yc);
         $r  = round($r);
-        $this->csimareas .= "<area shape=\"circle\" coords=\"${xc},${yc},${r}\" href=\"" .
+        $this->csimareas .= "<area shape=\"circle\" coords=\"{$xc},{$yc},{$r}\" href=\"" .
         $this->middlecsimtarget . '"';
         if (!empty($this->middlecsimwintarget)) {
             $this->csimareas .= ' target="' . $this->middlecsimwintarget . '"';
         }
         if (!empty($this->middlecsimalt)) {
             $tmp = $this->middlecsimalt;
-            $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+            $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
         }
         $this->csimareas .= " />\n";
     }
