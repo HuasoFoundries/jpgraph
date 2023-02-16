@@ -105,17 +105,17 @@ class PiePlot3D extends PiePlot
         $ea *= M_PI / 180;
 
         //add coordinates of the centre to the map
-        $coords = "${xc}, ${yc}";
+        $coords = "{$xc}, {$yc}";
 
         //add coordinates of the first point on the arc to the map
         $xp = floor($width * cos($sa) / 2 + $xc);
         $yp = floor($yc - $height * sin($sa) / 2);
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         //If on the front half, add the thickness offset
         if ($sa >= M_PI && $sa <= 2 * M_PI * 1.01) {
             $yp = floor($yp + $thick);
-            $coords .= ", ${xp}, ${yp}";
+            $coords .= ", {$xp}, {$yp}";
         }
 
         //add coordinates every 0.2 radians
@@ -127,7 +127,7 @@ class PiePlot3D extends PiePlot
             } else {
                 $yp = floor($yc - $height * sin($a) / 2);
             }
-            $coords .= ", ${xp}, ${yp}";
+            $coords .= ", {$xp}, {$yp}";
             $a += 0.2;
         }
 
@@ -136,13 +136,13 @@ class PiePlot3D extends PiePlot
         $yp = floor($yc - $height * sin($ea) / 2);
 
         if ($ea >= M_PI && $ea <= 2 * M_PI * 1.01) {
-            $coords .= ", ${xp}, " . floor($yp + $thick);
+            $coords .= ", {$xp}, " . floor($yp + $thick);
         }
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
         $alt = '';
 
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtargets[$i] . '"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->csimtargets[$i] . '"';
 
             if (!empty($this->csimwintargets[$i])) {
                 $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
@@ -150,7 +150,7 @@ class PiePlot3D extends PiePlot
 
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
-                $this->csimareas .= "alt=\"${tmp}\" title=\"${tmp}\" ";
+                $this->csimareas .= "alt=\"{$tmp}\" title=\"{$tmp}\" ";
             }
             $this->csimareas .= " />\n";
         }

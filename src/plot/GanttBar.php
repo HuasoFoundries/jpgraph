@@ -182,10 +182,10 @@ class GanttBar extends GanttPlotObject
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
-                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
+                $coords   = "{$title_xt},{$yt},{$title_xb},{$yt},{$title_xb},{$yb},{$title_xt},{$yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
                         $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '" ';
@@ -193,7 +193,7 @@ class GanttBar extends GanttPlotObject
 
                     if (!empty($this->title->csimalt[$i])) {
                         $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                        $this->csimarea .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                     }
                     $this->csimarea .= " />\n";
                 }
@@ -233,8 +233,8 @@ class GanttBar extends GanttPlotObject
         }
         // CSIM for bar
         if (!empty($this->csimtarget)) {
-            $coords = "${xt},${yt},${xb},${yt},${xb},${yb},${xt},${yb}";
-            $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtarget . '"';
+            $coords = "{$xt},{$yt},{$xb},{$yt},{$xb},{$yb},{$xt},{$yb}";
+            $this->csimarea .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->csimtarget . '"';
 
             if (!empty($this->csimwintarget)) {
                 $this->csimarea .= ' target="' . $this->csimwintarget . '" ';
@@ -242,7 +242,7 @@ class GanttBar extends GanttPlotObject
 
             if ($this->csimalt != '') {
                 $tmp = $this->csimalt;
-                $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                $this->csimarea .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
             }
             $this->csimarea .= " />\n";
         }

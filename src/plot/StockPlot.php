@@ -183,7 +183,7 @@ class StockPlot extends Plot
                 $this->csimareas .= ' href="' . $this->csimtargets[$i] . '"';
                 if (!empty($this->csimalts[$i])) {
                     $sval = $this->csimalts[$i];
-                    $this->csimareas .= " title=\"${sval}\" alt=\"${sval}\" ";
+                    $this->csimareas .= " title=\"{$sval}\" alt=\"{$sval}\" ";
                 }
                 $this->csimareas .= "  />\n";
             }

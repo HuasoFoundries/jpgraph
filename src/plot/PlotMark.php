@@ -180,7 +180,7 @@ class PlotMark
         }
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" ";
+            $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" ";
             $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
@@ -189,7 +189,7 @@ class PlotMark
 
             if (!empty($this->csimalt)) {
                 $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-                $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\"";
+                $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\"";
             }
             $this->csimareas .= " />\n";
         }
@@ -202,7 +202,7 @@ class PlotMark
         $r               = round($r);
         $this->csimareas = '';
         if (!empty($this->csimtarget)) {
-            $this->csimareas .= "<area shape=\"circle\" coords=\"${x},${y},${r}\" ";
+            $this->csimareas .= "<area shape=\"circle\" coords=\"{$x},{$y},{$r}\" ";
             $this->csimareas .= 'href="' . htmlentities($this->csimtarget) . '"';
 
             if (!empty($this->csimwintarget)) {
@@ -211,7 +211,7 @@ class PlotMark
 
             if (!empty($this->csimalt)) {
                 $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-                $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
             }
             $this->csimareas .= " />\n";
         }
@@ -366,7 +366,7 @@ class PlotMark
 
                 if (!empty($this->csimalt)) {
                     $tmp = sprintf($this->csimalt, $this->yvalue, $this->xvalue);
-                    $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                    $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                 }
                 $this->csimareas .= " />\n";
             }

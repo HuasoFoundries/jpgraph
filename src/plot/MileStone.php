@@ -70,10 +70,10 @@ class MileStone extends GanttPlotObject
             for ($i = 0; $i < $n; ++$i) {
                 $title_xt = $colstarts[$i];
                 $title_xb = $title_xt + $colwidth[$i];
-                $coords   = "${title_xt},${yt},${title_xb},${yt},${title_xb},${yb},${title_xt},${yb}";
+                $coords   = "{$title_xt},{$yt},{$title_xb},{$yt},{$title_xb},{$yb},{$title_xt},{$yb}";
 
                 if (!empty($this->title->csimtarget[$i])) {
-                    $this->csimarea .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
+                    $this->csimarea .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->title->csimtarget[$i] . '"';
 
                     if (!empty($this->title->csimwintarget[$i])) {
                         $this->csimarea .= 'target="' . $this->title->csimwintarget[$i] . '"';
@@ -81,7 +81,7 @@ class MileStone extends GanttPlotObject
 
                     if (!empty($this->title->csimalt[$i])) {
                         $tmp = $this->title->csimalt[$i];
-                        $this->csimarea .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                        $this->csimarea .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
                     }
                     $this->csimarea .= " />\n";
                 }

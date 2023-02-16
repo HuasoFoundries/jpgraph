@@ -892,7 +892,7 @@ class Graph
     // Get a complete <MAP>..</MAP> tag for the final image map
     public function GetHTMLImageMap($aMapName)
     {
-        $im = "<map name=\"${aMapName}\" id=\"${aMapName}\" >\n";
+        $im = "<map name=\"{$aMapName}\" id=\"{$aMapName}\" >\n";
         $im .= $this->GetCSIMareas();
         $im .= '</map>';
 

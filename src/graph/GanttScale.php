@@ -263,7 +263,7 @@ class GanttScale
         if ($preferredEndDay != $de) {
             // Solve equivalence eq:    $de + x ~ $preferredDay (mod 7)
             $adj            = (7 + ($preferredEndDay - $de)) % 7;
-            $adjdate        = strtotime("+${adj} day", $this->iEndDate);
+            $adjdate        = strtotime("+{$adj} day", $this->iEndDate);
             $this->iEndDate = $adjdate;
         }
     }

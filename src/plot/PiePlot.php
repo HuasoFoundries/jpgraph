@@ -178,12 +178,12 @@ class PiePlot
         //add coordinates of the centre to the map
         $xc     = floor($xc);
         $yc     = floor($yc);
-        $coords = "${xc}, ${yc}";
+        $coords = "{$xc}, {$yc}";
 
         //add coordinates of the first point on the arc to the map
         $xp = floor(($radius * cos($ea)) + $xc);
         $yp = floor($yc - $radius * sin($ea));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
 
         //add coordinates every 0.2 radians
         $a = $ea + 0.2;
@@ -194,7 +194,7 @@ class PiePlot
             while ($a <= 2 * M_PI) {
                 $xp = floor($radius * cos($a) + $xc);
                 $yp = floor($yc - $radius * sin($a));
-                $coords .= ", ${xp}, ${yp}";
+                $coords .= ", {$xp}, {$yp}";
                 $a += 0.2;
             }
             $a -= 2 * M_PI;
@@ -203,23 +203,23 @@ class PiePlot
         while ($a < $sa) {
             $xp = floor($radius * cos($a) + $xc);
             $yp = floor($yc - $radius * sin($a));
-            $coords .= ", ${xp}, ${yp}";
+            $coords .= ", {$xp}, {$yp}";
             $a += 0.2;
         }
 
         //Add the last point on the arc
         $xp = floor($radius * cos($sa) + $xc);
         $yp = floor($yc - $radius * sin($sa));
-        $coords .= ", ${xp}, ${yp}";
+        $coords .= ", {$xp}, {$yp}";
         if (!empty($this->csimtargets[$i])) {
-            $this->csimareas .= "<area shape=\"poly\" coords=\"${coords}\" href=\"" . $this->csimtargets[$i] . '"';
+            $this->csimareas .= "<area shape=\"poly\" coords=\"{$coords}\" href=\"" . $this->csimtargets[$i] . '"';
             $tmp = '';
             if (!empty($this->csimwintargets[$i])) {
                 $this->csimareas .= ' target="' . $this->csimwintargets[$i] . '" ';
             }
             if (!empty($this->csimalts[$i])) {
                 $tmp = sprintf($this->csimalts[$i], $this->data[$i]);
-                $this->csimareas .= " title=\"${tmp}\" alt=\"${tmp}\" ";
+                $this->csimareas .= " title=\"{$tmp}\" alt=\"{$tmp}\" ";
             }
             $this->csimareas .= " />\n";
         }
