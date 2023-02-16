@@ -57,7 +57,7 @@ class DateLocale
         }
 
         $this->iLocale = $aLocale;
-        for ($i = 0, $ofs = 0 - date('%w'); $i < 7; $i++, $ofs++) {
+        for ($i = 0, $ofs = 0 - (int)date('%w'); $i < 7; $i++, $ofs++) {
             $day                         = date('%a', strtotime("{$ofs} day"));
             $day[0]                      = strtoupper($day[0]);
             $this->iDayAbb[$aLocale][]   = $day[0];
