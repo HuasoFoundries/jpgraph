@@ -773,7 +773,7 @@ class Image
                 }
             } else {
                 //Put the text
-                imagestring($this->img, $use_font, $x, $y - $h + 1, $txt, $this->current_color);
+                imagestring($this->img, $use_font, intval($x), intval($y - $h + 1), $txt, intval($this->current_color));
             }
             if ($aDebug) {
                 // Draw the bounding rectangle and the bounding box
